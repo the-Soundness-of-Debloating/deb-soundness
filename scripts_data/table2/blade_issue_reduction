@@ -1,0 +1,16 @@
+blade bzip2-1.0.5-argv-fuzz/ issue: 90, reduction: 67.6000%
+blade bzip2-1.0.5-input-fuzz/ issue: 101, reduction: 67.6200%
+blade chown-8.2-argv-fuzz/ issue: 32, reduction: 79.3400%
+blade date-8.21-argv-fuzz/ issue: 3, reduction: 46.5700%
+blade grep-2.19-argv-fuzz/ issue: 68, reduction: 39.5600%
+blade grep-2.19-input-fuzz/ issue: 7, reduction: 39.5600%
+blade gzip-1.2.4-argv-fuzz/ issue: 8, reduction: 70.0900%
+blade gzip-1.2.4-input-fuzz/ issue: 55, reduction: 70.1000%
+blade mkdir-5.2.1-argv-fuzz/ issue: 16, reduction: 91.3400%
+blade rm-8.4-argv-fuzz/ issue: 18, reduction: 91.5200%
+blade sort-8.16-argv-fuzz/ issue: 18, reduction: 93.8000%
+blade sort-8.16-input-fuzz/ issue: 14, reduction: 93.8100%
+blade tar-1.14-argv-fuzz/ issue: 39, reduction: 79.7700%
+blade tar-1.14-input-fuzz/ issue: 13, reduction: 79.7700%
+blade uniq-8.16-argv-fuzz/ issue: 14, reduction: 90.8000%
+blade uniq-8.16-input-fuzz/ issue: 4, reduction: 90.8300%

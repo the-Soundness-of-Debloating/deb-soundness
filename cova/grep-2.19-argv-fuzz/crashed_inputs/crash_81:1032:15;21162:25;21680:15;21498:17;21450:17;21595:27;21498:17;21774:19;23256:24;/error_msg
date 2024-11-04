@@ -1,0 +1,78 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.asan.out
+grep: invalid option -- '-'
+grep: invalid option -- '„'
+grep: invalid option -- 'ÿ'
+grep: invalid option -- '$'
+grep: invalid option -- ''
+grep: invalid option -- '-'
+grep: invalid option -- ''
+grep: invalid option -- '-'
+grep: invalid option -- '.'
+grep: invalid option -- '.'
+grep: invalid option -- '<'
+grep: invalid option -- '.'
+grep: invalid option -- '.'
+grep: invalid option -- '.'
+grep: invalid option -- '.'
+grep: invalid option -- '.'
+grep: invalid option -- '.'
+grep: invalid option -- '.'
+grep: invalid option -- '.'
+grep: invalid option -- ''
+grep: invalid option -- '.'
+grep: invalid option -- '.'
+grep: invalid option -- '.'
+grep: invalid option -- '.'
+grep: invalid option -- '.'
+grep: invalid option -- '€'
+grep: invalid option -- '!'
+grep: invalid option -- '/'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2679370==ERROR: AddressSanitizer: SEGV on unknown address 0x62d000020000 (pc 0x7f8872c92420 bp 0x7ffe131afdc0 sp 0x7ffe131af588 T0)
+==2679370==The signal is caused by a READ memory access.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x7f8872c92420  string/../sysdeps/x86_64/multiarch/memchr-avx2.S:248
+    #1 0x558e5906607e in memchr (/workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.asan.out+0x4007e) (BuildId: a44fc56afaee2ca39022040a002b33e90c6848cc)
+    #2 0x558e5913e198 in prtext /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20867:37
+    #3 0x558e5913d987 in grepbuf /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21032:15
+    #4 0x558e5913ca45 in grep /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21162:25
+    #5 0x558e5913b76f in grepdesc /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21680:15
+    #6 0x558e5913bd7d in grepfile /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #7 0x558e5913c53c in grepdirent /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21450:17
+    #8 0x558e5913b2fb in grepdesc /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21595:27
+    #9 0x558e5913bd7d in grepfile /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #10 0x558e59131655 in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19
+    #11 0x558e59130739 in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24
+    #12 0x7ffe131b0f47  ([stack]+0x17f47)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memchr-avx2.S:248 
+==2679370==ABORTING
+./verify.sh: line 110: 2679369 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==2783201==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x55699d9b3000 (pc 0x7f31db4a1420 bp 0x7ffcff9f22c0 sp 0x7ffcff9f2178 T2783201)
+==2783201==The signal is caused by a READ memory access.
+    #0 0x7f31db4a1420  string/../sysdeps/x86_64/multiarch/memchr-avx2.S:248
+    #1 0x55699cc228a1 in prtext /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20867:37
+    #2 0x55699cc21cb8 in grepbuf /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21032:15
+    #3 0x55699cc1fd8e in grep /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21162:25
+    #4 0x55699cc1e3aa in grepdesc /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21680:15
+    #5 0x55699cc1e8fa in grepfile /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #6 0x55699cc1f511 in grepdirent /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21450:17
+    #7 0x55699cc1df1d in grepdesc /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21595:27
+    #8 0x55699cc1e8fa in grepfile /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #9 0x55699cc0c927 in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19
+    #10 0x55699cc0ada4 in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24
+    #11 0x7f31db331d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #12 0x7f31db331e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #13 0x55699cb9a744 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x42744) (BuildId: 134b3824983eb10c2b56ba12106407af5954fc5d)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memchr-avx2.S:248 
+==2783201==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 2783200 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

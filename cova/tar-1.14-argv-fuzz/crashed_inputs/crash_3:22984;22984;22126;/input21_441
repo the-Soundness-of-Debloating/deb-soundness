@@ -1,0 +1,1 @@
+xf foo.tar -X f-X f-ØXÁf-X f-X f-X foo.exclude -X bar.exclude

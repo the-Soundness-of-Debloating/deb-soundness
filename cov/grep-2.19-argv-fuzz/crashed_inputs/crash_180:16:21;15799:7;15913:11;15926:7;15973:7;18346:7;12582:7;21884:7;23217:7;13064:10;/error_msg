@@ -1,0 +1,21 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.msan.out
+==4089725==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5636d8dd2e65 in mbs_to_wchar /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:13064:10
+    #1 0x5636d8dae9c4 in lex /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:14569:23
+    #2 0x5636d8dd950c in atom /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15616:21
+    #3 0x5636d8dd8bdc in closure /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15799:7
+    #4 0x5636d8dd8b4b in branch /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15913:11
+    #5 0x5636d8db11cc in regexp /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15926:7
+    #6 0x5636d8dae461 in dfaparse /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15973:7
+    #7 0x5636d8da8e87 in dfacomp /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18346:7
+    #8 0x5636d8da87a8 in GEAcompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12582:7
+    #9 0x5636d8ddf428 in Gcompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21884:7
+    #10 0x5636d8dcb573 in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #11 0x7f32c240dd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #12 0x7f32c240de3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #13 0x5636d8d043f4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.msan.out+0x1f3f4) (BuildId: d6ec29f2e72ed2facac46b6962e8fbc3e4932da0)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:13064:10 in mbs_to_wchar
+Exiting
+./verify.sh: line 110: 4089724 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

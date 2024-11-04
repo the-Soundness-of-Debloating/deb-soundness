@@ -1,0 +1,14 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/bins/reduced.msan.out /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/result/afl_result/reduced/result_0/msan/crashes/id:000000,sig:06,src:000012+000026,time:77924651,execs:2563290,op:splice,rep:8
+==754656==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5623cb4ab0aa in default_sort_size /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:9633:9
+    #1 0x5623cb4a6571 in sort_buffer_size /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:9700:24
+    #2 0x5623cb4a4c13 in sort /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:13127:19
+    #3 0x5623cb4a2a8c in main /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:14275:7
+    #4 0x7f007b9ced8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f007b9cee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x5623cb414414 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/bins/reduced.msan.out+0x1f414) (BuildId: e0238d48fa3090d4405131d31362f7e0a1d9020d)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:9633:9 in default_sort_size
+Exiting
+./verify.sh: line 167: 754655 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/bins/reduced.msan.out /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/result/afl_result/reduced/result_0/msan/crashes/id:000000*

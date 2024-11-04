@@ -1,0 +1,1 @@
+xf fo.tar -C foo ./ foo ./1/1 0

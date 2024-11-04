@@ -1,0 +1,16 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/bins/reduced.msan.out -t /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_316
+==3458843==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x563b0b0c0cd5 in BZ2_decompress /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:1631:15
+    #1 0x563b0b0f640b in BZ2_bzDecompress /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6161:19
+    #2 0x563b0b0fcb87 in BZ2_bzRead /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6866:17
+    #3 0x563b0b111f25 in testStream /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7737:23
+    #4 0x563b0b1045b7 in testf /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9404:15
+    #5 0x563b0b101cc9 in main /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10327:17
+    #6 0x7ff88e949d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7ff88e949e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x563b0b029334 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/bins/reduced.msan.out+0x1e334) (BuildId: f2fa0253457259be93826f9330aba8022820cf28)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:1631:15 in BZ2_decompress
+Exiting
+./verify.sh: line 170: 3458842 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/bins/reduced.msan.out -t /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_316

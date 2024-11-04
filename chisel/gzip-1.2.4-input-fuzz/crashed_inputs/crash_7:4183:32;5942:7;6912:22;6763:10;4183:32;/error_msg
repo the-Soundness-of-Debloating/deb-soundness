@@ -1,0 +1,18 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.asan.out -c
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==3027914==ERROR: AddressSanitizer: SEGV on unknown address 0x556b3f5d854e (pc 0x556ad594e580 bp 0x7fffcb84c370 sp 0x7fffcb84c290 T0)
+==3027914==The signal is caused by a WRITE memory access.
+    #0 0x556ad594e580 in ct_init /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4183:32
+    #1 0x556ad59517aa in zip /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5942:7
+    #2 0x556ad5951e16 in treat_stdin /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #3 0x556ad5951cef in main /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:10
+    #4 0x7fe5691dcd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7fe5691dce3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x556ad588b324 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.asan.out+0x20324) (BuildId: 6eabaf23792ed7e3e2fa7fefb1043c0b47887de4)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4183:32 in ct_init
+==3027914==ABORTING
+./verify.sh: line 166: 3027908 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.asan.out -c < /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_0/asan/crashes/id:000002* > sample1.gz

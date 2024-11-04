@@ -1,0 +1,7 @@
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==2824089==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000000 (pc 0x556b26050b6f bp 0x7ffc8e369d90 sp 0x7ffc8e369cd0 T0)
+==2824089==The signal is caused by a READ memory access.
+==2824089==Hint: address points to the zero page.
+==2824089==WARNING: external symbolizer didn't start up correctly!

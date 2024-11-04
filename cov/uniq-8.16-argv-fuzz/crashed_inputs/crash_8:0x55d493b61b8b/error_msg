@@ -1,0 +1,7 @@
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/uniq-8.16-argv-fuzz/bins/reduced.lsan.out
+uniq: invalid option -- ''
+LeakSanitizer:DEADLYSIGNAL
+==1842027==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000000 (pc 0x55d493b61b8b bp 0x7fff699095c0 sp 0x7fff69909570 T0)
+==1842027==The signal is caused by a READ memory access.
+==1842027==Hint: address points to the zero page.

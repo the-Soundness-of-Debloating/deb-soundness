@@ -1,0 +1,29 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out -d
+gzip-1.2.4.c.reduced.c:3230:17: runtime error: index 316 out of bounds for type 'unsigned int[316]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3230:17 in 
+gzip-1.2.4.c.reduced.c:3190:11: runtime error: index 318 out of bounds for type 'unsigned int[316]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3190:11 in 
+gzip-1.2.4.c.reduced.c:2710:40: runtime error: index 65536 out of bounds for type 'uch[65536]' (aka 'unsigned char[65536]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:2710:40 in 
+gzip-1.2.4.c.reduced.c:2710:21: runtime error: index 65536 out of bounds for type 'uch[65536]' (aka 'unsigned char[65536]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:2710:21 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3066324==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x55c5061c1000 (pc 0x55c5058015ff bp 0x7ffee932e6e0 sp 0x7ffee932e3f0 T3066324)
+==3066324==The signal is caused by a READ memory access.
+    #0 0x55c5058015ff in inflate_codes /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2710:40
+    #1 0x55c505802b09 in inflate_dynamic /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3361:18
+    #2 0x55c505802d51 in inflate_block /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3440:19
+    #3 0x55c505802d80 in inflate /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3473:15
+    #4 0x55c505802dce in unzip /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3630:15
+    #5 0x55c50580c40d in treat_stdin /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #6 0x55c50580c2bd in main /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:10
+    #7 0x7fc74f050d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7fc74f050e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x55c5057d6404 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out+0x10404) (BuildId: 2a58b9a76e94df514ce4ecec2b34d5a00be04b93)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2710:40 in inflate_codes
+==3066324==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 166: 3066322 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out -d < /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_1/ubsan/crashes/id:000003* > sample1.tst

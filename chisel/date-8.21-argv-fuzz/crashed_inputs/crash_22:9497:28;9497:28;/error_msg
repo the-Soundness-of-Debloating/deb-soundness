@@ -1,0 +1,29 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==3778623==ERROR: AddressSanitizer: SEGV on unknown address 0x4a36a1cf87a3 (pc 0x55991c4a1d98 bp 0x7ffe075c60f0 sp 0x7ffe075c5ea0 T0)
+==3778623==The signal is caused by a READ memory access.
+    #0 0x55991c4a1d98 in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9497:28
+    #1 0x7f05fc6e2d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7f05fc6e2e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x55991c3d8394 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.asan.out+0x20394) (BuildId: c4b6e170161c88a0ff251300e4e3ca367c4aa605)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9497:28 in main
+==3778623==ABORTING
+./verify.sh: line 108: 3778622 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==119231==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x561cf123f99e bp 0x7ffc62288a20 sp 0x7ffc62288840 T0)
+==119231==The signal is caused by a READ memory access.
+==119231==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x561cf123f99e in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9497:28
+    #1 0x7ffa5fb60d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7ffa5fb60e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x561cf120f4e4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.lsan.out+0x54e4) (BuildId: 5060c0af9d8553ad9e19245aea506efae9476d31)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9497:28 in main
+==119231==ABORTING

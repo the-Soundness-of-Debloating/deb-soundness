@@ -1,0 +1,46 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==747663==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000112 (pc 0x564574f79428 bp 0x7fffb029a670 sp 0x7fffb029a1f0 T747663)
+==747663==The signal is caused by a WRITE memory access.
+==747663==Hint: address points to the zero page.
+    #0 quotearg_buffer_restyled /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1944:29 (reduced.tsan.out+0xd2428) (BuildId: 9524b00e528c8de4b1a78bcbbfb907b6fb3c5ddc)
+    #1 quotearg_n_options /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2857:7 (reduced.tsan.out+0xcf4cd) (BuildId: 9524b00e528c8de4b1a78bcbbfb907b6fb3c5ddc)
+    #2 quotearg_n_style /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2875:15 (reduced.tsan.out+0xcef00) (BuildId: 9524b00e528c8de4b1a78bcbbfb907b6fb3c5ddc)
+    #3 quote_n /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2908:25 (reduced.tsan.out+0xcf5b6) (BuildId: 9524b00e528c8de4b1a78bcbbfb907b6fb3c5ddc)
+    #4 quote /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2915:11 (reduced.tsan.out+0xcf607) (BuildId: 9524b00e528c8de4b1a78bcbbfb907b6fb3c5ddc)
+    #5 excise /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6503:16 (reduced.tsan.out+0xd4df2) (BuildId: 9524b00e528c8de4b1a78bcbbfb907b6fb3c5ddc)
+    #6 rm_fts /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6675:16 (reduced.tsan.out+0xd1b22) (BuildId: 9524b00e528c8de4b1a78bcbbfb907b6fb3c5ddc)
+    #7 rm /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6742:19 (reduced.tsan.out+0xd1797) (BuildId: 9524b00e528c8de4b1a78bcbbfb907b6fb3c5ddc)
+    #8 main /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7178:15 (reduced.tsan.out+0xd1da1) (BuildId: 9524b00e528c8de4b1a78bcbbfb907b6fb3c5ddc)
+    #9 <null> <null> (libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #10 __libc_start_main <null> (libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #11 _start <null> (reduced.tsan.out+0x21444) (BuildId: 9524b00e528c8de4b1a78bcbbfb907b6fb3c5ddc)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1944:29 in quotearg_buffer_restyled
+==747663==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 189: 747662 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_17
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==853583==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000112 (pc 0x56200359fb81 bp 0x7ffec6853de0 sp 0x7ffec6853cf0 T0)
+==853583==The signal is caused by a WRITE memory access.
+==853583==Hint: address points to the zero page.
+    #0 0x56200359fb81 in quotearg_buffer_restyled /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1944:29
+    #1 0x56200359dfc2 in quotearg_n_options /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2857:7
+    #2 0x56200359dcf1 in quotearg_n_style /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2875:15
+    #3 0x56200359e05f in quote_n /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2908:25
+    #4 0x56200359e086 in quote /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2915:11
+    #5 0x5620035a1666 in excise /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6503:16
+    #6 0x56200359f5b1 in rm_fts /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6675:16
+    #7 0x56200359f351 in rm /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6742:19
+    #8 0x56200359f785 in main /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7178:15
+    #9 0x7fd6769e1d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #10 0x7fd6769e1e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #11 0x56200356f5c4 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/bins/reduced.lsan.out+0x65c4) (BuildId: c3fe0064ed7fc918299bb687e4fdcb62cce1c984)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1944:29 in quotearg_buffer_restyled
+==853583==ABORTING

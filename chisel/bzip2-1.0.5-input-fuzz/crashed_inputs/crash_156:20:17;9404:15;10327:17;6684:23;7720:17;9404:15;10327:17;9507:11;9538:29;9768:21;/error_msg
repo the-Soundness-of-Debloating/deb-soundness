@@ -1,0 +1,51 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out -t /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_66
+
+=================================================================
+==1956347==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0x55ed1ff38602 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out+0x30602) (BuildId: b7ae66f653a2fb616e7ec0b784cf29fa95e3f3e7)
+    #1 0x55ed1ff414a3 in myMalloc /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9507:11
+    #2 0x55ed1ff41481 in mkCell /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9520:19
+    #3 0x55ed1ff40722 in snocString /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9535:19
+    #4 0x55ed1ff404fc in main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9768:21
+    #5 0x7f75999c5d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Indirect leak of 19200000 byte(s) in 1 object(s) allocated from:
+    #0 0x55ed1ff38602 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out+0x30602) (BuildId: b7ae66f653a2fb616e7ec0b784cf29fa95e3f3e7)
+    #1 0x55ed1ff3fc50 in default_bzalloc /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:4729:13
+    #2 0x55ed1ff3b763 in BZ2_decompress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:1114:29
+    #3 0x55ed1ff3fea9 in BZ2_bzDecompress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6161:19
+    #4 0x55ed1ff40420 in BZ2_bzRead /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6866:17
+    #5 0x55ed1ff41783 in testStream /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7737:23
+    #6 0x55ed1ff4090e in testf /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9404:15
+    #7 0x55ed1ff406c9 in main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10327:17
+    #8 0x7f75999c5d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Indirect leak of 64144 byte(s) in 1 object(s) allocated from:
+    #0 0x55ed1ff38602 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out+0x30602) (BuildId: b7ae66f653a2fb616e7ec0b784cf29fa95e3f3e7)
+    #1 0x55ed1ff3fc50 in default_bzalloc /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:4729:13
+    #2 0x55ed1ff3fe1c in BZ2_bzDecompressInit /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:5394:21
+    #3 0x55ed1ff4035c in BZ2_bzReadOpen /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6720:13
+    #4 0x55ed1ff41766 in testStream /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7720:17
+    #5 0x55ed1ff4090e in testf /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9404:15
+    #6 0x55ed1ff406c9 in main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10327:17
+    #7 0x7f75999c5d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Indirect leak of 5104 byte(s) in 1 object(s) allocated from:
+    #0 0x55ed1ff38602 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out+0x30602) (BuildId: b7ae66f653a2fb616e7ec0b784cf29fa95e3f3e7)
+    #1 0x55ed1ff40337 in BZ2_bzReadOpen /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6684:23
+    #2 0x55ed1ff41766 in testStream /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7720:17
+    #3 0x55ed1ff4090e in testf /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9404:15
+    #4 0x55ed1ff406c9 in main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10327:17
+    #5 0x7f75999c5d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Indirect leak of 7 byte(s) in 1 object(s) allocated from:
+    #0 0x55ed1ff38602 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out+0x30602) (BuildId: b7ae66f653a2fb616e7ec0b784cf29fa95e3f3e7)
+    #1 0x55ed1ff414a3 in myMalloc /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9507:11
+    #2 0x55ed1ff4074a in snocString /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9538:29
+    #3 0x55ed1ff404fc in main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9768:21
+    #4 0x7f75999c5d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: LeakSanitizer: 19269271 byte(s) leaked in 5 allocation(s).

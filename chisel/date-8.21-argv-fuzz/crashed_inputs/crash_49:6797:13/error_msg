@@ -1,0 +1,5 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+date: option '--r' is ambiguous; possibilities: '--reference' '--rfc-822' '--rfc-2822' '--rfc-3339'
+date-8.21.c.reduced.c:6797:13: runtime error: load of value 107, which is not a valid value for type '_Bool'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:6797:13 in 

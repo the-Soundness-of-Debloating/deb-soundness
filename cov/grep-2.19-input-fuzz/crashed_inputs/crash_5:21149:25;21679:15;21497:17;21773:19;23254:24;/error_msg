@@ -1,0 +1,40 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/bins/reduced.ubsan.out '.$' /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_129
+grep-2.19.c.reduced.c:20113:24: runtime error: applying zero offset to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:20113:24 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==2949154==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0xffffffffffffffe0 (pc 0x7f07a62e571a bp 0x7ffc720fc0b0 sp 0x7ffc720fbef8 T2949154)
+==2949154==The signal is caused by a READ memory access.
+    #0 0x7f07a62e571a  string/../sysdeps/x86_64/multiarch/memrchr-avx2.S:49
+    #1 0x56167c80c2fd in grep /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21149:25
+    #2 0x56167c80b12a in grepdesc /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21679:15
+    #3 0x56167c80acc6 in grepfile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21497:17
+    #4 0x56167c7fea86 in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21773:19
+    #5 0x56167c7fe621 in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23254:24
+    #6 0x7f07a6175d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f07a6175e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x56167c79f654 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/bins/reduced.ubsan.out+0x2f654) (BuildId: 1d8654cac62fa50bd3af6bad0a754aa23c2d2f94)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memrchr-avx2.S:49 
+==2949154==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 233: 2949153 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/bins/reduced.ubsan.out .$ /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_129
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/bins/reduced.lsan.out a /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_129
+LeakSanitizer:DEADLYSIGNAL
+==3110855==ERROR: LeakSanitizer: SEGV on unknown address 0xffffffffffffffe0 (pc 0x7fc60523071a bp 0x7fffb72e4640 sp 0x7fffb72e45b8 T0)
+==3110855==The signal is caused by a READ memory access.
+    #0 0x7fc60523071a  string/../sysdeps/x86_64/multiarch/memrchr-avx2.S:49
+    #1 0x55c3b498f3dc in grep /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21149:25
+    #2 0x55c3b498ed4e in grepdesc /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21679:15
+    #3 0x55c3b498eaf6 in grepfile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21497:17
+    #4 0x55c3b498bc9d in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21773:19
+    #5 0x55c3b498ba8b in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23254:24
+    #6 0x7fc6050c0d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7fc6050c0e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55c3b4954624 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/bins/reduced.lsan.out+0x7624) (BuildId: aab49a3a8e8ba47512763a3d57a19b704099892d)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memrchr-avx2.S:49 
+==3110855==ABORTING

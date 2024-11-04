@@ -1,0 +1,21 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==3526536==ERROR: LeakSanitizer: SEGV on unknown address 0x7f3c3005edcc (pc 0x56343ed34e64 bp 0x7fff0ba1d080 sp 0x7fff0ba1c820 T0)
+==3526536==The signal is caused by a READ memory access.
+    #0 0x56343ed34e64 in fallbackSort /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:10761:35
+    #1 0x56343ed30f9a in BZ2_blockSort /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:12073:13
+    #2 0x56343ed30d8b in BZ2_compressBlock /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:4548:9
+    #3 0x56343ed33dc5 in handle_compress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:5185:17
+    #4 0x56343ed33d12 in BZ2_bzCompress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:5308:18
+    #5 0x56343ed342e0 in BZ2_bzWriteClose64 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:6525:21
+    #6 0x56343ed357be in compressStream /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:7288:7
+    #7 0x56343ed34a1b in compress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:8788:7
+    #8 0x56343ed346a8 in main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:10252:15
+    #9 0x7f3c287ebd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #10 0x7f3c287ebe3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #11 0x56343ed01444 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x5444) (BuildId: 5b393e71629eb549377d981fca0dbde0bfc787e4)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:10761:35 in fallbackSort
+==3526536==ABORTING

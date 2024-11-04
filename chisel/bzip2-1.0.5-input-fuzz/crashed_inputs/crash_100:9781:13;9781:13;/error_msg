@@ -1,0 +1,11 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.msan.out -c
+==134424==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5618ea60457a in main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9781:13
+    #1 0x7f8e3bf4dd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7f8e3bf4de3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x5618ea5562c4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.msan.out+0x1e2c4) (BuildId: 81c2af958e825b532ccf22960eb33122c8ea7493)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9781:13 in main
+Exiting
+./verify.sh: line 173: 134423 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.msan.out -c < /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_0 > sample1.rb2

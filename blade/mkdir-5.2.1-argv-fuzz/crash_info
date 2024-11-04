@@ -1,0 +1,18 @@
+[
+{ crash_loc: 3550, vul_type: "stack-overflow,", deb_tool: "blade" }, 
+{ crash_loc: 3552, vul_type: "stack-buffer-overflow,READ memory access,stack-overflow,", deb_tool: "blade" }, 
+{ crash_loc: 3413, vul_type: "READ memory access,", deb_tool: "blade" }, 
+{ crash_loc: 3612, vul_type: "READ memory access,", deb_tool: "blade" }, 
+{ crash_loc: 0x7f7452fb5c29, vul_type: "stack-overflow,", deb_tool: "blade" }, 
+{ crash_loc: 0x7f19d0696102, vul_type: "READ memory access,", deb_tool: "blade" }, 
+{ crash_loc: 0x7fa134f49c15, vul_type: "stack-overflow,", deb_tool: "blade" }, 
+{ crash_loc: 0x7fee7b2a4c08, vul_type: "stack-overflow,", deb_tool: "blade" }, 
+{ crash_loc: 0x7ff120c0fc37, vul_type: "stack-overflow,", deb_tool: "blade" }, 
+{ crash_loc: 3550, vul_type: "stack-overflow,", deb_tool: "blade" }, 
+{ crash_loc: 5042, vul_type: "use-of-uninitialized-value,", deb_tool: "blade" }, 
+{ crash_loc: 3413, vul_type: "READ memory access,", deb_tool: "blade" }, 
+{ crash_loc: 3413, vul_type: "READ memory access,", deb_tool: "blade" }, 
+{ crash_loc: 3550, vul_type: "WRITE memory access,", deb_tool: "blade" }, 
+{ crash_loc: 4968, vul_type: "use-of-uninitialized-value,", deb_tool: "blade" }, 
+{ crash_loc: 3552, vul_type: "stack-overflow,", deb_tool: "blade" }, 
+]

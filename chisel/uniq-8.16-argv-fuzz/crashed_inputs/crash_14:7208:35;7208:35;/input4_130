@@ -1,0 +1,4 @@
+-f 1 train_input/file/input
+-f 1 train_input/file/input
+-f 32768 train_input/file/input
+-f 65536 train_input/file/input

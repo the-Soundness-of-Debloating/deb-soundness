@@ -1,0 +1,19 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.msan.out
+==1720991==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55d4fa83e6c8 in dump_file0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6427:19
+    #1 0x55d4fa83b310 in dump_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6629:7
+    #2 0x55d4fa88f229 in dump_dir0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5832:13
+    #3 0x55d4fa889d74 in dump_dir /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5896:7
+    #4 0x55d4fa83dd52 in dump_file0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6371:9
+    #5 0x55d4fa83b310 in dump_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6629:7
+    #6 0x55d4fa83aba1 in create_archive /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6044:15
+    #7 0x55d4fa86ebda in main /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:23261:7
+    #8 0x7f09a21d3d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #9 0x7f09a21d3e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #10 0x55d4fa7974c4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.msan.out+0x204c4) (BuildId: 406eb1ef5ec5ab245ba7b9351f73bc8e589acee7)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6427:19 in dump_file0
+Exiting
+timeout: the monitored command dumped core
+./verify.sh: line 304: 1720990 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/result/afl_result/reduced/result_1/msan/crashes/id:000092*

@@ -1,0 +1,18 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out -d
+LeakSanitizer:DEADLYSIGNAL
+==1816676==ERROR: LeakSanitizer: SEGV on unknown address 0x630000100e8c (pc 0x556a0665c7c9 bp 0x7ffc2faf7b60 sp 0x7ffc2faf79d0 T0)
+==1816676==The signal is caused by a READ memory access.
+    #0 0x556a0665c7c9 in BZ2_decompress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:2327:22
+    #1 0x556a0665fea9 in BZ2_bzDecompress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6161:19
+    #2 0x556a06660420 in BZ2_bzRead /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6866:17
+    #3 0x556a066616d6 in uncompressStream /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7462:23
+    #4 0x556a066608b7 in uncompress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9164:23
+    #5 0x556a06660688 in main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10263:13
+    #6 0x7f53d4c14d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f53d4c14e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x556a0662d424 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out+0x5424) (BuildId: b7ae66f653a2fb616e7ec0b784cf29fa95e3f3e7)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:2327:22 in BZ2_decompress
+==1816676==ABORTING

@@ -1,0 +1,11 @@
+tsan:
+++ timeout -k 0.5 0.5 cat foo.tar
+++ /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2362563==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000010 (pc 0x56365ace525b bp 0x7ffc148cf890 sp 0x7ffc148cf7d0 T2362563)
+==2362563==The signal is caused by a WRITE memory access.
+==2362563==Hint: address points to the zero page.
+ThreadSanitizer: CHECK failed: sanitizer_linux_libcdep.cpp:150 "((pthread_getattr_np(pthread_self(), &attr))) == ((0))" (0x18, 0x0) (tid=2362563)
+ThreadSanitizer: CHECK failed: sanitizer_linux_libcdep.cpp:150 "((pthread_getattr_np(pthread_self(), &attr))) == ((0))" (0x18, 0x0) (tid=2362563)
+./verify.sh: line 302: 2362562 Broken pipe             timeout -k 0.5 0.5 cat foo.tar
+     2362563 Illegal instruction     | /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input12_fuzzed/input12_208

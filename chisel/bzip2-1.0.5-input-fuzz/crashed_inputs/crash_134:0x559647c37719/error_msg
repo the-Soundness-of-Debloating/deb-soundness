@@ -1,0 +1,5 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.tsan.out -t /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_18
+ThreadSanitizer:DEADLYSIGNAL
+==884459==ERROR: ThreadSanitizer: SEGV on unknown address 0x7bc00004b574 (pc 0x559647c37719 bp 0x7ffc9f275690 sp 0x7ffc9f274520 T884459)
+==884459==The signal is caused by a READ memory access.

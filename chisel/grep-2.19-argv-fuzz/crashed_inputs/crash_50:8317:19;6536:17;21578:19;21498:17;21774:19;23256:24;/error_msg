@@ -1,0 +1,53 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep: invalid option -- '‰'
+grep-2.19.c.reduced.c:16004:62: runtime error: null pointer passed as argument 2, which is declared to never be null
+grep-2.19.c.reduced.c:1032:59: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:16004:62 in 
+grep-2.19.c.reduced.c:16063:38: runtime error: addition of unsigned offset to 0x556e6178a9b0 overflowed to 0x556e6178a9a0
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:16063:38 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3856331==ERROR: UndefinedBehaviorSanitizer: BUS on unknown address (pc 0x7fa207608795 bp 0x70736b726f772f00 sp 0x7ffe8e24fee0 T3856331)
+==3856331==The signal is caused by a READ memory access.
+==3856331==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x7fa207608795 in __libc_realloc malloc/malloc.c:3428:35
+    #1 0x556e5f4b6ee2 in fts_palloc /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:8317:19
+    #2 0x556e5f4b69b5 in fts_open /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:6536:17
+    #3 0x556e5f4cd7bb in grepdesc /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21578:19
+    #4 0x556e5f4cd650 in grepfile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #5 0x556e5f4c7dbb in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19
+    #6 0x556e5f4c76b8 in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24
+    #7 0x7fa20758cd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7fa20758ce3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x556e5f48e574 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x15574) (BuildId: c2c2e5de5f7baf45d001715ccd865693e086d1fb)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: BUS malloc/malloc.c:3428:35 in __libc_realloc
+==3856331==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 3856330 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.tsan.out
+grep: invalid option -- '_'
+grep: invalid option -- 'p'
+ThreadSanitizer:DEADLYSIGNAL
+==4171756==ERROR: ThreadSanitizer: SEGV on unknown address 0x1ffffffff018 (pc 0x55b2e3a5dc25 bp 0x7f77c1bad7c0 sp 0x7ffc19b4d3a0 T4171756)
+==4171756==The signal is caused by a READ memory access.
+    #0 __sanitizer::LargeMmapAllocator<__tsan::MapUnmapCallback, __sanitizer::LargeMmapAllocatorPtrArrayDynamic, __sanitizer::LocalAddressSpaceView>::Deallocate(__sanitizer::AllocatorStats*, void*) <null> (reduced.tsan.out+0xaec25) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #1 __tsan::user_free(__tsan::ThreadState*, unsigned long, void*, bool) <null> (reduced.tsan.out+0xab9ff) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #2 __tsan::user_realloc(__tsan::ThreadState*, unsigned long, void*, unsigned long) <null> (reduced.tsan.out+0xabd9d) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #3 __interceptor_realloc <null> (reduced.tsan.out+0x4d7f1) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #4 fts_palloc /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:8317:19 (reduced.tsan.out+0xce097) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #5 fts_open /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:6536:17 (reduced.tsan.out+0xcde60) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #6 grepdesc /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21578:19 (reduced.tsan.out+0xd6e09) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #7 grepfile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17 (reduced.tsan.out+0xd6d33) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #8 grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19 (reduced.tsan.out+0xd42f0) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #9 main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24 (reduced.tsan.out+0xd3f52) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #10 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #11 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #12 _start <null> (reduced.tsan.out+0x21424) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.tsan.out+0xaec25) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c) in __sanitizer::LargeMmapAllocator<__tsan::MapUnmapCallback, __sanitizer::LargeMmapAllocatorPtrArrayDynamic, __sanitizer::LocalAddressSpaceView>::Deallocate(__sanitizer::AllocatorStats*, void*)
+==4171756==ABORTING
+./verify.sh: line 108: 4171755 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

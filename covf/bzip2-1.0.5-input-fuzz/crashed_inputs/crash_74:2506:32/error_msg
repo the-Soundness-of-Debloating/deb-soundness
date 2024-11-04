@@ -1,0 +1,4 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/bins/reduced.ubsan.out -d
+bzip2-1.0.5.c.reduced.c:2506:32: runtime error: left shift of 1129248972 by 1 places cannot be represented in type 'Int32' (aka 'int')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2506:32 in 

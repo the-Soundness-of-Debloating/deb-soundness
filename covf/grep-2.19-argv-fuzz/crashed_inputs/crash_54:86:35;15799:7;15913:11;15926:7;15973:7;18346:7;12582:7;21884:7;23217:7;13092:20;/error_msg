@@ -1,0 +1,30 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==4180194==ERROR: AddressSanitizer: SEGV on unknown address 0x7fbd761c039c (pc 0x55f6f0a25e72 bp 0x7ffef039e7f0 sp 0x7ffef039e7c0 T0)
+==4180194==The signal is caused by a READ memory access.
+    #0 0x55f6f0a25e72 in setbit /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:13092:20
+    #1 0x55f6f0a39959 in parse_bracket_exp /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:14415:15
+    #2 0x55f6f0a26f9d in lex /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15227:21
+    #3 0x55f6f0a3a2ef in atom /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15616:21
+    #4 0x55f6f0a3a0bc in closure /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15799:7
+    #5 0x55f6f0a3a096 in branch /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15913:11
+    #6 0x55f6f0a271b8 in regexp /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15926:7
+    #7 0x55f6f0a3a468 in atom /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15686:35
+    #8 0x55f6f0a3a0bc in closure /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15799:7
+    #9 0x55f6f0a3a096 in branch /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15913:11
+    #10 0x55f6f0a271b8 in regexp /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15926:7
+    #11 0x55f6f0a26146 in dfaparse /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15973:7
+    #12 0x55f6f0a23fa9 in dfacomp /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18346:7
+    #13 0x55f6f0a23d6d in GEAcompile /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12582:7
+    #14 0x55f6f0a3c6e1 in Gcompile /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21884:7
+    #15 0x55f6f0a34e0c in main /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #16 0x7fbd6ad96d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #17 0x7fbd6ad96e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #18 0x55f6f0957494 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/bins/reduced.asan.out+0x22494) (BuildId: e028c855c27ba69fef775ae6593bf2debe924f1e)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:13092:20 in setbit
+==4180194==ABORTING
+./verify.sh: line 110: 4180192 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

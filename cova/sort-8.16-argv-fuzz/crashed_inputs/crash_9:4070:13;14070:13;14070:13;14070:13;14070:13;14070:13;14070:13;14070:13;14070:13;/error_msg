@@ -1,0 +1,90 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.asan.out
+sort: invalid option -- '`'
+sort: invalid option -- 'x'
+sort: invalid option -- 'a'
+sort: invalid option -- 'l'
+sort: invalid option -- '`'
+sort: invalid option -- '\'
+sort: invalid option -- '$'
+sort: invalid option -- '&'
+sort: invalid option -- '%'
+sort: invalid option -- '%'
+sort: invalid option -- 'p'
+sort: invalid option -- ';'
+sort: invalid option -- 'x'
+sort: invalid option -- 'a'
+sort: invalid option -- 'l'
+sort: invalid option -- '\'
+sort: invalid option -- 'x'
+sort: invalid option -- '0'
+sort: invalid option -- 'a'
+sort: invalid option -- '$'
+sort: invalid option -- '!'
+sort: invalid option -- '!'
+sort: invalid option -- '$'
+sort: invalid option -- 'P'
+sort: invalid option -- 'A'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1077619==ERROR: AddressSanitizer: stack-overflow on address 0x7ffcc8a9cb90 (pc 0x7ffcc8a9cb90 bp 0x7ffcc8a9cb40 sp 0x7ffcc8a9cb48 T0)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x7ffcc8a9cb90  ([stack]+0xeb90)
+    #1 0x55b2b8fa2035 in xfopen /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:9019:7
+    #2 0x55b2b8fa112e in sort /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13110:13
+    #3 0x55b2b8f9e91a in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14277:7
+    #4 0x7ffcc8a9e107  ([stack]+0x10107)
+    #5 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #6 0x7ffcc8a9ea87  ([stack]+0x10a87)
+    #7 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #8 0x7ffcc8a9f407  ([stack]+0x11407)
+    #9 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #10 0x7ffcc8a9fd87  ([stack]+0x11d87)
+    #11 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #12 0x7ffcc8aa0707  ([stack]+0x12707)
+    #13 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #14 0x7ffcc8aa1087  ([stack]+0x13087)
+    #15 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #16 0x7ffcc8aa1a07  ([stack]+0x13a07)
+    #17 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #18 0x7ffcc8aa2387  ([stack]+0x14387)
+    #19 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #20 0x7ffcc8aa2d07  ([stack]+0x14d07)
+    #21 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #22 0x7ffcc8aa3687  ([stack]+0x15687)
+    #23 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #24 0x7ffcc8aa4007  ([stack]+0x16007)
+    #25 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #26 0x7ffcc8aa4987  ([stack]+0x16987)
+    #27 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #28 0x7ffcc8aa5307  ([stack]+0x17307)
+    #29 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #30 0x7ffcc8aa5c87  ([stack]+0x17c87)
+    #31 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #32 0x7ffcc8aa6607  ([stack]+0x18607)
+    #33 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #34 0x7ffcc8aa6f87  ([stack]+0x18f87)
+    #35 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #36 0x7ffcc8aa7907  ([stack]+0x19907)
+    #37 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #38 0x7ffcc8aa8287  ([stack]+0x1a287)
+    #39 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #40 0x7ffcc8aa8c07  ([stack]+0x1ac07)
+    #41 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #42 0x7ffcc8aa9587  ([stack]+0x1b587)
+    #43 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #44 0x7ffcc8aa9f07  ([stack]+0x1bf07)
+    #45 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #46 0x7ffcc8aaa887  ([stack]+0x1c887)
+    #47 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #48 0x7ffcc8aab207  ([stack]+0x1d207)
+    #49 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #50 0x7ffcc8aabb87  ([stack]+0x1db87)
+    #51 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #52 0x7ffcc8aac50f  ([stack]+0x1e50f)
+    #53 0x55b2b8f9d3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #54 0x7f9a8eaccd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: stack-overflow ([stack]+0xeb90) 
+==1077619==ABORTING
+./verify.sh: line 110: 1077618 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

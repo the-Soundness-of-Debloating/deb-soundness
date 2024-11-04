@@ -1,0 +1,18 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.ubsan.out
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==1627==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address (pc 0x5589aab03ae2 bp 0x7ffc90beaea0 sp 0x7ffc90beaa80 T1627)
+==1627==The signal is caused by a READ memory access.
+==1627==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x5589aab03ae2 in fts_read /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4912:38
+    #1 0x5589aab04dd5 in chown_files /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6671:13
+    #2 0x5589aab054ce in main /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10
+    #3 0x2af90d83ed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x2af90d83ee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x5589aaad7514 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.ubsan.out+0x9514) (BuildId: c9e7dbe9ebf3918647b71013d044b22e5f98ff70)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4912:38 in fts_read
+==1627==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110:  1626 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

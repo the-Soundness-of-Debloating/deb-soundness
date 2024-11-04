@@ -1,0 +1,8 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.msan.out
+MemorySanitizer:DEADLYSIGNAL
+==3313053==ERROR: MemorySanitizer: SEGV on unknown address 0x000000000008 (pc 0x7f690d088586 bp 0x7ffcbafcd7b0 sp 0x7ffcbafcd510 T3313053)
+==3313053==The signal is caused by a READ memory access.
+==3313053==Hint: address points to the zero page.
+MemorySanitizer:DEADLYSIGNAL
+MemorySanitizer: nested bug in the same thread, aborting.

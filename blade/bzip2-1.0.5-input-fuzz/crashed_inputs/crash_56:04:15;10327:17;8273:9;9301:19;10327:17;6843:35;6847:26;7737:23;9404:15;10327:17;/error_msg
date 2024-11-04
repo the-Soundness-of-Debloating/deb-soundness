@@ -1,0 +1,37 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.tsan.out -t /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_2
+==================
+WARNING: ThreadSanitizer: heap-use-after-free (pid=2059638)
+  Read of size 8 at 0x7b5000000000 by main thread:
+    #0 BZ2_bzRead /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6843:35 (reduced.tsan.out+0xd62db) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #1 testStream /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7737:23 (reduced.tsan.out+0xd8ebe) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #2 testf /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9404:15 (reduced.tsan.out+0xd6d18) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #3 main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10327:17 (reduced.tsan.out+0xd69b5) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+
+  Previous write of size 8 at 0x7b5000000000 by main thread:
+    #0 free <null> (reduced.tsan.out+0x4c9b4) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #1 _IO_deallocate_file libio/libioP.h:862:3 (libc.so.6+0x7ed26) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #2 fclose libio/iofclose.c:74:3 (libc.so.6+0x7ed26)
+    #3 fileExists /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:8273:9 (reduced.tsan.out+0xd8e64) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #4 testf /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9301:19 (reduced.tsan.out+0xd6cf8) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10327:17 (reduced.tsan.out+0xd69b5) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+
+SUMMARY: ThreadSanitizer: heap-use-after-free /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6843:35 in BZ2_bzRead
+==================
+ThreadSanitizer:DEADLYSIGNAL
+==2059638==ERROR: ThreadSanitizer: SEGV on unknown address 0x0000fbad240c (pc 0x7f4053ff8b52 bp 0x557917668a18 sp 0x7ffe2883d6e0 T2059638)
+==2059638==The signal is caused by a READ memory access.
+    #0 _IO_fread libio/iofread.c:37:3 (libc.so.6+0x7fb52) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 fread <null> (reduced.tsan.out+0x58ab5) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #2 BZ2_bzRead /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6847:26 (reduced.tsan.out+0xd632c) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #3 testStream /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7737:23 (reduced.tsan.out+0xd8ebe) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #4 testf /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9404:15 (reduced.tsan.out+0xd6d18) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10327:17 (reduced.tsan.out+0xd69b5) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #6 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 _start <null> (reduced.tsan.out+0x20354) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV libio/iofread.c:37:3 in _IO_fread
+==2059638==ABORTING
+./verify.sh: line 170: 2059637 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.tsan.out -t /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_2

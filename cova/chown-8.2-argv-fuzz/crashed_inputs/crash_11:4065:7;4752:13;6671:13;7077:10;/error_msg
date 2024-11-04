@@ -1,0 +1,40 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/bins/reduced.asan.out
+óú¸\: cannot access : No such file or directory
+óú¸\: cannot access : No such file or directory
+óú¸\: cannot access : No such file or directory
+óú¸\: cannot access : No such file or directory
+óú¸\: cannot access : No such file or directory
+óú¸\: cannot access : No such file or directory
+=================================================================
+==21280==ERROR: AddressSanitizer: attempting free on address which was not malloc()-ed: 0x7ffc68027d40 in thread T0
+    #0 0x56470fd17b82 in free (/workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/bins/reduced.asan.out+0xa5b82) (BuildId: 6fe7adf5142d2e3c9460637e537ce2d66527329f)
+    #1 0x56470fd5ad7b in leave_dir /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4065:7
+    #2 0x56470fd5864c in fts_read /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4752:13
+    #3 0x56470fd5ed6a in chown_files /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6671:13
+    #4 0x56470fd6284a in main /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10
+    #5 0x2b7ef3b8ed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x2b7ef3b8ee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x56470fc92404 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/bins/reduced.asan.out+0x20404) (BuildId: 6fe7adf5142d2e3c9460637e537ce2d66527329f)
+
+Address 0x7ffc68027d40 is located in stack of thread T0
+SUMMARY: AddressSanitizer: bad-free (/workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/bins/reduced.asan.out+0xa5b82) (BuildId: 6fe7adf5142d2e3c9460637e537ce2d66527329f) in free
+==21280==ABORTING
+./verify.sh: line 110: 21277 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer: CHECK failed: sanitizer_allocator_secondary.h:297 "((IsAligned(p, page_size_))) != (0)" (0x0, 0x0) (tid=8102)
+    #0 __tsan::CheckUnwind() <null> (reduced.tsan.out+0xb351b) (BuildId: d33dd464252a57275d65bd1b21acab18706db279)
+    #1 __sanitizer::CheckFailed(char const*, int, char const*, unsigned long long, unsigned long long) <null> (reduced.tsan.out+0x35154) (BuildId: d33dd464252a57275d65bd1b21acab18706db279)
+    #2 __sanitizer::LargeMmapAllocator<__tsan::MapUnmapCallback, __sanitizer::LargeMmapAllocatorPtrArrayDynamic, __sanitizer::LocalAddressSpaceView>::Deallocate(__sanitizer::AllocatorStats*, void*) <null> (reduced.tsan.out+0xaec96) (BuildId: d33dd464252a57275d65bd1b21acab18706db279)
+    #3 __tsan::user_free(__tsan::ThreadState*, unsigned long, void*, bool) <null> (reduced.tsan.out+0xab9cf) (BuildId: d33dd464252a57275d65bd1b21acab18706db279)
+    #4 free <null> (reduced.tsan.out+0x4da64) (BuildId: d33dd464252a57275d65bd1b21acab18706db279)
+    #5 leave_dir /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4065:7 (reduced.tsan.out+0xd31c1) (BuildId: d33dd464252a57275d65bd1b21acab18706db279)
+    #6 fts_read /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4752:13 (reduced.tsan.out+0xd1b07) (BuildId: d33dd464252a57275d65bd1b21acab18706db279)
+    #7 chown_files /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6671:13 (reduced.tsan.out+0xd57e9) (BuildId: d33dd464252a57275d65bd1b21acab18706db279)
+    #8 main /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10 (reduced.tsan.out+0xd7619) (BuildId: d33dd464252a57275d65bd1b21acab18706db279)
+    #9 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #10 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #11 _start <null> (reduced.tsan.out+0x213f4) (BuildId: d33dd464252a57275d65bd1b21acab18706db279)
+
+./verify.sh: line 110:  8101 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

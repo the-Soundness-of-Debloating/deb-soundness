@@ -1,0 +1,51 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out -d
+
+=================================================================
+==2101061==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0x5592fa056622 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out+0x30622) (BuildId: 4a7cad0a362352a0d26bd192dbf76ee9115ae86e)
+    #1 0x5592fa05de73 in myMalloc /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9507:11
+    #2 0x5592fa05de51 in mkCell /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9520:19
+    #3 0x5592fa05d1e2 in snocString /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9535:19
+    #4 0x5592fa05cf67 in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9768:21
+    #5 0x7fc7a8b74d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+
+Indirect leak of 199498112 byte(s) in 1 object(s) allocated from:
+    #0 0x5592fa056622 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out+0x30622) (BuildId: 4a7cad0a362352a0d26bd192dbf76ee9115ae86e)
+    #1 0x5592fa05c550 in default_bzalloc /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:4729:13
+    #2 0x5592fa05977c in BZ2_decompress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:1114:29
+    #3 0x5592fa05c7f8 in BZ2_bzDecompress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6161:19
+    #4 0x5592fa05ce7f in BZ2_bzRead /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6866:17
+    #5 0x5592fa05e110 in uncompressStream /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7462:23
+    #6 0x5592fa05d379 in uncompress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9164:23
+    #7 0x5592fa05d160 in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10263:13
+    #8 0x7fc7a8b74d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+
+Indirect leak of 63816 byte(s) in 1 object(s) allocated from:
+    #0 0x5592fa056622 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out+0x30622) (BuildId: 4a7cad0a362352a0d26bd192dbf76ee9115ae86e)
+    #1 0x5592fa05c550 in default_bzalloc /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:4729:13
+    #2 0x5592fa05c74c in BZ2_bzDecompressInit /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:5394:21
+    #3 0x5592fa05cd66 in BZ2_bzReadOpen /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6720:13
+    #4 0x5592fa05e0e4 in uncompressStream /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7445:17
+    #5 0x5592fa05d379 in uncompress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9164:23
+    #6 0x5592fa05d160 in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10263:13
+    #7 0x7fc7a8b74d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+
+Indirect leak of 5096 byte(s) in 1 object(s) allocated from:
+    #0 0x5592fa056622 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out+0x30622) (BuildId: 4a7cad0a362352a0d26bd192dbf76ee9115ae86e)
+    #1 0x5592fa05cd37 in BZ2_bzReadOpen /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6684:23
+    #2 0x5592fa05e0e4 in uncompressStream /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7445:17
+    #3 0x5592fa05d379 in uncompress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9164:23
+    #4 0x5592fa05d160 in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10263:13
+    #5 0x7fc7a8b74d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+
+Indirect leak of 5 byte(s) in 1 object(s) allocated from:
+    #0 0x5592fa056622 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out+0x30622) (BuildId: 4a7cad0a362352a0d26bd192dbf76ee9115ae86e)
+    #1 0x5592fa05de73 in myMalloc /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9507:11
+    #2 0x5592fa05d1fd in snocString /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9538:29
+    #3 0x5592fa05cf67 in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9768:21
+    #4 0x7fc7a8b74d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+
+SUMMARY: LeakSanitizer: 199567045 byte(s) leaked in 5 allocation(s).

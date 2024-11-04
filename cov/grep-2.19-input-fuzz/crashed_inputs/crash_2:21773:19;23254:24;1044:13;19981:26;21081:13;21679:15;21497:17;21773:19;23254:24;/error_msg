@@ -1,0 +1,29 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/bins/reduced.asan.out -n si /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_129
+=================================================================
+==1455215==ERROR: AddressSanitizer: negative-size-param: (size=-14704359375337)
+    #0 0x55705fd5f1f9 in memrchr (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/bins/reduced.asan.out+0x3e1f9) (BuildId: 8ee16ffbf169a2e3a045b622206233223cd9bcde)
+    #1 0x55705fe283f7 in grep /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21149:25
+    #2 0x55705fe277ed in grepdesc /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21679:15
+    #3 0x55705fe27306 in grepfile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21497:17
+    #4 0x55705fe206ad in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21773:19
+    #5 0x55705fe20245 in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23254:24
+    #6 0x7f7f30f5bd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f7f30f5be3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55705fd43464 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/bins/reduced.asan.out+0x22464) (BuildId: 8ee16ffbf169a2e3a045b622206233223cd9bcde)
+
+0x62d000008fff is located 35839 bytes inside of 36865-byte region [0x62d000000400,0x62d000009401)
+allocated by thread T0 here:
+    #0 0x55705fdc8e8e in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/bins/reduced.asan.out+0xa7e8e) (BuildId: 8ee16ffbf169a2e3a045b622206233223cd9bcde)
+    #1 0x55705fe03064 in xmalloc /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:1044:13
+    #2 0x55705fe28748 in reset /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:19981:26
+    #3 0x55705fe281b6 in grep /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21081:13
+    #4 0x55705fe277ed in grepdesc /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21679:15
+    #5 0x55705fe27306 in grepfile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21497:17
+    #6 0x55705fe206ad in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21773:19
+    #7 0x55705fe20245 in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23254:24
+    #8 0x7f7f30f5bd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: negative-size-param (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/bins/reduced.asan.out+0x3e1f9) (BuildId: 8ee16ffbf169a2e3a045b622206233223cd9bcde) in memrchr
+==1455215==ABORTING
+./verify.sh: line 233: 1455214 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/bins/reduced.asan.out -n si /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_129

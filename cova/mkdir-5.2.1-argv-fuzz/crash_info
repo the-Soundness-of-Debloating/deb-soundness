@@ -1,0 +1,3 @@
+[
+{ crash_loc: 3051, vul_type: "Direct leak,", deb_tool: "cova" }, 
+]

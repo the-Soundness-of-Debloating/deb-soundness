@@ -1,0 +1,13 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/bins/reduced.msan.out
+==5718==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x557d2396e892 in parse_with_separator /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1547:15
+    #1 0x557d2396d355 in parse_user_spec /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1636:15
+    #2 0x557d2398e9cb in main /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7051:18
+    #3 0x7f3e3da0fd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f3e3da0fe3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x557d238e1394 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/bins/reduced.msan.out+0x1f394) (BuildId: 5e692f0a88738835e82499b9f5d0e212435195e5)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1547:15 in parse_with_separator
+Exiting
+./verify.sh: line 110:  5717 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

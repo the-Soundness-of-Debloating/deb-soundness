@@ -1,0 +1,16 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep: invalid option -- '_'
+grep: invalid option -- 'p'
+grep: invalid option -- 't'
+grep: invalid option -- '_'
+grep-2.19.c.reduced.c:16004:62: runtime error: null pointer passed as argument 2, which is declared to never be null
+grep-2.19.c.reduced.c:1032:59: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:16004:62 in 
+grep-2.19.c.reduced.c:16063:38: runtime error: addition of unsigned offset to 0x562961d819b0 overflowed to 0x562961d819a0
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:16063:38 in 
+grep-2.19.c.reduced.c:3632:24: runtime error: null pointer passed as argument 2, which is declared to never be null
+grep-2.19.c.reduced.c:3615:27: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:3632:24 in 
+grep-2.19.c.reduced.c:21151:14: runtime error: applying non-zero offset 1 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:21151:14 in 

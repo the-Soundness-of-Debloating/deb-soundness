@@ -1,0 +1,20 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/bins/reduced.ubsan.out
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==2147698==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x0000000000d8 (pc 0x7f9c66b29fea bp 0x03e0dbda6a55 sp 0x7ffc5727b140 T2147698)
+==2147698==The signal is caused by a READ memory access.
+==2147698==Hint: address points to the zero page.
+    #0 0x7f9c66b29fea in _IO_sgetn libio/genops.c:411:10
+    #1 0x7f9c66b261f3 in fread_unlocked libio/iofread_u.c:40:16
+    #2 0x564cee5ccfba in fillbuf___7 /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:10021:19
+    #3 0x564cee5cc417 in sort /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13136:19
+    #4 0x564cee5cbc17 in main /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14277:7
+    #5 0x7f9c66ac5d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7f9c66ac5e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x564cee5a33e4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/bins/reduced.ubsan.out+0x83e4) (BuildId: b698f2537e6bd7101a4994345ec4fd96bc78a973)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV libio/genops.c:411:10 in _IO_sgetn
+==2147698==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 107: 2147696 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

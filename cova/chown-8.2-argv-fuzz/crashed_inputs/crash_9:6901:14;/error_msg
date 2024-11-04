@@ -1,0 +1,19 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/bins/reduced.asan.out
+óú¸\: missing operand after 
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==15511==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x2b227f5725aa bp 0x000000000001 sp 0x7fff1f4c0b90 T0)
+==15511==The signal is caused by a READ memory access.
+==15511==Hint: address points to the zero page.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x2b227f5725aa in _getopt_internal_r posix/getopt.c:527:33
+    #1 0x2b227f572ada in _getopt_internal posix/getopt.c:711:12
+    #2 0x2b227f572b61 in getopt_long posix/getopt1.c:31:10
+    #3 0x55d9f3cc95dd in main /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6901:14
+    #4 0x7fff1f4c12e7  ([stack]+0x1e2e7)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV posix/getopt.c:527:33 in _getopt_internal_r
+==15511==ABORTING
+./verify.sh: line 110: 15510 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

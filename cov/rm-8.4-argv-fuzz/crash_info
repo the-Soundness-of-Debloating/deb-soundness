@@ -1,0 +1,4 @@
+[
+{ crash_loc: 5775, vul_type: "allocation-size-too-big,requested allocation size .* exceeds maximum supported size,", deb_tool: "cov" }, 
+{ crash_loc: 6366, vul_type: "READ memory access,", deb_tool: "cov" }, 
+]

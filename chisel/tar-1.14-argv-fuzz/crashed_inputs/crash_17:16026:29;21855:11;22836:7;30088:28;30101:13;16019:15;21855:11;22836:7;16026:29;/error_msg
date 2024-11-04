@@ -1,0 +1,56 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.asan.out
+=================================================================
+==2798171==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000050 at pc 0x5605737ab764 bp 0x7ffe4b49e7f0 sp 0x7ffe4b49e7e8
+WRITE of size 8 at 0x602000000050 thread T0
+    #0 0x5605737ab763 in name_add /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:16026:29
+    #1 0x5605737acce4 in decode_options /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21855:11
+    #2 0x5605737abfb2 in main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #3 0x7f846e659d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f846e659e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x5605736ea374 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.asan.out+0x22374) (BuildId: da3403ca6ca0cc21a1df2d5332abdad16823d6bf)
+
+0x602000000051 is located 0 bytes to the right of 1-byte region [0x602000000050,0x602000000051)
+allocated by thread T0 here:
+    #0 0x5605737701c6 in __interceptor_realloc (/workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.asan.out+0xa81c6) (BuildId: da3403ca6ca0cc21a1df2d5332abdad16823d6bf)
+    #1 0x5605737ae145 in xnrealloc_inline /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30088:28
+    #2 0x5605737ab7a1 in xrealloc /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30101:13
+    #3 0x5605737ab704 in name_add /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:16019:15
+    #4 0x5605737acce4 in decode_options /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21855:11
+    #5 0x5605737abfb2 in main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #6 0x7f846e659d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:16026:29 in name_add
+Shadow bytes around the buggy address:
+  0x0c047fff7fb0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c047fff7fc0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c047fff7fd0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c047fff7fe0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c047fff7ff0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0c047fff8000: fa fa 03 fa fa fa 03 fa fa fa[01]fa fa fa fa fa
+  0x0c047fff8010: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff8020: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff8030: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff8040: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff8050: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2798171==ABORTING
+./verify.sh: line 302: 2798170 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_1

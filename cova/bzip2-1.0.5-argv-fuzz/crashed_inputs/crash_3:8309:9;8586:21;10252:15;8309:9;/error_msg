@@ -1,0 +1,13 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/bzip2-1.0.5-argv-fuzz/bins/reduced.msan.out
+==300042==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x561dab2a5ebc in notAStandardFile /workspace/fuzzing-deb-with-sanitizers/cova/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:8309:9
+    #1 0x561dab29695f in compress /workspace/fuzzing-deb-with-sanitizers/cova/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:8586:21
+    #2 0x561dab2931b7 in main /workspace/fuzzing-deb-with-sanitizers/cova/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:10252:15
+    #3 0x7ff4687cad8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7ff4687cae3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x561dab1a6344 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/bzip2-1.0.5-argv-fuzz/bins/reduced.msan.out+0x1f344) (BuildId: cd64d8e5ab3507471ce31998e951e291d6b73fb2)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cova/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:8309:9 in notAStandardFile
+Exiting
+./verify.sh: line 174: 300040 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/bzip2-1.0.5-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/cova/bzip2-1.0.5-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_16 > sample1.rb2

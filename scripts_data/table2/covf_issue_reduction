@@ -1,0 +1,16 @@
+covf bzip2-1.0.5-argv-fuzz/ issue: 7, reduction: 39.1300%
+covf bzip2-1.0.5-input-fuzz/ issue: 123, reduction: 39.1300%
+covf chown-8.2-argv-fuzz/ issue: 22, reduction: 61.1400%
+covf date-8.21-argv-fuzz/ issue: 27, reduction: 33.5200%
+covf grep-2.19-argv-fuzz/ issue: 94, reduction: 56.6300%
+covf grep-2.19-input-fuzz/ issue: 13, reduction: 56.6300%
+covf gzip-1.2.4-argv-fuzz/ issue: 34, reduction: 50.7900%
+covf gzip-1.2.4-input-fuzz/ issue: 90, reduction: 50.8100%
+covf mkdir-5.2.1-argv-fuzz/ issue: 2, reduction: 45.1200%
+covf rm-8.4-argv-fuzz/ issue: 14, reduction: 51.7600%
+covf sort-8.16-argv-fuzz/ issue: 20, reduction: 74.8700%
+covf sort-8.16-input-fuzz/ issue: 2, reduction: 74.8800%
+covf tar-1.14-argv-fuzz/ issue: 61, reduction: 55.1900%
+covf tar-1.14-input-fuzz/ issue: 46, reduction: 55.1900%
+covf uniq-8.16-argv-fuzz/ issue: 12, reduction: 44.2100%
+covf uniq-8.16-input-fuzz/ issue: 0, reduction: 44.2200%

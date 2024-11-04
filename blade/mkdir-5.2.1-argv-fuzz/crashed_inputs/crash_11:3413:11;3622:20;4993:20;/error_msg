@@ -1,0 +1,25 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.msan.out
+/workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.msan.out: MemorySanitizer:DEADLYSIGNAL
+==2033060==ERROR: MemorySanitizer: SEGV on unknown address 0xffffffffffffffe0 (pc 0x7f25fc40bff7 bp 0x7ffc25ac7d70 sp 0x7ffc25ac77d8 T2033060)
+==2033060==The signal is caused by a READ memory access.
+    #0 0x7f25fc40bff7  (/lib/x86_64-linux-gnu/libc.so.6+0x1b1ff7) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #1 0x7f25fc2d0d30  (/lib/x86_64-linux-gnu/libc.so.6+0x76d30) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #2 0x7f25fc2d1664  (/lib/x86_64-linux-gnu/libc.so.6+0x77664) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #3 0x7f25fc2d8697  (/lib/x86_64-linux-gnu/libc.so.6+0x7e697) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #4 0x7f25fc2d8774  (/lib/x86_64-linux-gnu/libc.so.6+0x7e774) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #5 0x7f25fc37aff0  (/lib/x86_64-linux-gnu/libc.so.6+0x120ff0) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #6 0x7f25fc37b0e7  (/lib/x86_64-linux-gnu/libc.so.6+0x1210e7) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #7 0x7f25fc37b1d5 in error (/lib/x86_64-linux-gnu/libc.so.6+0x1211d5) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #8 0x5579544ab2ad in make_dir /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:3413:11
+    #9 0x5579544ab958 in make_path /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:3622:20
+    #10 0x5579544ac873 in main /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:4993:20
+    #11 0x7f25fc283d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #12 0x7f25fc283e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #13 0x557954423304 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.msan.out+0x1e304) (BuildId: 9c252f056b0498ab0d6d85166216039a8f7a36d8)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV (/lib/x86_64-linux-gnu/libc.so.6+0x1b1ff7) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0) 
+==2033060==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 2033059 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

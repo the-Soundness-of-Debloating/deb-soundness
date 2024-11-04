@@ -1,0 +1,56 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.asan.out xf /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/input/radamsa_fuzzed/file5_fuzzed/file5_11 -C foo ./1/10
+/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.asan.out: This does not look like a tar archive
+/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.asan.out: Skipping to next header
+
+=================================================================
+==1775964==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 64 byte(s) in 1 object(s) allocated from:
+    #0 0x55a957f11f6e in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.asan.out+0xacf6e) (BuildId: fccef86cd48dfd13dd504254f38cb58fe44a21c3)
+    #1 0x55a957f6ebb4 in xnmalloc_inline /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30056:13
+    #2 0x55a957f556a9 in xmalloc /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30069:13
+    #3 0x55a957f678da in decode_options /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:21473:21
+    #4 0x55a957f66ec4 in main /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22834:7
+    #5 0x7f900ae74d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+
+Indirect leak of 6 byte(s) in 2 object(s) allocated from:
+    #0 0x55a957f11f6e in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.asan.out+0xacf6e) (BuildId: fccef86cd48dfd13dd504254f38cb58fe44a21c3)
+    #1 0x55a957f6ebb4 in xnmalloc_inline /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30056:13
+    #2 0x55a957f556a9 in xmalloc /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30069:13
+    #3 0x55a957f6ed78 in xclone /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30158:13
+    #4 0x55a957f62e79 in xstrdup /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30172:17
+    #5 0x55a957f67b97 in decode_options /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:21496:26
+    #6 0x55a957f66ec4 in main /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22834:7
+    #7 0x7f900ae74d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+
+SUMMARY: AddressSanitizer: 70 byte(s) leaked in 3 allocation(s).
+timeout: the monitored command dumped core
+./verify.sh: line 360: 1775963 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.asan.out xf /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/input/radamsa_fuzzed/file5_fuzzed/file5_11 -C foo ./1/10
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.lsan.out xf /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/input/radamsa_fuzzed/file5_fuzzed/file5_11 -C foo ./1/10
+/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.lsan.out: This does not look like a tar archive
+/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.lsan.out: Skipping to next header
+
+=================================================================
+==2734247==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 64 byte(s) in 1 object(s) allocated from:
+    #0 0x55fed5d699a2 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.lsan.out+0x369a2) (BuildId: ef2996ca6314c82849ff988e0e99ec43e67908b9)
+    #1 0x55fed5d7e2bf in xnmalloc_inline /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30056:13
+    #2 0x55fed5d71249 in xmalloc /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30069:13
+    #3 0x55fed5d79a28 in decode_options /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:21473:21
+    #4 0x55fed5d795ff in main /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22834:7
+    #5 0x7f4914791d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+
+Indirect leak of 6 byte(s) in 2 object(s) allocated from:
+    #0 0x55fed5d699a2 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.lsan.out+0x369a2) (BuildId: ef2996ca6314c82849ff988e0e99ec43e67908b9)
+    #1 0x55fed5d7e2bf in xnmalloc_inline /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30056:13
+    #2 0x55fed5d71249 in xmalloc /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30069:13
+    #3 0x55fed5d7e428 in xclone /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30158:13
+    #4 0x55fed5d77869 in xstrdup /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30172:17
+    #5 0x55fed5d79af1 in decode_options /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:21496:26
+    #6 0x55fed5d795ff in main /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22834:7
+    #7 0x7f4914791d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+
+SUMMARY: LeakSanitizer: 70 byte(s) leaked in 3 allocation(s).

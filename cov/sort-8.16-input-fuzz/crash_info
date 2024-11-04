@@ -1,0 +1,8 @@
+[
+{ crash_loc: 9671, vul_type: "", deb_tool: "cov" }, 
+{ crash_loc: 9671, vul_type: "READ memory access,", deb_tool: "cov" }, 
+{ crash_loc: 13127, vul_type: "READ memory access,", deb_tool: "cov" }, 
+{ crash_loc: 0x7fe1208d2524, vul_type: "READ memory access,", deb_tool: "cov" }, 
+{ crash_loc: 9724, vul_type: "allocation-size-too-big,requested allocation size .* exceeds maximum supported size,", deb_tool: "cov" }, 
+{ crash_loc: 9633, vul_type: "use-of-uninitialized-value,", deb_tool: "cov" }, 
+]

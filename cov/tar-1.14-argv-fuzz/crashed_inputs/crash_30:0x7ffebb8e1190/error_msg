@@ -1,0 +1,6 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==3478620==ERROR: AddressSanitizer: stack-overflow on address 0x7ffebb8e1190 (pc 0x7ffebb8e1190 bp 0x7ffebb8e0ec0 sp 0x7ffebb8e0ec8 T0)
+LLVMSymbolizer: error reading file: No such file or directory

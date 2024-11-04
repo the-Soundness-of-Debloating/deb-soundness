@@ -1,0 +1,21 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.asan.out -c
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==3028415==ERROR: AddressSanitizer: SEGV on unknown address 0x557430014d30 (pc 0x55742f60f248 bp 0x7fff79c6b060 sp 0x7fff79c6b000 T0)
+==3028415==The signal is caused by a READ memory access.
+    #0 0x55742f60f248 in scan_tree /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4741:23
+    #1 0x55742f60b219 in build_bl_tree /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4885:7
+    #2 0x55742f60a9c8 in flush_block /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4950:21
+    #3 0x55742f60cfa3 in deflate /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5797:17
+    #4 0x55742f60d84b in zip /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5988:7
+    #5 0x55742f60de16 in treat_stdin /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #6 0x55742f60dcef in main /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:10
+    #7 0x7f6e67ab2d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7f6e67ab2e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x55742f547324 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.asan.out+0x20324) (BuildId: 6eabaf23792ed7e3e2fa7fefb1043c0b47887de4)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4741:23 in scan_tree
+==3028415==ABORTING
+./verify.sh: line 166: 3028412 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.asan.out -c < /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_0/asan/crashes/id:000003* > sample1.gz

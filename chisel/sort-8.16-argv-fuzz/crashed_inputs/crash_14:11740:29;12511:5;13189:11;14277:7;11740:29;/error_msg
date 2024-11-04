@@ -1,0 +1,37 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/bins/reduced.tsan.out
+sort: invalid option -- 'ÿ'
+sort: invalid option -- 'ÿ'
+ThreadSanitizer:DEADLYSIGNAL
+==694479==ERROR: ThreadSanitizer: SEGV on unknown address 0x7b03fffffff0 (pc 0x558fa0b24d76 bp 0x7ffc1be68210 sp 0x7ffc1be681b0 T694479)
+==694479==The signal is caused by a READ memory access.
+    #0 write_line /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:11740:29 (reduced.tsan.out+0xcfd76) (BuildId: 37c507e933e07a17154621eca2c7e1c9354996f3)
+    #1 write_unique /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:12511:5 (reduced.tsan.out+0xced54) (BuildId: 37c507e933e07a17154621eca2c7e1c9354996f3)
+    #2 sort /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13189:11 (reduced.tsan.out+0xce349) (BuildId: 37c507e933e07a17154621eca2c7e1c9354996f3)
+    #3 main /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14277:7 (reduced.tsan.out+0xcde38) (BuildId: 37c507e933e07a17154621eca2c7e1c9354996f3)
+    #4 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #5 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #6 _start <null> (reduced.tsan.out+0x21354) (BuildId: 37c507e933e07a17154621eca2c7e1c9354996f3)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:11740:29 in write_line
+==694479==ABORTING
+./verify.sh: line 107: 694478 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/bins/reduced.lsan.out
+sort: invalid option -- 'ÿ'
+sort: invalid option -- 'ÿ'
+LeakSanitizer:DEADLYSIGNAL
+==1331595==ERROR: LeakSanitizer: SEGV on unknown address 0x600ffffffff0 (pc 0x55fe857372d8 bp 0x7ffddfe4b680 sp 0x7ffddfe4b650 T0)
+==1331595==The signal is caused by a READ memory access.
+    #0 0x55fe857372d8 in write_line /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:11740:29
+    #1 0x55fe85736905 in write_unique /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:12511:5
+    #2 0x55fe85736355 in sort /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13189:11
+    #3 0x55fe85736043 in main /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14277:7
+    #4 0x7ffb66c5ed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7ffb66c5ee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x55fe857083f4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/bins/reduced.lsan.out+0x53f4) (BuildId: 9618900757f1b653b7b7acb5cd2a3572c72c2e2b)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:11740:29 in write_line
+==1331595==ABORTING

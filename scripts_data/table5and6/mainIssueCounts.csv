@@ -1,0 +1,17 @@
+MAIN_ERROR,Count,Percentage
+allocation-size-too-big,34,1.2787%
+requested allocation size .* exceeds maximum supported size,37,1.3915%
+READ memory access,770,28.9583%
+WRITE memory access,196,7.3712%
+runtime error,707,26.5889%
+use-of-uninitialized-value,379,14.2535%
+heap-use-after-free,59,2.2189%
+Direct leak,76,2.8582%
+attempting free on address which was not malloc,6,0.2256%
+global-buffer-overflow,63,2.3693%
+stack-buffer-overflow,46,1.7300%
+stack-overflow,119,4.4754%
+heap-buffer-overflow,160,6.0173%
+negative-size-param,2,0.0752%
+strcpy-param-overlap,2,0.0752%
+memcpy-param-overlap,3,0.1128%

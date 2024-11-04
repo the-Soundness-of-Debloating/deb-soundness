@@ -1,0 +1,6 @@
+-c train_input/file/data.txt
+-c train_input/file/data.txt
+-c train_input/file/data.txt
+-c train_input/bile/data.txt
+-c train_input/file/data.txt
+-c train_input/bile/data.txt

@@ -1,0 +1,49 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/bins/reduced.tsan.out -i Si /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_134
+ThreadSanitizer:DEADLYSIGNAL
+==2654139==ERROR: ThreadSanitizer: SEGV on unknown address 0x7bb400010000 (pc 0x5597c1b19ab9 bp 0x7ffdddb8cdb0 sp 0x7ffdddb8ccc0 T2654139)
+==2654139==The signal is caused by a READ memory access.
+    #0 memchr_kwset /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:11786:21 (reduced.tsan.out+0xe9ab9) (BuildId: 9aaac5316f055b67da74f88c1711b6f5b82619f3)
+    #1 bmexec_trans /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:11919:24 (reduced.tsan.out+0xe9678) (BuildId: 9aaac5316f055b67da74f88c1711b6f5b82619f3)
+    #2 bmexec /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:11981:15 (reduced.tsan.out+0xd79ab) (BuildId: 9aaac5316f055b67da74f88c1711b6f5b82619f3)
+    #3 kwsexec /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:12250:15 (reduced.tsan.out+0xd6874) (BuildId: 9aaac5316f055b67da74f88c1711b6f5b82619f3)
+    #4 EGexecute /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:12654:25 (reduced.tsan.out+0xd88a5) (BuildId: 9aaac5316f055b67da74f88c1711b6f5b82619f3)
+    #5 do_execute /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:20932:17 (reduced.tsan.out+0xf2dab) (BuildId: 9aaac5316f055b67da74f88c1711b6f5b82619f3)
+    #6 grepbuf /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:20996:17 (reduced.tsan.out+0xf276c) (BuildId: 9aaac5316f055b67da74f88c1711b6f5b82619f3)
+    #7 grep /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21161:25 (reduced.tsan.out+0xf146a) (BuildId: 9aaac5316f055b67da74f88c1711b6f5b82619f3)
+    #8 grepdesc /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21679:15 (reduced.tsan.out+0xf039b) (BuildId: 9aaac5316f055b67da74f88c1711b6f5b82619f3)
+    #9 grepfile /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21497:17 (reduced.tsan.out+0xf0815) (BuildId: 9aaac5316f055b67da74f88c1711b6f5b82619f3)
+    #10 grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21773:19 (reduced.tsan.out+0xe8743) (BuildId: 9aaac5316f055b67da74f88c1711b6f5b82619f3)
+    #11 main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23254:24 (reduced.tsan.out+0xe7e01) (BuildId: 9aaac5316f055b67da74f88c1711b6f5b82619f3)
+    #12 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #13 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #14 _start <null> (reduced.tsan.out+0x224f4) (BuildId: 9aaac5316f055b67da74f88c1711b6f5b82619f3)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:11786:21 in memchr_kwset
+==2654139==ABORTING
+./verify.sh: line 233: 2654127 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/bins/reduced.tsan.out -i Si /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_134
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/bins/reduced.lsan.out -i Si /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_134
+LeakSanitizer:DEADLYSIGNAL
+==538766==ERROR: LeakSanitizer: SEGV on unknown address 0x62d000010000 (pc 0x55e95e2b389c bp 0x7ffd8ff09a40 sp 0x7ffd8ff099e0 T0)
+==538766==The signal is caused by a READ memory access.
+    #0 0x55e95e2b389c in memchr_kwset /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:11786:21
+    #1 0x55e95e2b3604 in bmexec_trans /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:11919:24
+    #2 0x55e95e2a9d36 in bmexec /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:11981:15
+    #3 0x55e95e2a9517 in kwsexec /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:12250:15
+    #4 0x55e95e2aa624 in EGexecute /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:12654:25
+    #5 0x55e95e2b8a57 in do_execute /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:20932:17
+    #6 0x55e95e2b8654 in grepbuf /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:20996:17
+    #7 0x55e95e2b7c53 in grep /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21161:25
+    #8 0x55e95e2b721f in grepdesc /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21679:15
+    #9 0x55e95e2b7507 in grepfile /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21497:17
+    #10 0x55e95e2b2e1e in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21773:19
+    #11 0x55e95e2b2811 in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23254:24
+    #12 0x7fa4d049dd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #13 0x7fa4d049de3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #14 0x55e95e2776f4 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/bins/reduced.lsan.out+0x76f4) (BuildId: 28ce496ff9c6380de431717b0a8d189be68d44bd)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:11786:21 in memchr_kwset
+==538766==ABORTING

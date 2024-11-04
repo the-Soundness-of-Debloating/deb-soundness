@@ -1,0 +1,39 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/bins/reduced.asan.out -d
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==3552761==ERROR: AddressSanitizer: SEGV on unknown address (pc 0x55a7e8d2578c bp 0x7ffd21815fd0 sp 0x7ffd21815d20 T0)
+==3552761==The signal is caused by a READ memory access.
+==3552761==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x55a7e8d2578c in inflate_codes /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2643:38
+    #1 0x55a7e8d26d72 in inflate_dynamic /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3361:18
+    #2 0x55a7e8d26ff7 in inflate_block /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3440:19
+    #3 0x55a7e8d2711a in inflate /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3473:15
+    #4 0x55a7e8d27356 in unzip /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3630:15
+    #5 0x55a7e8d2fc7c in treat_stdin /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #6 0x55a7e8d2ea9a in main /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #7 0x7f3f6b21bd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7f3f6b21be3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x55a7e8c623b4 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/bins/reduced.asan.out+0x223b4) (BuildId: 31cdf9c8c17078d6666d86e4aca93822fd411c1a)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2643:38 in inflate_codes
+==3552761==ABORTING
+./verify.sh: line 169: 3552758 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/bins/reduced.asan.out -d < /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_1/asan/crashes/id:000000* > sample1.tst
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/bins/reduced.msan.out -d
+==3774521==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5653b3111b1a in inflate_codes /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2643:38
+    #1 0x5653b3114f40 in inflate_dynamic /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3361:18
+    #2 0x5653b3115730 in inflate_block /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3440:19
+    #3 0x5653b3115936 in inflate /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3473:15
+    #4 0x5653b3115cf6 in unzip /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3630:15
+    #5 0x5653b312c453 in treat_stdin /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #6 0x5653b3128394 in main /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #7 0x7f1a44260d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7f1a44260e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x5653b3082354 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/bins/reduced.msan.out+0x1f354) (BuildId: 8f9c33d589bbe64513c839c410b9b2e7827414f2)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2643:38 in inflate_codes
+Exiting
+./verify.sh: line 169: 3774514 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/bins/reduced.msan.out -d < /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_1/msan/crashes/id:000045* > sample1.tst

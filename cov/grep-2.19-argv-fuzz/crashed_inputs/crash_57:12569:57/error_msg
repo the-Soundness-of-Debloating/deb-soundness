@@ -1,0 +1,31 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep: invalid option -- 'Û'
+grep: invalid option -- '†'
+grep: invalid option -- 'Å'
+grep: invalid option -- '+'
+grep: invalid option -- '/'
+grep: invalid option -- 'Æ'
+grep: invalid option -- '‚'
+grep: invalid option -- 'Å'
+grep: invalid option -- 'ü'
+grep-2.19.c.reduced.c:12569:57: runtime error: null pointer passed as argument 2, which is declared to never be null
+grep-2.19.c.reduced.c:4922:59: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:12569:57 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==848125==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7f1793e6feab bp 0x7ffe577fc620 sp 0x7ffe577fc4a8 T848125)
+==848125==The signal is caused by a READ memory access.
+==848125==Hint: address points to the zero page.
+    #0 0x7f1793e6feab  string/../sysdeps/x86_64/multiarch/strcpy-avx2.S:304
+    #1 0x56492a2212b1 in GEAcompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12569:11
+    #2 0x56492a24f170 in Ecompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21892:7
+    #3 0x56492a24257d in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #4 0x7f1793cfad8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f1793cfae3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x56492a1e3664 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x2f664) (BuildId: 548678bb0b6577364ae598818988dcfaaab153e2)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strcpy-avx2.S:304 
+==848125==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 848124 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

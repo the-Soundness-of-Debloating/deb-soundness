@@ -1,0 +1,6 @@
+[
+{ crash_loc: 7239, vul_type: "", deb_tool: "cova" }, 
+{ crash_loc: 7244, vul_type: "", deb_tool: "cova" }, 
+{ crash_loc: 8080, vul_type: "runtime error ", deb_tool: "cova" }, 
+{ crash_loc: 8309, vul_type: "use-of-uninitialized-value,", deb_tool: "cova" }, 
+]

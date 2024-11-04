@@ -1,0 +1,19 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/bins/reduced.msan.out xzf /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/input/radamsa_fuzzed/file11_fuzzed/file11_13
+
+gzip: stdin: invalid compressed data--crc error
+
+gzip: stdin: invalid compressed data--length error
+/workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/bins/reduced.msan.out: This does not look like a tar archive
+/workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/bins/reduced.msan.out: Skipping to next header
+==1374940==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55e76409dc49 in read_header /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12416:15
+    #1 0x55e764099e05 in read_and /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:11986:20
+    #2 0x55e7640b425c in main /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7
+    #3 0x7f0c66325d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f0c66325e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55e763fdf4c4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/bins/reduced.msan.out+0x204c4) (BuildId: 402753ec81001e4d82b61d8c57292868a96a4435)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12416:15 in read_header
+Exiting
+./verify.sh: line 360: 1374934 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/bins/reduced.msan.out xzf /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/input/radamsa_fuzzed/file11_fuzzed/file11_13

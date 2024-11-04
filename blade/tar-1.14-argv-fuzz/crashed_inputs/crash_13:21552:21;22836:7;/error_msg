@@ -1,0 +1,49 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==859996==ERROR: AddressSanitizer: SEGV on unknown address (pc 0x7f33495237fd bp 0x7fff906588b0 sp 0x7fff90658318 T0)
+==859996==The signal is caused by a READ memory access.
+==859996==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x7f33495237fd  string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74
+    #1 0x7f33493fcd30 in __vfprintf_internal stdio-common/vfprintf-internal.c:1517:4
+    #2 0x7f33493fd664 in buffered_vfprintf stdio-common/vfprintf-internal.c:2261:12
+    #3 0x7f3349404697 in locked_vfxprintf stdio-common/fxprintf.c:30:12
+    #4 0x7f3349404a78 in __fxprintf_nocancel stdio-common/fxprintf.c:98:13
+    #5 0x7f334948e99d in _getopt_internal_r posix/getopt.c:620:4
+    #6 0x7f334948eada in _getopt_internal posix/getopt.c:711:12
+    #7 0x7f334948eb61 in getopt_long posix/getopt1.c:31:10
+    #8 0x558e1174c922 in decode_options /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21552:21
+    #9 0x558e1174bd60 in main /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #10 0x7f33493afd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #11 0x7f33493afe3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #12 0x558e116843e4 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out+0x233e4) (BuildId: dea9616fe4d35cf044eebf6ac56206498c214bc5)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 
+==859996==ABORTING
+./verify.sh: line 305: 859995 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_0
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==3347833==ERROR: ThreadSanitizer: SEGV on unknown address (pc 0x7f7a8dffa7fd bp 0x7ffc63ca9b70 sp 0x7ffc63ca95d8 T3347833)
+==3347833==The signal is caused by a READ memory access.
+==3347833==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 <null> string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 (libc.so.6+0x19d7fd) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 __vfprintf_internal stdio-common/vfprintf-internal.c:1517:4 (libc.so.6+0x76d30) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #2 buffered_vfprintf stdio-common/vfprintf-internal.c:2261:12 (libc.so.6+0x77664) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #3 locked_vfxprintf stdio-common/fxprintf.c:30:12 (libc.so.6+0x7e697) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #4 __fxprintf_nocancel stdio-common/fxprintf.c:98:13 (libc.so.6+0x7ea78) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #5 _getopt_internal_r posix/getopt.c:620:4 (libc.so.6+0x10899d) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #6 _getopt_internal posix/getopt.c:711:12 (libc.so.6+0x108ada) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 getopt_long posix/getopt1.c:31:10 (libc.so.6+0x108b61) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 decode_options /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21552:21 (reduced.tsan.out+0xd4f43) (BuildId: a91c49f71ef66e92740147d508b3e7fd8d2b8f6a)
+    #9 main /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7 (reduced.tsan.out+0xd48ac) (BuildId: a91c49f71ef66e92740147d508b3e7fd8d2b8f6a)
+    #10 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #11 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #12 _start <null> (reduced.tsan.out+0x213c4) (BuildId: a91c49f71ef66e92740147d508b3e7fd8d2b8f6a)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 
+==3347833==ABORTING
+./verify.sh: line 305: 3347832 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input17_fuzzed/input17_25

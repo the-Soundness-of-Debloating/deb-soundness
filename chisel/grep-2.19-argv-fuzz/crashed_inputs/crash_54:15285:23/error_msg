@@ -1,0 +1,34 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep: invalid option -- 'À'
+grep: invalid option -- ' '
+grep-2.19.c.reduced.c:15285:23: runtime error: applying non-zero offset 432 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:15285:23 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3894724==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x0000000001b0 (pc 0x564f7473d4b3 bp 0x7ffe3395ed50 sp 0x7ffe3395ec90 T3894724)
+==3894724==The signal is caused by a WRITE memory access.
+==3894724==Hint: address points to the zero page.
+==3894724==WARNING: failed to fork (errno 12)
+==3894724==WARNING: failed to fork (errno 12)
+==3894724==WARNING: failed to fork (errno 12)
+==3894724==WARNING: failed to fork (errno 12)
+==3894724==WARNING: failed to fork (errno 12)
+==3894724==WARNING: Failed to use and restart external symbolizer!
+    #0 0x564f7473d4b3  (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x524b3) (BuildId: c2c2e5de5f7baf45d001715ccd865693e086d1fb)
+    #1 0x564f74730049  (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x45049) (BuildId: c2c2e5de5f7baf45d001715ccd865693e086d1fb)
+    #2 0x564f7473cf80  (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x51f80) (BuildId: c2c2e5de5f7baf45d001715ccd865693e086d1fb)
+    #3 0x564f74730008  (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x45008) (BuildId: c2c2e5de5f7baf45d001715ccd865693e086d1fb)
+    #4 0x564f7472e3f5  (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x433f5) (BuildId: c2c2e5de5f7baf45d001715ccd865693e086d1fb)
+    #5 0x564f7472ce27  (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x41e27) (BuildId: c2c2e5de5f7baf45d001715ccd865693e086d1fb)
+    #6 0x564f7472cc7b  (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x41c7b) (BuildId: c2c2e5de5f7baf45d001715ccd865693e086d1fb)
+    #7 0x564f7473f5d0  (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x545d0) (BuildId: c2c2e5de5f7baf45d001715ccd865693e086d1fb)
+    #8 0x564f747395f8  (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x4e5f8) (BuildId: c2c2e5de5f7baf45d001715ccd865693e086d1fb)
+    #9 0x7fbba2004d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #10 0x7fbba2004e3f  (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #11 0x564f74700574  (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x15574) (BuildId: c2c2e5de5f7baf45d001715ccd865693e086d1fb)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x524b3) (BuildId: c2c2e5de5f7baf45d001715ccd865693e086d1fb) 
+==3894724==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 3894723 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

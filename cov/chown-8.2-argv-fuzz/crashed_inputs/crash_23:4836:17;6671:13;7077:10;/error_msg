@@ -1,0 +1,3311 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/bins/reduced.ubsan.out
+argv-fuzz-inl.h:30:5: runtime error: index 1000 out of bounds for type 'char *[1000]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior argv-fuzz-inl.h:30:5 in 
+óú¸\: invalid option -- '{'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- '{'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- '{'
+óú¸\: invalid option -- 'á'
+óú¸\: invalid option -- 'á'
+óú¸\: invalid option -- 'á'
+óú¸\: invalid option -- 'á'
+óú¸\: invalid option -- 'á'
+óú¸\: invalid option -- 'á'
+óú¸\: invalid option -- 'á'
+óú¸\: invalid option -- 'á'
+óú¸\: invalid option -- 'á'
+óú¸\: invalid option -- 'á'
+óú¸\: invalid option -- 'á'
+óú¸\: invalid option -- 'á'
+óú¸\: invalid option -- 'á'
+óú¸\: invalid option -- 'á'
+óú¸\: invalid option -- 'á'
+óú¸\: invalid option -- 'á'
+óú¸\: invalid option -- 'á'
+óú¸\: invalid option -- 'á'
+óú¸\: invalid option -- 'á'
+óú¸\: invalid option -- 'á'
+óú¸\: invalid option -- 'á'
+óú¸\: invalid option -- 'á'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- '#'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'x'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'x'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'a'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- ''
+óú¸\: invalid option -- ''
+óú¸\: invalid option -- 'x'
+óú¸\: invalid option -- 'Š'
+óú¸\: invalid option -- '{'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- ')'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- '{'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- '{'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'è'
+óú¸\: invalid option -- ''
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ú'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'a'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'x'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'a'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- '{'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'x'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'a'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'e'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'x'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'x'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'a'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- '{'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- '{'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- '{'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- '{'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- ')'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- '{'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- '{'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'è'
+óú¸\: invalid option -- ''
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ú'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'a'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'x'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'a'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- '{'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'x'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'a'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'e'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'x'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'x'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'a'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- '{'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- '{'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- '{'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'è'
+óú¸\: invalid option -- ''
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ú'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'a'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'x'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'a'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- '{'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'x'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'a'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'e'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'x'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'x'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'a'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- '{'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- '{'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- '{'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'Ö'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==11981==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x5bf20ca31ec0 (pc 0x55da0bed6f0f bp 0x7ffc4afd38a0 sp 0x7ffc4afd3340 T11981)
+==11981==The signal is caused by a WRITE memory access.
+    #0 0x55da0bed6f0f in fts_read /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4836:17
+    #1 0x55da0bedc5ea in chown_files /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6671:13
+    #2 0x55da0bedde20 in main /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10
+    #3 0x2ba779debd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x2ba779debe3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55da0bea9574 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/bins/reduced.ubsan.out+0xd574) (BuildId: 0e7a38900ca4a12859e02083c9e955def6022f6a)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4836:17 in fts_read
+==11981==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 11980 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

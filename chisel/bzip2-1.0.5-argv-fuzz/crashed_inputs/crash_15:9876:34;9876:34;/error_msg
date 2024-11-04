@@ -1,0 +1,60 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2408669==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x55fc6319e3d8 bp 0x7ffd9aab6f10 sp 0x7ffd9aab6ce0 T0)
+==2408669==The signal is caused by a READ memory access.
+==2408669==Hint: address points to the zero page.
+    #0 0x55fc6319e3d8 in main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9876:34
+    #1 0x7f2d5d88fd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7f2d5d88fe3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x55fc630c8324 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.asan.out+0x1e324) (BuildId: 5da38ee2c13d2c7a9147bf358d87d60f35d532ce)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9876:34 in main
+==2408669==ABORTING
+./verify.sh: line 173: 2408668 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_53 > sample1.rb2
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.msan.out
+MemorySanitizer:DEADLYSIGNAL
+==2945964==ERROR: MemorySanitizer: SEGV on unknown address 0x000000000000 (pc 0x561ef4c2994e bp 0x7ffd10d95770 sp 0x7ffd10d95590 T2945964)
+==2945964==The signal is caused by a READ memory access.
+==2945964==Hint: address points to the zero page.
+    #0 0x561ef4c2994e in main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9876:34
+    #1 0x7fe34b509d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7fe34b509e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x561ef4b7b2d4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.msan.out+0x1e2d4) (BuildId: c51e708b61f5fa974373f965b8ca75cfc349593b)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9876:34 in main
+==2945964==ABORTING
+./verify.sh: line 173: 2945963 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_53 > sample1.rb2
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==3229838==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x55f753d772b2 bp 0x7fffab8cbf60 sp 0x7fffab8cbdb0 T3229838)
+==3229838==The signal is caused by a READ memory access.
+==3229838==Hint: address points to the zero page.
+    #0 main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9876:34 (reduced.tsan.out+0xda2b2) (BuildId: 56549a70d18ac40833e83b1f625cdc0f5ee62ef6)
+    #1 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #2 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #3 _start <null> (reduced.tsan.out+0x20354) (BuildId: 56549a70d18ac40833e83b1f625cdc0f5ee62ef6)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9876:34 in main
+==3229838==ABORTING
+./verify.sh: line 173: 3229833 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_53 > sample1.rb2
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==3530580==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000000 (pc 0x55d3c769a5da bp 0x7ffdf6ef0580 sp 0x7ffdf6ef04a0 T0)
+==3530580==The signal is caused by a READ memory access.
+==3530580==Hint: address points to the zero page.
+    #0 0x55d3c769a5da in main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9876:34
+    #1 0x7f644a461d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7f644a461e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x55d3c7667444 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x5444) (BuildId: 5b393e71629eb549377d981fca0dbde0bfc787e4)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9876:34 in main
+==3530580==ABORTING

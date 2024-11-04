@@ -1,0 +1,9 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-argv-fuzz/bins/reduced.msan.out
+sort: invalid option -- ''
+==2012631==ERROR: MemorySanitizer: requested allocation size 0xa00000000020 exceeds maximum supported size of 0x200000000
+    <empty stack>
+
+==2012631==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: MemorySanitizer: allocation-size-too-big
+./verify.sh: line 110: 2012630 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

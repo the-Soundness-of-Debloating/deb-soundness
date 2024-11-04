@@ -1,0 +1,25 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.ubsan.out
+sort-8.16.c.reduced.c:14256:30: runtime error: member access within misaligned address 0x560ada47e692 for type 'struct sortfile', which requires 8 byte alignment
+0x560ada47e692: note: pointer points here
+ 44 49  52 00 2f 74 6d 70 00 65  78 74 72 61 20 6f 70 65  72 61 6e 64 20 25 73 20  6e 6f 74 20 61 6c
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior sort-8.16.c.reduced.c:14256:30 in 
+sort-8.16.c.reduced.c:14256:30: runtime error: store to misaligned address 0x560ada47e692 for type 'const char *', which requires 8 byte alignment
+0x560ada47e692: note: pointer points here
+ 44 49  52 00 2f 74 6d 70 00 65  78 74 72 61 20 6f 70 65  72 61 6e 64 20 25 73 20  6e 6f 74 20 61 6c
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior sort-8.16.c.reduced.c:14256:30 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==844982==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x560ada47e692 (pc 0x560ada464d65 bp 0x7ffc1ca02d40 sp 0x7ffc1ca01e10 T844982)
+==844982==The signal is caused by a WRITE memory access.
+    #0 0x560ada464d65 in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14256:35
+    #1 0x7faed3d01d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7faed3d01e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x560ada433754 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.ubsan.out+0x13754) (BuildId: 4293ab7b390b28bf8e6706fbf2d222beabc4e9f0)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14256:35 in main
+==844982==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 844980 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

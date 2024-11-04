@@ -1,0 +1,25 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out -c
+gzip-1.2.4.c.reduced.c:5029:38: runtime error: index 30497 out of bounds for type 'uch[256]' (aka 'unsigned char[256]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5029:38 in 
+gzip-1.2.4.c.reduced.c:5028:23: runtime error: index 30497 out of bounds for type 'uch[256]' (aka 'unsigned char[256]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5028:23 in 
+gzip-1.2.4.c.reduced.c:5716:40: runtime error: index 65536 out of bounds for type 'uch[65536]' (aka 'unsigned char[65536]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5716:40 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3271186==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x55b32056c000 (pc 0x55b31fbb3a76 bp 0x7ffd72e01080 sp 0x7ffd72e00e10 T3271186)
+==3271186==The signal is caused by a READ memory access.
+    #0 0x55b31fbb3a76 in longest_match /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5386:17
+    #1 0x55b31fbb438e in deflate /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5690:46
+    #2 0x55b31fbb5bf3 in zip /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5988:7
+    #3 0x55b31fbb68dc in treat_stdin /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #4 0x55b31fbb6769 in main /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #5 0x7fe7b276ed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7fe7b276ee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x55b31fb7e434 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out+0x11434) (BuildId: 81ee2fc8ba1e5dbb58b850e0802cc6dc0ba875a3)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5386:17 in longest_match
+==3271186==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 169: 3271185 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out -c < /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_278 > sample1.gz

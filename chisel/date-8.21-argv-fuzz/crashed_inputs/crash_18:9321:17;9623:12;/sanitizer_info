@@ -1,0 +1,4 @@
+asan
+ubsan
+tsan
+lsan

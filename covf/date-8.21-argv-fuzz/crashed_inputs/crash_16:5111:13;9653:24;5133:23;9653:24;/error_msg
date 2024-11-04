@@ -1,0 +1,22 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/bins/reduced.asan.out
+=================================================================
+==3187544==ERROR: AddressSanitizer: attempting free on address which was not malloc()-ed: 0x607000000023 in thread T0
+    #0 0x563078349bd2 in free (/workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/bins/reduced.asan.out+0xa8bd2) (BuildId: 092c24cce9701a263f5f1ffa0defdab5db554857)
+    #1 0x56307838d6ac in parse_datetime /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5111:13
+    #2 0x563078394d34 in main /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #3 0x7ff32644bd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7ff32644be3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x5630782c4454 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/bins/reduced.asan.out+0x23454) (BuildId: 092c24cce9701a263f5f1ffa0defdab5db554857)
+
+0x607000000023 is located 3 bytes inside of 74-byte region [0x607000000020,0x60700000006a)
+allocated by thread T0 here:
+    #0 0x563078349e7e in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/bins/reduced.asan.out+0xa8e7e) (BuildId: 092c24cce9701a263f5f1ffa0defdab5db554857)
+    #1 0x7ff32646703f in __add_to_environ stdlib/setenv.c:217:10
+    #2 0x56307838d92f in parse_datetime /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5133:23
+    #3 0x563078394d34 in main /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #4 0x7ff32644bd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: bad-free (/workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/bins/reduced.asan.out+0xa8bd2) (BuildId: 092c24cce9701a263f5f1ffa0defdab5db554857) in free
+==3187544==ABORTING
+./verify.sh: line 110: 3187543 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

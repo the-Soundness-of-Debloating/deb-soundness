@@ -1,0 +1,16 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/bzip2-1.0.5-input-fuzz/bins/reduced.ubsan.out -d
+bzip2-1.0.5.c.reduced.c:1829:17: runtime error: index 6 out of bounds for type 'UChar[6]' (aka 'unsigned char[6]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1829:17 in 
+bzip2-1.0.5.c.reduced.c:1836:15: runtime error: index 6 out of bounds for type 'UChar[6]' (aka 'unsigned char[6]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1836:15 in 
+bzip2-1.0.5.c.reduced.c:1836:29: runtime error: index 7 out of bounds for type 'UChar[6]' (aka 'unsigned char[6]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1836:29 in 
+bzip2-1.0.5.c.reduced.c:2172:31: runtime error: signed integer overflow: 2 * 1073741824 cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2172:31 in 
+bzip2-1.0.5.c.reduced.c:2175:21: runtime error: signed integer overflow: 1073741824 * 2 cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2175:21 in 
+bzip2-1.0.5.c.reduced.c:2169:24: runtime error: signed integer overflow: -482832855 + -2147483648 cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2169:24 in 
+timeout: the monitored command dumped core
+./verify.sh: line 170: 2928642 Segmentation fault      timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/bzip2-1.0.5-input-fuzz/bins/reduced.ubsan.out -d < /workspace/fuzzing-deb-with-sanitizers/cov/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_129 > sample1.tst

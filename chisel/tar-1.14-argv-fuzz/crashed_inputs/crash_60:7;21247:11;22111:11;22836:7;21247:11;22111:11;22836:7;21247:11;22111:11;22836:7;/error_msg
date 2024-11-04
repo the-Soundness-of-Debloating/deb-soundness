@@ -1,0 +1,79 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.asan.out
+=================================================================
+==3773301==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x629000003800 at pc 0x55bbe9cd1528 bp 0x7fffcb0ab030 sp 0x7fffcb0aa808
+READ of size 57344 at 0x629000003800 thread T0
+    #0 0x55bbe9cd1527 in __interceptor_write (/workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.asan.out+0x3f527) (BuildId: da3403ca6ca0cc21a1df2d5332abdad16823d6bf)
+    #1 0x55bbe9d77867 in safe_write /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:29794:20
+    #2 0x55bbe9d74b12 in full_write /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:24333:17
+    #3 0x55bbe9d74a8e in extract_archive /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:8207:19
+    #4 0x55bbe9d74be7 in read_and /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:12087:13
+    #5 0x55bbe9d75ff6 in main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22905:7
+    #6 0x7f0d9cd5403f  (/lib64/ld-linux-x86-64.so.2+0x3a03f) (BuildId: 15921ea631d9f36502d20459c43e5c85b7d6ab76)
+
+0x629000003800 is located 0 bytes to the right of 10240-byte region [0x629000001000,0x629000003800)
+allocated by thread T0 here:
+    #0 0x55bbe9d3a9fd in valloc (/workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.asan.out+0xa89fd) (BuildId: da3403ca6ca0cc21a1df2d5332abdad16823d6bf)
+    #1 0x55bbe9d73fee in open_archive /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:1138:19
+    #2 0x55bbe9d74b6a in read_and /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:11978:7
+    #3 0x55bbe9d75ff6 in main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22905:7
+    #4 0x7f0d9cd5403f  (/lib64/ld-linux-x86-64.so.2+0x3a03f) (BuildId: 15921ea631d9f36502d20459c43e5c85b7d6ab76)
+    #5 0x55bbe9d784e6 in set_subcommand_option /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21247:11
+    #6 0x55bbe9d76de8 in decode_options /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22111:11
+    #7 0x55bbe9d75fb2 in main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #8 0x7f0d9cd5403f  (/lib64/ld-linux-x86-64.so.2+0x3a03f) (BuildId: 15921ea631d9f36502d20459c43e5c85b7d6ab76)
+    #9 0x55bbe9d784e6 in set_subcommand_option /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21247:11
+    #10 0x55bbe9d76de8 in decode_options /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22111:11
+    #11 0x55bbe9d75fb2 in main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #12 0x7f0d9cd5403f  (/lib64/ld-linux-x86-64.so.2+0x3a03f) (BuildId: 15921ea631d9f36502d20459c43e5c85b7d6ab76)
+    #13 0x55bbe9d784e6 in set_subcommand_option /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21247:11
+    #14 0x55bbe9d76de8 in decode_options /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22111:11
+    #15 0x55bbe9d75fb2 in main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #16 0x7f0d9cd5403f  (/lib64/ld-linux-x86-64.so.2+0x3a03f) (BuildId: 15921ea631d9f36502d20459c43e5c85b7d6ab76)
+    #17 0x55bbe9d784e6 in set_subcommand_option /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21247:11
+    #18 0x55bbe9d76de8 in decode_options /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22111:11
+    #19 0x55bbe9d75fb2 in main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #20 0x7f0d9cd5403f  (/lib64/ld-linux-x86-64.so.2+0x3a03f) (BuildId: 15921ea631d9f36502d20459c43e5c85b7d6ab76)
+    #21 0x55bbe9d784e6 in set_subcommand_option /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21247:11
+    #22 0x55bbe9d76de8 in decode_options /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22111:11
+    #23 0x55bbe9d75fb2 in main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #24 0x7f0d9cd5403f  (/lib64/ld-linux-x86-64.so.2+0x3a03f) (BuildId: 15921ea631d9f36502d20459c43e5c85b7d6ab76)
+    #25 0x55bbe9d784e6 in set_subcommand_option /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21247:11
+    #26 0x55bbe9d76de8 in decode_options /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22111:11
+    #27 0x55bbe9d75fb2 in main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #28 0x7f0d9c9f3d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow (/workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.asan.out+0x3f527) (BuildId: da3403ca6ca0cc21a1df2d5332abdad16823d6bf) in __interceptor_write
+Shadow bytes around the buggy address:
+  0x0c527fff86b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c527fff86c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c527fff86d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c527fff86e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c527fff86f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0c527fff8700:[fa]fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c527fff8710: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c527fff8720: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c527fff8730: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c527fff8740: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c527fff8750: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==3773301==ABORTING
+./verify.sh: line 302: 3773300 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/result/afl_result/reduced/result_0/asan/crashes/id:000016*

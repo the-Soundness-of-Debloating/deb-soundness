@@ -1,0 +1,13 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/bins/reduced.msan.out xf /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file6_fuzzed/file6_0 -X /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file12_fuzzed/file12_0
+==1802577==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x560985854853 in add_exclude_file /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24251:11
+    #1 0x56098584cdb9 in decode_options /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22116:15
+    #2 0x560985845cb9 in main /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22834:7
+    #3 0x7fd6ca0dcd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7fd6ca0dce3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x5609857714c4 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/bins/reduced.msan.out+0x204c4) (BuildId: 36b4af9001bf6f6f9f3720818ab6f356e791274d)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24251:11 in add_exclude_file
+Exiting
+./verify.sh: line 360: 1802574 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/bins/reduced.msan.out xf /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file6_fuzzed/file6_0 -X /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file12_fuzzed/file12_0

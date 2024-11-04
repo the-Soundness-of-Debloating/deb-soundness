@@ -1,0 +1,17 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.lsan.out -c
+LeakSanitizer:DEADLYSIGNAL
+==3470037==ERROR: LeakSanitizer: stack-overflow on address 0x7fff5a133a20 (pc 0x557198c7f742 bp 0x7fff5a12a450 sp 0x7fff5a12a400 T0)
+    #0 0x557198c7f742 in gen_codes /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4563:17
+    #1 0x557198c7fe30 in build_tree___0 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4697:7
+    #2 0x557198c7f8d6 in flush_block /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4948:7
+    #3 0x557198c810a1 in deflate /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5797:17
+    #4 0x557198c813fb in zip /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5988:7
+    #5 0x557198c81ea2 in treat_stdin /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #6 0x557198c81a00 in main /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #7 0x7fe398eced8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7fe398ecee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x557198c4f514 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.lsan.out+0x6514) (BuildId: e469d9e7620087678df692e0069c61fcaac74449)
+
+SUMMARY: LeakSanitizer: stack-overflow /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4563:17 in gen_codes
+==3470037==ABORTING

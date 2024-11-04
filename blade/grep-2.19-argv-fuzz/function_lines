@@ -1,0 +1,308 @@
+AD_compare       function   6077 grep-2.19.c.origin.c static _Bool AD_compare(void const *x, void const *y) {
+AD_hash          function   6096 grep-2.19.c.origin.c static size_t AD_hash(void const *x, size_t table_size) {
+Acompile         function   21897 grep-2.19.c.origin.c static void Acompile(char const *pattern, size_t size) {
+EGexecute        function   12589 grep-2.19.c.origin.c size_t EGexecute(char const *buf, size_t size, size_t *match_size, char const *start_ptr) {
+Ecompile         function   21889 grep-2.19.c.origin.c static void Ecompile(char const *pattern, size_t size) {
+Fcompile         function   10515 grep-2.19.c.origin.c void Fcompile(char const *pattern, size_t size) {
+Fexecute         function   10633 grep-2.19.c.origin.c size_t Fexecute(char const *buf, size_t size, size_t *match_size, char const *start_ptr) {
+GAcompile        function   21905 grep-2.19.c.origin.c static void GAcompile(char const *pattern, size_t size) {
+GEAcompile       function   12458 grep-2.19.c.origin.c void GEAcompile(char const *pattern, size_t size, reg_syntax_t syntax_bits___0) {
+Gcompile         function   21881 grep-2.19.c.origin.c static void Gcompile(char const *pattern, size_t size) {
+LCO_compare      function   6889 grep-2.19.c.origin.c static _Bool LCO_compare(void const *x, void const *y) {
+LCO_hash         function   6882 grep-2.19.c.origin.c static size_t LCO_hash(void const *x, size_t table_size) {
+PAcompile        function   21913 grep-2.19.c.origin.c static void PAcompile(char const *pattern, size_t size) {
+Pcompile         function   10161 grep-2.19.c.origin.c void Pcompile(char const *pattern, size_t size) {
+Pexecute         function   10337 grep-2.19.c.origin.c size_t Pexecute(char const *buf, size_t size, size_t *match_size, char const *start_ptr) {
+_Bool            function   5812 grep-2.19.c.origin.c _Bool(__attribute__((__warn_unused_result__)) hash_rehash)(Hash_table *table, size_t candidate) {
+__argmatch_die   function   9943 grep-2.19.c.origin.c static void __argmatch_die(void) {
+__xargmatch_internal function   10103 grep-2.19.c.origin.c ptrdiff_t __xargmatch_internal(char const *context, char const *arg, char const *const *arglist,
+add_count        function   20316 grep-2.19.c.origin.c static uintmax_t add_count(uintmax_t a, uintmax_t b) {
+add_exclude      function   9268 grep-2.19.c.origin.c void add_exclude(struct exclude *ex, char const *pattern, int options) {
+add_exclude_file function   9559 grep-2.19.c.origin.c int add_exclude_file(void (*add_func)(struct exclude *, char const *, int),
+add_exclude_fp   function   9422 grep-2.19.c.origin.c int add_exclude_fp(void (*add_func)(struct exclude *, char const *, int, void *),
+add_utf8_anychar function   15477 grep-2.19.c.origin.c static void add_utf8_anychar(void) {
+addlists         function   18672 grep-2.19.c.origin.c static char **addlists(char **old, char **new) {
+addtok           function   15328 grep-2.19.c.origin.c static void addtok(token t) {
+addtok_mb        function   15265 grep-2.19.c.origin.c static void addtok_mb(token t, int mbprop) {
+addtok_wc        function   15411 grep-2.19.c.origin.c static void addtok_wc(wint_t wc) {
+alloc_position_set function   16011 grep-2.19.c.origin.c static void alloc_position_set(position_set *s, size_t size) {
+allocate_entry   function   5634 grep-2.19.c.origin.c static struct hash_entry *allocate_entry(Hash_table *table) {
+allocmust        function   18739 grep-2.19.c.origin.c static must *allocmust(must *mp) {
+argmatch         function   9954 grep-2.19.c.origin.c ptrdiff_t argmatch(char const *arg, char const *const *arglist, char const *vallist,
+argmatch_invalid function   10015 grep-2.19.c.origin.c void argmatch_invalid(char const *context, char const *value, ptrdiff_t problem) {
+argmatch_valid   function   10045 grep-2.19.c.origin.c void argmatch_valid(char const *const *arglist, char const *vallist, size_t valsize) {
+atom             function   15552 grep-2.19.c.origin.c static void atom(void) {
+bkm_scale___1    function    669 grep-2.19.c.origin.c static strtol_error bkm_scale___1(intmax_t *x, int scale_factor) {
+bkm_scale_by_power___1 function    683 grep-2.19.c.origin.c static strtol_error bkm_scale_by_power___1(intmax_t *x, int base, int power) {
+bm_delta2_search function   11654 grep-2.19.c.origin.c static _Bool bm_delta2_search(char const **tpp, char const *ep, char const *sp,
+bmexec           function   11975 grep-2.19.c.origin.c static size_t bmexec(kwset_t kwset___1, char const *text, size_t size) {
+bmexec_trans     function   11810 grep-2.19.c.origin.c static size_t __attribute__((__pure__)) bmexec_trans(kwset_t kwset___1,
+branch           function   15893 grep-2.19.c.origin.c static void branch(void) {
+build_mbclen_cache function   19421 grep-2.19.c.origin.c void build_mbclen_cache(void) {
+build_state      function   17270 grep-2.19.c.origin.c static void build_state(state_num s, struct dfa *d) {
+build_state_zero function   17341 grep-2.19.c.origin.c static void build_state_zero(struct dfa *d) {
+c_isspace        function   9882 grep-2.19.c.origin.c _Bool c_isspace(int c) {
+c_strcasecmp     function   9847 grep-2.19.c.origin.c int c_strcasecmp(char const *s1, char const *s2) {
+c_tolower        function   9914 grep-2.19.c.origin.c int c_tolower(int c) {
+call_addfn       function   9548 grep-2.19.c.origin.c static void call_addfn(struct exclude *ex, char const *pattern, int options,
+case_folded_counterparts function   13426 grep-2.19.c.origin.c static int case_folded_counterparts(wchar_t c, wchar_t *folded) {
+char_context     function   13207 grep-2.19.c.origin.c static int char_context(unsigned char c) {
+charclass_context function   16422 grep-2.19.c.origin.c static int charclass_context(charclass_word *c) {
+charclass_index  function   13191 grep-2.19.c.origin.c static size_t charclass_index(charclass_word *const s) {
+check_matching_with_multibyte_ops function   17625 grep-2.19.c.origin.c static int *check_matching_with_multibyte_ops(struct dfa *d, state_num s, char const *p,
+check_tuning     function   5435 grep-2.19.c.origin.c static _Bool check_tuning(Hash_table *table) {
+clean_up_stdout  function   19798 grep-2.19.c.origin.c static void clean_up_stdout(void) {
+close_stdout     function   9710 grep-2.19.c.origin.c void close_stdout(void) {
+close_stream     function   9766 grep-2.19.c.origin.c int close_stream(FILE *stream) {
+closure          function   15792 grep-2.19.c.origin.c static void closure(void) {
+clrbit           function   13096 grep-2.19.c.origin.c static void clrbit(unsigned int b, charclass_word *c) {
+color_cap_mt_fct function   19629 grep-2.19.c.origin.c static void color_cap_mt_fct(void) {
+color_cap_ne_fct function   19641 grep-2.19.c.origin.c static void color_cap_ne_fct(void) {
+color_cap_rv_fct function   19635 grep-2.19.c.origin.c static void color_cap_rv_fct(void) {
+compute_bucket_size function   5463 grep-2.19.c.origin.c static size_t __attribute__((__pure__)) compute_bucket_size(size_t candidate, Hash_tuning const *tuning) {
+comsubs          function   18600 grep-2.19.c.origin.c static char **comsubs(char *left, char const *right) {
+contains_encoding_error function   22324 grep-2.19.c.origin.c static _Bool contains_encoding_error(char const *pat, size_t patlen) {
+context_length_arg function   19865 grep-2.19.c.origin.c static void context_length_arg(char const *str, intmax_t *out___0) {
+copy             function   15994 grep-2.19.c.origin.c static void copy(position_set const *src, position_set *dst) {
+copyset          function   13102 grep-2.19.c.origin.c static void copyset(charclass_word *const src, charclass_word *dst) {
+copytoks         function   15753 grep-2.19.c.origin.c static void copytoks(size_t tindex, size_t ntokens) {
+cwd_advance_fd   function   6323 grep-2.19.c.origin.c static void cwd_advance_fd(FTS *sp, int fd, _Bool chdir_down_one) {
+cycle_check      function   9624 grep-2.19.c.origin.c _Bool cycle_check(struct cycle_check_state *state, struct stat const *sb) {
+cycle_check_init function   9617 grep-2.19.c.origin.c void cycle_check_init(struct cycle_check_state *state) {
+delete           function   16170 grep-2.19.c.origin.c static void delete (position p, position_set *s) {
+dfa_charclass_index function   13160 grep-2.19.c.origin.c static size_t dfa_charclass_index(struct dfa *d, charclass_word *const s) {
+dfaalloc         function   19224 grep-2.19.c.origin.c struct dfa *dfaalloc(void) {
+dfaanalyze       function   16481 grep-2.19.c.origin.c void dfaanalyze(struct dfa *d, int searchflag) {
+dfacomp          function   18341 grep-2.19.c.origin.c void dfacomp(char const *s, size_t len, struct dfa *d, int searchflag) {
+dfaerror         function   12315 grep-2.19.c.origin.c void dfaerror(char const *mesg) {
+dfaexec          function   17853 grep-2.19.c.origin.c char *dfaexec(struct dfa *d, char const *begin, char *end, int allow_nl, size_t *count,
+dfafree          function   18361 grep-2.19.c.origin.c void dfafree(struct dfa *d) {
+dfainit          function   18120 grep-2.19.c.origin.c void dfainit(struct dfa *d) {
+dfaisfast        function   18047 grep-2.19.c.origin.c _Bool dfaisfast(struct dfa const *d) {
+dfambcache       function   13019 grep-2.19.c.origin.c static void dfambcache(struct dfa *d) {
+dfamust          function   18788 grep-2.19.c.origin.c static void dfamust(struct dfa *d) {
+dfamusts         function   19233 grep-2.19.c.origin.c struct dfamust *__attribute__((__pure__)) dfamusts(struct dfa const *d) {
+dfaoptimize      function   18132 grep-2.19.c.origin.c static void dfaoptimize(struct dfa *d) {
+dfaparse         function   15946 grep-2.19.c.origin.c void dfaparse(char const *s, size_t len, struct dfa *d) {
+dfassbuild       function   18193 grep-2.19.c.origin.c static void dfassbuild(struct dfa *d) {
+dfastate         function   16741 grep-2.19.c.origin.c void dfastate(ptrdiff_t s, struct dfa *d, ptrdiff_t *trans___0) {
+dfasuperset      function   18041 grep-2.19.c.origin.c struct dfa *dfasuperset(struct dfa const *d) {
+dfasyntax        function   13249 grep-2.19.c.origin.c void dfasyntax(reg_syntax_t bits, int fold, unsigned char eol) {
+dfawarn          function   12324 grep-2.19.c.origin.c void dfawarn(char const *mesg) {
+dirent_inode_sort_may_be_useful function   6833 grep-2.19.c.origin.c static _Bool dirent_inode_sort_may_be_useful(int dir_fd) {
+diropen          function   6412 grep-2.19.c.origin.c static int diropen(FTS const *sp, char const *dir) {
+do_execute       function   20902 grep-2.19.c.origin.c static size_t do_execute(char const *buf, size_t size, size_t *match_size, char const *start_ptr) {
+dos_binary       function   20151 grep-2.19.c.origin.c static void dos_binary(void) {
+dos_unix_byte_offsets function   20156 grep-2.19.c.origin.c static void dos_unix_byte_offsets(void) {
+dossified_pos    function   20262 grep-2.19.c.origin.c static off_t dossified_pos(off_t byteno) {
+dup_safer        function   9603 grep-2.19.c.origin.c int dup_safer(int fd) {
+enlist           function   18532 grep-2.19.c.origin.c static char **enlist(char **cpp, char *new, size_t len) {
+enqueue          function   11223 grep-2.19.c.origin.c static void enqueue(struct tree *tree, struct trie **last) {
+enter_dir        function   6127 grep-2.19.c.origin.c static _Bool enter_dir(FTS *fts, FTSENT *ent) {
+epsclosure       function   16315 grep-2.19.c.origin.c static void epsclosure(position_set *s, struct dfa const *d, char *visited) {
+equal            function   13138 grep-2.19.c.origin.c static _Bool equal(charclass_word *const s1, charclass_word *const s2) {
+exclude_add_pattern_buffer function   8682 grep-2.19.c.origin.c void exclude_add_pattern_buffer(struct exclude *ex, char *buf) {
+exclude_fnmatch  function   9057 grep-2.19.c.origin.c _Bool exclude_fnmatch(char const *pattern, char const *f, int options) {
+exclude_patopts  function   9104 grep-2.19.c.origin.c _Bool exclude_patopts(struct patopts const *opts, char const *f) {
+excluded_file_name function   9216 grep-2.19.c.origin.c _Bool excluded_file_name(struct exclude const *ex, char const *f) {
+fd_ring_clear    function   6237 grep-2.19.c.origin.c static void fd_ring_clear(I_ring *fd_ring) {
+fd_safer         function   8543 grep-2.19.c.origin.c int fd_safer(int fd) {
+fgrep_to_grep_pattern function   22353 grep-2.19.c.origin.c static void fgrep_to_grep_pattern(size_t len, char const *keys, size_t *new_len,
+file_is_binary   function   19808 grep-2.19.c.origin.c static int file_is_binary(char const *buf, size_t bufsize, int fd, struct stat const *st) {
+file_name_matches function   9156 grep-2.19.c.origin.c static _Bool file_name_matches(struct exclude_segment const *seg, char const *f,
+file_pattern_matches function   9127 grep-2.19.c.origin.c static _Bool file_pattern_matches(struct exclude_segment const *seg, char const *f) {
+fillbuf          function   20013 grep-2.19.c.origin.c static int fillbuf(size_t save, struct stat const *st) {
+find_pred        function   13508 grep-2.19.c.origin.c static struct dfa_ctype const *__attribute__((__pure__)) find_pred(char const *str) {
+fnmatch_no_wildcards function   8976 grep-2.19.c.origin.c static int fnmatch_no_wildcards(char const *pattern, char const *f, int options) {
+fnmatch_pattern_has_wildcards function   8697 grep-2.19.c.origin.c _Bool fnmatch_pattern_has_wildcards(char const *str, int options) {
+free_dir         function   6221 grep-2.19.c.origin.c static void free_dir(FTS *sp) {
+free_entry       function   5648 grep-2.19.c.origin.c static void free_entry(Hash_table *table, struct hash_entry *entry) {
+free_mbdata      function   18052 grep-2.19.c.origin.c static void free_mbdata(struct dfa *d) {
+freea            function   4861 grep-2.19.c.origin.c void freea(void *p) {
+freelist         function   18511 grep-2.19.c.origin.c static void freelist(char **cpp) {
+freemust         function   18775 grep-2.19.c.origin.c static void freemust(must *mp) {
+fts_alloc        function   8246 grep-2.19.c.origin.c static FTSENT *fts_alloc(FTS *sp, char const *name, size_t namelen) {
+fts_build        function   7501 grep-2.19.c.origin.c static FTSENT *fts_build(FTS *sp, int type) {
+fts_compar       function   8153 grep-2.19.c.origin.c static int fts_compar(void const *a, void const *b) {
+fts_compare_ino  function   7431 grep-2.19.c.origin.c static int fts_compare_ino(struct _ftsent const **a, struct _ftsent const **b) {
+fts_lfree        function   8274 grep-2.19.c.origin.c static void fts_lfree(FTSENT *head) {
+fts_load         function   6688 grep-2.19.c.origin.c static void fts_load(FTS *sp, FTSENT *p) {
+fts_maxarglen    function   8390 grep-2.19.c.origin.c static size_t __attribute__((__pure__)) fts_maxarglen(char *const *argv) {
+fts_padjust      function   8330 grep-2.19.c.origin.c static void fts_padjust(FTS *sp, FTSENT *head) {
+fts_palloc       function   8300 grep-2.19.c.origin.c static _Bool fts_palloc(FTS *sp, size_t more) {
+fts_safe_changedir function   8415 grep-2.19.c.origin.c static int fts_safe_changedir(FTS *sp, FTSENT *p, int fd, char const *dir) {
+fts_set          function   7409 grep-2.19.c.origin.c int fts_set(FTS *sp __attribute__((__unused__)), FTSENT *p, int instr) {
+fts_set_stat_required function   6267 grep-2.19.c.origin.c static void fts_set_stat_required(FTSENT *p, _Bool required) {
+fts_sort         function   8166 grep-2.19.c.origin.c static FTSENT *fts_sort(FTS *sp, FTSENT *head, size_t nitems) {
+fts_stat         function   8052 grep-2.19.c.origin.c static unsigned short fts_stat(FTS *sp, FTSENT *p, _Bool follow) {
+get_charset_aliases function   4927 grep-2.19.c.origin.c static char const *get_charset_aliases(void) {
+get_nondigit_option function   22150 grep-2.19.c.origin.c static int get_nondigit_option(int argc, char *const *argv, intmax_t *default_context) {
+gettext_quote    function   1856 grep-2.19.c.origin.c static char const *gettext_quote(char const *msgid, enum quoting_style s) {
+grep             function   21057 grep-2.19.c.origin.c static intmax_t grep(int fd, struct stat const *st) {
+grep_command_line_arg function   21748 grep-2.19.c.origin.c static int grep_command_line_arg(char const *arg) {
+grepbuf          function   20975 grep-2.19.c.origin.c static intmax_t grepbuf(char const *beg, char const *lim) {
+grepdesc         function   21503 grep-2.19.c.origin.c static int grepdesc(int desc, int command_line) {
+grepdirent       function   21276 grep-2.19.c.origin.c static int grepdirent(FTS *fts, FTSENT *ent, int command_line) {
+grepfile         function   21455 grep-2.19.c.origin.c static int grepfile(int dirdesc, char const *name, int follow, int command_line) {
+hasevery         function   11303 grep-2.19.c.origin.c static int __attribute__((__pure__)) hasevery(struct tree const *a, struct tree const *b) {
+hash_delete      function   5985 grep-2.19.c.origin.c void *hash_delete(Hash_table *table, void const *entry) {
+hash_find_entry  function   5656 grep-2.19.c.origin.c static void *hash_find_entry(Hash_table *table, void const *entry, struct hash_entry **bucket_head,
+hash_free        function   5546 grep-2.19.c.origin.c void hash_free(Hash_table *table) {
+hash_insert_if_absent function   5885 grep-2.19.c.origin.c int hash_insert_if_absent(Hash_table *table, void const *entry, void const **matched_ent) {
+hash_lookup      function   5295 grep-2.19.c.origin.c void *hash_lookup(Hash_table const *table, void const *entry) {
+hash_string      function   5334 grep-2.19.c.origin.c size_t hash_string(char const *string, size_t n_buckets) {
+i_ring_empty     function   5217 grep-2.19.c.origin.c _Bool i_ring_empty(I_ring const *ir) {
+i_ring_init      function   5193 grep-2.19.c.origin.c void i_ring_init(I_ring *ir, int default_val) {
+i_ring_pop       function   5237 grep-2.19.c.origin.c int i_ring_pop(I_ring *ir) {
+i_ring_push      function   5222 grep-2.19.c.origin.c int i_ring_push(I_ring *ir, int val) {
+icatalloc        function   18460 grep-2.19.c.origin.c static char *icatalloc(char *old, char const *new) {
+inboth           function   18693 grep-2.19.c.origin.c static char **inboth(char **left, char **right) {
+init_colorize    function   9684 grep-2.19.c.origin.c void init_colorize(void) {
+insert           function   16021 grep-2.19.c.origin.c static void insert(position p, position_set *s) {
+is_basic         function   1409 grep-2.19.c.origin.c _Bool is_basic(char c) {
+is_device_mode   function   19747 grep-2.19.c.origin.c static int is_device_mode(mode_t m) {
+is_prime         function   5357 grep-2.19.c.origin.c static _Bool is_prime(size_t candidate) {
+is_zero_or_power_of_two function   9612 grep-2.19.c.origin.c static _Bool is_zero_or_power_of_two(uintmax_t i) {
+istrstr          function   18482 grep-2.19.c.origin.c static char *__attribute__((__pure__)) istrstr(char const *lookin, char const *lookfor) {
+knuth_morris_pratt function   3780 grep-2.19.c.origin.c static _Bool knuth_morris_pratt(unsigned char const *haystack, unsigned char const *needle,
+knuth_morris_pratt_multibyte function   3889 grep-2.19.c.origin.c static _Bool knuth_morris_pratt_multibyte(char const *haystack, char const *needle,
+kwsalloc         function   10835 grep-2.19.c.origin.c kwset_t kwsalloc(char const *trans___0) {
+kwsincr          function   10896 grep-2.19.c.origin.c void kwsincr(kwset_t kwset___1, char const *text, size_t len) {
+kwsinit          function   19243 grep-2.19.c.origin.c void kwsinit(kwset_t *kwset___1) {
+kwsmusts         function   12346 grep-2.19.c.origin.c static void kwsmusts(void) {
+kwsprep          function   11357 grep-2.19.c.origin.c void kwsprep(kwset_t kwset___1) {
+leaf_optimization_applies function   6859 grep-2.19.c.origin.c static _Bool leaf_optimization_applies(int dir_fd) {
+leave_dir        function   6171 grep-2.19.c.origin.c static void leave_dir(FTS *fts, FTSENT *ent) {
+lex              function   14514 grep-2.19.c.origin.c static token lex(void) {
+link_count_optimize_ok function   6898 grep-2.19.c.origin.c static _Bool link_count_optimize_ok(FTSENT const *p) {
+locale_charset   function   5128 grep-2.19.c.origin.c char const *locale_charset(void) {
+main             function   22427 grep-2.19.c.origin.c int main(int argc, char **argv) {
+match_anychar    function   17401 grep-2.19.c.origin.c static int match_anychar(struct dfa *d, state_num s, position pos, wint_t wc,
+match_mb_charset function   17447 grep-2.19.c.origin.c static int match_mb_charset(struct dfa *d, state_num s, position pos, char const *p,
+maybe_realloc    function   13147 grep-2.19.c.origin.c static void *maybe_realloc(void *ptr, size_t nitems, size_t *nalloc, size_t itemsize) {
+mb_case_map_apply function   10594 grep-2.19.c.origin.c static void mb_case_map_apply(mb_len_map_t const *map, size_t *off, size_t *len) {
+mb_copy          function   1387 grep-2.19.c.origin.c void mb_copy(mbchar_t *new_mbc, mbchar_t const *old_mbc) {
+mb_goback        function   19451 grep-2.19.c.origin.c ptrdiff_t mb_goback(char const **mb_start, char const *cur, char const *end) {
+mb_next_wc       function   19526 grep-2.19.c.origin.c wint_t mb_next_wc(char const *cur, char const *end) {
+mb_prev_wc       function   19508 grep-2.19.c.origin.c wint_t mb_prev_wc(char const *buf, char const *cur, char const *end) {
+mbiter_multi_next function   1414 grep-2.19.c.origin.c void mbiter_multi_next(struct mbiter_multi *iter) {
+mbs_to_wchar     function   13056 grep-2.19.c.origin.c static size_t mbs_to_wchar(wint_t *pwc, char const *s, size_t n, struct dfa *d) {
+mbsstr_trimmed_wordbounded function   3256 grep-2.19.c.origin.c static _Bool mbsstr_trimmed_wordbounded(char const *string, char const *sub) {
+mbtoupper        function   19290 grep-2.19.c.origin.c char *mbtoupper(char const *beg, size_t *n, mb_len_map_t **len_map_p) {
+mbuiter_multi_next function   3180 grep-2.19.c.origin.c void mbuiter_multi_next(struct mbuiter_multi *iter) {
+memchr2          function   3662 grep-2.19.c.origin.c void *memchr2(void const *s, int c1_in, int c2_in, size_t n) {
+memchr_kwset     function   11750 grep-2.19.c.origin.c static char const *memchr_kwset(char const *s, size_t n, kwset_t kwset___1) {
+merge            function   16074 grep-2.19.c.origin.c static void merge(position_set const *s1, position_set const *s2, position_set *m) {
+mmalloca         function   4835 grep-2.19.c.origin.c void *mmalloca(size_t n) {
+new_exclude      function   8823 grep-2.19.c.origin.c struct exclude *new_exclude(void) {
+new_exclude_segment function   8933 grep-2.19.c.origin.c static void new_exclude_segment(struct exclude *ex, enum exclude_type type, int options) {
+next_prime       function   5391 grep-2.19.c.origin.c static size_t next_prime(size_t candidate) {
+nlscan           function   20331 grep-2.19.c.origin.c static void nlscan(char const *lim) {
+notset           function   13119 grep-2.19.c.origin.c static void notset(charclass_word *s) {
+nsubtoks         function   15718 grep-2.19.c.origin.c static size_t __attribute__((__pure__)) nsubtoks(size_t tindex) {
+open_safer       function   3639 grep-2.19.c.origin.c int open_safer(char const *file, int flags, ...) {
+openat_safer     function   3617 grep-2.19.c.origin.c int openat_safer(int fd, char const *file, int flags, ...) {
+opendirat        function   6290 grep-2.19.c.origin.c static DIR *opendirat(int fd, char const *dir, int extra_flags, int *pdir_fd) {
+parse_bracket_exp function   13534 grep-2.19.c.origin.c static token parse_bracket_exp(void) {
+parse_grep_colors function   22212 grep-2.19.c.origin.c static void parse_grep_colors(void) {
+pr_sgr_end       function   19599 grep-2.19.c.origin.c static void pr_sgr_end(char const *s) {
+pr_sgr_end_if    function   19619 grep-2.19.c.origin.c static void pr_sgr_end_if(char const *s) {
+pr_sgr_start     function   19589 grep-2.19.c.origin.c static void pr_sgr_start(char const *s) {
+pr_sgr_start_if  function   19609 grep-2.19.c.origin.c static void pr_sgr_start_if(char const *s) {
+prepend_args     function   21998 grep-2.19.c.origin.c static size_t prepend_args(char const *options, char *buf, char **argv) {
+prepend_default_options function   22080 grep-2.19.c.origin.c static int prepend_default_options(char const *options, int *pargc, char ***pargv) {
+print_end_colorize function   9697 grep-2.19.c.origin.c void print_end_colorize(char const *sgr_end___0) {
+print_filename   function   20361 grep-2.19.c.origin.c static void print_filename(void) {
+print_line_head  function   20425 grep-2.19.c.origin.c static void print_line_head(char const *beg, char const *lim, int sep) {
+print_line_middle function   20490 grep-2.19.c.origin.c static char const *print_line_middle(char const *beg, char const *lim, char const *line_color,
+print_line_tail  function   20573 grep-2.19.c.origin.c static char const *print_line_tail(char const *beg, char const *lim, char const *line_color) {
+print_offset     function   20381 grep-2.19.c.origin.c static void print_offset(uintmax_t pos, int min_width, char const *color) {
+print_sep        function   20371 grep-2.19.c.origin.c static void print_sep(char sep) {
+print_start_colorize function   9689 grep-2.19.c.origin.c void print_start_colorize(char const *sgr_start___0, char const *sgr_seq) {
+prline           function   20612 grep-2.19.c.origin.c static void prline(char const *beg, char const *lim, int sep) {
+proper_name      function   3504 grep-2.19.c.origin.c char const *proper_name(char const *name) {
+prpending        function   20716 grep-2.19.c.origin.c static void prpending(char const *lim) {
+prtext           function   20764 grep-2.19.c.origin.c static void prtext(char const *beg, char const *lim) {
+quote            function   3167 grep-2.19.c.origin.c char const *quote(char const *arg) {
+quote_n          function   3158 grep-2.19.c.origin.c char const *quote_n(int n, char const *arg) {
+quote_n_mem      function   3148 grep-2.19.c.origin.c char const *quote_n_mem(int n,
+quotearg_buffer_restyled function   1912 grep-2.19.c.origin.c static size_t quotearg_buffer_restyled(char *buffer___0, size_t buffersize, char const *arg,
+quotearg_char    function   3129 grep-2.19.c.origin.c char *quotearg_char(char const *arg, char ch) {
+quotearg_char_mem function   3116 grep-2.19.c.origin.c char *quotearg_char_mem(char const *arg, size_t argsize, char ch) {
+quotearg_colon   function   3138 grep-2.19.c.origin.c char *quotearg_colon(char const *arg) {
+quotearg_n_options function   3012 grep-2.19.c.origin.c static char *quotearg_n_options(int n, char const *arg, size_t argsize, struct quoting_options const *options) {
+quotearg_n_style function   3101 grep-2.19.c.origin.c char *quotearg_n_style(int n, enum quoting_style s, char const *arg) {
+quoting_options_from_style function   1824 grep-2.19.c.origin.c static struct quoting_options quoting_options_from_style(enum quoting_style style) {
+raw_comparator   function   5430 grep-2.19.c.origin.c static _Bool raw_comparator(void const *a, void const *b) {
+raw_hasher       function   5419 grep-2.19.c.origin.c static size_t raw_hasher(void const *data, size_t n) {
+realloc_trans_if_necessary function   17227 grep-2.19.c.origin.c static void realloc_trans_if_necessary(struct dfa *d, state_num new_state) {
+regexp           function   15923 grep-2.19.c.origin.c static void regexp(void) {
+reset            function   19954 grep-2.19.c.origin.c static int reset(int fd, struct stat const *st) {
+resetmust        function   18757 grep-2.19.c.origin.c static void resetmust(must *mp) {
+restore_initial_cwd function   6367 grep-2.19.c.origin.c static int restore_initial_cwd(FTS *sp) {
+rotr_sz          function   5273 grep-2.19.c.origin.c size_t rotr_sz(size_t x, int n) {
+rpl_fcntl        function   8570 grep-2.19.c.origin.c int rpl_fcntl(int fd, int action, ...) {
+safe_hasher      function   5279 grep-2.19.c.origin.c static struct hash_entry *safe_hasher(Hash_table const *table, void const *key) {
+safe_read        function   1737 grep-2.19.c.origin.c size_t safe_read(int fd, void *buf, size_t count) {
+set_binary_mode  function   9929 grep-2.19.c.origin.c int set_binary_mode(int fd, int mode___0) {
+set_char_quoting function   1804 grep-2.19.c.origin.c int set_char_quoting(struct quoting_options *o, char c, int i) {
+set_cloexec_flag function   9810 grep-2.19.c.origin.c int set_cloexec_flag(int desc, _Bool value) {
+set_program_name function   3568 grep-2.19.c.origin.c void set_program_name(char const *argv0) {
+set_stat_type    function   7448 grep-2.19.c.origin.c static void set_stat_type(struct stat *st, unsigned int dtype) {
+setbit           function   13090 grep-2.19.c.origin.c static void setbit(unsigned int b, charclass_word *c) {
+setbit_case_fold_c function   13307 grep-2.19.c.origin.c static void setbit_case_fold_c(int b, charclass_word *c) {
+setbit_wc        function   13290 grep-2.19.c.origin.c static _Bool setbit_wc(wint_t wc, charclass_word *c) {
+setmatcher       function   21951 grep-2.19.c.origin.c static void setmatcher(char const *m) {
+setup_dir        function   6103 grep-2.19.c.origin.c static _Bool setup_dir(FTS *fts) {
+should_colorize  function   9658 grep-2.19.c.origin.c int should_colorize(void) {
+size_t           function   11994 grep-2.19.c.origin.c static size_t(__attribute__((__nonnull__(4))) cwexec)(kwset_t kwset___1, char const *text,
+size_t           function   12243 grep-2.19.c.origin.c size_t(__attribute__((__nonnull__(4))) kwsexec)(kwset_t kwset___1, char const *text,
+size_t           function   4553 grep-2.19.c.origin.c size_t(__attribute__((__nonnull__(1))) mbslen)(char const *string) {
+skipped_file     function   19893 grep-2.19.c.origin.c static int skipped_file(char const *name, int command_line, int is_dir) {
+state_index      function   16206 grep-2.19.c.origin.c static state_num state_index(struct dfa *d, position_set const *s, int context) {
+state_separate_contexts function   16455 grep-2.19.c.origin.c static int __attribute__((__pure__)) state_separate_contexts(position_set const *s) {
+string_compare   function   8899 grep-2.19.c.origin.c static _Bool string_compare(void const *data1, void const *data2) {
+string_compare_ci function   8912 grep-2.19.c.origin.c static _Bool string_compare_ci(void const *data1, void const *data2) {
+string_free      function   8925 grep-2.19.c.origin.c static void string_free(void *data) {
+string_hasher    function   8833 grep-2.19.c.origin.c static size_t string_hasher(void const *data, size_t n_buckets) {
+string_hasher_ci function   8844 grep-2.19.c.origin.c static size_t string_hasher_ci(void const *data, size_t n_buckets) {
+strnlen1         function   1715 grep-2.19.c.origin.c size_t strnlen1(char const *string, size_t maxlen) {
+suppressible_error function   19787 grep-2.19.c.origin.c static void suppressible_error(char const *mesg, int errnum) {
+to_uchar         function   10813 grep-2.19.c.origin.c static unsigned char to_uchar(char ch) {
+to_uchar___0     function   13012 grep-2.19.c.origin.c static unsigned char to_uchar___0(char ch) {
+tr               function   10820 grep-2.19.c.origin.c static char tr(char const *trans___0, char c) {
+transfer_entries function   5733 grep-2.19.c.origin.c static _Bool transfer_entries(Hash_table *dst, Hash_table *src, _Bool safe) {
+transit_state    function   17741 grep-2.19.c.origin.c static state_num transit_state(struct dfa *d, state_num s, unsigned char const **pp,
+transit_state_consume_1char function   17666 grep-2.19.c.origin.c static status_transit_state transit_state_consume_1char(struct dfa *d, state_num s,
+transit_state_singlebyte function   17358 grep-2.19.c.origin.c static status_transit_state transit_state_singlebyte(struct dfa *d, state_num s,
+treedelta        function   11288 grep-2.19.c.origin.c static void treedelta(struct tree const *tree, unsigned int depth___0, unsigned char *delta) {
+treefails        function   11239 grep-2.19.c.origin.c static void treefails(struct tree const *tree, struct trie const *fail, struct trie *recourse) {
+treenext         function   11344 grep-2.19.c.origin.c static void treenext(struct tree const *tree, struct trie **next) {
+trim2            function   1484 grep-2.19.c.origin.c char *trim2(char const *s, int how) {
+tstbit           function   13085 grep-2.19.c.origin.c static _Bool tstbit(unsigned int b, charclass_word *const c) {
+undossify_input  function   20161 grep-2.19.c.origin.c static int undossify_input(char *buf, size_t buflen) {
+unescape_pattern function   8786 grep-2.19.c.origin.c static void unescape_pattern(char *str) {
+usable_st_size   function   19770 grep-2.19.c.origin.c static int usable_st_size(struct stat const *st) {
+usage            function   21781 grep-2.19.c.origin.c void usage(int status) {
+using_simple_locale function   13371 grep-2.19.c.origin.c static _Bool using_simple_locale(void) {
+using_utf8       function   13341 grep-2.19.c.origin.c int using_utf8(void) {
+version_etc      function   1351 grep-2.19.c.origin.c void version_etc(FILE *stream, char const *command_name, char const *package,
+version_etc_arn  function   1168 grep-2.19.c.origin.c void version_etc_arn(FILE *stream, char const *command_name, char const *package,
+version_etc_va   function   1316 grep-2.19.c.origin.c void version_etc_va(FILE *stream, char const *command_name, char const *package,
+wchar_context    function   13226 grep-2.19.c.origin.c static int wchar_context(wint_t wc) {
+wordchar         function   10495 grep-2.19.c.origin.c static _Bool wordchar(wint_t wc) {
+wordchar___0     function   12288 grep-2.19.c.origin.c static _Bool wordchar___0(wint_t wc) {
+x2nrealloc       function    976 grep-2.19.c.origin.c void *x2nrealloc(void *p, size_t *pn, size_t s) {
+x2realloc        function   1082 grep-2.19.c.origin.c void *x2realloc(void *p, size_t *pn) {
+xalloc_die       function   1144 grep-2.19.c.origin.c void xalloc_die(void) {
+xcalloc          function   1104 grep-2.19.c.origin.c void *xcalloc(size_t n, size_t s) {
+xcharalloc       function   1003 grep-2.19.c.origin.c char *xcharalloc(size_t n) {
+xmalloc          function   1040 grep-2.19.c.origin.c void *xmalloc(size_t n) {
+xmemdup          function   1119 grep-2.19.c.origin.c void *xmemdup(void const *p, size_t s) {
+xnmalloc         function    934 grep-2.19.c.origin.c void *xnmalloc(size_t n, size_t s) {
+xnrealloc        function    956 grep-2.19.c.origin.c void *xnrealloc(void *p, size_t n, size_t s) {
+xrealloc         function   1059 grep-2.19.c.origin.c void *xrealloc(void *p, size_t n) {
+xstrdup          function   1132 grep-2.19.c.origin.c char *xstrdup(char const *string) {
+xstrtoimax       function    708 grep-2.19.c.origin.c strtol_error xstrtoimax(char const *s, char **ptr, int strtol_base, intmax_t *val,
+xzalloc          function   1092 grep-2.19.c.origin.c void *xzalloc(size_t s) {
+zeroset          function   13111 grep-2.19.c.origin.c static void zeroset(charclass_word *s) {

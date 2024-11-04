@@ -1,0 +1,9 @@
+[
+{ crash_loc: 7239, vul_type: "", deb_tool: "cov" }, 
+{ crash_loc: 7244, vul_type: "", deb_tool: "cov" }, 
+{ crash_loc: 7712, vul_type: "", deb_tool: "cov" }, 
+{ crash_loc: 10774, vul_type: "runtime error ", deb_tool: "cov" }, 
+{ crash_loc: 8309, vul_type: "use-of-uninitialized-value,", deb_tool: "cov" }, 
+{ crash_loc: 985, vul_type: "use-of-uninitialized-value,", deb_tool: "cov" }, 
+{ crash_loc: 985, vul_type: "use-of-uninitialized-value,", deb_tool: "cov" }, 
+]

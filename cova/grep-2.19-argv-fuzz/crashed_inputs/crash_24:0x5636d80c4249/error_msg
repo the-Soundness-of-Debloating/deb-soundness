@@ -1,0 +1,10 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1957538==ERROR: AddressSanitizer: stack-overflow on address 0x7fff25284ff8 (pc 0x5636d80c4249 bp 0x7f2a7534a000 sp 0x7fff25285000 T0)
+    <empty stack>
+
+SUMMARY: AddressSanitizer: stack-overflow
+==1957538==ABORTING
+./verify.sh: line 110: 1957537 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

@@ -1,0 +1,13 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.msan.out
+==1038958==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x555d55a8b5b3 in decode_options /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22352:15
+    #1 0x555d55a8469a in main /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:23204:7
+    #2 0x7f3c8095dd8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #3 0x7f3c8095de3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #4 0x555d559ad4c4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.msan.out+0x204c4) (BuildId: 406eb1ef5ec5ab245ba7b9351f73bc8e589acee7)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22352:15 in decode_options
+Exiting
+timeout: the monitored command dumped core
+./verify.sh: line 304: 1038957 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input7_fuzzed/input7_499

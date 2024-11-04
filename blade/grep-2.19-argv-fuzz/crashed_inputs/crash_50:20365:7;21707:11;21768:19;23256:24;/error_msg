@@ -1,0 +1,21 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.tsan.out
+grep: unrecognized option '--1859505211'
+ThreadSanitizer:DEADLYSIGNAL
+==2457847==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7ff872b657fd bp 0x7ff872be3780 sp 0x7ffe8872d1c8 T2457847)
+==2457847==The signal is caused by a READ memory access.
+==2457847==Hint: address points to the zero page.
+    #0 <null> string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 (libc.so.6+0x19d7fd) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 fputs_unlocked libio/iofputs_u.c:34:16 (libc.so.6+0x8a3a8) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #2 print_filename /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20365:7 (reduced.tsan.out+0xedbd6) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #3 grepdesc /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21707:11 (reduced.tsan.out+0xed70c) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #4 grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21768:19 (reduced.tsan.out+0xe7b12) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24 (reduced.tsan.out+0xe7792) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #6 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 _start <null> (reduced.tsan.out+0x21544) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 
+==2457847==ABORTING
+./verify.sh: line 110: 2457846 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

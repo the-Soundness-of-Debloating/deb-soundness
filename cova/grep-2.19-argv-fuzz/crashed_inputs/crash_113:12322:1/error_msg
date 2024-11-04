@@ -1,0 +1,6 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep-2.19.c.reduced.c:12322:1: runtime error: execution reached an unreachable program point
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:12322:1 in 
+timeout: the monitored command dumped core
+./verify.sh: line 110: 2744728 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

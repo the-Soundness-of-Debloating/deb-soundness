@@ -1,0 +1,51 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/bins/reduced.lsan.out -d
+
+=================================================================
+==2695381==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 2097184 byte(s) in 2 object(s) allocated from:
+    #0 0x55a2ef7ce612 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/bins/reduced.lsan.out+0x30612) (BuildId: d493db54bb44fa8e6010de0ac9594485acae1ffb)
+    #1 0x55a2ef7d1589 in huft_build /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2313:38
+    #2 0x55a2ef7d25d2 in inflate_dynamic /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3347:15
+    #3 0x55a2ef7d26fd in inflate_block /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3440:19
+    #4 0x55a2ef7d2745 in inflate /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3473:15
+    #5 0x55a2ef7d2796 in unzip /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3630:15
+    #6 0x55a2ef7d442f in treat_stdin /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #7 0x55a2ef7d4333 in main /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #8 0x7fa3c396fd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Direct leak of 2097184 byte(s) in 2 object(s) allocated from:
+    #0 0x55a2ef7ce612 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/bins/reduced.lsan.out+0x30612) (BuildId: d493db54bb44fa8e6010de0ac9594485acae1ffb)
+    #1 0x55a2ef7d1589 in huft_build /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2313:38
+    #2 0x55a2ef7d259a in inflate_dynamic /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3332:15
+    #3 0x55a2ef7d26fd in inflate_block /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3440:19
+    #4 0x55a2ef7d2745 in inflate /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3473:15
+    #5 0x55a2ef7d2796 in unzip /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3630:15
+    #6 0x55a2ef7d442f in treat_stdin /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #7 0x55a2ef7d4333 in main /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #8 0x7fa3c396fd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Direct leak of 2097184 byte(s) in 2 object(s) allocated from:
+    #0 0x55a2ef7ce612 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/bins/reduced.lsan.out+0x30612) (BuildId: d493db54bb44fa8e6010de0ac9594485acae1ffb)
+    #1 0x55a2ef7d1589 in huft_build /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2313:38
+    #2 0x55a2ef7d2343 in inflate_dynamic /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3139:15
+    #3 0x55a2ef7d26fd in inflate_block /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3440:19
+    #4 0x55a2ef7d2745 in inflate /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3473:15
+    #5 0x55a2ef7d2796 in unzip /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3630:15
+    #6 0x55a2ef7d442f in treat_stdin /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #7 0x55a2ef7d4333 in main /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #8 0x7fa3c396fd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Indirect leak of 508896 byte(s) in 62 object(s) allocated from:
+    #0 0x55a2ef7ce612 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/bins/reduced.lsan.out+0x30612) (BuildId: d493db54bb44fa8e6010de0ac9594485acae1ffb)
+    #1 0x55a2ef7d1589 in huft_build /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2313:38
+    #2 0x55a2ef7d259a in inflate_dynamic /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3332:15
+    #3 0x55a2ef7d26fd in inflate_block /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3440:19
+    #4 0x55a2ef7d2745 in inflate /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3473:15
+    #5 0x55a2ef7d2796 in unzip /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3630:15
+    #6 0x55a2ef7d442f in treat_stdin /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #7 0x55a2ef7d4333 in main /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #8 0x7fa3c396fd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: LeakSanitizer: 6800448 byte(s) leaked in 68 allocation(s).

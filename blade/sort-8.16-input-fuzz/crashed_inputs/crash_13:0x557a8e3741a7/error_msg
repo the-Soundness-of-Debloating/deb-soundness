@@ -1,0 +1,6 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-input-fuzz/bins/reduced.lsan.out -r /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-input-fuzz/input/radamsa_fuzzed/file7_fuzzed/file7_427
+LeakSanitizer:DEADLYSIGNAL
+==2449236==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x557a8e3741a7 bp 0x7ffe33105890 sp 0x7ffe331057f0 T0)
+==2449236==The signal is caused by a READ memory access.
+==2449236==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.

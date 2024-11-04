@@ -1,0 +1,2 @@
+4685	4685:14;1275:13;3554:9;4993:20;4685:14;	AFL++,radamsa	ASAN,	stack-buffer-overflow,		
+2526	2526:20	AFL++	UBSAN,	runtime error 	left shift of 1 by 31 places cannot be represented,	

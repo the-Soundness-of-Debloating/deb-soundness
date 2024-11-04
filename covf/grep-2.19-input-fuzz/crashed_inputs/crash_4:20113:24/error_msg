@@ -1,0 +1,22 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-input-fuzz/bins/reduced.ubsan.out '.$' /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_129
+grep-2.19.c.reduced.c:20113:24: runtime error: applying zero offset to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:20113:24 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==4115144==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0xffffffffffffffe0 (pc 0x7f20ff1b871a bp 0x7ffc43864430 sp 0x7ffc43864278 T4115144)
+==4115144==The signal is caused by a READ memory access.
+    #0 0x7f20ff1b871a  string/../sysdeps/x86_64/multiarch/memrchr-avx2.S:49
+    #1 0x558c01dd3c0d in grep /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21149:25
+    #2 0x558c01dd2a3a in grepdesc /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21679:15
+    #3 0x558c01dd2587 in grepfile /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21497:17
+    #4 0x558c01dc60c6 in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21773:19
+    #5 0x558c01dc5b35 in main /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23254:24
+    #6 0x7f20ff048d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f20ff048e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x558c01d656a4 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-input-fuzz/bins/reduced.ubsan.out+0x306a4) (BuildId: 83c4f895ba9a8cab78a6605c657535b650e7b015)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memrchr-avx2.S:49 
+==4115144==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 233: 4115137 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-input-fuzz/bins/reduced.ubsan.out .$ /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_129

@@ -1,0 +1,7 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/uniq-8.16-argv-fuzz/bins/reduced.tsan.out
+uniq: invalid option -- 'ó'
+ThreadSanitizer:DEADLYSIGNAL
+==1326012==ERROR: ThreadSanitizer: SEGV on unknown address (pc 0x7f4481eb677f bp 0x7f448209baa0 sp 0x7ffebde7ebc8 T1326012)
+==1326012==The signal is caused by a READ memory access.
+==1326012==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.

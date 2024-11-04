@@ -1,0 +1,55 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.ubsan.out
+bzip2-1.0.5.c.reduced.c:1481:28: runtime error: shift exponent -1 is negative
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1481:28 in 
+bzip2-1.0.5.c.reduced.c:1805:11: runtime error: index 18002 out of bounds for type 'UChar[18002]' (aka 'unsigned char[18002]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1805:11 in 
+bzip2-1.0.5.c.reduced.c:1817:11: runtime error: index 6 out of bounds for type 'UChar[6]' (aka 'unsigned char[6]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1817:11 in 
+bzip2-1.0.5.c.reduced.c:1830:17: runtime error: index 6 out of bounds for type 'UChar[6]' (aka 'unsigned char[6]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1830:17 in 
+bzip2-1.0.5.c.reduced.c:1837:15: runtime error: index 6 out of bounds for type 'UChar[6]' (aka 'unsigned char[6]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1837:15 in 
+bzip2-1.0.5.c.reduced.c:1837:29: runtime error: index 7 out of bounds for type 'UChar[6]' (aka 'unsigned char[6]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1837:29 in 
+bzip2-1.0.5.c.reduced.c:1829:20: runtime error: index 18002 out of bounds for type 'UChar[18002]' (aka 'unsigned char[18002]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1829:20 in 
+bzip2-1.0.5.c.reduced.c:1843:11: runtime error: index 18002 out of bounds for type 'UChar[18002]' (aka 'unsigned char[18002]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1843:11 in 
+bzip2-1.0.5.c.reduced.c:1969:15: runtime error: index 6 out of bounds for type 'UChar[6][258]' (aka 'unsigned char[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1969:15 in 
+bzip2-1.0.5.c.reduced.c:1995:33: runtime error: index 6 out of bounds for type 'UChar[6][258]' (aka 'unsigned char[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1995:33 in 
+bzip2-1.0.5.c.reduced.c:1997:24: runtime error: index 6 out of bounds for type 'UChar[6][258]' (aka 'unsigned char[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1997:24 in 
+bzip2-1.0.5.c.reduced.c:2005:39: runtime error: index 6 out of bounds for type 'Int32[6][258]' (aka 'int[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2005:39 in 
+bzip2-1.0.5.c.reduced.c:2005:56: runtime error: index 6 out of bounds for type 'Int32[6][258]' (aka 'int[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2005:56 in 
+bzip2-1.0.5.c.reduced.c:2006:39: runtime error: index 6 out of bounds for type 'Int32[6][258]' (aka 'int[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2006:39 in 
+bzip2-1.0.5.c.reduced.c:2006:55: runtime error: index 6 out of bounds for type 'UChar[6][258]' (aka 'unsigned char[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2006:55 in 
+bzip2-1.0.5.c.reduced.c:2328:22: runtime error: index 4097 out of bounds for type 'UChar[4096]' (aka 'unsigned char[4096]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2328:22 in 
+bzip2-1.0.5.c.reduced.c:2350:48: runtime error: index 4096 out of bounds for type 'UChar[4096]' (aka 'unsigned char[4096]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2350:48 in 
+bzip2-1.0.5.c.reduced.c:2350:21: runtime error: index 4097 out of bounds for type 'UChar[4096]' (aka 'unsigned char[4096]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2350:21 in 
+bzip2-1.0.5.c.reduced.c:2176:21: runtime error: signed integer overflow: 1073741824 * 2 cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2176:21 in 
+bzip2-1.0.5.c.reduced.c:2186:31: runtime error: index 6 out of bounds for type 'Int32[6][258]' (aka 'int[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2186:31 in 
+bzip2-1.0.5.c.reduced.c:2187:30: runtime error: index 6 out of bounds for type 'Int32[6][258]' (aka 'int[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2187:30 in 
+bzip2-1.0.5.c.reduced.c:2188:30: runtime error: index 6 out of bounds for type 'Int32[6][258]' (aka 'int[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2188:30 in 
+bzip2-1.0.5.c.reduced.c:2434:27: runtime error: index 6 out of bounds for type 'Int32[6][258]' (aka 'int[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2434:27 in 
+bzip2-1.0.5.c.reduced.c:2435:26: runtime error: index 6 out of bounds for type 'Int32[6][258]' (aka 'int[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2435:26 in 
+bzip2-1.0.5.c.reduced.c:2436:26: runtime error: index 6 out of bounds for type 'Int32[6][258]' (aka 'int[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2436:26 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==2811378==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x5600652461e4 (pc 0x5600646f3322 bp 0x7fff5c8f7860 sp 0x7fff5c8f5490 T2811378)
+==2811378==The signal is caused by a READ memory access.

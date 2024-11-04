@@ -1,0 +1,16 @@
+[
+{ crash_loc: 7085, vul_type: "", deb_tool: "blade" }, 
+{ crash_loc: 7209, vul_type: "WRITE memory access,use-of-uninitialized-value,", deb_tool: "blade" }, 
+{ crash_loc: 2309, vul_type: "Direct leak,", deb_tool: "blade" }, 
+{ crash_loc: 2309, vul_type: "Direct leak,", deb_tool: "blade" }, 
+{ crash_loc: 3, vul_type: "Direct leak,", deb_tool: "blade" }, 
+{ crash_loc: 2309, vul_type: "Direct leak,", deb_tool: "blade" }, 
+{ crash_loc: 3, vul_type: "Direct leak,", deb_tool: "blade" }, 
+{ crash_loc: 5910, vul_type: "heap-buffer-overflow,", deb_tool: "blade" }, 
+{ crash_loc: 7209, vul_type: "runtime error ", deb_tool: "blade" }, 
+{ crash_loc: 5871, vul_type: "runtime error ", deb_tool: "blade" }, 
+{ crash_loc: 6666, vul_type: "runtime error ", deb_tool: "blade" }, 
+{ crash_loc: 6187, vul_type: "READ memory access,", deb_tool: "blade" }, 
+{ crash_loc: 7085, vul_type: "READ memory access,", deb_tool: "blade" }, 
+{ crash_loc: 7011, vul_type: "WRITE memory access,", deb_tool: "blade" }, 
+]

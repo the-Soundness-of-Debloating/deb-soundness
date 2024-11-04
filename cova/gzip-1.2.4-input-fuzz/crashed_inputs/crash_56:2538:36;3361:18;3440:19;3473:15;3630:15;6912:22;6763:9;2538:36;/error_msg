@@ -1,0 +1,17 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/bins/reduced.msan.out -d
+==3775904==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55bf74d067b6 in inflate_codes /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2538:36
+    #1 0x55bf74d0af40 in inflate_dynamic /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3361:18
+    #2 0x55bf74d0b730 in inflate_block /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3440:19
+    #3 0x55bf74d0b936 in inflate /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3473:15
+    #4 0x55bf74d0bcf6 in unzip /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3630:15
+    #5 0x55bf74d22453 in treat_stdin /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #6 0x55bf74d1e394 in main /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #7 0x7f8e6f53fd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7f8e6f53fe3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x55bf74c78354 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/bins/reduced.msan.out+0x1f354) (BuildId: 8f9c33d589bbe64513c839c410b9b2e7827414f2)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2538:36 in inflate_codes
+Exiting
+./verify.sh: line 169: 3775902 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/bins/reduced.msan.out -d < /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_1/msan/crashes/id:000048* > sample1.tst

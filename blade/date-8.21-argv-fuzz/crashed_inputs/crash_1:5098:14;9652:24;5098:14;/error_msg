@@ -1,0 +1,48 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/date-8.21-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2542720==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000004 (pc 0x5628f66bcdf3 bp 0x7ffdd37780b0 sp 0x7ffdd3777720 T0)
+==2542720==The signal is caused by a READ memory access.
+==2542720==Hint: address points to the zero page.
+    #0 0x5628f66bcdf3 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/blade/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5098:14
+    #1 0x5628f66c4458 in main /workspace/fuzzing-deb-with-sanitizers/blade/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9652:24
+    #2 0x7f5ebb0a2d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7f5ebb0a2e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x5628f65f33c4 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/date-8.21-argv-fuzz/bins/reduced.asan.out+0x213c4) (BuildId: c41ad4738e0aac8bddcee1212784cc9a6e322610)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5098:14 in parse_datetime
+==2542720==ABORTING
+./verify.sh: line 110: 2542719 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/date-8.21-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==3090442==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000004 (pc 0x559b6e503073 bp 0x7ffcf5325fc0 sp 0x7ffcf5325a70 T3090442)
+==3090442==The signal is caused by a READ memory access.
+==3090442==Hint: address points to the zero page.
+    #0 parse_datetime /workspace/fuzzing-deb-with-sanitizers/blade/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5098:14 (reduced.tsan.out+0xd2073) (BuildId: 0873acc46df564ed81480d525ed9ce5368154754)
+    #1 main /workspace/fuzzing-deb-with-sanitizers/blade/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9652:24 (reduced.tsan.out+0xd57ba) (BuildId: 0873acc46df564ed81480d525ed9ce5368154754)
+    #2 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #3 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #4 _start <null> (reduced.tsan.out+0x213f4) (BuildId: 0873acc46df564ed81480d525ed9ce5368154754)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5098:14 in parse_datetime
+==3090442==ABORTING
+./verify.sh: line 110: 3090440 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/date-8.21-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==3934215==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000004 (pc 0x55c26ba59c13 bp 0x7ffd6ab279b0 sp 0x7ffd6ab27540 T0)
+==3934215==The signal is caused by a READ memory access.
+==3934215==Hint: address points to the zero page.
+    #0 0x55c26ba59c13 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/blade/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5098:14
+    #1 0x55c26ba5c959 in main /workspace/fuzzing-deb-with-sanitizers/blade/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9652:24
+    #2 0x7ff937e43d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7ff937e43e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x55c26ba29514 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/date-8.21-argv-fuzz/bins/reduced.lsan.out+0x6514) (BuildId: f7950d68fd0226df4e078bc3a30ee19bbfda82b9)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5098:14 in parse_datetime
+==3934215==ABORTING

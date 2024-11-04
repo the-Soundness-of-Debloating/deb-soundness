@@ -1,0 +1,15 @@
+[
+{ crash_loc: 7175, vul_type: "", deb_tool: "cov" }, 
+{ crash_loc: 7175, vul_type: "READ memory access,", deb_tool: "cov" }, 
+{ crash_loc: 5870, vul_type: "runtime error ", deb_tool: "cov" }, 
+{ crash_loc: 7175, vul_type: "runtime error ", deb_tool: "cov" }, 
+{ crash_loc: 7175, vul_type: "runtime error ", deb_tool: "cov" }, 
+{ crash_loc: 7175, vul_type: "READ memory access,", deb_tool: "cov" }, 
+{ crash_loc: 6665, vul_type: "runtime error ", deb_tool: "cov" }, 
+{ crash_loc: 7175, vul_type: "READ memory access,", deb_tool: "cov" }, 
+{ crash_loc: 0x55d493b61b8b, vul_type: "READ memory access,", deb_tool: "cov" }, 
+{ crash_loc: 6625, vul_type: "", deb_tool: "cov" }, 
+{ crash_loc: 6625, vul_type: "READ memory access,", deb_tool: "cov" }, 
+{ crash_loc: 6625, vul_type: "READ memory access,", deb_tool: "cov" }, 
+{ crash_loc: 6612, vul_type: "use-of-uninitialized-value,", deb_tool: "cov" }, 
+]

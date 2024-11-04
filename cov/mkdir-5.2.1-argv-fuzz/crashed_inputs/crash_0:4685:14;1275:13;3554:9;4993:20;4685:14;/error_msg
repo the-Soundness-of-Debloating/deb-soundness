@@ -1,0 +1,49 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/mkdir-5.2.1-argv-fuzz/bins/reduced.asan.out
+=================================================================
+==2348570==ERROR: AddressSanitizer: dynamic-stack-buffer-overflow on address 0x7ffd448cbaef at pc 0x559e2bf2a9ff bp 0x7ffd448cb9e0 sp 0x7ffd448cb9d8
+READ of size 1 at 0x7ffd448cbaef thread T0
+    #0 0x559e2bf2a9fe in base_name /workspace/fuzzing-deb-with-sanitizers/cov/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:4685:14
+    #1 0x559e2bf2a8e4 in strip_trailing_slashes /workspace/fuzzing-deb-with-sanitizers/cov/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:1275:13
+    #2 0x559e2bf2d366 in make_path /workspace/fuzzing-deb-with-sanitizers/cov/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:3554:9
+    #3 0x559e2bf2e27e in main /workspace/fuzzing-deb-with-sanitizers/cov/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:4993:20
+    #4 0x7f284feefd8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #5 0x7f284feefe3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #6 0x559e2be6a3e4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/mkdir-5.2.1-argv-fuzz/bins/reduced.asan.out+0x1f3e4) (BuildId: 42b58540df52c0a6733fb3cee633746f3ae5407d)
+
+Address 0x7ffd448cbaef is located in stack of thread T0
+SUMMARY: AddressSanitizer: dynamic-stack-buffer-overflow /workspace/fuzzing-deb-with-sanitizers/cov/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:4685:14 in base_name
+Shadow bytes around the buggy address:
+  0x100028911700: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100028911710: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100028911720: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100028911730: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100028911740: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x100028911750: 00 00 00 00 00 00 00 00 ca ca ca ca 00[07]cb cb
+  0x100028911760: cb cb cb cb 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100028911770: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100028911780: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100028911790: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1000289117a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2348570==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 2348569 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

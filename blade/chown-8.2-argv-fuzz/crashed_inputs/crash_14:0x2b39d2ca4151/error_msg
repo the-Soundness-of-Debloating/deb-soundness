@@ -1,0 +1,9 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.ubsan.out
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==22564==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address (pc 0x2b39d2ca4151 bp 0x7fff33dc13d0 sp 0x7fff33dc1330 T22564)
+==22564==The signal is caused by a READ memory access.
+==22564==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+realloc(): invalid old size
+timeout: the monitored command dumped core
+./verify.sh: line 110: 22563 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

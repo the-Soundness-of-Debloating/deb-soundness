@@ -1,0 +1,72 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.asan.out
+date: unrecognized option '--rfc-1=sec'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==503550==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000008 (pc 0x563a25183c13 bp 0x7ffe1be873b0 sp 0x7ffe1be869e0 T0)
+==503550==The signal is caused by a READ memory access.
+==503550==Hint: address points to the zero page.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x563a25183c13 in strftime_case____0 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:6151:23
+    #1 0x563a251839a5 in fprintftime /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7807:11
+    #2 0x563a2518ac24 in show_date /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9700:5
+    #3 0x563a2518a32b in main /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9671:18
+    #4 0x7ffe1be87b4f  ([stack]+0x1eb4f)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:6151:23 in strftime_case____0
+==503550==ABORTING
+./verify.sh: line 110: 503549 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.msan.out
+MemorySanitizer:DEADLYSIGNAL
+==2982562==ERROR: MemorySanitizer: SEGV on unknown address 0x000000000008 (pc 0x562062f0a816 bp 0x7ffe5c338330 sp 0x7ffe5c337460 T2982562)
+==2982562==The signal is caused by a READ memory access.
+==2982562==Hint: address points to the zero page.
+    #0 0x562062f0a816 in strftime_case____0 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:6151:23
+    #1 0x562062f08e4e in fprintftime /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7807:11
+    #2 0x562062f1eda0 in show_date /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9700:5
+    #3 0x562062f1ddb5 in main /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9671:18
+    #4 0x7fc4fbb6ad8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7fc4fbb6ae3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x562062e65414 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.msan.out+0x20414) (BuildId: cdbe6e30c8a07480a5150a068e3bf6b42481dfe8)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:6151:23 in strftime_case____0
+==2982562==ABORTING
+./verify.sh: line 110: 2982561 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==1091990==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000008 (pc 0x5594f0ccd005 bp 0x7ffd19848670 sp 0x7ffd19847a80 T1091990)
+==1091990==The signal is caused by a READ memory access.
+==1091990==Hint: address points to the zero page.
+    #0 strftime_case____0 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:6151:23 (reduced.tsan.out+0xd7005) (BuildId: 0565467d7526c791053cc00b66e49f782d5a793a)
+    #1 fprintftime /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7807:11 (reduced.tsan.out+0xd6f44) (BuildId: 0565467d7526c791053cc00b66e49f782d5a793a)
+    #2 show_date /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9700:5 (reduced.tsan.out+0xdbba2) (BuildId: 0565467d7526c791053cc00b66e49f782d5a793a)
+    #3 main /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9671:18 (reduced.tsan.out+0xdb769) (BuildId: 0565467d7526c791053cc00b66e49f782d5a793a)
+    #4 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #5 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #6 _start <null> (reduced.tsan.out+0x224c4) (BuildId: 0565467d7526c791053cc00b66e49f782d5a793a)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:6151:23 in strftime_case____0
+==1091990==ABORTING
+./verify.sh: line 110: 1091989 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==583878==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000008 (pc 0x55b0a01c6243 bp 0x7ffc09847330 sp 0x7ffc09846a00 T0)
+==583878==The signal is caused by a READ memory access.
+==583878==Hint: address points to the zero page.
+    #0 0x55b0a01c6243 in strftime_case____0 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:6151:23
+    #1 0x55b0a01c61f5 in fprintftime /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7807:11
+    #2 0x55b0a01ca295 in show_date /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9700:5
+    #3 0x55b0a01c9f75 in main /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9671:18
+    #4 0x7f7e5565ad8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f7e5565ae3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x55b0a0193694 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.lsan.out+0x7694) (BuildId: 4615fdf10abbab321b672d9f307704f7a32435a3)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:6151:23 in strftime_case____0
+==583878==ABORTING

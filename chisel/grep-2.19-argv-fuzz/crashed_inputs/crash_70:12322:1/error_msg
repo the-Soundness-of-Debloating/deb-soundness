@@ -1,0 +1,28 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep: invalid option -- 'Ò'
+grep: invalid option -- '|'
+grep: invalid option -- '-'
+grep: invalid option -- 'â'
+grep: invalid option -- '€'
+grep: invalid option -- 'ƒ'
+grep: invalid option -- 'Ò'
+grep: invalid option -- '|'
+grep: invalid option -- 'ƒ'
+grep: invalid option -- 'Ò'
+grep: invalid option -- '-'
+grep: invalid option -- 'Ò'
+grep: invalid option -- '|'
+grep: invalid option -- '-'
+grep: invalid option -- 'â'
+grep: invalid option -- '€'
+grep: invalid option -- 'ƒ'
+grep: invalid option -- 'Ò'
+grep: invalid option -- '|'
+grep: invalid option -- 'ƒ'
+grep: invalid option -- 'Ò'
+grep: invalid option -- '|'
+grep-2.19.c.reduced.c:12322:1: runtime error: execution reached an unreachable program point
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:12322:1 in 
+timeout: the monitored command dumped core
+./verify.sh: line 108: 4065181 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

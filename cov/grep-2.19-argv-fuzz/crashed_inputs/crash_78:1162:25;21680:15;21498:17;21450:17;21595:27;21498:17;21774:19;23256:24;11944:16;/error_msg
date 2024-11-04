@@ -1,0 +1,24 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.msan.out
+==2210538==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x562f315996c8 in bmexec_trans /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11944:16
+    #1 0x562f315703a1 in bmexec /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11987:19
+    #2 0x562f3156ce9b in kwsexec /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12251:15
+    #3 0x562f315733ec in EGexecute /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12655:25
+    #4 0x562f315aeec1 in do_execute /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20933:17
+    #5 0x562f315add64 in grepbuf /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20997:17
+    #6 0x562f315ac2ca in grep /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21162:25
+    #7 0x562f315a979f in grepdesc /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21680:15
+    #8 0x562f315a89d9 in grepfile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #9 0x562f315ab2fb in grepdirent /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21450:17
+    #10 0x562f315a9246 in grepdesc /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21595:27
+    #11 0x562f315a89d9 in grepfile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #12 0x562f315959b1 in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19
+    #13 0x562f31594801 in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24
+    #14 0x7f927d8ded8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #15 0x7f927d8dee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #16 0x562f314cd3f4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.msan.out+0x1f3f4) (BuildId: d6ec29f2e72ed2facac46b6962e8fbc3e4932da0)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11944:16 in bmexec_trans
+Exiting
+./verify.sh: line 110: 2210537 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

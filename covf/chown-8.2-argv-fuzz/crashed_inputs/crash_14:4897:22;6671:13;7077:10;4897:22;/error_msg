@@ -1,0 +1,33 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==3817==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000050 (pc 0x55d3a6126a0b bp 0x7ffedab020a0 sp 0x7ffedab01da0 T3817)
+==3817==The signal is caused by a READ memory access.
+==3817==Hint: address points to the zero page.
+    #0 fts_read /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4897:22 (reduced.tsan.out+0xd0a0b) (BuildId: fa58c10b1b8ddae83860d633d2add28a8a009946)
+    #1 chown_files /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6671:13 (reduced.tsan.out+0xd21d6) (BuildId: fa58c10b1b8ddae83860d633d2add28a8a009946)
+    #2 main /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10 (reduced.tsan.out+0xd2c89) (BuildId: fa58c10b1b8ddae83860d633d2add28a8a009946)
+    #3 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #4 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #5 _start <null> (reduced.tsan.out+0x21404) (BuildId: fa58c10b1b8ddae83860d633d2add28a8a009946)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4897:22 in fts_read
+==3817==ABORTING
+./verify.sh: line 110:  3816 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==7457==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000050 (pc 0x55f5cb9ac9df bp 0x7ffdd9fa3b50 sp 0x7ffdd9fa3ac0 T0)
+==7457==The signal is caused by a READ memory access.
+==7457==Hint: address points to the zero page.
+    #0 0x55f5cb9ac9df in fts_read /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4897:22
+    #1 0x55f5cb9ad732 in chown_files /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6671:13
+    #2 0x55f5cb9addf2 in main /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10
+    #3 0x2ac72a300d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x2ac72a300e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55f5cb97d5b4 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/bins/reduced.lsan.out+0x65b4) (BuildId: f13e020042ec2681cdbf111dd4ff69c5f5066b99)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4897:22 in fts_read
+==7457==ABORTING

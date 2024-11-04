@@ -1,0 +1,18 @@
+msan:
+++ timeout -k 0.5 0.5 cat foo.tar
+++ /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.msan.out
+==2304857==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55d8bda91587 in flush_read /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:2066:17
+    #1 0x55d8bda832c5 in flush_archive /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:2259:7
+    #2 0x55d8bda82e10 in find_next_block /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:957:9
+    #3 0x55d8bda87c0a in open_archive /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:1520:7
+    #4 0x55d8bdab6d7a in read_and /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:11978:7
+    #5 0x55d8bdad142d in main /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22905:7
+    #6 0x7fd0a56b4d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7fd0a56b4e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55d8bd9fc4c4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.msan.out+0x204c4) (BuildId: 6065d1c193c077c9372994321838b3458585cc17)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:2066:17 in flush_read
+Exiting
+./verify.sh: line 305: 2304856 Broken pipe             timeout -k 0.5 0.5 cat foo.tar
+     2304857 Aborted                 | /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input16_fuzzed/input16_235

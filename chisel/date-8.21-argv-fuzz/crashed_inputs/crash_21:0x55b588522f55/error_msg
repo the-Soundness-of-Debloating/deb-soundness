@@ -1,0 +1,7 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==3732357==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x55b588522f55 bp 0x7ffe95871760 sp 0x7ffe95870f10 T0)
+==3732357==The signal is caused by a READ memory access.
+==3732357==Hint: address points to the zero page.

@@ -1,0 +1,11 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.msan.out
+==894406==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55d06eee4df1 in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14262:11
+    #1 0x7fcc14d59d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7fcc14d59e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x55d06ee4a464 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.msan.out+0x1f464) (BuildId: ca54af32621533d16211c91b5726392b6bfa2b5a)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14262:11 in main
+Exiting
+./verify.sh: line 110: 894402 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

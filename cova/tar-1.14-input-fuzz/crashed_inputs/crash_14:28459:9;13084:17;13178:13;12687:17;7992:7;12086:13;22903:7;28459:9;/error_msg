@@ -1,0 +1,19 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.msan.out xf /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/result/afl_result/reduced/result_2/msan/crashes/id:000034,sig:06,src:000057+000031,time:22324907,execs:50593,op:splice,rep:2 -C foo ./1/10
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.msan.out: This does not look like a tar archive
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.msan.out: Skipping to next header
+==1865578==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5625d10215e8 in set_quoting_style /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:28459:9
+    #1 0x5625d101120e in from_header /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:13084:17
+    #2 0x5625d1012acc in major_from_header /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:13178:13
+    #3 0x5625d0fd99bb in decode_header /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12687:17
+    #4 0x5625d0ff44fa in extract_archive /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:7992:7
+    #5 0x5625d100aa56 in read_and /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12086:13
+    #6 0x5625d1020ccc in main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7
+    #7 0x7f9155e94d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7f9155e94e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x5625d0f3a544 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.msan.out+0x20544) (BuildId: 7dd20a54459ea83b45ce3654eb159a31bca1a93b)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:28459:9 in set_quoting_style
+Exiting
+./verify.sh: line 360: 1865577 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.msan.out xf /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/result/afl_result/reduced/result_2/msan/crashes/id:000034* -C foo ./1/10

@@ -1,0 +1,27 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.asan.out
+sort: invalid option -- ''
+sort: invalid option -- 'ê'
+sort: invalid option -- 'Ä'
+sort: invalid option -- 'Ä'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==993311==ERROR: AddressSanitizer: stack-overflow on address 0x7fffe806cef0 (pc 0x7fffe806cef0 bp 0x7fffe806cea0 sp 0x7fffe806cea8 T0)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x7fffe806cef0  ([stack]+0x1bef0)
+    #1 0x5559df0cb035 in xfopen /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:9019:7
+    #2 0x5559df0ca12e in sort /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13110:13
+    #3 0x5559df0c791a in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14277:7
+    #4 0x7fffe806e467  ([stack]+0x1d467)
+    #5 0x5559df0c63bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #6 0x7fffe806ede7  ([stack]+0x1dde7)
+    #7 0x5559df0c63bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #8 0x7fffe806f767  ([stack]+0x1e767)
+    #9 0x5559df0c63bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #10 0x7fffe80700ff  ([stack]+0x1f0ff)
+    #11 0x5559df0c63bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #12 0x7f1798c60d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: stack-overflow ([stack]+0x1bef0) 
+==993311==ABORTING
+./verify.sh: line 110: 993310 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

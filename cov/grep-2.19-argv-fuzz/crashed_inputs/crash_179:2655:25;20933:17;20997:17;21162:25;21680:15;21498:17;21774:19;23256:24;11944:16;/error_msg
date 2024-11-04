@@ -1,0 +1,21 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.msan.out
+==4089133==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55e0889626c8 in bmexec_trans /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11944:16
+    #1 0x55e0889393a1 in bmexec /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11987:19
+    #2 0x55e088935e9b in kwsexec /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12251:15
+    #3 0x55e08893c3ec in EGexecute /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12655:25
+    #4 0x55e088977ec1 in do_execute /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20933:17
+    #5 0x55e088976d64 in grepbuf /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20997:17
+    #6 0x55e0889752ca in grep /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21162:25
+    #7 0x55e08897279f in grepdesc /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21680:15
+    #8 0x55e0889719d9 in grepfile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #9 0x55e08895e9b1 in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19
+    #10 0x55e08895d801 in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24
+    #11 0x7f80063b6d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #12 0x7f80063b6e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #13 0x55e0888963f4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.msan.out+0x1f3f4) (BuildId: d6ec29f2e72ed2facac46b6962e8fbc3e4932da0)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11944:16 in bmexec_trans
+Exiting
+./verify.sh: line 110: 4089132 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

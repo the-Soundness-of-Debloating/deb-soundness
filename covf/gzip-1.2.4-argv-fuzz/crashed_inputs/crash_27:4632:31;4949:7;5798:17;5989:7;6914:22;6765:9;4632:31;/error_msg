@@ -1,0 +1,34 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/bins/reduced.msan.out
+==2795683==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x560ec590f905 in build_tree___0 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:4632:31
+    #1 0x560ec590e7d4 in flush_block /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:4949:7
+    #2 0x560ec59170e3 in deflate /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:5798:17
+    #3 0x560ec591874f in zip /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:5989:7
+    #4 0x560ec591ca3f in treat_stdin /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6914:22
+    #5 0x560ec591a9fb in main /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6765:9
+    #6 0x7f18d5242d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f18d5242e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x560ec5878334 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/bins/reduced.msan.out+0x1f334) (BuildId: e930221f38a59795f733ee4ccc364b2cbd21ace5)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:4632:31 in build_tree___0
+Exiting
+./verify.sh: line 171: 2795680 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_53
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==697025==ERROR: LeakSanitizer: SEGV on unknown address 0x5614167e1080 (pc 0x561615e62bd0 bp 0x7ffd31170a40 sp 0x7ffd311709f0 T0)
+==697025==The signal is caused by a WRITE memory access.
+    #0 0x561615e62bd0 in build_tree___0 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:4632:31
+    #1 0x561615e628d6 in flush_block /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:4949:7
+    #2 0x561615e640a1 in deflate /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:5798:17
+    #3 0x561615e643fb in zip /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:5989:7
+    #4 0x561615e65032 in treat_stdin /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6914:22
+    #5 0x561615e64a31 in main /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6765:9
+    #6 0x7efe3a801d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7efe3a801e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x561615e32514 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/bins/reduced.lsan.out+0x6514) (BuildId: 0e198d9751237faa4a94d4c38de4ba66d8233b9c)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:4632:31 in build_tree___0
+==697025==ABORTING

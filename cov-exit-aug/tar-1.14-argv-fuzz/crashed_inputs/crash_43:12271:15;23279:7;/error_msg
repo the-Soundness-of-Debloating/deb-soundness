@@ -1,0 +1,17 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==1734459==ERROR: LeakSanitizer: SEGV on unknown address 0x000300c81150 (pc 0x7f437f3f8ebc bp 0x7f437f461780 sp 0x7ffc1f7f6cd8 T0)
+==1734459==The signal is caused by a READ memory access.
+    #0 0x7f437f3f8ebc  (/lib/x86_64-linux-gnu/libc.so.6+0x1b1ebc) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #1 0x7f437f2bdd30  (/lib/x86_64-linux-gnu/libc.so.6+0x76d30) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #2 0x7f437f2a76c9 in fprintf (/lib/x86_64-linux-gnu/libc.so.6+0x606c9) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #3 0x558c70316333 in read_and /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:12271:15
+    #4 0x558c7031a77e in main /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:23279:7
+    #5 0x7f437f270d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #6 0x7f437f270e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #7 0x558c702df7c4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.lsan.out+0xb7c4) (BuildId: 6b9c645010b13ca8f876c74673edd4ddf27e6a34)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV (/lib/x86_64-linux-gnu/libc.so.6+0x1b1ebc) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0) 
+==1734459==ABORTING

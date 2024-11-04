@@ -1,0 +1,20 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2506606==ERROR: AddressSanitizer: SEGV on unknown address (pc 0x55c8cb4a6050 bp 0x7ffdc9731870 sp 0x7ffdc9731020 T0)
+==2506606==The signal is caused by a READ memory access.
+==2506606==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x55c8cb4a6050 in strcmp (/workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-argv-fuzz/bins/reduced.asan.out+0x38050) (BuildId: 543fd07cfdc65268a1cbbbe894db1a66ed1a1b99)
+    #1 0x55c8cb553c51 in stream_open /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:8996:13
+    #2 0x55c8cb551ffc in xfopen /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:9015:11
+    #3 0x55c8cb55180d in sort /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13110:13
+    #4 0x55c8cb5507b5 in main /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14277:7
+    #5 0x7fd91e9afd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7fd91e9afe3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x55c8cb48e494 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-argv-fuzz/bins/reduced.asan.out+0x20494) (BuildId: 543fd07cfdc65268a1cbbbe894db1a66ed1a1b99)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-argv-fuzz/bins/reduced.asan.out+0x38050) (BuildId: 543fd07cfdc65268a1cbbbe894db1a66ed1a1b99) in strcmp
+==2506606==ABORTING
+./verify.sh: line 110: 2506604 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

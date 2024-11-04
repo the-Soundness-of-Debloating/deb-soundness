@@ -1,0 +1,13 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/bins/reduced.msan.out
+==3012559==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x559c693f268a in find_field /workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6612:13
+    #1 0x559c693f185b in check_file /workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6890:33
+    #2 0x559c693f01ca in main /workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7306:7
+    #3 0x7feaf6ef9d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7feaf6ef9e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x559c69364384 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/bins/reduced.msan.out+0x1f384) (BuildId: 6496c78e3588d07b5d3594c6e1ab411334e1c519)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6612:13 in find_field
+Exiting
+./verify.sh: line 110: 3012554 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

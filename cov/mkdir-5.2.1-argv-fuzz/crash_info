@@ -1,0 +1,4 @@
+[
+{ crash_loc: 4685, vul_type: "stack-buffer-overflow,", deb_tool: "cov" }, 
+{ crash_loc: 2526, vul_type: "runtime error ", deb_tool: "cov" }, 
+]

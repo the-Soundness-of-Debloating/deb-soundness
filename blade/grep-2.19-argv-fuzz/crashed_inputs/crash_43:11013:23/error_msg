@@ -1,0 +1,32 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep: invalid option -- 'À'
+grep: invalid option -- ' '
+grep-2.19.c.reduced.c:10876:31: runtime error: pointer index expression with base 0x7f7c0adb0ec4 overflowed to 0x8d00670bfcac28a4
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:10876:31 in 
+grep-2.19.c.reduced.c:11007:37: runtime error: applying non-zero offset 10160234060529281232 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:11007:37 in 
+grep-2.19.c.reduced.c:11013:23: runtime error: member access within misaligned address 0x8d00670bfcac28a4 for type 'struct tree', which requires 8 byte alignment
+0x8d00670bfcac28a4: note: pointer points here
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:11013:23 in 
+grep-2.19.c.reduced.c:11013:23: runtime error: store to misaligned address 0x8d00670bfcac28a4 for type 'struct tree *', which requires 8 byte alignment
+0x8d00670bfcac28a4: note: pointer points here
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:11013:23 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3435716==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address (pc 0x55ff5aa2ef83 bp 0x7ffdcbc5de40 sp 0x7ffdcbc5d440 T3435716)
+==3435716==The signal is caused by a READ memory access.
+==3435716==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x55ff5aa2ef83 in kwsincr /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11013:29
+    #1 0x55ff5aa2d5f2 in Fcompile /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:10578:11
+    #2 0x55ff5aa3dd70 in main /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #3 0x7f7c0ac00d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f7c0ac00e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55ff5a9ce814 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x3f814) (BuildId: 4bed7034f56727d9d48074d3a0714575dc9c5423)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11013:29 in kwsincr
+==3435716==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 3435713 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

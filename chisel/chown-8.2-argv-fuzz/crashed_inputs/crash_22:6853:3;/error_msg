@@ -1,0 +1,18 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/bins/reduced.ubsan.out
+argv-fuzz-inl.h:30:5: runtime error: index 1000 out of bounds for type 'char *[1000]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior argv-fuzz-inl.h:30:5 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==29629==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x55a5c7163000 (pc 0x55a5c67edee0 bp 0x7ffde0bff2c0 sp 0x7ffde0bff1e0 T29629)
+==29629==The signal is caused by a WRITE memory access.
+    #0 0x55a5c67edee0 in afl_init_argv /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./argv-fuzz-inl.h:30:13
+    #1 0x55a5c67eda41 in main /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6853:3
+    #2 0x2ba6cccecd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x2ba6cccece3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x55a5c67c4424 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/bins/reduced.ubsan.out+0x6424) (BuildId: c7c418d98a22f824eda696b85ef1d300135453ea)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./argv-fuzz-inl.h:30:13 in afl_init_argv
+==29629==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 29628 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

@@ -1,0 +1,13 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep-2.19.c.reduced.c:20032:23: runtime error: pointer index expression with base 0x55e598010000 overflowed to 0xffffd5e78deceb40
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:20032:23 in 
+grep-2.19.c.reduced.c:21143:22: runtime error: pointer index expression with base 0xffffd5e78deceb40 overflowed to 0x55e598010000
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:21143:22 in 
+grep-2.19.c.reduced.c:21151:14: runtime error: applying non-zero offset 1 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:21151:14 in 
+grep-2.19.c.reduced.c:7748:30: runtime error: addition of unsigned offset to 0x55e5980054d0 overflowed to 0x55e5980054cf
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:7748:30 in 
+free(): invalid pointer
+timeout: the monitored command dumped core
+./verify.sh: line 110: 2690431 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

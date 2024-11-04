@@ -1,0 +1,12 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.msan.out
+tar: invalid option -- '\'
+tar: invalid option -- '\'
+tar: invalid option -- 'n'
+tar: invalid option -- '\'
+MemorySanitizer:DEADLYSIGNAL
+==548501==ERROR: MemorySanitizer: SEGV on unknown address (pc 0x7f809f95c77f bp 0x7f809fb41aa0 sp 0x7fff0b386978 T548501)
+==548501==The signal is caused by a READ memory access.
+==548501==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+MemorySanitizer:DEADLYSIGNAL
+MemorySanitizer: nested bug in the same thread, aborting.

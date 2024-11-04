@@ -1,0 +1,32 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep: invalid option -- ''
+grep-2.19.c.reduced.c:15723:27: runtime error: addition of unsigned offset to 0x556f797f6170 overflowed to 0x556f797f6168
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:15723:27 in 
+grep-2.19.c.reduced.c:15732:27: runtime error: addition of unsigned offset to 0x556f797f6170 overflowed to 0x556f797f6168
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:15732:27 in 
+grep-2.19.c.reduced.c:15735:27: runtime error: addition of unsigned offset to 0x556f797f6170 overflowed to 0x556f797f6168
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:15735:27 in 
+grep-2.19.c.reduced.c:18762:20: runtime error: member access within null pointer of type 'must' (aka 'struct must')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:18762:20 in 
+grep-2.19.c.reduced.c:18762:20: runtime error: load of null pointer of type 'char **'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:18762:20 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==4058245==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x556f7726cb67 bp 0x7ffd00a3efe0 sp 0x7ffd00a3eef0 T4058245)
+==4058245==The signal is caused by a READ memory access.
+==4058245==Hint: address points to the zero page.
+    #0 0x556f7726cb67 in resetmust /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18762:20
+    #1 0x556f7725c85e in dfamust /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18921:9
+    #2 0x556f77242762 in dfacomp /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18347:7
+    #3 0x556f772423b8 in GEAcompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12582:7
+    #4 0x556f77270170 in Ecompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21892:7
+    #5 0x556f7726357d in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #6 0x7f88356fdd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f88356fde3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x556f77204664 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x2f664) (BuildId: 548678bb0b6577364ae598818988dcfaaab153e2)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18762:20 in resetmust
+==4058245==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 4058244 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

@@ -1,0 +1,70 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.tsan.out
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+==================
+WARNING: ThreadSanitizer: heap-use-after-free (pid=1425338)
+  Write of size 8 at 0x7b1400000058 by main thread:
+    #0 decode_options /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21937:44 (reduced.tsan.out+0xd0479) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+    #1 main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7 (reduced.tsan.out+0xcfbe9) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+
+  Previous write of size 8 at 0x7b1400000058 by main thread:
+    #0 realloc <null> (reduced.tsan.out+0x4d733) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+    #1 xnrealloc_inline /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30088:28 (reduced.tsan.out+0xd1536) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+    #2 xrealloc /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30101:13 (reduced.tsan.out+0xcf4ba) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+    #3 decode_options /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21929:26 (reduced.tsan.out+0xd03c6) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+    #4 main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7 (reduced.tsan.out+0xcfbe9) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+
+SUMMARY: ThreadSanitizer: heap-use-after-free /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21937:44 in decode_options
+==================
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- ' '
+(null): invalid option -- '.'
+ThreadSanitizer:DEADLYSIGNAL
+==1425338==ERROR: ThreadSanitizer: SEGV on unknown address (pc 0x7f87590d777f bp 0x7f87592bcaa0 sp 0x7fff9aab3938 T1425338)
+==1425338==The signal is caused by a READ memory access.
+==1425338==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 setlocale locale/setlocale.c:236:7 (libc.so.6+0x3677f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 setlocale <null> (reduced.tsan.out+0x68608) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+    #2 main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22823:7 (reduced.tsan.out+0xcfb69) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+    #3 <null> /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:17491:5 (reduced.tsan.out+0xcfa8f) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV locale/setlocale.c:236:7 in setlocale
+==1425338==ABORTING
+./verify.sh: line 302: 1425336 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input2_fuzzed/input2_120

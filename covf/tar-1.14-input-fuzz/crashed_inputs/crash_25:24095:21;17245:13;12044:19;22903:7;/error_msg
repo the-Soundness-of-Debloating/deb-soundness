@@ -1,0 +1,55 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/bins/reduced.msan.out xf /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file14_fuzzed/file14_386 -X /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file12_fuzzed/file12_386 -X /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file15_fuzzed/file15_386
+MemorySanitizer:DEADLYSIGNAL
+==2134807==ERROR: MemorySanitizer: SEGV on unknown address (pc 0x7fcec2a299af bp 0x7ffc94729270 sp 0x7ffc94728840 T2134807)
+==2134807==The signal is caused by a READ memory access.
+==2134807==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x7fcec2a299af in internal_fnmatch posix/fnmatch_loop.c:54:13
+    #1 0x557f58709dea in excluded_filename /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24095:21
+    #2 0x557f586dad47 in excluded_name /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:17245:13
+    #3 0x557f586f344d in read_and /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12044:19
+    #4 0x557f5870d25c in main /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7
+    #5 0x7fcec2960d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7fcec2960e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x557f586384c4 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/bins/reduced.msan.out+0x204c4) (BuildId: 36b4af9001bf6f6f9f3720818ab6f356e791274d)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV posix/fnmatch_loop.c:54:13 in internal_fnmatch
+==2134807==ABORTING
+./verify.sh: line 360: 2134804 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/bins/reduced.msan.out xf /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file14_fuzzed/file14_386 -X /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file12_fuzzed/file12_386 -X /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file15_fuzzed/file15_386
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/bins/reduced.tsan.out xf /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file13_fuzzed/file13_72 foo bar -X /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file12_fuzzed/file12_72
+ThreadSanitizer:DEADLYSIGNAL
+==3887303==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000001 (pc 0x7f7c4c5079af bp 0x7ffe3099c880 sp 0x7ffe3099bea0 T3887303)
+==3887303==The signal is caused by a READ memory access.
+==3887303==Hint: address points to the zero page.
+    #0 internal_fnmatch posix/fnmatch_loop.c:54:13 (libc.so.6+0xf29af) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 excluded_filename /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24095:21 (reduced.tsan.out+0xe2c54) (BuildId: 5c2594d2a485c7014f541c152f4555f0f04c7827)
+    #2 excluded_name /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:17245:13 (reduced.tsan.out+0xd70b8) (BuildId: 5c2594d2a485c7014f541c152f4555f0f04c7827)
+    #3 read_and /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12044:19 (reduced.tsan.out+0xdd207) (BuildId: 5c2594d2a485c7014f541c152f4555f0f04c7827)
+    #4 main /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7 (reduced.tsan.out+0xe3a10) (BuildId: 5c2594d2a485c7014f541c152f4555f0f04c7827)
+    #5 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #6 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 _start <null> (reduced.tsan.out+0x224e4) (BuildId: 5c2594d2a485c7014f541c152f4555f0f04c7827)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV posix/fnmatch_loop.c:54:13 in internal_fnmatch
+==3887303==ABORTING
+./verify.sh: line 360: 3887300 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/bins/reduced.tsan.out xf /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file13_fuzzed/file13_72 foo bar -X /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file12_fuzzed/file12_72
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/bins/reduced.lsan.out xf /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file13_fuzzed/file13_72 foo bar -X /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file12_fuzzed/file12_72
+LeakSanitizer:DEADLYSIGNAL
+==1636596==ERROR: LeakSanitizer: SEGV on unknown address 0x600072616200 (pc 0x7f36b9fa39af bp 0x7ffd3da8bff0 sp 0x7ffd3da8b660 T0)
+==1636596==The signal is caused by a READ memory access.
+    #0 0x7f36b9fa39af in internal_fnmatch posix/fnmatch_loop.c:54:13
+    #1 0x556bedf2f9d3 in excluded_filename /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24095:21
+    #2 0x556bedf2816b in excluded_name /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:17245:13
+    #3 0x556bedf2bfc5 in read_and /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12044:19
+    #4 0x556bedf302fd in main /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7
+    #5 0x7f36b9edad8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7f36b9edae3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x556bedef57c4 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/bins/reduced.lsan.out+0xb7c4) (BuildId: e90db25eaf3fb7621d72660af4e69b09b459a494)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV posix/fnmatch_loop.c:54:13 in internal_fnmatch
+==1636596==ABORTING

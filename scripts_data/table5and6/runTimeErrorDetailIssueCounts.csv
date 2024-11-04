@@ -1,0 +1,15 @@
+ERROR_DETAIL,Runtime Error Count,Percentage
+index .* out of bounds,292,40.3315%
+member access within null pointer,17,2.3481%
+load of null pointer,14,1.9337%
+signed integer overflow,58,8.0110%
+member access within misaligned address,43,5.9392%
+applying non-zero offset .* to null pointer,41,5.6630%
+null pointer passed as argument,29,4.0055%
+load of value .* not a valid value,10,1.3812%
+store to misaligned address,29,4.0055%
+left shift of 1 by 31 places cannot be represented,22,3.0387%
+negation of .* cannot be represented,9,1.2431%
+execution reached an unreachable program point,13,1.7956%
+store to null pointer,5,0.6906%
+Others,142,19.61%

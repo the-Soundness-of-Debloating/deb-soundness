@@ -1,0 +1,30 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.asan.out
+grep: invalid option -- 'j'
+grep: invalid option -- '\'
+grep: invalid option -- 'è'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2687217==ERROR: AddressSanitizer: stack-overflow on address 0x7ffcef119ec0 (pc 0x7ffcef119ec0 bp 0x7ffcef119b90 sp 0x7ffcef119b98 T0)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x7ffcef119ec0  ([stack]+0x1eec0)
+    #1 0x55a12dc69b5b in lex /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15023:13
+    #2 0x55a12dc84037 in closure /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15882:21
+    #3 0x55a12dc83d28 in branch /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15896:7
+    #4 0x55a12dc6a5ff in regexp /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15936:11
+    #5 0x55a12dc682c5 in dfaparse /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15973:7
+    #6 0x55a12dc64cf9 in dfacomp /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18346:7
+    #7 0x55a12dc64abb in GEAcompile /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12582:7
+    #8 0x55a12dc86d71 in Ecompile /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21892:7
+    #9 0x55a12dc7c469 in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #10 0x7ffcef11a827  ([stack]+0x1f827)
+    #11 0x55a12dc7bcbe in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23082:9
+    #12 0x7ffcef11abc7  ([stack]+0x1fbc7)
+    #13 0x55a12dc7bcbe in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23082:9
+    #14 0x7ffcef11af7f  ([stack]+0x1ff7f)
+    #15 0x55a12dc7bcbe in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23082:9
+    #16 0x7f61163e3d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: stack-overflow ([stack]+0x1eec0) 
+==2687217==ABORTING
+./verify.sh: line 110: 2687213 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

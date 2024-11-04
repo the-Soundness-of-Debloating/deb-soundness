@@ -1,0 +1,26 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.msan.out
+date: invalid option -- 'ï'
+date: invalid option -- '»'
+date: invalid option -- '¾'
+date: invalid option -- 'â'
+date: invalid option -- '€'
+date: invalid option -- 'ï'
+date: invalid option -- '»'
+date: invalid option -- '¾'
+date: invalid option -- '‚'
+date: invalid option -- '-'
+MemorySanitizer:DEADLYSIGNAL
+==1875881==ERROR: MemorySanitizer: SEGV on unknown address 0x55d713d7d82f (pc 0x55d6d83a41a4 bp 0x7fff7c3212f0 sp 0x7fff7c320440 T1875881)
+==1875881==The signal is caused by a READ memory access.
+    #0 0x55d6d83a41a4 in yyparse /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3419:16
+    #1 0x55d6d83b00cd in parse_datetime /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15
+    #2 0x55d6d83bc6ee in main /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #3 0x7efc1e914d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7efc1e914e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55d6d831a3b4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.msan.out+0x1f3b4) (BuildId: 74aa4cd2da783eb62645fdc5258c309d02372771)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3419:16 in yyparse
+==1875881==ABORTING
+./verify.sh: line 110: 1875880 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

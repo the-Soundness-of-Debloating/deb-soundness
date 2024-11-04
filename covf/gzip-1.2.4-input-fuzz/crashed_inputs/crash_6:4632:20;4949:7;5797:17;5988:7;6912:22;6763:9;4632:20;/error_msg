@@ -1,0 +1,20 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/bins/reduced.asan.out -c
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==3466958==ERROR: AddressSanitizer: SEGV on unknown address 0x560d117dd22d (pc 0x560d10ddad4c bp 0x7fffb3639490 sp 0x7fffb36392b0 T0)
+==3466958==The signal is caused by a WRITE memory access.
+    #0 0x560d10ddad4c in build_tree___0 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4632:20
+    #1 0x560d10dda773 in flush_block /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4949:7
+    #2 0x560d10dde161 in deflate /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5797:17
+    #3 0x560d10ddeb60 in zip /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5988:7
+    #4 0x560d10ddfe3b in treat_stdin /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #5 0x560d10ddf84b in main /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #6 0x7fa9a423dd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7fa9a423de3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x560d10d143a4 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/bins/reduced.asan.out+0x213a4) (BuildId: dc79dee86a3990e0df887a3afe4a2fbb581dc20b)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4632:20 in build_tree___0
+==3466958==ABORTING
+./verify.sh: line 169: 3466956 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/bins/reduced.asan.out -c < /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_0/asan/crashes/id:000023* > sample1.gz

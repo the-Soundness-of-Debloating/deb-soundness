@@ -1,0 +1,30 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/mkdir-5.2.1-argv-fuzz/bins/reduced.asan.out
+/workspace/fuzzing-deb-with-sanitizers/cova/mkdir-5.2.1-argv-fuzz/bins/reduced.asan.out: invalid mode `-m-m-m-m-m-m-m-m-m-m-m-m'
+
+=================================================================
+==3712486==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 24 byte(s) in 1 object(s) allocated from:
+    #0 0x56511546ce6e in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/cova/mkdir-5.2.1-argv-fuzz/bins/reduced.asan.out+0xa5e6e) (BuildId: 17c3f32209e910727b29e5d2ca62da90231ef7ee)
+    #1 0x5651154acb9a in mode_compile /workspace/fuzzing-deb-with-sanitizers/cova/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:3051:26
+    #2 0x5651154b0b9b in main /workspace/fuzzing-deb-with-sanitizers/cova/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:4963:19
+    #3 0x7fc6ae3e7d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+
+SUMMARY: AddressSanitizer: 24 byte(s) leaked in 1 allocation(s).
+timeout: the monitored command dumped core
+./verify.sh: line 110: 3712485 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/mkdir-5.2.1-argv-fuzz/bins/reduced.lsan.out
+/workspace/fuzzing-deb-with-sanitizers/cova/mkdir-5.2.1-argv-fuzz/bins/reduced.lsan.out: invalid mode `-m-m-m-m-m-m-m-m-m-m-m-m'
+
+=================================================================
+==4015220==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 24 byte(s) in 1 object(s) allocated from:
+    #0 0x56468075c772 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/cova/mkdir-5.2.1-argv-fuzz/bins/reduced.lsan.out+0x30772) (BuildId: 83bbefbf0452c9731cde5e5255f76ed7a564dc62)
+    #1 0x5646807615b7 in mode_compile /workspace/fuzzing-deb-with-sanitizers/cova/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:3051:26
+    #2 0x564680762fb4 in main /workspace/fuzzing-deb-with-sanitizers/cova/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:4963:19
+    #3 0x7ff79ea47d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+
+SUMMARY: LeakSanitizer: 24 byte(s) leaked in 1 allocation(s).

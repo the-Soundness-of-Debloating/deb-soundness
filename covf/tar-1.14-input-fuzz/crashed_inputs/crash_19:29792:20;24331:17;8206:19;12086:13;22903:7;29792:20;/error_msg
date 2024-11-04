@@ -1,0 +1,20 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/bins/reduced.msan.out xzf /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file11_fuzzed/file11_392
+
+gzip: stdin: invalid compressed data--crc error
+
+gzip: stdin: invalid compressed data--length error
+Uninitialized bytes in __interceptor_write at offset 11 inside [0x726000000200, 12)
+==1758470==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x559e21cd23ad in safe_write /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:29792:20
+    #1 0x559e21ca26e5 in full_write /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24331:17
+    #2 0x559e21c98500 in extract_archive /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:8206:19
+    #3 0x559e21ca9966 in read_and /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12086:13
+    #4 0x559e21cc325c in main /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7
+    #5 0x7fd56c358d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7fd56c358e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x559e21bee4c4 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/bins/reduced.msan.out+0x204c4) (BuildId: 36b4af9001bf6f6f9f3720818ab6f356e791274d)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:29792:20 in safe_write
+Exiting
+./verify.sh: line 360: 1758465 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/bins/reduced.msan.out xzf /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file11_fuzzed/file11_392

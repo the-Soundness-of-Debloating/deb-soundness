@@ -1,0 +1,24 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+date-8.21.c.reduced.c:4188:32: runtime error: index -28 out of bounds for type 'const yytype_int8[26]' (aka 'const signed char[26]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4188:32 in 
+date-8.21.c.reduced.c:4194:26: runtime error: index -28 out of bounds for type 'const yytype_int8[26]' (aka 'const signed char[26]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4194:26 in 
+date-8.21.c.reduced.c:3476:21: runtime error: applying non-zero offset 18446744073709551560 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:3476:21 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==1111786==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0xffffffffffffffc8 (pc 0x7fc22a6e07cd bp 0x7ffcf153f320 sp 0x7ffcf153da88 T1111786)
+==1111786==The signal is caused by a READ memory access.
+    #0 0x7fc22a6e07cd  string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:317
+    #1 0x55f3c591c05c in yyparse /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3476:13
+    #2 0x55f3c5929035 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15
+    #3 0x55f3c5930212 in main /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #4 0x7fc22a569d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7fc22a569e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x55f3c58f25e4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.ubsan.out+0x145e4) (BuildId: b79d2b1295781bdc1a54b51e0f481a8d966b40ec)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:317 
+==1111786==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 1111785 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

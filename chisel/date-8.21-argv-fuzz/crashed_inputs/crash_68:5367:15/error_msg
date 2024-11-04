@@ -1,0 +1,27 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+date-8.21.c.reduced.c:4191:24: runtime error: index -93 out of bounds for type 'const yytype_int8[113]' (aka 'const signed char[113]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4191:24 in 
+date-8.21.c.reduced.c:5222:12: runtime error: load of value 18, which is not a valid value for type '_Bool'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:5222:12 in 
+date-8.21.c.reduced.c:5367:15: runtime error: signed integer overflow: 19502208000 + 9223372035893713572 cannot be represented in type 'long'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:5367:15 in 
+date-8.21.c.reduced.c:7541:37: runtime error: member access within null pointer of type 'const struct tm'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:7541:37 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==2062653==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000014 (pc 0x5598be7bc0c4 bp 0x7ffccdcd9bb0 sp 0x7ffccdcd8f40 T2062653)
+==2062653==The signal is caused by a READ memory access.
+==2062653==Hint: address points to the zero page.
+    #0 0x5598be7bc0c4 in strftime_case____0 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7541:45
+    #1 0x5598be7bab75 in fprintftime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7807:11
+    #2 0x5598be7bd485 in show_date /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9700:5
+    #3 0x5598be7bcdd3 in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9671:18
+    #4 0x7fb242cbbd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7fb242cbbe3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x5598be7864d4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.ubsan.out+0xe4d4) (BuildId: a503b23e0911d3d9a3bc41498abe22d2bae3c8f6)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7541:45 in strftime_case____0
+==2062653==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 2062652 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

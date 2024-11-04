@@ -1,0 +1,38 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/bins/reduced.msan.out
+==3289185==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5573c10cbfa7 in main /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7208:35
+    #1 0x7fb1ede0bd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7fb1ede0be3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x5573c10432f4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/bins/reduced.msan.out+0x1e2f4) (BuildId: c27ea5853feae28fd16baced07256244779551e0)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7208:35 in main
+Exiting
+./verify.sh: line 107: 3289184 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==3655827==ERROR: ThreadSanitizer: SEGV on unknown address 0x7fffff618f90 (pc 0x5586aabb11bd bp 0x7fffff5db6d0 sp 0x7fffff5db600 T3655827)
+==3655827==The signal is caused by a WRITE memory access.
+    #0 main /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7208:35 (reduced.tsan.out+0xce1bd) (BuildId: b396a53a8ba2aa78c5a4cd36f7a63e97034dab5f)
+    #1 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #2 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #3 _start <null> (reduced.tsan.out+0x21384) (BuildId: b396a53a8ba2aa78c5a4cd36f7a63e97034dab5f)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7208:35 in main
+==3655827==ABORTING
+./verify.sh: line 107: 3655826 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==4022580==ERROR: LeakSanitizer: SEGV on unknown address 0x7ffdb7255078 (pc 0x5585a95a223b bp 0x7ffdb72150d0 sp 0x7ffdb7215030 T0)
+==4022580==The signal is caused by a WRITE memory access.
+    #0 0x5585a95a223b in main /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7208:35
+    #1 0x7fd186d97d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7fd186d97e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x5585a9574414 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/bins/reduced.lsan.out+0x5414) (BuildId: 52856f359ef5f58ed786abe5d683133aecfc781e)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7208:35 in main
+==4022580==ABORTING

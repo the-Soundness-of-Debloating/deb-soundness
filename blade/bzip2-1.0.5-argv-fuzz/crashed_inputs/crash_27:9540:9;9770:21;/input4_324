@@ -1,0 +1,10 @@
+-d train_input/traind trbz2.ref 
+-d train_input/traind/sample1.bz2.ref 
+-d train_input/traind/sample1.bz2.ref 
+-d train_input/traind/sample1.bz2.ref 
+-d train_input/traind/sample1.bz2.ref 
+-d traind/sample1.bz2.ref 
+-d train_input/traind/sample1.bz2.ref 
+-d train_input/traind/sample1.bz2.ref 
+-d train_input/traind/sample1.bz2.ref 
+-d train_input/traind/󠁪sample1.bz2.ref 

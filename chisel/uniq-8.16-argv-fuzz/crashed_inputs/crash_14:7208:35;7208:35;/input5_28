@@ -1,0 +1,2 @@
+-f 6 train_input/file/data.txt
+-f 3 train_input/file/data.txt

@@ -1,0 +1,115 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out
+gzip-1.2.4.c.reduced.c:3183:35: runtime error: member access within misaligned address 0x561857ca4341 for type 'struct huft', which requires 8 byte alignment
+0x561857ca4341: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3183:35 in 
+gzip-1.2.4.c.reduced.c:3186:35: runtime error: member access within misaligned address 0x561857ca4341 for type 'struct huft', which requires 8 byte alignment
+0x561857ca4341: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3186:35 in 
+gzip-1.2.4.c.reduced.c:3186:35: runtime error: member access within misaligned address 0x561857ca4349 for type 'union __anonunion_v_25', which requires 8 byte alignment
+0x561857ca4349: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3186:35 in 
+gzip-1.2.4.c.reduced.c:3186:37: runtime error: load of misaligned address 0x561857ca4349 for type 'ush' (aka 'unsigned short'), which requires 8 byte alignment
+0x561857ca4349: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3186:37 in 
+gzip-1.2.4.c.reduced.c:2506:30: runtime error: member access within misaligned address 0x561857ca4341 for type 'struct huft', which requires 8 byte alignment
+0x561857ca4341: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:2506:30 in 
+gzip-1.2.4.c.reduced.c:2506:30: runtime error: load of misaligned address 0x561857ca4341 for type 'uch' (aka 'unsigned char'), which requires 8 byte alignment
+0x561857ca4341: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:2506:30 in 
+gzip-1.2.4.c.reduced.c:2547:23: runtime error: member access within misaligned address 0x561857ca4341 for type 'struct huft', which requires 8 byte alignment
+0x561857ca4341: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:2547:23 in 
+gzip-1.2.4.c.reduced.c:2548:31: runtime error: member access within misaligned address 0x561857ca4341 for type 'struct huft', which requires 8 byte alignment
+0x561857ca4341: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:2548:31 in 
+gzip-1.2.4.c.reduced.c:2585:32: runtime error: member access within misaligned address 0x561857ca4341 for type 'struct huft', which requires 8 byte alignment
+0x561857ca4341: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:2585:32 in 
+gzip-1.2.4.c.reduced.c:2585:32: runtime error: member access within misaligned address 0x561857ca4349 for type 'union __anonunion_v_25', which requires 8 byte alignment
+0x561857ca4349: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:2585:32 in 
+gzip-1.2.4.c.reduced.c:2585:34: runtime error: load of misaligned address 0x561857ca4349 for type 'ush' (aka 'unsigned short'), which requires 8 byte alignment
+0x561857ca4349: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:2585:34 in 
+gzip-1.2.4.c.reduced.c:2611:32: runtime error: member access within misaligned address 0x561857ca4341 for type 'struct huft', which requires 8 byte alignment
+0x561857ca4341: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:2611:32 in 
+gzip-1.2.4.c.reduced.c:2611:32: runtime error: load of misaligned address 0x561857ca4341 for type 'uch' (aka 'unsigned char'), which requires 8 byte alignment
+0x561857ca4341: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:2611:32 in 
+gzip-1.2.4.c.reduced.c:2652:25: runtime error: member access within misaligned address 0x561857ca4341 for type 'struct huft', which requires 8 byte alignment
+0x561857ca4341: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:2652:25 in 
+gzip-1.2.4.c.reduced.c:2653:33: runtime error: member access within misaligned address 0x561857ca4341 for type 'struct huft', which requires 8 byte alignment
+0x561857ca4341: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:2653:33 in 
+gzip-1.2.4.c.reduced.c:2675:37: runtime error: member access within misaligned address 0x561857ca4341 for type 'struct huft', which requires 8 byte alignment
+0x561857ca4341: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:2675:37 in 
+gzip-1.2.4.c.reduced.c:2675:37: runtime error: member access within misaligned address 0x561857ca4349 for type 'union __anonunion_v_25', which requires 8 byte alignment
+0x561857ca4349: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:2675:37 in 
+gzip-1.2.4.c.reduced.c:2675:39: runtime error: load of misaligned address 0x561857ca4349 for type 'ush' (aka 'unsigned short'), which requires 8 byte alignment
+0x561857ca4349: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:2675:39 in 
+gzip-1.2.4.c.reduced.c:2711:40: runtime error: index 65536 out of bounds for type 'uch[65536]' (aka 'unsigned char[65536]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:2711:40 in 
+gzip-1.2.4.c.reduced.c:2711:21: runtime error: index 65536 out of bounds for type 'uch[65536]' (aka 'unsigned char[65536]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:2711:21 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3117213==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x561857d0f000 (pc 0x56185733460f bp 0x7ffc5bb923b0 sp 0x7ffc5bb920c0 T3117213)
+==3117213==The signal is caused by a READ memory access.
+    #0 0x56185733460f in inflate_codes /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:2711:40
+    #1 0x561857335b19 in inflate_dynamic /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:3362:18
+    #2 0x561857335d61 in inflate_block /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:3441:19
+    #3 0x561857335d90 in inflate /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:3474:15
+    #4 0x561857335dde in unzip /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:3631:15
+    #5 0x56185733fb3d in treat_stdin /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6914:22
+    #6 0x56185733f36d in main /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6765:10
+    #7 0x7ff768c19d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7ff768c19e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x561857309414 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out+0x10414) (BuildId: d150ce4a10dca204b5f8adf9df8090f243c63931)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:2711:40 in inflate_codes
+==3117213==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 168: 3117209 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/input/radamsa_fuzzed/input1_fuzzed/input1_163 > sample1.gz

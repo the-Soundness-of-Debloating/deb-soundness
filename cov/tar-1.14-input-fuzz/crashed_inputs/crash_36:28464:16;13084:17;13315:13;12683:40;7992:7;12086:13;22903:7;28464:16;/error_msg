@@ -1,0 +1,22 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/bins/reduced.lsan.out xf /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/result/afl_result/reduced/result_0/lsan/crashes/id:000018,sig:11,src:000038+000030,time:7769068,execs:33279,op:splice,rep:14
+/workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/bins/reduced.lsan.out: This does not look like a tar archive
+/workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/bins/reduced.lsan.out: Skipping to next header
+LeakSanitizer:DEADLYSIGNAL
+==2003412==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000005 (pc 0x55c22a1504c5 bp 0x7fffad4abfe0 sp 0x7fffad4abfe0 T0)
+==2003412==The signal is caused by a WRITE memory access.
+==2003412==Hint: address points to the zero page.
+    #0 0x55c22a1504c5 in set_quoting_style /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:28464:16
+    #1 0x55c22a14dcac in from_header /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:13084:17
+    #2 0x55c22a14d1f7 in time_from_header /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:13315:13
+    #3 0x55c22a14a533 in decode_header /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12683:40
+    #4 0x55c22a148fbc in extract_archive /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:7992:7
+    #5 0x55c22a14c0b9 in read_and /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12086:13
+    #6 0x55c22a1502fd in main /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7
+    #7 0x7f3d15025d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7f3d15025e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x55c22a1157c4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/bins/reduced.lsan.out+0xb7c4) (BuildId: 89950090e137204a6152031e31709af2eb908196)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:28464:16 in set_quoting_style
+==2003412==ABORTING

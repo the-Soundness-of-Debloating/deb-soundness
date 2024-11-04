@@ -1,0 +1,21 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+date-8.21.c.reduced.c:6151:23: runtime error: member access within null pointer of type 'const struct tm'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:6151:23 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==360313==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000008 (pc 0x559a74efcca1 bp 0x7ffde0619130 sp 0x7ffde0617e00 T360313)
+==360313==The signal is caused by a READ memory access.
+==360313==Hint: address points to the zero page.
+    #0 0x559a74efcca1 in strftime_case____0 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:6151:23
+    #1 0x559a74efcbd5 in fprintftime /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7807:11
+    #2 0x559a74f05bda in show_date /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9700:5
+    #3 0x559a74f0535a in main /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9671:18
+    #4 0x7f12d2478d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f12d2478e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x559a74eb96b4 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.ubsan.out+0x1c6b4) (BuildId: 13a0090eed4fa0e13247db350744757fbb99bf0c)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:6151:23 in strftime_case____0
+==360313==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 360309 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

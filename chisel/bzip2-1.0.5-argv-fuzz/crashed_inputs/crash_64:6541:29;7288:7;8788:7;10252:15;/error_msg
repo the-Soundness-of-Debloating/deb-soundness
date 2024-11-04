@@ -1,0 +1,20 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==3225343==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7fed34104f42 bp 0x5637463ce5a8 sp 0x7ffd6253d740 T3225343)
+==3225343==The signal is caused by a READ memory access.
+==3225343==Hint: address points to the zero page.
+    #0 fwrite libio/iofwrite.c:37:3 (libc.so.6+0x7ff42) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 __interceptor_fwrite <null> (reduced.tsan.out+0x59645) (BuildId: 56549a70d18ac40833e83b1f625cdc0f5ee62ef6)
+    #2 BZ2_bzWriteClose64 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:6541:29 (reduced.tsan.out+0xd9cb9) (BuildId: 56549a70d18ac40833e83b1f625cdc0f5ee62ef6)
+    #3 compressStream /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:7288:7 (reduced.tsan.out+0xdc92d) (BuildId: 56549a70d18ac40833e83b1f625cdc0f5ee62ef6)
+    #4 compress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:8788:7 (reduced.tsan.out+0xdaa42) (BuildId: 56549a70d18ac40833e83b1f625cdc0f5ee62ef6)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:10252:15 (reduced.tsan.out+0xda45c) (BuildId: 56549a70d18ac40833e83b1f625cdc0f5ee62ef6)
+    #6 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 _start <null> (reduced.tsan.out+0x20354) (BuildId: 56549a70d18ac40833e83b1f625cdc0f5ee62ef6)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV libio/iofwrite.c:37:3 in fwrite
+==3225343==ABORTING
+./verify.sh: line 173: 3225342 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_14 > sample1.rb2

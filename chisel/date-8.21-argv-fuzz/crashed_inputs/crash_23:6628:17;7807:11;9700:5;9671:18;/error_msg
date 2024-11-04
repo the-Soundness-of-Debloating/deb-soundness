@@ -1,0 +1,85 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.asan.out
+date: unrecognized option '--rfc-1=sec'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==3778695==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000008 (pc 0x7f5870e18d94 bp 0x7fff4fde7890 sp 0x7fff4fde70b0 T0)
+==3778695==The signal is caused by a READ memory access.
+==3778695==Hint: address points to the zero page.
+    #0 0x7f5870e18d94 in __strftime_internal time/strftime_l.c:476:7
+    #1 0x7f5870e1ae2b in strftime_l time/strftime_l.c:460:10
+    #2 0x55b09fcacfb8 in strftime_case____0 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:6628:17
+    #3 0x55b09fcac735 in fprintftime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7807:11
+    #4 0x55b09fcaeadc in show_date /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9700:5
+    #5 0x55b09fcae260 in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9671:18
+    #6 0x7f5870d61d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f5870d61e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55b09fbe4394 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.asan.out+0x20394) (BuildId: c4b6e170161c88a0ff251300e4e3ca367c4aa605)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV time/strftime_l.c:476:7 in __strftime_internal
+==3778695==ABORTING
+./verify.sh: line 108: 3778694 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+date: unrecognized option '--rfc-1=sec'
+date-8.21.c.reduced.c:4191:24: runtime error: index -91 out of bounds for type 'const yytype_int8[113]' (aka 'const signed char[113]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4191:24 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==942220==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000008 (pc 0x7f8acbabfd94 bp 0x7ffe7ebc7300 sp 0x7ffe7ebc6560 T942220)
+==942220==The signal is caused by a READ memory access.
+==942220==Hint: address points to the zero page.
+    #0 0x7f8acbabfd94 in __strftime_internal time/strftime_l.c:476:7
+    #1 0x7f8acbac1e2b in strftime_l time/strftime_l.c:460:10
+    #2 0x5643257e02c3 in strftime_case____0 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:6628:17
+    #3 0x5643257dfb75 in fprintftime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7807:11
+    #4 0x5643257e2485 in show_date /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9700:5
+    #5 0x5643257e1dd3 in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9671:18
+    #6 0x7f8acba08d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f8acba08e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x5643257ab4d4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.ubsan.out+0xe4d4) (BuildId: a503b23e0911d3d9a3bc41498abe22d2bae3c8f6)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV time/strftime_l.c:476:7 in __strftime_internal
+==942220==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 942219 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==1762501==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000008 (pc 0x7fa4e8991d94 bp 0x7ffe6ba2e010 sp 0x7ffe6ba2d4d0 T1762501)
+==1762501==The signal is caused by a READ memory access.
+==1762501==Hint: address points to the zero page.
+    #0 __strftime_internal time/strftime_l.c:476:7 (libc.so.6+0xe0d94) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 strftime_l time/strftime_l.c:460:10 (libc.so.6+0xe2e2b) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #2 strftime_case____0 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:6628:17 (reduced.tsan.out+0xd1345) (BuildId: eff3f645ace4e01d246370b21d054ad59a29311e)
+    #3 fprintftime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7807:11 (reduced.tsan.out+0xd0f54) (BuildId: eff3f645ace4e01d246370b21d054ad59a29311e)
+    #4 show_date /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9700:5 (reduced.tsan.out+0xd227d) (BuildId: eff3f645ace4e01d246370b21d054ad59a29311e)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9671:18 (reduced.tsan.out+0xd1ef3) (BuildId: eff3f645ace4e01d246370b21d054ad59a29311e)
+    #6 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 _start <null> (reduced.tsan.out+0x213c4) (BuildId: eff3f645ace4e01d246370b21d054ad59a29311e)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV time/strftime_l.c:476:7 in __strftime_internal
+==1762501==ABORTING
+./verify.sh: line 108: 1762496 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==410918==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000008 (pc 0x7ffb94e0dd94 bp 0x7ffc19be4fa0 sp 0x7ffc19be4550 T0)
+==410918==The signal is caused by a READ memory access.
+==410918==Hint: address points to the zero page.
+    #0 0x7ffb94e0dd94 in __strftime_internal time/strftime_l.c:476:7
+    #1 0x7ffb94e0fe2b in strftime_l time/strftime_l.c:460:10
+    #2 0x560989ed1239 in strftime_case____0 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:6628:17
+    #3 0x560989ed0fa5 in fprintftime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7807:11
+    #4 0x560989ed1e70 in show_date /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9700:5
+    #5 0x560989ed1c06 in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9671:18
+    #6 0x7ffb94d56d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7ffb94d56e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x560989ea14e4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.lsan.out+0x54e4) (BuildId: 5060c0af9d8553ad9e19245aea506efae9476d31)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV time/strftime_l.c:476:7 in __strftime_internal
+==410918==ABORTING

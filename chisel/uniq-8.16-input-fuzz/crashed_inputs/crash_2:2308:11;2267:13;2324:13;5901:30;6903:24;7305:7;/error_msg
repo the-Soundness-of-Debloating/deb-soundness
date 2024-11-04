@@ -1,0 +1,18 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-input-fuzz/bins/reduced.asan.out /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_2
+
+=================================================================
+==1598511==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 54 byte(s) in 2 object(s) allocated from:
+    #0 0x558f399d2196 in __interceptor_realloc (/workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-input-fuzz/bins/reduced.asan.out+0xa4196) (BuildId: 869ae1603512104961d814ff4a85b8e525337348)
+    #1 0x558f39a0c16c in xrealloc /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-input-fuzz/./uniq-8.16.c.reduced.c:2308:11
+    #2 0x558f39a0c274 in x2nrealloc /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-input-fuzz/./uniq-8.16.c.reduced.c:2267:13
+    #3 0x558f39a0c1a1 in x2realloc /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-input-fuzz/./uniq-8.16.c.reduced.c:2324:13
+    #4 0x558f39a0c4dc in readlinebuffer_delim /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-input-fuzz/./uniq-8.16.c.reduced.c:5901:30
+    #5 0x558f39a0ce82 in check_file /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-input-fuzz/./uniq-8.16.c.reduced.c:6903:24
+    #6 0x558f39a0c9e2 in main /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-input-fuzz/./uniq-8.16.c.reduced.c:7305:7
+    #7 0x7f1d265c7d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: 54 byte(s) leaked in 2 allocation(s).
+./verify.sh: line 174: 1598510 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-input-fuzz/bins/reduced.asan.out /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_2

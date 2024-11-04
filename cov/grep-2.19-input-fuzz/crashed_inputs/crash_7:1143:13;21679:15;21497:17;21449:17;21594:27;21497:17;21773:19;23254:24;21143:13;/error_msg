@@ -1,0 +1,18 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/bins/reduced.msan.out a -v -H -r /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_33
+==3484042==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55f12e5206d8 in grep /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21143:13
+    #1 0x55f12e51dfcf in grepdesc /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21679:15
+    #2 0x55f12e51d209 in grepfile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21497:17
+    #3 0x55f12e51fb2b in grepdirent /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21449:17
+    #4 0x55f12e51da76 in grepdesc /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21594:27
+    #5 0x55f12e51d209 in grepfile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21497:17
+    #6 0x55f12e50a1e1 in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21773:19
+    #7 0x55f12e5096bd in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23254:24
+    #8 0x7f0a62237d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #9 0x7f0a62237e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #10 0x55f12e4423e4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/bins/reduced.msan.out+0x1f3e4) (BuildId: a2741322005845ea1f2b1010adb2d01469e1e8b9)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21143:13 in grep
+Exiting
+./verify.sh: line 233: 3484040 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/bins/reduced.msan.out a -v -H -r /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_33

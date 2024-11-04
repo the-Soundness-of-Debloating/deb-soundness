@@ -1,0 +1,20 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/bins/reduced.ubsan.out
+chown-8.2.c.reduced.c:1604:23: runtime error: member access within null pointer of type 'struct group'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior chown-8.2.c.reduced.c:1604:23 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==15997==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000010 (pc 0x55e881c97a6e bp 0x7ffd2f714b90 sp 0x7ffd2f714af0 T15997)
+==15997==The signal is caused by a READ memory access.
+==15997==Hint: address points to the zero page.
+    #0 0x55e881c97a6e in parse_with_separator /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1604:23
+    #1 0x55e881c97940 in parse_user_spec /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1636:15
+    #2 0x55e881c98ca3 in main /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7051:18
+    #3 0x2b8944302d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x2b8944302e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55e881c6f424 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/bins/reduced.ubsan.out+0x6424) (BuildId: c7c418d98a22f824eda696b85ef1d300135453ea)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1604:23 in parse_with_separator
+==15997==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 15996 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

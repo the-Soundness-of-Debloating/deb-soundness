@@ -1,0 +1,72 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/bins/reduced.ubsan.out
+óú¸\: UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==12646==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0xffffff9cffffff9c (pc 0x2ad355abf7fd bp 0x7ffd2e307220 sp 0x7ffd2e306c88 T12646)
+==12646==The signal is caused by a READ memory access.
+    #0 0x2ad355abf7fd  string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74
+    #1 0x2ad355998d30 in __vfprintf_internal stdio-common/vfprintf-internal.c:1517:4
+    #2 0x2ad355999664 in buffered_vfprintf stdio-common/vfprintf-internal.c:2261:12
+    #3 0x2ad3559a0697 in locked_vfxprintf stdio-common/fxprintf.c:30:12
+    #4 0x2ad3559a0774 in __vfxprintf stdio-common/fxprintf.c:71:13
+    #5 0x2ad355a431e0 in error_tail misc/error.c:207:13
+    #6 0x2ad355a432d7 in __error_internal misc/error.c:261:3
+    #7 0x2ad355a433c5 in error misc/error.c:274:3
+    #8 0x55ed99078ba0 in change_file_owner /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6561:13
+    #9 0x55ed99076028 in chown_files /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6684:17
+    #10 0x55ed9907a38c in main /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10
+    #11 0x2ad35594bd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #12 0x2ad35594be3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #13 0x55ed99039604 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/bins/reduced.ubsan.out+0x15604) (BuildId: 16c6d47023862870707fac3983ebd8d95196badb)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 
+==12646==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 12643 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/bins/reduced.tsan.out
+óú¸\: ThreadSanitizer:DEADLYSIGNAL
+==6144==ERROR: ThreadSanitizer: SEGV on unknown address 0xffffff9cffffff9c (pc 0x7f25761437fd bp 0x7fff458953d0 sp 0x7fff45894e38 T6144)
+==6144==The signal is caused by a READ memory access.
+    #0 <null> string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 (libc.so.6+0x19d7fd) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 __vfprintf_internal stdio-common/vfprintf-internal.c:1517:4 (libc.so.6+0x76d30) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #2 buffered_vfprintf stdio-common/vfprintf-internal.c:2261:12 (libc.so.6+0x77664) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #3 locked_vfxprintf stdio-common/fxprintf.c:30:12 (libc.so.6+0x7e697) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #4 __vfxprintf stdio-common/fxprintf.c:71:13 (libc.so.6+0x7e774) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #5 error_tail misc/error.c:207:13 (libc.so.6+0x1211e0) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #6 __error_internal misc/error.c:261:3 (libc.so.6+0x1212d7) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 error misc/error.c:274:3 (libc.so.6+0x1213c5) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 change_file_owner /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6561:13 (reduced.tsan.out+0xd692f) (BuildId: d33dd464252a57275d65bd1b21acab18706db279)
+    #9 chown_files /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6684:17 (reduced.tsan.out+0xd58b4) (BuildId: d33dd464252a57275d65bd1b21acab18706db279)
+    #10 main /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10 (reduced.tsan.out+0xd7619) (BuildId: d33dd464252a57275d65bd1b21acab18706db279)
+    #11 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #12 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #13 _start <null> (reduced.tsan.out+0x213f4) (BuildId: d33dd464252a57275d65bd1b21acab18706db279)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 
+==6144==ABORTING
+./verify.sh: line 110:  6143 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/bins/reduced.lsan.out
+óú¸\: LeakSanitizer:DEADLYSIGNAL
+==31095==ERROR: LeakSanitizer: SEGV on unknown address 0xffffff9cffffff9c (pc 0x2b3c9612e7fd bp 0x7fff0804b710 sp 0x7fff0804b178 T0)
+==31095==The signal is caused by a READ memory access.
+    #0 0x2b3c9612e7fd  string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74
+    #1 0x2b3c96007d30 in __vfprintf_internal stdio-common/vfprintf-internal.c:1517:4
+    #2 0x2b3c96008664 in buffered_vfprintf stdio-common/vfprintf-internal.c:2261:12
+    #3 0x2b3c9600f697 in locked_vfxprintf stdio-common/fxprintf.c:30:12
+    #4 0x2b3c9600f774 in __vfxprintf stdio-common/fxprintf.c:71:13
+    #5 0x2b3c960b21e0 in error_tail misc/error.c:207:13
+    #6 0x2b3c960b22d7 in __error_internal misc/error.c:261:3
+    #7 0x2b3c960b23c5 in error misc/error.c:274:3
+    #8 0x563761678fc4 in change_file_owner /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6561:13
+    #9 0x5637616784d8 in chown_files /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6684:17
+    #10 0x5637616798d1 in main /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10
+    #11 0x2b3c95fbad8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #12 0x2b3c95fbae3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #13 0x5637616465d4 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/bins/reduced.lsan.out+0x65d4) (BuildId: 4f6c0e97bfb23979a75d05182eb25809e3fd0dea)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 
+==31095==ABORTING

@@ -1,0 +1,13 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.msan.out -f /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0
+==1869839==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x559b9b7da152 in snocString /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9533:9
+    #1 0x559b9b7da3d8 in snocString /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9555:25
+    #2 0x559b9b7d91aa in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9768:21
+    #3 0x7f896c918d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f896c918e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x559b9b7322d4 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.msan.out+0x1e2d4) (BuildId: 4d5331bd4623d87bf9c85ef9dddc3aae1dd36d34)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9533:9 in snocString
+Exiting
+./verify.sh: line 170: 1869838 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.msan.out -f /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0

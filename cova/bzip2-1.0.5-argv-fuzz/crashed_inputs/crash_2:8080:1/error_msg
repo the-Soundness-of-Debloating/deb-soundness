@@ -1,0 +1,6 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/bzip2-1.0.5-argv-fuzz/bins/reduced.ubsan.out
+bzip2-1.0.5.c.reduced.c:8080:1: runtime error: execution reached an unreachable program point
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:8080:1 in 
+timeout: the monitored command dumped core
+./verify.sh: line 174: 1517879 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/bzip2-1.0.5-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/cova/bzip2-1.0.5-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_1 > sample1.rb2

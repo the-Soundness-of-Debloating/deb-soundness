@@ -1,0 +1,4 @@
+Line count before fix: 3992
+Line count after fix: 4005
+Add Back Lines Percentage: 0.00325651
+Total Time: 537

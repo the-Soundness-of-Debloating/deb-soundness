@@ -1,0 +1,23 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/bins/reduced.tsan.out
+==348907==ERROR: ThreadSanitizer: requested allocation size 0x7ffdc3a9b23c exceeds maximum supported size of 0x10000000000
+    #0 __interceptor_malloc <null> (reduced.tsan.out+0x4c3d1) (BuildId: ddec0d458cd33ec3bb3b7ab80b6020026a47f7e0)
+    #1 initbuf /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:9725:30 (reduced.tsan.out+0xcd8a0) (BuildId: ddec0d458cd33ec3bb3b7ab80b6020026a47f7e0)
+    #2 sort /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13130:9 (reduced.tsan.out+0xcd5cb) (BuildId: ddec0d458cd33ec3bb3b7ab80b6020026a47f7e0)
+    #3 main /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14277:7 (reduced.tsan.out+0xcd1b1) (BuildId: ddec0d458cd33ec3bb3b7ab80b6020026a47f7e0)
+    #4 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+==348907==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: ThreadSanitizer: allocation-size-too-big (/workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/bins/reduced.tsan.out+0x4c3d1) (BuildId: ddec0d458cd33ec3bb3b7ab80b6020026a47f7e0) in __interceptor_malloc
+./verify.sh: line 110: 348906 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/bins/reduced.lsan.out
+==1295092==ERROR: LeakSanitizer: requested allocation size 0x7ffcf2e8cbec exceeds maximum supported size of 0x200000000
+    #0 0x555eb37e15f2 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/bins/reduced.lsan.out+0x305f2) (BuildId: a903c536a7655aceebec8dfa976eea037c35eee3)
+    #1 0x555eb37e46ac in initbuf /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:9725:30
+    #2 0x555eb37e44a7 in sort /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13130:9
+    #3 0x555eb37e426c in main /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14277:7
+    #4 0x7f838d412d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+==1295092==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: LeakSanitizer: allocation-size-too-big (/workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/bins/reduced.lsan.out+0x305f2) (BuildId: a903c536a7655aceebec8dfa976eea037c35eee3) in __interceptor_malloc

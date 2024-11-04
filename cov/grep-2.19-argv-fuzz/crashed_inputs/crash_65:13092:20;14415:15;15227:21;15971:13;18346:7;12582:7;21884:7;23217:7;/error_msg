@@ -1,0 +1,22 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==1165891==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x7ffc7790bd18 (pc 0x55de03c4ddb6 bp 0x7ffc6a47c050 sp 0x7ffc6a47c010 T1165891)
+==1165891==The signal is caused by a READ memory access.
+    #0 0x55de03c4ddb6 in setbit /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:13092:20
+    #1 0x55de03c71845 in parse_bracket_exp /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:14415:15
+    #2 0x55de03c4f227 in lex /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15227:21
+    #3 0x55de03c4dee6 in dfaparse /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15971:13
+    #4 0x55de03c4a759 in dfacomp /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18346:7
+    #5 0x55de03c4a3b8 in GEAcompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12582:7
+    #6 0x55de03c770cb in Gcompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21884:7
+    #7 0x55de03c6b57d in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #8 0x7f580d210d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #9 0x7f580d210e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #10 0x55de03c0c664 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x2f664) (BuildId: 548678bb0b6577364ae598818988dcfaaab153e2)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:13092:20 in setbit
+==1165891==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 1165890 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

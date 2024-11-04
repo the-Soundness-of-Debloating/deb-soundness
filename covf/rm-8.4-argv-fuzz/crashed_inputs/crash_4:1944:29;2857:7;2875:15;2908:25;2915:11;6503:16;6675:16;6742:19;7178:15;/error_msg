@@ -1,0 +1,24 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/bins/reduced.ubsan.out
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==48280==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000112 (pc 0x55b375eea4be bp 0x7ffea46d7910 sp 0x7ffea46d70d0 T48280)
+==48280==The signal is caused by a WRITE memory access.
+==48280==Hint: address points to the zero page.
+    #0 0x55b375eea4be in quotearg_buffer_restyled /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1944:29
+    #1 0x55b375ee2946 in quotearg_n_options /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2857:7
+    #2 0x55b375ee1c21 in quotearg_n_style /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2875:15
+    #3 0x55b375ee2a2f in quote_n /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2908:25
+    #4 0x55b375ee2a56 in quote /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2915:11
+    #5 0x55b375eef021 in excise /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6503:16
+    #6 0x55b375ee9190 in rm_fts /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6675:16
+    #7 0x55b375ee8925 in rm /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6742:19
+    #8 0x55b375ee9656 in main /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7178:15
+    #9 0x7f99ff01bd8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #10 0x7f99ff01be3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #11 0x55b375eb75e4 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/bins/reduced.ubsan.out+0xe5e4) (BuildId: 42cf9738546edaa705ec55810d8db2c8fa82b1d1)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1944:29 in quotearg_buffer_restyled
+==48280==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 189: 48279 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_17

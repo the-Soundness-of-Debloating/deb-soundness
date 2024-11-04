@@ -1,0 +1,20 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.lsan.out -c
+LeakSanitizer:DEADLYSIGNAL
+==3459066==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x5622bc72b77a bp 0x7ffc6b50d750 sp 0x7ffc6b50d700 T0)
+==3459066==The signal is caused by a READ memory access.
+==3459066==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x5622bc72b77a in gen_codes /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4565:31
+    #1 0x5622bc72be30 in build_tree___0 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4697:7
+    #2 0x5622bc72b8d6 in flush_block /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4948:7
+    #3 0x5622bc72d0a1 in deflate /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5797:17
+    #4 0x5622bc72d3fb in zip /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5988:7
+    #5 0x5622bc72dea2 in treat_stdin /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #6 0x5622bc72da00 in main /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #7 0x7fb116274d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7fb116274e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x5622bc6fb514 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.lsan.out+0x6514) (BuildId: e469d9e7620087678df692e0069c61fcaac74449)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4565:31 in gen_codes
+==3459066==ABORTING

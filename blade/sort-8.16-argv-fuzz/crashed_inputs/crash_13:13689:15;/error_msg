@@ -1,0 +1,80 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/bins/reduced.ubsan.out
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==2647772==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address (pc 0x7f85fc2001b7 bp 0x7fffbfc20a10 sp 0x7fffbfc20948 T2647772)
+==2647772==The signal is caused by a READ memory access.
+==2647772==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x7f85fc2001b7  string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:751
+    #1 0x7f85fc16ee90 in process_long_option posix/getopt.c:212:10
+    #2 0x7f85fc16f87e in _getopt_internal_r posix/getopt.c:650:9
+    #3 0x7f85fc16fada in _getopt_internal posix/getopt.c:711:12
+    #4 0x7f85fc16fb61 in getopt_long posix/getopt1.c:31:10
+    #5 0x55d4efa1015a in main /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13689:15
+    #6 0x7f85fc090d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f85fc090e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55d4ef9e7414 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/bins/reduced.ubsan.out+0x8414) (BuildId: 7ecaf48436562807503f94fd2a6140190409f7ce)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:751 
+==2647772==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 2647771 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/bins/reduced.msan.out
+MemorySanitizer:DEADLYSIGNAL
+==3665530==ERROR: MemorySanitizer: SEGV on unknown address (pc 0x7fcc22615db1 bp 0x7ffe376c9280 sp 0x7ffe376c91b8 T3665530)
+==3665530==The signal is caused by a READ memory access.
+==3665530==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x7fcc22615db1  string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:115
+    #1 0x7fcc22584e90 in process_long_option posix/getopt.c:212:10
+    #2 0x7fcc2258587e in _getopt_internal_r posix/getopt.c:650:9
+    #3 0x7fcc22585ada in _getopt_internal posix/getopt.c:711:12
+    #4 0x7fcc22585b61 in getopt_long posix/getopt1.c:31:10
+    #5 0x55b5225e02f1 in main /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13689:15
+    #6 0x7fcc224a6d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7fcc224a6e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55b5225582e4 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/bins/reduced.msan.out+0x1e2e4) (BuildId: b220913ec243ee3421b589d1c85da127dfa85488)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:115 
+==3665530==ABORTING
+./verify.sh: line 110: 3665529 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==353689==ERROR: ThreadSanitizer: SEGV on unknown address (pc 0x7fc040c8fdb1 bp 0x7ffd524c9390 sp 0x7ffd524c92c8 T353689)
+==353689==The signal is caused by a READ memory access.
+==353689==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 <null> string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:115 (libc.so.6+0x198db1) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 process_long_option posix/getopt.c:212:10 (libc.so.6+0x107e90) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #2 _getopt_internal_r posix/getopt.c:650:9 (libc.so.6+0x10887e) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #3 _getopt_internal posix/getopt.c:711:12 (libc.so.6+0x108ada) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #4 getopt_long posix/getopt1.c:31:10 (libc.so.6+0x108b61) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13689:15 (reduced.tsan.out+0xcd056) (BuildId: ddec0d458cd33ec3bb3b7ab80b6020026a47f7e0)
+    #6 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 _start <null> (reduced.tsan.out+0x20364) (BuildId: ddec0d458cd33ec3bb3b7ab80b6020026a47f7e0)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:115 
+==353689==ABORTING
+./verify.sh: line 110: 353688 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==1298646==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x7fb46752e1b7 bp 0x7ffd80967770 sp 0x7ffd809676a8 T0)
+==1298646==The signal is caused by a READ memory access.
+==1298646==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x7fb46752e1b7  string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:751
+    #1 0x7fb46749ce90 in process_long_option posix/getopt.c:212:10
+    #2 0x7fb46749d87e in _getopt_internal_r posix/getopt.c:650:9
+    #3 0x7fb46749dada in _getopt_internal posix/getopt.c:711:12
+    #4 0x7fb46749db61 in getopt_long posix/getopt1.c:31:10
+    #5 0x55fe2ce13183 in main /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13689:15
+    #6 0x7fb4673bed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7fb4673bee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55fe2cde5414 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/bins/reduced.lsan.out+0x5414) (BuildId: a903c536a7655aceebec8dfa976eea037c35eee3)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:751 
+==1298646==ABORTING

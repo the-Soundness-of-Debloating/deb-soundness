@@ -1,0 +1,19 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out -t /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_481
+LeakSanitizer:DEADLYSIGNAL
+==2398835==ERROR: LeakSanitizer: SEGV on unknown address 0x630000010000 (pc 0x55f8cb8c7425 bp 0x7ffe2e7651d0 sp 0x7ffe2e7651d0 T0)
+==2398835==The signal is caused by a WRITE memory access.
+    #0 0x55f8cb8c7425 in BZ2_hbCreateDecodeTables /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:574:28
+    #1 0x55f8cb8c825b in BZ2_decompress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:2004:13
+    #2 0x55f8cb8cbea9 in BZ2_bzDecompress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6161:19
+    #3 0x55f8cb8cc420 in BZ2_bzRead /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6866:17
+    #4 0x55f8cb8cd783 in testStream /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7737:23
+    #5 0x55f8cb8cc90e in testf /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9404:15
+    #6 0x55f8cb8cc6c9 in main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10327:17
+    #7 0x7f6a6c6a2d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7f6a6c6a2e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x55f8cb899424 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out+0x5424) (BuildId: b7ae66f653a2fb616e7ec0b784cf29fa95e3f3e7)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:574:28 in BZ2_hbCreateDecodeTables
+==2398835==ABORTING

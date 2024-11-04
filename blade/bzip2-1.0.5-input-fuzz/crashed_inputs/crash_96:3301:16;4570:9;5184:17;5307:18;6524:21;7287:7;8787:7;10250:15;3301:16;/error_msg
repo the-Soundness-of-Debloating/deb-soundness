@@ -1,0 +1,20 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out -k /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_98
+LeakSanitizer:DEADLYSIGNAL
+==2227309==ERROR: LeakSanitizer: SEGV on unknown address 0x6090696e6172 (pc 0x55e7648db633 bp 0x7fffea498cb0 sp 0x7fffea498b50 T0)
+==2227309==The signal is caused by a READ memory access.
+    #0 0x55e7648db633 in generateMTFValues /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:3301:16
+    #1 0x55e7648db257 in BZ2_compressBlock /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:4570:9
+    #2 0x55e7648dc6d5 in handle_compress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:5184:17
+    #3 0x55e7648dc62a in BZ2_bzCompress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:5307:18
+    #4 0x55e7648dccc0 in BZ2_bzWriteClose64 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6524:21
+    #5 0x55e7648de02f in compressStream /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7287:7
+    #6 0x55e7648dd332 in compress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:8787:7
+    #7 0x55e7648dd12f in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10250:15
+    #8 0x7ffb5346bd8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #9 0x7ffb5346be3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #10 0x55e7648ab444 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out+0x5444) (BuildId: 4a7cad0a362352a0d26bd192dbf76ee9115ae86e)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:3301:16 in generateMTFValues
+==2227309==ABORTING

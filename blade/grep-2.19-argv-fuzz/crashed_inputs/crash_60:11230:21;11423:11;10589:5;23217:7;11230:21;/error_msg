@@ -1,0 +1,39 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.asan.out
+grep: invalid option -- 'ê'
+grep: invalid option -- 'ê'
+grep: invalid option -- 'ê'
+grep: invalid option -- 'ê'
+grep: invalid option -- 'ê'
+grep: invalid option -- 'ú'
+grep: invalid option -- 'ê'
+grep: invalid option -- 'ê'
+grep: invalid option -- 'ÿ'
+grep: invalid option -- 'ê'
+grep: invalid option -- 'ê'
+grep: invalid option -- '@'
+grep: invalid option -- 'À'
+grep: invalid option -- 'À'
+grep: invalid option -- 'À'
+grep: invalid option -- 'À'
+grep: invalid option -- 'À'
+grep: invalid option -- 'À'
+grep: invalid option -- ']'
+grep: invalid option -- ''
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==3462127==ERROR: AddressSanitizer: SEGV on unknown address (pc 0x55e64f6fe6b3 bp 0x7ffc74a42bd0 sp 0x7ffc74a42b70 T0)
+==3462127==The signal is caused by a READ memory access.
+==3462127==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x55e64f6fe6b3 in enqueue /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11230:21
+    #1 0x55e64f6fb671 in kwsprep /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11423:11
+    #2 0x55e64f6f8c29 in Fcompile /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:10589:5
+    #3 0x55e64f70261c in main /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #4 0x7f33003e7d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f33003e7e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x55e64f616564 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.asan.out+0x23564) (BuildId: 574329f0220af6ea5001bce28efebd132ee6c4fa)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11230:21 in enqueue
+==3462127==ABORTING
+./verify.sh: line 110: 3462126 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

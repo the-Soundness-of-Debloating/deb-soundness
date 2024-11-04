@@ -1,0 +1,1 @@
+xf foo.tar -X foo.exclude -X bar%n$(xcalc)%saaaa%d%n$!!"xcalc$!!"xcalc\0\u0000$``xcalc`"xcalc`xcalc`\r\n\n.exclude

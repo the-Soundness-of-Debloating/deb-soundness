@@ -1,0 +1,51 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2956780==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x562cb99e79aa bp 0x7fffb453d050 sp 0x7fffb453cf90 T0)
+==2956780==The signal is caused by a READ memory access.
+==2956780==Hint: address points to the zero page.
+    #0 0x562cb99e79aa in find_field /workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6625:27
+    #1 0x562cb99e73a0 in check_file /workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6890:33
+    #2 0x562cb99e68cc in main /workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7306:7
+    #3 0x7f89972b6d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f89972b6e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x562cb99253f4 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/bins/reduced.asan.out+0x1f3f4) (BuildId: df4cb757ca4c2e51495e9fe2838802e98b9abb9b)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6625:27 in find_field
+==2956780==ABORTING
+./verify.sh: line 110: 2956776 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==3023463==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x5590143a48b8 bp 0x7ffee1e35e90 sp 0x7ffee1e35dc0 T3023463)
+==3023463==The signal is caused by a READ memory access.
+==3023463==Hint: address points to the zero page.
+    #0 find_field /workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6625:27 (reduced.tsan.out+0xcf8b8) (BuildId: 4014edf25bde47737c7397bea65a2b4e80470859)
+    #1 check_file /workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6890:33 (reduced.tsan.out+0xcf47c) (BuildId: 4014edf25bde47737c7397bea65a2b4e80470859)
+    #2 main /workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7306:7 (reduced.tsan.out+0xcee24) (BuildId: 4014edf25bde47737c7397bea65a2b4e80470859)
+    #3 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #4 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #5 _start <null> (reduced.tsan.out+0x21424) (BuildId: 4014edf25bde47737c7397bea65a2b4e80470859)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6625:27 in find_field
+==3023463==ABORTING
+./verify.sh: line 110: 3023455 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==3046483==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000000 (pc 0x556ba152137a bp 0x7ffd30a08430 sp 0x7ffd30a083e0 T0)
+==3046483==The signal is caused by a READ memory access.
+==3046483==Hint: address points to the zero page.
+    #0 0x556ba152137a in find_field /workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6625:27
+    #1 0x556ba152109a in check_file /workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6890:33
+    #2 0x556ba1520c96 in main /workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7306:7
+    #3 0x7fc818174d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7fc818174e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x556ba14f2524 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/bins/reduced.lsan.out+0x6524) (BuildId: daf49b40076b044a2a42e6357d961c0f1b4c1015)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6625:27 in find_field
+==3046483==ABORTING

@@ -1,0 +1,19 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/bins/reduced.lsan.out -d
+LeakSanitizer:DEADLYSIGNAL
+==3817662==ERROR: LeakSanitizer: SEGV on unknown address 0x7ffefb7ad056 (pc 0x55ff67e906a9 bp 0x7ffecb2ebbf0 sp 0x7ffecb2eb5a0 T0)
+==3817662==The signal is caused by a READ memory access.
+    #0 0x55ff67e906a9 in huft_build /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2227:18
+    #1 0x55ff67e918b9 in inflate_dynamic /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3139:15
+    #2 0x55ff67e91cc1 in inflate_block /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3440:19
+    #3 0x55ff67e91d20 in inflate /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3473:15
+    #4 0x55ff67e91dec in unzip /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3630:15
+    #5 0x55ff67e94ea2 in treat_stdin /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #6 0x55ff67e94a00 in main /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #7 0x7f2f8527ed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7f2f8527ee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x55ff67e62514 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/bins/reduced.lsan.out+0x6514) (BuildId: 22808b09cf13561267d0c87855c29654da1752f5)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2227:18 in huft_build
+==3817662==ABORTING

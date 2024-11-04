@@ -1,0 +1,14 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.msan.out
+==968284==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5612259bb240 in read_header /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:12560:13
+    #1 0x5612259b7855 in read_and /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:12160:20
+    #2 0x5612259d2c4d in main /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:23273:7
+    #3 0x7f9a10a65d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #4 0x7f9a10a65e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #5 0x5612258fb4c4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.msan.out+0x204c4) (BuildId: 406eb1ef5ec5ab245ba7b9351f73bc8e589acee7)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:12560:13 in read_header
+Exiting
+timeout: the monitored command dumped core
+./verify.sh: line 304: 968283 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input1_fuzzed/input1_13

@@ -1,0 +1,15 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/bins/reduced.msan.out
+==1474847==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5578f184c0e3 in fts_stat /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:5613:9
+    #1 0x5578f184ab2f in fts_open /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:4390:23
+    #2 0x5578f184a4d0 in xfts_open /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1489:11
+    #3 0x5578f184cde6 in rm /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6727:13
+    #4 0x5578f184de84 in main /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7178:15
+    #5 0x7fcd91b54d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7fcd91b54e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x5578f17c3304 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/bins/reduced.msan.out+0x1e304) (BuildId: 501eceefcf409dbc2ba8c397269dd1b7f899f266)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:5613:9 in fts_stat
+Exiting
+./verify.sh: line 189: 1474845 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_0

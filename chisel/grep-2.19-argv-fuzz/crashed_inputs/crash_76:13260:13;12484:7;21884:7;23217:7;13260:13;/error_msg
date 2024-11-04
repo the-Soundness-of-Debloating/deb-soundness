@@ -1,0 +1,14 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.msan.out
+==395050==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x562afbf81933 in dfasyntax /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:13260:13
+    #1 0x562afbf810af in GEAcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12484:7
+    #2 0x562afbf9a1d8 in Gcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21884:7
+    #3 0x562afbf9065b in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #4 0x7f7671e13d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f7671e13e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x562afbef3394 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.msan.out+0x1f394) (BuildId: e0cd9ecafccb77a622340e6c2bf533e2bbf67ad1)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:13260:13 in dfasyntax
+Exiting
+./verify.sh: line 108: 395049 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

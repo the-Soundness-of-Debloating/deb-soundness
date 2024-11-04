@@ -1,0 +1,13 @@
+7175	7175;7175;	AFL++,radamsa	NOSAN,			
+7175	7175:21;7175:21;	AFL++,radamsa	ASAN,TSAN,LSAN,	READ memory access,	address points to the zero page,	
+5870	5870:20	AFL++,radamsa	UBSAN,	runtime error 		
+7175	7175:35	AFL++,radamsa	UBSAN,	runtime error 		
+7175	7175:26	AFL++,radamsa	UBSAN,	runtime error 	load of null pointer,	
+7175	7175:21;	AFL++,radamsa	UBSAN,	READ memory access,	address points to the zero page,	
+6665	6665:67	AFL++,radamsa	UBSAN,	runtime error 		
+7175	7175:26;7175:26;	AFL++,radamsa	MSAN,	READ memory access,	address points to the zero page,	
+0x55d493b61b8b	0x55d493b61b8b	radamsa	LSAN,	READ memory access,	address points to the zero page,	
+6625	6625;6625;6890;7306;	AFL++	NOSAN,			
+6625	6625:27;6890:33;7306:7;6625:27;	AFL++	ASAN,TSAN,LSAN,	READ memory access,	address points to the zero page,	
+6625	6625:42;6890:33;7306:7;6625:42;	AFL++	MSAN,	READ memory access,	address points to the zero page,	
+6612	6612:13;6890:33;7306:7;6612:13;	AFL++	MSAN,	use-of-uninitialized-value,		

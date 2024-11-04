@@ -1,0 +1,6 @@
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==14807==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000000 (pc 0x2ad4d4d6f1a4 bp 0x7ffcb5540a50 sp 0x7ffcb55409f8 T0)
+==14807==The signal is caused by a READ memory access.
+==14807==Hint: address points to the zero page.

@@ -1,0 +1,16 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==3959650==ERROR: LeakSanitizer: SEGV on unknown address 0x601000010000 (pc 0x7f0512336c08 bp 0x7ffe204d5720 sp 0x7ffe204d56d8 T0)
+==3959650==The signal is caused by a WRITE memory access.
+    #0 0x7f0512336c08  (/lib/x86_64-linux-gnu/libc.so.6+0x1b1c08) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #1 0x55b2308873c7 in snocString /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9540:9
+    #2 0x55b2308873ed in snocString /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9556:25
+    #3 0x55b230886fb8 in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9770:21
+    #4 0x7f05121aed8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #5 0x7f05121aee3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #6 0x55b230855464 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x5464) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV (/lib/x86_64-linux-gnu/libc.so.6+0x1b1c08) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0) 
+==3959650==ABORTING

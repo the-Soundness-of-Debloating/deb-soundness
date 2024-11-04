@@ -1,0 +1,15 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/bins/reduced.msan.out -d
+Uninitialized bytes in MemcmpInterceptorCommon at offset 1 inside [0x7ffd593b09f5, 2)
+==3727557==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5625ba4de4cd in memcmp (/workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/bins/reduced.msan.out+0x574cd) (BuildId: 7a6a555d9557fa1aafec9abd264c128538adcbd9)
+    #1 0x5625ba54dfc5 in get_method /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:7741:11
+    #2 0x5625ba549f73 in treat_stdin /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6892:18
+    #3 0x5625ba54881e in main /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #4 0x7f96e1b15d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f96e1b15e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x5625ba4a6334 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/bins/reduced.msan.out+0x1f334) (BuildId: 7a6a555d9557fa1aafec9abd264c128538adcbd9)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value (/workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/bins/reduced.msan.out+0x574cd) (BuildId: 7a6a555d9557fa1aafec9abd264c128538adcbd9) in memcmp
+Exiting
+./verify.sh: line 169: 3727552 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/bins/reduced.msan.out -d < /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_1/msan/crashes/id:000034* > sample1.tst

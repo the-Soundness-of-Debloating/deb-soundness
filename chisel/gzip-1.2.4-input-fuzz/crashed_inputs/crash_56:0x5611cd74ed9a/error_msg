@@ -1,0 +1,5 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.tsan.out -c
+ThreadSanitizer:DEADLYSIGNAL
+==3116918==ERROR: ThreadSanitizer: SEGV on unknown address 0x5611cf8e9798 (pc 0x5611cd74ed9a bp 0x7ffde268d9d0 sp 0x7ffde268d8c0 T3116918)
+==3116918==The signal is caused by a WRITE memory access.

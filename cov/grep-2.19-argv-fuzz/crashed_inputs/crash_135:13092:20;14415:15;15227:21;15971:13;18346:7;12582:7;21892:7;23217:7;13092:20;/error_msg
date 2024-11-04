@@ -1,0 +1,69 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.asan.out
+grep: unrecognized option '--ai/E'
+=================================================================
+==4042568==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7f2f95d00240 at pc 0x55b88ed078fb bp 0x7ffe009cb770 sp 0x7ffe009cb768
+READ of size 4 at 0x7f2f95d00240 thread T0
+    #0 0x55b88ed078fa in setbit /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:13092:20
+    #1 0x55b88ed1a98f in parse_bracket_exp /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:14415:15
+    #2 0x55b88ed087e1 in lex /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15227:21
+    #3 0x55b88ed07b96 in dfaparse /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15971:13
+    #4 0x55b88ed05a39 in dfacomp /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18346:7
+    #5 0x55b88ed057fb in GEAcompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12582:7
+    #6 0x55b88ed1d6f1 in Ecompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21892:7
+    #7 0x55b88ed16154 in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #8 0x7f2f97aa5d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #9 0x7f2f97aa5e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #10 0x55b88ec39474 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.asan.out+0x22474) (BuildId: 7e96b9d764c7cadd1bc4907e463f7ff1bd5e81dd)
+
+Address 0x7f2f95d00240 is located in stack of thread T0 at offset 64 in frame
+    #0 0x55b88ed194ef in parse_bracket_exp /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:13534
+
+  This frame has 11 object(s):
+    [32, 64) 'ccl' (line 13539) <== Memory access at offset 64 overflows this variable
+    [96, 100) '_wc' (line 13554)
+    [112, 116) '_wc___0' (line 13560)
+    [128, 132) '_wc___1' (line 13566)
+    [144, 177) 'str' (line 13570)
+    [224, 228) '_wc___2' (line 13574)
+    [240, 244) '_wc___3' (line 13581)
+    [256, 260) '_wc___4' (line 13598)
+    [272, 276) '_wc___6' (line 13610)
+    [288, 292) '_wc___7' (line 13616)
+    [304, 308) '_wc___9' (line 13641)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:13092:20 in setbit
+Shadow bytes around the buggy address:
+  0x0fe672b97ff0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0fe672b98000: f1 f1 f1 f1 04 f2 00 f2 f2 f2 00 f2 f2 f2 00 00
+  0x0fe672b98010: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0fe672b98020: f3 f3 f3 f3 f3 f3 f3 f3 00 00 00 00 00 00 00 00
+  0x0fe672b98030: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0fe672b98040: f1 f1 f1 f1 00 00 00 00[f2]f2 f2 f2 04 f2 04 f2
+  0x0fe672b98050: 04 f2 00 00 00 00 01 f2 f2 f2 f2 f2 04 f2 04 f2
+  0x0fe672b98060: 04 f2 04 f2 04 f2 04 f3 00 00 00 00 00 00 00 00
+  0x0fe672b98070: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0fe672b98080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0fe672b98090: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==4042568==ABORTING
+./verify.sh: line 110: 4042567 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

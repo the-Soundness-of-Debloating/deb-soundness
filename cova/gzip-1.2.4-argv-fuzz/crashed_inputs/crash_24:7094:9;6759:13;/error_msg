@@ -1,0 +1,21 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==1646032==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address (pc 0x7f9b5db057fd bp 0x7ffdafd5e770 sp 0x7ffdafd5e1d8 T1646032)
+==1646032==The signal is caused by a READ memory access.
+==1646032==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x7f9b5db057fd  string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74
+    #1 0x7f9b5d9ded30 in __vfprintf_internal stdio-common/vfprintf-internal.c:1517:4
+    #2 0x7f9b5d9df664 in buffered_vfprintf stdio-common/vfprintf-internal.c:2261:12
+    #3 0x7f9b5d9c86c9 in fprintf stdio-common/fprintf.c:32:10
+    #4 0x55684c2b872e in treat_file /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:7094:9
+    #5 0x55684c2b78d1 in main /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6759:13
+    #6 0x7f9b5d991d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f9b5d991e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55684c277584 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out+0x19584) (BuildId: d0e87649f46c7d0cdc23b8a85c3bc7cf9a80a582)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 
+==1646032==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 171: 1646031 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/result/afl_result/reduced/result_2/ubsan/crashes/id:000008*

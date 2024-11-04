@@ -1,0 +1,13 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/bins/reduced.msan.out cf foo.tar /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_0 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0
+==1010338==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x561f9dbdc9df in name_from_list /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:17163:15
+    #1 0x561f9dbdc5fb in create_archive /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:5866:17
+    #2 0x561f9dbe38b3 in main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22891:7
+    #3 0x7f3b93d46d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f3b93d46e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x561f9db532f4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/bins/reduced.msan.out+0x1f2f4) (BuildId: 58c40398561612151fd7b3a177839dbf41597ef3)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:17163:15 in name_from_list
+Exiting
+./verify.sh: line 357: 1010336 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/bins/reduced.msan.out cf foo.tar /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_0 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0

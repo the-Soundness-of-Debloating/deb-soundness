@@ -1,0 +1,9 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/bins/reduced.ubsan.out -E '\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)' /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_0
+grep-2.19.c.reduced.c:13529:73: runtime error: index 22023 out of bounds for type 'const struct dfa_ctype[13]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:13529:73 in 
+grep-2.19.c.reduced.c:16003:62: runtime error: null pointer passed as argument 2, which is declared to never be null
+grep-2.19.c.reduced.c:1031:59: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:16003:62 in 
+grep-2.19.c.reduced.c:16062:38: runtime error: addition of unsigned offset to 0x560735a9bcf0 overflowed to 0x560735a9bce0
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:16062:38 in 

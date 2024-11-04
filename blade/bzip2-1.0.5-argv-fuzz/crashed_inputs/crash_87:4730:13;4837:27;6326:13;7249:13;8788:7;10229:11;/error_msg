@@ -1,0 +1,14 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out
+==3946996==ERROR: LeakSanitizer: requested allocation size 0xffffffffdbbb0b80 exceeds maximum supported size of 0x200000000
+    #0 0x564d0b265642 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x30642) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+    #1 0x564d0b26b570 in default_bzalloc /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:4730:13
+    #2 0x564d0b26b44e in BZ2_bzCompressInit /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:4837:27
+    #3 0x564d0b26bbfb in BZ2_bzWriteOpen /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:6326:13
+    #4 0x564d0b26d135 in compressStream /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:7249:13
+    #5 0x564d0b26c4e2 in compress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:8788:7
+    #6 0x564d0b26c13f in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:10229:11
+    #7 0x7f0136b8bd8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+
+==3946996==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: LeakSanitizer: allocation-size-too-big (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x30642) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0) in __interceptor_malloc

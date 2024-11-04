@@ -1,0 +1,43 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1257942==ERROR: AddressSanitizer: SEGV on unknown address (pc 0x557154eef3c0 bp 0x7ffd8e995e30 sp 0x7ffd8e9955e8 T0)
+==1257942==The signal is caused by a READ memory access.
+==1257942==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x557154eef3c0 in __sanitizer::internal_strlen(char const*) (/workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/bins/reduced.asan.out+0xbb3c0) (BuildId: b1a343d8d3c95efbbac02e5bc150246d95a56db3)
+    #1 0x557154ea83c6 in fopen (/workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/bins/reduced.asan.out+0x743c6) (BuildId: b1a343d8d3c95efbbac02e5bc150246d95a56db3)
+    #2 0x557154f1313c in fopen_safer /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:7783:11
+    #3 0x557154f14c55 in stream_open /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:9001:14
+    #4 0x557154f140fc in xfopen /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:9015:11
+    #5 0x557154f13dcd in sort /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13110:13
+    #6 0x557154f13660 in main /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14277:7
+    #7 0x7f0e1e43dd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7f0e1e43de3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x557154e53324 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/bins/reduced.asan.out+0x1f324) (BuildId: b1a343d8d3c95efbbac02e5bc150246d95a56db3)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/bins/reduced.asan.out+0xbb3c0) (BuildId: b1a343d8d3c95efbbac02e5bc150246d95a56db3) in __sanitizer::internal_strlen(char const*)
+==1257942==ABORTING
+./verify.sh: line 107: 1257941 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==3257409==ERROR: ThreadSanitizer: SEGV on unknown address (pc 0x5645ceb73d10 bp 0x7ffe5504c1e0 sp 0x7ffe5504c158 T3257409)
+==3257409==The signal is caused by a READ memory access.
+==3257409==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 __sanitizer::internal_strlen(char const*) <null> (reduced.tsan.out+0x29d10) (BuildId: 37c507e933e07a17154621eca2c7e1c9354996f3)
+    #1 fopen <null> (reduced.tsan.out+0x77f9e) (BuildId: 37c507e933e07a17154621eca2c7e1c9354996f3)
+    #2 fopen_safer /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:7783:11 (reduced.tsan.out+0xcdbc5) (BuildId: 37c507e933e07a17154621eca2c7e1c9354996f3)
+    #3 stream_open /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:9001:14 (reduced.tsan.out+0xcedbf) (BuildId: 37c507e933e07a17154621eca2c7e1c9354996f3)
+    #4 xfopen /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:9015:11 (reduced.tsan.out+0xce395) (BuildId: 37c507e933e07a17154621eca2c7e1c9354996f3)
+    #5 sort /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13110:13 (reduced.tsan.out+0xce1d9) (BuildId: 37c507e933e07a17154621eca2c7e1c9354996f3)
+    #6 main /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14277:7 (reduced.tsan.out+0xcde38) (BuildId: 37c507e933e07a17154621eca2c7e1c9354996f3)
+    #7 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #9 _start <null> (reduced.tsan.out+0x21354) (BuildId: 37c507e933e07a17154621eca2c7e1c9354996f3)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/bins/reduced.tsan.out+0x29d10) (BuildId: 37c507e933e07a17154621eca2c7e1c9354996f3) in __sanitizer::internal_strlen(char const*)
+==3257409==ABORTING
+./verify.sh: line 107: 3257408 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

@@ -1,0 +1,15 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.msan.out cf foo.tar /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_0 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0
+==154475==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5644a52d0e7a in safer_name_suffix /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:17428:13
+    #1 0x5644a52e997b in dump_file0 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:6236:17
+    #2 0x5644a52e7ef1 in dump_file /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:6553:7
+    #3 0x5644a52e779d in create_archive /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:5976:15
+    #4 0x5644a5321c59 in main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22891:7
+    #5 0x7f440ca94d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7f440ca94e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x5644a523b544 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.msan.out+0x20544) (BuildId: 7dd20a54459ea83b45ce3654eb159a31bca1a93b)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:17428:13 in safer_name_suffix
+Exiting
+./verify.sh: line 360: 154474 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.msan.out cf foo.tar /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_0 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0

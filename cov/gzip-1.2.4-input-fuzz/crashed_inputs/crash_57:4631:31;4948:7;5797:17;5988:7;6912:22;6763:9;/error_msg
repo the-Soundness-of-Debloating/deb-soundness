@@ -1,0 +1,22 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out -d
+
+reduced.ubsan.out: stdin: not in gzip format
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3275371==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x55b2ca07b940 (pc 0x55b2c70e6165 bp 0x7fff209ee650 sp 0x7fff209ee310 T3275371)
+==3275371==The signal is caused by a WRITE memory access.
+    #0 0x55b2c70e6165 in build_tree___0 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4631:31
+    #1 0x55b2c70e5467 in flush_block /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4948:7
+    #2 0x55b2c70ede3c in deflate /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5797:17
+    #3 0x55b2c70eec6e in zip /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5988:7
+    #4 0x55b2c70f056c in treat_stdin /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #5 0x55b2c70efee8 in main /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #6 0x7f690f9d5d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f690f9d5e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55b2c70b1524 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out+0x17524) (BuildId: 34b76cd7be567d8331ed0bfd80663d374dd178d2)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4631:31 in build_tree___0
+==3275371==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 169: 3275364 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out -d < /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_1/ubsan/crashes/id:000026* > sample1.tst

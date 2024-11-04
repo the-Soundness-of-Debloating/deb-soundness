@@ -1,0 +1,5 @@
+tool: chisel ave_issue: 51.2500, ave_reduction: 71.5000%
+tool: blade ave_issue: 31.2500, ave_reduction: 75.0300%
+tool: cov ave_issue: 47.8750, ave_reduction: 53.1600%
+tool: cova ave_issue: 27.8750, ave_reduction: 36.3300%
+tool: covf ave_issue: 35.4375, ave_reduction: 51.2300%

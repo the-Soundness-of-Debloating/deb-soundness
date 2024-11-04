@@ -1,0 +1,6 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/bins/reduced.ubsan.out -z /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/input/radamsa_fuzzed/file9_fuzzed/file9_269
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3299523==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x0000000000d8 (pc 0x7fc629267fea bp 0x03e0da95c5d5 sp 0x7ffc2d4e7cc0 T3299523)
+==3299523==The signal is caused by a READ memory access.
+==3299523==Hint: address points to the zero page.

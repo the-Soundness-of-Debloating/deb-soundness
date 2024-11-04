@@ -1,0 +1,14 @@
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==995169==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x55a32be247c7 bp 0x7ffd739ab670 sp 0x7ffd739ab170 T0)
+==995169==The signal is caused by a READ memory access.
+==995169==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x55a32be247c7 in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13901:19
+    #1 0x7fe43abc0d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7fe43abc0e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x55a32bdf4704 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.lsan.out+0x7704) (BuildId: 8659d428bef98df5f75e56bfaedbd1d6f1fff963)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13901:19 in main
+==995169==ABORTING

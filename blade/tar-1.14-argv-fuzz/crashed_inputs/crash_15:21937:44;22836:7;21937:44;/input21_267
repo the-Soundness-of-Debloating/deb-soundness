@@ -1,0 +1,1 @@
+xf foo.ex bar -X foo.exclude -X bar.exclude -X foo.exclude -X bar.exclude

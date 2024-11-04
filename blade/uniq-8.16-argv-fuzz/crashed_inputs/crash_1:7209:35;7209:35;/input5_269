@@ -1,0 +1,2 @@
+-f -65536 trainput/file/data.txt
+-f 256 trainput/file/data.txt

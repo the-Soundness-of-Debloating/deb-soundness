@@ -1,0 +1,54 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.ubsan.out
+bzip2: file name
+`train_input/traink/foo'
+is suspiciously (more than 1024 chars) long.
+Try using a reasonable file name instead.  Sorry! :-)
+bzip2: file name
+`train_input/traink/foo'
+is suspiciously (more than 1024 chars) long.
+Try using a reasonable file name instead.  Sorry! :-)
+bzip2-1.0.5.c.reduced.c:3509:22: runtime error: index 258 out of bounds for type 'Int32[258]' (aka 'int[258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:3509:22 in 
+bzip2-1.0.5.c.reduced.c:3517:26: runtime error: index 9323 out of bounds for type 'Int32[258]' (aka 'int[258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:3517:26 in 
+bzip2-1.0.5.c.reduced.c:3878:56: runtime error: index 4113 out of bounds for type 'UChar[258]' (aka 'unsigned char[258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:3878:56 in 
+bzip2-1.0.5.c.reduced.c:3973:20: runtime error: index 4113 out of bounds for type 'Int32[258]' (aka 'int[258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:3973:20 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==1978857==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7feff5987f42 bp 0x7ffc0ad3ef30 sp 0x7ffc0ad3ee20 T1978857)
+==1978857==The signal is caused by a READ memory access.
+==1978857==Hint: address points to the zero page.
+    #0 0x7feff5987f42 in fwrite libio/iofwrite.c:37:3
+    #1 0x55c85fbf63c0 in BZ2_bzWriteClose64 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:6541:29
+    #2 0x55c85fbff32f in compressStream /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:7288:7
+    #3 0x55c85fbf85a2 in compress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:8788:7
+    #4 0x55c85fbf7a0a in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:10252:15
+    #5 0x7feff5931d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7feff5931e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x55c85fbaa464 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.ubsan.out+0x21464) (BuildId: f62e3d2225d786db8b19860ba9c0ce1b1ca1f87e)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV libio/iofwrite.c:37:3 in fwrite
+==1978857==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 174: 1978856 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/input/radamsa_fuzzed/input1_fuzzed/input1_102
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==3948365==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7f72c16eef42 bp 0x7ffd1181d3b0 sp 0x7ffd1181d320 T0)
+==3948365==The signal is caused by a READ memory access.
+==3948365==Hint: address points to the zero page.
+    #0 0x7f72c16eef42 in fwrite (/lib/x86_64-linux-gnu/libc.so.6+0x7ff42) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #1 0x55ed127fdd12 in BZ2_bzWriteClose64 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:6541:29
+    #2 0x55ed127ff1df in compressStream /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:7288:7
+    #3 0x55ed127fe4e2 in compress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:8788:7
+    #4 0x55ed127fe180 in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:10252:15
+    #5 0x7f72c1698d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #6 0x7f72c1698e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #7 0x55ed127cc464 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x5464) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV (/lib/x86_64-linux-gnu/libc.so.6+0x7ff42) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0) in fwrite
+==3948365==ABORTING

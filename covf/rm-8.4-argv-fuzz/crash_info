@@ -1,0 +1,16 @@
+[
+{ crash_loc: 0x55d36f72807c, vul_type: "READ memory access,", deb_tool: "covf" }, 
+{ crash_loc: 4455, vul_type: "heap-buffer-overflow,", deb_tool: "covf" }, 
+{ crash_loc: 6367, vul_type: "READ memory access,", deb_tool: "covf" }, 
+{ crash_loc: 5776, vul_type: "allocation-size-too-big,requested allocation size .* exceeds maximum supported size,", deb_tool: "covf" }, 
+{ crash_loc: 1944, vul_type: "WRITE memory access,", deb_tool: "covf" }, 
+{ crash_loc: 1944, vul_type: "WRITE memory access,", deb_tool: "covf" }, 
+{ crash_loc: 2713, vul_type: "runtime error ", deb_tool: "covf" }, 
+{ crash_loc: 6969, vul_type: "WRITE memory access,", deb_tool: "covf" }, 
+{ crash_loc: 1944, vul_type: "WRITE memory access,", deb_tool: "covf" }, 
+{ crash_loc: 2941, vul_type: "use-of-uninitialized-value,", deb_tool: "covf" }, 
+{ crash_loc: 1944, vul_type: "WRITE memory access,", deb_tool: "covf" }, 
+{ crash_loc: 4455, vul_type: "WRITE memory access,", deb_tool: "covf" }, 
+{ crash_loc: 1944, vul_type: "WRITE memory access,", deb_tool: "covf" }, 
+{ crash_loc: 1944, vul_type: "WRITE memory access,", deb_tool: "covf" }, 
+]

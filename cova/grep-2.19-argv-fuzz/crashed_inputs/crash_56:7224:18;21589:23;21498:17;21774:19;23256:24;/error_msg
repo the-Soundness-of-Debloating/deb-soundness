@@ -1,0 +1,40 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==975155==ERROR: ThreadSanitizer: SEGV on unknown address (pc 0x556eba5d8fa2 bp 0x7ffd5a718200 sp 0x7ffd5a717fd8 T975155)
+==975155==The signal is caused by a READ memory access.
+==975155==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 __tsan_write1 <null> (reduced.tsan.out+0xbafa2) (BuildId: aff72c671398214ec3fb7c77ab59f94da8811c06)
+    #1 fts_read /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:7224:18 (reduced.tsan.out+0xd19dc) (BuildId: aff72c671398214ec3fb7c77ab59f94da8811c06)
+    #2 grepdesc /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21589:23 (reduced.tsan.out+0xf0226) (BuildId: aff72c671398214ec3fb7c77ab59f94da8811c06)
+    #3 grepfile /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17 (reduced.tsan.out+0xf0a75) (BuildId: aff72c671398214ec3fb7c77ab59f94da8811c06)
+    #4 grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19 (reduced.tsan.out+0xe89a3) (BuildId: aff72c671398214ec3fb7c77ab59f94da8811c06)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24 (reduced.tsan.out+0xe7e87) (BuildId: aff72c671398214ec3fb7c77ab59f94da8811c06)
+    #6 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 _start <null> (reduced.tsan.out+0x22504) (BuildId: aff72c671398214ec3fb7c77ab59f94da8811c06)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.tsan.out+0xbafa2) (BuildId: aff72c671398214ec3fb7c77ab59f94da8811c06) in __tsan_write1
+==975155==ABORTING
+./verify.sh: line 110: 975154 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==2783523==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address (pc 0x564eb27d33c0 bp 0x7ffefe70f910 sp 0x7ffefe70f570 T2783523)
+==2783523==The signal is caused by a READ memory access.
+==2783523==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x564eb27d33c0 in fts_read /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:7224:18
+    #1 0x564eb2827eed in grepdesc /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21589:23
+    #2 0x564eb28288fa in grepfile /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #3 0x564eb2816927 in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19
+    #4 0x564eb2814da4 in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24
+    #5 0x7f47c5a7cd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7f47c5a7ce3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x564eb27a4744 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x42744) (BuildId: 134b3824983eb10c2b56ba12106407af5954fc5d)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:7224:18 in fts_read
+==2783523==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 2783521 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

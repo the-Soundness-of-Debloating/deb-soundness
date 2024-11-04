@@ -1,0 +1,20 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.asan.out -c
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==3068343==ERROR: AddressSanitizer: SEGV on unknown address 0x562bc904124b (pc 0x562bc863ed4c bp 0x7ffc865b1790 sp 0x7ffc865b15b0 T0)
+==3068343==The signal is caused by a WRITE memory access.
+    #0 0x562bc863ed4c in build_tree___0 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4632:20
+    #1 0x562bc863e773 in flush_block /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4949:7
+    #2 0x562bc8642161 in deflate /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5797:17
+    #3 0x562bc8642b60 in zip /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5988:7
+    #4 0x562bc8643e3b in treat_stdin /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #5 0x562bc864384b in main /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #6 0x7fc31d8f5d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7fc31d8f5e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x562bc85783a4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.asan.out+0x213a4) (BuildId: 40bdfecdb6af30073c3b26aca5f703f7e2048a9b)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4632:20 in build_tree___0
+==3068343==ABORTING
+./verify.sh: line 169: 3068333 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.asan.out -c < /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_0/asan/crashes/id:000020* > sample1.gz

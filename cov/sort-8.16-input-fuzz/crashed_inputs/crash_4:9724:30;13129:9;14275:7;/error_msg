@@ -1,0 +1,14 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-input-fuzz/bins/reduced.asan.out /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-input-fuzz/result/afl_result/reduced/result_0/asan/crashes/id:000000,sig:11,src:000012,time:8569,execs:2394,op:havoc,rep:15
+=================================================================
+==1779387==ERROR: AddressSanitizer: requested allocation size 0x18ffc2a112db80 (0x18ffc2a112eb80 after adjustments for alignment, red zones etc.) exceeds maximum supported size of 0x10000000000 (thread T0)
+    #0 0x561fe090ce9e in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-input-fuzz/bins/reduced.asan.out+0xa5e9e) (BuildId: 3017c13522fedc6a66ad99c9c6e82179c8cfdafa)
+    #1 0x561fe094ad0c in initbuf /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:9724:30
+    #2 0x561fe094a243 in sort /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:13129:9
+    #3 0x561fe094951d in main /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:14275:7
+    #4 0x7f2477d8ad8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+==1779387==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: AddressSanitizer: allocation-size-too-big (/workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-input-fuzz/bins/reduced.asan.out+0xa5e9e) (BuildId: 3017c13522fedc6a66ad99c9c6e82179c8cfdafa) in __interceptor_malloc
+==1779387==ABORTING
+./verify.sh: line 167: 1779386 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-input-fuzz/bins/reduced.asan.out /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-input-fuzz/result/afl_result/reduced/result_0/asan/crashes/id:000000*

@@ -1,0 +1,27 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+date-8.21.c.reduced.c:4191:24: runtime error: index -93 out of bounds for type 'const yytype_int8[113]' (aka 'const signed char[113]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4191:24 in 
+date-8.21.c.reduced.c:4188:32: runtime error: index -28 out of bounds for type 'const yytype_int8[26]' (aka 'const signed char[26]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4188:32 in 
+date-8.21.c.reduced.c:4194:26: runtime error: index -28 out of bounds for type 'const yytype_int8[26]' (aka 'const signed char[26]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4194:26 in 
+date-8.21.c.reduced.c:3465:10: runtime error: applying non-zero offset 56 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:3465:10 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==777433==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000038 (pc 0x7f560a4497e1 bp 0x7ffecc9df9e0 sp 0x7ffecc9de148 T777433)
+==777433==The signal is caused by a WRITE memory access.
+==777433==Hint: address points to the zero page.
+    #0 0x7f560a4497e1  string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:323
+    #1 0x561868547149 in yyparse /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3466:14
+    #2 0x561868550b89 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15
+    #3 0x561868554d37 in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #4 0x7f560a2d2d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f560a2d2e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x56186851e4d4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.ubsan.out+0xe4d4) (BuildId: a503b23e0911d3d9a3bc41498abe22d2bae3c8f6)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:323 
+==777433==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 777432 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

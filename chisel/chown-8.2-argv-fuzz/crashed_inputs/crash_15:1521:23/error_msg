@@ -1,0 +1,24 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/bins/reduced.ubsan.out
+chown-8.2.c.reduced.c:1521:23: runtime error: applying non-zero offset 1 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior chown-8.2.c.reduced.c:1521:23 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==15512==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000001 (pc 0x2b5146bb77fd bp 0x000000000001 sp 0x7fff746f9838 T15512)
+==15512==The signal is caused by a READ memory access.
+==15512==Hint: address points to the zero page.
+    #0 0x2b5146bb77fd  string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74
+    #1 0x2b5146b8850f in __nscd_getgrnam_r nscd/nscd_getgr_r.c:49:30
+    #2 0x2b5146b025de in getgrnam_r grp/../nss/getXXbyYY_r.c:252:21
+    #3 0x2b5146b019f3 in getgrnam grp/../nss/getXXbyYY.c:135:7
+    #4 0x55983c85e9e8 in parse_with_separator /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1585:21
+    #5 0x55983c85e940 in parse_user_spec /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1636:15
+    #6 0x55983c85fca3 in main /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7051:18
+    #7 0x2b5146a43d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x2b5146a43e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x55983c836424 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/bins/reduced.ubsan.out+0x6424) (BuildId: c7c418d98a22f824eda696b85ef1d300135453ea)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 
+==15512==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 15510 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

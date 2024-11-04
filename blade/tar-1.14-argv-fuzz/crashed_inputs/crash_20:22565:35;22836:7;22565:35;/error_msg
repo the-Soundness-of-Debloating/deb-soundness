@@ -1,0 +1,56 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1171745==ERROR: AddressSanitizer: SEGV on unknown address 0x7f2aeb42515b (pc 0x55c2cbfe8c4d bp 0x7ffcadc74db0 sp 0x7ffcadc74b40 T0)
+==1171745==The signal is caused by a WRITE memory access.
+    #0 0x55c2cbfe8c4d in decode_options /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22565:35
+    #1 0x55c2cbfe7d60 in main /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #2 0x7f2aeb3bed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7f2aeb3bee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x55c2cbf203e4 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out+0x233e4) (BuildId: dea9616fe4d35cf044eebf6ac56206498c214bc5)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22565:35 in decode_options
+==1171745==ABORTING
+./verify.sh: line 305: 1171744 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input1_fuzzed/input1_13
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.msan.out
+(null): invalid option -- '.'
+(null): invalid option -- 'a'
+(null): invalid option -- '.'
+(null): invalid option -- '.'
+(null): invalid option -- 'a'
+(null): invalid option -- 'À'
+(null): invalid option -- '®'
+==3241556==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x561eb6f6fa4c in decode_options /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22565:35
+    #1 0x561eb6f6d8f0 in main /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #2 0x7f3fac327d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7f3fac327e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x561eb6ecd384 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.msan.out+0x1f384) (BuildId: 9e8daeb98ac2ea40d33b08f0e050048e3061ad7b)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22565:35 in decode_options
+Exiting
+./verify.sh: line 305: 3241555 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input17_fuzzed/input17_22
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.lsan.out
+(null): invalid option -- '.'
+(null): invalid option -- 'a'
+(null): invalid option -- '.'
+(null): invalid option -- '.'
+(null): invalid option -- 'a'
+(null): invalid option -- 'À'
+(null): invalid option -- '®'
+LeakSanitizer:DEADLYSIGNAL
+==3453030==ERROR: LeakSanitizer: SEGV on unknown address 0x000100000000 (pc 0x55fbce284a3b bp 0x7ffe179d7d20 sp 0x7ffe179d7bc0 T0)
+==3453030==The signal is caused by a WRITE memory access.
+    #0 0x55fbce284a3b in decode_options /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22565:35
+    #1 0x55fbce284434 in main /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #2 0x7f300ec4bd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7f300ec4be3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x55fbce2525b4 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.lsan.out+0x95b4) (BuildId: 8a2240b5e19c3dd3975976a54b849f251cf235cd)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22565:35 in decode_options
+==3453030==ABORTING

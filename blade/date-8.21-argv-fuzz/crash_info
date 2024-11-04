@@ -1,0 +1,5 @@
+[
+{ crash_loc: 5098, vul_type: "", deb_tool: "blade" }, 
+{ crash_loc: 5098, vul_type: "READ memory access,", deb_tool: "blade" }, 
+{ crash_loc: 9626, vul_type: "use-of-uninitialized-value,", deb_tool: "blade" }, 
+]

@@ -1,0 +1,25 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.msan.out
+MemorySanitizer:DEADLYSIGNAL
+==435841==ERROR: MemorySanitizer: stack-overflow on address 0x7fff7ca65b48 (pc 0x7fff7ca65b48 bp 0x7fff7ca64c50 sp 0x7fff7ca64c38 T435841)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x7fff7ca65b48  ([stack]+0x1eb48)
+    #1 0x5586cd4dc5b3 in sys_child_open_for_uncompress /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:20493:15
+    #2 0x5586cd4d7830 in open_archive /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:1171:21
+    #3 0x5586cd51ee6a in read_and /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:11978:7
+    #4 0x5586cd535e9d in main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22905:7
+    #5 0x7ff862e4bd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: MemorySanitizer: stack-overflow ([stack]+0x1eb48) 
+==435841==ABORTING
+==435780==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5586cd505750 in read_header /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:12385:13
+    #1 0x5586cd51eef5 in read_and /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:11987:20
+    #2 0x5586cd535e9d in main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22905:7
+    #3 0x7ff862e4bd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7ff862e4be3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x5586cd44f544 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.msan.out+0x20544) (BuildId: 5a233d6989808b399403c8f6e7451a05f9eaac27)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:12385:13 in read_header
+Exiting
+./verify.sh: line 305: 435777 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input18_fuzzed/input18_1

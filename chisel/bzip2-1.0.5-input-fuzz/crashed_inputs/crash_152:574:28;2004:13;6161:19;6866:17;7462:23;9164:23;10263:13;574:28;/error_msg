@@ -1,0 +1,19 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out -d
+LeakSanitizer:DEADLYSIGNAL
+==1662290==ERROR: LeakSanitizer: SEGV on unknown address 0x630000010000 (pc 0x56225d394425 bp 0x7fffa130abc0 sp 0x7fffa130abc0 T0)
+==1662290==The signal is caused by a WRITE memory access.
+    #0 0x56225d394425 in BZ2_hbCreateDecodeTables /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:574:28
+    #1 0x56225d39525b in BZ2_decompress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:2004:13
+    #2 0x56225d398ea9 in BZ2_bzDecompress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6161:19
+    #3 0x56225d399420 in BZ2_bzRead /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6866:17
+    #4 0x56225d39a6d6 in uncompressStream /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7462:23
+    #5 0x56225d3998b7 in uncompress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9164:23
+    #6 0x56225d399688 in main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10263:13
+    #7 0x7fbec699cd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7fbec699ce3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x56225d366424 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out+0x5424) (BuildId: b7ae66f653a2fb616e7ec0b784cf29fa95e3f3e7)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:574:28 in BZ2_hbCreateDecodeTables
+==1662290==ABORTING

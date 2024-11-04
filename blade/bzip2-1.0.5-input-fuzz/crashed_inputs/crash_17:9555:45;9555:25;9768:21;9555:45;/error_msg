@@ -1,0 +1,18 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.asan.out -f /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1432551==ERROR: AddressSanitizer: SEGV on unknown address (pc 0x5634d643135d bp 0x7fff40ec6fb0 sp 0x7fff40ec6f40 T0)
+==1432551==The signal is caused by a READ memory access.
+==1432551==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x5634d643135d in snocString /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9555:45
+    #1 0x5634d6431382 in snocString /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9555:25
+    #2 0x5634d6430d3f in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9768:21
+    #3 0x7fdbf2f24d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7fdbf2f24e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x5634d635f324 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.asan.out+0x1e324) (BuildId: 9dade43632aea98e7a0e0ae67c68cfd7f5624f0f)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9555:45 in snocString
+==1432551==ABORTING
+./verify.sh: line 170: 1432549 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.asan.out -f /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0

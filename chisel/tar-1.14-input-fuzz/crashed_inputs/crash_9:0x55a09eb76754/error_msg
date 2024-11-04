@@ -1,0 +1,5 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/bins/reduced.asan.out xf /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/input/radamsa_fuzzed/file4_fuzzed/file4_439 bar
+=================================================================
+==1792585==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000050 at pc 0x55a09eb76754 bp 0x7ffe0b989e70 sp 0x7ffe0b989e68
+WRITE of size 8 at 0x602000000050 thread T0

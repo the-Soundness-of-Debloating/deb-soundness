@@ -1,0 +1,19 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.msan.out
+mkdir: invalid option -- 'o'
+MemorySanitizer:DEADLYSIGNAL
+==2042102==ERROR: MemorySanitizer: SEGV on unknown address 0x510048abb390 (pc 0x7efdf132183a bp 0x000000000000 sp 0x010048abb358 T2042102)
+==2042102==The signal is caused by a WRITE memory access.
+    #0 0x7efdf132183a  (/lib/x86_64-linux-gnu/libc.so.6+0x1af83a) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #1 0x563435be7f7e in memset (/workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.msan.out+0x55f7e) (BuildId: 9c252f056b0498ab0d6d85166216039a8f7a36d8)
+    #2 0x563435c3867e in make_path /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:3550:17
+    #3 0x563435c39873 in main /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:4993:20
+    #4 0x7efdf119bd8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #5 0x7efdf119be3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #6 0x563435bb0304 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.msan.out+0x1e304) (BuildId: 9c252f056b0498ab0d6d85166216039a8f7a36d8)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV (/lib/x86_64-linux-gnu/libc.so.6+0x1af83a) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0) 
+==2042102==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 2042101 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

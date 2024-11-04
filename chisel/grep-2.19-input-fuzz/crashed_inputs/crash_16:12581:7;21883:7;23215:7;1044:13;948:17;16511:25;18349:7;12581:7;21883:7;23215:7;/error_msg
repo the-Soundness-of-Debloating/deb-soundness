@@ -1,0 +1,76 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/bins/reduced.lsan.out a /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_129
+
+=================================================================
+==3431536==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 96 byte(s) in 1 object(s) allocated from:
+    #0 0x55d21e3a2722 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/bins/reduced.lsan.out+0x31722) (BuildId: 00417d5e5cfb5adbbf5140ae3b27da3d8f1c74a4)
+    #1 0x55d21e3a4ef4 in xmalloc /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:1044:13
+    #2 0x55d21e3a4ecd in xnmalloc /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:948:17
+    #3 0x55d21e3a6d53 in dfaanalyze /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:16504:25
+    #4 0x55d21e3a5f73 in dfacomp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:18349:7
+    #5 0x55d21e3a5e85 in GEAcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:12581:7
+    #6 0x55d21e3a9891 in Gcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21883:7
+    #7 0x55d21e3a82be in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23215:7
+    #8 0x7f3f3b2f1d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Direct leak of 72 byte(s) in 1 object(s) allocated from:
+    #0 0x55d21e3a2722 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/bins/reduced.lsan.out+0x31722) (BuildId: 00417d5e5cfb5adbbf5140ae3b27da3d8f1c74a4)
+    #1 0x55d21e3a4ef4 in xmalloc /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:1044:13
+    #2 0x55d21e3a4ecd in xnmalloc /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:948:17
+    #3 0x55d21e3a6d9f in dfaanalyze /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:16508:52
+    #4 0x55d21e3a5f73 in dfacomp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:18349:7
+    #5 0x55d21e3a5e85 in GEAcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:12581:7
+    #6 0x55d21e3a9891 in Gcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21883:7
+    #7 0x55d21e3a82be in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23215:7
+    #8 0x7f3f3b2f1d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Direct leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x55d21e3a2722 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/bins/reduced.lsan.out+0x31722) (BuildId: 00417d5e5cfb5adbbf5140ae3b27da3d8f1c74a4)
+    #1 0x55d21e3a4ef4 in xmalloc /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:1044:13
+    #2 0x55d21e3a4ecd in xnmalloc /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:948:17
+    #3 0x55d21e3a72fd in alloc_position_set /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:16013:30
+    #4 0x55d21e3a6deb in dfaanalyze /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:16514:7
+    #5 0x55d21e3a5f73 in dfacomp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:18349:7
+    #6 0x55d21e3a5e85 in GEAcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:12581:7
+    #7 0x55d21e3a9891 in Gcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21883:7
+    #8 0x55d21e3a82be in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23215:7
+    #9 0x7f3f3b2f1d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Direct leak of 48 byte(s) in 2 object(s) allocated from:
+    #0 0x55d21e3a2b74 in __interceptor_realloc (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/bins/reduced.lsan.out+0x31b74) (BuildId: 00417d5e5cfb5adbbf5140ae3b27da3d8f1c74a4)
+    #1 0x55d21e3a4f6c in xrealloc /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:1069:11
+    #2 0x55d21e3a4fcf in x2nrealloc /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:995:13
+    #3 0x55d21e3a7445 in copy /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:15999:34
+    #4 0x55d21e3a71ac in dfaanalyze /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:16664:13
+    #5 0x55d21e3a5f73 in dfacomp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:18349:7
+    #6 0x55d21e3a5e85 in GEAcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:12581:7
+    #7 0x55d21e3a9891 in Gcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21883:7
+    #8 0x55d21e3a82be in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23215:7
+    #9 0x7f3f3b2f1d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Direct leak of 32 byte(s) in 1 object(s) allocated from:
+    #0 0x55d21e3a2b74 in __interceptor_realloc (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/bins/reduced.lsan.out+0x31b74) (BuildId: 00417d5e5cfb5adbbf5140ae3b27da3d8f1c74a4)
+    #1 0x55d21e3a4f6c in xrealloc /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:1069:11
+    #2 0x55d21e3a4fcf in x2nrealloc /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:995:13
+    #3 0x55d21e3a7445 in copy /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:15999:34
+    #4 0x55d21e3a6faf in dfaanalyze /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:16590:15
+    #5 0x55d21e3a5f73 in dfacomp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:18349:7
+    #6 0x55d21e3a5e85 in GEAcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:12581:7
+    #7 0x55d21e3a9891 in Gcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21883:7
+    #8 0x55d21e3a82be in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23215:7
+    #9 0x7f3f3b2f1d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Direct leak of 3 byte(s) in 1 object(s) allocated from:
+    #0 0x55d21e3a2722 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/bins/reduced.lsan.out+0x31722) (BuildId: 00417d5e5cfb5adbbf5140ae3b27da3d8f1c74a4)
+    #1 0x55d21e3a4ef4 in xmalloc /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:1044:13
+    #2 0x55d21e3a4ecd in xnmalloc /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:948:17
+    #3 0x55d21e3a6dc5 in dfaanalyze /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:16511:25
+    #4 0x55d21e3a5f73 in dfacomp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:18349:7
+    #5 0x55d21e3a5e85 in GEAcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:12581:7
+    #6 0x55d21e3a9891 in Gcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21883:7
+    #7 0x55d21e3a82be in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23215:7
+    #8 0x7f3f3b2f1d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: LeakSanitizer: 299 byte(s) leaked in 7 allocation(s).

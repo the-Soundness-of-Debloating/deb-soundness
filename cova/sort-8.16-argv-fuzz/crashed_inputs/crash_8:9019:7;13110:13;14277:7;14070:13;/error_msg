@@ -1,0 +1,18 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.asan.out
+sort: invalid option -- 'q'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1054519==ERROR: AddressSanitizer: stack-overflow on address 0x7ffe486b6cf0 (pc 0x7ffe486b6cf0 bp 0x7ffe486b6ca0 sp 0x7ffe486b6ca8 T0)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x7ffe486b6cf0  ([stack]+0x1ccf0)
+    #1 0x562a69da1035 in xfopen /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:9019:7
+    #2 0x562a69da012e in sort /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13110:13
+    #3 0x562a69d9d91a in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14277:7
+    #4 0x7ffe486b827f  ([stack]+0x1e27f)
+    #5 0x562a69d9c3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #6 0x7fa30084dd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: stack-overflow ([stack]+0x1ccf0) 
+==1054519==ABORTING
+./verify.sh: line 110: 1054515 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

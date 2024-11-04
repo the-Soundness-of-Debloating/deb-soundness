@@ -1,0 +1,5 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.asan.out
+=================================================================
+==760230==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x6210000010e0 at pc 0x55f449187853 bp 0x7ffd2273f8b0 sp 0x7ffd2273f8a8
+WRITE of size 8 at 0x6210000010e0 thread T0

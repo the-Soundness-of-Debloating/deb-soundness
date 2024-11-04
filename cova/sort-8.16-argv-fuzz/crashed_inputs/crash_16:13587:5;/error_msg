@@ -1,0 +1,32 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.tsan.out
+sort: invalid option -- ''
+ThreadSanitizer:DEADLYSIGNAL
+==3079776==ERROR: ThreadSanitizer: SEGV on unknown address (pc 0x7f682eb1977f bp 0x7f682ecfeaa0 sp 0x7ffe331d2948 T3079776)
+==3079776==The signal is caused by a READ memory access.
+==3079776==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 setlocale locale/setlocale.c:236:7 (libc.so.6+0x3677f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 setlocale <null> (reduced.tsan.out+0x68748) (BuildId: 1f2b008a454c1a3d07abf2912e550aa8780b481c)
+    #2 main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13587:5 (reduced.tsan.out+0xd0090) (BuildId: 1f2b008a454c1a3d07abf2912e550aa8780b481c)
+    #3 <null> <null> ([stack]+0x1fdbf)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV locale/setlocale.c:236:7 in setlocale
+==3079776==ABORTING
+./verify.sh: line 110: 3079774 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.lsan.out
+sort: invalid option -- ''
+LeakSanitizer:DEADLYSIGNAL
+==4061757==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x7ff5e43e077f bp 0x7ff5e45c5aa0 sp 0x7ffc7a5614d8 T0)
+==4061757==The signal is caused by a READ memory access.
+==4061757==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x7ff5e43e077f in setlocale locale/setlocale.c:236:7
+    #1 0x562b130e7c4c in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13587:5
+    #2 0x7ffc7a56204f  ([stack]+0x1e04f)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV locale/setlocale.c:236:7 in setlocale
+==4061757==ABORTING

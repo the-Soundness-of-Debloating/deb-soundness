@@ -1,0 +1,24 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.tsan.out -c
+ThreadSanitizer:DEADLYSIGNAL
+==517718==ERROR: ThreadSanitizer: BUS on unknown address (pc 0x55b01d5fe94d bp 0x7fff9fdbb060 sp 0x7fff9fdbaca0 T517718)
+==517718==The signal is caused by a READ memory access.
+==517718==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 fallbackQSort3 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10482:17 (reduced.tsan.out+0xdc94d) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #1 fallbackSort /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10900:17 (reduced.tsan.out+0xdb12c) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #2 BZ2_blockSort /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:12071:13 (reduced.tsan.out+0xd22dc) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #3 BZ2_compressBlock /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:4547:9 (reduced.tsan.out+0xd1f6e) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #4 handle_compress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:5184:17 (reduced.tsan.out+0xd9182) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #5 BZ2_bzCompress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:5307:18 (reduced.tsan.out+0xd903b) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #6 BZ2_bzWriteClose64 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6524:21 (reduced.tsan.out+0xd9c2a) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #7 compressStream /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7287:7 (reduced.tsan.out+0xdc62d) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #8 compress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:8787:7 (reduced.tsan.out+0xda742) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #9 main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10227:11 (reduced.tsan.out+0xda35e) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #10 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #11 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #12 _start <null> (reduced.tsan.out+0x20344) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: BUS /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10482:17 in fallbackQSort3
+==517718==ABORTING
+./verify.sh: line 173: 517717 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.tsan.out -c < /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_4 > sample1.rb2

@@ -1,0 +1,11 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.msan.out
+==2826083==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55bc8800c3c3 in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9783:13
+    #1 0x7fd517b1fd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7fd517b1fe3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x55bc87f652e4 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.msan.out+0x1e2e4) (BuildId: 9ce58782ac2b843de79a63eec851d8be6da8c90c)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9783:13 in main
+Exiting
+./verify.sh: line 174: 2826081 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_3 > sample1.rb2

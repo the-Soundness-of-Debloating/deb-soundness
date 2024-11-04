@@ -1,0 +1,20 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out
+gzip-1.2.4.c.reduced.c:4184:13: runtime error: index 16711680 out of bounds for type 'uch[512]' (aka 'unsigned char[512]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4184:13 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3079840==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x564edb524dc0 (pc 0x564ed9baac49 bp 0x7fff02ecd880 sp 0x7fff02ecd6f0 T3079840)
+==3079840==The signal is caused by a WRITE memory access.
+    #0 0x564ed9baac49 in ct_init /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:4184:32
+    #1 0x564ed9bb2857 in zip /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:5943:7
+    #2 0x564ed9bb3b3d in treat_stdin /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6914:22
+    #3 0x564ed9bb336d in main /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6765:10
+    #4 0x7fef917e8d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7fef917e8e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x564ed9b7d414 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out+0x10414) (BuildId: d150ce4a10dca204b5f8adf9df8090f243c63931)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:4184:32 in ct_init
+==3079840==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 168: 3079838 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/input/radamsa_fuzzed/input1_fuzzed/input1_0 > sample1.gz

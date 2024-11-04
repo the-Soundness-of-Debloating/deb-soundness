@@ -1,0 +1,7 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+date-8.21.c.reduced.c:3847:17: runtime error: negation of -9223372036854775808 cannot be represented in type 'long'; cast to an unsigned type to negate this value to itself
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:3847:17 in 
+date-8.21.c.reduced.c:5232:34: runtime error: signed integer overflow: -9223372036854775808 - 1 cannot be represented in type 'long'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:5232:34 in 
+date: invalid date '170141183456193936576490085613811227251-9223372036854775808--257'

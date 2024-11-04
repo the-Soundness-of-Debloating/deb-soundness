@@ -1,0 +1,26 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-input-fuzz/bins/reduced.asan.out xf /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_458
+
+=================================================================
+==1076632==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x5559e8decdfe in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-input-fuzz/bins/reduced.asan.out+0xa8dfe) (BuildId: f415b17665be9d340f8c83502eb7fc707b05d8a9)
+    #1 0x5559e8e3056d in xnmalloc_inline /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30056:13
+    #2 0x5559e8e2cc29 in xmalloc /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30069:13
+    #3 0x5559e8e2eec0 in decode_options /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:21473:21
+    #4 0x5559e8e2eb53 in main /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22834:7
+    #5 0x7f368b6e7d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Indirect leak of 6 byte(s) in 2 object(s) allocated from:
+    #0 0x5559e8decdfe in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-input-fuzz/bins/reduced.asan.out+0xa8dfe) (BuildId: f415b17665be9d340f8c83502eb7fc707b05d8a9)
+    #1 0x5559e8e3056d in xnmalloc_inline /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30056:13
+    #2 0x5559e8e2cc29 in xmalloc /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30069:13
+    #3 0x5559e8e30648 in xclone /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30158:13
+    #4 0x5559e8e2c269 in xstrdup /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30172:17
+    #5 0x5559e8e2f0a9 in decode_options /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:21496:26
+    #6 0x5559e8e2eb53 in main /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22834:7
+    #7 0x7f368b6e7d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: 46 byte(s) leaked in 3 allocation(s).
+./verify.sh: line 360: 1076630 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-input-fuzz/bins/reduced.asan.out xf /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_458

@@ -1,0 +1,40 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==623506==ERROR: AddressSanitizer: SEGV on unknown address 0x4a731612d5c1 (pc 0x5628cb5e8c98 bp 0x7ffc07f464b0 sp 0x7ffc07f462c0 T0)
+==623506==The signal is caused by a READ memory access.
+    #0 0x5628cb5e8c98 in main /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9497:28
+    #1 0x7f5af9189d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7f5af9189e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x5628cb51a444 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.asan.out+0x23444) (BuildId: 775152e381bed01add2b2611dde830426fc1a8c3)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9497:28 in main
+==623506==ABORTING
+./verify.sh: line 110: 623505 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.msan.out
+==1839058==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5601eee35a4b in main /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9497:28
+    #1 0x7fd6192b3d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7fd6192b3e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x5601eed943b4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.msan.out+0x1f3b4) (BuildId: 74aa4cd2da783eb62645fdc5258c309d02372771)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9497:28 in main
+Exiting
+./verify.sh: line 110: 1839057 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==2831585==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x55da5839b9b0 bp 0x7ffe87f6c570 sp 0x7ffe87f6c410 T0)
+==2831585==The signal is caused by a READ memory access.
+==2831585==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x55da5839b9b0 in main /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9497:28
+    #1 0x7efed252cd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7efed252ce3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x55da583695e4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.lsan.out+0x65e4) (BuildId: 3f3ce206a851944f2a9bf35ed65b9c83b43c6ddf)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9497:28 in main
+==2831585==ABORTING

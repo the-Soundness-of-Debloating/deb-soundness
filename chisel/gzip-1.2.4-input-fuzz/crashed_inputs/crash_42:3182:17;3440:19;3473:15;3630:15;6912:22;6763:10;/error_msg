@@ -1,0 +1,40 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out -d
+gzip-1.2.4.c.reduced.c:3182:35: runtime error: member access within misaligned address 0x55655edebe81 for type 'struct huft', which requires 8 byte alignment
+0x55655edebe81: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3182:35 in 
+gzip-1.2.4.c.reduced.c:3185:35: runtime error: member access within misaligned address 0x55655edebe81 for type 'struct huft', which requires 8 byte alignment
+0x55655edebe81: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3185:35 in 
+gzip-1.2.4.c.reduced.c:3185:35: runtime error: member access within misaligned address 0x55655edebe89 for type 'union __anonunion_v_25', which requires 8 byte alignment
+0x55655edebe89: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3185:35 in 
+gzip-1.2.4.c.reduced.c:3185:37: runtime error: load of misaligned address 0x55655edebe89 for type 'ush' (aka 'unsigned short'), which requires 8 byte alignment
+0x55655edebe89: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3185:37 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3077571==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x55655ee93e82 (pc 0x55655e47a53e bp 0x7ffda84972c0 sp 0x7ffda8496ac0 T3077571)
+==3077571==The signal is caused by a READ memory access.
+    #0 0x55655e47a53e in inflate_dynamic /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3182:17
+    #1 0x55655e47ad51 in inflate_block /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3440:19
+    #2 0x55655e47ad80 in inflate /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3473:15
+    #3 0x55655e47adce in unzip /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3630:15
+    #4 0x55655e48440d in treat_stdin /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #5 0x55655e4842bd in main /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:10
+    #6 0x7f9708436d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f9708436e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55655e44e404 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out+0x10404) (BuildId: 2a58b9a76e94df514ce4ecec2b34d5a00be04b93)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3182:17 in inflate_dynamic
+==3077571==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 166: 3077568 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out -d < /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_1/ubsan/crashes/id:000021* > sample1.tst

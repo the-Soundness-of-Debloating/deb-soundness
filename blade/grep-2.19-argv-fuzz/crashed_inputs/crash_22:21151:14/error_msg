@@ -1,0 +1,14 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep: invalid option -- 'À'
+grep: invalid option -- ' '
+grep: invalid option -- '-'
+grep: invalid option -- 'â'
+grep: invalid option -- 'ó'
+grep: invalid option -- ' '
+grep: invalid option -- '€'
+grep: invalid option -- '¹'
+grep: invalid option -- '€'
+grep: invalid option -- '®'
+grep-2.19.c.reduced.c:21151:14: runtime error: applying non-zero offset 1 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:21151:14 in 

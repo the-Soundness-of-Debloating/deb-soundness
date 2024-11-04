@@ -1,0 +1,16 @@
+chisel bzip2-1.0.5-argv-fuzz/ issue: 88, reduction: 67.0000%
+chisel bzip2-1.0.5-input-fuzz/ issue: 161, reduction: 67.0100%
+chisel chown-8.2-argv-fuzz/ issue: 23, reduction: 85.1800%
+chisel date-8.21-argv-fuzz/ issue: 88, reduction: 54.6300%
+chisel grep-2.19-argv-fuzz/ issue: 140, reduction: 76.3900%
+chisel grep-2.19-input-fuzz/ issue: 30, reduction: 76.3900%
+chisel gzip-1.2.4-argv-fuzz/ issue: 26, reduction: 69.9300%
+chisel gzip-1.2.4-input-fuzz/ issue: 95, reduction: 69.9400%
+chisel mkdir-5.2.1-argv-fuzz/ issue: 2, reduction: 39.4200%
+chisel rm-8.4-argv-fuzz/ issue: 26, reduction: 80.9500%
+chisel sort-8.16-argv-fuzz/ issue: 17, reduction: 86.9500%
+chisel sort-8.16-input-fuzz/ issue: 12, reduction: 86.9600%
+chisel tar-1.14-argv-fuzz/ issue: 63, reduction: 85.2500%
+chisel tar-1.14-input-fuzz/ issue: 24, reduction: 85.2600%
+chisel uniq-8.16-argv-fuzz/ issue: 18, reduction: 69.3600%
+chisel uniq-8.16-input-fuzz/ issue: 7, reduction: 69.3600%

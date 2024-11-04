@@ -1,0 +1,24 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.ubsan.out
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==1990776==ERROR: UndefinedBehaviorSanitizer: stack-overflow on address 0x7ffed65af000 (pc 0x7ff120c0fc37 bp 0x7ffed65ac560 sp 0x7ffed65ac428 T1990776)
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+UndefinedBehaviorSanitizer: nested bug in the same thread, aborting.
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.msan.out
+MemorySanitizer:DEADLYSIGNAL
+==2044223==ERROR: MemorySanitizer: stack-overflow on address 0x7ffdc8e63000 (pc 0x7f295086bc37 bp 0x7ffdc8e614e0 sp 0x7ffdc8e60c98 T2044223)
+MemorySanitizer:DEADLYSIGNAL
+MemorySanitizer: nested bug in the same thread, aborting.
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2127737==ERROR: ThreadSanitizer: stack-overflow on address 0x7ffe217be000 (pc 0x7fb55fbcec37 bp 0x7ffe217bc180 sp 0x7ffe217bc008 T2127737)
+ThreadSanitizer:DEADLYSIGNAL
+ThreadSanitizer: nested bug in the same thread, aborting.
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==2206969==ERROR: LeakSanitizer: stack-overflow on address 0x7fff586ff000 (pc 0x7fed9c7c3c37 bp 0x7fff586fdea0 sp 0x7fff586fdd98 T0)
+LeakSanitizer:DEADLYSIGNAL
+LeakSanitizer: nested bug in the same thread, aborting.

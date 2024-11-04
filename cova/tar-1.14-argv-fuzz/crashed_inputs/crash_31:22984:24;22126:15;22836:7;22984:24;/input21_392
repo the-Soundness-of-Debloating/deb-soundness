@@ -1,0 +1,1 @@
+xf foo.tar -X foo.exclude -X bar.e -X bar.excludexf foo.tar -X foo.exclude -X bar.e -X bar.exclude

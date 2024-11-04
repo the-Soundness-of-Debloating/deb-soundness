@@ -1,0 +1,16 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==3482980==ERROR: ThreadSanitizer: SEGV on unknown address 0x25440247df10 (pc 0x563bfd1e316f bp 0x7ffdd548b9b0 sp 0x7ffdd548ac30 T3482980)
+==3482980==The signal is caused by a READ memory access.
+    #0 kwsprep /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11600:19 (reduced.tsan.out+0xe316f) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #1 Fcompile /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:10589:5 (reduced.tsan.out+0xe100c) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #2 main /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7 (reduced.tsan.out+0xe7740) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #3 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #4 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #5 _start <null> (reduced.tsan.out+0x21544) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11600:19 in kwsprep
+==3482980==ABORTING
+./verify.sh: line 110: 3482979 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

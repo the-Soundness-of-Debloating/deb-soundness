@@ -1,0 +1,61 @@
+msan:
+++ timeout -k 0.5 0.5 cat foo.tar
+++ /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.msan.out
+/workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.msan.out: Cannot verify stdin/stdout archive
+MemorySanitizer:DEADLYSIGNAL
+==79198==ERROR: MemorySanitizer: SEGV on unknown address 0x000000000000 (pc 0x55c936be75f4 bp 0x7ffe9f9f58d8 sp 0x7ffe9f9f5888 T79198)
+==79198==The signal is caused by a READ memory access.
+==79198==Hint: address points to the zero page.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x55c936be75f4 in tar_stat_destroy /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22984:24
+    #1 0x7ffe9f9f5eef  ([stack]+0x1eeef)
+    #2 0x55c936be3b03 in open_archive /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:1203:13
+    #3 0x55c936c15d7a in read_and /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:11978:7
+    #4 0x55c936c3042d in main /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22905:7
+    #5 0x7f5f3527dd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22984:24 in tar_stat_destroy
+==79198==ABORTING
+./verify.sh: line 305: 79197 Broken pipe             timeout -k 0.5 0.5 cat foo.tar
+     79198 Aborted                 | /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input12_fuzzed/input12_287
+tsan:
+++ timeout -k 0.5 0.5 cat foo.tar
+++ /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.tsan.out
+/workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.tsan.out: Cannot verify stdin/stdout archive
+ThreadSanitizer:DEADLYSIGNAL
+==385821==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x55c1ad492a0e bp 0x7fffa72aaac8 sp 0x7fffa72aaa88 T385821)
+==385821==The signal is caused by a READ memory access.
+==385821==Hint: address points to the zero page.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 tar_stat_destroy /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22984:24 (reduced.tsan.out+0xd0a0e) (BuildId: dbc034fc9b0bf005b92bec716e9488c3720a8573)
+    #1 <null> <null> ([stack]+0x1df0f)
+    #2 open_archive /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:1203:13 (reduced.tsan.out+0xcf54c) (BuildId: dbc034fc9b0bf005b92bec716e9488c3720a8573)
+    #3 read_and /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:11978:7 (reduced.tsan.out+0xdcfcd) (BuildId: dbc034fc9b0bf005b92bec716e9488c3720a8573)
+    #4 main /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22905:7 (reduced.tsan.out+0xe3a72) (BuildId: dbc034fc9b0bf005b92bec716e9488c3720a8573)
+    #5 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22984:24 in tar_stat_destroy
+==385821==ABORTING
+./verify.sh: line 305: 385820 Broken pipe             timeout -k 0.5 0.5 cat foo.tar
+     385821 Aborted                 | /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input12_fuzzed/input12_287
+lsan:
+++ timeout -k 0.5 0.5 cat foo.tar
+++ /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.lsan.out
+/workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.lsan.out: Cannot verify stdin/stdout archive
+LeakSanitizer:DEADLYSIGNAL
+==708311==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000000 (pc 0x560651168070 bp 0x7ffe5a9a84d8 sp 0x7ffe5a9a84c8 T0)
+==708311==The signal is caused by a READ memory access.
+==708311==Hint: address points to the zero page.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x560651168070 in tar_stat_destroy /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22984:24
+    #1 0x7ffe5a9a85cf  ([stack]+0x1f5cf)
+    #2 0x5606511676cf in open_archive /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:1203:13
+    #3 0x56065116fe86 in read_and /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:11978:7
+    #4 0x56065117432e in main /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22905:7
+    #5 0x7fa76d46fd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22984:24 in tar_stat_destroy
+==708311==ABORTING

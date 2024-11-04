@@ -1,0 +1,18 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.asan.out
+train_input/trainc/sample1.ref:	AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1410506==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x000000000000 bp 0x7fff32a50bf0 sp 0x7fff32a50b38 T0)
+==1410506==Hint: pc points to the zero page.
+==1410506==The signal is caused by a READ memory access.
+==1410506==Hint: address points to the zero page.
+    #0 0x0  (<unknown module>)
+    #1 0x55a97b65e324 in zip /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:5944:7
+    #2 0x55a97b660a77 in treat_file /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:7173:22
+    #3 0x55a97b65fbf6 in main /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6759:13
+    #4 0x7f2be0fe3d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV (<unknown module>) 
+==1410506==ABORTING
+./verify.sh: line 171: 1410496 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/result/afl_result/reduced/result_1/asan/crashes/id:000050* > sample1.gz

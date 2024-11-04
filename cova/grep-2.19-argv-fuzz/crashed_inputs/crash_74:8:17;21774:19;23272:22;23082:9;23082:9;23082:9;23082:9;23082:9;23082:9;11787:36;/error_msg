@@ -1,0 +1,90 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.asan.out
+grep: invalid option -- '-'
+grep: invalid option -- 'Í'
+grep: invalid option -- 'Å'
+grep: invalid option -- 'Í'
+grep: invalid option -- '_'
+grep: invalid option -- 't'
+=================================================================
+==2671772==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x62d000013401 at pc 0x56186b961538 bp 0x7ffd5502f660 sp 0x7ffd5502f658
+READ of size 1 at 0x62d000013401 thread T0
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x56186b961537 in memchr_kwset /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11787:36
+    #1 0x56186b960e20 in bmexec_trans /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11920:24
+    #2 0x56186b9466aa in bmexec /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11982:15
+    #3 0x56186b944bff in kwsexec /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12251:15
+    #4 0x56186b9476e7 in EGexecute /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12655:25
+    #5 0x56186b96bd35 in do_execute /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20933:17
+    #6 0x56186b96b81c in grepbuf /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20997:17
+    #7 0x56186b96aa45 in grep /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21162:25
+    #8 0x56186b96976f in grepdesc /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21680:15
+    #9 0x56186b969d7d in grepfile /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #10 0x56186b96a53c in grepdirent /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21450:17
+    #11 0x56186b9692fb in grepdesc /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21595:27
+    #12 0x56186b969d7d in grepfile /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #13 0x56186b95f655 in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19
+    #14 0x56186b95e84d in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23272:22
+    #15 0x7ffd55030f07  ([stack]+0x1df07)
+
+0x62d000013401 is located 0 bytes to the right of 36865-byte region [0x62d00000a400,0x62d000013401)
+allocated by thread T0 here:
+    #0 0x56186b8fdf2e in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.asan.out+0xa9f2e) (BuildId: a44fc56afaee2ca39022040a002b33e90c6848cc)
+    #1 0x56186b938104 in xmalloc /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:1045:13
+    #2 0x56186b96b035 in reset /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:19982:26
+    #3 0x56186b96a616 in grep /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21082:13
+    #4 0x56186b96976f in grepdesc /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21680:15
+    #5 0x56186b969d7d in grepfile /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #6 0x56186b96a53c in grepdirent /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21450:17
+    #7 0x56186b9692fb in grepdesc /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21595:27
+    #8 0x56186b969d7d in grepfile /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #9 0x56186b95f655 in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19
+    #10 0x56186b95e84d in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23272:22
+    #11 0x7ffd55030f07  ([stack]+0x1df07)
+    #12 0x56186b95dcbe in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23082:9
+    #13 0x7ffd550312a7  ([stack]+0x1e2a7)
+    #14 0x56186b95dcbe in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23082:9
+    #15 0x7ffd55031647  ([stack]+0x1e647)
+    #16 0x56186b95dcbe in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23082:9
+    #17 0x7ffd550319e7  ([stack]+0x1e9e7)
+    #18 0x56186b95dcbe in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23082:9
+    #19 0x7ffd55031d87  ([stack]+0x1ed87)
+    #20 0x56186b95dcbe in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23082:9
+    #21 0x7ffd5503212f  ([stack]+0x1f12f)
+    #22 0x56186b95dcbe in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23082:9
+    #23 0x7ff82793ed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11787:36 in memchr_kwset
+Shadow bytes around the buggy address:
+  0x0c5a7fffa630: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c5a7fffa640: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c5a7fffa650: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c5a7fffa660: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c5a7fffa670: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0c5a7fffa680:[01]fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c5a7fffa690: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c5a7fffa6a0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c5a7fffa6b0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c5a7fffa6c0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c5a7fffa6d0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2671772==ABORTING
+./verify.sh: line 110: 2671770 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

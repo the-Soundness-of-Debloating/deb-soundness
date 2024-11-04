@@ -1,0 +1,14 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2430781==ERROR: ThreadSanitizer: SEGV on unknown address (pc 0x563681b1b315 bp 0x7ffd7298abb0 sp 0x7ffd7298a630 T2430781)
+==2430781==The signal is caused by a READ memory access.
+==2430781==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 void __tsan::MemoryAccessRangeT<false>(__tsan::ThreadState*, unsigned long, unsigned long, unsigned long) <null> (reduced.tsan.out+0xb7315) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #1 __interceptor_memcpy <null> (reduced.tsan.out+0x59dcc) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #2 parse_datetime /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5223:20 (reduced.tsan.out+0xd2b04) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.tsan.out+0xb7315) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656) in void __tsan::MemoryAccessRangeT<false>(__tsan::ThreadState*, unsigned long, unsigned long, unsigned long)
+==2430781==ABORTING
+./verify.sh: line 110: 2430780 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

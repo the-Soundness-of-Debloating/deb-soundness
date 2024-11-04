@@ -1,0 +1,10 @@
+[
+{ crash_loc: 4559, vul_type: "global-buffer-overflow,", deb_tool: "blade" }, 
+{ crash_loc: 4742, vul_type: "runtime error ", deb_tool: "blade" }, 
+{ crash_loc: 4741, vul_type: "runtime error ", deb_tool: "blade" }, 
+{ crash_loc: 4156, vul_type: "use-of-uninitialized-value,", deb_tool: "blade" }, 
+{ crash_loc: 6388, vul_type: "WRITE memory access,", deb_tool: "blade" }, 
+{ crash_loc: 4156, vul_type: "runtime error ", deb_tool: "blade" }, 
+{ crash_loc: 4156, vul_type: "WRITE memory access,", deb_tool: "blade" }, 
+{ crash_loc: 5387, vul_type: "READ memory access,", deb_tool: "blade" }, 
+]

@@ -1,0 +1,45 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/bins/reduced.tsan.out xf /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/input/radamsa_fuzzed/file6_fuzzed/file6_108 -X /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/input/radamsa_fuzzed/file12_fuzzed/file12_108
+==================
+WARNING: ThreadSanitizer: heap-use-after-free (pid=3573063)
+  Write of size 8 at 0x7b1000000080 by main thread:
+    #0 add_exclude /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24148:22 (reduced.tsan.out+0xe78dd) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+    #1 add_exclude_file /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24290:13 (reduced.tsan.out+0xe7d58) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+    #2 decode_options /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22116:15 (reduced.tsan.out+0xe56e1) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+    #3 main /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22834:7 (reduced.tsan.out+0xe385e) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+
+  Previous write of size 8 at 0x7b1000000080 by main thread:
+    #0 realloc <null> (reduced.tsan.out+0x4e8a3) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+    #1 xnrealloc_inline /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30086:13 (reduced.tsan.out+0xe8fb8) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+    #2 xrealloc /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30099:13 (reduced.tsan.out+0xd71ba) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+    #3 x2nrealloc_inline /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30123:13 (reduced.tsan.out+0xe90b8) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+    #4 x2nrealloc /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30131:13 (reduced.tsan.out+0xe7975) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+    #5 add_exclude /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24140:15 (reduced.tsan.out+0xe781a) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+    #6 add_exclude_file /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24290:13 (reduced.tsan.out+0xe7d58) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+    #7 decode_options /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22116:15 (reduced.tsan.out+0xe56e1) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+    #8 main /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22834:7 (reduced.tsan.out+0xe385e) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+
+SUMMARY: ThreadSanitizer: heap-use-after-free /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24148:22 in add_exclude
+==================
+==================
+WARNING: ThreadSanitizer: heap-use-after-free (pid=3573063)
+  Write of size 4 at 0x7b1000000088 by main thread:
+    #0 add_exclude /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24149:22 (reduced.tsan.out+0xe7908) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+    #1 add_exclude_file /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24290:13 (reduced.tsan.out+0xe7d58) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+    #2 decode_options /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22116:15 (reduced.tsan.out+0xe56e1) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+    #3 main /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22834:7 (reduced.tsan.out+0xe385e) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+
+  Previous write of size 8 at 0x7b1000000088 by main thread:
+    #0 realloc <null> (reduced.tsan.out+0x4e8a3) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+    #1 xnrealloc_inline /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30086:13 (reduced.tsan.out+0xe8fb8) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+    #2 xrealloc /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30099:13 (reduced.tsan.out+0xd71ba) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+    #3 x2nrealloc_inline /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30123:13 (reduced.tsan.out+0xe90b8) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+    #4 x2nrealloc /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30131:13 (reduced.tsan.out+0xe7975) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+    #5 add_exclude /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24140:15 (reduced.tsan.out+0xe781a) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+    #6 add_exclude_file /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24290:13 (reduced.tsan.out+0xe7d58) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+    #7 decode_options /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22116:15 (reduced.tsan.out+0xe56e1) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+    #8 main /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22834:7 (reduced.tsan.out+0xe385e) (BuildId: 1a3dc0d5014d7d7ed30ee2ea3d591cd22ce85b69)
+
+SUMMARY: ThreadSanitizer: heap-use-after-free /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24149:22 in add_exclude
+==================
+./verify.sh: line 360: 3573061 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/bins/reduced.tsan.out xf /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/input/radamsa_fuzzed/file6_fuzzed/file6_108 -X /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/input/radamsa_fuzzed/file12_fuzzed/file12_108

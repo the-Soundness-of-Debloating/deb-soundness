@@ -1,0 +1,28 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out
+bzip2: file name
+`tra-c'
+is suspiciously (more than 1024 chars) long.
+Try using a reasonable file name instead.  Sorry! :-)
+bzip2: file name
+`tra-c'
+is suspiciously (more than 1024 chars) long.
+Try using a reasonable file name instead.  Sorry! :-)
+==202603==ERROR: LeakSanitizer: requested allocation size 0xffffffffccddb290 exceeds maximum supported size of 0x200000000
+==202603==WARNING: failed to fork (errno 12)
+==202603==WARNING: failed to fork (errno 12)
+==202603==WARNING: failed to fork (errno 12)
+==202603==WARNING: failed to fork (errno 12)
+==202603==WARNING: failed to fork (errno 12)
+==202603==WARNING: Failed to use and restart external symbolizer!
+    #0 0x55f972a0f642  (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x30642) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+    #1 0x55f972a15570  (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x36570) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+    #2 0x55f972a1544e  (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x3644e) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+    #3 0x55f972a15bfb  (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x36bfb) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+    #4 0x55f972a17135  (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x38135) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+    #5 0x55f972a164e2  (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x374e2) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+    #6 0x55f972a16180  (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x37180) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+    #7 0x7f46e5cf6d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+==202603==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: LeakSanitizer: allocation-size-too-big (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x30642) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0) 

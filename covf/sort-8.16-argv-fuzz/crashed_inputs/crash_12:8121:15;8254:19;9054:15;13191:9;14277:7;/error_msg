@@ -1,0 +1,22 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1988271==ERROR: AddressSanitizer: SEGV on unknown address (pc 0x7fdb3840f15d bp 0x7fdb3838f040 sp 0x7ffe0701e5d0 T0)
+==1988271==The signal is caused by a READ memory access.
+==1988271==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x7fdb3840f15d in fflush libio/iofflush.c:39:7
+    #1 0x56237a1f9d78 in fflush (/workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-argv-fuzz/bins/reduced.asan.out+0x76d78) (BuildId: 543fd07cfdc65268a1cbbbe894db1a66ed1a1b99)
+    #2 0x56237a2647bd in rpl_fflush /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:8121:15
+    #3 0x56237a2632b5 in rpl_fclose /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:8254:19
+    #4 0x56237a267f39 in xfclose /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:9054:15
+    #5 0x56237a266cde in sort /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13191:9
+    #6 0x56237a2657b5 in main /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14277:7
+    #7 0x7fdb383b9d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7fdb383b9e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x56237a1a3494 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-argv-fuzz/bins/reduced.asan.out+0x20494) (BuildId: 543fd07cfdc65268a1cbbbe894db1a66ed1a1b99)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV libio/iofflush.c:39:7 in fflush
+==1988271==ABORTING
+./verify.sh: line 110: 1988270 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

@@ -1,0 +1,52 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.lsan.out
+/workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.lsan.out: cannot remove `d1/file': No such file or directory
+
+=================================================================
+==3494731==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 264 byte(s) in 1 object(s) allocated from:
+    #0 0x55e1f0095622 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.lsan.out+0x30622) (BuildId: 92f93740e7f5efb6ba2f700f2a95feeb490ffe36)
+    #1 0x55e1f009847a in fts_alloc /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:5729:19
+    #2 0x55e1f0098209 in fts_open /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:4413:15
+    #3 0x55e1f00980e8 in xfts_open /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1488:11
+    #4 0x55e1f00986a6 in rm /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6726:13
+    #5 0x55e1f009897e in main /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7177:15
+    #6 0x7fe98ec74d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Direct leak of 128 byte(s) in 1 object(s) allocated from:
+    #0 0x55e1f0095622 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.lsan.out+0x30622) (BuildId: 92f93740e7f5efb6ba2f700f2a95feeb490ffe36)
+    #1 0x55e1f009811f in fts_open /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:4326:17
+    #2 0x55e1f00980e8 in xfts_open /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1488:11
+    #3 0x55e1f00986a6 in rm /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6726:13
+    #4 0x55e1f009897e in main /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7177:15
+    #5 0x7fe98ec74d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Direct leak of 0 byte(s) in 1 object(s) allocated from:
+    #0 0x55e1f0095a74 in __interceptor_realloc (/workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.lsan.out+0x30a74) (BuildId: 92f93740e7f5efb6ba2f700f2a95feeb490ffe36)
+    #1 0x55e1f0098414 in fts_palloc /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:5775:17
+    #2 0x55e1f0098158 in fts_open /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:4345:15
+    #3 0x55e1f00980e8 in xfts_open /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1488:11
+    #4 0x55e1f00986a6 in rm /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6726:13
+    #5 0x55e1f009897e in main /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7177:15
+    #6 0x7fe98ec74d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Indirect leak of 271 byte(s) in 1 object(s) allocated from:
+    #0 0x55e1f0095622 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.lsan.out+0x30622) (BuildId: 92f93740e7f5efb6ba2f700f2a95feeb490ffe36)
+    #1 0x55e1f009847a in fts_alloc /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:5729:19
+    #2 0x55e1f00981b0 in fts_open /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:4374:11
+    #3 0x55e1f00980e8 in xfts_open /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1488:11
+    #4 0x55e1f00986a6 in rm /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6726:13
+    #5 0x55e1f009897e in main /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7177:15
+    #6 0x7fe98ec74d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Indirect leak of 264 byte(s) in 1 object(s) allocated from:
+    #0 0x55e1f0095622 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.lsan.out+0x30622) (BuildId: 92f93740e7f5efb6ba2f700f2a95feeb490ffe36)
+    #1 0x55e1f009847a in fts_alloc /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:5729:19
+    #2 0x55e1f0098174 in fts_open /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:4350:16
+    #3 0x55e1f00980e8 in xfts_open /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1488:11
+    #4 0x55e1f00986a6 in rm /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6726:13
+    #5 0x55e1f009897e in main /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7177:15
+    #6 0x7fe98ec74d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: LeakSanitizer: 927 byte(s) leaked in 5 allocation(s).

@@ -1,0 +1,21 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==2866300==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x55f229df19f5 bp 0x7ffeb4090980 sp 0x7ffeb4090930 T0)
+==2866300==The signal is caused by a READ memory access.
+==2866300==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x55f229df19f5 in quotearg_buffer_restyled /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1984:19
+    #1 0x55f229df11f4 in quotearg_n_options /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2844:15
+    #2 0x55f229df1131 in quotearg_n_style /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2875:15
+    #3 0x55f229df123f in quote_n /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2908:25
+    #4 0x55f229df1266 in quote /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2915:11
+    #5 0x55f229df15e9 in rm_fts /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6580:13
+    #6 0x55f229df1573 in rm /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6742:19
+    #7 0x55f229df17bc in main /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7178:15
+    #8 0x7f1edc80dd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #9 0x7f1edc80de3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #10 0x55f229dc3444 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/bins/reduced.lsan.out+0x5444) (BuildId: 9b5286b21edd29f65c65a4bd05b43da362e06956)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1984:19 in quotearg_buffer_restyled
+==2866300==ABORTING

@@ -1,0 +1,20 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out
+gzip-1.2.4.c.reduced.c:4156:13: runtime error: index 1214801508 out of bounds for type 'uch[256]' (aka 'unsigned char[256]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4156:13 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3459190==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x55625d97eaf4 (pc 0x55621496c5ca bp 0x7ffd17151900 sp 0x7ffd17151770 T3459190)
+==3459190==The signal is caused by a WRITE memory access.
+    #0 0x55621496c5ca in ct_init /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:4156:30
+    #1 0x556214974af5 in zip /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:5943:7
+    #2 0x55621497600c in treat_stdin /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6914:22
+    #3 0x556214975819 in main /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6765:9
+    #4 0x7fe6b42c2d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7fe6b42c2e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x55621493d444 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out+0x11444) (BuildId: d7f4e2e4f15b95290a338c7ff996938f0e26a1be)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:4156:30 in ct_init
+==3459190==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 171: 3459178 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/result/afl_result/reduced/result_1/ubsan/crashes/id:000006* > sample1.gz

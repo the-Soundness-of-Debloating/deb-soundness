@@ -1,0 +1,15 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/bins/reduced.msan.out
+==2401543==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x562354c0744c in strlwr /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:1731:13
+    #1 0x562354c2a07d in get_suffix /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:7395:7
+    #2 0x562354c2901d in make_ofname /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:7516:14
+    #3 0x562354c226ad in treat_file /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:7077:26
+    #4 0x562354c219ec in main /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6759:13
+    #5 0x7f9d09a3ed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7f9d09a3ee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x562354b7f334 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/bins/reduced.msan.out+0x1f334) (BuildId: 7bbcb39ed124f03e650788875a82c0645ce0fe2e)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:1731:13 in strlwr
+Exiting
+./verify.sh: line 171: 2401539 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_1

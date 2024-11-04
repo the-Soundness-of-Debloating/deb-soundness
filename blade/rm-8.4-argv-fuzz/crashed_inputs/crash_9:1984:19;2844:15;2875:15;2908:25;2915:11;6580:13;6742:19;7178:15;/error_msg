@@ -1,0 +1,25 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/bins/reduced.ubsan.out
+rm-8.4.c.reduced.c:6579:13: runtime error: load of value 68, which is not a valid value for type '_Bool'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior rm-8.4.c.reduced.c:6579:13 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==884925==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address (pc 0x55bec1414d6b bp 0x7ffc0ebfa780 sp 0x7ffc0ebfa670 T884925)
+==884925==The signal is caused by a READ memory access.
+==884925==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x55bec1414d6b in quotearg_buffer_restyled /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1984:19
+    #1 0x55bec14133c7 in quotearg_n_options /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2844:15
+    #2 0x55bec1412f61 in quotearg_n_style /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2875:15
+    #3 0x55bec141340f in quote_n /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2908:25
+    #4 0x55bec1413436 in quote /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2915:11
+    #5 0x55bec14140a9 in rm_fts /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6580:13
+    #6 0x55bec1413ec3 in rm /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6742:19
+    #7 0x55bec1414489 in main /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7178:15
+    #8 0x7f7512b06d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #9 0x7f7512b06e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #10 0x55bec13ea444 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/bins/reduced.ubsan.out+0x6444) (BuildId: 995e4ad4d4f7d8bbc24a03c380855b7f9fe9efc5)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1984:19 in quotearg_buffer_restyled
+==884925==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 189: 884922 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_289

@@ -1,0 +1,5 @@
+.d train_input/ut/file/data.txt
+.d train_input/file/data.txt
+-d train_input/file/data.txt
+.d train_input/ut/file/data.txt
+-dd train_input/file/data.txt

@@ -1,0 +1,28 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.tsan.out
+mkdir: invalid option -- '2'
+ThreadSanitizer:DEADLYSIGNAL
+==2119863==ERROR: ThreadSanitizer: stack-overflow on address 0x29fc5e9770f8 (pc 0x56004edb3046 bp 0x7ffcad73a330 sp 0x29fc5e977100 T2119863)
+    #0 make_path /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:3552:9 (reduced.tsan.out+0xcd046) (BuildId: e9cdc53730350778ec5415addcf92f3f84e2e05b)
+    #1 main /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:4993:20 (reduced.tsan.out+0xcd48f) (BuildId: e9cdc53730350778ec5415addcf92f3f84e2e05b)
+    #2 <null> <null> (libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #3 __libc_start_main <null> (libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #4 _start <null> (reduced.tsan.out+0x20394) (BuildId: e9cdc53730350778ec5415addcf92f3f84e2e05b)
+
+SUMMARY: ThreadSanitizer: stack-overflow /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:3552:9 in make_path
+==2119863==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 2119862 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.lsan.out
+mkdir: invalid option -- '2'
+LeakSanitizer:DEADLYSIGNAL
+==2200343==ERROR: LeakSanitizer: stack-overflow on address 0x2a89ce4ae538 (pc 0x55729a27f1df bp 0x7ffc68737470 sp 0x2a89ce4ae540 T0)
+    #0 0x55729a27f1df in make_path /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:3552:9
+    #1 0x55729a27f4fb in main /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:4993:20
+    #2 0x7fe28af57d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #3 0x7fe28af57e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #4 0x55729a251434 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.lsan.out+0x5434) (BuildId: 56e75eeda2785044ad42c3cff1a43ff8cb0dd12e)
+
+SUMMARY: LeakSanitizer: stack-overflow /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:3552:9 in make_path
+==2200343==ABORTING

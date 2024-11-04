@@ -1,0 +1,1 @@
+cf foo.tar -C foo.tar -C foo .

@@ -1,0 +1,19 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1168788==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000001 (pc 0x55f9c8b29fa0 bp 0x7fff9df5ab10 sp 0x7fff9df5a2c0 T0)
+==1168788==The signal is caused by a READ memory access.
+==1168788==Hint: address points to the zero page.
+    #0 0x55f9c8b29fa0 in strcmp (/workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out+0x3afa0) (BuildId: dea9616fe4d35cf044eebf6ac56206498c214bc5)
+    #1 0x55f9c8bd25d9 in open_archive /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:1196:20
+    #2 0x55f9c8bd6527 in read_and /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:11978:7
+    #3 0x55f9c8bd9db3 in main /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22905:7
+    #4 0x7f57cae83d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f57cae83e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x55f9c8b123e4 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out+0x233e4) (BuildId: dea9616fe4d35cf044eebf6ac56206498c214bc5)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out+0x3afa0) (BuildId: dea9616fe4d35cf044eebf6ac56206498c214bc5) in strcmp
+==1168788==ABORTING
+./verify.sh: line 305: 1168787 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input1_fuzzed/input1_7

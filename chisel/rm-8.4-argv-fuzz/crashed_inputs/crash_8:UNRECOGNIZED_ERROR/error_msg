@@ -1,0 +1,4 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.asan.out
+=================================================================
+==4159167==ERROR: AddressSanitizer: requested allocation size 0xbebebebebebebebe (0xbebebebebebecec0 after adjustments for alignment, red zones etc.) exceeds maximum supported size of 0x10000000000 (thread T0)

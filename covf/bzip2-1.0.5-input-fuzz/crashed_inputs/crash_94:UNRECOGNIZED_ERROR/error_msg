@@ -1,0 +1,8 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/bins/reduced.msan.out -d
+==3313762==ERROR: MemorySanitizer: requested allocation size 0xffffffffffedb080 exceeds maximum supported size of 0x200000000
+    <empty stack>
+
+==3313762==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: MemorySanitizer: allocation-size-too-big
+./verify.sh: line 170: 3313761 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/bins/reduced.msan.out -d < /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_31 > sample1.tst

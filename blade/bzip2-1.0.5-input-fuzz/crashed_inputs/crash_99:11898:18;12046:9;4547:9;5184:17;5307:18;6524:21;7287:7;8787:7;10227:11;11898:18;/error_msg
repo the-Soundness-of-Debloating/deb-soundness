@@ -1,0 +1,23 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.tsan.out -c
+ThreadSanitizer:DEADLYSIGNAL
+==2253779==ERROR: ThreadSanitizer: SEGV on unknown address 0x7b23ffffffff (pc 0x55800b2337bb bp 0x7ffd79f04100 sp 0x7ffd79f031a0 T2253779)
+==2253779==The signal is caused by a READ memory access.
+    #0 mainSort /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:11898:18 (reduced.tsan.out+0xd77bb) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #1 BZ2_blockSort /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:12046:9 (reduced.tsan.out+0xd2f96) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #2 BZ2_compressBlock /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:4547:9 (reduced.tsan.out+0xd2c9e) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #3 handle_compress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:5184:17 (reduced.tsan.out+0xd5352) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #4 BZ2_bzCompress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:5307:18 (reduced.tsan.out+0xd5213) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #5 BZ2_bzWriteClose64 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6524:21 (reduced.tsan.out+0xd5ff4) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #6 compressStream /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7287:7 (reduced.tsan.out+0xd8c3e) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #7 compress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:8787:7 (reduced.tsan.out+0xd6c33) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #8 main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10227:11 (reduced.tsan.out+0xd68a8) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #9 <null> <null> (libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #10 __libc_start_main <null> (libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #11 _start <null> (reduced.tsan.out+0x20354) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:11898:18 in mainSort
+==2253779==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 170: 2253778 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.tsan.out -c < /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/result/afl_result/reduced/result_0/tsan/crashes/id:000000* > sample1.rb2

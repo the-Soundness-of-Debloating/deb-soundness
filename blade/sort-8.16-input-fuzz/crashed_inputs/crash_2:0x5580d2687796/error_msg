@@ -1,0 +1,6 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-input-fuzz/bins/reduced.asan.out -r /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-input-fuzz/input/radamsa_fuzzed/file21_fuzzed/file21_260
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==3314205==ERROR: AddressSanitizer: SEGV on unknown address 0x602ffffffb00 (pc 0x5580d2687796 bp 0x7fff3de86890 sp 0x7fff3de86780 T0)
+==3314205==The signal is caused by a WRITE memory access.

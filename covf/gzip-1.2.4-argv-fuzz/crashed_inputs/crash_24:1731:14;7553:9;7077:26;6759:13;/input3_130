@@ -1,0 +1,4 @@
+-d train_input/traind/sample1.gz 
+-d train_input/traind/sample1.gz 
+-d train_input/traind/sample32768.gz 
+-d train_input/traind/sample65536.gz 

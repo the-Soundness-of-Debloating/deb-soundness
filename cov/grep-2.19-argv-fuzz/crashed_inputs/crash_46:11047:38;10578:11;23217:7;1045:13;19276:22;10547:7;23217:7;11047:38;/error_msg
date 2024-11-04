@@ -1,0 +1,56 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.asan.out
+=================================================================
+==798947==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x6210000010e0 at pc 0x556f3cd50853 bp 0x7ffd3236bd50 sp 0x7ffd3236bd48
+WRITE of size 8 at 0x6210000010e0 thread T0
+    #0 0x556f3cd50852 in kwsincr /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11047:38
+    #1 0x556f3cd4fab4 in Fcompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:10578:11
+    #2 0x556f3cd66154 in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #3 0x7f00fc07cd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f00fc07ce3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x556f3cc89474 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.asan.out+0x22474) (BuildId: 7e96b9d764c7cadd1bc4907e463f7ff1bd5e81dd)
+
+0x6210000010e0 is located 0 bytes to the right of 4064-byte region [0x621000000100,0x6210000010e0)
+allocated by thread T0 here:
+    #0 0x556f3cd0ee9e in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.asan.out+0xa7e9e) (BuildId: 7e96b9d764c7cadd1bc4907e463f7ff1bd5e81dd)
+    #1 0x556f3cd49074 in xmalloc /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:1045:13
+    #2 0x7f00fc0fa52a in _obstack_begin malloc/obstack.c:176:22
+    #3 0x556f3cd4fbf4 in kwsinit /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:19276:22
+    #4 0x556f3cd4fa4d in Fcompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:10547:7
+    #5 0x556f3cd66154 in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #6 0x7f00fc07cd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11047:38 in kwsincr
+Shadow bytes around the buggy address:
+  0x0c427fff81c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c427fff81d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c427fff81e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c427fff81f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c427fff8200: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0c427fff8210: 00 00 00 00 00 00 00 00 00 00 00 00[fa]fa fa fa
+  0x0c427fff8220: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c427fff8230: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c427fff8240: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c427fff8250: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c427fff8260: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==798947==ABORTING
+./verify.sh: line 110: 798946 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

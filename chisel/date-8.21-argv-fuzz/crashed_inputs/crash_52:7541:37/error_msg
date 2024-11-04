@@ -1,0 +1,23 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+date-8.21.c.reduced.c:4191:24: runtime error: index -91 out of bounds for type 'const yytype_int8[113]' (aka 'const signed char[113]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4191:24 in 
+date-8.21.c.reduced.c:7541:37: runtime error: member access within null pointer of type 'const struct tm'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:7541:37 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==949808==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000014 (pc 0x56189ba620c4 bp 0x7ffcda7eb320 sp 0x7ffcda7ea6b0 T949808)
+==949808==The signal is caused by a READ memory access.
+==949808==Hint: address points to the zero page.
+    #0 0x56189ba620c4 in strftime_case____0 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7541:45
+    #1 0x56189ba60b75 in fprintftime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7807:11
+    #2 0x56189ba63485 in show_date /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9700:5
+    #3 0x56189ba62dd3 in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9671:18
+    #4 0x7f0562c1ad8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f0562c1ae3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x56189ba2c4d4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.ubsan.out+0xe4d4) (BuildId: a503b23e0911d3d9a3bc41498abe22d2bae3c8f6)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7541:45 in strftime_case____0
+==949808==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 949807 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

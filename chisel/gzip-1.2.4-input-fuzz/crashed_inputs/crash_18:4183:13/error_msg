@@ -1,0 +1,20 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out -c
+gzip-1.2.4.c.reduced.c:4183:13: runtime error: index 791621423 out of bounds for type 'uch[512]' (aka 'unsigned char[512]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4183:13 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3060567==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x55e8bf04caaf (pc 0x55e88f3cfc39 bp 0x7ffd8753a6d0 sp 0x7ffd8753a540 T3060567)
+==3060567==The signal is caused by a WRITE memory access.
+    #0 0x55e88f3cfc39 in ct_init /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4183:32
+    #1 0x55e88f3d7847 in zip /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5942:7
+    #2 0x55e88f3d840d in treat_stdin /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #3 0x55e88f3d82bd in main /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:10
+    #4 0x7f9fecac6d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f9fecac6e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x55e88f3a2404 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out+0x10404) (BuildId: 2a58b9a76e94df514ce4ecec2b34d5a00be04b93)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4183:32 in ct_init
+==3060567==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 166: 3060563 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out -c < /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_0/ubsan/crashes/id:000000* > sample1.gz

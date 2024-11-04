@@ -1,0 +1,40 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/bins/reduced.asan.out /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_0
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1895419==ERROR: AddressSanitizer: SEGV on unknown address 0x601ffffffad0 (pc 0x55b15f0cc396 bp 0x7ffd7f54ad90 sp 0x7ffd7f54ac80 T0)
+==1895419==The signal is caused by a WRITE memory access.
+    #0 0x55b15f0cc396 in main /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:13881:35
+    #1 0x7f11d4d5fd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7f11d4d5fe3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x55b15f00c314 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/bins/reduced.asan.out+0x1f314) (BuildId: 22750f19f0f6e7e8dbdc1a2fa06f46cffc673b19)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:13881:35 in main
+==1895419==ABORTING
+./verify.sh: line 164: 1895418 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/bins/reduced.asan.out /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_0
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/bins/reduced.msan.out /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_0
+==1799778==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x56056bceb6db in main /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:13881:35
+    #1 0x7fa79f986d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7fa79f986e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x56056bc642b4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/bins/reduced.msan.out+0x1e2b4) (BuildId: 300dc0fddf4cf33404ce6f887e354b5655d31c6f)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:13881:35 in main
+Exiting
+./verify.sh: line 164: 1799776 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/bins/reduced.msan.out /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_0
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/bins/reduced.lsan.out /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_2
+LeakSanitizer:DEADLYSIGNAL
+==687711==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x5626394a0f60 bp 0x7ffd91809850 sp 0x7ffd918097a0 T0)
+==687711==The signal is caused by a READ memory access.
+==687711==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x5626394a0f60 in main /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:13881:35
+    #1 0x7f705df78d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7f705df78e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x5626394733d4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/bins/reduced.lsan.out+0x53d4) (BuildId: 7b6b2a1ff47a5f5da0f52563511eb85f2e74fe1e)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:13881:35 in main
+==687711==ABORTING

@@ -1,0 +1,43 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2687934==ERROR: ThreadSanitizer: SEGV on unknown address 0x0000000000c0 (pc 0x7fa205adf23c bp 0x7ffe76077f00 sp 0x7ffe76077e40 T2687934)
+==2687934==The signal is caused by a READ memory access.
+==2687934==Hint: address points to the zero page.
+    #0 fwrite_unlocked libio/iofwrite_u.c:40:7 (libc.so.6+0x8a23c) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 write_line /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:11774:17 (reduced.tsan.out+0xd3576) (BuildId: 5869e28ec720d76bd7a16ac46627a35c9c221653)
+    #2 write_unique /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:12511:5 (reduced.tsan.out+0xd1b54) (BuildId: 5869e28ec720d76bd7a16ac46627a35c9c221653)
+    #3 mergelines_node /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:12622:11 (reduced.tsan.out+0xd2da0) (BuildId: 5869e28ec720d76bd7a16ac46627a35c9c221653)
+    #4 merge_loop /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:12741:7 (reduced.tsan.out+0xd26a4) (BuildId: 5869e28ec720d76bd7a16ac46627a35c9c221653)
+    #5 sortlines /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:12819:7 (reduced.tsan.out+0xd19de) (BuildId: 5869e28ec720d76bd7a16ac46627a35c9c221653)
+    #6 sort /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13183:11 (reduced.tsan.out+0xd05ef) (BuildId: 5869e28ec720d76bd7a16ac46627a35c9c221653)
+    #7 main /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14277:7 (reduced.tsan.out+0xcf8de) (BuildId: 5869e28ec720d76bd7a16ac46627a35c9c221653)
+    #8 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #9 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #10 _start <null> (reduced.tsan.out+0x21444) (BuildId: 5869e28ec720d76bd7a16ac46627a35c9c221653)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV libio/iofwrite_u.c:40:7 in fwrite_unlocked
+==2687934==ABORTING
+./verify.sh: line 110: 2687931 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==3924118==ERROR: LeakSanitizer: SEGV on unknown address 0x0000000000c0 (pc 0x7f404896523c bp 0x7ffff218aca0 sp 0x7ffff218ac20 T0)
+==3924118==The signal is caused by a READ memory access.
+==3924118==Hint: address points to the zero page.
+    #0 0x7f404896523c in fwrite_unlocked libio/iofwrite_u.c:40:7
+    #1 0x55af1e9e5b15 in write_line /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:11774:17
+    #2 0x55af1e9e4a65 in write_unique /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:12511:5
+    #3 0x55af1e9e5718 in mergelines_node /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:12622:11
+    #4 0x55af1e9e527a in merge_loop /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:12741:7
+    #5 0x55af1e9e4950 in sortlines /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:12819:7
+    #6 0x55af1e9e3e32 in sort /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13183:11
+    #7 0x55af1e9e3635 in main /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14277:7
+    #8 0x7f4048904d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #9 0x7f4048904e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #10 0x55af1e9b45e4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-argv-fuzz/bins/reduced.lsan.out+0x65e4) (BuildId: 7a0d8f555a74ba2649b57725c28da6a32310bfe7)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV libio/iofwrite_u.c:40:7 in fwrite_unlocked
+==3924118==ABORTING

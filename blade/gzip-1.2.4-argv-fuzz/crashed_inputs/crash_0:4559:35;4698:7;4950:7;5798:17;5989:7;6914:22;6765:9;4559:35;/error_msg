@@ -1,0 +1,52 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/bins/reduced.asan.out
+=================================================================
+==1565098==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55ae45d99f56 at pc 0x55ae453e5c87 bp 0x7ffd9d718b30 sp 0x7ffd9d718b28
+READ of size 2 at 0x55ae45d99f56 thread T0
+    #0 0x55ae453e5c86 in gen_codes /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:4559:35
+    #1 0x55ae453e12e9 in build_tree___0 /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:4698:7
+    #2 0x55ae453e0a63 in flush_block /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:4950:7
+    #3 0x55ae453e32b5 in deflate /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:5798:17
+    #4 0x55ae453e3b5b in zip /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:5989:7
+    #5 0x55ae453e4ac7 in treat_stdin /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6914:22
+    #6 0x55ae453e44b9 in main /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6765:9
+    #7 0x7fcac3844d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7fcac3844e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x55ae4531c344 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/bins/reduced.asan.out+0x20344) (BuildId: 75a2a74af4e9dc51e19d8b4030e08188fb8143e4)
+
+0x55ae45d99f56 is located 42 bytes to the left of global variable 'last_lit' defined in '/workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:4093' (0x55ae45d99f80) of size 4
+0x55ae45d99f56 is located 2 bytes to the right of global variable 'dyn_dtree' defined in '/workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:4071' (0x55ae45d99e60) of size 244
+SUMMARY: AddressSanitizer: global-buffer-overflow /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:4559:35 in gen_codes
+Shadow bytes around the buggy address:
+  0x0ab648bab390: f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x0ab648bab3a0: f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x0ab648bab3b0: f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+  0x0ab648bab3c0: f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 00 00 00 00
+  0x0ab648bab3d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0ab648bab3e0: 00 00 00 00 00 00 00 00 00 00[04]f9 f9 f9 f9 f9
+  0x0ab648bab3f0: 04 f9 f9 f9 04 f9 f9 f9 00 00 00 00 00 00 00 00
+  0x0ab648bab400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ab648bab410: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ab648bab420: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ab648bab430: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==1565098==ABORTING
+./verify.sh: line 171: 1565096 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_53

@@ -1,0 +1,118 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep: invalid option -- '$'
+grep: invalid option -- '&'
+grep: invalid option -- '%'
+grep: invalid option -- '#'
+grep: invalid option -- '\'
+grep: invalid option -- '\'
+grep: invalid option -- '%'
+grep: invalid option -- 'p'
+grep: invalid option -- 'N'
+grep: invalid option -- 'N'
+grep: invalid option -- '$'
+grep: invalid option -- '('
+grep: invalid option -- ')'
+grep: invalid option -- '%'
+grep: invalid option -- '#'
+grep-2.19.c.reduced.c:16004:62: runtime error: null pointer passed as argument 2, which is declared to never be null
+grep-2.19.c.reduced.c:1032:59: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:16004:62 in 
+grep-2.19.c.reduced.c:16063:38: runtime error: addition of unsigned offset to 0x5570ce47f9b0 overflowed to 0x5570ce47f9a0
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:16063:38 in 
+grep-2.19.c.reduced.c:3632:24: runtime error: null pointer passed as argument 2, which is declared to never be null
+grep-2.19.c.reduced.c:3615:27: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:3632:24 in 
+grep-2.19.c.reduced.c:21151:14: runtime error: applying non-zero offset 1 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:21151:14 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3860785==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7f6891d137fd bp 0x7f6891d91780 sp 0x7ffee0aee8b8 T3860785)
+==3860785==The signal is caused by a READ memory access.
+==3860785==Hint: address points to the zero page.
+    #0 0x7f6891d137fd  string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74
+    #1 0x7f6891c003a8 in fputs_unlocked libio/iofputs_u.c:34:16
+    #2 0x5570cd4fb2a9 in print_filename /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20365:7
+    #3 0x5570cd4fa839 in grepdesc /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21688:13
+    #4 0x5570cd4fa650 in grepfile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #5 0x5570cd4f4dbb in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19
+    #6 0x5570cd4f46b8 in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24
+    #7 0x7f6891b9fd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7f6891b9fe3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x5570cd4bb574 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x15574) (BuildId: c2c2e5de5f7baf45d001715ccd865693e086d1fb)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 
+==3860785==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 3860784 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.tsan.out
+grep: invalid option -- '$'
+grep: invalid option -- '&'
+grep: invalid option -- '%'
+grep: invalid option -- '#'
+grep: invalid option -- '\'
+grep: invalid option -- '\'
+grep: invalid option -- '%'
+grep: invalid option -- 'p'
+grep: invalid option -- 'N'
+grep: invalid option -- 'N'
+grep: invalid option -- '$'
+grep: invalid option -- '('
+grep: invalid option -- ')'
+grep: invalid option -- '%'
+grep: invalid option -- '#'
+ThreadSanitizer:DEADLYSIGNAL
+==1239467==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7fa7608a77fd bp 0x7fa760925780 sp 0x7ffd1244f038 T1239467)
+==1239467==The signal is caused by a READ memory access.
+==1239467==Hint: address points to the zero page.
+    #0 <null> string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 (libc.so.6+0x19d7fd) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 fputs_unlocked libio/iofputs_u.c:34:16 (libc.so.6+0x8a3a8) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #2 print_filename /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20365:7 (reduced.tsan.out+0xd7406) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #3 grepdesc /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21688:13 (reduced.tsan.out+0xd6e93) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #4 grepfile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17 (reduced.tsan.out+0xd6d33) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #5 grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19 (reduced.tsan.out+0xd42f0) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #6 main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24 (reduced.tsan.out+0xd3f52) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #7 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #9 _start <null> (reduced.tsan.out+0x21424) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 
+==1239467==ABORTING
+./verify.sh: line 108: 1239466 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.lsan.out
+grep: invalid option -- '$'
+grep: invalid option -- '&'
+grep: invalid option -- '%'
+grep: invalid option -- '#'
+grep: invalid option -- '\'
+grep: invalid option -- '\'
+grep: invalid option -- '%'
+grep: invalid option -- 'p'
+grep: invalid option -- 'N'
+grep: invalid option -- 'N'
+grep: invalid option -- '$'
+grep: invalid option -- '('
+grep: invalid option -- ')'
+grep: invalid option -- '%'
+grep: invalid option -- '#'
+LeakSanitizer:DEADLYSIGNAL
+==2317614==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7f48a81f97fd bp 0x7f48a8277780 sp 0x7ffde5fbcf78 T0)
+==2317614==The signal is caused by a READ memory access.
+==2317614==Hint: address points to the zero page.
+    #0 0x7f48a81f97fd  string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74
+    #1 0x7f48a80e63a8 in fputs_unlocked libio/iofputs_u.c:34:16
+    #2 0x55e57c4ffe89 in print_filename /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20365:7
+    #3 0x55e57c4ffbce in grepdesc /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21688:13
+    #4 0x55e57c4ffac0 in grepfile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #5 0x55e57c4fe54b in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19
+    #6 0x55e57c4fe316 in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24
+    #7 0x7f48a8085d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7f48a8085e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x55e57c4cd554 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.lsan.out+0x6554) (BuildId: 0a255128d24039fae753673297dae843a7f4db37)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 
+==2317614==ABORTING

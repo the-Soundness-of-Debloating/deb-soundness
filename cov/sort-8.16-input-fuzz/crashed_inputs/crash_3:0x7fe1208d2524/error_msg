@@ -1,0 +1,9 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-input-fuzz/bins/reduced.tsan.out -u /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-input-fuzz/input/radamsa_fuzzed/file22_fuzzed/file22_330
+ThreadSanitizer:DEADLYSIGNAL
+==2054169==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7fe1208d2524 bp 0x7fffd1302350 sp 0x7fffd1302208 T2054169)
+==2054169==The signal is caused by a READ memory access.
+==2054169==Hint: address points to the zero page.
+==2054169==WARNING: Can't read from symbolizer at fd 3
+==2054169==WARNING: Can't write to symbolizer at fd 6
+./verify.sh: line 167: 2054167 Killed                  timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-input-fuzz/bins/reduced.tsan.out -u /workspace/fuzzing-deb-with-sanitizers/cov/sort-8.16-input-fuzz/input/radamsa_fuzzed/file22_fuzzed/file22_330

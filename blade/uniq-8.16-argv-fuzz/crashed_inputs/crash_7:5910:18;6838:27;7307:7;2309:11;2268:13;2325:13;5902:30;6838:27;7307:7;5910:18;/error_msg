@@ -1,0 +1,57 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/bins/reduced.asan.out
+=================================================================
+==2311108==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x6120000002e0 at pc 0x55c7d5ef345b bp 0x7ffc42f68260 sp 0x7ffc42f68258
+WRITE of size 1 at 0x6120000002e0 thread T0
+    #0 0x55c7d5ef345a in readlinebuffer_delim /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:5910:18
+    #1 0x55c7d5ef42b5 in check_file /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6838:27
+    #2 0x55c7d5ef3a4d in main /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7307:7
+    #3 0x7f4d04cb6d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f4d04cb6e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55c7d5e33334 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/bins/reduced.asan.out+0x1e334) (BuildId: 3d4993eed61b8bfc5d00b00edab6b3acd9f41e0b)
+
+0x6120000002e0 is located 0 bytes to the right of 288-byte region [0x6120000001c0,0x6120000002e0)
+allocated by thread T0 here:
+    #0 0x55c7d5eb9186 in __interceptor_realloc (/workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/bins/reduced.asan.out+0xa4186) (BuildId: 3d4993eed61b8bfc5d00b00edab6b3acd9f41e0b)
+    #1 0x55c7d5ef30dc in xrealloc /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:2309:11
+    #2 0x55c7d5ef31af in x2nrealloc /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:2268:13
+    #3 0x55c7d5ef3111 in x2realloc /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:2325:13
+    #4 0x55c7d5ef335e in readlinebuffer_delim /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:5902:30
+    #5 0x55c7d5ef42b5 in check_file /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6838:27
+    #6 0x55c7d5ef3a4d in main /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7307:7
+    #7 0x7f4d04cb6d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:5910:18 in readlinebuffer_delim
+Shadow bytes around the buggy address:
+  0x0c247fff8000: fa fa fa fa fa fa fa fa fd fd fd fd fd fd fd fd
+  0x0c247fff8010: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x0c247fff8020: fd fd fd fd fd fd fd fd fd fd fd fd fa fa fa fa
+  0x0c247fff8030: fa fa fa fa fa fa fa fa 00 00 00 00 00 00 00 00
+  0x0c247fff8040: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0c247fff8050: 00 00 00 00 00 00 00 00 00 00 00 00[fa]fa fa fa
+  0x0c247fff8060: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c247fff8070: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c247fff8080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c247fff8090: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c247fff80a0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2311108==ABORTING
+./verify.sh: line 110: 2311104 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

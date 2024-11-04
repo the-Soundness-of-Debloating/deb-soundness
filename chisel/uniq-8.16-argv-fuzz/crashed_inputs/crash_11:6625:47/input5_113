@@ -1,0 +1,3 @@
+-f -256 train_input/file/data.txt
+-f -32769 train_input/file/data.txt
+-f 1 train_input/file/data.txt

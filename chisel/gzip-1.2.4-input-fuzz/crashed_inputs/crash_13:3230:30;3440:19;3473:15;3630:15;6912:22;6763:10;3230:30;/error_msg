@@ -1,0 +1,60 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.asan.out -d
+=================================================================
+==3035920==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7fd322702570 at pc 0x55c1f7e949dd bp 0x7ffde1bcb8b0 sp 0x7ffde1bcb8a8
+WRITE of size 4 at 0x7fd322702570 thread T0
+    #0 0x55c1f7e949dc in inflate_dynamic /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3230:30
+    #1 0x55c1f7e94db5 in inflate_block /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3440:19
+    #2 0x55c1f7e94e9a in inflate /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3473:15
+    #3 0x55c1f7e94f6e in unzip /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3630:15
+    #4 0x55c1f7e98e16 in treat_stdin /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #5 0x55c1f7e98cef in main /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:10
+    #6 0x7fd3240a8d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7fd3240a8e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55c1f7dd2324 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.asan.out+0x20324) (BuildId: 6eabaf23792ed7e3e2fa7fefb1043c0b47887de4)
+
+Address 0x7fd322702570 is located in stack of thread T0 at offset 1392 in frame
+    #0 0x55c1f7e93e3f in inflate_dynamic /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2960
+
+  This frame has 5 object(s):
+    [32, 40) 'tl' (line 2966)
+    [64, 72) 'td' (line 2967)
+    [96, 100) 'bl' (line 2968)
+    [112, 116) 'bd' (line 2969)
+    [128, 1392) 'll' (line 2973) <== Memory access at offset 1392 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3230:30 in inflate_dynamic
+Shadow bytes around the buggy address:
+  0x0ffae44d8450: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ffae44d8460: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ffae44d8470: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ffae44d8480: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ffae44d8490: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0ffae44d84a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00[f3]f3
+  0x0ffae44d84b0: f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3
+  0x0ffae44d84c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ffae44d84d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ffae44d84e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ffae44d84f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==3035920==ABORTING
+./verify.sh: line 166: 3035908 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.asan.out -d < /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_1/asan/crashes/id:000002* > sample1.tst

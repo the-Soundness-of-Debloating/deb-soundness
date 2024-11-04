@@ -1,0 +1,53 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.msan.out
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.msan.out: foo.Xf: No such file or directory
+MemorySanitizer:DEADLYSIGNAL
+==2656871==ERROR: MemorySanitizer: SEGV on unknown address 0x000000000000 (pc 0x555f8e7197c4 bp 0x7ffc08148648 sp 0x7ffc081485f8 T2656871)
+==2656871==The signal is caused by a READ memory access.
+==2656871==Hint: address points to the zero page.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x555f8e7197c4 in tar_stat_destroy /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22984:24
+    #1 0x7ffc081492cf  ([stack]+0x1e2cf)
+    #2 0x555f8e77b3e7 in decode_options /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22126:15
+    #3 0x555f8e7738f4 in main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #4 0x7fed5215ed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22984:24 in tar_stat_destroy
+==2656871==ABORTING
+./verify.sh: line 305: 2656869 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input3_fuzzed/input3_88
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.tsan.out
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.tsan.out: foo.Xf: No such file or directory
+ThreadSanitizer:DEADLYSIGNAL
+==2036926==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x55b9f2c20ade bp 0x7ffc0c436468 sp 0x7ffc0c436428 T2036926)
+==2036926==The signal is caused by a READ memory access.
+==2036926==Hint: address points to the zero page.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 tar_stat_destroy /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22984:24 (reduced.tsan.out+0xd0ade) (BuildId: 577f4a726f906815166e11415cbc8eaac88ca317)
+    #1 <null> <null> ([stack]+0x1fb7f)
+    #2 decode_options /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22126:15 (reduced.tsan.out+0xeb286) (BuildId: 577f4a726f906815166e11415cbc8eaac88ca317)
+    #3 main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7 (reduced.tsan.out+0xe9100) (BuildId: 577f4a726f906815166e11415cbc8eaac88ca317)
+    #4 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22984:24 in tar_stat_destroy
+==2036926==ABORTING
+./verify.sh: line 305: 2036923 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input3_fuzzed/input3_88
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.lsan.out
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.lsan.out: foo.Xf: No such file or directory
+LeakSanitizer:DEADLYSIGNAL
+==2137926==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000000 (pc 0x5593f078f150 bp 0x7ffeb2c11de8 sp 0x7ffeb2c11dd8 T0)
+==2137926==The signal is caused by a READ memory access.
+==2137926==Hint: address points to the zero page.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x5593f078f150 in tar_stat_destroy /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22984:24
+    #1 0x7ffeb2c121df  ([stack]+0x1f1df)
+    #2 0x5593f079fe01 in decode_options /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22126:15
+    #3 0x5593f079e790 in main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #4 0x7f6c4b67bd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22984:24 in tar_stat_destroy
+==2137926==ABORTING

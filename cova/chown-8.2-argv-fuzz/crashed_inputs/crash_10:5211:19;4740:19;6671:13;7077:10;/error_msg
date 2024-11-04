@@ -1,0 +1,25 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/bins/reduced.asan.out
+óú¸\: cannot access : No such file or directory
+óú¸\: cannot access : No such file or directory
+óú¸\: cannot access : No such file or directory
+óú¸\: cannot access : No such file or directory
+óú¸\: cannot access : No such file or directory
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==16859==ERROR: AddressSanitizer: SEGV on unknown address 0x00000000000a (pc 0x2b82b3534674 bp 0x7fff93bff5c0 sp 0x7fff93bfeed8 T0)
+==16859==The signal is caused by a READ memory access.
+==16859==Hint: address points to the zero page.
+    #0 0x2b82b3534674 in dirfd dirent/../sysdeps/unix/sysv/linux/dirfd.c:27:14
+    #1 0x562cc4c82282 in fts_build /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:5211:19
+    #2 0x562cc4c7e439 in fts_read /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4740:19
+    #3 0x562cc4c84d6a in chown_files /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6671:13
+    #4 0x562cc4c8884a in main /workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10
+    #5 0x2b82b3477d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x2b82b3477e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x562cc4bb8404 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/chown-8.2-argv-fuzz/bins/reduced.asan.out+0x20404) (BuildId: 6fe7adf5142d2e3c9460637e537ce2d66527329f)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV dirent/../sysdeps/unix/sysv/linux/dirfd.c:27:14 in dirfd
+==16859==ABORTING
+./verify.sh: line 110: 16856 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

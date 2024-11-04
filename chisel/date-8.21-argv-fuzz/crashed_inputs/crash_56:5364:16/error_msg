@@ -1,0 +1,31 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+date-8.21.c.reduced.c:4191:24: runtime error: index -93 out of bounds for type 'const yytype_int8[113]' (aka 'const signed char[113]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4191:24 in 
+date-8.21.c.reduced.c:4188:32: runtime error: index -28 out of bounds for type 'const yytype_int8[26]' (aka 'const signed char[26]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4188:32 in 
+date-8.21.c.reduced.c:4194:26: runtime error: index -28 out of bounds for type 'const yytype_int8[26]' (aka 'const signed char[26]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4194:26 in 
+date-8.21.c.reduced.c:5222:12: runtime error: load of value 48, which is not a valid value for type '_Bool'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:5222:12 in 
+date-8.21.c.reduced.c:5364:16: runtime error: signed integer overflow: 60 * 1386140490018573568 cannot be represented in type 'long'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:5364:16 in 
+date-8.21.c.reduced.c:7541:37: runtime error: member access within null pointer of type 'const struct tm'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:7541:37 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==992060==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000014 (pc 0x564723d700c4 bp 0x7ffc0c335ab0 sp 0x7ffc0c334e40 T992060)
+==992060==The signal is caused by a READ memory access.
+==992060==Hint: address points to the zero page.
+    #0 0x564723d700c4 in strftime_case____0 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7541:45
+    #1 0x564723d6eb75 in fprintftime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7807:11
+    #2 0x564723d71485 in show_date /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9700:5
+    #3 0x564723d70dd3 in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9671:18
+    #4 0x7f7b5987cd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f7b5987ce3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x564723d3a4d4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.ubsan.out+0xe4d4) (BuildId: a503b23e0911d3d9a3bc41498abe22d2bae3c8f6)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7541:45 in strftime_case____0
+==992060==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 992059 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

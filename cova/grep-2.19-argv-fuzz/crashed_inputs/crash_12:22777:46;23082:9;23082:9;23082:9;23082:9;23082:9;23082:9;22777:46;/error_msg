@@ -1,0 +1,32 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.asan.out
+grep: invalid option -- 'p'
+grep: invalid option -- 't'
+grep: invalid option -- '/'
+grep: invalid option -- 'p'
+grep: invalid option -- 't'
+grep: invalid option -- '_'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1869470==ERROR: AddressSanitizer: SEGV on unknown address 0x4ab456f00ed4 (pc 0x55acd1be0bc8 bp 0x7ffc797111e8 sp 0x7ffc79710e60 T0)
+==1869470==The signal is caused by a READ memory access.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x55acd1be0bc8 in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:22777:46
+    #1 0x7ffc79711587  ([stack]+0x1d587)
+    #2 0x55acd1be1cbe in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23082:9
+    #3 0x7ffc79711927  ([stack]+0x1d927)
+    #4 0x55acd1be1cbe in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23082:9
+    #5 0x7ffc79711cc7  ([stack]+0x1dcc7)
+    #6 0x55acd1be1cbe in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23082:9
+    #7 0x7ffc79712067  ([stack]+0x1e067)
+    #8 0x55acd1be1cbe in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23082:9
+    #9 0x7ffc79712407  ([stack]+0x1e407)
+    #10 0x55acd1be1cbe in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23082:9
+    #11 0x7ffc797127af  ([stack]+0x1e7af)
+    #12 0x55acd1be1cbe in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23082:9
+    #13 0x7f73f0890d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:22777:46 in main
+==1869470==ABORTING
+./verify.sh: line 110: 1869468 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

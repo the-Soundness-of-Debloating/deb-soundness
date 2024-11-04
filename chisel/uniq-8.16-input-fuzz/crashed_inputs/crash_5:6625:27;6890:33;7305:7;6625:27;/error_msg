@@ -1,0 +1,18 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-input-fuzz/bins/reduced.asan.out -f 5 /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_100
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==553137==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x563a53ab11df bp 0x7ffe349f9010 sp 0x7ffe349f8f50 T0)
+==553137==The signal is caused by a READ memory access.
+==553137==Hint: address points to the zero page.
+    #0 0x563a53ab11df in find_field /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-input-fuzz/./uniq-8.16.c.reduced.c:6625:27
+    #1 0x563a53ab0da5 in check_file /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-input-fuzz/./uniq-8.16.c.reduced.c:6890:33
+    #2 0x563a53ab09e2 in main /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-input-fuzz/./uniq-8.16.c.reduced.c:7305:7
+    #3 0x7f97b0a83d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f97b0a83e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x563a539f0344 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-input-fuzz/bins/reduced.asan.out+0x1e344) (BuildId: 869ae1603512104961d814ff4a85b8e525337348)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-input-fuzz/./uniq-8.16.c.reduced.c:6625:27 in find_field
+==553137==ABORTING
+./verify.sh: line 174: 553135 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-input-fuzz/bins/reduced.asan.out -f 5 /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_100

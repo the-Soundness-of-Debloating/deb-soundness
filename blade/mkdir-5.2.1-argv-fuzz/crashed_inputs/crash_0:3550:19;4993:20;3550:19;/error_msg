@@ -1,0 +1,16 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.asan.out
+mkdir: invalid option -- '2'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1848493==ERROR: AddressSanitizer: stack-overflow on address 0x0095cdb66b58 (pc 0x55db4b5e8add bp 0x7fff3ba17f20 sp 0x0095cdb66b60 T0)
+    #0 0x55db4b5e8add in make_path /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:3550:19
+    #1 0x55db4b5e930c in main /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:4993:20
+    #2 0x7f696dd00d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #3 0x7f696dd00e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #4 0x55db4b528364 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.asan.out+0x1e364) (BuildId: 39f3a68a64a62fbde86a28b186a6d927f236fcba)
+
+SUMMARY: AddressSanitizer: stack-overflow /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:3550:19 in make_path
+==1848493==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 1848492 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

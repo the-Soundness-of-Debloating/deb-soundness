@@ -1,0 +1,7 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.lsan.out -c
+LeakSanitizer:DEADLYSIGNAL
+==3459501==ERROR: LeakSanitizer: SEGV on unknown address 0x55fb36d9816c (pc 0x55fa3641977a bp 0x7fffecb5d0b0 sp 0x7fffecb5d060 T0)
+==3459501==The signal is caused by a WRITE memory access.
+LeakSanitizer:DEADLYSIGNAL
+LeakSanitizer: nested bug in the same thread, aborting.

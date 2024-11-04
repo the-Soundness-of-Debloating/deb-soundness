@@ -1,0 +1,9 @@
+[
+{ crash_loc: 6625, vul_type: "", deb_tool: "chisel" }, 
+{ crash_loc: 3, vul_type: "Direct leak,", deb_tool: "chisel" }, 
+{ crash_loc: 2308, vul_type: "Direct leak,", deb_tool: "chisel" }, 
+{ crash_loc: 3, vul_type: "Direct leak,", deb_tool: "chisel" }, 
+{ crash_loc: 2308, vul_type: "Direct leak,", deb_tool: "chisel" }, 
+{ crash_loc: 6625, vul_type: "READ memory access,", deb_tool: "chisel" }, 
+{ crash_loc: 7207, vul_type: "WRITE memory access,use-of-uninitialized-value,", deb_tool: "chisel" }, 
+]

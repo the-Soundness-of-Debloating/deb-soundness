@@ -1,0 +1,15 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/bins/reduced.msan.out xf /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_344
+/workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/bins/reduced.msan.out: This does not look like a tar archive
+/workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/bins/reduced.msan.out: Skipping to next header
+==250567==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5610e8ec2710 in read_header /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12384:13
+    #1 0x5610e8ebee05 in read_and /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:11986:20
+    #2 0x5610e8ed925c in main /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7
+    #3 0x7f683ada2d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f683ada2e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x5610e8e044c4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/bins/reduced.msan.out+0x204c4) (BuildId: 402753ec81001e4d82b61d8c57292868a96a4435)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12384:13 in read_header
+Exiting
+./verify.sh: line 360: 250563 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/bins/reduced.msan.out xf /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_344

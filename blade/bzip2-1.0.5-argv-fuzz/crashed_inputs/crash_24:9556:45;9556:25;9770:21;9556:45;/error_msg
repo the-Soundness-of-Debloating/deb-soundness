@@ -1,0 +1,18 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==933059==ERROR: AddressSanitizer: SEGV on unknown address (pc 0x55fe0e107b1d bp 0x7ffdddb17c30 sp 0x7ffdddb17bc0 T0)
+==933059==The signal is caused by a READ memory access.
+==933059==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x55fe0e107b1d in snocString /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9556:45
+    #1 0x55fe0e107b42 in snocString /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9556:25
+    #2 0x55fe0e106ffe in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9770:21
+    #3 0x7fb774ae7d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7fb774ae7e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55fe0e035334 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.asan.out+0x1e334) (BuildId: 80223caf7ae5421947bf0536743533f2d15c5525)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9556:45 in snocString
+==933059==ABORTING
+./verify.sh: line 174: 933058 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_1 > sample1.rb2

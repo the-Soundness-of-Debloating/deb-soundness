@@ -1,0 +1,36 @@
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==2795531==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000028 (pc 0x56435be2f77a bp 0x7ffe4d4db2c0 sp 0x7ffe4d4da9a0 T0)
+==2795531==The signal is caused by a READ memory access.
+==2795531==Hint: address points to the zero page.
+    #0 0x56435be2f77a in strftime_case____0 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7661:23
+    #1 0x56435be2efa5 in fprintftime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7807:11
+    #2 0x56435be2fe70 in show_date /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9700:5
+    #3 0x56435be2fc06 in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9671:18
+    #4 0x7f482f9efd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f482f9efe3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x56435bdff4e4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.lsan.out+0x54e4) (BuildId: 5060c0af9d8553ad9e19245aea506efae9476d31)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7661:23 in strftime_case____0
+==2795531==ABORTING
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==4131119==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000028 (pc 0x562328183755 bp 0x7ffd334acb30 sp 0x7ffd334ac480 T0)
+==4131119==The signal is caused by a READ memory access.
+==4131119==Hint: address points to the zero page.
+    #0 0x562328183755 in strftime_case____0 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7661:23
+    #1 0x562328182735 in fprintftime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7807:11
+    #2 0x562328184adc in show_date /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9700:5
+    #3 0x562328184260 in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9671:18
+    #4 0x7fb5b97f6d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7fb5b97f6e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x5623280ba394 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.asan.out+0x20394) (BuildId: c4b6e170161c88a0ff251300e4e3ca367c4aa605)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7661:23 in strftime_case____0
+==4131119==ABORTING
+./verify.sh: line 108: 4131118 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

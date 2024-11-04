@@ -1,0 +1,19 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.tsan.out
+/workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.tsan.out: Cannot verify stdin/stdout archive
+ThreadSanitizer:DEADLYSIGNAL
+==2252662==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x560e0b5eba0e bp 0x7ffd45985358 sp 0x7ffd45985318 T2252662)
+==2252662==The signal is caused by a READ memory access.
+==2252662==Hint: address points to the zero page.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 tar_stat_destroy /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22984:24 (reduced.tsan.out+0xd0a0e) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #1 <null> <null> ([stack]+0x1e79f)
+    #2 open_archive /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:1203:13 (reduced.tsan.out+0xcf54c) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #3 create_archive /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5854:7 (reduced.tsan.out+0xd6b3d) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #4 main /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22893:7 (reduced.tsan.out+0xe3a39) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #5 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22984:24 in tar_stat_destroy
+==2252662==ABORTING
+./verify.sh: line 305: 2252659 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/result/afl_result/reduced/result_0/tsan/crashes/id:000003*

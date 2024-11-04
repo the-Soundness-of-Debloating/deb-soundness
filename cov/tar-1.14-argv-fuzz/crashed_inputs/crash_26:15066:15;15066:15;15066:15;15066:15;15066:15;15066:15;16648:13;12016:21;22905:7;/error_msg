@@ -1,0 +1,306 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==3111446==ERROR: AddressSanitizer: stack-overflow on address 0x7fff813ca450 (pc 0x7fff813ca450 bp 0x7fff813ca3a0 sp 0x7fff813ca3a8 T0)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x7fff813ca450  ([stack]+0x1b450)
+    #1 0x55e99431f548 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15073:13
+    #2 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #3 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #4 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #5 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #6 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #7 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #8 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #9 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #10 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #11 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #12 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #13 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #14 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #15 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #16 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #17 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #18 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #19 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #20 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #21 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #22 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #23 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #24 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #25 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #26 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #27 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #28 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #29 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #30 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #31 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #32 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #33 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #34 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #35 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #36 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #37 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #38 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #39 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #40 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #41 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #42 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #43 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #44 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #45 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #46 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #47 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #48 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #49 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #50 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #51 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #52 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #53 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #54 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #55 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #56 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #57 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #58 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #59 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #60 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #61 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #62 0x55e99431f4b5 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #63 0x55e99431b0c2 in name_match /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:16648:13
+    #64 0x55e994318fa9 in read_and /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:12016:21
+    #65 0x55e994321c86 in main /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22905:7
+    #66 0x7f440b340d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: stack-overflow ([stack]+0x1b450) 
+==3111446==ABORTING
+./verify.sh: line 305: 3111441 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input7_fuzzed/input7_212
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.msan.out
+MemorySanitizer:DEADLYSIGNAL
+==2177768==ERROR: MemorySanitizer: SEGV on unknown address 0x500000000000 (pc 0x500000000000 bp 0x7ffeeb4082b0 sp 0x7ffeeb408298 T2177768)
+==2177768==The signal is caused by a READ memory access.
+==2177768==Hint: PC is at a non-executable region. Maybe a wild jump?
+    #0 0x500000000000  (<unknown module>)
+    #1 0x55d9874f83cf in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15073:13
+    #2 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #3 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #4 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #5 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #6 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #7 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #8 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #9 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #10 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #11 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #12 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #13 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #14 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #15 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #16 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #17 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #18 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #19 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #20 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #21 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #22 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #23 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #24 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #25 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #26 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #27 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #28 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #29 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #30 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #31 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #32 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #33 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #34 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #35 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #36 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #37 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #38 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #39 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #40 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #41 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #42 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #43 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #44 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #45 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #46 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #47 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #48 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #49 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #50 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #51 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #52 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #53 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #54 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #55 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #56 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #57 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #58 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #59 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #60 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #61 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #62 0x55d9874f826d in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #63 0x55d9874ec511 in name_match /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:16648:13
+    #64 0x55d9874e60e8 in read_and /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:12016:21
+    #65 0x55d98750042d in main /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22905:7
+    #66 0x7f060c879d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV (<unknown module>) 
+==2177768==ABORTING
+./verify.sh: line 305: 2177764 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input7_fuzzed/input7_212
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==3001127==ERROR: ThreadSanitizer: stack-overflow on address 0x7ffc6e034580 (pc 0x7ffc6e034580 bp 0x7ffc6e0344e0 sp 0x7ffc6e0344e8 T3001127)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 <null> <null> ([stack]+0x1c580)
+    #1 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15073:13 (reduced.tsan.out+0xe1a58) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #2 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #3 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #4 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #5 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #6 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #7 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #8 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #9 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #10 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #11 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #12 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #13 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #14 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #15 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #16 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #17 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #18 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #19 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #20 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #21 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #22 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #23 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #24 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #25 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #26 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #27 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #28 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #29 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #30 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #31 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #32 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #33 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #34 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #35 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #36 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #37 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #38 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #39 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #40 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #41 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #42 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #43 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #44 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #45 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #46 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #47 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #48 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #49 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #50 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #51 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #52 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #53 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #54 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #55 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #56 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #57 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #58 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #59 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #60 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #61 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #62 chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15 (reduced.tsan.out+0xe1a14) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #63 name_match /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:16648:13 (reduced.tsan.out+0xdec4f) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #64 read_and /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:12016:21 (reduced.tsan.out+0xdd075) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #65 main /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22905:7 (reduced.tsan.out+0xe3a72) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #66 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+SUMMARY: ThreadSanitizer: stack-overflow ([stack]+0x1c580) 
+==3001127==ABORTING
+./verify.sh: line 305: 3001126 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input7_fuzzed/input7_212
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==674720==ERROR: LeakSanitizer: stack-overflow on address 0x7ffef8a575f0 (pc 0x7ffef8a575f0 bp 0x7ffef8a575a0 sp 0x7ffef8a575a8 T0)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x7ffef8a575f0  ([stack]+0x1d5f0)
+    #1 0x559c52325ee7 in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15073:13
+    #2 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #3 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #4 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #5 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #6 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #7 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #8 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #9 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #10 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #11 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #12 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #13 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #14 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #15 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #16 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #17 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #18 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #19 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #20 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #21 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #22 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #23 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #24 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #25 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #26 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #27 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #28 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #29 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #30 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #31 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #32 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #33 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #34 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #35 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #36 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #37 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #38 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #39 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #40 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #41 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #42 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #43 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #44 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #45 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #46 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #47 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #48 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #49 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #50 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #51 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #52 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #53 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #54 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #55 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #56 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #57 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #58 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #59 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #60 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #61 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #62 0x559c52325ebd in chdir_do /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:15066:15
+    #63 0x559c523240f6 in name_match /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:16648:13
+    #64 0x559c52322f1e in read_and /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:12016:21
+    #65 0x559c5232732e in main /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22905:7
+    #66 0x7f9a43250d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: LeakSanitizer: stack-overflow ([stack]+0x1d5f0) 
+==674720==ABORTING

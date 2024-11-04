@@ -1,0 +1,9 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-argv-fuzz/bins/reduced.ubsan.out
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==2008254==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x0000000000c0 (pc 0x7fbab102223c bp 0x7ffcb1d5be40 sp 0x7ffcb1d5bd50 T2008254)
+==2008254==The signal is caused by a READ memory access.
+==2008254==Hint: address points to the zero page.
+reduced.ubsan.out: malloc.c:2617: sysmalloc: Assertion `(old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)' failed.
+timeout: the monitored command dumped core
+./verify.sh: line 110: 2008253 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

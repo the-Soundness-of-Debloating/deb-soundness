@@ -1,0 +1,26 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/bins/reduced.ubsan.out
+chown-8.2.c.reduced.c:4364:20: runtime error: member access within misaligned address 0x00056024e7e7 for type 'struct _ftsent', which requires 8 byte alignment
+0x00056024e7e7: note: pointer points here
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior chown-8.2.c.reduced.c:4364:20 in 
+chown-8.2.c.reduced.c:4364:20: runtime error: store to misaligned address 0x00056024e7f7 for type 'struct _ftsent *', which requires 8 byte alignment
+0x00056024e7f7: note: pointer points here
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior chown-8.2.c.reduced.c:4364:20 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==15781==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x00056024e7f7 (pc 0x56024cf2a8b5 bp 0x7ffc23a20780 sp 0x7ffc23a206b0 T15781)
+==15781==The signal is caused by a WRITE memory access.
+    #0 0x56024cf2a8b5 in fts_open /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4364:29
+    #1 0x56024cf2a4a8 in xfts_open /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1223:11
+    #2 0x56024cf2b614 in chown_files /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6667:15
+    #3 0x56024cf2bd8e in main /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10
+    #4 0x2b0486f3dd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x2b0486f3de3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x56024cf02424 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/bins/reduced.ubsan.out+0x6424) (BuildId: c7c418d98a22f824eda696b85ef1d300135453ea)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4364:29 in fts_open
+==15781==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 15774 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

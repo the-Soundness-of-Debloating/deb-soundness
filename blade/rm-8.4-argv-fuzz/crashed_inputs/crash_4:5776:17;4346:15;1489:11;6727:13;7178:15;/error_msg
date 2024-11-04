@@ -1,0 +1,16 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/bins/reduced.asan.out
+=================================================================
+==3213325==ERROR: AddressSanitizer: requested allocation size 0xbebebebebebebebe (0xbebebebebebecec0 after adjustments for alignment, red zones etc.) exceeds maximum supported size of 0x10000000000 (thread T0)
+    #0 0x557c7f39c1a6 in __interceptor_realloc (/workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/bins/reduced.asan.out+0xa41a6) (BuildId: 4c9222e2a11ea933dc6e9b9e309bec85adf3e963)
+    #1 0x557c7f3d6bd6 in fts_palloc /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:5776:17
+    #2 0x557c7f3d6357 in fts_open /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:4346:15
+    #3 0x557c7f3d62b8 in xfts_open /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1489:11
+    #4 0x557c7f3d7106 in rm /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6727:13
+    #5 0x557c7f3d776f in main /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7178:15
+    #6 0x7fa467305d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+==3213325==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: AddressSanitizer: allocation-size-too-big (/workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/bins/reduced.asan.out+0xa41a6) (BuildId: 4c9222e2a11ea933dc6e9b9e309bec85adf3e963) in __interceptor_realloc
+==3213325==ABORTING
+./verify.sh: line 189: 3213318 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_0

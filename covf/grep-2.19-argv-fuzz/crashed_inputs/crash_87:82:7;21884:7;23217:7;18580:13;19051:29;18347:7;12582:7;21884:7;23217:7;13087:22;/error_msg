@@ -1,0 +1,25 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/bins/reduced.tsan.out
+==================
+WARNING: ThreadSanitizer: heap-use-after-free (pid=101594)
+  Read of size 4 at 0x7b2000000100 by main thread:
+    #0 tstbit /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:13087:22 (reduced.tsan.out+0xdd795) (BuildId: c9661fc41d9608e489e39f3089d17bdf276b94f3)
+    #1 dfamust /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:19114:27 (reduced.tsan.out+0xdf59f) (BuildId: c9661fc41d9608e489e39f3089d17bdf276b94f3)
+    #2 dfacomp /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18347:7 (reduced.tsan.out+0xd60f9) (BuildId: c9661fc41d9608e489e39f3089d17bdf276b94f3)
+    #3 GEAcompile /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12582:7 (reduced.tsan.out+0xd5e8d) (BuildId: c9661fc41d9608e489e39f3089d17bdf276b94f3)
+    #4 Gcompile /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21884:7 (reduced.tsan.out+0xe6b1a) (BuildId: c9661fc41d9608e489e39f3089d17bdf276b94f3)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7 (reduced.tsan.out+0xe0f04) (BuildId: c9661fc41d9608e489e39f3089d17bdf276b94f3)
+
+  Previous write of size 8 at 0x7b2000000100 by main thread:
+    #0 free <null> (reduced.tsan.out+0x4daf4) (BuildId: c9661fc41d9608e489e39f3089d17bdf276b94f3)
+    #1 enlist /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18580:13 (reduced.tsan.out+0xe6596) (BuildId: c9661fc41d9608e489e39f3089d17bdf276b94f3)
+    #2 dfamust /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:19051:29 (reduced.tsan.out+0xdef84) (BuildId: c9661fc41d9608e489e39f3089d17bdf276b94f3)
+    #3 dfacomp /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18347:7 (reduced.tsan.out+0xd60f9) (BuildId: c9661fc41d9608e489e39f3089d17bdf276b94f3)
+    #4 GEAcompile /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12582:7 (reduced.tsan.out+0xd5e8d) (BuildId: c9661fc41d9608e489e39f3089d17bdf276b94f3)
+    #5 Gcompile /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21884:7 (reduced.tsan.out+0xe6b1a) (BuildId: c9661fc41d9608e489e39f3089d17bdf276b94f3)
+    #6 main /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7 (reduced.tsan.out+0xe0f04) (BuildId: c9661fc41d9608e489e39f3089d17bdf276b94f3)
+
+SUMMARY: ThreadSanitizer: heap-use-after-free /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:13087:22 in tstbit
+==================
+grep: b: No such file or directory
+./verify.sh: line 110: 101593 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

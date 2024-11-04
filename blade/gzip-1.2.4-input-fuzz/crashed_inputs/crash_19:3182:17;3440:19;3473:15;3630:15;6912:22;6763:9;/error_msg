@@ -1,0 +1,25 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out -d
+gzip-1.2.4.c.reduced.c:3182:35: runtime error: member access within misaligned address 0x000000000563 for type 'struct huft', which requires 8 byte alignment
+0x000000000563: note: pointer points here
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3182:35 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==2572098==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000564 (pc 0x56247c4b5274 bp 0x7ffea58d2610 sp 0x7ffea58d1e20 T2572098)
+==2572098==The signal is caused by a READ memory access.
+==2572098==Hint: address points to the zero page.
+    #0 0x56247c4b5274 in inflate_dynamic /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3182:17
+    #1 0x56247c4b5ad3 in inflate_block /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3440:19
+    #2 0x56247c4b5b15 in inflate /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3473:15
+    #3 0x56247c4b5b66 in unzip /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3630:15
+    #4 0x56247c4bf8dc in treat_stdin /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #5 0x56247c4bf769 in main /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #6 0x7ff73de17d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7ff73de17e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x56247c487434 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out+0x11434) (BuildId: 81ee2fc8ba1e5dbb58b850e0802cc6dc0ba875a3)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3182:17 in inflate_dynamic
+==2572098==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 169: 2572094 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out -d < /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_1/ubsan/crashes/id:000009* > sample1.tst

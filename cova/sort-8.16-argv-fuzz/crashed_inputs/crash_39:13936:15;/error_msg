@@ -1,0 +1,11 @@
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==987646==ERROR: LeakSanitizer: stack-overflow on address 0x7ffe4dee5730 (pc 0x7ffe4dee5730 bp 0x7ffe4dee5220 sp 0x7ffe4dee5228 T0)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x7ffe4dee5730  ([stack]+0x1e730)
+    #1 0x55ffcf2d1930 in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13936:15
+    #2 0x7f9da5107d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: LeakSanitizer: stack-overflow ([stack]+0x1e730) 
+==987646==ABORTING

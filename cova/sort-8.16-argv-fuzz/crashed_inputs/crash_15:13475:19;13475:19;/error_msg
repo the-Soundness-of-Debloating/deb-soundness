@@ -1,0 +1,13 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.msan.out
+sort: invalid option -- ''
+MemorySanitizer:DEADLYSIGNAL
+==2210092==ERROR: MemorySanitizer: SEGV on unknown address (pc 0x55be0006bf99 bp 0x7ffd58e56d78 sp 0x7ffd58e55eb8 T2210092)
+==2210092==The signal is caused by a READ memory access.
+==2210092==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x55be0006bf99 in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13475:19
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13475:19 in main
+==2210092==ABORTING
+./verify.sh: line 110: 2210091 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

@@ -1,0 +1,80 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.ubsan.out
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==14843==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000001 (pc 0x2b43d3c83db1 bp 0x7ffc08ab4ae0 sp 0x7ffc08ab4a18 T14843)
+==14843==The signal is caused by a READ memory access.
+==14843==Hint: address points to the zero page.
+    #0 0x2b43d3c83db1  string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:115
+    #1 0x2b43d3bf2e90 in process_long_option posix/getopt.c:212:10
+    #2 0x2b43d3bf387e in _getopt_internal_r posix/getopt.c:650:9
+    #3 0x2b43d3bf3ada in _getopt_internal posix/getopt.c:711:12
+    #4 0x2b43d3bf3b61 in getopt_long posix/getopt1.c:31:10
+    #5 0x56072bdcf2ee in main /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6901:14
+    #6 0x2b43d3b14d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x2b43d3b14e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x56072bda1514 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.ubsan.out+0x9514) (BuildId: c9e7dbe9ebf3918647b71013d044b22e5f98ff70)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:115 
+==14843==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 14842 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.msan.out
+MemorySanitizer:DEADLYSIGNAL
+==6661==ERROR: MemorySanitizer: SEGV on unknown address 0x000000000001 (pc 0x7f67e1215db1 bp 0x7ffe33218bc0 sp 0x7ffe33218af8 T6661)
+==6661==The signal is caused by a READ memory access.
+==6661==Hint: address points to the zero page.
+    #0 0x7f67e1215db1  string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:115
+    #1 0x7f67e1184e90 in process_long_option posix/getopt.c:212:10
+    #2 0x7f67e118587e in _getopt_internal_r posix/getopt.c:650:9
+    #3 0x7f67e1185ada in _getopt_internal posix/getopt.c:711:12
+    #4 0x7f67e1185b61 in getopt_long posix/getopt1.c:31:10
+    #5 0x5574c0cccf55 in main /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6901:14
+    #6 0x7f67e10a6d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f67e10a6e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x5574c0c3b354 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.msan.out+0x1f354) (BuildId: 37f542910fa3af27533b0069be633fe0cc3a6537)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:115 
+==6661==ABORTING
+./verify.sh: line 110:  6658 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==19879==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000001 (pc 0x7f476e1b2db1 bp 0x7ffdddf3b6e0 sp 0x7ffdddf3b618 T19879)
+==19879==The signal is caused by a READ memory access.
+==19879==Hint: address points to the zero page.
+    #0 <null> string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:115 (libc.so.6+0x198db1) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 process_long_option posix/getopt.c:212:10 (libc.so.6+0x107e90) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #2 _getopt_internal_r posix/getopt.c:650:9 (libc.so.6+0x10887e) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #3 _getopt_internal posix/getopt.c:711:12 (libc.so.6+0x108ada) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #4 getopt_long posix/getopt1.c:31:10 (libc.so.6+0x108b61) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6901:14 (reduced.tsan.out+0xd0367) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #6 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 _start <null> (reduced.tsan.out+0x213b4) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:115 
+==19879==ABORTING
+./verify.sh: line 110: 19878 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==5110==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000001 (pc 0x2b26541b3db1 bp 0x7ffde0db9340 sp 0x7ffde0db9278 T0)
+==5110==The signal is caused by a READ memory access.
+==5110==Hint: address points to the zero page.
+    #0 0x2b26541b3db1  string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:115
+    #1 0x2b2654122e90 in process_long_option posix/getopt.c:212:10
+    #2 0x2b265412387e in _getopt_internal_r posix/getopt.c:650:9
+    #3 0x2b2654123ada in _getopt_internal posix/getopt.c:711:12
+    #4 0x2b2654123b61 in getopt_long posix/getopt1.c:31:10
+    #5 0x55bd6a83e64c in main /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6901:14
+    #6 0x2b2654044d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x2b2654044e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55bd6a80f4f4 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.lsan.out+0x54f4) (BuildId: da6c7d28ee9f0b35bba49ed24339532edcff7f7e)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:115 
+==5110==ABORTING

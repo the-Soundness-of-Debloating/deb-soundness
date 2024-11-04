@@ -1,0 +1,48 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2799911==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x55fafbb24728 bp 0x7fff78ae0610 sp 0x7fff78ae0100 T0)
+==2799911==The signal is caused by a READ memory access.
+==2799911==Hint: address points to the zero page.
+    #0 0x55fafbb24728 in decode_options /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21468:11
+    #1 0x55fafbb23fb2 in main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #2 0x7f08d8ea4d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7f08d8ea4e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x55fafba62374 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.asan.out+0x22374) (BuildId: da3403ca6ca0cc21a1df2d5332abdad16823d6bf)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21468:11 in decode_options
+==2799911==ABORTING
+./verify.sh: line 302: 2799910 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_14
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==1255970==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x56023068a02a bp 0x7ffce2ba2eb0 sp 0x7ffce2ba2a10 T1255970)
+==1255970==The signal is caused by a READ memory access.
+==1255970==Hint: address points to the zero page.
+    #0 decode_options /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21468:11 (reduced.tsan.out+0xd002a) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+    #1 main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7 (reduced.tsan.out+0xcfbe9) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+    #2 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #3 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #4 _start <null> (reduced.tsan.out+0x21374) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21468:11 in decode_options
+==1255970==ABORTING
+./verify.sh: line 302: 1255969 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_14
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==3556646==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000000 (pc 0x561e138c957b bp 0x7fff40c649c0 sp 0x7fff40c645e0 T0)
+==3556646==The signal is caused by a READ memory access.
+==3556646==Hint: address points to the zero page.
+    #0 0x561e138c957b in decode_options /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21468:11
+    #1 0x561e138c9325 in main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #2 0x7f5cc80aed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7f5cc80aee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x561e1389a4d4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.lsan.out+0x74d4) (BuildId: ea5e47fabf85c69fd02c90c1c2c9d3c41a17d0cf)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21468:11 in decode_options
+==3556646==ABORTING

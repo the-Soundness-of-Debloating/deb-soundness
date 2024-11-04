@@ -1,0 +1,19 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/bins/reduced.asan.out
+óú¸\: unrecognized option '---,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,---h'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==6576==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000001 (pc 0x55a916e7e272 bp 0x7ffd3a7d8c90 sp 0x7ffd3a7d8b10 T0)
+==6576==The signal is caused by a READ memory access.
+==6576==Hint: address points to the zero page.
+    #0 0x55a916e7e272 in parse_with_separator /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1582:13
+    #1 0x55a916e7de52 in parse_user_spec /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1636:15
+    #2 0x55a916e843ec in main /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7051:18
+    #3 0x2b5682a12d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x2b5682a12e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55a916dbd3d4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/bins/reduced.asan.out+0x1f3d4) (BuildId: 5f7121e6d21b96bf7dbcafedbde26c0e84754164)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1582:13 in parse_with_separator
+==6576==ABORTING
+./verify.sh: line 110:  6575 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

@@ -1,0 +1,20 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.lsan.out xf /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/result/afl_result/reduced/result_0/lsan/crashes/id:000020,sig:06,src:000033+000002,time:9850425,execs:25434,op:splice,rep:11
+LeakSanitizer:DEADLYSIGNAL
+==1889511==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x555bf3502a55 bp 0x7ffd30ebf100 sp 0x7ffd30ebf100 T0)
+==1889511==The signal is caused by a READ memory access.
+==1889511==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x555bf3502a55 in set_quoting_style /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:28464:16
+    #1 0x555bf350000c in from_header /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:13084:17
+    #2 0x555bf34ff4c7 in time_from_header /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:13315:13
+    #3 0x555bf34f6903 in decode_header /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12683:40
+    #4 0x555bf34fb30c in extract_archive /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:7992:7
+    #5 0x555bf34feed9 in read_and /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12086:13
+    #6 0x555bf350288d in main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7
+    #7 0x7ff258381d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7ff258381e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x555bf34c4874 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.lsan.out+0xb874) (BuildId: b6005c6054fef54eb95034fc1ae7ecc431d9b774)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:28464:16 in set_quoting_style
+==1889511==ABORTING

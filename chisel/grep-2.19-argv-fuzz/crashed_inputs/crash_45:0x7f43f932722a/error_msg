@@ -1,0 +1,7 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==3638590==ERROR: AddressSanitizer: BUS on unknown address (pc 0x7f43f932722a bp 0xbebebebebebebebe sp 0x7ffeaada6ce0 T0)
+==3638590==The signal is caused by a READ memory access.
+==3638590==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.

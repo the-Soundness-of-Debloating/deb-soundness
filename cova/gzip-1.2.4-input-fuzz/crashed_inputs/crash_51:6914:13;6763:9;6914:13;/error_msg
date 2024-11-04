@@ -1,0 +1,12 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/bins/reduced.msan.out -d
+==3769880==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5633d0e694c4 in treat_stdin /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6914:13
+    #1 0x5633d0e65394 in main /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #2 0x7f62148e8d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7f62148e8e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x5633d0dbf354 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/bins/reduced.msan.out+0x1f354) (BuildId: 8f9c33d589bbe64513c839c410b9b2e7827414f2)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6914:13 in treat_stdin
+Exiting
+./verify.sh: line 169: 3769870 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/bins/reduced.msan.out -d < /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_1/msan/crashes/id:000035* > sample1.tst

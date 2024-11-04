@@ -1,0 +1,18 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/bins/reduced.msan.out -c
+MemorySanitizer:DEADLYSIGNAL
+==3703052==ERROR: MemorySanitizer: SEGV on unknown address 0x55b4af1c8cb4 (pc 0x55b3b081389b bp 0x7ffdd778e670 sp 0x7ffdd778e550 T3703052)
+==3703052==The signal is caused by a WRITE memory access.
+    #0 0x55b3b081389b in ct_tally /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5045:25
+    #1 0x55b3b0817a1c in deflate /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5749:25
+    #2 0x55b3b081974f in zip /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5988:7
+    #3 0x55b3b081d08f in treat_stdin /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #4 0x55b3b081b81e in main /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #5 0x7f03b8801d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7f03b8801e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x55b3b0779334 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/bins/reduced.msan.out+0x1f334) (BuildId: 7a6a555d9557fa1aafec9abd264c128538adcbd9)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5045:25 in ct_tally
+==3703052==ABORTING
+./verify.sh: line 169: 3703045 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/bins/reduced.msan.out -c < /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_0/msan/crashes/id:000013* > sample1.gz

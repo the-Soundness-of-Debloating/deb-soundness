@@ -1,0 +1,32 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==2956797==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address (pc 0x5638926d177b bp 0x7fff47821d60 sp 0x7fff47821a90 T2956797)
+==2956797==The signal is caused by a READ memory access.
+==2956797==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x5638926d177b in main /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9497:28
+    #1 0x7fa9b41a6d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7fa9b41a6e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x563892691614 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/bins/reduced.ubsan.out+0x16614) (BuildId: 77c3b2a032e77d97120432867da274ec9f497086)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9497:28 in main
+==2956797==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 2956796 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==3313623==ERROR: ThreadSanitizer: SEGV on unknown address (pc 0x55924c4655f0 bp 0x7ffcff72e2c0 sp 0x7ffcff72e0c8 T3313623)
+==3313623==The signal is caused by a READ memory access.
+==3313623==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 __tsan_read4 <null> (reduced.tsan.out+0xba5f0) (BuildId: 9f1a448622649550180bff1fdd1e8bd778d4a0d9)
+    #1 main /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9497:28 (reduced.tsan.out+0xd6241) (BuildId: 9f1a448622649550180bff1fdd1e8bd778d4a0d9)
+    #2 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #3 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #4 _start <null> (reduced.tsan.out+0x22474) (BuildId: 9f1a448622649550180bff1fdd1e8bd778d4a0d9)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/bins/reduced.tsan.out+0xba5f0) (BuildId: 9f1a448622649550180bff1fdd1e8bd778d4a0d9) in __tsan_read4
+==3313623==ABORTING
+./verify.sh: line 110: 3313622 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

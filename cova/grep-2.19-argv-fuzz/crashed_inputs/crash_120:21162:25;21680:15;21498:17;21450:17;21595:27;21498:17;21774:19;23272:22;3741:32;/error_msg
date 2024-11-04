@@ -1,0 +1,28 @@
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==3014830==ERROR: LeakSanitizer: SEGV on unknown address 0x62d000010000 (pc 0x55c60e522b76 bp 0x7ffe7b81df70 sp 0x7ffe7b81def0 T0)
+==3014830==The signal is caused by a READ memory access.
+    #0 0x55c60e522b76 in memchr2 /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:3741:32
+    #1 0x55c60e530aae in memchr_kwset /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11802:19
+    #2 0x55c60e53044c in bmexec_trans /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11850:14
+    #3 0x55c60e526d46 in bmexec /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11982:15
+    #4 0x55c60e526527 in kwsexec /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12251:15
+    #5 0x55c60e527634 in EGexecute /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12655:25
+    #6 0x55c60e535bd7 in do_execute /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20933:17
+    #7 0x55c60e5357d4 in grepbuf /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20997:17
+    #8 0x55c60e534dd3 in grep /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21162:25
+    #9 0x55c60e53439f in grepdesc /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21680:15
+    #10 0x55c60e534687 in grepfile /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #11 0x55c60e534a4e in grepdirent /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21450:17
+    #12 0x55c60e53412b in grepdesc /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21595:27
+    #13 0x55c60e534687 in grepfile /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #14 0x55c60e52ff9e in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19
+    #15 0x55c60e52f8ca in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23272:22
+    #16 0x7f039fef2d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #17 0x7f039fef2e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #18 0x55c60e4f4704 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.lsan.out+0x7704) (BuildId: 0f89a4f556c0dbb7bc1e8b44902f11ad050ab725)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:3741:32 in memchr2
+==3014830==ABORTING

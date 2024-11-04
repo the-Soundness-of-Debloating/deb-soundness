@@ -1,0 +1,4 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/bins/reduced.tsan.out xf /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file5_fuzzed/file5_328 -C foo ./1/10
+ThreadSanitizer:DEADLYSIGNAL
+==2936872==ERROR: ThreadSanitizer: stack-overflow on address 0x7ffd6008c270 (pc 0x7ffd6008c270 bp 0x7ffd6008c1d0 sp 0x7ffd6008c1d8 T2936872)

@@ -1,0 +1,21 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.msan.out xzf /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/input/radamsa_fuzzed/file11_fuzzed/file11_392
+
+gzip: stdin: invalid compressed data--crc error
+
+gzip: stdin: invalid compressed data--length error
+Uninitialized bytes in __interceptor_write at offset 11 inside [0x726000000200, 12)
+==2440811==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x563a8d877552 in safe_write /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:29792:20
+    #1 0x563a8d845dfa in full_write /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24331:17
+    #2 0x563a8d83bb70 in extract_archive /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:8206:19
+    #3 0x563a8d84d3c5 in read_and /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12086:13
+    #4 0x563a8d867a85 in main /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7
+    #5 0x7f8d20b37d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #6 0x7f8d20b37e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #7 0x563a8d7904c4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.msan.out+0x204c4) (BuildId: eb898b9f902a436dd12025919a6006a231e0006d)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:29792:20 in safe_write
+Exiting
+timeout: the monitored command dumped core
+./verify.sh: line 360: 2440810 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.msan.out xzf /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/input/radamsa_fuzzed/file11_fuzzed/file11_392

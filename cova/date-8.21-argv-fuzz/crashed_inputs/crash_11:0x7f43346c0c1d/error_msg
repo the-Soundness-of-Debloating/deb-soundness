@@ -1,0 +1,11 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.asan.out
+date: the argument '\vda\241efilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfilfififififififififififififififififififififififififififi\212fififififififififififififififififififififififififififififififififififififififififififififififififififififififififififififififififif`¶È÷ÃU lacks a leading '+';
+when using an option to specify date(s), any non-option
+argument must be a format string beginning with '+'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==249214==ERROR: AddressSanitizer: SEGV on unknown address (pc 0x7f43346c0c1d bp 0x000000004f4c sp 0x7ffe325d8290 T0)
+==249214==The signal is caused by a READ memory access.
+==249214==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+==249214==WARNING: external symbolizer didn't start up correctly!

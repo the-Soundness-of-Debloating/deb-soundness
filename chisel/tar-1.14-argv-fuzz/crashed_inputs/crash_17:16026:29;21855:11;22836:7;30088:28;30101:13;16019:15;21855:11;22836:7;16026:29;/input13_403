@@ -1,0 +1,1 @@
+cf foo.tar \x0a\0$PATH\x6261605337d&#18446744073709551616;foo foo.tar foo barcf foo.tar \x0a\0$PATH\x3d&#-18446744071562067968;foo foo.tar foo bar

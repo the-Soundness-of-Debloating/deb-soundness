@@ -1,0 +1,35 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2532037==ERROR: ThreadSanitizer: SEGV on unknown address 0x00000000000e (pc 0x562abbe25065 bp 0x000000000000 sp 0x7ffe21f53630 T2532037)
+==2532037==The signal is caused by a READ memory access.
+==2532037==Hint: address points to the zero page.
+    #0 strcmp <null> (reduced.tsan.out+0x58065) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #1 lookup_zone /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4518:17 (reduced.tsan.out+0xd68d9) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #2 lookup_word /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4615:25 (reduced.tsan.out+0xd6555) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #3 yylex /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4922:14 (reduced.tsan.out+0xd1978) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #4 yyparse /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3424:16 (reduced.tsan.out+0xcf65c) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #5 parse_datetime /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15 (reduced.tsan.out+0xd2ad8) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.tsan.out+0x58065) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656) in strcmp
+==2532037==ABORTING
+./verify.sh: line 110: 2532036 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==3027048==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x7f30468cecbc bp 0x7ffd0e98bb60 sp 0x7ffd0e98bb28 T0)
+==3027048==The signal is caused by a READ memory access.
+==3027048==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x7f30468cecbc  string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:752
+    #1 0x55595e3ec819 in lookup_zone /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4518:17
+    #2 0x55595e3ec5f8 in lookup_word /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4615:25
+    #3 0x55595e3e8faf in yylex /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4922:14
+    #4 0x55595e3e77b7 in yyparse /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3424:16
+    #5 0x55595e3e9910 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15
+    #6 0x7ffd0e98ca1f  ([stack]+0x1ea1f)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:752 
+==3027048==ABORTING

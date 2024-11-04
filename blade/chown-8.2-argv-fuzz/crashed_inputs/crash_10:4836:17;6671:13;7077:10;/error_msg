@@ -1,0 +1,36 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.ubsan.out
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==17565==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address (pc 0x5558f78d6fbb bp 0x7fff3fd09990 sp 0x7fff3fd09570 T17565)
+==17565==The signal is caused by a READ memory access.
+==17565==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x5558f78d6fbb in fts_read /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4836:17
+    #1 0x5558f78d8dd5 in chown_files /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6671:13
+    #2 0x5558f78d94ce in main /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10
+    #3 0x2ae3c4773d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x2ae3c4773e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x5558f78ab514 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.ubsan.out+0x9514) (BuildId: c9e7dbe9ebf3918647b71013d044b22e5f98ff70)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4836:17 in fts_read
+==17565==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 17564 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==7302==ERROR: ThreadSanitizer: SEGV on unknown address (pc 0x55e3b3b97e52 bp 0x7fffc2a12ed0 sp 0x7fffc2a12c18 T7302)
+==7302==The signal is caused by a READ memory access.
+==7302==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 __tsan_write1 <null> (reduced.tsan.out+0xb9e52) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #1 fts_read /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4836:17 (reduced.tsan.out+0xcf597) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #2 chown_files /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6671:13 (reduced.tsan.out+0xd00ab) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #3 main /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10 (reduced.tsan.out+0xd0483) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #4 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #5 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #6 _start <null> (reduced.tsan.out+0x213b4) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.tsan.out+0xb9e52) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a) in __tsan_write1
+==7302==ABORTING
+./verify.sh: line 110:  7298 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

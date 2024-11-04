@@ -1,0 +1,59 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep: invalid option -- 'Û'
+grep: invalid option -- '†'
+grep: invalid option -- 'Å'
+grep: invalid option -- '+'
+grep: invalid option -- '/'
+grep: invalid option -- 'Æ'
+grep: invalid option -- '‚'
+grep: invalid option -- 'Å'
+grep: invalid option -- 'ü'
+grep-2.19.c.reduced.c:12569:57: runtime error: null pointer passed as argument 2, which is declared to never be null
+grep-2.19.c.reduced.c:4922:59: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:12569:57 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==848125==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7f1793e6feab bp 0x7ffe577fc620 sp 0x7ffe577fc4a8 T848125)
+==848125==The signal is caused by a READ memory access.
+==848125==Hint: address points to the zero page.
+    #0 0x7f1793e6feab  string/../sysdeps/x86_64/multiarch/strcpy-avx2.S:304
+    #1 0x56492a2212b1 in GEAcompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12569:11
+    #2 0x56492a24f170 in Ecompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21892:7
+    #3 0x56492a24257d in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #4 0x7f1793cfad8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f1793cfae3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x56492a1e3664 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x2f664) (BuildId: 548678bb0b6577364ae598818988dcfaaab153e2)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strcpy-avx2.S:304 
+==848125==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 848124 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.msan.out
+grep: invalid option -- 'Û'
+grep: invalid option -- '†'
+grep: invalid option -- 'Å'
+grep: invalid option -- '+'
+grep: invalid option -- '/'
+grep: invalid option -- 'Æ'
+grep: invalid option -- '‚'
+grep: invalid option -- 'Å'
+grep: invalid option -- 'ü'
+MemorySanitizer:DEADLYSIGNAL
+==2009741==ERROR: MemorySanitizer: SEGV on unknown address 0x000000000000 (pc 0x55f8e051cdb0 bp 0x7ffc862d8f80 sp 0x7ffc862d8738 T2009741)
+==2009741==The signal is caused by a READ memory access.
+==2009741==Hint: address points to the zero page.
+    #0 0x55f8e051cdb0 in __sanitizer::internal_strlen(char const*) (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.msan.out+0x27db0) (BuildId: d6ec29f2e72ed2facac46b6962e8fbc3e4932da0)
+    #1 0x55f8e05425da in strcpy (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.msan.out+0x4d5da) (BuildId: d6ec29f2e72ed2facac46b6962e8fbc3e4932da0)
+    #2 0x55f8e05b8591 in GEAcompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12569:11
+    #3 0x55f8e05ef4a8 in Ecompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21892:7
+    #4 0x55f8e05db573 in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #5 0x7fb2e94e4d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7fb2e94e4e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x55f8e05143f4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.msan.out+0x1f3f4) (BuildId: d6ec29f2e72ed2facac46b6962e8fbc3e4932da0)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.msan.out+0x27db0) (BuildId: d6ec29f2e72ed2facac46b6962e8fbc3e4932da0) in __sanitizer::internal_strlen(char const*)
+==2009741==ABORTING
+./verify.sh: line 110: 2009740 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

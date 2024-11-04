@@ -1,0 +1,18 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/bins/reduced.asan.out
+gzip: invalid option -- 'ø'
+=================================================================
+==299807==ERROR: AddressSanitizer: strcpy-param-overlap: memory ranges [0x556d913862c0,0x556d91395adb) and [0x556d91387fa5, 0x556d913977c0) overlap
+    #0 0x556d90933bc7 in strcpy (/workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/bins/reduced.asan.out+0x90bc7) (BuildId: f895f109167d960860db416d31ba8c00bf0ff859)
+    #1 0x556d9099275a in get_istat /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:7439:7
+    #2 0x556d9098fe6e in treat_file /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6988:17
+    #3 0x556d9098f932 in main /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6759:13
+    #4 0x7f3267230d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f3267230e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x556d908c43a4 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/bins/reduced.asan.out+0x213a4) (BuildId: f895f109167d960860db416d31ba8c00bf0ff859)
+
+0x556d913866c0 is located 0 bytes to the right of global variable 'ifname' defined in '/workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:1179' (0x556d913862c0) of size 1024
+0x556d91387fa5 is located 5 bytes inside of global variable 'afl_init_argv.in_buf' defined in '/workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/./argv-fuzz-inl.h:50' (0x556d91387fa0) of size 100000
+SUMMARY: AddressSanitizer: strcpy-param-overlap (/workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/bins/reduced.asan.out+0x90bc7) (BuildId: f895f109167d960860db416d31ba8c00bf0ff859) in strcpy
+==299807==ABORTING
+./verify.sh: line 171: 299805 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_342

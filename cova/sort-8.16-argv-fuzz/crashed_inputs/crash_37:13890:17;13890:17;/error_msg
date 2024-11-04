@@ -1,0 +1,29 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==979702==ERROR: ThreadSanitizer: SEGV on unknown address (pc 0x56045a8dd149 bp 0x7ffe20882a90 sp 0x7ffe20882130 T979702)
+==979702==The signal is caused by a READ memory access.
+==979702==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13890:17 (reduced.tsan.out+0xd1149) (BuildId: 1f2b008a454c1a3d07abf2912e550aa8780b481c)
+    #1 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #2 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #3 _start <null> (reduced.tsan.out+0x214b4) (BuildId: 1f2b008a454c1a3d07abf2912e550aa8780b481c)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13890:17 in main
+==979702==ABORTING
+./verify.sh: line 110: 979700 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==993347==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x56337a6b3736 bp 0x7ffef5f48950 sp 0x7ffef5f48450 T0)
+==993347==The signal is caused by a READ memory access.
+==993347==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x56337a6b3736 in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13890:17
+    #1 0x7f3599bccd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7f3599bcce3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x56337a683704 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.lsan.out+0x7704) (BuildId: 8659d428bef98df5f75e56bfaedbd1d6f1fff963)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13890:17 in main
+==993347==ABORTING

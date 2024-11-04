@@ -1,0 +1,376 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/bins/reduced.ubsan.out
+óú¸\: invalid option -- '{'
+óú¸\: invalid option -- 'd'
+óú¸\: invalid option -- 'x'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- ':'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'e'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'x'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'a'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'M'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- '>'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'G'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- '7'
+óú¸\: invalid option -- 'i'
+chown-8.2.c.reduced.c:5211:25: runtime error: null pointer passed as argument 1, which is declared to never be null
+chown-8.2.c.reduced.c:2904:53: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior chown-8.2.c.reduced.c:5211:25 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==11832==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x2b2845583674 bp 0x7fffafc63910 sp 0x7fffafc63428 T11832)
+==11832==The signal is caused by a READ memory access.
+==11832==Hint: address points to the zero page.
+    #0 0x2b2845583674 in dirfd dirent/../sysdeps/unix/sysv/linux/dirfd.c:27:14
+    #1 0x558304b86811 in fts_build /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:5211:19
+    #2 0x558304b833a7 in fts_read /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4740:19
+    #3 0x558304b895ea in chown_files /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6671:13
+    #4 0x558304b8ae20 in main /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10
+    #5 0x2b28454c6d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x2b28454c6e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x558304b56574 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/bins/reduced.ubsan.out+0xd574) (BuildId: 0e7a38900ca4a12859e02083c9e955def6022f6a)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV dirent/../sysdeps/unix/sysv/linux/dirfd.c:27:14 in dirfd
+==11832==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 11831 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/bins/reduced.tsan.out
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- 'n'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- 'C'
+óú¸\: invalid option -- ''
+óú¸\: invalid option -- 'n'
+ThreadSanitizer:DEADLYSIGNAL
+==30715==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7f1f9e5c2674 bp 0x7ffffc68e9e0 sp 0x7ffffc68e768 T30715)
+==30715==The signal is caused by a READ memory access.
+==30715==Hint: address points to the zero page.
+    #0 dirfd dirent/../sysdeps/unix/sysv/linux/dirfd.c:27:14 (libc.so.6+0xe6674) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 fts_build /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:5211:19 (reduced.tsan.out+0xd0ad1) (BuildId: f90189b519f35ba2f40aa719bf6a5e609026eccb)
+    #2 fts_read /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4740:19 (reduced.tsan.out+0xcfba3) (BuildId: f90189b519f35ba2f40aa719bf6a5e609026eccb)
+    #3 chown_files /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6671:13 (reduced.tsan.out+0xd1a76) (BuildId: f90189b519f35ba2f40aa719bf6a5e609026eccb)
+    #4 main /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10 (reduced.tsan.out+0xd24ab) (BuildId: f90189b519f35ba2f40aa719bf6a5e609026eccb)
+    #5 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #6 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 _start <null> (reduced.tsan.out+0x213c4) (BuildId: f90189b519f35ba2f40aa719bf6a5e609026eccb)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV dirent/../sysdeps/unix/sysv/linux/dirfd.c:27:14 in dirfd
+==30715==ABORTING
+./verify.sh: line 110: 30711 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

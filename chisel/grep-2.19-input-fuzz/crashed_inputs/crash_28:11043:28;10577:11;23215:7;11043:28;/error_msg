@@ -1,0 +1,16 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/bins/reduced.lsan.out -F 'randomtext*' /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0
+LeakSanitizer:DEADLYSIGNAL
+==3965062==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000012 (pc 0x55d0d95a88ed bp 0x7ffef46cc820 sp 0x7ffef46cc710 T0)
+==3965062==The signal is caused by a WRITE memory access.
+==3965062==Hint: address points to the zero page.
+    #0 0x55d0d95a88ed in kwsincr /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:11043:28
+    #1 0x55d0d95a87a7 in Fcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:10577:11
+    #2 0x55d0d95ab2be in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23215:7
+    #3 0x7f749f25ed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f749f25ee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55d0d957a544 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/bins/reduced.lsan.out+0x6544) (BuildId: 00417d5e5cfb5adbbf5140ae3b27da3d8f1c74a4)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:11043:28 in kwsincr
+==3965062==ABORTING

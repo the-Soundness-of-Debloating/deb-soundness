@@ -1,0 +1,18 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/bins/reduced.msan.out -c
+MemorySanitizer:DEADLYSIGNAL
+==3701581==ERROR: MemorySanitizer: stack-overflow on address 0x7fffe0796730 (pc 0x55a1867bfed4 bp 0x7fffe078c360 sp 0x7fffe078c290 T3701581)
+    #0 0x55a1867bfed4 in gen_codes /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4563:17
+    #1 0x55a1867c27c5 in build_tree___0 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4697:7
+    #2 0x55a1867c07d4 in flush_block /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4948:7
+    #3 0x55a1867c90e3 in deflate /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5797:17
+    #4 0x55a1867ca74f in zip /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5988:7
+    #5 0x55a1867ce08f in treat_stdin /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #6 0x55a1867cc81e in main /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #7 0x7feb7c759d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7feb7c759e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x55a18672a334 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/bins/reduced.msan.out+0x1f334) (BuildId: 7a6a555d9557fa1aafec9abd264c128538adcbd9)
+
+SUMMARY: MemorySanitizer: stack-overflow /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4563:17 in gen_codes
+==3701581==ABORTING
+./verify.sh: line 169: 3701579 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/bins/reduced.msan.out -c < /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_0/msan/crashes/id:000012* > sample1.gz

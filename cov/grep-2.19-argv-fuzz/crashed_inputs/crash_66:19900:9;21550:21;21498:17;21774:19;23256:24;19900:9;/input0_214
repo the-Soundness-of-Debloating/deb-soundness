@@ -1,0 +1,1 @@
+a -v -H -r train_inpt/input_dira -v -H -r train_inpt/input_dir

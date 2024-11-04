@@ -1,0 +1,18 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/bins/reduced.msan.out
+MemorySanitizer:DEADLYSIGNAL
+==3290370==ERROR: MemorySanitizer: SEGV on unknown address 0x000000010000 (pc 0x55676991fcb0 bp 0x7ffe44e39f80 sp 0x7ffe44e39f48 T3290370)
+==3290370==The signal is caused by a READ memory access.
+    #0 0x55676991fcb0 in __sanitizer::internal_strlen(char const*) (/workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/bins/reduced.msan.out+0x26cb0) (BuildId: c27ea5853feae28fd16baced07256244779551e0)
+    #1 0x55676996f797 in freopen (/workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/bins/reduced.msan.out+0x76797) (BuildId: c27ea5853feae28fd16baced07256244779551e0)
+    #2 0x55676999f6b4 in freopen_safer /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6178:19
+    #3 0x5567699a0cb3 in check_file /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6794:19
+    #4 0x5567699a0195 in main /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7306:7
+    #5 0x7fb45bec3d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7fb45bec3e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x5567699172f4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/bins/reduced.msan.out+0x1e2f4) (BuildId: c27ea5853feae28fd16baced07256244779551e0)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/bins/reduced.msan.out+0x26cb0) (BuildId: c27ea5853feae28fd16baced07256244779551e0) in __sanitizer::internal_strlen(char const*)
+==3290370==ABORTING
+./verify.sh: line 107: 3290369 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

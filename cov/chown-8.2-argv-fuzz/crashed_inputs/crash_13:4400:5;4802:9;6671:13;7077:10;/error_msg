@@ -1,0 +1,23 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/bins/reduced.ubsan.out
+chown-8.2.c.reduced.c:4400:13: runtime error: null pointer passed as argument 1, which is declared to never be null
+chown-8.2.c.reduced.c:833:20: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior chown-8.2.c.reduced.c:4400:13 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==29074==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000020 (pc 0x2b8b42a0a977 bp 0x7fffaac0ec20 sp 0x7fffaac0ead8 T29074)
+==29074==The signal is caused by a WRITE memory access.
+==29074==Hint: address points to the zero page.
+    #0 0x2b8b42a0a977  string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:540
+    #1 0x561968e8e694 in fts_load /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4400:5
+    #2 0x561968e89980 in fts_read /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4802:9
+    #3 0x561968e8f5ea in chown_files /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6671:13
+    #4 0x561968e90e20 in main /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10
+    #5 0x2b8b42893d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x2b8b42893e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x561968e5c574 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/bins/reduced.ubsan.out+0xd574) (BuildId: 0e7a38900ca4a12859e02083c9e955def6022f6a)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:540 
+==29074==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 29072 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

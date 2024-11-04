@@ -1,0 +1,43 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out
+bzip2: file name
+`-t'
+is suspiciously (more than 1024 chars) long.
+Try using a reasonable file name instead.  Sorry! :-)
+
+=================================================================
+==298136==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0x555da4f7a642 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x30642) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+    #1 0x555da4f82023 in myMalloc /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9508:11
+    #2 0x555da4f82001 in mkCell /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9521:19
+    #3 0x555da4f81392 in snocString /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9536:19
+    #4 0x555da4f80fb8 in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9770:21
+    #5 0x7fcc73781d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Indirect leak of 909322805 byte(s) in 1 object(s) allocated from:
+    #0 0x555da4f7a642 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x30642) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+    #1 0x555da4f82023 in myMalloc /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9508:11
+    #2 0x555da4f813ad in snocString /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9539:29
+    #3 0x555da4f813ed in snocString /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9556:25
+    #4 0x555da4f80fb8 in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9770:21
+    #5 0x7fcc73781d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Indirect leak of 25 byte(s) in 1 object(s) allocated from:
+    #0 0x555da4f7a642 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x30642) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+    #1 0x555da4f82023 in myMalloc /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9508:11
+    #2 0x555da4f813ad in snocString /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9539:29
+    #3 0x555da4f80fb8 in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9770:21
+    #4 0x7fcc73781d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Indirect leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0x555da4f7a642 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x30642) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+    #1 0x555da4f82023 in myMalloc /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9508:11
+    #2 0x555da4f82001 in mkCell /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9521:19
+    #3 0x555da4f81392 in snocString /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9536:19
+    #4 0x555da4f813ed in snocString /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9556:25
+    #5 0x555da4f80fb8 in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9770:21
+    #6 0x7fcc73781d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: LeakSanitizer: 909322862 byte(s) leaked in 4 allocation(s).

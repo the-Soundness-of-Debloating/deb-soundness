@@ -1,0 +1,86 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==3573212==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x556e32b30f55 bp 0x7ffca726e360 sp 0x7ffca726db10 T0)
+==3573212==The signal is caused by a READ memory access.
+==3573212==Hint: address points to the zero page.
+    #0 0x556e32b30f55 in strcmp (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.asan.out+0x37f55) (BuildId: c4b6e170161c88a0ff251300e4e3ca367c4aa605)
+    #1 0x556e32be414f in lookup_word /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4656:17
+    #2 0x556e32bde3cc in yylex /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4922:14
+    #3 0x556e32bd9c58 in yyparse /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3424:16
+    #4 0x556e32bdfdd1 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15
+    #5 0x556e32be3191 in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #6 0x7fa56b560d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7fa56b560e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x556e32b19394 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.asan.out+0x20394) (BuildId: c4b6e170161c88a0ff251300e4e3ca367c4aa605)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.asan.out+0x37f55) (BuildId: c4b6e170161c88a0ff251300e4e3ca367c4aa605) in strcmp
+==3573212==ABORTING
+./verify.sh: line 108: 3573211 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+date-8.21.c.reduced.c:4191:24: runtime error: index -93 out of bounds for type 'const yytype_int8[113]' (aka 'const signed char[113]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4191:24 in 
+date-8.21.c.reduced.c:4656:48: runtime error: null pointer passed as argument 2, which is declared to never be null
+date-8.21.c.reduced.c:787:20: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4656:48 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==733450==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7fbcb8fca962 bp 0x7ffd59b57830 sp 0x7ffd59b57638 T733450)
+==733450==The signal is caused by a READ memory access.
+==733450==Hint: address points to the zero page.
+    #0 0x7fbcb8fca962  string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:116
+    #1 0x55a3e785502d in lookup_word /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4656:17
+    #2 0x55a3e784d864 in yylex /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4922:14
+    #3 0x55a3e7845dc6 in yyparse /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3424:16
+    #4 0x55a3e784fb89 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15
+    #5 0x55a3e7853d37 in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #6 0x7fbcb8e5bd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7fbcb8e5be3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55a3e781d4d4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.ubsan.out+0xe4d4) (BuildId: a503b23e0911d3d9a3bc41498abe22d2bae3c8f6)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:116 
+==733450==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 733449 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==1083111==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x55cf6a780fc5 bp 0x000000000000 sp 0x7ffdc54db110 T1083111)
+==1083111==The signal is caused by a READ memory access.
+==1083111==Hint: address points to the zero page.
+    #0 strcmp <null> (reduced.tsan.out+0x56fc5) (BuildId: eff3f645ace4e01d246370b21d054ad59a29311e)
+    #1 lookup_word /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4656:17 (reduced.tsan.out+0xd26a2) (BuildId: eff3f645ace4e01d246370b21d054ad59a29311e)
+    #2 yylex /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4922:14 (reduced.tsan.out+0xcfd4d) (BuildId: eff3f645ace4e01d246370b21d054ad59a29311e)
+    #3 yyparse /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3424:16 (reduced.tsan.out+0xcdfa8) (BuildId: eff3f645ace4e01d246370b21d054ad59a29311e)
+    #4 parse_datetime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15 (reduced.tsan.out+0xd07e5) (BuildId: eff3f645ace4e01d246370b21d054ad59a29311e)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24 (reduced.tsan.out+0xd1e89) (BuildId: eff3f645ace4e01d246370b21d054ad59a29311e)
+    #6 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 _start <null> (reduced.tsan.out+0x213c4) (BuildId: eff3f645ace4e01d246370b21d054ad59a29311e)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.tsan.out+0x56fc5) (BuildId: eff3f645ace4e01d246370b21d054ad59a29311e) in strcmp
+==1083111==ABORTING
+./verify.sh: line 108: 1083108 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==3869462==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7fc92f9f0962 bp 0x7ffc1fc74050 sp 0x7ffc1fc73fd8 T0)
+==3869462==The signal is caused by a READ memory access.
+==3869462==Hint: address points to the zero page.
+    #0 0x7fc92f9f0962  string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:116
+    #1 0x55aa9e3890ef in lookup_word /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4656:17
+    #2 0x55aa9e38759c in yylex /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4922:14
+    #3 0x55aa9e386213 in yyparse /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3424:16
+    #4 0x55aa9e387ab8 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15
+    #5 0x55aa9e388b9c in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #6 0x7fc92f881d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7fc92f881e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55aa9e3584e4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.lsan.out+0x54e4) (BuildId: 5060c0af9d8553ad9e19245aea506efae9476d31)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:116 
+==3869462==ABORTING

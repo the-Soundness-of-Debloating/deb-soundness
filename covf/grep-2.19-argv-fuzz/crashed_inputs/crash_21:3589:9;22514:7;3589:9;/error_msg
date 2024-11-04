@@ -1,0 +1,12 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/bins/reduced.msan.out
+==905109==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x556d61e5fcf9 in set_program_name /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:3589:9
+    #1 0x556d61e9f0f7 in main /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:22514:7
+    #2 0x7f7d23e5bd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7f7d23e5be3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x556d61dd7414 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/bins/reduced.msan.out+0x1f414) (BuildId: 6f88406474f4591b092511ec2ffd985afe7078f2)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:3589:9 in set_program_name
+Exiting
+./verify.sh: line 110: 905104 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

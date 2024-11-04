@@ -1,0 +1,127 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/bins/reduced.ubsan.out
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'e'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'a'
+óú¸\: invalid option -- ' '
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'e'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'a'
+óú¸\: invalid option -- ' '
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'e'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'a'
+óú¸\: invalid option -- ' '
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'e'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'a'
+óú¸\: invalid option -- ' '
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'd'
+óú¸\: invalid option -- 'X'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- ''
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- ''
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 't'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'd'
+óú¸\: invalid option -- 'X'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- ''
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- ''
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 't'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'e'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'a'
+óú¸\: invalid option -- ' '
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'e'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'a'
+óú¸\: invalid option -- ' '
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'e'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'a'
+óú¸\: invalid option -- ' '
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'e'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'a'
+óú¸\: invalid option -- ' '
+óú¸\: invalid option -- 'w'
+óú¸\: invalid option -- 'e'
+óú¸\: invalid option -- 'i'
+óú¸\: invalid option -- 'u'
+óú¸\: invalid option -- 'a'
+óú¸\: invalid option -- ' '
+chown-8.2.c.reduced.c:5211:25: runtime error: null pointer passed as argument 1, which is declared to never be null
+chown-8.2.c.reduced.c:2904:53: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior chown-8.2.c.reduced.c:5211:25 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==14196==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x2ab5c537d674 bp 0x7fff65f3d1e0 sp 0x7fff65f3ccf8 T14196)
+==14196==The signal is caused by a READ memory access.
+==14196==Hint: address points to the zero page.
+    #0 0x2ab5c537d674 in dirfd dirent/../sysdeps/unix/sysv/linux/dirfd.c:27:14
+    #1 0x55bc3e21d4a1 in fts_build /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:5211:19
+    #2 0x55bc3e21a037 in fts_read /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4740:19
+    #3 0x55bc3e22027a in chown_files /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6671:13
+    #4 0x55bc3e221b9c in main /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10
+    #5 0x2ab5c52c0d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x2ab5c52c0e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x55bc3e1ec5d4 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/bins/reduced.ubsan.out+0xe5d4) (BuildId: 1f8cce546b12dbdbf1289b955ebfa921a51d07ba)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV dirent/../sysdeps/unix/sysv/linux/dirfd.c:27:14 in dirfd
+==14196==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 14195 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

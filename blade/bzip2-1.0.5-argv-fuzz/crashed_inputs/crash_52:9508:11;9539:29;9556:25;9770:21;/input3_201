@@ -1,0 +1,7 @@
+-t train_input/traint/sample1.bz2.ref
+-t traint/sample1.bz2.ref
+-t traint/sample1.bz2.ref
+-t train_input/traint/sample1.bz2.ref
+-t train_input/traint/sample1.bz2.ref
+-t train_input/traint/sample1.bz2ref.
+-t train_input/traint/sample1.bz4.ref

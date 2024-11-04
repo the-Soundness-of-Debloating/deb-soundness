@@ -1,0 +1,33 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1317445==ERROR: AddressSanitizer: SEGV on unknown address 0x55afb89133d3 (pc 0x55afb882e732 bp 0x55afb893e888 sp 0x7ffe8a6ebfe0 T0)
+==1317445==The signal is caused by a WRITE memory access.
+    #0 0x55afb882e732 in __asan::Allocator::Deallocate(void*, unsigned long, unsigned long, __sanitizer::BufferedStackTrace*, __asan::AllocType) (/workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/bins/reduced.asan.out+0x25732) (BuildId: 092c24cce9701a263f5f1ffa0defdab5db554857)
+    #1 0x55afb88b1c36 in free (/workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/bins/reduced.asan.out+0xa8c36) (BuildId: 092c24cce9701a263f5f1ffa0defdab5db554857)
+    #2 0x55afb88f8a85 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5397:7
+    #3 0x55afb88fcd34 in main /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #4 0x7fbe59f1fd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7fbe59f1fe3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x55afb882c454 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/bins/reduced.asan.out+0x23454) (BuildId: 092c24cce9701a263f5f1ffa0defdab5db554857)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/bins/reduced.asan.out+0x25732) (BuildId: 092c24cce9701a263f5f1ffa0defdab5db554857) in __asan::Allocator::Deallocate(void*, unsigned long, unsigned long, __sanitizer::BufferedStackTrace*, __asan::AllocType)
+==1317445==ABORTING
+./verify.sh: line 110: 1317444 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer: CHECK failed: sanitizer_allocator_secondary.h:297 "((IsAligned(p, page_size_))) != (0)" (0x0, 0x0) (tid=3273223)
+    #0 __tsan::CheckUnwind() <null> (reduced.tsan.out+0xb459b) (BuildId: 9f1a448622649550180bff1fdd1e8bd778d4a0d9)
+    #1 __sanitizer::CheckFailed(char const*, int, char const*, unsigned long long, unsigned long long) <null> (reduced.tsan.out+0x361d4) (BuildId: 9f1a448622649550180bff1fdd1e8bd778d4a0d9)
+    #2 __sanitizer::LargeMmapAllocator<__tsan::MapUnmapCallback, __sanitizer::LargeMmapAllocatorPtrArrayDynamic, __sanitizer::LocalAddressSpaceView>::Deallocate(__sanitizer::AllocatorStats*, void*) <null> (reduced.tsan.out+0xafd16) (BuildId: 9f1a448622649550180bff1fdd1e8bd778d4a0d9)
+    #3 __tsan::user_free(__tsan::ThreadState*, unsigned long, void*, bool) <null> (reduced.tsan.out+0xaca4f) (BuildId: 9f1a448622649550180bff1fdd1e8bd778d4a0d9)
+    #4 free <null> (reduced.tsan.out+0x4eae4) (BuildId: 9f1a448622649550180bff1fdd1e8bd778d4a0d9)
+    #5 parse_datetime /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5397:7 (reduced.tsan.out+0xd3b99) (BuildId: 9f1a448622649550180bff1fdd1e8bd778d4a0d9)
+    #6 main /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24 (reduced.tsan.out+0xd667b) (BuildId: 9f1a448622649550180bff1fdd1e8bd778d4a0d9)
+    #7 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #9 _start <null> (reduced.tsan.out+0x22474) (BuildId: 9f1a448622649550180bff1fdd1e8bd778d4a0d9)
+
+./verify.sh: line 110: 3273221 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

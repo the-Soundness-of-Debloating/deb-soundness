@@ -1,0 +1,7 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/bins/reduced.ubsan.out
+rm: missing operand
+rm-8.4.c.reduced.c:6952:1: runtime error: execution reached an unreachable program point
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior rm-8.4.c.reduced.c:6952:1 in 
+timeout: the monitored command dumped core
+./verify.sh: line 189: 1883619 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_53

@@ -1,0 +1,32 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out -d
+gzip-1.2.4.c.reduced.c:3404:34: runtime error: shift exponent 4294966559 is too large for 64-bit type 'ulg' (aka 'unsigned long')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3404:34 in 
+gzip-1.2.4.c.reduced.c:3052:34: runtime error: shift exponent 4294966559 is too large for 64-bit type 'ulg' (aka 'unsigned long')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3052:34 in 
+gzip-1.2.4.c.reduced.c:3076:34: runtime error: shift exponent 4294966562 is too large for 64-bit type 'ulg' (aka 'unsigned long')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3076:34 in 
+gzip-1.2.4.c.reduced.c:3183:11: runtime error: shift exponent 72 is too large for 64-bit type 'ulg' (aka 'unsigned long')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3183:11 in 
+gzip-1.2.4.c.reduced.c:2139:10: runtime error: index 1785281612 out of bounds for type 'unsigned int[17]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:2139:10 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3083713==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address (pc 0x56246a68fda8 bp 0x7fff46e93f90 sp 0x7fff46e93650 T3083713)
+==3083713==The signal is caused by a READ memory access.
+==3083713==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x56246a68fda8 in huft_build /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2139:16
+    #1 0x56246a6939fa in inflate_dynamic /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3332:15
+    #2 0x56246a693d51 in inflate_block /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3440:19
+    #3 0x56246a693d80 in inflate /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3473:15
+    #4 0x56246a693dce in unzip /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3630:15
+    #5 0x56246a69d40d in treat_stdin /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #6 0x56246a69d2bd in main /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:10
+    #7 0x7f4f32b15d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7f4f32b15e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x56246a667404 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out+0x10404) (BuildId: 2a58b9a76e94df514ce4ecec2b34d5a00be04b93)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2139:16 in huft_build
+==3083713==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 166: 3083710 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out -d < /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_1/ubsan/crashes/id:000028* > sample1.tst

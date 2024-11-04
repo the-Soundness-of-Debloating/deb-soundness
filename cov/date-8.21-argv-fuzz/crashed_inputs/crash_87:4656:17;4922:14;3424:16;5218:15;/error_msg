@@ -1,0 +1,33 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2625189==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x55bbb066a065 bp 0x000000000000 sp 0x7ffe26013530 T2625189)
+==2625189==The signal is caused by a READ memory access.
+==2625189==Hint: address points to the zero page.
+    #0 strcmp <null> (reduced.tsan.out+0x58065) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #1 lookup_word /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4656:17 (reduced.tsan.out+0xd677f) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #2 yylex /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4922:14 (reduced.tsan.out+0xd1978) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #3 yyparse /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3424:16 (reduced.tsan.out+0xcf65c) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #4 parse_datetime /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15 (reduced.tsan.out+0xd2ad8) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.tsan.out+0x58065) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656) in strcmp
+==2625189==ABORTING
+./verify.sh: line 110: 2625188 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==2828013==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7fc4a297d962 bp 0x7ffec9ac73e0 sp 0x7ffec9ac7378 T0)
+==2828013==The signal is caused by a READ memory access.
+==2828013==Hint: address points to the zero page.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x7fc4a297d962  string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:116
+    #1 0x55e52ca5a72d in lookup_word /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4656:17
+    #2 0x55e52ca56faf in yylex /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4922:14
+    #3 0x55e52ca557b7 in yyparse /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3424:16
+    #4 0x55e52ca57910 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15
+    #5 0x7ffec9ac822f  ([stack]+0x1f22f)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:116 
+==2828013==ABORTING

@@ -1,0 +1,38 @@
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.lsan.out
+
+=================================================================
+==3327392==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 128 byte(s) in 1 object(s) allocated from:
+    #0 0x557c625859c2 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.lsan.out+0x329c2) (BuildId: dd9812b3761657568d154b8b15f2a986164efe56)
+    #1 0x557c6258ee64 in fts_open /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:6511:19
+    #2 0x557c6259a66f in grepdesc /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21578:19
+    #3 0x557c6259a799 in grepfile /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #4 0x557c62596f3f in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19
+    #5 0x557c62596cd5 in main /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24
+    #6 0x7fbed7e03d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Indirect leak of 656 byte(s) in 1 object(s) allocated from:
+    #0 0x557c62585c2c in __interceptor_calloc (/workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.lsan.out+0x32c2c) (BuildId: dd9812b3761657568d154b8b15f2a986164efe56)
+    #1 0x557c6258d8d3 in hash_initialize /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:5527:44
+    #2 0x557c6258fb53 in setup_dir /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:6107:29
+    #3 0x557c6259058e in fts_read /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:7184:11
+    #4 0x557c6259a682 in grepdesc /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21589:23
+    #5 0x557c6259a799 in grepfile /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #6 0x557c62596f3f in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19
+    #7 0x557c62596cd5 in main /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24
+    #8 0x7fbed7e03d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Indirect leak of 80 byte(s) in 1 object(s) allocated from:
+    #0 0x557c625859c2 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.lsan.out+0x329c2) (BuildId: dd9812b3761657568d154b8b15f2a986164efe56)
+    #1 0x557c6258d837 in hash_initialize /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:5505:29
+    #2 0x557c6258fb53 in setup_dir /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:6107:29
+    #3 0x557c6259058e in fts_read /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:7184:11
+    #4 0x557c6259a682 in grepdesc /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21589:23
+    #5 0x557c6259a799 in grepfile /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #6 0x557c62596f3f in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19
+    #7 0x557c62596cd5 in main /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24
+    #8 0x7fbed7e03d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: LeakSanitizer: 864 byte(s) leaked in 3 allocation(s).

@@ -1,0 +1,4 @@
+-w 1 train_input/file/input
+-w 1 train_input/file/input
+-w 32768 train_input/file/input
+-w 65536 train_input/file/input

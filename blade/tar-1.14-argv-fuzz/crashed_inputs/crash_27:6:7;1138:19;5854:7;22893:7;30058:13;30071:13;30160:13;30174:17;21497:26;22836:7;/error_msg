@@ -1,0 +1,33 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out
+
+=================================================================
+==2898064==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 800000 byte(s) in 1 object(s) allocated from:
+    #0 0x562f19542e0e in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out+0xa8e0e) (BuildId: dea9616fe4d35cf044eebf6ac56206498c214bc5)
+    #1 0x562f19586c3d in xnmalloc_inline /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30058:13
+    #2 0x562f19582c29 in xmalloc /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30071:13
+    #3 0x562f19585590 in decode_options /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21474:21
+    #4 0x562f19584d60 in main /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #5 0x7ff23c081d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Direct leak of 10240 byte(s) in 1 object(s) allocated from:
+    #0 0x562f19543a6d in valloc (/workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out+0xa9a6d) (BuildId: dea9616fe4d35cf044eebf6ac56206498c214bc5)
+    #1 0x562f1957d4f6 in open_archive /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:1138:19
+    #2 0x562f1957f121 in create_archive /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5854:7
+    #3 0x562f19584da2 in main /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22893:7
+    #4 0x7ff23c081d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Indirect leak of 299991 byte(s) in 99997 object(s) allocated from:
+    #0 0x562f19542e0e in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out+0xa8e0e) (BuildId: dea9616fe4d35cf044eebf6ac56206498c214bc5)
+    #1 0x562f19586c3d in xnmalloc_inline /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30058:13
+    #2 0x562f19582c29 in xmalloc /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30071:13
+    #3 0x562f19586d18 in xclone /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30160:13
+    #4 0x562f19582269 in xstrdup /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30174:17
+    #5 0x562f19585779 in decode_options /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21497:26
+    #6 0x562f19584d60 in main /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #7 0x7ff23c081d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: 1110231 byte(s) leaked in 99999 allocation(s).
+./verify.sh: line 305: 2898062 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input17_fuzzed/input17_260

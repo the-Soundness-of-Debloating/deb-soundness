@@ -1,0 +1,14 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.msan.out
+==2012172==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55e21e5b6a5d in strftime_case____0 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7576:13
+    #1 0x55e21e5b033e in fprintftime /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7807:11
+    #2 0x55e21e5ba8d0 in show_date /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9700:5
+    #3 0x55e21e5b98ee in main /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9671:18
+    #4 0x7f4b12e30d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f4b12e30e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x55e21e5173b4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.msan.out+0x1f3b4) (BuildId: 74aa4cd2da783eb62645fdc5258c309d02372771)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7576:13 in strftime_case____0
+Exiting
+./verify.sh: line 110: 2012171 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

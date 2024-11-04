@@ -1,0 +1,27 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.tsan.out
+==================
+WARNING: ThreadSanitizer: heap-use-after-free (pid=30873)
+  Write of size 1 at 0x7b0400000000 by main thread:
+    #0 fts_read /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4836:17 (reduced.tsan.out+0xcf597) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #1 chown_files /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6671:13 (reduced.tsan.out+0xd00ab) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #2 main /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10 (reduced.tsan.out+0xd0483) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+
+  Previous write of size 8 at 0x7b0400000000 by main thread:
+    #0 free <null> (reduced.tsan.out+0x4da14) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #1 parse_with_separator /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1619:5 (reduced.tsan.out+0xce7cc) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #2 parse_user_spec /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1636:15 (reduced.tsan.out+0xce38c) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #3 main /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7051:18 (reduced.tsan.out+0xd03fa) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+
+  Location is heap block of size 0 at 0x7b0400000000 allocated by main thread:
+    #0 realloc <null> (reduced.tsan.out+0x4d773) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #1 fts_palloc /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:5713:17 (reduced.tsan.out+0xcef47) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #2 fts_open /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4291:15 (reduced.tsan.out+0xcde3f) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #3 xfts_open /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1223:11 (reduced.tsan.out+0xcdc47) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #4 chown_files /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6667:15 (reduced.tsan.out+0xd0096) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10 (reduced.tsan.out+0xd0483) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+
+SUMMARY: ThreadSanitizer: heap-use-after-free /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4836:17 in fts_read
+==================
+ThreadSanitizer: reported 1 warnings
+./verify.sh: line 110: 30872 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

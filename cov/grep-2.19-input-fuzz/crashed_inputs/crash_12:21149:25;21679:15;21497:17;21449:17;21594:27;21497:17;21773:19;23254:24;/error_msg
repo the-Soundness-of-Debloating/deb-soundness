@@ -1,0 +1,21 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/bins/reduced.lsan.out a -v -H -r /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_94
+LeakSanitizer:DEADLYSIGNAL
+==3136578==ERROR: LeakSanitizer: SEGV on unknown address 0xffffffffffffffe0 (pc 0x7f618c94371a bp 0x7fff93b25f20 sp 0x7fff93b25e98 T0)
+==3136578==The signal is caused by a READ memory access.
+    #0 0x7f618c94371a  string/../sysdeps/x86_64/multiarch/memrchr-avx2.S:49
+    #1 0x55760935e3dc in grep /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21149:25
+    #2 0x55760935dd4e in grepdesc /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21679:15
+    #3 0x55760935daf6 in grepfile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21497:17
+    #4 0x55760935e15e in grepdirent /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21449:17
+    #5 0x55760935dc66 in grepdesc /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21594:27
+    #6 0x55760935daf6 in grepfile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21497:17
+    #7 0x55760935ac9d in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21773:19
+    #8 0x55760935aa8b in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23254:24
+    #9 0x7f618c7d3d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #10 0x7f618c7d3e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #11 0x557609323624 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-input-fuzz/bins/reduced.lsan.out+0x7624) (BuildId: aab49a3a8e8ba47512763a3d57a19b704099892d)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memrchr-avx2.S:49 
+==3136578==ABORTING

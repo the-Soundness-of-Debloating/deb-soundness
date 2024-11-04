@@ -1,0 +1,24 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==629328==ERROR: LeakSanitizer: SEGV on unknown address 0x630000010000 (pc 0x55747beed79c bp 0x7ffe6f35f540 sp 0x7ffe6f35f420 T0)
+==629328==The signal is caused by a READ memory access.
+==629328==WARNING: failed to fork (errno 12)
+==629328==WARNING: failed to fork (errno 12)
+==629328==WARNING: failed to fork (errno 12)
+==629328==WARNING: failed to fork (errno 12)
+==629328==WARNING: failed to fork (errno 12)
+==629328==WARNING: Failed to use and restart external symbolizer!
+    #0 0x55747beed79c  (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x3479c) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+    #1 0x55747beef818  (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x36818) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+    #2 0x55747beefe9f  (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x36e9f) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+    #3 0x55747bef12c0  (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x382c0) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+    #4 0x55747bef0529  (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x37529) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+    #5 0x55747bef01b1  (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x371b1) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+    #6 0x7fa4ce5bed8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 0x7fa4ce5bee3f  (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 0x55747bebe464  (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x5464) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x3479c) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0) 
+==629328==ABORTING

@@ -1,0 +1,4 @@
+-i file file1
+-i file file1
+-i file file32768
+-i file file65536

@@ -1,0 +1,26 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.ubsan.out
+chown-8.2.c.reduced.c:4829:37: runtime error: member access within misaligned address 0x6577657765776577 for type 'struct _ftsent', which requires 8 byte alignment
+0x6577657765776577: note: pointer points here
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior chown-8.2.c.reduced.c:4829:37 in 
+chown-8.2.c.reduced.c:4829:37: runtime error: load of misaligned address 0x65776577657765b7 for type 'size_t' (aka 'unsigned long'), which requires 8 byte alignment
+0x65776577657765b7: note: pointer points here
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior chown-8.2.c.reduced.c:4829:37 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==10417==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address (pc 0x564c0e94ecf9 bp 0x7ffee5b166e0 sp 0x7ffee5b162c0 T10417)
+==10417==The signal is caused by a READ memory access.
+==10417==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x564c0e94ecf9 in fts_read /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4829:37
+    #1 0x564c0e950dd5 in chown_files /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6671:13
+    #2 0x564c0e9514ce in main /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10
+    #3 0x2acfb91e5d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x2acfb91e5e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x564c0e923514 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.ubsan.out+0x9514) (BuildId: c9e7dbe9ebf3918647b71013d044b22e5f98ff70)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4829:37 in fts_read
+==10417==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 10416 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

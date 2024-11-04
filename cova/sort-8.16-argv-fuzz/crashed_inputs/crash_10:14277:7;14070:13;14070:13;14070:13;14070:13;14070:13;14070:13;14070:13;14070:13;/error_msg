@@ -1,0 +1,39 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.asan.out
+sort: invalid option -- 'Û'
+sort: invalid option -- '†'
+sort: invalid option -- 'Å'
+sort: invalid option -- 'í'
+sort: invalid option -- 'Û'
+sort: invalid option -- '†'
+sort: invalid option -- 'Å'
+sort: invalid option -- 'ã'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1101537==ERROR: AddressSanitizer: stack-overflow on address 0x7fff8e794830 (pc 0x7fff8e794830 bp 0x7fff8e7947e0 sp 0x7fff8e7947e8 T0)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x7fff8e794830  ([stack]+0x1a830)
+    #1 0x55e1255e0035 in xfopen /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:9019:7
+    #2 0x55e1255df12e in sort /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13110:13
+    #3 0x55e1255dc91a in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14277:7
+    #4 0x7fff8e795da7  ([stack]+0x1bda7)
+    #5 0x55e1255db3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #6 0x7fff8e796727  ([stack]+0x1c727)
+    #7 0x55e1255db3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #8 0x7fff8e7970a7  ([stack]+0x1d0a7)
+    #9 0x55e1255db3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #10 0x7fff8e797a27  ([stack]+0x1da27)
+    #11 0x55e1255db3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #12 0x7fff8e7983a7  ([stack]+0x1e3a7)
+    #13 0x55e1255db3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #14 0x7fff8e798d27  ([stack]+0x1ed27)
+    #15 0x55e1255db3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #16 0x7fff8e7996a7  ([stack]+0x1f6a7)
+    #17 0x55e1255db3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #18 0x7fff8e79a02f  ([stack]+0x2002f)
+    #19 0x55e1255db3bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #20 0x7fb42005bd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: stack-overflow ([stack]+0x1a830) 
+==1101537==ABORTING
+./verify.sh: line 110: 1101532 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

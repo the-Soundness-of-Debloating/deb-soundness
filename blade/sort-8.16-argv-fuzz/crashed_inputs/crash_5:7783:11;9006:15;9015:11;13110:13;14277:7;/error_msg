@@ -1,0 +1,24 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/bins/reduced.asan.out
+sort: invalid option -- 'a'
+sort: invalid option -- 'p'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1712820==ERROR: AddressSanitizer: SEGV on unknown address (pc 0x5654f73363e0 bp 0x7fff50aa4630 sp 0x7fff50aa3de8 T0)
+==1712820==The signal is caused by a READ memory access.
+==1712820==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x5654f73363e0 in __sanitizer::internal_strlen(char const*) (/workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/bins/reduced.asan.out+0xba3e0) (BuildId: 12df8b9b4d3d8176f3565de6cbcc303d6ad96905)
+    #1 0x5654f72ef3e6 in fopen (/workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/bins/reduced.asan.out+0x733e6) (BuildId: 12df8b9b4d3d8176f3565de6cbcc303d6ad96905)
+    #2 0x5654f735a4bc in fopen_safer /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:7783:11
+    #3 0x5654f735c185 in stream_open /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:9006:15
+    #4 0x5654f735b6dc in xfopen /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:9015:11
+    #5 0x5654f735b22f in sort /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13110:13
+    #6 0x5654f735aa3f in main /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14277:7
+    #7 0x7f74dd543d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7f74dd543e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x5654f729a344 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/bins/reduced.asan.out+0x1e344) (BuildId: 12df8b9b4d3d8176f3565de6cbcc303d6ad96905)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/bins/reduced.asan.out+0xba3e0) (BuildId: 12df8b9b4d3d8176f3565de6cbcc303d6ad96905) in __sanitizer::internal_strlen(char const*)
+==1712820==ABORTING
+./verify.sh: line 110: 1712818 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

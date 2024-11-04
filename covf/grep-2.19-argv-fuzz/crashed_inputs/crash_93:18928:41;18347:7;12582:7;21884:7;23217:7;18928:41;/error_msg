@@ -1,0 +1,18 @@
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==122095==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000018 (pc 0x555767f56cce bp 0x7fff2a3a6d30 sp 0x7fff2a3a6c20 T0)
+==122095==The signal is caused by a READ memory access.
+==122095==Hint: address points to the zero page.
+    #0 0x555767f56cce in dfamust /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18928:41
+    #1 0x555767f527c2 in dfacomp /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18347:7
+    #2 0x555767f52658 in GEAcompile /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12582:7
+    #3 0x555767f5b2f1 in Gcompile /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21884:7
+    #4 0x555767f5803f in main /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #5 0x7fd5ec939d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7fd5ec939e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x555767f20684 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/bins/reduced.lsan.out+0x7684) (BuildId: 0051ba6fcaebea6ea1e7fd574e8005cc0b14e5b8)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18928:41 in dfamust
+==122095==ABORTING

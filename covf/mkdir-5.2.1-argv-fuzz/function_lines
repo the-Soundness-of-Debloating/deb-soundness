@@ -1,0 +1,41 @@
+base_len         function   4716 mkdir-5.2.1.c.origin.c size_t base_len(char const *name) {
+base_name        function   4676 mkdir-5.2.1.c.origin.c char *base_name(char const *name) {
+bkm_scale___0    function    611 mkdir-5.2.1.c.origin.c static strtol_error bkm_scale___0(unsigned long *x, int scale_factor) {
+bkm_scale_by_power___0 function    621 mkdir-5.2.1.c.origin.c static strtol_error bkm_scale_by_power___0(unsigned long *x, int base,
+close_stdout     function   4617 mkdir-5.2.1.c.origin.c void close_stdout(void) {
+dir_len          function   4439 mkdir-5.2.1.c.origin.c size_t dir_len(char const *path) {
+dir_name         function   4467 mkdir-5.2.1.c.origin.c char *dir_name(char const *path) {
+free_cwd         function   1471 mkdir-5.2.1.c.origin.c void free_cwd(struct saved_cwd *cwd) {
+gettext_quote    function   1656 mkdir-5.2.1.c.origin.c static char const *gettext_quote(char const *msgid, enum quoting_style s) {
+main             function   4842 mkdir-5.2.1.c.origin.c int main(int argc, char **argv) {
+make_dir         function   3380 mkdir-5.2.1.c.origin.c int make_dir(char const *dir, char const *dirpath, mode_t mode,
+make_node_op_equals function   2804 mkdir-5.2.1.c.origin.c static struct mode_change *make_node_op_equals(mode_t new_mode) {
+make_path        function   3433 mkdir-5.2.1.c.origin.c int make_path(char const *argpath, int mode, int parent_mode, uid_t owner,
+mode_adjust      function   3201 mkdir-5.2.1.c.origin.c mode_t mode_adjust(mode_t oldmode, struct mode_change const *changes) {
+mode_append_entry function   2823 mkdir-5.2.1.c.origin.c static void mode_append_entry(struct mode_change **head,
+mode_compile     function   2839 mkdir-5.2.1.c.origin.c struct mode_change *mode_compile(char const *mode_string___0,
+mode_free        function   3317 mkdir-5.2.1.c.origin.c void mode_free(struct mode_change *changes) {
+quote            function   2770 mkdir-5.2.1.c.origin.c char const *quote(char const *name) {
+quote_n          function   2763 mkdir-5.2.1.c.origin.c char const *quote_n(int n, char const *name) {
+quotearg_buffer  function   2597 mkdir-5.2.1.c.origin.c size_t quotearg_buffer(char *buffer, size_t buffersize, char const *arg,
+quotearg_buffer_restyled function   1673 mkdir-5.2.1.c.origin.c static size_t quotearg_buffer_restyled(char *buffer, size_t buffersize,
+quotearg_char    function   2741 mkdir-5.2.1.c.origin.c char *quotearg_char(char const *arg, char ch) {
+quotearg_colon   function   2755 mkdir-5.2.1.c.origin.c char *quotearg_colon(char const *arg) {
+quotearg_n_options function   2631 mkdir-5.2.1.c.origin.c static char *quotearg_n_options(int n, char const *arg, size_t argsize,
+quotearg_n_style function   2725 mkdir-5.2.1.c.origin.c char *quotearg_n_style(int n, enum quoting_style s, char const *arg) {
+quoting_options_from_style function   2714 mkdir-5.2.1.c.origin.c quoting_options_from_style(enum quoting_style style) {
+restore_cwd      function   1456 mkdir-5.2.1.c.origin.c int restore_cwd(struct saved_cwd const *cwd) {
+same_name        function   1495 mkdir-5.2.1.c.origin.c int same_name(char const *source, char const *dest) {
+save_cwd         function   1433 mkdir-5.2.1.c.origin.c int save_cwd(struct saved_cwd *cwd) {
+set_char_quoting function   1636 mkdir-5.2.1.c.origin.c int set_char_quoting(struct quoting_options *o, char c, int i) {
+strip_trailing_slashes function   1267 mkdir-5.2.1.c.origin.c int strip_trailing_slashes(char *path) {
+usage            function   4782 mkdir-5.2.1.c.origin.c void usage(int status) {
+version_etc      function   1206 mkdir-5.2.1.c.origin.c void version_etc(FILE *stream, char const *command_name, char const *package,
+version_etc_va   function   1041 mkdir-5.2.1.c.origin.c void version_etc_va(FILE *stream, char const *command_name, char const *package,
+xalloc_die       function    924 mkdir-5.2.1.c.origin.c void xalloc_die(void) {
+xgetcwd          function   1004 mkdir-5.2.1.c.origin.c char *xgetcwd(void) {
+xmalloc          function    963 mkdir-5.2.1.c.origin.c void *xmalloc(size_t n) {
+xnmalloc_inline  function    939 mkdir-5.2.1.c.origin.c __inline static void *xnmalloc_inline(size_t n, size_t s) {
+xnrealloc_inline function    970 mkdir-5.2.1.c.origin.c __inline static void *xnrealloc_inline(void *p, size_t n, size_t s) {
+xrealloc         function    993 mkdir-5.2.1.c.origin.c void *xrealloc(void *p, size_t n) {
+xstrtoul         function    647 mkdir-5.2.1.c.origin.c strtol_error xstrtoul(char const *s, char **ptr, int strtol_base,

@@ -1,0 +1,58 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out
+=================================================================
+==1701457==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000051 at pc 0x55b45025b2dc bp 0x7ffd2d016df0 sp 0x7ffd2d016de8
+WRITE of size 1 at 0x602000000051 thread T0
+    #0 0x55b45025b2db in add_exclude_file /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:24223:26
+    #1 0x55b45025abdc in decode_options /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22117:15
+    #2 0x55b450259d60 in main /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #3 0x7fa9fb4d8d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7fa9fb4d8e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55b4501923e4 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out+0x233e4) (BuildId: dea9616fe4d35cf044eebf6ac56206498c214bc5)
+
+0x602000000051 is located 0 bytes to the right of 1-byte region [0x602000000050,0x602000000051)
+allocated by thread T0 here:
+    #0 0x55b450218236 in __interceptor_realloc (/workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out+0xa9236) (BuildId: dea9616fe4d35cf044eebf6ac56206498c214bc5)
+    #1 0x55b45025bc75 in xnrealloc_inline /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30088:13
+    #2 0x55b450257bd1 in xrealloc /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30101:13
+    #3 0x55b45025bce2 in x2nrealloc_inline /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30125:13
+    #4 0x55b45025b4c1 in x2realloc /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30140:13
+    #5 0x55b45025b25a in add_exclude_file /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:24217:19
+    #6 0x55b45025abdc in decode_options /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22117:15
+    #7 0x55b450259d60 in main /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #8 0x7fa9fb4d8d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:24223:26 in add_exclude_file
+Shadow bytes around the buggy address:
+  0x0c047fff7fb0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c047fff7fc0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c047fff7fd0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c047fff7fe0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c047fff7ff0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0c047fff8000: fa fa 03 fa fa fa 03 fa fa fa[01]fa fa fa fa fa
+  0x0c047fff8010: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff8020: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff8030: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff8040: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff8050: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==1701457==ABORTING
+./verify.sh: line 305: 1701456 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input3_fuzzed/input3_88

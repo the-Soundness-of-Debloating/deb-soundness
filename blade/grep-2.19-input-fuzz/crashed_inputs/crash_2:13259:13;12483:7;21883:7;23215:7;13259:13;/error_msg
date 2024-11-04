@@ -1,0 +1,14 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/bins/reduced.msan.out a /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0
+==3099299==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55f2b76f4344 in dfasyntax /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:13259:13
+    #1 0x55f2b76f321f in GEAcompile /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:12483:7
+    #2 0x55f2b7714088 in Gcompile /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21883:7
+    #3 0x55f2b76fdf2f in main /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23215:7
+    #4 0x7f016ef34d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f016ef34e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x55f2b76134c4 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/bins/reduced.msan.out+0x1f4c4) (BuildId: 7d4a5cea88796b49e5b48481b9d05454741c806f)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:13259:13 in dfasyntax
+Exiting
+./verify.sh: line 233: 3099297 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/bins/reduced.msan.out a /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0

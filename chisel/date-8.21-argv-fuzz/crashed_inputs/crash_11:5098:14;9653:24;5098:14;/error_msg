@@ -1,0 +1,48 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==3573003==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000004 (pc 0x559b1b11e572 bp 0x7ffee2fef130 sp 0x7ffee2feea00 T0)
+==3573003==The signal is caused by a READ memory access.
+==3573003==Hint: address points to the zero page.
+    #0 0x559b1b11e572 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5098:14
+    #1 0x559b1b122191 in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #2 0x7f6480806d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7f6480806e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x559b1b058394 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.asan.out+0x20394) (BuildId: c4b6e170161c88a0ff251300e4e3ca367c4aa605)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5098:14 in parse_datetime
+==3573003==ABORTING
+./verify.sh: line 108: 3573002 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==1091104==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000004 (pc 0x562eb6c3951b bp 0x7ffedb7972a0 sp 0x7ffedb796da0 T1091104)
+==1091104==The signal is caused by a READ memory access.
+==1091104==Hint: address points to the zero page.
+    #0 parse_datetime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5098:14 (reduced.tsan.out+0xd051b) (BuildId: eff3f645ace4e01d246370b21d054ad59a29311e)
+    #1 main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24 (reduced.tsan.out+0xd1e89) (BuildId: eff3f645ace4e01d246370b21d054ad59a29311e)
+    #2 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #3 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #4 _start <null> (reduced.tsan.out+0x213c4) (BuildId: eff3f645ace4e01d246370b21d054ad59a29311e)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5098:14 in parse_datetime
+==1091104==ABORTING
+./verify.sh: line 108: 1091103 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==3882997==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000004 (pc 0x555fb163c8b5 bp 0x7ffcf98495b0 sp 0x7ffcf9849140 T0)
+==3882997==The signal is caused by a READ memory access.
+==3882997==Hint: address points to the zero page.
+    #0 0x555fb163c8b5 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5098:14
+    #1 0x555fb163db9c in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #2 0x7fcd78e8fd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7fcd78e8fe3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x555fb160d4e4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.lsan.out+0x54e4) (BuildId: 5060c0af9d8553ad9e19245aea506efae9476d31)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5098:14 in parse_datetime
+==3882997==ABORTING

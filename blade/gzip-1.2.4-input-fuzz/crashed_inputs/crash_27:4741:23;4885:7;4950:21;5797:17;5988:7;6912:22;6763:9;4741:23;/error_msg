@@ -1,0 +1,20 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/bins/reduced.tsan.out -c
+ThreadSanitizer:DEADLYSIGNAL
+==2632829==ERROR: ThreadSanitizer: SEGV on unknown address 0x55609fe493e0 (pc 0x55609ea3d5d0 bp 0x7fffb45b54b0 sp 0x7fffb45b5450 T2632829)
+==2632829==The signal is caused by a READ memory access.
+    #0 scan_tree /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4741:23 (reduced.tsan.out+0xd35d0) (BuildId: b85a22fd10acb21246a32c39dbd15b40cab5d59e)
+    #1 build_bl_tree /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4885:7 (reduced.tsan.out+0xd0252) (BuildId: b85a22fd10acb21246a32c39dbd15b40cab5d59e)
+    #2 flush_block /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4950:21 (reduced.tsan.out+0xcfb49) (BuildId: b85a22fd10acb21246a32c39dbd15b40cab5d59e)
+    #3 deflate /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5797:17 (reduced.tsan.out+0xd1c1a) (BuildId: b85a22fd10acb21246a32c39dbd15b40cab5d59e)
+    #4 zip /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5988:7 (reduced.tsan.out+0xd2376) (BuildId: b85a22fd10acb21246a32c39dbd15b40cab5d59e)
+    #5 treat_stdin /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22 (reduced.tsan.out+0xd2ab6) (BuildId: b85a22fd10acb21246a32c39dbd15b40cab5d59e)
+    #6 main /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9 (reduced.tsan.out+0xd28cc) (BuildId: b85a22fd10acb21246a32c39dbd15b40cab5d59e)
+    #7 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #9 _start <null> (reduced.tsan.out+0x20344) (BuildId: b85a22fd10acb21246a32c39dbd15b40cab5d59e)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4741:23 in scan_tree
+==2632829==ABORTING
+./verify.sh: line 169: 2632823 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/bins/reduced.tsan.out -c < /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_0/tsan/crashes/id:000001* > sample1.gz

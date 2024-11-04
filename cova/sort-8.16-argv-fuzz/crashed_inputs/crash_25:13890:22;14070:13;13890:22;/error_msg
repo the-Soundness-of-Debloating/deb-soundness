@@ -1,0 +1,17 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.asan.out
+sort: invalid option -- '-'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==841157==ERROR: AddressSanitizer: SEGV on unknown address 0x1ab59a7fe6c8 (pc 0x562f0bf14024 bp 0x7ffd5cb8d4c8 sp 0x7ffd5cb8cb60 T0)
+==841157==The signal is caused by a READ memory access.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x562f0bf14024 in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13890:22
+    #1 0x7ffd5cb8de4f  ([stack]+0x1ee4f)
+    #2 0x562f0bf153bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14070:13
+    #3 0x7f79c9d15d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13890:22 in main
+==841157==ABORTING
+./verify.sh: line 110: 841156 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

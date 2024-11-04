@@ -1,0 +1,26 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/bins/reduced.lsan.out
+/workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/bins/reduced.lsan.out: : No such file or directory
+
+=================================================================
+==2803227==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 200 byte(s) in 1 object(s) allocated from:
+    #0 0x56255a442622 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/bins/reduced.lsan.out+0x30622) (BuildId: 9b5286b21edd29f65c65a4bd05b43da362e06956)
+    #1 0x56255a4452fa in fts_alloc /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:5730:19
+    #2 0x56255a445073 in fts_open /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:4414:15
+    #3 0x56255a444f58 in xfts_open /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1489:11
+    #4 0x56255a445536 in rm /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6727:13
+    #5 0x56255a4457bc in main /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7178:15
+    #6 0x7fc59451dd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Direct leak of 0 byte(s) in 1 object(s) allocated from:
+    #0 0x56255a442a74 in __interceptor_realloc (/workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/bins/reduced.lsan.out+0x30a74) (BuildId: 9b5286b21edd29f65c65a4bd05b43da362e06956)
+    #1 0x56255a4452a4 in fts_palloc /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:5776:17
+    #2 0x56255a444fab in fts_open /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:4346:15
+    #3 0x56255a444f58 in xfts_open /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1489:11
+    #4 0x56255a445536 in rm /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6727:13
+    #5 0x56255a4457bc in main /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7178:15
+    #6 0x7fc59451dd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: LeakSanitizer: 200 byte(s) leaked in 2 allocation(s).

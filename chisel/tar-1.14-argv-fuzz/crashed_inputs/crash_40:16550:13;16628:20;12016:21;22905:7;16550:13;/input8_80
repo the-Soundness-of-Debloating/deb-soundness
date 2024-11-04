@@ -1,0 +1,1 @@
+xf foo.tar  -C foo ./1/10

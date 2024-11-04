@@ -1,0 +1,16 @@
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.lsan.out
+
+=================================================================
+==3442==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 32 byte(s) in 1 object(s) allocated from:
+    #0 0x55b06b0cd6d2 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.lsan.out+0x306d2) (BuildId: da6c7d28ee9f0b35bba49ed24339532edcff7f7e)
+    #1 0x55b06b0d0cbd in setup_dir /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4004:39
+    #2 0x55b06b0d0384 in fts_open /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4366:16
+    #3 0x55b06b0d0028 in xfts_open /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1223:11
+    #4 0x55b06b0d1490 in chown_files /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6667:15
+    #5 0x55b06b0d16db in main /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10
+    #6 0x2ba730872d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: LeakSanitizer: 32 byte(s) leaked in 1 allocation(s).

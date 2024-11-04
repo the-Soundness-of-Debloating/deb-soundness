@@ -1,0 +1,13 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.msan.out
+==1504889==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55ce20a9b6ff in fts_read /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:4746:9
+    #1 0x55ce20a9c63f in rm /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6730:15
+    #2 0x55ce20a9dcab in main /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7177:15
+    #3 0x7fab75522d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7fab75522e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55ce20a11314 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.msan.out+0x1f314) (BuildId: 37e8f647e77642ec1e0014e903c47b26010abff2)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:4746:9 in fts_read
+Exiting
+./verify.sh: line 186: 1504886 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_289

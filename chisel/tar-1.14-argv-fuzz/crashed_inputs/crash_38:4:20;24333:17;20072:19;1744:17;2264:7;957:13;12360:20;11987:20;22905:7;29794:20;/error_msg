@@ -1,0 +1,20 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.msan.out
+Uninitialized bytes in __interceptor_write at offset 0 inside [0x726000000000, 10240)
+==4054429==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x559452bf54b4 in safe_write /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:29794:20
+    #1 0x559452beb05c in full_write /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:24333:17
+    #2 0x559452be74fb in sys_write_archive_buffer /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:20072:19
+    #3 0x559452be7429 in flush_write /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:1744:17
+    #4 0x559452be6bbd in flush_archive /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:2264:7
+    #5 0x559452be6b77 in find_next_block /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:957:13
+    #6 0x559452bebc3e in read_header /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:12360:20
+    #7 0x559452beb3c4 in read_and /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:11987:20
+    #8 0x559452bf0ab4 in main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22905:7
+    #9 0x7f0e6d76cd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #10 0x7f0e6d76ce3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #11 0x559452b60304 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.msan.out+0x1f304) (BuildId: 3a6679aa2c3216cadcf63cc92542bfdae8bf0293)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:29794:20 in safe_write
+Exiting
+./verify.sh: line 302: 4054427 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input1_fuzzed/input1_22

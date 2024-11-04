@@ -1,0 +1,43 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/bins/reduced.ubsan.out
+sort: invalid option -- ''
+sort-8.16.c.reduced.c:11740:29: runtime error: member access within misaligned address 0x7fef42b1d96e for type 'const struct line', which requires 8 byte alignment
+0x7fef42b1d96e: note: pointer points here
+ 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior sort-8.16.c.reduced.c:11740:29 in 
+sort-8.16.c.reduced.c:11740:29: runtime error: load of misaligned address 0x7fef42b1d96e for type 'char *const', which requires 8 byte alignment
+0x7fef42b1d96e: note: pointer points here
+ 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior sort-8.16.c.reduced.c:11740:29 in 
+sort-8.16.c.reduced.c:11741:29: runtime error: member access within misaligned address 0x7fef42b1d96e for type 'const struct line', which requires 8 byte alignment
+0x7fef42b1d96e: note: pointer points here
+ 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior sort-8.16.c.reduced.c:11741:29 in 
+sort-8.16.c.reduced.c:11741:29: runtime error: load of misaligned address 0x7fef42b1d976 for type 'const size_t' (aka 'const unsigned long'), which requires 8 byte alignment
+0x7fef42b1d976: note: pointer points here
+ 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior sort-8.16.c.reduced.c:11741:29 in 
+sort-8.16.c.reduced.c:11742:20: runtime error: applying zero offset to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior sort-8.16.c.reduced.c:11742:20 in 
+sort-8.16.c.reduced.c:11773:14: runtime error: applying non-zero offset 18446744073709551615 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior sort-8.16.c.reduced.c:11773:14 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==2643763==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0xffffffffffffffff (pc 0x555ad388bb20 bp 0x7ffc6e5b93d0 sp 0x7ffc6e5b9340 T2643763)
+==2643763==The signal is caused by a WRITE memory access.
+    #0 0x555ad388bb20 in write_line /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:11773:20
+    #1 0x555ad38887d5 in write_unique /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:12511:5
+    #2 0x555ad3886ff3 in sort /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13189:11
+    #3 0x555ad38863b0 in main /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14277:7
+    #4 0x7fef42b57d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7fef42b57e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x555ad385d414 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/bins/reduced.ubsan.out+0x8414) (BuildId: 7ecaf48436562807503f94fd2a6140190409f7ce)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:11773:20 in write_line
+==2643763==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 2643761 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

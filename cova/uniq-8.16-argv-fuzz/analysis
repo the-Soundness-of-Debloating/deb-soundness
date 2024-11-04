@@ -1,0 +1,10 @@
+7056	7056;	AFL++,radamsa	NOSAN,			
+7084	7084:20;	AFL++,radamsa	ASAN,	READ memory access,	address points to the zero page,	
+5870	5870:20	AFL++,radamsa	UBSAN,	runtime error 		
+6557	6557:1	AFL++,radamsa	UBSAN,	runtime error 	execution reached an unreachable program point,	
+7016	7016:15;7016:15;	AFL++,radamsa	MSAN,	READ memory access,	dereference of a high value address,	
+7179	7179:23;7179:23;	radamsa	MSAN,	use-of-uninitialized-value,		
+7056	7056:7;	AFL++,radamsa	TSAN,LSAN,	READ memory access,	dereference of a high value address,	
+0x7f4481eb677f	0x7f4481eb677f	radamsa	TSAN,	READ memory access,	dereference of a high value address,	
+7243	7243:59	AFL++	UBSAN,	runtime error 	index .* out of bounds,	
+7243	7243:59;	AFL++	UBSAN,	READ memory access,	dereference of a high value address,	

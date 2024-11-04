@@ -1,0 +1,41 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.tsan.out
+==================
+WARNING: ThreadSanitizer: heap-use-after-free (pid=9707)
+  Write of size 1 at 0x7b0400000000 by main thread:
+    #0 fts_read /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4836:17 (reduced.tsan.out+0xcf597) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #1 chown_files /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6671:13 (reduced.tsan.out+0xd00ab) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #2 main /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10 (reduced.tsan.out+0xd0483) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+
+  Previous write of size 8 at 0x7b0400000000 by main thread:
+    #0 free <null> (reduced.tsan.out+0x4da14) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #1 parse_with_separator /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1619:5 (reduced.tsan.out+0xce7cc) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #2 parse_user_spec /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1636:15 (reduced.tsan.out+0xce38c) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #3 main /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7051:18 (reduced.tsan.out+0xd03fa) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+
+  Location is heap block of size 0 at 0x7b0400000000 allocated by main thread:
+    #0 realloc <null> (reduced.tsan.out+0x4d773) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #1 fts_palloc /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:5713:17 (reduced.tsan.out+0xcef47) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #2 fts_open /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4291:15 (reduced.tsan.out+0xcde3f) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #3 xfts_open /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1223:11 (reduced.tsan.out+0xcdc47) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #4 chown_files /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6667:15 (reduced.tsan.out+0xd0096) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10 (reduced.tsan.out+0xd0483) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+
+SUMMARY: ThreadSanitizer: heap-use-after-free /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4836:17 in fts_read
+==================
+ThreadSanitizer:DEADLYSIGNAL
+==9707==ERROR: ThreadSanitizer: SEGV on unknown address 0x7b0400010000 (pc 0x7fe559346aca bp 0x7ffc423494f0 sp 0x7ffc423491f8 T9707)
+==9707==The signal is caused by a WRITE memory access.
+    #0 <null> string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:708 (libc.so.6+0x1a0aca) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 __interceptor_memmove <null> (reduced.tsan.out+0x58bbc) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #2 fts_read /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4837:7 (reduced.tsan.out+0xcf5f3) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #3 chown_files /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6671:13 (reduced.tsan.out+0xd00ab) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #4 main /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10 (reduced.tsan.out+0xd0483) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+    #5 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #6 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 _start <null> (reduced.tsan.out+0x213b4) (BuildId: 6a13502b96234394910efd18daf84a3a6b22cf5a)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:708 
+==9707==ABORTING
+./verify.sh: line 110:  9706 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

@@ -1,0 +1,5 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/mkdir-5.2.1-argv-fuzz/bins/reduced.ubsan.out
+mkdir-5.2.1.c.reduced.c:2526:20: runtime error: left shift of 1 by 31 places cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior mkdir-5.2.1.c.reduced.c:2526:20 in 
+/workspace/fuzzing-deb-with-sanitizers/chisel/mkdir-5.2.1-argv-fuzz/bins/reduced.ubsan.out: cannot create directory `ÿþdÀ±/â€Šd2': No such file or directory

@@ -1,0 +1,56 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1669545==ERROR: AddressSanitizer: stack-overflow on address 0x7ffdafa0ff90 (pc 0x7ffdafa0ff90 bp 0x7ffdafa0fcc0 sp 0x7ffdafa0fcc8 T0)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x7ffdafa0ff90  ([stack]+0x1ef90)
+    #1 0x56091bc14741 in open_archive /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:1494:13
+    #2 0x56091bc1fed4 in create_archive /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5854:7
+    #3 0x56091bc344c9 in main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22893:7
+    #4 0x7feec01f2d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: stack-overflow ([stack]+0x1ef90) 
+==1669545==ABORTING
+./verify.sh: line 305: 1669544 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_37
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.msan.out
+MemorySanitizer:DEADLYSIGNAL
+==2176653==ERROR: MemorySanitizer: stack-overflow on address 0x7ffcf24a3098 (pc 0x7ffcf24a3098 bp 0x7ffcf24a2670 sp 0x7ffcf24a2658 T2176653)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x7ffcf24a3098  ([stack]+0x20098)
+    #1 0x55ff3b618bfe in open_archive /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:1494:13
+    #2 0x55ff3b638846 in create_archive /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5854:7
+    #3 0x55ff3b673e2a in main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22893:7
+    #4 0x7f2f9e7e6d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: MemorySanitizer: stack-overflow ([stack]+0x20098) 
+==2176653==ABORTING
+./verify.sh: line 305: 2176651 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_37
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==1565827==ERROR: ThreadSanitizer: stack-overflow on address 0x7ffd1ccfa8b0 (pc 0x7ffd1ccfa8b0 bp 0x7ffd1ccfa470 sp 0x7ffd1ccfa478 T1565827)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 <null> <null> ([stack]+0x1e8b0)
+    #1 open_archive /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:1494:13 (reduced.tsan.out+0xd06b4) (BuildId: 577f4a726f906815166e11415cbc8eaac88ca317)
+    #2 create_archive /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5854:7 (reduced.tsan.out+0xd9b6d) (BuildId: 577f4a726f906815166e11415cbc8eaac88ca317)
+    #3 main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22893:7 (reduced.tsan.out+0xe9279) (BuildId: 577f4a726f906815166e11415cbc8eaac88ca317)
+    #4 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+SUMMARY: ThreadSanitizer: stack-overflow ([stack]+0x1e8b0) 
+==1565827==ABORTING
+./verify.sh: line 305: 1565822 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_37
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==1942050==ERROR: LeakSanitizer: stack-overflow on address 0x7fff0423f530 (pc 0x7fff0423f530 bp 0x7fff0423f440 sp 0x7fff0423f448 T0)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x7fff0423f530  ([stack]+0x1e530)
+    #1 0x55e53eedceb7 in open_archive /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:1494:13
+    #2 0x55e53eee2a21 in create_archive /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5854:7
+    #3 0x55e53eeec891 in main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22893:7
+    #4 0x7fe50a215d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: LeakSanitizer: stack-overflow ([stack]+0x1e530) 
+==1942050==ABORTING

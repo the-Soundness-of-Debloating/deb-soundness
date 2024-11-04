@@ -1,0 +1,32 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.tsan.out
+==================
+WARNING: ThreadSanitizer: heap-use-after-free (pid=1414519)
+  Write of size 8 at 0x7b1400000058 by main thread:
+    #0 decode_options /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21937:44 (reduced.tsan.out+0xd0479) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+    #1 main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7 (reduced.tsan.out+0xcfbe9) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+
+  Previous write of size 8 at 0x7b1400000058 by main thread:
+    #0 realloc <null> (reduced.tsan.out+0x4d733) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+    #1 xnrealloc_inline /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30088:28 (reduced.tsan.out+0xd1536) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+    #2 xrealloc /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30101:13 (reduced.tsan.out+0xcf4ba) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+    #3 decode_options /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21929:26 (reduced.tsan.out+0xd03c6) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+    #4 main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7 (reduced.tsan.out+0xcfbe9) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+
+SUMMARY: ThreadSanitizer: heap-use-after-free /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21937:44 in decode_options
+==================
+ThreadSanitizer:DEADLYSIGNAL
+==1414519==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000010 (pc 0x5566812b825b bp 0x7ffde22ebc80 sp 0x7ffde22ebbc0 T1414519)
+==1414519==The signal is caused by a WRITE memory access.
+==1414519==Hint: address points to the zero page.
+    #0 collect_and_sort_names /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:17104:27 (reduced.tsan.out+0xce25b) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+    #1 create_archive /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5862:9 (reduced.tsan.out+0xce1bf) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+    #2 main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22893:7 (reduced.tsan.out+0xcfc34) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+    #3 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #4 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #5 _start <null> (reduced.tsan.out+0x21374) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:17104:27 in collect_and_sort_names
+==1414519==ABORTING
+./verify.sh: line 302: 1414516 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input2_fuzzed/input2_66

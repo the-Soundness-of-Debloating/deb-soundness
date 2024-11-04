@@ -1,0 +1,20 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.tsan.out -k /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0
+ThreadSanitizer:DEADLYSIGNAL
+==1369118==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7f3d925a9f42 bp 0x563bfc94e598 sp 0x7fff61bb60e0 T1369118)
+==1369118==The signal is caused by a READ memory access.
+==1369118==Hint: address points to the zero page.
+    #0 fwrite libio/iofwrite.c:37:3 (libc.so.6+0x7ff42) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 __interceptor_fwrite <null> (reduced.tsan.out+0x59635) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #2 BZ2_bzWriteClose64 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6540:29 (reduced.tsan.out+0xd9ca9) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #3 compressStream /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7287:7 (reduced.tsan.out+0xdc62d) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #4 compress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:8787:7 (reduced.tsan.out+0xda742) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10250:15 (reduced.tsan.out+0xda3d8) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #6 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 _start <null> (reduced.tsan.out+0x20344) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV libio/iofwrite.c:37:3 in fwrite
+==1369118==ABORTING
+./verify.sh: line 173: 1369117 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.tsan.out -k /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0

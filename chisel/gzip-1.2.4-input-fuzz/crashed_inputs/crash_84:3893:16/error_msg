@@ -1,0 +1,28 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out -c
+gzip-1.2.4.c.reduced.c:5029:38: runtime error: index 8202 out of bounds for type 'uch[256]' (aka 'unsigned char[256]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5029:38 in 
+gzip-1.2.4.c.reduced.c:5028:23: runtime error: index 8202 out of bounds for type 'uch[256]' (aka 'unsigned char[256]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5028:23 in 
+gzip-1.2.4.c.reduced.c:5031:24: runtime error: index -31027 out of bounds for type 'uch[512]' (aka 'unsigned char[512]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5031:24 in 
+gzip-1.2.4.c.reduced.c:5035:47: runtime error: index 144 out of bounds for type 'ct_data[61]' (aka 'struct ct_data[61]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5035:47 in 
+gzip-1.2.4.c.reduced.c:5035:7: runtime error: index 144 out of bounds for type 'ct_data[61]' (aka 'struct ct_data[61]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5035:7 in 
+gzip-1.2.4.c.reduced.c:5138:36: runtime error: index 525 out of bounds for type 'uch[512]' (aka 'unsigned char[512]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5138:36 in 
+gzip-1.2.4.c.reduced.c:3892:54: runtime error: left shift of 33089 by 16 places cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3892:54 in 
+gzip-1.2.4.c.reduced.c:5143:23: runtime error: index 82 out of bounds for type 'int[30]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5143:23 in 
+gzip-1.2.4.c.reduced.c:5147:39: runtime error: index 82 out of bounds for type 'int[30]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5147:39 in 
+gzip-1.2.4.c.reduced.c:3861:54: runtime error: shift exponent 297 is too large for 32-bit type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3861:54 in 
+gzip-1.2.4.c.reduced.c:3887:51: runtime error: shift exponent 18446744073709551335 is too large for 32-bit type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3887:51 in 
+gzip-1.2.4.c.reduced.c:3893:16: runtime error: signed integer overflow: -2078557085 + -2078585632 cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3893:16 in 
+gzip-1.2.4.c.reduced.c:3955:9: runtime error: index 22041 out of bounds for type 'uch[18432]' (aka 'unsigned char[18432]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3955:9 in 

@@ -1,0 +1,21 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/bins/reduced.ubsan.out -t /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_129
+bzip2-1.0.5.c.reduced.c:1829:17: runtime error: index 6 out of bounds for type 'UChar[6]' (aka 'unsigned char[6]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1829:17 in 
+bzip2-1.0.5.c.reduced.c:1836:15: runtime error: index 6 out of bounds for type 'UChar[6]' (aka 'unsigned char[6]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1836:15 in 
+bzip2-1.0.5.c.reduced.c:1836:29: runtime error: index 7 out of bounds for type 'UChar[6]' (aka 'unsigned char[6]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1836:29 in 
+bzip2-1.0.5.c.reduced.c:2064:19: runtime error: index 80 out of bounds for type 'Int32[6]' (aka 'int[6]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2064:19 in 
+bzip2-1.0.5.c.reduced.c:2065:19: runtime error: index 80 out of bounds for type 'Int32[6][258]' (aka 'int[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2065:19 in 
+bzip2-1.0.5.c.reduced.c:2066:18: runtime error: index 80 out of bounds for type 'Int32[6][258]' (aka 'int[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2066:18 in 
+bzip2-1.0.5.c.reduced.c:2067:18: runtime error: index 80 out of bounds for type 'Int32[6][258]' (aka 'int[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2067:18 in 
+bzip2-1.0.5.c.reduced.c:2078:28: runtime error: shift exponent 984764625 is too large for 32-bit type 'UInt32' (aka 'unsigned int')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2078:28 in 
+bzip2-1.0.5.c.reduced.c:2078:69: runtime error: shift exponent -984764618 is negative
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2078:69 in 
+./verify.sh: line 170: 3148628 Killed                  timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/bins/reduced.ubsan.out -t /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_129

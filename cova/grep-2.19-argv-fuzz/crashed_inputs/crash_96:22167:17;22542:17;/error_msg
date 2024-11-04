@@ -1,0 +1,35 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.asan.out
+grep: invalid option -- ':'
+grep: invalid option -- ''
+grep: invalid option -- '£'
+grep: invalid option -- '£'
+grep: invalid option -- ':'
+grep: invalid option -- ''
+grep: invalid option -- '£'
+grep: invalid option -- '£'
+grep: invalid option -- '£'
+grep: invalid option -- '-'
+grep: invalid option -- '@'
+grep: invalid option -- 'p'
+grep: invalid option -- 't'
+grep: invalid option -- '/'
+grep: invalid option -- ''
+grep: invalid option -- '-'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2689431==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7f6839c9d5aa bp 0x000000000001 sp 0x7ffeeb753fd0 T0)
+==2689431==The signal is caused by a READ memory access.
+==2689431==Hint: address points to the zero page.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x7f6839c9d5aa in _getopt_internal_r posix/getopt.c:527:33
+    #1 0x7f6839c9dada in _getopt_internal posix/getopt.c:711:12
+    #2 0x7f6839c9db61 in getopt_long posix/getopt1.c:31:10
+    #3 0x558368b24179 in get_nondigit_option /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:22167:17
+    #4 0x558368b21509 in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:22542:17
+    #5 0x7ffeeb754887  ([stack]+0x1a887)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV posix/getopt.c:527:33 in _getopt_internal_r
+==2689431==ABORTING
+./verify.sh: line 110: 2689430 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

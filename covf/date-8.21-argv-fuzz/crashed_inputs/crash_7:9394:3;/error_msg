@@ -1,0 +1,18 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+argv-fuzz-inl.h:30:5: runtime error: index 1000 out of bounds for type 'char *[1000]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior argv-fuzz-inl.h:30:5 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3605782==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x56434ca72000 (pc 0x56434c0ed2a0 bp 0x7ffea24f4ee0 sp 0x7ffea24f4e00 T3605782)
+==3605782==The signal is caused by a WRITE memory access.
+    #0 0x56434c0ed2a0 in afl_init_argv /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/./argv-fuzz-inl.h:30:13
+    #1 0x56434c0ec2f1 in main /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9394:3
+    #2 0x7fcfe68a6d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7fcfe68a6e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x56434c0ac614 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/bins/reduced.ubsan.out+0x16614) (BuildId: 77c3b2a032e77d97120432867da274ec9f497086)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/./argv-fuzz-inl.h:30:13 in afl_init_argv
+==3605782==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 3605781 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

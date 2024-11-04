@@ -1,0 +1,61 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/bins/reduced.asan.out -d
+=================================================================
+==3559103==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7fb0cbe03864 at pc 0x562b1a7a74e3 bp 0x7fffc88a55d0 sp 0x7fffc88a55c8
+READ of size 4 at 0x7fb0cbe03864 thread T0
+    #0 0x562b1a7a74e2 in huft_build /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2161:13
+    #1 0x562b1a7aac5b in inflate_dynamic /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3347:15
+    #2 0x562b1a7aaff7 in inflate_block /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3440:19
+    #3 0x562b1a7ab11a in inflate /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3473:15
+    #4 0x562b1a7ab356 in unzip /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3630:15
+    #5 0x562b1a7b3c7c in treat_stdin /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #6 0x562b1a7b2a9a in main /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #7 0x7fb0cd992d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7fb0cd992e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x562b1a6e63b4 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/bins/reduced.asan.out+0x223b4) (BuildId: 31cdf9c8c17078d6666d86e4aca93822fd411c1a)
+
+Address 0x7fb0cbe03864 is located in stack of thread T0 at offset 100 in frame
+    #0 0x562b1a7a70af in huft_build /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2097
+
+  This frame has 5 object(s):
+    [32, 100) 'c' (line 2099) <== Memory access at offset 100 overflows this variable
+    [144, 160) 'r' (line 2109)
+    [176, 304) 'u' (line 2110)
+    [336, 1488) 'v' (line 2111)
+    [1616, 1684) 'x' (line 2113)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2161:13 in huft_build
+Shadow bytes around the buggy address:
+  0x0ff6997b86b0: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x0ff6997b86c0: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x0ff6997b86d0: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x0ff6997b86e0: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x0ff6997b86f0: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+=>0x0ff6997b8700: f1 f1 f1 f1 00 00 00 00 00 00 00 00[04]f2 f2 f2
+  0x0ff6997b8710: f2 f2 00 00 f2 f2 00 00 00 00 00 00 00 00 00 00
+  0x0ff6997b8720: 00 00 00 00 00 00 f2 f2 f2 f2 00 00 00 00 00 00
+  0x0ff6997b8730: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ff6997b8740: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ff6997b8750: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==3559103==ABORTING
+./verify.sh: line 169: 3559092 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/bins/reduced.asan.out -d < /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_1/asan/crashes/id:000012* > sample1.tst

@@ -1,0 +1,14 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/bins/reduced.msan.out
+rm: cannot remove `d1/fileeeeeeeeeeeeeeeeeee': No such file or directory
+==2779641==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55ac7072c690 in fts_read /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:4895:13
+    #1 0x55ac70733459 in rm /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6730:15
+    #2 0x55ac70738c92 in main /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7177:15
+    #3 0x7fc44bb1fd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7fc44bb1fe3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55ac706933f4 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/bins/reduced.msan.out+0x1f3f4) (BuildId: 88e41496596c8f3fd828cadea058d777a6329aab)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:4895:13 in fts_read
+Exiting
+./verify.sh: line 189: 2779640 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_1

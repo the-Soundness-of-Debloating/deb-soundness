@@ -1,0 +1,12 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2306499==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000020000 (pc 0x555e4b79129a bp 0x7ffd7ae0d2b0 sp 0x7ffd7ae0d050 T2306499)
+==2306499==The signal is caused by a READ memory access.
+    #0 yylex /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4731:28 (reduced.tsan.out+0xd129a) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #1 yyparse /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3424:16 (reduced.tsan.out+0xcf65c) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4731:28 in yylex
+==2306499==ABORTING
+./verify.sh: line 110: 2306498 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

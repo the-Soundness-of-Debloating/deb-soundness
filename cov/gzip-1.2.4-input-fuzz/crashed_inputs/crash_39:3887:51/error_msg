@@ -1,0 +1,10 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out -c
+gzip-1.2.4.c.reduced.c:5029:38: runtime error: index 5664 out of bounds for type 'uch[256]' (aka 'unsigned char[256]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5029:38 in 
+gzip-1.2.4.c.reduced.c:5028:23: runtime error: index 5664 out of bounds for type 'uch[256]' (aka 'unsigned char[256]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5028:23 in 
+gzip-1.2.4.c.reduced.c:3861:54: runtime error: shift exponent 65529 is too large for 32-bit type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3861:54 in 
+gzip-1.2.4.c.reduced.c:3887:51: runtime error: shift exponent 18446744073709486103 is too large for 32-bit type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3887:51 in 

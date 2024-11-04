@@ -1,0 +1,26 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.msan.out
+==600004==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55966dbce49b in sys_child_open_for_uncompress /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:20579:9
+    #1 0x55966dbc8830 in open_archive /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:1171:21
+    #2 0x55966dc0fe6a in read_and /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:11978:7
+    #3 0x55966dc26e9d in main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22905:7
+    #4 0x7ff5f6508d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7ff5f6508e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x55966db40544 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.msan.out+0x20544) (BuildId: 5a233d6989808b399403c8f6e7451a05f9eaac27)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:20579:9 in sys_child_open_for_uncompress
+Exiting
+
+gzip: stdin: unexpected end of file
+==599920==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55966dbf6750 in read_header /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:12385:13
+    #1 0x55966dc0fef5 in read_and /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:11987:20
+    #2 0x55966dc26e9d in main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22905:7
+    #3 0x7ff5f6508d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7ff5f6508e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55966db40544 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.msan.out+0x20544) (BuildId: 5a233d6989808b399403c8f6e7451a05f9eaac27)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:12385:13 in read_header
+Exiting
+./verify.sh: line 305: 599918 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input18_fuzzed/input18_261

@@ -1,0 +1,36 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.ubsan.out
+bzip2: file name
+`train_input/'
+is suspiciously (more than 1024 chars) long.
+Try using a reasonable file name instead.  Sorry! :-)
+bzip2: file name
+`train_input/'
+is suspiciously (more than 1024 chars) long.
+Try using a reasonable file name instead.  Sorry! :-)
+bzip2-1.0.5.c.reduced.c:11763:9: runtime error: index -1 out of bounds for type 'Int32[256]' (aka 'int[256]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11763:9 in 
+bzip2-1.0.5.c.reduced.c:11380:5: runtime error: index 1245734670 out of bounds for type 'Int32[100]' (aka 'int[100]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11380:5 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==2061642==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x7ffd567c7238 (pc 0x55654a436643 bp 0x7ffc2d7ad7e0 sp 0x7ffc2d7ad3c0 T2061642)
+==2061642==The signal is caused by a WRITE memory access.
+    #0 0x55654a436643 in mainQSort3 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:11380:17
+    #1 0x55654a43167c in mainSort /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:11854:21
+    #2 0x55654a42223d in BZ2_blockSort /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:12048:9
+    #3 0x55654a421a72 in BZ2_compressBlock /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:4548:9
+    #4 0x55654a42ac0c in handle_compress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:5185:17
+    #5 0x55654a42a8d0 in BZ2_bzCompress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:5308:18
+    #6 0x55654a42d204 in BZ2_bzWriteClose64 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:6525:21
+    #7 0x55654a43632f in compressStream /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:7288:7
+    #8 0x55654a42f5a2 in compress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:8788:7
+    #9 0x55654a42ea0a in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:10252:15
+    #10 0x7fe2b3150d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #11 0x7fe2b3150e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #12 0x55654a3e1464 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.ubsan.out+0x21464) (BuildId: f62e3d2225d786db8b19860ba9c0ce1b1ca1f87e)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:11380:17 in mainQSort3
+==2061642==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 174: 2061641 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/input/radamsa_fuzzed/input1_fuzzed/input1_373

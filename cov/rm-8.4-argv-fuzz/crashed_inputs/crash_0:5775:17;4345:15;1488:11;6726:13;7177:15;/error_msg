@@ -1,0 +1,13 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/rm-8.4-argv-fuzz/bins/reduced.lsan.out
+==1296550==ERROR: LeakSanitizer: requested allocation size 0x7fe23f6fe2c2 exceeds maximum supported size of 0x200000000
+    #0 0x562c6b0cbbb4 in __interceptor_realloc (/workspace/fuzzing-deb-with-sanitizers/cov/rm-8.4-argv-fuzz/bins/reduced.lsan.out+0x31bb4) (BuildId: f634c5aae0a003b88afd05975173cb8f7d29e9fc)
+    #1 0x562c6b0cf306 in fts_palloc /workspace/fuzzing-deb-with-sanitizers/cov/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:5775:17
+    #2 0x562c6b0ce821 in fts_open /workspace/fuzzing-deb-with-sanitizers/cov/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:4345:15
+    #3 0x562c6b0ce768 in xfts_open /workspace/fuzzing-deb-with-sanitizers/cov/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1488:11
+    #4 0x562c6b0d002b in rm /workspace/fuzzing-deb-with-sanitizers/cov/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6726:13
+    #5 0x562c6b0d04a5 in main /workspace/fuzzing-deb-with-sanitizers/cov/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7177:15
+    #6 0x7fe23f54dd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+==1296550==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: LeakSanitizer: allocation-size-too-big (/workspace/fuzzing-deb-with-sanitizers/cov/rm-8.4-argv-fuzz/bins/reduced.lsan.out+0x31bb4) (BuildId: f634c5aae0a003b88afd05975173cb8f7d29e9fc) in __interceptor_realloc

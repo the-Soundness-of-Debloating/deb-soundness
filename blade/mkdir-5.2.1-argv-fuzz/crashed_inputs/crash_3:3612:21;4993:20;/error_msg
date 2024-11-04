@@ -1,0 +1,72 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.ubsan.out
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==1950261==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address (pc 0x7f796fe94102 bp 0x7ffe7253c7b0 sp 0x7ffe7253c678 T1950261)
+==1950261==The signal is caused by a READ memory access.
+==1950261==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x7f796fe94102  (/lib/x86_64-linux-gnu/libc.so.6+0x1b1102) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #1 0x55703ebb5e2c in make_path /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:3612:21
+    #2 0x55703ebb635a in main /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:4993:20
+    #3 0x7f796fd0cd8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #4 0x7f796fd0ce3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #5 0x55703eb8d424 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.ubsan.out+0x5424) (BuildId: 816f1e26937b0e541a4bec8cdaa59bece7d06fb2)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV (/lib/x86_64-linux-gnu/libc.so.6+0x1b1102) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0) 
+==1950261==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 1950260 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.msan.out
+MemorySanitizer:DEADLYSIGNAL
+==2038550==ERROR: MemorySanitizer: SEGV on unknown address (pc 0x7f4c8acad102 bp 0x7fffa2fd80d0 sp 0x7fffa2fd8098 T2038550)
+==2038550==The signal is caused by a READ memory access.
+==2038550==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x7f4c8acad102  (/lib/x86_64-linux-gnu/libc.so.6+0x1b1102) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #1 0x559a402b74fd in strchr (/workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.msan.out+0x554fd) (BuildId: 9c252f056b0498ab0d6d85166216039a8f7a36d8)
+    #2 0x559a403087d9 in make_path /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:3612:21
+    #3 0x559a40309873 in main /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:4993:20
+    #4 0x7f4c8ab25d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #5 0x7f4c8ab25e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #6 0x559a40280304 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.msan.out+0x1e304) (BuildId: 9c252f056b0498ab0d6d85166216039a8f7a36d8)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV (/lib/x86_64-linux-gnu/libc.so.6+0x1b1102) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0) 
+==2038550==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 2038549 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2123874==ERROR: ThreadSanitizer: SEGV on unknown address (pc 0x7fb2df5ff102 bp 0x00000000002f sp 0x7ffc8780b368 T2123874)
+==2123874==The signal is caused by a READ memory access.
+==2123874==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 <null> <null> (libc.so.6+0x1b1102) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #1 strchr <null> (reduced.tsan.out+0x570e6) (BuildId: e9cdc53730350778ec5415addcf92f3f84e2e05b)
+    #2 make_path /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:3612:21 (reduced.tsan.out+0xcd083) (BuildId: e9cdc53730350778ec5415addcf92f3f84e2e05b)
+    #3 main /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:4993:20 (reduced.tsan.out+0xcd48f) (BuildId: e9cdc53730350778ec5415addcf92f3f84e2e05b)
+    #4 <null> <null> (libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #5 __libc_start_main <null> (libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #6 _start <null> (reduced.tsan.out+0x20394) (BuildId: e9cdc53730350778ec5415addcf92f3f84e2e05b)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (/lib/x86_64-linux-gnu/libc.so.6+0x1b1102) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0) 
+==2123874==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 2123873 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==2204716==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x7f70bbf1b102 bp 0x7ffd930c6450 sp 0x7ffd930c6348 T0)
+==2204716==The signal is caused by a READ memory access.
+==2204716==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x7f70bbf1b102  (/lib/x86_64-linux-gnu/libc.so.6+0x1b1102) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #1 0x55aee404b21c in make_path /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:3612:21
+    #2 0x55aee404b4fb in main /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:4993:20
+    #3 0x7f70bbd93d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #4 0x7f70bbd93e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #5 0x55aee401d434 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.lsan.out+0x5434) (BuildId: 56e75eeda2785044ad42c3cff1a43ff8cb0dd12e)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV (/lib/x86_64-linux-gnu/libc.so.6+0x1b1102) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0) 
+==2204716==ABORTING

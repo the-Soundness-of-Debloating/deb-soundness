@@ -1,0 +1,17 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/bins/reduced.msan.out /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_0
+MemorySanitizer:DEADLYSIGNAL
+==2456503==ERROR: MemorySanitizer: SEGV on unknown address 0x000000000000 (pc 0x000000000000 bp 0x7ffceebd9640 sp 0x7ffceebd9618 T2456503)
+==2456503==Hint: pc points to the zero page.
+==2456503==The signal is caused by a READ memory access.
+==2456503==Hint: address points to the zero page.
+    #0 0x0  (<unknown module>)
+    #1 0x559261d8268f in __sanitizer::BufferedStackTrace::UnwindImpl(unsigned long, unsigned long, void*, bool, unsigned int) (/workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/bins/reduced.msan.out+0x4768f) (BuildId: 36c59ec50d39df6c4a9e158bd7913924c53ffaea)
+    #2 0x559261d7be45 in __sanitizer::ReportDeadlySignal(__sanitizer::SignalContext const&, unsigned int, void (*)(__sanitizer::SignalContext const&, void const*, __sanitizer::BufferedStackTrace*), void const*) (/workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/bins/reduced.msan.out+0x40e45) (BuildId: 36c59ec50d39df6c4a9e158bd7913924c53ffaea)
+    #3 0x559261d7c16a in __sanitizer::HandleDeadlySignal(void*, void*, unsigned int, void (*)(__sanitizer::SignalContext const&, void const*, __sanitizer::BufferedStackTrace*), void const*) (/workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/bins/reduced.msan.out+0x4116a) (BuildId: 36c59ec50d39df6c4a9e158bd7913924c53ffaea)
+    #4 0x7f46393f851f  (/lib/x86_64-linux-gnu/libc.so.6+0x4251f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV (<unknown module>) 
+==2456503==ABORTING
+./verify.sh: line 167: 2456500 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/bins/reduced.msan.out /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_0

@@ -1,0 +1,30 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/bins/reduced.msan.out
+MemorySanitizer:DEADLYSIGNAL
+==2353440==ERROR: MemorySanitizer: SEGV on unknown address 0x56458c3ca000 (pc 0x56458a9d5b31 bp 0x7fffb903f060 sp 0x7fffb903ef70 T2353440)
+==2353440==The signal is caused by a WRITE memory access.
+    #0 0x56458a9d5b31 in afl_init_argv /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/./argv-fuzz-inl.h:60:13
+    #1 0x56458a9d541c in main /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6388:3
+    #2 0x7f845dfe7d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7f845dfe7e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x56458a93b2e4 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/bins/reduced.msan.out+0x1e2e4) (BuildId: a9bce43990fb6b8b589640479fd6f6c8d765ccd4)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/./argv-fuzz-inl.h:60:13 in afl_init_argv
+==2353440==ABORTING
+./verify.sh: line 171: 2353439 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/input/radamsa_fuzzed/input2_fuzzed/input2_34
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2734416==ERROR: ThreadSanitizer: SEGV on unknown address 0x557f820f2000 (pc 0x557f80cdea35 bp 0x7ffe8e4111b0 sp 0x7ffe8e411100 T2734416)
+==2734416==The signal is caused by a WRITE memory access.
+    #0 afl_init_argv /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/./argv-fuzz-inl.h:60:13 (reduced.tsan.out+0xd2a35) (BuildId: 2825d9884eea19864565e1539fb5befc12cf4ecd)
+    #1 main /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6388:3 (reduced.tsan.out+0xd27de) (BuildId: 2825d9884eea19864565e1539fb5befc12cf4ecd)
+    #2 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #3 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #4 _start <null> (reduced.tsan.out+0x20354) (BuildId: 2825d9884eea19864565e1539fb5befc12cf4ecd)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/./argv-fuzz-inl.h:60:13 in afl_init_argv
+==2734416==ABORTING
+./verify.sh: line 171: 2734410 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/input/radamsa_fuzzed/input1_fuzzed/input1_184 > sample1.gz

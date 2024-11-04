@@ -1,0 +1,48 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.msan.out
+MemorySanitizer:DEADLYSIGNAL
+==270781==ERROR: MemorySanitizer: stack-overflow on address 0x7ffdf44f56c8 (pc 0x7ffdf44f56c8 bp 0x7ffdf44f48e0 sp 0x7ffdf44f48c8 T270781)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x7ffdf44f56c8  ([stack]+0x1f6c8)
+    #1 0x55bbe035eeaa in sys_child_open_for_compress /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:20229:15
+    #2 0x55bbe0357893 in open_archive /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:1177:21
+    #3 0x55bbe037a846 in create_archive /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5854:7
+    #4 0x55bbe03b5e2a in main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22893:7
+    #5 0x7f475fcefd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: MemorySanitizer: stack-overflow ([stack]+0x1f6c8) 
+==270781==ABORTING
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.msan.out: Child died with signal 6
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.msan.out: Error exit delayed from previous errors
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==1537945==ERROR: ThreadSanitizer: stack-overflow on address 0x7fff1a505240 (pc 0x7fff1a505240 bp 0x7fff1a504fe0 sp 0x7fff1a504fe8 T1537945)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 <null> <null> ([stack]+0x1f240)
+    #1 sys_child_open_for_compress /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:20229:15 (reduced.tsan.out+0xd1c1a) (BuildId: 577f4a726f906815166e11415cbc8eaac88ca317)
+    #2 open_archive /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:1177:21 (reduced.tsan.out+0xcf4cf) (BuildId: 577f4a726f906815166e11415cbc8eaac88ca317)
+    #3 create_archive /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5854:7 (reduced.tsan.out+0xd9b6d) (BuildId: 577f4a726f906815166e11415cbc8eaac88ca317)
+    #4 main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22893:7 (reduced.tsan.out+0xe9279) (BuildId: 577f4a726f906815166e11415cbc8eaac88ca317)
+    #5 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+SUMMARY: ThreadSanitizer: stack-overflow ([stack]+0x1f240) 
+==1537945==ABORTING
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.tsan.out: Child died with signal 6
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.tsan.out: Error exit delayed from previous errors
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==3927867==ERROR: LeakSanitizer: stack-overflow on address 0x7ffce71bad00 (pc 0x7ffce71bad00 bp 0x7ffce71bac30 sp 0x7ffce71bac38 T0)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x7ffce71bad00  ([stack]+0x1ed00)
+    #1 0x556ae16eb9f5 in sys_child_open_for_compress /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:20229:15
+    #2 0x556ae16ea6f6 in open_archive /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:1177:21
+    #3 0x556ae16f0a21 in create_archive /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5854:7
+    #4 0x556ae16fa891 in main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22893:7
+    #5 0x7f55e5df4d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: LeakSanitizer: stack-overflow ([stack]+0x1ed00) 
+==3927867==ABORTING
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.lsan.out: Child returned status 23
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.lsan.out: Error exit delayed from previous errors

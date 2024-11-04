@@ -1,0 +1,15 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.msan.out xf /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/result/afl_result/reduced/result_2/msan/crashes/id:000016,sig:06,src:000000+000009,time:1411349,execs:41709,op:splice,rep:16 -C foo ./1/10
+/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.msan.out: Skipping to next header
+==2900419==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55b6bb0f4240 in read_header /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12384:13
+    #1 0x55b6bb0f15f9 in read_and /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12104:24
+    #2 0x55b6bb10ba85 in main /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7
+    #3 0x7fe408af2d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #4 0x7fe408af2e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #5 0x55b6bb0344c4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.msan.out+0x204c4) (BuildId: eb898b9f902a436dd12025919a6006a231e0006d)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12384:13 in read_header
+Exiting
+timeout: the monitored command dumped core
+./verify.sh: line 360: 2900418 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.msan.out xf /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/result/afl_result/reduced/result_2/msan/crashes/id:000016* -C foo ./1/10

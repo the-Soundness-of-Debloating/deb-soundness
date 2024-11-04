@@ -1,0 +1,7 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+date: extra operand '+%Y-%m-%d %T'
+date-8.21.c.reduced.c:9285:1: runtime error: execution reached an unreachable program point
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:9285:1 in 
+timeout: the monitored command dumped core
+./verify.sh: line 110: 3674145 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

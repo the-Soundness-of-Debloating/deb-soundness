@@ -1,0 +1,22 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out -c
+gzip-1.2.4.c.reduced.c:5029:38: runtime error: index 5308 out of bounds for type 'uch[256]' (aka 'unsigned char[256]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5029:38 in 
+gzip-1.2.4.c.reduced.c:5028:23: runtime error: index 5308 out of bounds for type 'uch[256]' (aka 'unsigned char[256]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5028:23 in 
+gzip-1.2.4.c.reduced.c:5716:40: runtime error: index 65536 out of bounds for type 'uch[65536]' (aka 'unsigned char[65536]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5716:40 in 
+gzip-1.2.4.c.reduced.c:4451:37: runtime error: index 16 out of bounds for type 'ush[16]' (aka 'unsigned short[16]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4451:37 in 
+gzip-1.2.4.c.reduced.c:4451:9: runtime error: index 16 out of bounds for type 'ush[16]' (aka 'unsigned short[16]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4451:9 in 
+gzip-1.2.4.c.reduced.c:4563:17: runtime error: index 16 out of bounds for type 'ush[16]' (aka 'unsigned short[16]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4563:17 in 
+gzip-1.2.4.c.reduced.c:4564:39: runtime error: index 16 out of bounds for type 'ush[16]' (aka 'unsigned short[16]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4564:39 in 
+gzip-1.2.4.c.reduced.c:4564:11: runtime error: index 16 out of bounds for type 'ush[16]' (aka 'unsigned short[16]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4564:11 in 
+gzip-1.2.4.c.reduced.c:3861:54: runtime error: left shift of 62904 by 16 places cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3861:54 in 
+gzip-1.2.4.c.reduced.c:3955:9: runtime error: index 22035 out of bounds for type 'uch[18432]' (aka 'unsigned char[18432]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3955:9 in 

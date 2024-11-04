@@ -1,0 +1,6 @@
+ERROR_DETAIL,Other Error Count,Percentage
+dereference of a high value address,176,20.25%
+address points to the zero page,270,31.07%
+nested bug in the same thread,15,1.73%
+pc points to the zero page,10,1.15%
+Others,398,45.80%

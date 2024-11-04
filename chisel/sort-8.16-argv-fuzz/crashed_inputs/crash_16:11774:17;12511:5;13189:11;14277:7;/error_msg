@@ -1,0 +1,58 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/bins/reduced.ubsan.out
+sort: invalid option -- '²'
+sort: invalid option -- 'p'
+sort: invalid option -- 'P'
+sort: invalid option -- '…'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+sort: invalid option -- ''
+sort: invalid option -- '_'
+sort: invalid option -- 'Œ'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+sort: invalid option -- 'ò'
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3218977==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address (pc 0x7f1f463437cd bp 0x000000000d68 sp 0x7ffcdc247a68 T3218977)
+==3218977==The signal is caused by a READ memory access.
+==3218977==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x7f1f463437cd  string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:317
+    #1 0x7f1f46230e6b in __GI__IO_default_xsputn libio/genops.c:386:27
+    #2 0x7f1f46230e6b in _IO_default_xsputn libio/genops.c:370:1
+    #3 0x7f1f4622e71a in _IO_new_file_xsputn libio/fileops.c:1264:11
+    #4 0x7f1f4622e71a in _IO_file_xsputn libio/fileops.c:1196:1
+    #5 0x7f1f4622d288 in fwrite_unlocked libio/iofwrite_u.c:42:17
+    #6 0x563bf48aadbf in write_line /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:11774:17
+    #7 0x563bf48a807b in write_unique /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:12511:5
+    #8 0x563bf48a6674 in sort /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13189:11
+    #9 0x563bf48a5c17 in main /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14277:7
+    #10 0x7f1f461ccd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #11 0x7f1f461cce3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #12 0x563bf487d3e4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/bins/reduced.ubsan.out+0x83e4) (BuildId: b698f2537e6bd7101a4994345ec4fd96bc78a973)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:317 
+==3218977==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 107: 3218961 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

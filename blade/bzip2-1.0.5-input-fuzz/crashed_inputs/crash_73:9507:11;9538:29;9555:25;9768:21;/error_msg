@@ -1,0 +1,12 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out -f /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0
+==2253290==ERROR: LeakSanitizer: requested allocation size 0xffffffff8ceea255 exceeds maximum supported size of 0x200000000
+    #0 0x557ca4532622 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out+0x30622) (BuildId: 4a7cad0a362352a0d26bd192dbf76ee9115ae86e)
+    #1 0x557ca4539e73 in myMalloc /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9507:11
+    #2 0x557ca45391fd in snocString /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9538:29
+    #3 0x557ca453923d in snocString /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9555:25
+    #4 0x557ca4538f67 in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9768:21
+    #5 0x7f7d48096d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+==2253290==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: LeakSanitizer: allocation-size-too-big (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out+0x30622) (BuildId: 4a7cad0a362352a0d26bd192dbf76ee9115ae86e) in __interceptor_malloc

@@ -1,0 +1,71 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.tsan.out
+==3894073==WARNING: failed to fork (errno 12)
+==3894073==WARNING: failed to fork (errno 12)
+==3894073==WARNING: failed to fork (errno 12)
+==3894073==WARNING: failed to fork (errno 12)
+==3894073==WARNING: failed to fork (errno 12)
+==3894073==WARNING: Failed to use and restart external symbolizer!
+==================
+WARNING: ThreadSanitizer: heap-use-after-free (pid=3894073)
+  Read of size 8 at 0x7b5000000000 by main thread:
+    #0 <null> <null> (reduced.tsan.out+0xd62eb) (BuildId: 7e211887f1e8c1f754317b8585b8f569e3bd35a3)
+    #1 <null> <null> (reduced.tsan.out+0xd91be) (BuildId: 7e211887f1e8c1f754317b8585b8f569e3bd35a3)
+    #2 <null> <null> (reduced.tsan.out+0xd7018) (BuildId: 7e211887f1e8c1f754317b8585b8f569e3bd35a3)
+    #3 <null> <null> (reduced.tsan.out+0xd6a39) (BuildId: 7e211887f1e8c1f754317b8585b8f569e3bd35a3)
+    #4 <null> <null> (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+  Previous write of size 8 at 0x7b5000000000 by main thread:
+    #0 <null> <null> (reduced.tsan.out+0x4c9c4) (BuildId: 7e211887f1e8c1f754317b8585b8f569e3bd35a3)
+    #1 <null> <null> (libc.so.6+0x7ed26) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #2 <null> <null> (reduced.tsan.out+0xd9164) (BuildId: 7e211887f1e8c1f754317b8585b8f569e3bd35a3)
+    #3 <null> <null> (reduced.tsan.out+0xd6ff8) (BuildId: 7e211887f1e8c1f754317b8585b8f569e3bd35a3)
+    #4 <null> <null> (reduced.tsan.out+0xd6a39) (BuildId: 7e211887f1e8c1f754317b8585b8f569e3bd35a3)
+    #5 <null> <null> (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+SUMMARY: ThreadSanitizer: heap-use-after-free (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.tsan.out+0xd62eb) (BuildId: 7e211887f1e8c1f754317b8585b8f569e3bd35a3) 
+==================
+ThreadSanitizer:DEADLYSIGNAL
+==3894073==ERROR: ThreadSanitizer: SEGV on unknown address 0x0000fbad240c (pc 0x7fc465304b52 bp 0x55d17a20aa28 sp 0x7ffe4208ade0 T3894073)
+==3894073==The signal is caused by a READ memory access.
+    #0 <null> <null> (libc.so.6+0x7fb52) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 <null> <null> (reduced.tsan.out+0x58ac5) (BuildId: 7e211887f1e8c1f754317b8585b8f569e3bd35a3)
+    #2 <null> <null> (reduced.tsan.out+0xd633c) (BuildId: 7e211887f1e8c1f754317b8585b8f569e3bd35a3)
+    #3 <null> <null> (reduced.tsan.out+0xd91be) (BuildId: 7e211887f1e8c1f754317b8585b8f569e3bd35a3)
+    #4 <null> <null> (reduced.tsan.out+0xd7018) (BuildId: 7e211887f1e8c1f754317b8585b8f569e3bd35a3)
+    #5 <null> <null> (reduced.tsan.out+0xd6a39) (BuildId: 7e211887f1e8c1f754317b8585b8f569e3bd35a3)
+    #6 <null> <null> (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 <null> <null> (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 <null> <null> (reduced.tsan.out+0x20364) (BuildId: 7e211887f1e8c1f754317b8585b8f569e3bd35a3)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (/lib/x86_64-linux-gnu/libc.so.6+0x7fb52) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e) 
+==3894073==ABORTING
+./verify.sh: line 174: 3894072 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/input/radamsa_fuzzed/input2_fuzzed/input2_149
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out
+bzip2: file name
+`-t'
+is suspiciously (more than 1024 chars) long.
+Try using a reasonable file name instead.  Sorry! :-)
+LeakSanitizer:DEADLYSIGNAL
+==318879==ERROR: LeakSanitizer: SEGV on unknown address 0x0000fbad240c (pc 0x7fb65ef10b52 bp 0x7ffd54356900 sp 0x7ffd54356870 T0)
+==318879==The signal is caused by a READ memory access.
+==318879==WARNING: failed to fork (errno 12)
+==318879==WARNING: failed to fork (errno 12)
+==318879==WARNING: failed to fork (errno 12)
+==318879==WARNING: failed to fork (errno 12)
+==318879==WARNING: failed to fork (errno 12)
+==318879==WARNING: Failed to use and restart external symbolizer!
+    #0 0x7fb65ef10b52  (/lib/x86_64-linux-gnu/libc.so.6+0x7fb52) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 0x559d53a18e58  (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x36e58) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+    #2 0x559d53a1a397  (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x38397) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+    #3 0x559d53a19587  (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x37587) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+    #4 0x559d53a191dd  (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x371dd) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+    #5 0x7fb65eebad8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #6 0x7fb65eebae3f  (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 0x559d539e7464  (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x5464) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV (/lib/x86_64-linux-gnu/libc.so.6+0x7fb52) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e) 
+==318879==ABORTING

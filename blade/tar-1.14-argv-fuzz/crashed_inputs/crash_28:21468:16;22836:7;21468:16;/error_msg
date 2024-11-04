@@ -1,0 +1,16 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.msan.out
+MemorySanitizer:DEADLYSIGNAL
+==3242567==ERROR: MemorySanitizer: SEGV on unknown address 0x000000000000 (pc 0x55cfdfd296a6 bp 0x7fff6e5abfd0 sp 0x7fff6e5abd50 T3242567)
+==3242567==The signal is caused by a READ memory access.
+==3242567==Hint: address points to the zero page.
+    #0 0x55cfdfd296a6 in decode_options /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21468:16
+    #1 0x55cfdfd288f0 in main /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #2 0x7f1400055d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7f1400055e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x55cfdfc88384 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.msan.out+0x1f384) (BuildId: 9e8daeb98ac2ea40d33b08f0e050048e3061ad7b)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21468:16 in decode_options
+==3242567==ABORTING
+./verify.sh: line 305: 3242566 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input17_fuzzed/input17_53

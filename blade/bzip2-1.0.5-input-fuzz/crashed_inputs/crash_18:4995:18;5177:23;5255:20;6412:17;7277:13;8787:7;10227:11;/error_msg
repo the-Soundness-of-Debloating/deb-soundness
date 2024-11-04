@@ -1,0 +1,21 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.ubsan.out -c
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==1531694==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x7fff06dcb89d (pc 0x5617fdc9fc8c bp 0x7fff062ff7f0 sp 0x7fff062ff5e0 T1531694)
+==1531694==The signal is caused by a READ memory access.
+    #0 0x5617fdc9fc8c in copy_input_until_stop /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:4995:18
+    #1 0x5617fdc97ad8 in handle_compress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:5177:23
+    #2 0x5617fdc97808 in BZ2_bzCompress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:5255:20
+    #3 0x5617fdc99ecf in BZ2_bzWrite /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6412:17
+    #4 0x5617fdca2b98 in compressStream /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7277:13
+    #5 0x5617fdc9be42 in compress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:8787:7
+    #6 0x5617fdc9b78d in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10227:11
+    #7 0x7fa77dfbed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7fa77dfbee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x5617fdc4e444 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.ubsan.out+0x21444) (BuildId: 6aff3525690429857be242ba8cf1ed88e0424611)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:4995:18 in copy_input_until_stop
+==1531694==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 170: 1531691 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.ubsan.out -c < /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_0 > sample1.rb2

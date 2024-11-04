@@ -1,0 +1,35 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.tsan.out -c
+ThreadSanitizer:DEADLYSIGNAL
+==2583672==ERROR: ThreadSanitizer: SEGV on unknown address 0x55d795a699d0 (pc 0x55d79372ed9a bp 0x7fff62f3e590 sp 0x7fff62f3e480 T2583672)
+==2583672==The signal is caused by a WRITE memory access.
+    #0 ct_tally /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5023:16 (reduced.tsan.out+0xd0d9a) (BuildId: 7292574c66acd2079fc59c6d8c8ceb29ee47cf18)
+    #1 deflate /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5749:25 (reduced.tsan.out+0xd1dc1) (BuildId: 7292574c66acd2079fc59c6d8c8ceb29ee47cf18)
+    #2 zip /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5988:7 (reduced.tsan.out+0xd26f6) (BuildId: 7292574c66acd2079fc59c6d8c8ceb29ee47cf18)
+    #3 treat_stdin /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22 (reduced.tsan.out+0xd2d41) (BuildId: 7292574c66acd2079fc59c6d8c8ceb29ee47cf18)
+    #4 main /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:10 (reduced.tsan.out+0xd2bd0) (BuildId: 7292574c66acd2079fc59c6d8c8ceb29ee47cf18)
+    #5 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #6 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 _start <null> (reduced.tsan.out+0x21344) (BuildId: 7292574c66acd2079fc59c6d8c8ceb29ee47cf18)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5023:16 in ct_tally
+==2583672==ABORTING
+./verify.sh: line 166: 2583671 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.tsan.out -c < /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_429 > sample1.gz
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.lsan.out -c
+LeakSanitizer:DEADLYSIGNAL
+==2753018==ERROR: LeakSanitizer: SEGV on unknown address 0x55b02af64560 (pc 0x55b029676be3 bp 0x7ffc6dcfadd0 sp 0x7ffc6dcfadd0 T0)
+==2753018==The signal is caused by a WRITE memory access.
+    #0 0x55b029676be3 in ct_tally /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5023:16
+    #1 0x55b0296773ae in deflate /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5749:25
+    #2 0x55b029677819 in zip /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5988:7
+    #3 0x55b029677b4a in treat_stdin /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #4 0x55b029677a8f in main /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:10
+    #5 0x7f98132a1d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7f98132a1e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x55b029647404 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.lsan.out+0x5404) (BuildId: 2b656776eacb9f40fdbd94f077a5acd936a37f4a)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5023:16 in ct_tally
+==2753018==ABORTING

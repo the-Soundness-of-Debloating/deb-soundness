@@ -1,0 +1,5 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/bins/reduced.asan.out xf /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file14_fuzzed/file14_65 -X /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file12_fuzzed/file12_65 -X /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file15_fuzzed/file15_65
+=================================================================
+==1326213==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200000007d at pc 0x55e2d39f68a9 bp 0x7ffc2ad7cbb0 sp 0x7ffc2ad7cba8
+READ of size 1 at 0x60200000007d thread T0

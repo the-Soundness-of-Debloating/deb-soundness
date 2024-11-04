@@ -1,0 +1,12 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.msan.out
+==3962082==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55a75eeb3966 in create_archive /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5868:15
+    #1 0x55a75eee73ba in main /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22893:7
+    #2 0x7fb9327fad8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7fb9327fae3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x55a75ee124c4 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.msan.out+0x204c4) (BuildId: 9cdc55de1f29f940791a439a528b08a2f31d5a89)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5868:15 in create_archive
+Exiting
+./verify.sh: line 305: 3962081 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_139

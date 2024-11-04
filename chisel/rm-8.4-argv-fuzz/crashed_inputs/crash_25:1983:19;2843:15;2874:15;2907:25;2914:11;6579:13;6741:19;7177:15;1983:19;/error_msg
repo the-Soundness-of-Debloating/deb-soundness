@@ -1,0 +1,84 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.lsan.out
+rm: invalid option -- 'P'
+rm: invalid option -- '\'
+rm: invalid option -- 'x'
+rm: invalid option -- '$'
+rm: invalid option -- 'g'
+rm: invalid option -- '$'
+rm: invalid option -- '%'
+rm: invalid option -- '`'
+rm: invalid option -- 'A'
+rm: invalid option -- '\'
+rm: invalid option -- 'n'
+rm: invalid option -- '\'
+rm: invalid option -- 'n'
+rm: invalid option -- 'H'
+rm: invalid option -- '&'
+rm: invalid option -- '0'
+rm: invalid option -- '$'
+rm: invalid option -- 'T'
+rm: invalid option -- '9'
+rm: invalid option -- '2'
+rm: invalid option -- '2'
+rm: invalid option -- '3'
+rm: invalid option -- '3'
+rm: invalid option -- '7'
+rm: invalid option -- '2'
+rm: invalid option -- '0'
+rm: invalid option -- '3'
+rm: invalid option -- '6'
+rm: invalid option -- '8'
+rm: invalid option -- '5'
+rm: invalid option -- '4'
+rm: invalid option -- '7'
+rm: invalid option -- '7'
+rm: invalid option -- '5'
+rm: invalid option -- '8'
+rm: invalid option -- '0'
+rm: invalid option -- '8'
+rm: invalid option -- 'a'
+rm: invalid option -- '\'
+rm: invalid option -- 'x'
+rm: invalid option -- '0'
+rm: invalid option -- 'a'
+rm: invalid option -- '$'
+rm: invalid option -- '!'
+rm: invalid option -- '!'
+rm: invalid option -- '"'
+rm: invalid option -- 'x'
+rm: invalid option -- 'c'
+rm: invalid option -- 'a'
+rm: invalid option -- 'l'
+rm: invalid option -- 'c'
+rm: invalid option -- '\'
+rm: invalid option -- 'x'
+rm: invalid option -- '2'
+rm: invalid option -- '1'
+rm: invalid option -- '4'
+rm: invalid option -- '7'
+rm: invalid option -- '4'
+rm: invalid option -- '8'
+rm: invalid option -- '3'
+rm: invalid option -- '6'
+rm: invalid option -- '4'
+rm: invalid option -- '9'
+LeakSanitizer:DEADLYSIGNAL
+==3805193==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x561cd3b87bae bp 0x7ffff4d3dc20 sp 0x7ffff4d3db50 T0)
+==3805193==The signal is caused by a READ memory access.
+==3805193==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x561cd3b87bae in quotearg_buffer_restyled /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1983:19
+    #1 0x561cd3b87334 in quotearg_n_options /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2843:15
+    #2 0x561cd3b8726b in quotearg_n_style /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2874:15
+    #3 0x561cd3b8736f in quote_n /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2907:25
+    #4 0x561cd3b87396 in quote /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2914:11
+    #5 0x561cd3b87792 in rm_fts /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6579:13
+    #6 0x561cd3b876e3 in rm /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6741:19
+    #7 0x561cd3b8797e in main /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7177:15
+    #8 0x7f4e2ac48d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #9 0x7f4e2ac48e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #10 0x561cd3b59444 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.lsan.out+0x5444) (BuildId: 92f93740e7f5efb6ba2f700f2a95feeb490ffe36)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1983:19 in quotearg_buffer_restyled
+==3805193==ABORTING

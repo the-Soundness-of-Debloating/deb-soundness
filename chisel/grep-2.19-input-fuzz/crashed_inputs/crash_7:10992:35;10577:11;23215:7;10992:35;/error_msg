@@ -1,0 +1,48 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/bins/reduced.asan.out -F 'randomtext*' /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2367824==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000010 (pc 0x56078912d887 bp 0x7ffc231e8cd0 sp 0x7ffc231e8a60 T0)
+==2367824==The signal is caused by a READ memory access.
+==2367824==Hint: address points to the zero page.
+    #0 0x56078912d887 in kwsincr /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:10992:35
+    #1 0x56078912d567 in Fcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:10577:11
+    #2 0x560789134b01 in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23215:7
+    #3 0x7f0d39061d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f0d39061e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x56078906c3f4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/bins/reduced.asan.out+0x213f4) (BuildId: 78e1310d75006ad1c6196217d513ee957981c36b)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:10992:35 in kwsincr
+==2367824==ABORTING
+./verify.sh: line 231: 2367822 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/bins/reduced.asan.out -F randomtext* /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/bins/reduced.msan.out -F 'randomtext*' /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0
+==4013410==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55d1f080ed5a in kwsincr /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:10992:35
+    #1 0x55d1f080e373 in Fcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:10577:11
+    #2 0x55d1f0820517 in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23215:7
+    #3 0x7f82ac068d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f82ac068e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55d1f0783384 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/bins/reduced.msan.out+0x1f384) (BuildId: 2b8ffc7aca014a3b3f26ce6e8e7f8c492f2bf92f)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:10992:35 in kwsincr
+Exiting
+./verify.sh: line 231: 4013409 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/bins/reduced.msan.out -F randomtext* /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/bins/reduced.tsan.out -F 'randomtext*' /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0
+ThreadSanitizer:DEADLYSIGNAL
+==3013514==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000010 (pc 0x55656d52bc7f bp 0x7ffd7eb80370 sp 0x7ffd7eb80120 T3013514)
+==3013514==The signal is caused by a READ memory access.
+==3013514==Hint: address points to the zero page.
+    #0 kwsincr /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:10992:35 (reduced.tsan.out+0xcec7f) (BuildId: 22f84a83884a58307cea23e56c8516507d6b77ca)
+    #1 Fcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:10577:11 (reduced.tsan.out+0xceaef) (BuildId: 22f84a83884a58307cea23e56c8516507d6b77ca)
+    #2 main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23215:7 (reduced.tsan.out+0xd3e88) (BuildId: 22f84a83884a58307cea23e56c8516507d6b77ca)
+    #3 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #4 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #5 _start <null> (reduced.tsan.out+0x21414) (BuildId: 22f84a83884a58307cea23e56c8516507d6b77ca)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:10992:35 in kwsincr
+==3013514==ABORTING
+./verify.sh: line 231: 3013513 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/bins/reduced.tsan.out -F randomtext* /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0

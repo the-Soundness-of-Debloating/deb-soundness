@@ -1,0 +1,13 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+date: unrecognized option '--rfc-0=date'
+date-8.21.c.reduced.c:4191:24: runtime error: index -93 out of bounds for type 'const yytype_int8[113]' (aka 'const signed char[113]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4191:24 in 
+date-8.21.c.reduced.c:3824:22: runtime error: negation of -9223372036854775808 cannot be represented in type 'long'; cast to an unsigned type to negate this value to itself
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:3824:22 in 
+date-8.21.c.reduced.c:5222:12: runtime error: load of value 48, which is not a valid value for type '_Bool'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:5222:12 in 
+date-8.21.c.reduced.c:5231:34: runtime error: signed integer overflow: -9223372036854775808 - 1900 cannot be represented in type 'long'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:5231:34 in 
+date-8.21.c.reduced.c:5237:16: runtime error: load of value 65, which is not a valid value for type '_Bool'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:5237:16 in 

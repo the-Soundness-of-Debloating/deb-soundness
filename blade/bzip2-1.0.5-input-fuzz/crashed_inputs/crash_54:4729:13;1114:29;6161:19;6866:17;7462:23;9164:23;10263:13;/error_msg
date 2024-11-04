@@ -1,0 +1,16 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.tsan.out -d
+==1995719==ERROR: ThreadSanitizer: requested allocation size 0xfffffffff1e12a00 exceeds maximum supported size of 0x10000000000
+    #0 __interceptor_malloc <null> (reduced.tsan.out+0x4c3c1) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #1 default_bzalloc /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:4729:13 (reduced.tsan.out+0xd508d) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #2 BZ2_decompress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:1114:29 (reduced.tsan.out+0xcd9f5) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #3 BZ2_bzDecompress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6161:19 (reduced.tsan.out+0xd558d) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #4 BZ2_bzRead /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6866:17 (reduced.tsan.out+0xd6405) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #5 uncompressStream /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7462:23 (reduced.tsan.out+0xd8da0) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #6 uncompress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9164:23 (reduced.tsan.out+0xd6ca2) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #7 main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10263:13 (reduced.tsan.out+0xd6976) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #8 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+==1995719==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: ThreadSanitizer: allocation-size-too-big (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.tsan.out+0x4c3c1) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be) in __interceptor_malloc
+./verify.sh: line 170: 1995718 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.tsan.out -d < /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_0 > sample1.tst

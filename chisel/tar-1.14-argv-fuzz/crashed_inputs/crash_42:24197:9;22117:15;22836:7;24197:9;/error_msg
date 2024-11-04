@@ -1,0 +1,13 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.msan.out
+==4103141==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55e2594459d1 in add_exclude_file /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:24197:9
+    #1 0x55e259443e8f in decode_options /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22117:15
+    #2 0x55e2594419a7 in main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #3 0x7effb4a24d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7effb4a24e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55e2593b1304 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.msan.out+0x1f304) (BuildId: 3a6679aa2c3216cadcf63cc92542bfdae8bf0293)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:24197:9 in add_exclude_file
+Exiting
+./verify.sh: line 302: 4103139 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input1_fuzzed/input1_492

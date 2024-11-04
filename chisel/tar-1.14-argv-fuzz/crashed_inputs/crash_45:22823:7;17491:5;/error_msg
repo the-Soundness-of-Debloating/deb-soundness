@@ -1,0 +1,25 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.tsan.out
+(null): invalid option -- '`'
+(null): invalid option -- 'a'
+(null): invalid option -- '`'
+(null): invalid option -- '\'
+(null): invalid option -- '$'
+(null): invalid option -- '&'
+(null): invalid option -- '$'
+(null): invalid option -- '!'
+(null): invalid option -- '!'
+(null): invalid option -- '\'
+ThreadSanitizer:DEADLYSIGNAL
+==1254326==ERROR: ThreadSanitizer: SEGV on unknown address (pc 0x7f225ccc477f bp 0x7f225cea9aa0 sp 0x7ffe6c26c138 T1254326)
+==1254326==The signal is caused by a READ memory access.
+==1254326==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 setlocale locale/setlocale.c:236:7 (libc.so.6+0x3677f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 setlocale <null> (reduced.tsan.out+0x68608) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+    #2 main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22823:7 (reduced.tsan.out+0xcfb69) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+    #3 <null> /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:17491:5 (reduced.tsan.out+0xcfa8f) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV locale/setlocale.c:236:7 in setlocale
+==1254326==ABORTING
+./verify.sh: line 302: 1254324 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_0

@@ -1,0 +1,21 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.msan.out xf /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/result/afl_result/reduced/result_0/msan/crashes/id:000032,sig:11,src:000097+000105,time:34078436,execs:639069,op:splice,rep:22
+/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.msan.out: This does not look like a tar archive
+/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.msan.out: Skipping to next header
+/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.msan.out: Archive contains obsolescent base-64 headers
+/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.msan.out: Archive base-256 value is out of off_t range
+==2898888==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55de359188d2 in from_header /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:13142:23
+    #1 0x55de35918e06 in mode_from_header /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:13215:13
+    #2 0x55de3590123f in decode_header /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12681:33
+    #3 0x55de358f9e26 in extract_archive /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:7992:7
+    #4 0x55de3590d3c5 in read_and /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12086:13
+    #5 0x55de35927a85 in main /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7
+    #6 0x7f2d3d50ed8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #7 0x7f2d3d50ee3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #8 0x55de358504c4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.msan.out+0x204c4) (BuildId: eb898b9f902a436dd12025919a6006a231e0006d)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:13142:23 in from_header
+Exiting
+timeout: the monitored command dumped core
+./verify.sh: line 360: 2898887 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.msan.out xf /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/result/afl_result/reduced/result_0/msan/crashes/id:000032*

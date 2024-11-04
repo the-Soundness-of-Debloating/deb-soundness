@@ -1,0 +1,6 @@
+-u train_input/file/input
+-u train_input/file/input
+-u train_input/file/input
+-u train_input/file/input
+-u train_input/-u train_input/file/input
+-u train_input/file/input

@@ -1,0 +1,32 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+argv-fuzz-inl.h:60:5: runtime error: index 1000 out of bounds for type 'char *[1000]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior argv-fuzz-inl.h:60:5 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3366063==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x5587ac054000 (pc 0x5587ab69d010 bp 0x7ffde321d0f0 sp 0x7ffde321d010 T3366063)
+==3366063==The signal is caused by a WRITE memory access.
+    #0 0x5587ab69d010 in afl_init_argv /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./argv-fuzz-inl.h:60:13
+    #1 0x5587ab69a8b1 in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:22428:3
+    #2 0x7f8777e78d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7f8777e78e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x5587ab62c744 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x42744) (BuildId: 134b3824983eb10c2b56ba12106407af5954fc5d)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./argv-fuzz-inl.h:60:13 in afl_init_argv
+==3366063==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 3366058 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==1740258==ERROR: LeakSanitizer: SEGV on unknown address 0x55b79ada9000 (pc 0x55b79a428991 bp 0x7ffcdec524c0 sp 0x7ffcdec524a0 T0)
+==1740258==The signal is caused by a WRITE memory access.
+    #0 0x55b79a428991 in afl_init_argv /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./argv-fuzz-inl.h:60:13
+    #1 0x55b79a4273f1 in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:22428:3
+    #2 0x7fef69305d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7fef69305e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x55b79a3ed704 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.lsan.out+0x7704) (BuildId: 0f89a4f556c0dbb7bc1e8b44902f11ad050ab725)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./argv-fuzz-inl.h:60:13 in afl_init_argv
+==1740258==ABORTING

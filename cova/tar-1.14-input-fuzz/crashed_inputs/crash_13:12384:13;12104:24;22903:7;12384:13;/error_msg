@@ -1,0 +1,14 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.msan.out xf /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/result/afl_result/reduced/result_1/msan/crashes/id:000008,sig:06,src:000001,time:229617,execs:6006,op:havoc,rep:2 bar
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.msan.out: Skipping to next header
+==1853722==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55ebe280e750 in read_header /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12384:13
+    #1 0x55ebe2828c8a in read_and /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12104:24
+    #2 0x55ebe283eccc in main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7
+    #3 0x7f653f9d9d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f653f9d9e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55ebe2758544 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.msan.out+0x20544) (BuildId: 7dd20a54459ea83b45ce3654eb159a31bca1a93b)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12384:13 in read_header
+Exiting
+./verify.sh: line 360: 1853721 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.msan.out xf /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/result/afl_result/reduced/result_1/msan/crashes/id:000008* bar

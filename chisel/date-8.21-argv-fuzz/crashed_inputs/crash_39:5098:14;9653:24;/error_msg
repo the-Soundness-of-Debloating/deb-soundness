@@ -1,0 +1,19 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+date-8.21.c.reduced.c:5094:18: runtime error: applying non-zero offset 4 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:5094:18 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==738406==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000004 (pc 0x556daf32a0d9 bp 0x7ffd4a646080 sp 0x7ffd4a645650 T738406)
+==738406==The signal is caused by a READ memory access.
+==738406==Hint: address points to the zero page.
+    #0 0x556daf32a0d9 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5098:14
+    #1 0x556daf32ed37 in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #2 0x7f0a014eed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7f0a014eee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x556daf2f84d4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.ubsan.out+0xe4d4) (BuildId: a503b23e0911d3d9a3bc41498abe22d2bae3c8f6)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5098:14 in parse_datetime
+==738406==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 738405 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

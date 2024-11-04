@@ -1,0 +1,39 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/bins/reduced.tsan.out xf /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/input/radamsa_fuzzed/file14_fuzzed/file14_9 -X /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/input/radamsa_fuzzed/file12_fuzzed/file12_9 -X /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/input/radamsa_fuzzed/file15_fuzzed/file15_9
+ThreadSanitizer:DEADLYSIGNAL
+==2219979==ERROR: ThreadSanitizer: SEGV on unknown address (pc 0x5643083fc400 bp 0x000000000000 sp 0x7ffd6e9955b0 T2219979)
+==2219979==The signal is caused by a READ memory access.
+==2219979==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 strcasecmp <null> (reduced.tsan.out+0x57400) (BuildId: 2b4368bd0b5cfabcc8e60874b60153ba050d4901)
+    #1 fnmatch_no_wildcards /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24022:17 (reduced.tsan.out+0xd04bd) (BuildId: 2b4368bd0b5cfabcc8e60874b60153ba050d4901)
+    #2 excluded_filename /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24095:21 (reduced.tsan.out+0xcf9ed) (BuildId: 2b4368bd0b5cfabcc8e60874b60153ba050d4901)
+    #3 excluded_name /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:17245:13 (reduced.tsan.out+0xcec68) (BuildId: 2b4368bd0b5cfabcc8e60874b60153ba050d4901)
+    #4 read_and /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12044:19 (reduced.tsan.out+0xce8b9) (BuildId: 2b4368bd0b5cfabcc8e60874b60153ba050d4901)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7 (reduced.tsan.out+0xcfbd0) (BuildId: 2b4368bd0b5cfabcc8e60874b60153ba050d4901)
+    #6 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 _start <null> (reduced.tsan.out+0x21364) (BuildId: 2b4368bd0b5cfabcc8e60874b60153ba050d4901)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/bins/reduced.tsan.out+0x57400) (BuildId: 2b4368bd0b5cfabcc8e60874b60153ba050d4901) in strcasecmp
+==2219979==ABORTING
+./verify.sh: line 357: 2219978 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/bins/reduced.tsan.out xf /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/input/radamsa_fuzzed/file14_fuzzed/file14_9 -X /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/input/radamsa_fuzzed/file12_fuzzed/file12_9 -X /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/input/radamsa_fuzzed/file15_fuzzed/file15_9
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/bins/reduced.lsan.out xf /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/input/radamsa_fuzzed/file14_fuzzed/file14_104 -X /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/input/radamsa_fuzzed/file12_fuzzed/file12_104 -X /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/input/radamsa_fuzzed/file15_fuzzed/file15_104
+LeakSanitizer:DEADLYSIGNAL
+==2895664==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x7fdff9bdd189 bp 0x7ffc456db130 sp 0x7ffc456db0e8 T0)
+==2895664==The signal is caused by a READ memory access.
+==2895664==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x7fdff9bdd189  string/../sysdeps/x86_64/multiarch/strcmp-sse42.S:198
+    #1 0x5595b96f68de in fnmatch_no_wildcards /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24022:17
+    #2 0x5595b96f61d9 in excluded_filename /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24095:21
+    #3 0x5595b96f599b in excluded_name /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:17245:13
+    #4 0x5595b96f5732 in read_and /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12044:19
+    #5 0x5595b96f6328 in main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7
+    #6 0x7fdff9a6cd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7fdff9a6ce3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x5595b96c74c4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/bins/reduced.lsan.out+0x74c4) (BuildId: 5313ef6d5e1b6e1ce7c5a93dd40b760d7b6f36bd)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strcmp-sse42.S:198 
+==2895664==ABORTING

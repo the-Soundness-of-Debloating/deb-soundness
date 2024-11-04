@@ -1,0 +1,23 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/bins/reduced.ubsan.out
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==51102==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000256 (pc 0x5628b16554be bp 0x7ffdc8d2a140 sp 0x7ffdc8d29900 T51102)
+==51102==The signal is caused by a WRITE memory access.
+==51102==Hint: address points to the zero page.
+    #0 0x5628b16554be in quotearg_buffer_restyled /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1944:29
+    #1 0x5628b164d946 in quotearg_n_options /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2857:7
+    #2 0x5628b164cc21 in quotearg_n_style /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2875:15
+    #3 0x5628b164da2f in quote_n /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2908:25
+    #4 0x5628b164da56 in quote /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2915:11
+    #5 0x5628b1653d11 in rm_fts /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6580:13
+    #6 0x5628b1653925 in rm /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6742:19
+    #7 0x5628b1654656 in main /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7178:15
+    #8 0x7f6dfea3cd8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #9 0x7f6dfea3ce3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #10 0x5628b16225e4 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/bins/reduced.ubsan.out+0xe5e4) (BuildId: 42cf9738546edaa705ec55810d8db2c8fa82b1d1)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1944:29 in quotearg_buffer_restyled
+==51102==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 189: 51101 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_138

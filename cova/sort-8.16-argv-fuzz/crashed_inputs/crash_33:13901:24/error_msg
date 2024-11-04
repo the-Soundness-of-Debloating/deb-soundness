@@ -1,0 +1,18 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.ubsan.out
+sort-8.16.c.reduced.c:13901:24: runtime error: index 140091357082336 out of bounds for type 'const char[3]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior sort-8.16.c.reduced.c:13901:24 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==853707==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address (pc 0x55b5de2d5bfd bp 0x7ffc2f09c1a0 sp 0x7ffc2f09b270 T853707)
+==853707==The signal is caused by a READ memory access.
+==853707==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x55b5de2d5bfd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13901:19
+    #1 0x7f698f5d1d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7f698f5d1e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x55b5de2a7754 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.ubsan.out+0x13754) (BuildId: 4293ab7b390b28bf8e6706fbf2d222beabc4e9f0)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13901:19 in main
+==853707==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 853705 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

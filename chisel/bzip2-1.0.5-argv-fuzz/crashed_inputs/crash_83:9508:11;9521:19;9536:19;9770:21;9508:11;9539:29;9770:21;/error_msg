@@ -1,0 +1,22 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out
+
+=================================================================
+==3582761==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0x556aad4ad622 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x30622) (BuildId: 5b393e71629eb549377d981fca0dbde0bfc787e4)
+    #1 0x556aad4b6653 in myMalloc /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9508:11
+    #2 0x556aad4b6631 in mkCell /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9521:19
+    #3 0x556aad4b58d2 in snocString /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9536:19
+    #4 0x556aad4b554d in main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9770:21
+    #5 0x7f664ae26d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+Indirect leak of 22 byte(s) in 1 object(s) allocated from:
+    #0 0x556aad4ad622 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x30622) (BuildId: 5b393e71629eb549377d981fca0dbde0bfc787e4)
+    #1 0x556aad4b6653 in myMalloc /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9508:11
+    #2 0x556aad4b58fa in snocString /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9539:29
+    #3 0x556aad4b554d in main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9770:21
+    #4 0x7f664ae26d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: LeakSanitizer: 38 byte(s) leaked in 2 allocation(s).

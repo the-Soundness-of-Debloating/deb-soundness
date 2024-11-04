@@ -1,0 +1,5 @@
+-c train_input/trainc/sample1.ref
+-c train_input/trainc/sut/trainc/sample1.ref
+-c train_input/trainc/sample.1468ef1r
+-c train_input/trainc/sample1.ref
+-c train_input/trainc/sample0.ref

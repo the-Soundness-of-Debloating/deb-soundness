@@ -1,0 +1,29 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==231340==ERROR: ThreadSanitizer: SEGV on unknown address 0x55d311247000 (pc 0x55d30fe77d65 bp 0x7ffe28ffe9e0 sp 0x7ffe28ffe930 T231340)
+==231340==The signal is caused by a WRITE memory access.
+    #0 afl_init_argv /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./argv-fuzz-inl.h:60:13 (reduced.tsan.out+0xe3d65) (BuildId: dbc034fc9b0bf005b92bec716e9488c3720a8573)
+    #1 main /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22800:3 (reduced.tsan.out+0xe3711) (BuildId: dbc034fc9b0bf005b92bec716e9488c3720a8573)
+    #2 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #3 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #4 _start <null> (reduced.tsan.out+0x224e4) (BuildId: dbc034fc9b0bf005b92bec716e9488c3720a8573)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./argv-fuzz-inl.h:60:13 in afl_init_argv
+==231340==ABORTING
+./verify.sh: line 305: 231339 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_184
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==533963==ERROR: LeakSanitizer: SEGV on unknown address 0x55c1bfd3b000 (pc 0x55c1bf3ba521 bp 0x7ffd312c1f90 sp 0x7ffd312c1f70 T0)
+==533963==The signal is caused by a WRITE memory access.
+    #0 0x55c1bf3ba521 in afl_init_argv /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./argv-fuzz-inl.h:60:13
+    #1 0x55c1bf3ba0fe in main /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22800:3
+    #2 0x7fc998e03d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7fc998e03e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x55c1bf37f7c4 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.lsan.out+0xb7c4) (BuildId: a28fd898f32aff23f5d0fc5d08651bf1a7b5f9a5)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./argv-fuzz-inl.h:60:13 in afl_init_argv
+==533963==ABORTING

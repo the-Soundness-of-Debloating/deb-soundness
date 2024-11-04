@@ -1,0 +1,10 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/bins/reduced.lsan.out -c
+LeakSanitizer:DEADLYSIGNAL
+==3784013==ERROR: LeakSanitizer: stack-overflow on address 0x7ffd5c19f7f0 (pc 0x564498229742 bp 0x7ffd5c198e20 sp 0x7ffd5c198dd0 T0)
+    #0 0x564498229742 in gen_codes /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4563:17
+    #1 0x564498239e31 in __GNU_EH_FRAME_HDR (/workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/bins/reduced.lsan.out+0x46e31) (BuildId: 22808b09cf13561267d0c87855c29654da1752f5)
+    #2 0x5644982298d6 in flush_block /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4948:7
+
+SUMMARY: LeakSanitizer: stack-overflow /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4563:17 in gen_codes
+==3784013==ABORTING

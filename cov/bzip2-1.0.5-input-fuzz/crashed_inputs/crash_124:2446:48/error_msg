@@ -1,0 +1,20 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/bzip2-1.0.5-input-fuzz/bins/reduced.ubsan.out -d
+bzip2-1.0.5.c.reduced.c:1829:17: runtime error: index 6 out of bounds for type 'UChar[6]' (aka 'unsigned char[6]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1829:17 in 
+bzip2-1.0.5.c.reduced.c:1836:15: runtime error: index 6 out of bounds for type 'UChar[6]' (aka 'unsigned char[6]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1836:15 in 
+bzip2-1.0.5.c.reduced.c:1836:29: runtime error: index 7 out of bounds for type 'UChar[6]' (aka 'unsigned char[6]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1836:29 in 
+bzip2-1.0.5.c.reduced.c:2432:27: runtime error: index 112 out of bounds for type 'Int32[6]' (aka 'int[6]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2432:27 in 
+bzip2-1.0.5.c.reduced.c:2433:27: runtime error: index 112 out of bounds for type 'Int32[6][258]' (aka 'int[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2433:27 in 
+bzip2-1.0.5.c.reduced.c:2434:26: runtime error: index 112 out of bounds for type 'Int32[6][258]' (aka 'int[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2434:26 in 
+bzip2-1.0.5.c.reduced.c:2435:26: runtime error: index 112 out of bounds for type 'Int32[6][258]' (aka 'int[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2435:26 in 
+bzip2-1.0.5.c.reduced.c:2445:41: runtime error: shift exponent 2104949455 is too large for 32-bit type 'UInt32' (aka 'unsigned int')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2445:41 in 
+bzip2-1.0.5.c.reduced.c:2446:48: runtime error: shift exponent -2104949449 is negative
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2446:48 in 

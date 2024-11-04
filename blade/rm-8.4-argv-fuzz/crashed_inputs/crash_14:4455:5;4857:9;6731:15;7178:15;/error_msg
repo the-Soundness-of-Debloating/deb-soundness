@@ -1,0 +1,36 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2561940==ERROR: ThreadSanitizer: SEGV on unknown address 0x7b0400010000 (pc 0x7f40ee5abaca bp 0x7ffe6e43bb20 sp 0x7ffe6e43ba78 T2561940)
+==2561940==The signal is caused by a WRITE memory access.
+    #0 <null> string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:708 (libc.so.6+0x1a0aca) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 __interceptor_memmove <null> (reduced.tsan.out+0x57b8c) (BuildId: 410df939ac3b1b651be34044dbc55d3b9fa31a69)
+    #2 fts_load /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:4455:5 (reduced.tsan.out+0xcd5ce) (BuildId: 410df939ac3b1b651be34044dbc55d3b9fa31a69)
+    #3 fts_read /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:4857:9 (reduced.tsan.out+0xcd480) (BuildId: 410df939ac3b1b651be34044dbc55d3b9fa31a69)
+    #4 rm /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6731:15 (reduced.tsan.out+0xcd6d4) (BuildId: 410df939ac3b1b651be34044dbc55d3b9fa31a69)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7178:15 (reduced.tsan.out+0xcda51) (BuildId: 410df939ac3b1b651be34044dbc55d3b9fa31a69)
+    #6 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 _start <null> (reduced.tsan.out+0x20384) (BuildId: 410df939ac3b1b651be34044dbc55d3b9fa31a69)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:708 
+==2561940==ABORTING
+./verify.sh: line 189: 2561939 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_383
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==2854777==ERROR: LeakSanitizer: SEGV on unknown address 0x601000010000 (pc 0x7f32c4381aca bp 0x7ffeaa89a980 sp 0x7ffeaa89a948 T0)
+==2854777==The signal is caused by a WRITE memory access.
+    #0 0x7f32c4381aca  string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:708
+    #1 0x5572969654a3 in fts_load /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:4455:5
+    #2 0x5572969653fd in fts_read /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:4857:9
+    #3 0x55729696554b in rm /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6731:15
+    #4 0x5572969657bc in main /workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7178:15
+    #5 0x7f32c420ad8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7f32c420ae3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x557296937444 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/rm-8.4-argv-fuzz/bins/reduced.lsan.out+0x5444) (BuildId: 9b5286b21edd29f65c65a4bd05b43da362e06956)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:708 
+==2854777==ABORTING

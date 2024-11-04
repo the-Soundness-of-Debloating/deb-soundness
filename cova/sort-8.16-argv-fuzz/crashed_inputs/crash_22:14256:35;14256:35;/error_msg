@@ -1,0 +1,86 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.asan.out
+=================================================================
+==801386==ERROR: AddressSanitizer: global-buffer-overflow on address 0x5578fa2e15a0 at pc 0x5578fa2c4811 bp 0x7ffef2f44970 sp 0x7ffef2f44968
+WRITE of size 8 at 0x5578fa2e15a0 thread T0
+    #0 0x5578fa2c4810 in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14256:35
+    #1 0x7fdb57e9ed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7fdb57e9ee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x5578fa1fd4f4 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.asan.out+0x224f4) (BuildId: 53a6c196c7922a18f8a6d64b7e2b1d2990d51453)
+
+0x5578fa2e15a0 is located 32 bytes to the left of global variable '.str.59' defined in '/workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14233' (0x5578fa2e15c0) of size 38
+  '.str.59' is ascii string 'extra operand %s not allowed with -%c'
+0x5578fa2e15a5 is located 0 bytes to the right of global variable '.str.58' defined in '/workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14214' (0x5578fa2e15a0) of size 5
+  '.str.58' is ascii string '/tmp'
+SUMMARY: AddressSanitizer: global-buffer-overflow /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14256:35 in main
+Shadow bytes around the buggy address:
+  0x0aaf9f454260: f9 f9 f9 f9 04 f9 f9 f9 02 f9 f9 f9 02 f9 f9 f9
+  0x0aaf9f454270: 00 00 00 03 f9 f9 f9 f9 00 00 00 07 f9 f9 f9 f9
+  0x0aaf9f454280: 00 00 00 00 00 00 00 07 f9 f9 f9 f9 00 00 00 00
+  0x0aaf9f454290: 06 f9 f9 f9 f9 f9 f9 f9 00 00 01 f9 f9 f9 f9 f9
+  0x0aaf9f4542a0: 00 00 07 f9 f9 f9 f9 f9 00 00 00 05 f9 f9 f9 f9
+=>0x0aaf9f4542b0: 07 f9 f9 f9[05]f9 f9 f9 00 00 00 00 06 f9 f9 f9
+  0x0aaf9f4542c0: f9 f9 f9 f9 00 05 f9 f9 04 f9 f9 f9 04 f9 f9 f9
+  0x0aaf9f4542d0: 04 f9 f9 f9 04 f9 f9 f9 04 f9 f9 f9 04 f9 f9 f9
+  0x0aaf9f4542e0: 04 f9 f9 f9 04 f9 f9 f9 04 f9 f9 f9 04 f9 f9 f9
+  0x0aaf9f4542f0: 04 f9 f9 f9 04 f9 f9 f9 00 00 06 f9 f9 f9 f9 f9
+  0x0aaf9f454300: 06 f9 f9 f9 00 00 01 f9 f9 f9 f9 f9 06 f9 f9 f9
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==801386==ABORTING
+./verify.sh: line 110: 801383 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.msan.out
+==887734==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55ceac459caa in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14256:35
+    #1 0x7fef2435ad8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7fef2435ae3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x55ceac3bf464 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.msan.out+0x1f464) (BuildId: ca54af32621533d16211c91b5726392b6bfa2b5a)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14256:35 in main
+Exiting
+./verify.sh: line 110: 887733 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==953518==ERROR: ThreadSanitizer: SEGV on unknown address 0x56285ede5e2f (pc 0x56285edd0abc bp 0x7ffd8877b500 sp 0x7ffd8877aba0 T953518)
+==953518==The signal is caused by a WRITE memory access.
+    #0 main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14256:35 (reduced.tsan.out+0xd2abc) (BuildId: 1f2b008a454c1a3d07abf2912e550aa8780b481c)
+    #1 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #2 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #3 _start <null> (reduced.tsan.out+0x214b4) (BuildId: 1f2b008a454c1a3d07abf2912e550aa8780b481c)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14256:35 in main
+==953518==ABORTING
+./verify.sh: line 110: 953516 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==1003390==ERROR: LeakSanitizer: SEGV on unknown address 0x56299bec141a (pc 0x56299beb37fd bp 0x7ffc92d7e790 sp 0x7ffc92d7e290 T0)
+==1003390==The signal is caused by a WRITE memory access.
+    #0 0x56299beb37fd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14256:35
+    #1 0x7f1d4189bd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7f1d4189be3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x56299be82704 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.lsan.out+0x7704) (BuildId: 8659d428bef98df5f75e56bfaedbd1d6f1fff963)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14256:35 in main
+==1003390==ABORTING

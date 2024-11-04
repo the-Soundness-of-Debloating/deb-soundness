@@ -1,0 +1,44 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.ubsan.out
+bzip2: file name
+`-train_input/traint/foo-t'
+is suspiciously (more than 1024 chars) long.
+Try using a reasonable file name instead.  Sorry! :-)
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==2108325==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000558a66c48 (pc 0x7f6fe88ceb52 bp 0x7ffeaf554440 sp 0x7ffeaf554270 T2108325)
+==2108325==The signal is caused by a READ memory access.
+    #0 0x7f6fe88ceb52 in _IO_fread libio/iofread.c:37:3
+    #1 0x558a64ed89ce in BZ2_bzRead /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:6848:26
+    #2 0x558a64ee14f7 in testStream /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:7738:23
+    #3 0x558a64eda647 in testf /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9405:15
+    #4 0x558a64ed9b57 in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:10329:17
+    #5 0x7f6fe8878d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7f6fe8878e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x558a64e8c464 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.ubsan.out+0x21464) (BuildId: f62e3d2225d786db8b19860ba9c0ce1b1ca1f87e)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV libio/iofread.c:37:3 in _IO_fread
+==2108325==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 174: 2108322 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/input/radamsa_fuzzed/input2_fuzzed/input2_9
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out
+bzip2: file name
+`-train_input/traint/foo-t'
+is suspiciously (more than 1024 chars) long.
+Try using a reasonable file name instead.  Sorry! :-)
+LeakSanitizer:DEADLYSIGNAL
+==298701==ERROR: LeakSanitizer: SEGV on unknown address 0x0000fbad240c (pc 0x7f92b9db2b52 bp 0x7ffd1a7aebc0 sp 0x7ffd1a7aeb30 T0)
+==298701==The signal is caused by a READ memory access.
+    #0 0x7f92b9db2b52 in _IO_fread libio/iofread.c:37:3
+    #1 0x55ad92108e58 in BZ2_bzRead /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:6848:26
+    #2 0x55ad9210a397 in testStream /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:7738:23
+    #3 0x55ad92109587 in testf /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9405:15
+    #4 0x55ad921091dd in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:10329:17
+    #5 0x7f92b9d5cd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7f92b9d5ce3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x55ad920d7464 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x5464) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV libio/iofread.c:37:3 in _IO_fread
+==298701==ABORTING

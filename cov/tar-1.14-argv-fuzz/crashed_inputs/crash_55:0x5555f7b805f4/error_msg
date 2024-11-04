@@ -1,0 +1,7 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.msan.out
+/workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.msan.out: Cannot dup: Bad file descriptor
+MemorySanitizer:DEADLYSIGNAL
+==2417628==ERROR: MemorySanitizer: SEGV on unknown address 0x000000000000 (pc 0x5555f7b805f4 bp 0x7fff68299298 sp 0x7fff68299248 T2417628)
+==2417628==The signal is caused by a READ memory access.
+==2417628==Hint: address points to the zero page.

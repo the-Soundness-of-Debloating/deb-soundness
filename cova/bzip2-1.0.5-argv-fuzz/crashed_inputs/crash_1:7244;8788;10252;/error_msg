@@ -1,0 +1,27 @@
+nosan:
+GNU gdb (Ubuntu 12.1-0ubuntu1~22.04) 12.1
+Copyright (C) 2022 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from /workspace/fuzzing-deb-with-sanitizers/cova/bzip2-1.0.5-argv-fuzz/bins/reduced.nosan.out...
+Starting program: /workspace/fuzzing-deb-with-sanitizers/cova/bzip2-1.0.5-argv-fuzz/bins/reduced.nosan.out < /workspace/fuzzing-deb-with-sanitizers/cova/bzip2-1.0.5-argv-fuzz/input/radamsa_fuzzed/input1_fuzzed/input1_5
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGSEGV, Segmentation fault.
+_IO_ferror (fp=0x0) at ./libio/ferror.c:35
+#0  _IO_ferror (fp=0x0) at ./libio/ferror.c:35
+#1  0x000055b0c7c18435 in compressStream (stream=0x55b0c8ba1330, zStream=0x0) at ./bzip2-1.0.5.c.reduced.c:7244
+#2  0x000055b0c7c161da in compress (name=0x55b0c8ba1300 "train_input/traink/foo") at ./bzip2-1.0.5.c.reduced.c:8788
+#3  0x000055b0c7c1576d in main (argc=3, argv=0x55b0c7c38500 <afl_init_argv[ret]>) at ./bzip2-1.0.5.c.reduced.c:10252

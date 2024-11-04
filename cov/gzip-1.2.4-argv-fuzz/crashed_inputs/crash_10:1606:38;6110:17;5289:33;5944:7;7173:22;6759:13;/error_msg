@@ -1,0 +1,20 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==1113867==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x557eb8b45000 (pc 0x557eb8155adc bp 0x7ffd52e38b50 sp 0x7ffd52e38ae0 T1113867)
+==1113867==The signal is caused by a READ memory access.
+    #0 0x557eb8155adc in updcrc /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:1606:38
+    #1 0x557eb815dc5a in file_read /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6110:17
+    #2 0x557eb8166cdc in lm_init /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:5289:33
+    #3 0x557eb816a86b in zip /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:5944:7
+    #4 0x557eb816c8fc in treat_file /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:7173:22
+    #5 0x557eb816bf8b in main /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6759:13
+    #6 0x7f1ea61bed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f1ea61bee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x557eb812d524 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out+0x17524) (BuildId: 4611bc955f7c177d70622a3b4fafed81f870d4ab)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:1606:38 in updcrc
+==1113867==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 171: 1113865 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_11

@@ -1,0 +1,22 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.ubsan.out
+sort-8.16.c.reduced.c:14256:20: runtime error: applying zero offset to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior sort-8.16.c.reduced.c:14256:20 in 
+sort-8.16.c.reduced.c:14256:30: runtime error: member access within null pointer of type 'struct sortfile'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior sort-8.16.c.reduced.c:14256:30 in 
+sort-8.16.c.reduced.c:14256:30: runtime error: store to null pointer of type 'const char *'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior sort-8.16.c.reduced.c:14256:30 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==847648==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x55bb9ed19d65 bp 0x7ffd9c2fbbc0 sp 0x7ffd9c2fac90 T847648)
+==847648==The signal is caused by a WRITE memory access.
+==847648==Hint: address points to the zero page.
+    #0 0x55bb9ed19d65 in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14256:35
+    #1 0x7f83b4d6ad8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7f83b4d6ae3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x55bb9ece8754 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.ubsan.out+0x13754) (BuildId: 4293ab7b390b28bf8e6706fbf2d222beabc4e9f0)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14256:35 in main
+==847648==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 847647 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

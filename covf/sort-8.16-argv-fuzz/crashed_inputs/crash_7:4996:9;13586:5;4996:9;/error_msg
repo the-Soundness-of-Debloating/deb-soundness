@@ -1,0 +1,12 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-argv-fuzz/bins/reduced.msan.out
+==3692726==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x56161e9f0f29 in set_program_name /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:4996:9
+    #1 0x56161e9f5332 in main /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13586:5
+    #2 0x7fc422d90d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7fc422d90e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x56161e968414 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-argv-fuzz/bins/reduced.msan.out+0x1f414) (BuildId: 530461983ba20c95c7a34d977a55b6afd97739ca)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:4996:9 in set_program_name
+Exiting
+./verify.sh: line 110: 3692720 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

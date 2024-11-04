@@ -1,0 +1,18 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/bins/reduced.asan.out -F 'randomtext*' /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==652351==ERROR: AddressSanitizer: SEGV on unknown address (pc 0x55f43969949e bp 0x7ffc6b9c4c90 sp 0x7ffc6b9c4660 T0)
+==652351==The signal is caused by a READ memory access.
+==652351==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x55f43969949e in kwsincr /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:10946:22
+    #1 0x55f439698bde in Fcompile /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:10577:11
+    #2 0x55f4396a247a in main /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23215:7
+    #3 0x7f26f4525d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f26f4525e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55f4395b6554 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/bins/reduced.asan.out+0x23554) (BuildId: 51bb3da64043b805d30be6f65468ee2969c33c5a)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:10946:22 in kwsincr
+==652351==ABORTING
+./verify.sh: line 233: 652349 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/bins/reduced.asan.out -F randomtext* /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0

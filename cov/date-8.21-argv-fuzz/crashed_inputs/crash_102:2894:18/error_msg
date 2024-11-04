@@ -1,0 +1,26 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+date-8.21.c.reduced.c:2894:18: runtime error: signed integer overflow: 8198552921648689570 + 8198552921648689608 cannot be represented in type 'long'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:2894:18 in 
+date-8.21.c.reduced.c:4656:48: runtime error: null pointer passed as argument 2, which is declared to never be null
+date-8.21.c.reduced.c:787:20: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4656:48 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3302118==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7f41e2540962 bp 0x7ffffd181720 sp 0x7ffffd1814d8 T3302118)
+==3302118==The signal is caused by a READ memory access.
+==3302118==Hint: address points to the zero page.
+    #0 0x7f41e2540962  string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:116
+    #1 0x560df34e7750 in lookup_word /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4656:17
+    #2 0x560df34d9afb in yylex /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4922:14
+    #3 0x560df34d09fa in yyparse /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3424:16
+    #4 0x560df34de035 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15
+    #5 0x560df34e5212 in main /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #6 0x7f41e23d1d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f41e23d1e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x560df34a75e4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.ubsan.out+0x145e4) (BuildId: b79d2b1295781bdc1a54b51e0f481a8d966b40ec)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:116 
+==3302118==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 3302117 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

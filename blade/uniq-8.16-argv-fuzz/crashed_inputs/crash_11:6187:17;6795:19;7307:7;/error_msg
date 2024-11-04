@@ -1,0 +1,18 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/bins/reduced.msan.out
+MemorySanitizer:DEADLYSIGNAL
+==8290==ERROR: MemorySanitizer: SEGV on unknown address 0x000000010000 (pc 0x558e8cb3ec90 bp 0x7ffe53d47e70 sp 0x7ffe53d47e38 T8290)
+==8290==The signal is caused by a READ memory access.
+    #0 0x558e8cb3ec90 in __sanitizer::internal_strlen(char const*) (/workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/bins/reduced.msan.out+0x26c90) (BuildId: fefc32f8b4153aed29e6994de551172efb2d92a4)
+    #1 0x558e8cb8e777 in freopen (/workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/bins/reduced.msan.out+0x76777) (BuildId: fefc32f8b4153aed29e6994de551172efb2d92a4)
+    #2 0x558e8cbbe0e1 in freopen_safer /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6187:17
+    #3 0x558e8cbbf6bf in check_file /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6795:19
+    #4 0x558e8cbbeb0a in main /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7307:7
+    #5 0x7fc48c0b6d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7fc48c0b6e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x558e8cb362d4 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/bins/reduced.msan.out+0x1e2d4) (BuildId: fefc32f8b4153aed29e6994de551172efb2d92a4)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/bins/reduced.msan.out+0x26c90) (BuildId: fefc32f8b4153aed29e6994de551172efb2d92a4) in __sanitizer::internal_strlen(char const*)
+==8290==ABORTING
+./verify.sh: line 110:  8288 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

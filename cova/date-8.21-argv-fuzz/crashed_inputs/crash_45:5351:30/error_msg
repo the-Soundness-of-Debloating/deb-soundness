@@ -1,0 +1,23 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+date-8.21.c.reduced.c:5351:30: runtime error: signed integer overflow: -666666666666666671 * 60 cannot be represented in type 'long'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:5351:30 in 
+date-8.21.c.reduced.c:6151:23: runtime error: member access within null pointer of type 'const struct tm'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:6151:23 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3281005==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000008 (pc 0x561b7003eca1 bp 0x7ffcea1506d0 sp 0x7ffcea14f3a0 T3281005)
+==3281005==The signal is caused by a READ memory access.
+==3281005==Hint: address points to the zero page.
+    #0 0x561b7003eca1 in strftime_case____0 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:6151:23
+    #1 0x561b7003ebd5 in fprintftime /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7807:11
+    #2 0x561b70047bda in show_date /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9700:5
+    #3 0x561b7004735a in main /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9671:18
+    #4 0x7f2d67d04d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f2d67d04e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x561b6fffb6b4 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.ubsan.out+0x1c6b4) (BuildId: 13a0090eed4fa0e13247db350744757fbb99bf0c)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:6151:23 in strftime_case____0
+==3281005==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 3281004 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

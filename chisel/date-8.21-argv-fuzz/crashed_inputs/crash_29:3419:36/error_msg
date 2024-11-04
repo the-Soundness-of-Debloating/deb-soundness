@@ -1,0 +1,34 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+date-8.21.c.reduced.c:4191:24: runtime error: index -93 out of bounds for type 'const yytype_int8[113]' (aka 'const signed char[113]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4191:24 in 
+date-8.21.c.reduced.c:4192:26: runtime error: index 144 out of bounds for type 'const yytype_uint8[113]' (aka 'const unsigned char[113]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4192:26 in 
+date-8.21.c.reduced.c:3419:36: runtime error: index 6094941 out of bounds for type 'const yytype_int8[114]' (aka 'const signed char[114]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:3419:36 in 
+date-8.21.c.reduced.c:3469:16: runtime error: index 6094941 out of bounds for type 'const yytype_uint8[114]' (aka 'const unsigned char[114]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:3469:16 in 
+date-8.21.c.reduced.c:4188:32: runtime error: index -28 out of bounds for type 'const yytype_int8[26]' (aka 'const signed char[26]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4188:32 in 
+date-8.21.c.reduced.c:4194:26: runtime error: index -28 out of bounds for type 'const yytype_int8[26]' (aka 'const signed char[26]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4194:26 in 
+date-8.21.c.reduced.c:3367:25: runtime error: store to misaligned address 0x7f7907d50021 for type 'yytype_int16' (aka 'short'), which requires 2 byte alignment
+0x7f7907d50021: note: pointer points here
+ c3 66 90  48 8b 05 e9 0d 14 00 64  83 38 4b 75 c9 4c 89 e2  4c 89 e0 83 e2 01 48 d1  f8 4c 8d 3c 02
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:3367:25 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==733197==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x7f7907d50021 (pc 0x557a1b811cce bp 0x7ffddae00740 sp 0x7ffddadfeeb0 T733197)
+==733197==The signal is caused by a WRITE memory access.
+    #0 0x557a1b811cce in yyparse /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3367:32
+    #1 0x557a1b81bb89 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15
+    #2 0x557a1b81fd37 in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #3 0x7f7907ca0d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f7907ca0e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x557a1b7e94d4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.ubsan.out+0xe4d4) (BuildId: a503b23e0911d3d9a3bc41498abe22d2bae3c8f6)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3367:32 in yyparse
+==733197==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 733196 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

@@ -1,0 +1,41 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2572932==ERROR: ThreadSanitizer: SEGV on unknown address (pc 0x556079784065 bp 0x000000000000 sp 0x7ffef03c1510 T2572932)
+==2572932==The signal is caused by a READ memory access.
+==2572932==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 strcmp <null> (reduced.tsan.out+0x58065) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #1 lookup_zone /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4518:17 (reduced.tsan.out+0xd68d9) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #2 lookup_word /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4615:25 (reduced.tsan.out+0xd6555) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #3 yylex /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4922:14 (reduced.tsan.out+0xd1978) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #4 yyparse /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3424:16 (reduced.tsan.out+0xcf65c) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #5 parse_datetime /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15 (reduced.tsan.out+0xd2ad8) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #6 main /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24 (reduced.tsan.out+0xd578c) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #7 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #9 _start <null> (reduced.tsan.out+0x22464) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.tsan.out+0x58065) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656) in strcmp
+==2572932==ABORTING
+./verify.sh: line 110: 2572931 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==3041153==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x7f25322b1d11 bp 0x7ffd5ec11740 sp 0x7ffd5ec11708 T0)
+==3041153==The signal is caused by a READ memory access.
+==3041153==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x7f25322b1d11  string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:800
+    #1 0x55b0d1831819 in lookup_zone /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4518:17
+    #2 0x55b0d18315f8 in lookup_word /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4615:25
+    #3 0x55b0d182dfaf in yylex /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4922:14
+    #4 0x55b0d182c7b7 in yyparse /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3424:16
+    #5 0x55b0d182e910 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15
+    #6 0x55b0d1830c41 in main /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #7 0x7f2532142d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7f2532142e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x55b0d17fe5e4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.lsan.out+0x65e4) (BuildId: 3f3ce206a851944f2a9bf35ed65b9c83b43c6ddf)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:800 
+==3041153==ABORTING

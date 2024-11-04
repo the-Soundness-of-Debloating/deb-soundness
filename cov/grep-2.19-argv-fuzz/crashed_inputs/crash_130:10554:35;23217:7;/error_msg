@@ -1,0 +1,93 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.asan.out
+grep: invalid option -- 't'
+grep: invalid option -- '/'
+grep: invalid option -- '.'
+grep: invalid option -- '.'
+grep: invalid option -- '.'
+grep: invalid option -- '.'
+grep: invalid option -- '-'
+grep: invalid option -- ''
+grep: invalid option -- ''
+grep: invalid option -- '-'
+grep: invalid option -- ''
+grep: invalid option -- '.'
+grep: invalid option -- '.'
+grep: invalid option -- '.'
+grep: invalid option -- '.'
+grep: invalid option -- '.'
+grep: invalid option -- '.'
+grep: invalid option -- '.'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==4039101==ERROR: AddressSanitizer: SEGV on unknown address 0x000800000000 (pc 0x7f80e87c22e0 bp 0x7ffe8bc53e20 sp 0x7ffe8bc535e8 T0)
+==4039101==The signal is caused by a READ memory access.
+    #0 0x7f80e87c22e0  string/../sysdeps/x86_64/multiarch/memchr-avx2.S:81
+    #1 0x5592cabb4fee in memchr (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.asan.out+0x3dfee) (BuildId: 7e96b9d764c7cadd1bc4907e463f7ff1bd5e81dd)
+    #2 0x5592cac5fa6c in Fcompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:10554:35
+    #3 0x5592cac76154 in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #4 0x7f80e8652d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f80e8652e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x5592cab99474 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.asan.out+0x22474) (BuildId: 7e96b9d764c7cadd1bc4907e463f7ff1bd5e81dd)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memchr-avx2.S:81 
+==4039101==ABORTING
+./verify.sh: line 110: 4039100 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.msan.out
+grep: invalid option -- '-'
+grep: invalid option -- '-'
+grep: invalid option -- '$'
+grep: invalid option -- '_'
+grep: invalid option -- '^'
+grep: invalid option -- '^'
+grep: invalid option -- '-'
+grep: invalid option -- '^'
+grep: invalid option -- '^'
+grep: invalid option -- '^'
+grep: invalid option -- ''
+grep: invalid option -- ''
+grep: invalid option -- ''
+grep: invalid option -- ''
+grep: invalid option -- '_'
+grep: invalid option -- '^'
+grep: invalid option -- ''
+MemorySanitizer:DEADLYSIGNAL
+==4085590==ERROR: MemorySanitizer: SEGV on unknown address 0xfffffffffffff640 (pc 0x7fc849b5c2e0 bp 0x7ffdfd6afc70 sp 0x7ffdfd6afc38 T4085590)
+==4085590==The signal is caused by a READ memory access.
+    #0 0x7fc849b5c2e0  string/../sysdeps/x86_64/multiarch/memchr-avx2.S:81
+    #1 0x55e9dc3f2749 in memchr (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.msan.out+0x57749) (BuildId: d6ec29f2e72ed2facac46b6962e8fbc3e4932da0)
+    #2 0x55e9dc451fc7 in Fcompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:10554:35
+    #3 0x55e9dc481573 in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #4 0x7fc8499ecd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7fc8499ece3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x55e9dc3ba3f4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.msan.out+0x1f3f4) (BuildId: d6ec29f2e72ed2facac46b6962e8fbc3e4932da0)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV string/../sysdeps/x86_64/multiarch/memchr-avx2.S:81 
+==4085590==ABORTING
+./verify.sh: line 110: 4085589 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.lsan.out
+grep: invalid option -- ''
+grep: invalid option -- '_'
+grep: invalid option -- 'p'
+grep: invalid option -- 't'
+grep: invalid option -- '_'
+grep: invalid option -- 'p'
+grep: invalid option -- '-'
+LeakSanitizer:DEADLYSIGNAL
+==4111371==ERROR: LeakSanitizer: SEGV on unknown address 0x00000000003c (pc 0x7fecef0102e0 bp 0x7fff8ab93b40 sp 0x7fff8ab93ad8 T0)
+==4111371==The signal is caused by a READ memory access.
+==4111371==Hint: address points to the zero page.
+    #0 0x7fecef0102e0  string/../sysdeps/x86_64/multiarch/memchr-avx2.S:81
+    #1 0x55bfe14c8917 in Fcompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:10554:35
+    #2 0x55bfe14cfa50 in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #3 0x7feceeea0d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7feceeea0e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55bfe1498634 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.lsan.out+0x7634) (BuildId: 10460dee3b71486af1195aff24edc914ce768ab5)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memchr-avx2.S:81 
+==4111371==ABORTING

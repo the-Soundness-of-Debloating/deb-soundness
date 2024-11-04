@@ -1,0 +1,100 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.asan.out
+=================================================================
+==1852375==ERROR: AddressSanitizer: dynamic-stack-buffer-overflow on address 0x7ffd6e25ece1 at pc 0x55b60ec7ce55 bp 0x7ffd6e25ecb0 sp 0x7ffd6e25e478
+WRITE of size 12 at 0x7ffd6e25ece1 thread T0
+    #0 0x55b60ec7ce54 in strcpy (/workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.asan.out+0x8de54) (BuildId: 39f3a68a64a62fbde86a28b186a6d927f236fcba)
+    #1 0x55b60eccdb18 in make_path /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:3552:9
+    #2 0x55b60ecce30c in main /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:4993:20
+    #3 0x7ff620826d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #4 0x7ff620826e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #5 0x55b60ec0d364 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.asan.out+0x1e364) (BuildId: 39f3a68a64a62fbde86a28b186a6d927f236fcba)
+
+Address 0x7ffd6e25ece1 is located in stack of thread T0
+SUMMARY: AddressSanitizer: dynamic-stack-buffer-overflow (/workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.asan.out+0x8de54) (BuildId: 39f3a68a64a62fbde86a28b186a6d927f236fcba) in strcpy
+Shadow bytes around the buggy address:
+  0x10002dc43d40: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x10002dc43d50: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x10002dc43d60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x10002dc43d70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x10002dc43d80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x10002dc43d90: 00 00 00 00 00 00 00 00 ca ca ca ca[01]cb cb cb
+  0x10002dc43da0: cb cb cb cb 00 00 00 00 00 00 00 00 00 00 00 00
+  0x10002dc43db0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x10002dc43dc0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x10002dc43dd0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x10002dc43de0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==1852375==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 1852374 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.ubsan.out
+mkdir: invalid option -- '2'
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==1946203==ERROR: UndefinedBehaviorSanitizer: stack-overflow on address 0x29cebab56068 (pc 0x562f47200def bp 0x7ffe01d60b40 sp 0x29cebab56070 T1946203)
+    #0 0x562f47200def in make_path /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:3552:9
+    #1 0x562f4720135a in main /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:4993:20
+    #2 0x7fe5cce15d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #3 0x7fe5cce15e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #4 0x562f471d8424 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.ubsan.out+0x5424) (BuildId: 816f1e26937b0e541a4bec8cdaa59bece7d06fb2)
+
+SUMMARY: UndefinedBehaviorSanitizer: stack-overflow /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:3552:9 in make_path
+==1946203==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 1946202 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.tsan.out
+/workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.tsan.out: too few arguments
+ThreadSanitizer:DEADLYSIGNAL
+==2156612==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x55906eff1d50 bp 0x7ffc89bf1a80 sp 0x7ffc89bf1908 T2156612)
+==2156612==The signal is caused by a READ memory access.
+==2156612==Hint: address points to the zero page.
+    #0 __sanitizer::internal_strlen(char const*) <null> (reduced.tsan.out+0x28d50) (BuildId: e9cdc53730350778ec5415addcf92f3f84e2e05b)
+    #1 strcpy <null> (reduced.tsan.out+0x4ccfe) (BuildId: e9cdc53730350778ec5415addcf92f3f84e2e05b)
+    #2 make_path /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:3552:9 (reduced.tsan.out+0xcd04a) (BuildId: e9cdc53730350778ec5415addcf92f3f84e2e05b)
+    #3 main /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:4993:20 (reduced.tsan.out+0xcd48f) (BuildId: e9cdc53730350778ec5415addcf92f3f84e2e05b)
+    #4 <null> <null> (libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #5 __libc_start_main <null> (libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #6 _start <null> (reduced.tsan.out+0x20394) (BuildId: e9cdc53730350778ec5415addcf92f3f84e2e05b)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.tsan.out+0x28d50) (BuildId: e9cdc53730350778ec5415addcf92f3f84e2e05b) in __sanitizer::internal_strlen(char const*)
+==2156612==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 2156611 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.lsan.out
+/workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.lsan.out: too few arguments
+LeakSanitizer:DEADLYSIGNAL
+==2240507==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7f1a5eb20cc5 bp 0x7ffcababc1b0 sp 0x7ffcababc0a8 T0)
+==2240507==The signal is caused by a READ memory access.
+==2240507==Hint: address points to the zero page.
+    #0 0x7f1a5eb20cc5  (/lib/x86_64-linux-gnu/libc.so.6+0x1b1cc5) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #1 0x55b06b2501e3 in make_path /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:3552:9
+    #2 0x55b06b2504fb in main /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:4993:20
+    #3 0x7f1a5e998d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #4 0x7f1a5e998e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #5 0x55b06b222434 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.lsan.out+0x5434) (BuildId: 56e75eeda2785044ad42c3cff1a43ff8cb0dd12e)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV (/lib/x86_64-linux-gnu/libc.so.6+0x1b1cc5) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0) 
+==2240507==ABORTING

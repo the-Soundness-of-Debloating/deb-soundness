@@ -1,0 +1,19 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/bins/reduced.msan.out -o '[r][a][n][d]*' /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_33
+==3806398==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55742623939d in print_line_middle /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:20517:13
+    #1 0x55742623837b in prline /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:20667:25
+    #2 0x55742623796f in prtext /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:20884:11
+    #3 0x557426234ff8 in grepbuf /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21031:15
+    #4 0x557426231147 in grep /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21161:25
+    #5 0x55742622cf63 in grepdesc /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21679:15
+    #6 0x55742622e2a6 in grepfile /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21497:17
+    #7 0x55742621136e in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21773:19
+    #8 0x55742620eed1 in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23254:24
+    #9 0x7f9253ccad8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #10 0x7f9253ccae3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #11 0x557426131464 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/bins/reduced.msan.out+0x20464) (BuildId: bce2670a0fca7dff2a954ff5a66b3617fbc2526e)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:20517:13 in print_line_middle
+Exiting
+./verify.sh: line 233: 3806397 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/bins/reduced.msan.out -o [r][a][n][d]* /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_33

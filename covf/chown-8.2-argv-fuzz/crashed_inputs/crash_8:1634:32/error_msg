@@ -1,0 +1,21 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/bins/reduced.ubsan.out
+chown-8.2.c.reduced.c:1634:32: runtime error: null pointer passed as argument 1, which is declared to never be null
+chown-8.2.c.reduced.c:425:59: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior chown-8.2.c.reduced.c:1634:32 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==19664==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x2aecace9a1a4 bp 0x7fffdb16a5a0 sp 0x7fffdb16a548 T19664)
+==19664==The signal is caused by a READ memory access.
+==19664==Hint: address points to the zero page.
+    #0 0x2aecace9a1a4  string/../sysdeps/x86_64/multiarch/strchr-avx2.S:65
+    #1 0x55752092bee7 in parse_user_spec /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1634:25
+    #2 0x5575209379ae in main /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7051:18
+    #3 0x2aecacd26d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x2aecacd26e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x5575209025d4 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/bins/reduced.ubsan.out+0xe5d4) (BuildId: 1f8cce546b12dbdbf1289b955ebfa921a51d07ba)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strchr-avx2.S:65 
+==19664==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 19660 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

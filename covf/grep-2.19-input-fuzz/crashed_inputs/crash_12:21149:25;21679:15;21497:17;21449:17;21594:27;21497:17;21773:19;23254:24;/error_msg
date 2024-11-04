@@ -1,0 +1,21 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-input-fuzz/bins/reduced.lsan.out a -v -H -r /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_94
+LeakSanitizer:DEADLYSIGNAL
+==1683292==ERROR: LeakSanitizer: SEGV on unknown address 0xffffffffffffffe0 (pc 0x7fbeb83ee71a bp 0x7ffe3a5b90a0 sp 0x7ffe3a5b9018 T0)
+==1683292==The signal is caused by a READ memory access.
+    #0 0x7fbeb83ee71a  string/../sysdeps/x86_64/multiarch/memrchr-avx2.S:49
+    #1 0x55596f06ec1c in grep /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21149:25
+    #2 0x55596f06e58e in grepdesc /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21679:15
+    #3 0x55596f06e2eb in grepfile /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21497:17
+    #4 0x55596f06e99e in grepdirent /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21449:17
+    #5 0x55596f06e4a6 in grepdesc /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21594:27
+    #6 0x55596f06e2eb in grepfile /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21497:17
+    #7 0x55596f06b33d in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21773:19
+    #8 0x55596f06b093 in main /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23254:24
+    #9 0x7fbeb827ed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #10 0x7fbeb827ee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #11 0x55596f033674 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-input-fuzz/bins/reduced.lsan.out+0x7674) (BuildId: 4df49248873e1ada8a30bbf0599028212a566405)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memrchr-avx2.S:49 
+==1683292==ABORTING

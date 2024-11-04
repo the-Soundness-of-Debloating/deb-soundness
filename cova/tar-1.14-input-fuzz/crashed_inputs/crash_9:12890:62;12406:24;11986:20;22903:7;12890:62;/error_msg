@@ -1,0 +1,20 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.msan.out xzf /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/input/radamsa_fuzzed/file11_fuzzed/file11_22
+
+gzip: stdin: invalid compressed data--crc error
+
+gzip: stdin: invalid compressed data--length error
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.msan.out: This does not look like a tar archive
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.msan.out: Skipping to next header
+==1634063==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55755158ebaf in from_header /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12890:62
+    #1 0x557551570aa2 in read_header /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12406:24
+    #2 0x557551589ef5 in read_and /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:11986:20
+    #3 0x5575515a0ccc in main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7
+    #4 0x7f036f4fdd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f036f4fde3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x5575514ba544 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.msan.out+0x20544) (BuildId: 7dd20a54459ea83b45ce3654eb159a31bca1a93b)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12890:62 in from_header
+Exiting
+./verify.sh: line 360: 1634058 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.msan.out xzf /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/input/radamsa_fuzzed/file11_fuzzed/file11_22

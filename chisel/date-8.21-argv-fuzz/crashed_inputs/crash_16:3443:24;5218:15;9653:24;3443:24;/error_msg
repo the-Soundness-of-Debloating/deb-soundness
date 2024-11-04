@@ -1,0 +1,48 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.asan.out
+=================================================================
+==3597041==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55ca2c28b8d1 at pc 0x55ca2c26dd3d bp 0x7ffff883e130 sp 0x7ffff883e128
+READ of size 1 at 0x55ca2c28b8d1 thread T0
+    #0 0x55ca2c26dd3c in yyparse /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3443:24
+    #1 0x55ca2c273dd1 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15
+    #2 0x55ca2c277191 in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #3 0x7fa401fa8d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7fa401fa8e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55ca2c1ad394 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.asan.out+0x20394) (BuildId: c4b6e170161c88a0ff251300e4e3ca367c4aa605)
+
+0x55ca2c28b8d1 is located 47 bytes to the left of global variable 'yytable' defined in '/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3168' (0x55ca2c28b900) of size 113
+0x55ca2c28b8d1 is located 0 bytes to the right of global variable 'yycheck' defined in '/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3207' (0x55ca2c28b860) of size 113
+SUMMARY: AddressSanitizer: global-buffer-overflow /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3443:24 in yyparse
+Shadow bytes around the buggy address:
+  0x0ab9c58496c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ab9c58496d0: 00 00 00 00 00 00 00 00 00 00 02 f9 f9 f9 f9 f9
+  0x0ab9c58496e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ab9c58496f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ab9c5849700: 00 00 06 f9 f9 f9 f9 f9 f9 f9 f9 f9 00 00 00 00
+=>0x0ab9c5849710: 00 00 00 00 00 00 00 00 00 00[01]f9 f9 f9 f9 f9
+  0x0ab9c5849720: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 f9
+  0x0ab9c5849730: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0ab9c5849740: 00 00 02 f9 f9 f9 f9 f9 00 00 00 00 00 00 00 00
+  0x0ab9c5849750: 00 00 00 04 f9 f9 f9 f9 00 00 00 00 00 00 00 00
+  0x0ab9c5849760: 00 00 00 04 f9 f9 f9 f9 00 00 00 02 f9 f9 f9 f9
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==3597041==ABORTING
+./verify.sh: line 108: 3597039 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

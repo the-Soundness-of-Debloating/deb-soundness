@@ -1,0 +1,20 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.ubsan.out
+bzip2-1.0.5.c.reduced.c:9876:34: runtime error: member access within null pointer of type 'Cell' (aka 'struct zzzz')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:9876:34 in 
+bzip2-1.0.5.c.reduced.c:9876:34: runtime error: load of null pointer of type 'Char *' (aka 'char *')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:9876:34 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==2673615==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x5641c86b4ce7 bp 0x7ffe2cf81e60 sp 0x7ffe2cf81c50 T2673615)
+==2673615==The signal is caused by a READ memory access.
+==2673615==Hint: address points to the zero page.
+    #0 0x5641c86b4ce7 in main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9876:34
+    #1 0x7fcb0e197d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7fcb0e197e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x5641c8656434 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.ubsan.out+0x2b434) (BuildId: 560a640243895383a301a3094b37fd45772e8803)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9876:34 in main
+==2673615==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 173: 2673614 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_53 > sample1.rb2

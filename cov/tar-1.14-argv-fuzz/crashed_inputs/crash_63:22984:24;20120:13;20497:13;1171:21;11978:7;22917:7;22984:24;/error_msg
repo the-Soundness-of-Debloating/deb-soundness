@@ -1,0 +1,46 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.tsan.out
+/workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.tsan.out: Cannot dup: Bad file descriptor
+ThreadSanitizer:DEADLYSIGNAL
+==16038==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x55d56585aa0e bp 0x7ffd1d561b78 sp 0x7ffd1d561b38 T16038)
+==16038==The signal is caused by a READ memory access.
+==16038==Hint: address points to the zero page.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 tar_stat_destroy /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22984:24 (reduced.tsan.out+0xd0a0e) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #1 <null> <null> ([stack]+0x1ebff)
+    #2 xdup2 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:20120:13 (reduced.tsan.out+0xe355a) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #3 sys_child_open_for_uncompress /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:20497:13 (reduced.tsan.out+0xd0ce2) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #4 open_archive /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:1171:21 (reduced.tsan.out+0xcf3c4) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #5 read_and /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:11978:7 (reduced.tsan.out+0xdcfcd) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #6 main /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22917:7 (reduced.tsan.out+0xe3a9e) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #7 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22984:24 in tar_stat_destroy
+==16038==ABORTING
+/workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.tsan.out: Child died with signal 6
+/workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.tsan.out: /fagu.o: Not found in archive
+/workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.tsan.out: Error exit delayed from previous errors
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.lsan.out
+/workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.lsan.out: Cannot dup: Bad file descriptor
+LeakSanitizer:DEADLYSIGNAL
+==1853232==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000000 (pc 0x5624d6ef1070 bp 0x7fff32629a78 sp 0x7fff32629a68 T0)
+==1853232==The signal is caused by a READ memory access.
+==1853232==Hint: address points to the zero page.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x5624d6ef1070 in tar_stat_destroy /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22984:24
+    #1 0x7fff32629adf  ([stack]+0x1fadf)
+    #2 0x5624d6efcfde in xdup2 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:20120:13
+    #3 0x5624d6ef1209 in sys_child_open_for_uncompress /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:20497:13
+    #4 0x5624d6ef05ff in open_archive /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:1171:21
+    #5 0x5624d6ef8e86 in read_and /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:11978:7
+    #6 0x5624d6efd35a in main /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22917:7
+    #7 0x7fc01d7e4d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22984:24 in tar_stat_destroy
+==1853232==ABORTING
+/workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.lsan.out: Child returned status 23
+/workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.lsan.out: /fagu.o: Not found in archive
+/workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.lsan.out: Error exit delayed from previous errors

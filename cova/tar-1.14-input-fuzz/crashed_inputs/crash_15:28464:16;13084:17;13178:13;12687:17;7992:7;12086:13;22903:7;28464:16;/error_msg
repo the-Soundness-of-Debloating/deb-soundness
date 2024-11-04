@@ -1,0 +1,43 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.tsan.out xf /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/result/afl_result/reduced/result_2/tsan/crashes/id:000026,sig:11,src:000049,time:5892594,execs:25365,op:havoc,rep:12 -C foo ./1/10
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.tsan.out: Skipping to next header
+ThreadSanitizer:DEADLYSIGNAL
+==1878869==ERROR: ThreadSanitizer: SEGV on unknown address 0x000500000001 (pc 0x55b9d996e503 bp 0x7ffd950f8a60 sp 0x7ffd950f8a20 T1878869)
+==1878869==The signal is caused by a WRITE memory access.
+    #0 set_quoting_style /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:28464:16 (reduced.tsan.out+0xe9503) (BuildId: b9b2bf88b967942dbeca781e7840236ad45d6eee)
+    #1 from_header /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:13084:17 (reduced.tsan.out+0xe5250) (BuildId: b9b2bf88b967942dbeca781e7840236ad45d6eee)
+    #2 major_from_header /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:13178:13 (reduced.tsan.out+0xe57c7) (BuildId: b9b2bf88b967942dbeca781e7840236ad45d6eee)
+    #3 decode_header /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12687:17 (reduced.tsan.out+0xd6917) (BuildId: b9b2bf88b967942dbeca781e7840236ad45d6eee)
+    #4 extract_archive /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:7992:7 (reduced.tsan.out+0xddbc6) (BuildId: b9b2bf88b967942dbeca781e7840236ad45d6eee)
+    #5 read_and /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12086:13 (reduced.tsan.out+0xe382f) (BuildId: b9b2bf88b967942dbeca781e7840236ad45d6eee)
+    #6 main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7 (reduced.tsan.out+0xe9250) (BuildId: b9b2bf88b967942dbeca781e7840236ad45d6eee)
+    #7 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #9 _start <null> (reduced.tsan.out+0x22574) (BuildId: b9b2bf88b967942dbeca781e7840236ad45d6eee)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:28464:16 in set_quoting_style
+==1878869==ABORTING
+./verify.sh: line 360: 1878865 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.tsan.out xf /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/result/afl_result/reduced/result_2/tsan/crashes/id:000026* -C foo ./1/10
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.lsan.out xf /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/result/afl_result/reduced/result_0/lsan/crashes/id:000007,sig:06,src:000000,time:1087833,execs:1480,op:havoc,rep:11
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.lsan.out: This does not look like a tar archive
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.lsan.out: Skipping to next header
+LeakSanitizer:DEADLYSIGNAL
+==1884158==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000005 (pc 0x5623dde53a55 bp 0x7ffc5147d460 sp 0x7ffc5147d460 T0)
+==1884158==The signal is caused by a WRITE memory access.
+==1884158==Hint: address points to the zero page.
+    #0 0x5623dde53a55 in set_quoting_style /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:28464:16
+    #1 0x5623dde5100c in from_header /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:13084:17
+    #2 0x5623dde514ae in major_from_header /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:13178:13
+    #3 0x5623dde47956 in decode_header /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12687:17
+    #4 0x5623dde4c30c in extract_archive /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:7992:7
+    #5 0x5623dde4fed9 in read_and /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12086:13
+    #6 0x5623dde5388d in main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7
+    #7 0x7f1684ab6d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7f1684ab6e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x5623dde15874 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.lsan.out+0xb874) (BuildId: b6005c6054fef54eb95034fc1ae7ecc431d9b774)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:28464:16 in set_quoting_style
+==1884158==ABORTING

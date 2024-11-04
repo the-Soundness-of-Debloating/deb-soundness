@@ -1,0 +1,38 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out -c
+gzip-1.2.4.c.reduced.c:5045:7: runtime error: index 4096 out of bounds for type 'uch[4096]' (aka 'unsigned char[4096]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5045:7 in 
+gzip-1.2.4.c.reduced.c:5023:5: runtime error: index 32832 out of bounds for type 'uch[32832]' (aka 'unsigned char[32832]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5023:5 in 
+gzip-1.2.4.c.reduced.c:4941:5: runtime error: index 4760 out of bounds for type 'uch[4096]' (aka 'unsigned char[4096]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4941:5 in 
+gzip-1.2.4.c.reduced.c:4451:37: runtime error: index 16 out of bounds for type 'ush[16]' (aka 'unsigned short[16]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4451:37 in 
+gzip-1.2.4.c.reduced.c:4451:9: runtime error: index 16 out of bounds for type 'ush[16]' (aka 'unsigned short[16]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4451:9 in 
+gzip-1.2.4.c.reduced.c:4563:17: runtime error: index 16 out of bounds for type 'ush[16]' (aka 'unsigned short[16]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4563:17 in 
+gzip-1.2.4.c.reduced.c:4564:39: runtime error: index 16 out of bounds for type 'ush[16]' (aka 'unsigned short[16]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4564:39 in 
+gzip-1.2.4.c.reduced.c:4564:11: runtime error: index 16 out of bounds for type 'ush[16]' (aka 'unsigned short[16]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4564:11 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3560810==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address (pc 0x556961322d62 bp 0x7fffca048030 sp 0x7fffca047ee0 T3560810)
+==3560810==The signal is caused by a READ memory access.
+==3560810==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x556961322d62 in gen_codes /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4565:31
+    #1 0x55696132579b in build_tree___0 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4697:7
+    #2 0x556961323467 in flush_block /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4948:7
+    #3 0x55696132be3c in deflate /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5797:17
+    #4 0x55696132cc6e in zip /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5988:7
+    #5 0x55696132e56c in treat_stdin /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #6 0x55696132dee8 in main /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #7 0x7fc326152d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7fc326152e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x5569612ef524 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out+0x17524) (BuildId: 1dd10bd81edc80d9af91f9ae7e1b2b4f8289ca0a)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4565:31 in gen_codes
+==3560810==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 169: 3560807 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out -c < /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_0/ubsan/crashes/id:000019* > sample1.gz

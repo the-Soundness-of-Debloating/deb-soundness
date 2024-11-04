@@ -1,0 +1,25 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+date-8.21.c.reduced.c:4188:32: runtime error: index -28 out of bounds for type 'const yytype_int8[26]' (aka 'const signed char[26]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4188:32 in 
+date-8.21.c.reduced.c:4194:26: runtime error: index -28 out of bounds for type 'const yytype_int8[26]' (aka 'const signed char[26]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4194:26 in 
+date-8.21.c.reduced.c:3465:10: runtime error: applying non-zero offset 56 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:3465:10 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==1103951==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000038 (pc 0x7fa7286347e1 bp 0x7ffeb34827b0 sp 0x7ffeb3480f18 T1103951)
+==1103951==The signal is caused by a WRITE memory access.
+==1103951==Hint: address points to the zero page.
+    #0 0x7fa7286347e1  string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:323
+    #1 0x562471da5dd6 in yyparse /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3466:14
+    #2 0x562471db3035 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15
+    #3 0x562471dba212 in main /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #4 0x7fa7284bdd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7fa7284bde3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x562471d7c5e4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.ubsan.out+0x145e4) (BuildId: b79d2b1295781bdc1a54b51e0f481a8d966b40ec)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:323 
+==1103951==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 1103950 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

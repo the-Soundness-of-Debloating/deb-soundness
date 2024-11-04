@@ -1,0 +1,47 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.msan.out
+MemorySanitizer:DEADLYSIGNAL
+==2469218==ERROR: MemorySanitizer: SEGV on unknown address 0x720000010010 (pc 0x55765c676718 bp 0x7ffc7e7bdc40 sp 0x7ffc7e7bd750 T2469218)
+==2469218==The signal is caused by a WRITE memory access.
+    #0 0x55765c676718 in kwsincr /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11013:29
+    #1 0x55765c675155 in Fcompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:10578:11
+    #2 0x55765c6a4573 in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #3 0x7feec7f09d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7feec7f09e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55765c5dd3f4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.msan.out+0x1f3f4) (BuildId: d6ec29f2e72ed2facac46b6962e8fbc3e4932da0)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11013:29 in kwsincr
+==2469218==ABORTING
+./verify.sh: line 110: 2469217 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==3253332==ERROR: ThreadSanitizer: SEGV on unknown address 0x7b8000010010 (pc 0x5608fe3ef6c7 bp 0x7ffd82fd3250 sp 0x7ffd82fd2e70 T3253332)
+==3253332==The signal is caused by a WRITE memory access.
+    #0 kwsincr /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11013:29 (reduced.tsan.out+0xd26c7) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #1 Fcompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:10578:11 (reduced.tsan.out+0xd21b0) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #2 main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7 (reduced.tsan.out+0xe0575) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #3 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #4 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #5 _start <null> (reduced.tsan.out+0x21474) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11013:29 in kwsincr
+==3253332==ABORTING
+./verify.sh: line 110: 3253331 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==3939139==ERROR: LeakSanitizer: SEGV on unknown address 0x620000010010 (pc 0x5558ba9f8c34 bp 0x7ffcddc7a790 sp 0x7ffcddc7a6c0 T0)
+==3939139==The signal is caused by a WRITE memory access.
+    #0 0x5558ba9f8c34 in kwsincr /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11013:29
+    #1 0x5558ba9f895f in Fcompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:10578:11
+    #2 0x5558ba9ffa50 in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #3 0x7f56a641cd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f56a641ce3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x5558ba9c8634 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.lsan.out+0x7634) (BuildId: 10460dee3b71486af1195aff24edc914ce768ab5)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11013:29 in kwsincr
+==3939139==ABORTING

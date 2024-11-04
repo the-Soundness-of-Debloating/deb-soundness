@@ -1,0 +1,39 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.tsan.out -c
+ThreadSanitizer:DEADLYSIGNAL
+==3119837==ERROR: ThreadSanitizer: SEGV on unknown address 0x55ffe3754a10 (pc 0x55fee2392b6b bp 0x7fff06bc31b0 sp 0x7fff06bc3150 T3119837)
+==3119837==The signal is caused by a READ memory access.
+    #0 updcrc /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:1605:38 (reduced.tsan.out+0xcdb6b) (BuildId: 7292574c66acd2079fc59c6d8c8ceb29ee47cf18)
+    #1 file_read /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6109:17 (reduced.tsan.out+0xcf6d4) (BuildId: 7292574c66acd2079fc59c6d8c8ceb29ee47cf18)
+    #2 fill_window /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5527:27 (reduced.tsan.out+0xd223d) (BuildId: 7292574c66acd2079fc59c6d8c8ceb29ee47cf18)
+    #3 deflate /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5780:15 (reduced.tsan.out+0xd1ef1) (BuildId: 7292574c66acd2079fc59c6d8c8ceb29ee47cf18)
+    #4 zip /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5988:7 (reduced.tsan.out+0xd26f6) (BuildId: 7292574c66acd2079fc59c6d8c8ceb29ee47cf18)
+    #5 treat_stdin /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22 (reduced.tsan.out+0xd2d41) (BuildId: 7292574c66acd2079fc59c6d8c8ceb29ee47cf18)
+    #6 main /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:10 (reduced.tsan.out+0xd2bd0) (BuildId: 7292574c66acd2079fc59c6d8c8ceb29ee47cf18)
+    #7 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #9 _start <null> (reduced.tsan.out+0x21344) (BuildId: 7292574c66acd2079fc59c6d8c8ceb29ee47cf18)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:1605:38 in updcrc
+==3119837==ABORTING
+./verify.sh: line 166: 3119834 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.tsan.out -c < /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_0/tsan/crashes/id:000010* > sample1.gz
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.lsan.out -c
+LeakSanitizer:DEADLYSIGNAL
+==3145413==ERROR: LeakSanitizer: SEGV on unknown address 0x55674212c5a0 (pc 0x5566417b8f11 bp 0x7fff79d0dd80 sp 0x7fff79d0dd80 T0)
+==3145413==The signal is caused by a READ memory access.
+    #0 0x5566417b8f11 in updcrc /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:1605:38
+    #1 0x5566417ba081 in file_read /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6109:17
+    #2 0x5566417bb600 in fill_window /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5527:27
+    #3 0x5566417bb440 in deflate /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5780:15
+    #4 0x5566417bb819 in zip /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5988:7
+    #5 0x5566417bbb4a in treat_stdin /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #6 0x5566417bba8f in main /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:10
+    #7 0x7f8b8e263d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7f8b8e263e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x55664178b404 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.lsan.out+0x5404) (BuildId: 2b656776eacb9f40fdbd94f077a5acd936a37f4a)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:1605:38 in updcrc
+==3145413==ABORTING

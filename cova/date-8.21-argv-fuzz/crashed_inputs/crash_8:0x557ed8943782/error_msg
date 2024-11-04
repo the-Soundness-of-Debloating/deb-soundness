@@ -1,0 +1,7 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==83957==ERROR: AddressSanitizer: stack-overflow on address 0x7ffeaeaa5000 (pc 0x557ed8943782 bp 0x7ffeaeaa3540 sp 0x7ffeaeaa30a0 T0)
+AddressSanitizer:DEADLYSIGNAL
+AddressSanitizer: nested bug in the same thread, aborting.

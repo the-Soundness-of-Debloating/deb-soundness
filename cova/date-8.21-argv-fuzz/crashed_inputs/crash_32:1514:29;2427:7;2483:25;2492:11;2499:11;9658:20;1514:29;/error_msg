@@ -1,0 +1,55 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.msan.out
+==1421744==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55bf3b959c93 in quotearg_buffer_restyled /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:1514:29
+    #1 0x55bf3b9291ae in quotearg_n_options /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:2427:7
+    #2 0x55bf3b92801f in quote_n_mem /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:2483:25
+    #3 0x55bf3b92933b in quote_n /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:2492:11
+    #4 0x55bf3b9293d0 in quote /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:2499:11
+    #5 0x55bf3b957a36 in main /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9658:20
+    #6 0x7f9880ca1d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f9880ca1e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55bf3b89f414 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.msan.out+0x20414) (BuildId: cdbe6e30c8a07480a5150a068e3bf6b42481dfe8)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:1514:29 in quotearg_buffer_restyled
+Exiting
+./verify.sh: line 110: 1421743 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==90894==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000144 (pc 0x55d1876a6eb8 bp 0x7ffe32de6fa0 sp 0x7ffe32de6b20 T90894)
+==90894==The signal is caused by a WRITE memory access.
+==90894==Hint: address points to the zero page.
+    #0 quotearg_buffer_restyled /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:1514:29 (reduced.tsan.out+0xdbeb8) (BuildId: 0565467d7526c791053cc00b66e49f782d5a793a)
+    #1 quotearg_n_options /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:2427:7 (reduced.tsan.out+0xcf73d) (BuildId: 0565467d7526c791053cc00b66e49f782d5a793a)
+    #2 quote_n_mem /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:2483:25 (reduced.tsan.out+0xcf1e8) (BuildId: 0565467d7526c791053cc00b66e49f782d5a793a)
+    #3 quote_n /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:2492:11 (reduced.tsan.out+0xcf7d8) (BuildId: 0565467d7526c791053cc00b66e49f782d5a793a)
+    #4 quote /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:2499:11 (reduced.tsan.out+0xcf827) (BuildId: 0565467d7526c791053cc00b66e49f782d5a793a)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9658:20 (reduced.tsan.out+0xdb6a5) (BuildId: 0565467d7526c791053cc00b66e49f782d5a793a)
+    #6 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 _start <null> (reduced.tsan.out+0x224c4) (BuildId: 0565467d7526c791053cc00b66e49f782d5a793a)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:1514:29 in quotearg_buffer_restyled
+==90894==ABORTING
+./verify.sh: line 110: 90893 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==2535216==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000144 (pc 0x5602ab8234c1 bp 0x7fff6f9750a0 sp 0x7fff6f974fb0 T0)
+==2535216==The signal is caused by a WRITE memory access.
+==2535216==Hint: address points to the zero page.
+    #0 0x5602ab8234c1 in quotearg_buffer_restyled /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:1514:29
+    #1 0x5602ab81a852 in quotearg_n_options /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:2427:7
+    #2 0x5602ab81a5c9 in quote_n_mem /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:2483:25
+    #3 0x5602ab81a8a1 in quote_n /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:2492:11
+    #4 0x5602ab81a8c6 in quote /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:2499:11
+    #5 0x5602ab822ec4 in main /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9658:20
+    #6 0x7fda8fd6dd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7fda8fd6de3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x5602ab7ec694 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.lsan.out+0x7694) (BuildId: 4615fdf10abbab321b672d9f307704f7a32435a3)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:1514:29 in quotearg_buffer_restyled
+==2535216==ABORTING

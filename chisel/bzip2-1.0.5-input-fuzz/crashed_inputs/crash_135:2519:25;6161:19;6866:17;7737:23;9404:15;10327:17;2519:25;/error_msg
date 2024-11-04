@@ -1,0 +1,37 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.tsan.out -t /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_222
+ThreadSanitizer:DEADLYSIGNAL
+==1093717==ERROR: ThreadSanitizer: SEGV on unknown address 0x7bc1d640c32c (pc 0x56496246f4f9 bp 0x7ffdd06798c0 sp 0x7ffdd0678750 T1093717)
+==1093717==The signal is caused by a READ memory access.
+    #0 BZ2_decompress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:2519:25 (reduced.tsan.out+0xd14f9) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #1 BZ2_bzDecompress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6161:19 (reduced.tsan.out+0xd937e) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #2 BZ2_bzRead /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6866:17 (reduced.tsan.out+0xd9f79) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #3 testStream /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7737:23 (reduced.tsan.out+0xdc8b2) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #4 testf /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9404:15 (reduced.tsan.out+0xda835) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10327:17 (reduced.tsan.out+0xda4a6) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #6 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 _start <null> (reduced.tsan.out+0x20344) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:2519:25 in BZ2_decompress
+==1093717==ABORTING
+./verify.sh: line 173: 1093715 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.tsan.out -t /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_222
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out -t /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_184
+LeakSanitizer:DEADLYSIGNAL
+==1985274==ERROR: LeakSanitizer: SEGV on unknown address 0x62fe8c4d6ea8 (pc 0x55fff37b6a63 bp 0x7ffcb1684a90 sp 0x7ffcb1684900 T0)
+==1985274==The signal is caused by a READ memory access.
+    #0 0x55fff37b6a63 in BZ2_decompress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:2519:25
+    #1 0x55fff37b9ea9 in BZ2_bzDecompress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6161:19
+    #2 0x55fff37ba420 in BZ2_bzRead /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6866:17
+    #3 0x55fff37bb783 in testStream /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7737:23
+    #4 0x55fff37ba90e in testf /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9404:15
+    #5 0x55fff37ba6c9 in main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10327:17
+    #6 0x7ff5d77efd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7ff5d77efe3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55fff3787424 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out+0x5424) (BuildId: b7ae66f653a2fb616e7ec0b784cf29fa95e3f3e7)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:2519:25 in BZ2_decompress
+==1985274==ABORTING

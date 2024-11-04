@@ -1,0 +1,220 @@
+_Bool            function   7407 sort-8.16.c.origin.c _Bool(__attribute__((__warn_unused_result__))
+__argmatch_die   function   1111 sort-8.16.c.origin.c static void __argmatch_die(void) {
+__xargmatch_internal function   1233 sort-8.16.c.origin.c ptrdiff_t __xargmatch_internal(char const *context, char const *arg,
+add_temp_dir     function   9277 sort-8.16.c.origin.c static void add_temp_dir(char const *dir) {
+allocate_entry   function   7260 sort-8.16.c.origin.c static struct hash_entry *allocate_entry(Hash_table *table___0) {
+argmatch         function   1121 sort-8.16.c.origin.c ptrdiff_t argmatch(char const *arg, char const *const *arglist,
+argmatch_invalid function   1170 sort-8.16.c.origin.c void argmatch_invalid(char const *context, char const *value,
+argmatch_valid   function   1193 sort-8.16.c.origin.c void argmatch_valid(char const *const *arglist, char const *vallist,
+avoid_trashing_input function   12824 sort-8.16.c.origin.c static void avoid_trashing_input(struct sortfile *files, size_t ntemps,
+badfieldspec     function   13249 sort-8.16.c.origin.c static void badfieldspec(char const *spec, char const *msgid) {
+begfield         function   9748 sort-8.16.c.origin.c static char *begfield(struct line const *line, struct keyfield const *key) {
+bkm_scale        function   1285 sort-8.16.c.origin.c static strtol_error bkm_scale(uintmax_t *x, int scale_factor) {
+bkm_scale___0    function   1533 sort-8.16.c.origin.c static strtol_error bkm_scale___0(unsigned long *x, int scale_factor) {
+bkm_scale_by_power function   1295 sort-8.16.c.origin.c static strtol_error bkm_scale_by_power(uintmax_t *x, int base, int power) {
+bkm_scale_by_power___0 function   1543 sort-8.16.c.origin.c static strtol_error bkm_scale_by_power___0(unsigned long *x, int base,
+buffer_linelim   function   9745 sort-8.16.c.origin.c __inline static struct line *buffer_linelim(struct buffer const *buf___1) {
+c_isalnum        function    935 sort-8.16.c.origin.c _Bool c_isalnum(int c) {
+c_isalpha        function    960 sort-8.16.c.origin.c _Bool c_isalpha(int c) {
+c_isdigit        function    976 sort-8.16.c.origin.c _Bool c_isdigit(int c) {
+c_isspace        function    992 sort-8.16.c.origin.c _Bool c_isspace(int c) {
+c_strcasecmp     function    903 sort-8.16.c.origin.c int c_strcasecmp(char const *s1, char const *s2) {
+c_tolower        function   1024 sort-8.16.c.origin.c int c_tolower(int c) {
+check            function   11783 sort-8.16.c.origin.c static _Bool check(char const *file_name___3, char checkonly) {
+check_ordering_compatibility function   13273 sort-8.16.c.origin.c static void check_ordering_compatibility(void) {
+check_tuning     function   7156 sort-8.16.c.origin.c static _Bool check_tuning(Hash_table *table___0) {
+cleanup          function   8884 sort-8.16.c.origin.c static void cleanup(void) {
+clear_ungetc_buffer_preserving_position function   8101 sort-8.16.c.origin.c __inline static void clear_ungetc_buffer_preserving_position(FILE *fp) {
+close_stdout     function    788 sort-8.16.c.origin.c void close_stdout(void) {
+close_stream     function    836 sort-8.16.c.origin.c int close_stream(FILE *stream) {
+collate_error    function   1883 sort-8.16.c.origin.c static void collate_error(int collation_errno, char const *s1, size_t s1len,
+compare          function   11669 sort-8.16.c.origin.c static int compare(struct line const *a, struct line const *b) {
+compare_nodes    function   12427 sort-8.16.c.origin.c static int compare_nodes(void const *a, void const *b) {
+compare_random   function   10470 sort-8.16.c.origin.c static int compare_random(char *__restrict texta, size_t lena,
+compute_bucket_size function   7187 sort-8.16.c.origin.c compute_bucket_size(size_t candidate, Hash_tuning const *tuning) {
+create_temp      function   9198 sort-8.16.c.origin.c static struct tempnode *create_temp(FILE **pfp) {
+create_temp_file function   8920 sort-8.16.c.origin.c static struct tempnode *create_temp_file(int *pfd,
+cs_enter         function   8708 sort-8.16.c.origin.c static struct cs_status cs_enter(void) {
+cs_leave         function   8717 sort-8.16.c.origin.c static void cs_leave(struct cs_status status) {
+debug_key        function   10695 sort-8.16.c.origin.c static void debug_key(struct line const *line, struct keyfield const *key) {
+debug_line       function   10834 sort-8.16.c.origin.c static void debug_line(struct line const *line) {
+debug_width      function   10627 sort-8.16.c.origin.c static size_t debug_width(char const *text, char const *lim) {
+default_key_compare function   10859 sort-8.16.c.origin.c static _Bool default_key_compare(struct keyfield const *key) {
+default_sort_size function   9589 sort-8.16.c.origin.c static size_t default_sort_size(void) {
+delete_proc      function   8821 sort-8.16.c.origin.c static _Bool delete_proc(pid_t pid) {
+die              function   8502 sort-8.16.c.origin.c static void die(char const *message, char const *file) {
+dtotimespec      function    582 sort-8.16.c.origin.c struct timespec dtotimespec(double sec) {
+dup2_or_die      function   9063 sort-8.16.c.origin.c static void dup2_or_die(int oldfd, int newfd) {
+dup_safer        function   8306 sort-8.16.c.origin.c int dup_safer(int fd) {
+emit_ancillary_info function   8420 sort-8.16.c.origin.c __inline static void emit_ancillary_info(void) {
+emit_try_help    function   8460 sort-8.16.c.origin.c __inline static void emit_try_help(void) {
+exit_cleanup     function   8900 sort-8.16.c.origin.c static void exit_cleanup(void) {
+fadvise          function   8295 sort-8.16.c.origin.c void fadvise(FILE *fp, fadvice_t advice) {
+fd_safer         function   8129 sort-8.16.c.origin.c int fd_safer(int fd) {
+fdadvise         function   8286 sort-8.16.c.origin.c void fdadvise(int fd, off_t offset, off_t len, fadvice_t advice) {
+filevercmp       function   7996 sort-8.16.c.origin.c int filevercmp(char const *s1, char const *s2) {
+fillbuf___7      function   9963 sort-8.16.c.origin.c static _Bool fillbuf___7(struct buffer *buf___1, FILE *fp, char const *file) {
+find_unit_order  function   10163 sort-8.16.c.origin.c static int __attribute__((__pure__)) find_unit_order(char const *number) {
+fopen_safer      function   7767 sort-8.16.c.origin.c FILE *fopen_safer(char const *file, char const *mode) {
+fraccompare      function   2303 sort-8.16.c.origin.c fraccompare(char const *a, char const *b, char decimal_point___0) {
+free_entry       function   7272 sort-8.16.c.origin.c static void free_entry(Hash_table *table___0, struct hash_entry *entry) {
+general_numcompare function   10292 sort-8.16.c.origin.c static int general_numcompare(char const *sa, char const *sb) {
+get_charset_aliases function   6720 sort-8.16.c.origin.c static char const *get_charset_aliases(void) {
+get_nonce        function   2995 sort-8.16.c.origin.c static void get_nonce(void *buffer, size_t bufsize___1, size_t bytes_bound) {
+getmonth         function   10351 sort-8.16.c.origin.c static int getmonth(char const *month, char **ea) {
+gettext_quote    function   3762 sort-8.16.c.origin.c static char const *gettext_quote(char const *msgid, enum quoting_style s) {
+hard_locale      function   7674 sort-8.16.c.origin.c _Bool hard_locale(int category) {
+hash_delete      function   7558 sort-8.16.c.origin.c void *hash_delete(Hash_table *table___0, void const *entry) {
+hash_find_entry  function   7280 sort-8.16.c.origin.c static void *hash_find_entry(Hash_table *table___0, void const *entry,
+hash_insert_if_absent function   7465 sort-8.16.c.origin.c int hash_insert_if_absent(Hash_table *table___0, void const *entry,
+hash_pjw         function   7653 sort-8.16.c.origin.c size_t hash_pjw(void const *x, size_t tablesize) {
+hash_string      function   7073 sort-8.16.c.origin.c size_t hash_string(char const *string, size_t n_buckets) {
+heap_alloc       function   6929 sort-8.16.c.origin.c struct heap *heap_alloc(int (*compare___0)(void const *, void const *),
+heap_default_compare function   6926 sort-8.16.c.origin.c static int heap_default_compare(void const *a, void const *b) {
+heap_free        function   6951 sort-8.16.c.origin.c void heap_free(struct heap *heap) {
+heap_insert      function   6958 sort-8.16.c.origin.c int heap_insert(struct heap *heap, void *item) {
+heap_remove_top  function   6970 sort-8.16.c.origin.c void *heap_remove_top(struct heap *heap) {
+heapify_down     function   6985 sort-8.16.c.origin.c static size_t heapify_down(void **array, size_t count, size_t initial,
+heapify_up       function   7020 sort-8.16.c.origin.c static void heapify_up(void **array, size_t count,
+human_numcompare function   10217 sort-8.16.c.origin.c static int human_numcompare(char const *a, char const *b) {
+incompatible_options function   13265 sort-8.16.c.origin.c static void incompatible_options(char const *opts___1) {
+ind              function   3236 sort-8.16.c.origin.c __inline static isaac_word ind(isaac_word const *m, isaac_word x) {
+init_node        function   12356 sort-8.16.c.origin.c static struct merge_node *init_node(struct merge_node *__restrict parent,
+initbuf          function   9718 sort-8.16.c.origin.c static void initbuf(struct buffer *buf___1, size_t line_bytes, size_t alloc) {
+initialize_exit_failure function   8385 sort-8.16.c.origin.c __inline static void initialize_exit_failure(int status) {
+inittables       function   9344 sort-8.16.c.origin.c static void inittables(void) {
+insertkey        function   13223 sort-8.16.c.origin.c static void insertkey(struct keyfield *key_arg) {
+is_basic         function   2284 sort-8.16.c.origin.c __inline static _Bool is_basic(char c) {
+is_prime         function   7092 sort-8.16.c.origin.c static _Bool is_prime(size_t candidate) {
+isaac_refill     function   3249 sort-8.16.c.origin.c void isaac_refill(struct isaac_state *s, isaac_word *result) {
+isaac_seed       function   3489 sort-8.16.c.origin.c void isaac_seed(struct isaac_state *s) {
+just             function   3229 sort-8.16.c.origin.c __inline static isaac_word just(isaac_word a) {
+key_init         function   13446 sort-8.16.c.origin.c static struct keyfield *key_init(struct keyfield *key) {
+key_numeric      function   10676 sort-8.16.c.origin.c __inline static _Bool key_numeric(struct keyfield const *key) {
+key_to_opts      function   10900 sort-8.16.c.origin.c static void key_to_opts(struct keyfield const *key, char *opts___1) {
+key_warnings     function   10978 sort-8.16.c.origin.c static void key_warnings(struct keyfield const *gkey, _Bool gkey_only) {
+keycompare       function   11234 sort-8.16.c.origin.c static int keycompare(struct line const *a, struct line const *b) {
+last_component   function   1040 sort-8.16.c.origin.c char *last_component(char const *name) {
+limfield         function   9850 sort-8.16.c.origin.c static char *limfield(struct line const *line, struct keyfield const *key) {
+locale_charset   function   6867 sort-8.16.c.origin.c char const *locale_charset(void) {
+lock_node        function   12439 sort-8.16.c.origin.c __inline static void lock_node(struct merge_node *node) {
+main             function   13471 sort-8.16.c.origin.c int main(int argc, char **argv) {
+mark_key         function   10646 sort-8.16.c.origin.c static void mark_key(size_t offset, size_t width) {
+match_suffix     function   7821 sort-8.16.c.origin.c static char const *match_suffix(char const **str) {
+maybe_create_temp function   9149 sort-8.16.c.origin.c static struct tempnode *maybe_create_temp(FILE **pfp,
+mbsnwidth        function   6097 sort-8.16.c.origin.c int mbsnwidth(char const *string, size_t nbytes, int flags) {
+mbuiter_multi_next function   4902 sort-8.16.c.origin.c __inline static void mbuiter_multi_next(struct mbuiter_multi *iter) {
+memcoll0         function   5325 sort-8.16.c.origin.c int memcoll0(char const *s1, size_t s1size, char const *s2, size_t s2size) {
+merge            function   12916 sort-8.16.c.origin.c static void merge(struct sortfile *files, size_t ntemps, size_t nfiles,
+merge_loop       function   12727 sort-8.16.c.origin.c static void merge_loop(struct merge_node_queue *queue, size_t total_lines,
+merge_tree_destroy function   12350 sort-8.16.c.origin.c static void merge_tree_destroy(struct merge_node *merge_tree) {
+merge_tree_init  function   12318 sort-8.16.c.origin.c static struct merge_node *merge_tree_init(size_t nthreads, size_t nlines,
+mergefiles       function   12195 sort-8.16.c.origin.c static size_t mergefiles(struct sortfile *files, size_t ntemps, size_t nfiles,
+mergefps         function   11931 sort-8.16.c.origin.c static void mergefps(struct sortfile *files, size_t ntemps, size_t nfiles,
+mergelines       function   12214 sort-8.16.c.origin.c static void mergelines(struct line *__restrict t, size_t nlines,
+mergelines_node  function   12514 sort-8.16.c.origin.c static void mergelines_node(struct merge_node *__restrict node,
+mkstemp_safer    function   5266 sort-8.16.c.origin.c int mkstemp_safer(char *templ) {
+nan_compare      function   10279 sort-8.16.c.origin.c static int nan_compare(char const *sa, char const *sb) {
+next_prime       function   7122 sort-8.16.c.origin.c static size_t next_prime(size_t candidate) {
+num_processors   function   5121 sort-8.16.c.origin.c unsigned long num_processors(enum nproc_query query) {
+num_processors_via_affinity_mask function   5105 sort-8.16.c.origin.c static unsigned long num_processors_via_affinity_mask(void) {
+numcompare       function   2371 sort-8.16.c.origin.c numcompare(char const *a, char const *b, int decimal_point___0,
+numcompare___3   function   10254 sort-8.16.c.origin.c static int numcompare___3(char const *a, char const *b) {
+open_input_files function   11894 sort-8.16.c.origin.c static size_t open_input_files(struct sortfile *files, size_t nfiles,
+open_temp        function   9205 sort-8.16.c.origin.c static FILE *open_temp(struct tempnode *temp) {
+order            function   7862 sort-8.16.c.origin.c __inline static int order(unsigned char c) {
+parse_field_count function   13302 sort-8.16.c.origin.c static char const *parse_field_count(char const *string, size_t *val,
+physmem_available function   5074 sort-8.16.c.origin.c double physmem_available(void) {
+physmem_total    function   5056 sort-8.16.c.origin.c double physmem_total(void) {
+pipe_fork        function   9077 sort-8.16.c.origin.c static pid_t pipe_fork(int *pipefds, size_t tries) {
+posix2_version   function   5012 sort-8.16.c.origin.c int posix2_version(void) {
+proctab_comparator function   8735 sort-8.16.c.origin.c static _Bool proctab_comparator(void const *e1, void const *e2) {
+proctab_hasher   function   8728 sort-8.16.c.origin.c static size_t proctab_hasher(void const *entry, size_t tabsize) {
+queue_check_insert function   12671 sort-8.16.c.origin.c static void queue_check_insert(struct merge_node_queue *queue,
+queue_check_insert_parent function   12712 sort-8.16.c.origin.c static void queue_check_insert_parent(struct merge_node_queue *queue,
+queue_destroy    function   12451 sort-8.16.c.origin.c static void queue_destroy(struct merge_node_queue *queue) {
+queue_init       function   12459 sort-8.16.c.origin.c static void queue_init(struct merge_node_queue *queue, size_t nthreads) {
+queue_insert     function   12467 sort-8.16.c.origin.c static void queue_insert(struct merge_node_queue *queue,
+queue_pop        function   12478 sort-8.16.c.origin.c static struct merge_node *queue_pop(struct merge_node_queue *queue) {
+quote            function   4894 sort-8.16.c.origin.c char const *quote(char const *name) {
+quote_n          function   4885 sort-8.16.c.origin.c char const *quote_n(int n, char const *name) {
+quotearg_buffer_restyled function   3805 sort-8.16.c.origin.c quotearg_buffer_restyled(char *buffer, size_t buffersize, char const *arg,
+quotearg_char    function   4866 sort-8.16.c.origin.c char *quotearg_char(char const *arg, char ch) {
+quotearg_char_mem function   4855 sort-8.16.c.origin.c char *quotearg_char_mem(char const *arg, size_t argsize, char ch) {
+quotearg_colon   function   4873 sort-8.16.c.origin.c char *quotearg_colon(char const *arg) {
+quotearg_n_options function   4755 sort-8.16.c.origin.c static char *quotearg_n_options(int n, char const *arg, size_t argsize,
+quotearg_n_style function   4830 sort-8.16.c.origin.c char *quotearg_n_style(int n, enum quoting_style s, char const *arg) {
+quotearg_n_style_mem function   4842 sort-8.16.c.origin.c char *quotearg_n_style_mem(int n, enum quoting_style s, char const *arg,
+quoting_options_from_style function   3737 sort-8.16.c.origin.c quoting_options_from_style(enum quoting_style style) {
+random_md5_state_init function   10414 sort-8.16.c.origin.c static void random_md5_state_init(char const *random_source) {
+randread         function   3201 sort-8.16.c.origin.c void randread(struct randread_source *s, void *buf___1, size_t size) {
+randread_error   function   2960 sort-8.16.c.origin.c static void randread_error(void const *file_name___3) {
+randread_free    function   3211 sort-8.16.c.origin.c int randread_free(struct randread_source *s) {
+randread_new     function   3091 sort-8.16.c.origin.c struct randread_source *randread_new(char const *name, size_t bytes_bound) {
+raw_comparator   function   7153 sort-8.16.c.origin.c static _Bool raw_comparator(void const *a, void const *b) {
+raw_hasher       function   7144 sort-8.16.c.origin.c static size_t raw_hasher(void const *data, size_t n) {
+readisaac        function   3158 sort-8.16.c.origin.c static void readisaac(struct isaac *isaac, unsigned char *p, size_t size) {
+readsource       function   3126 sort-8.16.c.origin.c static void readsource(struct randread_source *s, unsigned char *p,
+readtokens0      function   2815 sort-8.16.c.origin.c _Bool readtokens0(FILE *in, struct Tokens *t) {
+readtokens0_init function   2742 sort-8.16.c.origin.c void readtokens0_init(struct Tokens *t) {
+reap             function   8746 sort-8.16.c.origin.c static pid_t reap(pid_t pid) {
+reap_all         function   8872 sort-8.16.c.origin.c static void reap_all(void) {
+reap_exited      function   8846 sort-8.16.c.origin.c static void reap_exited(void) {
+reap_some        function   8865 sort-8.16.c.origin.c static void reap_some(void) {
+register_proc    function   8802 sort-8.16.c.origin.c static void register_proc(struct tempnode *temp) {
+rotr_sz          function   7050 sort-8.16.c.origin.c __inline static size_t rotr_sz(size_t x, int n) {
+rpl_fcntl        function   8153 sort-8.16.c.origin.c int rpl_fcntl(int fd, int action, ...) {
+rpl_fflush       function   8109 sort-8.16.c.origin.c int rpl_fflush(FILE *stream) {
+safe_hasher      function   7058 sort-8.16.c.origin.c static struct hash_entry *safe_hasher(Hash_table const *table___0,
+save_token       function   2756 sort-8.16.c.origin.c static void save_token(struct Tokens *t) {
+select_plural    function   8403 sort-8.16.c.origin.c __inline static unsigned long select_plural(uintmax_t n) {
+sequential_sort  function   12258 sort-8.16.c.origin.c static void sequential_sort(struct line *__restrict lines, size_t nlines,
+set_char_quoting function   3716 sort-8.16.c.origin.c int set_char_quoting(struct quoting_options *o, char c, int i) {
+set_ordering     function   13348 sort-8.16.c.origin.c static char *set_ordering(char const *s, struct keyfield *key,
+set_program_name function   4979 sort-8.16.c.origin.c void set_program_name(char const *argv0) {
+set_uint32       function   2723 sort-8.16.c.origin.c __inline static void set_uint32(char *cp, uint32_t v) {
+sighandler       function   13453 sort-8.16.c.origin.c static void sighandler(int sig___0) {
+simple_new       function   2982 sort-8.16.c.origin.c static struct randread_source *simple_new(FILE *source,
+sort             function   13075 sort-8.16.c.origin.c static void sort(char *const *files, size_t nfiles, char const *output_file,
+sort_buffer_size function   9645 sort-8.16.c.origin.c static size_t sort_buffer_size(FILE *const *fps, size_t nfps,
+sortlines        function   12764 sort-8.16.c.origin.c static void sortlines(struct line *__restrict lines, size_t nthreads,
+sortlines_thread function   12753 sort-8.16.c.origin.c static void *sortlines_thread(void *data) {
+specify_nmerge   function   9436 sort-8.16.c.origin.c static void specify_nmerge(int oi, char c, char const *s) {
+specify_nthreads function   9565 sort-8.16.c.origin.c static size_t specify_nthreads(int oi, char c, char const *s) {
+specify_sort_size function   9501 sort-8.16.c.origin.c static void specify_sort_size(int oi, char c, char const *s) {
+strcoll_loop     function   5278 sort-8.16.c.origin.c __inline static int strcoll_loop(char const *s1, size_t s1size, char const *s2,
+stream_open      function   8986 sort-8.16.c.origin.c static FILE *stream_open(char const *file, char const *how) {
+strnlen1         function   2700 sort-8.16.c.origin.c size_t strnlen1(char const *string, size_t maxlen) {
+strnumcmp        function   2690 sort-8.16.c.origin.c strnumcmp(char const *a, char const *b, int decimal_point___0,
+struct_month_cmp function   9333 sort-8.16.c.origin.c static int struct_month_cmp(void const *m1, void const *m2) {
+to_uchar         function   1073 sort-8.16.c.origin.c __inline static unsigned char to_uchar(char ch) {
+transfer_entries function   7344 sort-8.16.c.origin.c static _Bool transfer_entries(Hash_table *dst, Hash_table *src, _Bool safe) {
+triple_compare_ino_str function   7627 sort-8.16.c.origin.c _Bool triple_compare_ino_str(void const *x, void const *y) {
+triple_hash      function   7614 sort-8.16.c.origin.c size_t triple_hash(void const *x, size_t table_size) {
+unlock_node      function   12445 sort-8.16.c.origin.c __inline static void unlock_node(struct merge_node *node) {
+usage            function   8519 sort-8.16.c.origin.c void usage(int status) {
+verrevcmp        function   7884 sort-8.16.c.origin.c verrevcmp(char const *s1, size_t s1_len, char const *s2, size_t s2_len) {
+version_etc      function   2178 sort-8.16.c.origin.c void version_etc(FILE *stream, char const *command_name, char const *package,
+version_etc_arn  function   2032 sort-8.16.c.origin.c void version_etc_arn(FILE *stream, char const *command_name,
+version_etc_va   function   2151 sort-8.16.c.origin.c void version_etc_va(FILE *stream, char const *command_name, char const *package,
+wait_proc        function   8836 sort-8.16.c.origin.c static void wait_proc(pid_t pid) {
+write_line       function   11726 sort-8.16.c.origin.c static void write_line(struct line const *line, FILE *fp,
+write_unique     function   12497 sort-8.16.c.origin.c static void write_unique(struct line const *line, FILE *tfp,
+x2nrealloc       function   1922 sort-8.16.c.origin.c __inline static void *x2nrealloc(void *p, size_t *pn, size_t s) {
+xalloc_die       function   2008 sort-8.16.c.origin.c void xalloc_die(void) {
+xcalloc          function   1986 sort-8.16.c.origin.c void *xcalloc(size_t n, size_t s) {
+xcharalloc       function   3690 sort-8.16.c.origin.c __inline static char *xcharalloc(size_t n) {
+xfclose          function   9023 sort-8.16.c.origin.c static void xfclose(FILE *fp, char const *file) {
+xfopen           function   9009 sort-8.16.c.origin.c static FILE *xfopen(char const *file, char const *how) {
+xmalloc          function   1952 sort-8.16.c.origin.c void *xmalloc(size_t n) {
+xmemcoll0        function   1902 sort-8.16.c.origin.c int xmemcoll0(char const *s1, size_t s1size, char const *s2, size_t s2size) {
+xmemdup          function   1998 sort-8.16.c.origin.c void *xmemdup(void const *p, size_t s) {
+xnanosleep       function   1849 sort-8.16.c.origin.c int xnanosleep(double seconds) {
+xnmalloc         function   1261 sort-8.16.c.origin.c __inline static void *xnmalloc(size_t n, size_t s) {
+xrealloc         function   1967 sort-8.16.c.origin.c void *xrealloc(void *p, size_t n) {
+xstrtol_error    function   1785 sort-8.16.c.origin.c static void xstrtol_error(enum strtol_error err, int opt_idx, char c,
+xstrtol_fatal    function   1836 sort-8.16.c.origin.c void xstrtol_fatal(enum strtol_error err, int opt_idx, char c,
+xstrtoul         function   1563 sort-8.16.c.origin.c strtol_error xstrtoul(char const *s, char **ptr, int strtol_base,
+xstrtoumax       function   1314 sort-8.16.c.origin.c strtol_error xstrtoumax(char const *s, char **ptr, int strtol_base,
+xstrxfrm         function   10440 sort-8.16.c.origin.c static size_t xstrxfrm(char *__restrict dest, char const *__restrict src,
+zaptemp          function   9290 sort-8.16.c.origin.c static void zaptemp(char const *name) {

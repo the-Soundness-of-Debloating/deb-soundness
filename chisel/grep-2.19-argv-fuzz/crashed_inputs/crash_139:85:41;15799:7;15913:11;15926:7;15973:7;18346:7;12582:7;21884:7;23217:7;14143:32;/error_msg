@@ -1,0 +1,55 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.tsan.out
+==================
+WARNING: ThreadSanitizer: heap-use-after-free (pid=4190385)
+  Read of size 1 at 0x7b2400000090 by main thread:
+    #0 parse_bracket_exp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:14143:51 (reduced.tsan.out+0xd58c3) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #1 lex /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15227:21 (reduced.tsan.out+0xd100a) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #2 atom /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15685:41 (reduced.tsan.out+0xd6671) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #3 closure /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15799:7 (reduced.tsan.out+0xd6395) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #4 branch /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15913:11 (reduced.tsan.out+0xd6363) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #5 regexp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15926:7 (reduced.tsan.out+0xd11e1) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #6 dfaparse /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15973:7 (reduced.tsan.out+0xd0416) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #7 dfacomp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18346:7 (reduced.tsan.out+0xcfa3e) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #8 GEAcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12582:7 (reduced.tsan.out+0xcf89a) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #9 Gcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21884:7 (reduced.tsan.out+0xd6c3a) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #10 main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7 (reduced.tsan.out+0xd3f00) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+
+  Previous write of size 8 at 0x7b2400000090 by main thread:
+    #0 realloc <null> (reduced.tsan.out+0x4d7e3) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #1 xrealloc /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:1070:11 (reduced.tsan.out+0xcdb25) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #2 x2nrealloc /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:996:13 (reduced.tsan.out+0xcdbe2) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #3 addtok_mb /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15270:36 (reduced.tsan.out+0xd6759) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #4 addtok /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15400:11 (reduced.tsan.out+0xd124a) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #5 branch /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15914:11 (reduced.tsan.out+0xd636d) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #6 regexp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15926:7 (reduced.tsan.out+0xd11e1) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #7 dfaparse /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15973:7 (reduced.tsan.out+0xd0416) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #8 dfacomp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18346:7 (reduced.tsan.out+0xcfa3e) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #9 GEAcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12582:7 (reduced.tsan.out+0xcf89a) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #10 Gcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21884:7 (reduced.tsan.out+0xd6c3a) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #11 main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7 (reduced.tsan.out+0xd3f00) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+
+SUMMARY: ThreadSanitizer: heap-use-after-free /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:14143:51 in parse_bracket_exp
+==================
+ThreadSanitizer:DEADLYSIGNAL
+==4190385==ERROR: ThreadSanitizer: SEGV on unknown address 0x7b2400010000 (pc 0x5556a26418cb bp 0x7ffc0f689e60 sp 0x7ffc0f689760 T4190385)
+==4190385==The signal is caused by a READ memory access.
+    #0 parse_bracket_exp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:14143:32 (reduced.tsan.out+0xd58cb) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #1 lex /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15227:21 (reduced.tsan.out+0xd100a) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #2 atom /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15685:41 (reduced.tsan.out+0xd6671) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #3 closure /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15799:7 (reduced.tsan.out+0xd6395) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #4 branch /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15913:11 (reduced.tsan.out+0xd6363) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #5 regexp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15926:7 (reduced.tsan.out+0xd11e1) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #6 dfaparse /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15973:7 (reduced.tsan.out+0xd0416) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #7 dfacomp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18346:7 (reduced.tsan.out+0xcfa3e) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #8 GEAcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12582:7 (reduced.tsan.out+0xcf89a) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #9 Gcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21884:7 (reduced.tsan.out+0xd6c3a) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #10 main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7 (reduced.tsan.out+0xd3f00) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #11 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #12 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #13 _start <null> (reduced.tsan.out+0x21424) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:14143:32 in parse_bracket_exp
+==4190385==ABORTING
+./verify.sh: line 108: 4190384 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

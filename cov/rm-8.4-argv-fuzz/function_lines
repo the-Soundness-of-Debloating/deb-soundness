@@ -1,0 +1,127 @@
+AD_compare       function   4022 rm-8.4.c.origin.c static _Bool AD_compare(void const *x, void const *y) {
+AD_hash          function   4041 rm-8.4.c.origin.c static size_t AD_hash(void const *x, size_t table_size) {
+LCO_compare      function   4605 rm-8.4.c.origin.c static _Bool LCO_compare(void const *x, void const *y) {
+LCO_hash         function   4598 rm-8.4.c.origin.c static size_t LCO_hash(void const *x, size_t table_size) {
+_Bool            function   3753 rm-8.4.c.origin.c _Bool(__attribute__((__warn_unused_result__))
+__argmatch_die   function   1265 rm-8.4.c.origin.c static void __argmatch_die(void) {
+__xargmatch_internal function   1379 rm-8.4.c.origin.c ptrdiff_t __xargmatch_internal(char const *context, char const *arg,
+allocate_entry   function   3593 rm-8.4.c.origin.c static struct hash_entry *allocate_entry(Hash_table *table___0) {
+argmatch         function   1272 rm-8.4.c.origin.c ptrdiff_t argmatch(char const *arg, char const *const *arglist,
+argmatch_invalid function   1321 rm-8.4.c.origin.c void argmatch_invalid(char const *context, char const *value,
+argmatch_valid   function   1344 rm-8.4.c.origin.c void argmatch_valid(char const *const *arglist, char const *vallist,
+base_len         function   1218 rm-8.4.c.origin.c size_t base_len(char const *name) {
+cache_fstatat    function   6123 rm-8.4.c.origin.c static int cache_fstatat(int fd, char const *file, struct stat *st, int flag) {
+cache_stat_init  function   6144 rm-8.4.c.origin.c __inline static struct stat *cache_stat_init(struct stat *st) {
+can_write_any_file function   1515 rm-8.4.c.origin.c _Bool can_write_any_file(void) {
+check_tuning     function   3428 rm-8.4.c.origin.c static _Bool check_tuning(Hash_table *table___0) {
+clear_ungetc_buffer_preserving_position function    436 rm-8.4.c.origin.c __inline static void clear_ungetc_buffer_preserving_position(FILE *fp) {
+close_stdin      function   1055 rm-8.4.c.origin.c void close_stdin(void) {
+close_stdout     function   1014 rm-8.4.c.origin.c void close_stdout(void) {
+close_stream     function   1103 rm-8.4.c.origin.c int close_stream(FILE *stream) {
+compute_bucket_size function   3458 rm-8.4.c.origin.c static size_t compute_bucket_size(size_t candidate, Hash_tuning const *tuning) {
+cwd_advance_fd   function   4220 rm-8.4.c.origin.c static void cwd_advance_fd(FTS *sp, int fd, _Bool chdir_down_one) {
+cycle_check      function    976 rm-8.4.c.origin.c _Bool cycle_check(struct cycle_check_state *state, struct stat const *sb) {
+cycle_check_init function    969 rm-8.4.c.origin.c void cycle_check_init(struct cycle_check_state *state) {
+diagnose_leading_hyphen function   6853 rm-8.4.c.origin.c static void diagnose_leading_hyphen(int argc, char **argv) {
+dirent_inode_sort_may_be_useful function   4557 rm-8.4.c.origin.c static _Bool dirent_inode_sort_may_be_useful(int dir_fd) {
+diropen          function   4252 rm-8.4.c.origin.c __inline static int diropen(FTS const *sp, char const *dir) {
+dot_or_dotdot    function   6042 rm-8.4.c.origin.c __inline static _Bool dot_or_dotdot(char const *file_name___3) {
+dup_safer        function    831 rm-8.4.c.origin.c int dup_safer(int fd) {
+emit_ancillary_info function   6792 rm-8.4.c.origin.c __inline static void emit_ancillary_info(void) {
+enter_dir        function   4068 rm-8.4.c.origin.c static _Bool enter_dir(FTS *fts, FTSENT *ent) {
+euidaccess_stat  function    692 rm-8.4.c.origin.c _Bool euidaccess_stat(struct stat const *st, int mode) {
+excise           function   6438 rm-8.4.c.origin.c static enum RM_status excise(FTS *fts, FTSENT *ent, struct rm_options const *x,
+fd_ring_clear    function   4158 rm-8.4.c.origin.c static void fd_ring_clear(I_ring *fd_ring) {
+fd_safer         function    465 rm-8.4.c.origin.c int fd_safer(int fd) {
+file_type        function    360 rm-8.4.c.origin.c char const *file_type(struct stat const *st) {
+freadahead       function    317 rm-8.4.c.origin.c size_t freadahead(FILE *fp) {
+free_dir         function   4146 rm-8.4.c.origin.c static void free_dir(FTS *sp) {
+free_entry       function   3605 rm-8.4.c.origin.c static void free_entry(Hash_table *table___0, struct hash_entry *entry) {
+fts_alloc        function   5725 rm-8.4.c.origin.c static FTSENT *fts_alloc(FTS *sp, char const *name, size_t namelen) {
+fts_build        function   5148 rm-8.4.c.origin.c static FTSENT *fts_build(FTS *sp, int type) {
+fts_compar       function   5648 rm-8.4.c.origin.c static int fts_compar(void const *a, void const *b) {
+fts_compare_ino  function   5078 rm-8.4.c.origin.c static int fts_compare_ino(struct _ftsent const **a, struct _ftsent const **b) {
+fts_lfree        function   5747 rm-8.4.c.origin.c static void fts_lfree(FTSENT *head) {
+fts_load         function   4446 rm-8.4.c.origin.c static void fts_load(FTS *sp, FTSENT *p) {
+fts_maxarglen    function   5830 rm-8.4.c.origin.c static size_t fts_maxarglen(char *const *argv) {
+fts_padjust      function   5786 rm-8.4.c.origin.c static void fts_padjust(FTS *sp, FTSENT *head) {
+fts_palloc       function   5762 rm-8.4.c.origin.c static _Bool fts_palloc(FTS *sp, size_t more) {
+fts_safe_changedir function   5849 rm-8.4.c.origin.c static int fts_safe_changedir(FTS *sp, FTSENT *p, int fd, char const *dir) {
+fts_set_stat_required function   4178 rm-8.4.c.origin.c static void fts_set_stat_required(FTSENT *p, _Bool required) {
+fts_skip_tree    function   6413 rm-8.4.c.origin.c static void fts_skip_tree(FTS *fts, FTSENT *ent) {
+fts_sort         function   5659 rm-8.4.c.origin.c static FTSENT *fts_sort(FTS *sp, FTSENT *head, size_t nitems) {
+fts_stat         function   5561 rm-8.4.c.origin.c static unsigned short fts_stat(FTS *sp, FTSENT *p, _Bool follow) {
+get_root_dev_ino function   1751 rm-8.4.c.origin.c struct dev_ino *get_root_dev_ino(struct dev_ino *root_d_i) {
+gettext_quote    function   1828 rm-8.4.c.origin.c static char const *gettext_quote(char const *msgid, enum quoting_style s) {
+hash_delete      function   3878 rm-8.4.c.origin.c void *hash_delete(Hash_table *table___0, void const *entry) {
+hash_find_entry  function   3613 rm-8.4.c.origin.c static void *hash_find_entry(Hash_table *table___0, void const *entry,
+hash_free        function   3531 rm-8.4.c.origin.c void hash_free(Hash_table *table___0) {
+hash_lookup      function   3316 rm-8.4.c.origin.c void *hash_lookup(Hash_table const *table___0, void const *entry) {
+hash_pjw         function   3978 rm-8.4.c.origin.c size_t hash_pjw(void const *x, size_t tablesize) {
+hash_string      function   3349 rm-8.4.c.origin.c size_t hash_string(char const *string, size_t n_buckets) {
+i_ring_empty     function   3269 rm-8.4.c.origin.c _Bool i_ring_empty(I_ring const *ir) {
+i_ring_init      function   3250 rm-8.4.c.origin.c void i_ring_init(I_ring *ir, int default_val) {
+i_ring_pop       function   3287 rm-8.4.c.origin.c int i_ring_pop(I_ring *ir) {
+i_ring_push      function   3272 rm-8.4.c.origin.c int i_ring_push(I_ring *ir, int val) {
+ignorable_missing function   6395 rm-8.4.c.origin.c __inline static _Bool ignorable_missing(struct rm_options const *x,
+is_basic         function    609 rm-8.4.c.origin.c __inline static _Bool is_basic(char c) {
+is_empty_dir     function   6085 rm-8.4.c.origin.c __inline static _Bool is_empty_dir(int fd_cwd, char const *dir) {
+is_prime         function   3366 rm-8.4.c.origin.c static _Bool is_prime(size_t candidate) {
+is_zero_or_power_of_two function    966 rm-8.4.c.origin.c __inline static _Bool is_zero_or_power_of_two(uintmax_t i) {
+last_component   function   1185 rm-8.4.c.origin.c char *last_component(char const *name) {
+leaf_optimization_applies function   4579 rm-8.4.c.origin.c static _Bool leaf_optimization_applies(int dir_fd) {
+leave_dir        function   4106 rm-8.4.c.origin.c static void leave_dir(FTS *fts, FTSENT *ent) {
+link_count_optimize_ok function   4614 rm-8.4.c.origin.c static _Bool link_count_optimize_ok(FTSENT const *p) {
+lstatat          function   6035 rm-8.4.c.origin.c __inline static int lstatat(int fd, char const *name, struct stat *st) {
+main             function   6968 rm-8.4.c.origin.c int main(int argc, char **argv) {
+mark_ancestor_dirs function   6420 rm-8.4.c.origin.c static void mark_ancestor_dirs(FTSENT *ent) {
+mbuiter_multi_next function    617 rm-8.4.c.origin.c __inline static void mbuiter_multi_next(struct mbuiter_multi *iter) {
+next_prime       function   3394 rm-8.4.c.origin.c static size_t next_prime(size_t candidate) {
+nonexistent_file_errno function   6379 rm-8.4.c.origin.c __inline static _Bool nonexistent_file_errno(int errnum) {
+open_safer       function   3016 rm-8.4.c.origin.c int open_safer(char const *file, int flags, ...) {
+openat_safer     function   2999 rm-8.4.c.origin.c int openat_safer(int fd, char const *file, int flags, ...) {
+opendir_safer    function   2961 rm-8.4.c.origin.c DIR *opendir_safer(char const *name) {
+opendirat        function   4195 rm-8.4.c.origin.c __inline static DIR *opendirat(int fd, char const *dir) {
+priv_set_remove_linkdir function   6831 rm-8.4.c.origin.c __inline static int priv_set_remove_linkdir(void) {
+prompt           function   6203 rm-8.4.c.origin.c static enum RM_status prompt(FTS const *fts, FTSENT const *ent, _Bool is_dir,
+quote            function   2912 rm-8.4.c.origin.c char const *quote(char const *name) {
+quote_n          function   2905 rm-8.4.c.origin.c char const *quote_n(int n, char const *name) {
+quotearg_buffer_restyled function   1843 rm-8.4.c.origin.c quotearg_buffer_restyled(char *buffer, size_t buffersize, char const *arg,
+quotearg_char    function   2891 rm-8.4.c.origin.c char *quotearg_char(char const *arg, char ch) {
+quotearg_char_mem function   2880 rm-8.4.c.origin.c char *quotearg_char_mem(char const *arg, size_t argsize, char ch) {
+quotearg_colon   function   2898 rm-8.4.c.origin.c char *quotearg_colon(char const *arg) {
+quotearg_n_options function   2793 rm-8.4.c.origin.c static char *quotearg_n_options(int n, char const *arg, size_t argsize,
+quotearg_n_style function   2868 rm-8.4.c.origin.c char *quotearg_n_style(int n, enum quoting_style s, char const *arg) {
+quoting_options_from_style function   1819 rm-8.4.c.origin.c quoting_options_from_style(enum quoting_style style) {
+raw_comparator   function   3425 rm-8.4.c.origin.c static _Bool raw_comparator(void const *a, void const *b) {
+raw_hasher       function   3416 rm-8.4.c.origin.c static size_t raw_hasher(void const *data, size_t n) {
+readdir_ignoring_dot_and_dotdot function   6065 rm-8.4.c.origin.c readdir_ignoring_dot_and_dotdot(DIR *dirp) {
+rm               function   6706 rm-8.4.c.origin.c enum RM_status rm(char *const *file, struct rm_options const *x) {
+rm_fts           function   6511 rm-8.4.c.origin.c static enum RM_status rm_fts(FTS *fts, FTSENT *ent,
+rm_option_init   function   6954 rm-8.4.c.origin.c static void rm_option_init(struct rm_options *x) {
+rotr_sz          function   3308 rm-8.4.c.origin.c __inline static size_t rotr_sz(size_t x, int n) {
+rpl_fcntl        function    492 rm-8.4.c.origin.c int rpl_fcntl(int fd, int action, ...) {
+rpl_fflush       function    444 rm-8.4.c.origin.c int rpl_fflush(FILE *stream) {
+set_char_quoting function   1798 rm-8.4.c.origin.c int set_char_quoting(struct quoting_options *o, char c, int i) {
+set_cloexec_flag function   1142 rm-8.4.c.origin.c int set_cloexec_flag(int desc, _Bool value) {
+set_program_name function   2925 rm-8.4.c.origin.c void set_program_name(char const *argv0) {
+set_stat_type    function   5095 rm-8.4.c.origin.c static void set_stat_type(struct stat *st, unsigned int dtype) {
+setup_dir        function   4048 rm-8.4.c.origin.c static _Bool setup_dir(FTS *fts) {
+strip_trailing_slashes function   1729 rm-8.4.c.origin.c _Bool strip_trailing_slashes(char *file) {
+strnlen1         function   1715 rm-8.4.c.origin.c size_t strnlen1(char const *string, size_t maxlen) {
+transfer_entries function   3680 rm-8.4.c.origin.c static _Bool transfer_entries(Hash_table *dst, Hash_table *src, _Bool safe) {
+triple_compare_ino_str function   3944 rm-8.4.c.origin.c _Bool triple_compare_ino_str(void const *x, void const *y) {
+triple_free      function   3969 rm-8.4.c.origin.c void triple_free(void *x) {
+triple_hash      function   3933 rm-8.4.c.origin.c size_t triple_hash(void const *x, size_t table_size) {
+usage            function   6887 rm-8.4.c.origin.c void usage(int status) {
+version_etc      function   1686 rm-8.4.c.origin.c void version_etc(FILE *stream, char const *command_name, char const *package,
+version_etc_arn  function   1540 rm-8.4.c.origin.c void version_etc_arn(FILE *stream, char const *command_name,
+version_etc_va   function   1659 rm-8.4.c.origin.c void version_etc_va(FILE *stream, char const *command_name, char const *package,
+write_protected_non_symlink function   6150 rm-8.4.c.origin.c static int write_protected_non_symlink(int fd_cwd, char const *file,
+xalloc_die       function   1504 rm-8.4.c.origin.c void xalloc_die(void) {
+xcharalloc       function   1772 rm-8.4.c.origin.c __inline static char *xcharalloc(size_t n) {
+xfts_open        function   1483 rm-8.4.c.origin.c FTS *xfts_open(char *const *argv, int options,
+xmalloc          function   1452 rm-8.4.c.origin.c void *xmalloc(size_t n) {
+xnmalloc         function   1431 rm-8.4.c.origin.c __inline static void *xnmalloc(size_t n, size_t s) {
+xrealloc         function   1466 rm-8.4.c.origin.c void *xrealloc(void *p, size_t n) {
+yesno            function   1406 rm-8.4.c.origin.c _Bool yesno(void) {

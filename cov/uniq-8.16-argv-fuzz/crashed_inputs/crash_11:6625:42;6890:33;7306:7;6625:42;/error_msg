@@ -1,0 +1,17 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/uniq-8.16-argv-fuzz/bins/reduced.msan.out
+MemorySanitizer:DEADLYSIGNAL
+==2424112==ERROR: MemorySanitizer: SEGV on unknown address 0x000000000000 (pc 0x55677ad057f2 bp 0x7ffc11f3c4e0 sp 0x7ffc11f3c400 T2424112)
+==2424112==The signal is caused by a READ memory access.
+==2424112==Hint: address points to the zero page.
+    #0 0x55677ad057f2 in find_field /workspace/fuzzing-deb-with-sanitizers/cov/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6625:42
+    #1 0x55677ad0485b in check_file /workspace/fuzzing-deb-with-sanitizers/cov/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6890:33
+    #2 0x55677ad031ca in main /workspace/fuzzing-deb-with-sanitizers/cov/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7306:7
+    #3 0x7fc0b5fd9d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7fc0b5fd9e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55677ac77384 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/uniq-8.16-argv-fuzz/bins/reduced.msan.out+0x1f384) (BuildId: 095d009ef01eba6075ea0a9e00b1657052dfe3a6)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6625:42 in find_field
+==2424112==ABORTING
+./verify.sh: line 110: 2424109 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

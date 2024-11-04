@@ -1,0 +1,6 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/bzip2-1.0.5-input-fuzz/bins/reduced.ubsan.out -d
+bzip2-1.0.5.c.reduced.c:2311:29: runtime error: applying zero offset to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2311:29 in 
+bzip2-1.0.5.c.reduced.c:2311:21: runtime error: store to null pointer of type 'UInt32' (aka 'unsigned int')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2311:21 in 

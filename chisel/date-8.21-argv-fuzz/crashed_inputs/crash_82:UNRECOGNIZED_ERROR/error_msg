@@ -1,0 +1,12 @@
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.lsan.out
+
+=================================================================
+==1031477==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 120 byte(s) in 1 object(s) allocated from:
+    #0 0x564aa47806c2 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.lsan.out+0x306c2) (BuildId: 5060c0af9d8553ad9e19245aea506efae9476d31)
+    #1 0x7f8102c77122 in __getdelim libio/iogetdelim.c:62:27
+    #2 0x613fffffffff  (<unknown module>)
+
+SUMMARY: LeakSanitizer: 120 byte(s) leaked in 1 allocation(s).

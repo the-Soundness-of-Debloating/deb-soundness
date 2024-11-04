@@ -1,0 +1,32 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.ubsan.out
+bzip2-1.0.5.c.reduced.c:1481:28: runtime error: shift exponent -1 is negative
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1481:28 in 
+bzip2-1.0.5.c.reduced.c:2176:21: runtime error: signed integer overflow: 1073741824 * 2 cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2176:21 in 
+bzip2-1.0.5.c.reduced.c:2184:35: runtime error: index 18002 out of bounds for type 'UChar[18002]' (aka 'unsigned char[18002]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2184:35 in 
+bzip2-1.0.5.c.reduced.c:2186:31: runtime error: index 17 out of bounds for type 'Int32[6][258]' (aka 'int[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2186:31 in 
+bzip2-1.0.5.c.reduced.c:2187:30: runtime error: index 17 out of bounds for type 'Int32[6][258]' (aka 'int[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2187:30 in 
+bzip2-1.0.5.c.reduced.c:2188:30: runtime error: index 17 out of bounds for type 'Int32[6][258]' (aka 'int[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2188:30 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==2759930==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x55b0c241a524 (pc 0x55b0c0e6aad9 bp 0x7ffc3b1d72b0 sp 0x7ffc3b1d4ee0 T2759930)
+==2759930==The signal is caused by a READ memory access.
+    #0 0x55b0c0e6aad9 in BZ2_decompress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:2227:32
+    #1 0x55b0c0e8e225 in BZ2_bzDecompress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:6162:19
+    #2 0x55b0c0e905b7 in BZ2_bzRead /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:6867:17
+    #3 0x55b0c0e98283 in testStream /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:7738:23
+    #4 0x55b0c0e91e7e in testf /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9405:15
+    #5 0x55b0c0e912f7 in main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:10329:17
+    #6 0x7f5ea4a3bd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f5ea4a3be3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55b0c0e32434 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.ubsan.out+0x2b434) (BuildId: 560a640243895383a301a3094b37fd45772e8803)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:2227:32 in BZ2_decompress
+==2759930==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 173: 2759929 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/input/radamsa_fuzzed/input2_fuzzed/input2_5

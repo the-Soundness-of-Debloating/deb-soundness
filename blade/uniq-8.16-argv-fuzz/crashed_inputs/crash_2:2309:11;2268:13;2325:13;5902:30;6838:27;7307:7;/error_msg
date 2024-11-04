@@ -1,0 +1,35 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/bins/reduced.asan.out
+
+=================================================================
+==2167360==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 128 byte(s) in 1 object(s) allocated from:
+    #0 0x565142a72186 in __interceptor_realloc (/workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/bins/reduced.asan.out+0xa4186) (BuildId: 3d4993eed61b8bfc5d00b00edab6b3acd9f41e0b)
+    #1 0x565142aac0dc in xrealloc /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:2309:11
+    #2 0x565142aac1af in x2nrealloc /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:2268:13
+    #3 0x565142aac111 in x2realloc /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:2325:13
+    #4 0x565142aac35e in readlinebuffer_delim /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:5902:30
+    #5 0x565142aad2b5 in check_file /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6838:27
+    #6 0x565142aaca4d in main /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7307:7
+    #7 0x7f6e19b95d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: 128 byte(s) leaked in 1 allocation(s).
+./verify.sh: line 110: 2167357 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/bins/reduced.lsan.out
+
+=================================================================
+==4116166==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 128 byte(s) in 1 object(s) allocated from:
+    #0 0x55d0051f5a34 in __interceptor_realloc (/workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/bins/reduced.lsan.out+0x30a34) (BuildId: 304f0cf1e529a8d2ed8a75cf451cea9f3a30592f)
+    #1 0x55d0051f7dfc in xrealloc /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:2309:11
+    #2 0x55d0051f7ea5 in x2nrealloc /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:2268:13
+    #3 0x55d0051f7e31 in x2realloc /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:2325:13
+    #4 0x55d0051f7fb9 in readlinebuffer_delim /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:5902:30
+    #5 0x55d0051f8482 in check_file /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6838:27
+    #6 0x55d0051f8231 in main /workspace/fuzzing-deb-with-sanitizers/blade/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7307:7
+    #7 0x7f7c69b79d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: LeakSanitizer: 128 byte(s) leaked in 1 allocation(s).

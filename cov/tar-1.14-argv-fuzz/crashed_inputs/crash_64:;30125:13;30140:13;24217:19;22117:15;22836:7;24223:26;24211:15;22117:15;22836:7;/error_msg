@@ -1,0 +1,37 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.tsan.out
+==================
+WARNING: ThreadSanitizer: heap-use-after-free (pid=127480)
+  Write of size 1 at 0x7b1000000040 by main thread:
+    #0 add_exclude_file /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:24223:26 (reduced.tsan.out+0xe7e0f) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #1 decode_options /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22117:15 (reduced.tsan.out+0xe59c1) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #2 main /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7 (reduced.tsan.out+0xe38c0) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+
+  Previous write of size 8 at 0x7b1000000040 by main thread:
+    #0 realloc <null> (reduced.tsan.out+0x4e8a3) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #1 xnrealloc_inline /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30088:13 (reduced.tsan.out+0xe9298) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #2 xrealloc /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30101:13 (reduced.tsan.out+0xd71ba) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #3 x2nrealloc_inline /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30125:13 (reduced.tsan.out+0xe9398) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #4 x2realloc /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30140:13 (reduced.tsan.out+0xe810a) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #5 add_exclude_file /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:24217:19 (reduced.tsan.out+0xe7dc8) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #6 decode_options /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22117:15 (reduced.tsan.out+0xe59c1) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #7 main /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7 (reduced.tsan.out+0xe38c0) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+
+SUMMARY: ThreadSanitizer: heap-use-after-free /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:24223:26 in add_exclude_file
+==================
+ThreadSanitizer:DEADLYSIGNAL
+==127480==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000008 (pc 0x7f335a651ff4 bp 0x7ffe2305ffa0 sp 0x7ffe2305fe58 T127480)
+==127480==The signal is caused by a READ memory access.
+==127480==Hint: address points to the zero page.
+    #0 getc_unlocked libio/getc_u.c:36:10 (libc.so.6+0x89ff4) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 add_exclude_file /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:24211:15 (reduced.tsan.out+0xe7d84) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #2 decode_options /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22117:15 (reduced.tsan.out+0xe59c1) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #3 main /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7 (reduced.tsan.out+0xe38c0) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+    #4 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #5 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #6 _start <null> (reduced.tsan.out+0x224e4) (BuildId: e23fc584af021c409b377144e31a9411978983b2)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV libio/getc_u.c:36:10 in getc_unlocked
+==127480==ABORTING
+./verify.sh: line 305: 127476 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input19_fuzzed/input19_43

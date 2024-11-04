@@ -1,0 +1,22 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.tsan.out xf /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/result/afl_result/reduced/result_0/tsan/crashes/id:000029,sig:11,src:000132+000005,time:24562489,execs:365600,op:splice,rep:13
+ThreadSanitizer:DEADLYSIGNAL
+==2902226==ERROR: ThreadSanitizer: SEGV on unknown address (pc 0x5565a901cf82 bp 0x7ffef09e70c0 sp 0x7ffef09e6968 T2902226)
+==2902226==The signal is caused by a READ memory access.
+==2902226==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 __tsan_write1 <null> (reduced.tsan.out+0xbaf82) (BuildId: b101f366f4f95ea2f07dc36e8fee740514c566ab)
+    #1 from_header /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:13142:23 (reduced.tsan.out+0xe03e9) (BuildId: b101f366f4f95ea2f07dc36e8fee740514c566ab)
+    #2 major_from_header /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:13178:13 (reduced.tsan.out+0xe0777) (BuildId: b101f366f4f95ea2f07dc36e8fee740514c566ab)
+    #3 decode_header /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12687:17 (reduced.tsan.out+0xda9a7) (BuildId: b101f366f4f95ea2f07dc36e8fee740514c566ab)
+    #4 extract_archive /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:7992:7 (reduced.tsan.out+0xd8956) (BuildId: b101f366f4f95ea2f07dc36e8fee740514c566ab)
+    #5 read_and /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12086:13 (reduced.tsan.out+0xdd6e3) (BuildId: b101f366f4f95ea2f07dc36e8fee740514c566ab)
+    #6 main /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7 (reduced.tsan.out+0xe401c) (BuildId: b101f366f4f95ea2f07dc36e8fee740514c566ab)
+    #7 <null> <null> (libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #8 __libc_start_main <null> (libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #9 _start <null> (reduced.tsan.out+0x224e4) (BuildId: b101f366f4f95ea2f07dc36e8fee740514c566ab)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.tsan.out+0xbaf82) (BuildId: b101f366f4f95ea2f07dc36e8fee740514c566ab) in __tsan_write1
+==2902226==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 360: 2902225 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.tsan.out xf /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/result/afl_result/reduced/result_0/tsan/crashes/id:000029*

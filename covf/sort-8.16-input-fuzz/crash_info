@@ -1,0 +1,4 @@
+[
+{ crash_loc: 1, vul_type: "heap-buffer-overflow,", deb_tool: "covf" }, 
+{ crash_loc: 9633, vul_type: "use-of-uninitialized-value,", deb_tool: "covf" }, 
+]

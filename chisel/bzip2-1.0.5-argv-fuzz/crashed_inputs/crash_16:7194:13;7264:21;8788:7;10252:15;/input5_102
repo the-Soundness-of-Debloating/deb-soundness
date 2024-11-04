@@ -1,0 +1,7 @@
+-f train_input/trainz/foo
+-f train_input/trainz/foo
+-f train_input/trainz/foo
+-f train_input/trainf/foo
+-f train_input/trainf%s+inf\r"xcalc\r\n%s`xcalc`%n/foo
+-f trahn_input/trainf/foo
+-f train_input/traine/foo

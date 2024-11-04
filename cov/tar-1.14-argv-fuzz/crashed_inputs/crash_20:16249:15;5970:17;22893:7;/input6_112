@@ -1,0 +1,1 @@
+cf f.tar -C fo . -C fo .

@@ -1,0 +1,24 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-input-fuzz/bins/reduced.msan.out -s /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-input-fuzz/input/radamsa_fuzzed/file4_fuzzed/file4_290
+==739800==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5630ce1af3f6 in main /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:13881:35
+    #1 0x7fde80a71d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7fde80a71e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x5630ce1272d4 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-input-fuzz/bins/reduced.msan.out+0x1e2d4) (BuildId: ad17d63017df7fd0bd25bf7af820ca81eebc7582)
+
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-input-fuzz/bins/reduced.tsan.out /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_1
+ThreadSanitizer:DEADLYSIGNAL
+==3324279==ERROR: ThreadSanitizer: SEGV on unknown address (pc 0x55ef051ca4aa bp 0x7fff48e97660 sp 0x7fff48e97588 T3324279)
+==3324279==The signal is caused by a READ memory access.
+==3324279==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 __tsan_write8 <null> (reduced.tsan.out+0xb94aa) (BuildId: ca4b8a1c3748b7f9f59a7b0a81a33b70e4b5983b)
+    #1 main /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:13881:35 (reduced.tsan.out+0xcd076) (BuildId: ca4b8a1c3748b7f9f59a7b0a81a33b70e4b5983b)
+    #2 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #3 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #4 _start <null> (reduced.tsan.out+0x20354) (BuildId: ca4b8a1c3748b7f9f59a7b0a81a33b70e4b5983b)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-input-fuzz/bins/reduced.tsan.out+0xb94aa) (BuildId: ca4b8a1c3748b7f9f59a7b0a81a33b70e4b5983b) in __tsan_write8
+==3324279==ABORTING
+./verify.sh: line 167: 3324276 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-input-fuzz/bins/reduced.tsan.out /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_1

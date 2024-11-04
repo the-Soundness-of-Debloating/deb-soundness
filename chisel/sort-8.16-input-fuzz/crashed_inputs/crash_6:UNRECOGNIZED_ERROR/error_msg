@@ -1,0 +1,6 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/bins/reduced.tsan.out -r /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/input/radamsa_fuzzed/file23_fuzzed/file23_129
+==255675==ERROR: ThreadSanitizer: requested allocation size 0x7fff69623363 exceeds maximum supported size of 0x10000000000
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/bins/reduced.lsan.out /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/input/radamsa_fuzzed/file13_fuzzed/file13_321
+==1882170==ERROR: LeakSanitizer: requested allocation size 0x7ffde1afc363 exceeds maximum supported size of 0x200000000

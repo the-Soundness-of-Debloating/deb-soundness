@@ -1,0 +1,50 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==25522==ERROR: AddressSanitizer: SEGV on unknown address (pc 0x557398b0715d bp 0x7ffee95ba9a0 sp 0x7ffee95ba8f0 T0)
+==25522==The signal is caused by a READ memory access.
+==25522==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x557398b0715d in fts_open /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4364:29
+    #1 0x557398b06f38 in xfts_open /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1223:11
+    #2 0x557398b07964 in chown_files /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6667:15
+    #3 0x557398b08134 in main /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10
+    #4 0x2b83ec5a0d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x2b83ec5a0e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x557398a47344 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/bins/reduced.asan.out+0x1e344) (BuildId: 5db66c451ae46da99697b811f973d9fa03315f2b)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4364:29 in fts_open
+==25522==ABORTING
+./verify.sh: line 108: 25519 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/bins/reduced.msan.out
+==31519==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5597d90f81fd in fts_open /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4364:29
+    #1 0x5597d90f7c10 in xfts_open /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1223:11
+    #2 0x5597d90f9e86 in chown_files /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6667:15
+    #3 0x5597d90fae58 in main /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10
+    #4 0x7f0d78d21d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f0d78d21e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x5597d90712f4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/bins/reduced.msan.out+0x1e2f4) (BuildId: a0853566709c0826bd6663053c044239ced44f94)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4364:29 in fts_open
+Exiting
+./verify.sh: line 108: 31518 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==10637==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000010 (pc 0x55f8d52b6ed4 bp 0x7ffcbeb53e20 sp 0x7ffcbeb53dd0 T0)
+==10637==The signal is caused by a WRITE memory access.
+==10637==Hint: address points to the zero page.
+    #0 0x55f8d52b6ed4 in fts_open /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4364:29
+    #1 0x55f8d52b6e08 in xfts_open /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1223:11
+    #2 0x55f8d52b7304 in chown_files /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6667:15
+    #3 0x55f8d52b755c in main /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10
+    #4 0x2b9bb90f5d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x2b9bb90f5e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x55f8d5289434 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/bins/reduced.lsan.out+0x5434) (BuildId: af27737c3195d987e76e04dc6bb8c1e4281e1e58)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4364:29 in fts_open
+==10637==ABORTING

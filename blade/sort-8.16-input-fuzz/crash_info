@@ -1,0 +1,16 @@
+[
+{ crash_loc: 10020, vul_type: "", deb_tool: "blade" }, 
+{ crash_loc: 13881, vul_type: "READ memory access,WRITE memory access,use-of-uninitialized-value,", deb_tool: "blade" }, 
+{ crash_loc: 0x5580d2687796, vul_type: "WRITE memory access,", deb_tool: "blade" }, 
+{ crash_loc: 10054, vul_type: "runtime error ", deb_tool: "blade" }, 
+{ crash_loc: 10055, vul_type: "runtime error ", deb_tool: "blade" }, 
+{ crash_loc: 11739, vul_type: "runtime error ", deb_tool: "blade" }, 
+{ crash_loc: 11740, vul_type: "runtime error ", deb_tool: "blade" }, 
+{ crash_loc: 11741, vul_type: "runtime error ", deb_tool: "blade" }, 
+{ crash_loc: 11772, vul_type: "runtime error ", deb_tool: "blade" }, 
+{ crash_loc: 11772, vul_type: "WRITE memory access,", deb_tool: "blade" }, 
+{ crash_loc: 13881, vul_type: "READ memory access,use-of-uninitialized-value,", deb_tool: "blade" }, 
+{ crash_loc: 9724, vul_type: "allocation-size-too-big,requested allocation size .* exceeds maximum supported size,", deb_tool: "blade" }, 
+{ crash_loc: UNRECOGNIZED_ERROR, vul_type: "requested allocation size .* exceeds maximum supported size,", deb_tool: "blade" }, 
+{ crash_loc: 0x557a8e3741a7, vul_type: "READ memory access,", deb_tool: "blade" }, 
+]

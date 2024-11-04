@@ -1,0 +1,23 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2732251==ERROR: ThreadSanitizer: SEGV on unknown address 0x0000000000b0 (pc 0x55fe93113b6e bp 0x7ffca9019250 sp 0x7ffca90185c0 T2732251)
+==2732251==The signal is caused by a READ memory access.
+==2732251==Hint: address points to the zero page.
+    #0 yyparse /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3712:21 (reduced.tsan.out+0xcfb6e) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3712:21 in yyparse
+==2732251==ABORTING
+./verify.sh: line 110: 2732250 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==2942947==ERROR: LeakSanitizer: SEGV on unknown address 0x0000000000b0 (pc 0x560bd7bddc49 bp 0x7fff8d265c40 sp 0x7fff8d2652f0 T0)
+==2942947==The signal is caused by a READ memory access.
+==2942947==Hint: address points to the zero page.
+    #0 0x560bd7bddc49 in yyparse /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3712:21
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3712:21 in yyparse
+==2942947==ABORTING

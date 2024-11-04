@@ -1,0 +1,6 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1792616==ERROR: AddressSanitizer: SEGV on unknown address 0x6cc67fff8048 (pc 0x55ea0e57a52b bp 0x7ffdb35a3480 sp 0x7ffdb35a3340 T0)
+==1792616==The signal is caused by a READ memory access.

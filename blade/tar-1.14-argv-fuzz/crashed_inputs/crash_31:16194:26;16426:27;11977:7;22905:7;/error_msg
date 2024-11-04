@@ -1,0 +1,19 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==3402862==ERROR: ThreadSanitizer: SEGV on unknown address 0x5582006f6f66 (pc 0x7fd834f9a7fd bp 0x7ffdf6acce30 sp 0x7ffdf6accd88 T3402862)
+==3402862==The signal is caused by a READ memory access.
+    #0 <null> string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 (libc.so.6+0x19d7fd) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 strlen <null> (reduced.tsan.out+0x567f2) (BuildId: a91c49f71ef66e92740147d508b3e7fd8d2b8f6a)
+    #2 name_next /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:16194:26 (reduced.tsan.out+0xd01e2) (BuildId: a91c49f71ef66e92740147d508b3e7fd8d2b8f6a)
+    #3 name_gather /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:16426:27 (reduced.tsan.out+0xd1ee1) (BuildId: a91c49f71ef66e92740147d508b3e7fd8d2b8f6a)
+    #4 read_and /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:11977:7 (reduced.tsan.out+0xd1d71) (BuildId: a91c49f71ef66e92740147d508b3e7fd8d2b8f6a)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22905:7 (reduced.tsan.out+0xd4912) (BuildId: a91c49f71ef66e92740147d508b3e7fd8d2b8f6a)
+    #6 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 _start <null> (reduced.tsan.out+0x213c4) (BuildId: a91c49f71ef66e92740147d508b3e7fd8d2b8f6a)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 
+==3402862==ABORTING
+./verify.sh: line 305: 3402861 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input20_fuzzed/input20_140

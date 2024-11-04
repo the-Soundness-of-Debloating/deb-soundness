@@ -1,0 +1,16 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.tsan.out
+==3485449==ERROR: ThreadSanitizer: requested allocation size 0xf608000000c00 exceeds maximum supported size of 0x10000000000
+    #0 __interceptor_malloc <null> (reduced.tsan.out+0x4d5b1) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #1 xmalloc /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:1045:13 (reduced.tsan.out+0xce8f5) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #2 xnmalloc /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:949:17 (reduced.tsan.out+0xce858) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #3 dfaanalyze /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:16505:25 (reduced.tsan.out+0xe69fd) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #4 dfacomp /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18350:7 (reduced.tsan.out+0xe4f63) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #5 GEAcompile /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12582:7 (reduced.tsan.out+0xe4dc2) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #6 Ecompile /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21892:7 (reduced.tsan.out+0xed51a) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #7 main /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7 (reduced.tsan.out+0xe7740) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #8 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+==3485449==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: ThreadSanitizer: allocation-size-too-big (/workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.tsan.out+0x4d5b1) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824) in __interceptor_malloc
+./verify.sh: line 110: 3485448 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

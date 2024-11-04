@@ -1,0 +1,12 @@
+[
+{ crash_loc: 7056, vul_type: "", deb_tool: "cova" }, 
+{ crash_loc: 7084, vul_type: "READ memory access,", deb_tool: "cova" }, 
+{ crash_loc: 5870, vul_type: "runtime error ", deb_tool: "cova" }, 
+{ crash_loc: 6557, vul_type: "runtime error ", deb_tool: "cova" }, 
+{ crash_loc: 7016, vul_type: "READ memory access,", deb_tool: "cova" }, 
+{ crash_loc: 7179, vul_type: "use-of-uninitialized-value,", deb_tool: "cova" }, 
+{ crash_loc: 7056, vul_type: "READ memory access,", deb_tool: "cova" }, 
+{ crash_loc: 0x7f4481eb677f, vul_type: "READ memory access,", deb_tool: "cova" }, 
+{ crash_loc: 7243, vul_type: "runtime error ", deb_tool: "cova" }, 
+{ crash_loc: 7243, vul_type: "READ memory access,", deb_tool: "cova" }, 
+]

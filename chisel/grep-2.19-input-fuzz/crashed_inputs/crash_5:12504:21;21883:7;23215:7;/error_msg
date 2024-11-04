@@ -1,0 +1,21 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/bins/reduced.asan.out a /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1038725==ERROR: AddressSanitizer: BUS on unknown address (pc 0x7f15d154922a bp 0xbebebebebebebebe sp 0x7ffc752fa4c0 T0)
+==1038725==The signal is caused by a READ memory access.
+==1038725==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x7f15d154922a in init_dfa posix/regcomp.c:845:3
+    #1 0x7f15d154922a in re_compile_internal posix/regcomp.c:758:9
+    #2 0x7f15d154a82e in re_compile_pattern posix/regcomp.c:230:9
+    #3 0x560d6c48369c in GEAcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:12504:21
+    #4 0x560d6c48cc31 in Gcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:21883:7
+    #5 0x560d6c489b01 in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23215:7
+    #6 0x7f15d146ed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f15d146ee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x560d6c3c13f4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/bins/reduced.asan.out+0x213f4) (BuildId: 78e1310d75006ad1c6196217d513ee957981c36b)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: BUS posix/regcomp.c:845:3 in init_dfa
+==1038725==ABORTING
+./verify.sh: line 231: 1038724 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/bins/reduced.asan.out a /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0

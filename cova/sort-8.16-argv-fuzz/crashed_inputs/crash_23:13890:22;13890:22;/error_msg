@@ -1,0 +1,26 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==807728==ERROR: AddressSanitizer: SEGV on unknown address 0x1ab717a70c38 (pc 0x55d2ff4ff024 bp 0x7fff69d87240 sp 0x7fff69d868c0 T0)
+==807728==The signal is caused by a READ memory access.
+    #0 0x55d2ff4ff024 in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13890:22
+    #1 0x7fe1bdb46d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7fe1bdb46e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x55d2ff43a4f4 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.asan.out+0x224f4) (BuildId: 53a6c196c7922a18f8a6d64b7e2b1d2990d51453)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13890:22 in main
+==807728==ABORTING
+./verify.sh: line 110: 807725 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.msan.out
+==912343==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x561ec71715a6 in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13890:22
+    #1 0x7f2e02e74d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7f2e02e74e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x561ec70dc464 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.msan.out+0x1f464) (BuildId: ca54af32621533d16211c91b5726392b6bfa2b5a)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13890:22 in main
+Exiting
+./verify.sh: line 110: 912341 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

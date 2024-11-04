@@ -1,0 +1,85 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==126191==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7fb030241881 bp 0x7ffc4b4fc8b0 sp 0x7ffc4b4fc078 T0)
+==126191==The signal is caused by a READ memory access.
+==126191==Hint: address points to the zero page.
+    #0 0x7fb030241881 in memcpy string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:222
+    #1 0x5637e48001b1 in __asan_memcpy (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.asan.out+0xa51b1) (BuildId: c4b6e170161c88a0ff251300e4e3ca367c4aa605)
+    #2 0x5637e484452d in strftime_case____0 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7333:25
+    #3 0x5637e4843735 in fprintftime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7807:11
+    #4 0x5637e4845adc in show_date /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9700:5
+    #5 0x5637e4845260 in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9671:18
+    #6 0x7fb0301a6d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7fb0301a6e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x5637e477b394 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.asan.out+0x20394) (BuildId: c4b6e170161c88a0ff251300e4e3ca367c4aa605)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:222 in memcpy
+==126191==ABORTING
+./verify.sh: line 108: 126190 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+date-8.21.c.reduced.c:4191:24: runtime error: index -93 out of bounds for type 'const yytype_int8[113]' (aka 'const signed char[113]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4191:24 in 
+date-8.21.c.reduced.c:5222:12: runtime error: load of value 128, which is not a valid value for type '_Bool'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:5222:12 in 
+date-8.21.c.reduced.c:5351:30: runtime error: signed integer overflow: -983242169868425248 * 60 cannot be represented in type 'long'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:5351:30 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==1129968==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7ff2e68877cd bp 0x7ffeeb520ec0 sp 0x7ffeeb520248 T1129968)
+==1129968==The signal is caused by a READ memory access.
+==1129968==Hint: address points to the zero page.
+    #0 0x7ff2e68877cd  string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:317
+    #1 0x55c15ecd9d20 in strftime_case____0 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7333:25
+    #2 0x55c15ecd8b75 in fprintftime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7807:11
+    #3 0x55c15ecdb485 in show_date /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9700:5
+    #4 0x55c15ecdadd3 in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9671:18
+    #5 0x7ff2e6710d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7ff2e6710e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x55c15eca44d4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.ubsan.out+0xe4d4) (BuildId: a503b23e0911d3d9a3bc41498abe22d2bae3c8f6)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:317 
+==1129968==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 1129967 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2468963==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7f0cda08b881 bp 0x7ffe26b90a50 sp 0x7ffe26b8fff8 T2468963)
+==2468963==The signal is caused by a READ memory access.
+==2468963==Hint: address points to the zero page.
+    #0 memcpy string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:222 (libc.so.6+0xc4881) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 __interceptor_memcpy <null> (reduced.tsan.out+0x58d4c) (BuildId: eff3f645ace4e01d246370b21d054ad59a29311e)
+    #2 strftime_case____0 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7333:25 (reduced.tsan.out+0xd17b0) (BuildId: eff3f645ace4e01d246370b21d054ad59a29311e)
+    #3 fprintftime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7807:11 (reduced.tsan.out+0xd0f54) (BuildId: eff3f645ace4e01d246370b21d054ad59a29311e)
+    #4 show_date /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9700:5 (reduced.tsan.out+0xd227d) (BuildId: eff3f645ace4e01d246370b21d054ad59a29311e)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9671:18 (reduced.tsan.out+0xd1ef3) (BuildId: eff3f645ace4e01d246370b21d054ad59a29311e)
+    #6 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 _start <null> (reduced.tsan.out+0x213c4) (BuildId: eff3f645ace4e01d246370b21d054ad59a29311e)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:222 in memcpy
+==2468963==ABORTING
+./verify.sh: line 108: 2468962 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==560991==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7fea15eaf7cd bp 0x7fff5ac93cc0 sp 0x7fff5ac93398 T0)
+==560991==The signal is caused by a READ memory access.
+==560991==Hint: address points to the zero page.
+    #0 0x7fea15eaf7cd  string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:317
+    #1 0x561e1d16b65b in strftime_case____0 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7333:25
+    #2 0x561e1d16afa5 in fprintftime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7807:11
+    #3 0x561e1d16be70 in show_date /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9700:5
+    #4 0x561e1d16bc06 in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9671:18
+    #5 0x7fea15d38d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7fea15d38e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x561e1d13b4e4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.lsan.out+0x54e4) (BuildId: 5060c0af9d8553ad9e19245aea506efae9476d31)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:317 
+==560991==ABORTING

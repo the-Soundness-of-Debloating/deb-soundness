@@ -1,0 +1,6 @@
+[
+{ crash_loc: 5909, vul_type: "", deb_tool: "blade" }, 
+{ crash_loc: 2308, vul_type: "", deb_tool: "blade" }, 
+{ crash_loc: 2308, vul_type: "", deb_tool: "blade" }, 
+{ crash_loc: 7207, vul_type: "WRITE memory access,use-of-uninitialized-value,", deb_tool: "blade" }, 
+]

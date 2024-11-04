@@ -1,0 +1,181 @@
+crash_0:
+Stage 1: 	Heuristic	duration: 1.207	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 6	Global Reduced Lines: 7871	Local Red Duration: 13.853	Local Reduced Lines: 32
+Iteration 1: 	13.85	13.706	21.706	3	0	0
+Iteration 2: 	13.403	12.448	21.261	0	0	0
+Summary: 	#Iterations: 3	33.253	40.007	42.967	7874	32	0
+crash_1:
+Stage 1: 	Heuristic	duration: 1.119	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 5	Global Reduced Lines: 7871	Local Red Duration: 13.53	Local Reduced Lines: 32
+Iteration 1: 	15.226	12.546	23.803	3	0	0
+Iteration 2: 	12.852	14.581	19.019	0	0	0
+Summary: 	#Iterations: 3	33.078	40.657	42.822	7874	32	0
+crash_2:
+crash_3:
+Stage 1: 	Heuristic	duration: 0.972	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 6	Global Reduced Lines: 7871	Local Red Duration: 12.898	Local Reduced Lines: 32
+Iteration 1: 	14.063	13.215	20.091	3	0	0
+Iteration 2: 	14.084	12.178	20.234	0	0	0
+Summary: 	#Iterations: 3	34.147	38.291	40.325	7874	32	0
+crash_4:
+Stage 1: 	Heuristic	duration: 1.263	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 8	Global Reduced Lines: 7900	Local Red Duration: 16.269	Local Reduced Lines: 1
+Iteration 1: 	14.488	13.65	24.6	0	0	5
+Iteration 2: 	12.879	13.084	24.63	0	0	0
+Summary: 	#Iterations: 3	35.367	43.003	49.23	7900	1	5
+crash_5:
+Stage 1: 	Heuristic	duration: 1.155	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 10	Global Reduced Lines: 7900	Local Red Duration: 15.198	Local Reduced Lines: 1
+Iteration 1: 	13.171	13.07	23.3	0	0	5
+Iteration 2: 	13.512	13.61	20.557	0	0	0
+Summary: 	#Iterations: 3	36.683	41.878	43.857	7900	1	5
+crash_6:
+Stage 1: 	Heuristic	duration: 1.148	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 10	Global Reduced Lines: 7900	Local Red Duration: 15.269	Local Reduced Lines: 1
+Iteration 1: 	14.253	13.58	22.01	0	0	5
+Iteration 2: 	14.532	13.741	20.943	0	0	0
+Summary: 	#Iterations: 3	38.785	42.59	42.953	7900	1	5
+crash_7:
+crash_8:
+Stage 1: 	Heuristic	duration: 1.354	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 45	Global Reduced Lines: 7865	Local Red Duration: 30.473	Local Reduced Lines: 31
+Iteration 1: 	17.305	23.865	19.575	0	0	1
+Iteration 2: 	16.208	24.787	18.712	0	0	0
+Summary: 	#Iterations: 3	78.513	79.125	38.287	7865	31	1
+crash_9:
+Stage 1: 	Heuristic	duration: 1.34	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 46	Global Reduced Lines: 7865	Local Red Duration: 29.936	Local Reduced Lines: 31
+Iteration 1: 	16.602	24.682	20.126	0	0	1
+Iteration 2: 	16.791	23.687	18.693	0	0	0
+Summary: 	#Iterations: 3	79.393	78.305	38.819	7865	31	1
+crash_10:
+Stage 1: 	Heuristic	duration: 1.034	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 8	Global Reduced Lines: 7900	Local Red Duration: 15.798	Local Reduced Lines: 1
+Iteration 1: 	14.358	14.025	22.193	0	0	5
+Iteration 2: 	12.954	12.783	19.645	0	0	0
+Summary: 	#Iterations: 3	35.312	42.606	41.838	7900	1	5
+crash_11:
+Stage 1: 	Heuristic	duration: 1.353	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 6	Global Reduced Lines: 7871	Local Red Duration: 13.873	Local Reduced Lines: 32
+Iteration 1: 	13.759	11.906	19.374	3	0	0
+Iteration 2: 	13.497	11.761	19.921	0	0	0
+Summary: 	#Iterations: 3	33.256	37.54	39.295	7874	32	0
+crash_12:
+crash_13:
+Stage 1: 	Heuristic	duration: 1.081	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 6	Global Reduced Lines: 7871	Local Red Duration: 14.559	Local Reduced Lines: 32
+Iteration 1: 	14.013	12.2	18.625	3	0	0
+Iteration 2: 	13.417	12.098	20.57	0	0	0
+Summary: 	#Iterations: 3	33.43	38.857	39.195	7874	32	0
+crash_14:
+Stage 1: 	Heuristic	duration: 1.013	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 44	Global Reduced Lines: 7865	Local Red Duration: 29.028	Local Reduced Lines: 31
+Iteration 1: 	15.717	23.902	20.24	0	0	1
+Iteration 2: 	16.025	23.888	19.49	0	0	0
+Summary: 	#Iterations: 3	75.742	76.818	39.73	7865	31	1
+crash_15:
+Stage 1: 	Heuristic	duration: 0.971	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 42	Global Reduced Lines: 7865	Local Red Duration: 28.833	Local Reduced Lines: 31
+Iteration 1: 	15.049	21.688	19.118	0	0	1
+Iteration 2: 	14.523	22.455	18.58	0	0	0
+Summary: 	#Iterations: 3	71.572	72.976	37.698	7865	31	1
+crash_16:
+Stage 1: 	Heuristic	duration: 1.143	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 41	Global Reduced Lines: 7865	Local Red Duration: 28.304	Local Reduced Lines: 31
+Iteration 1: 	14.981	24.273	20.154	0	0	1
+Iteration 2: 	15.617	23.374	18.491	0	0	0
+Summary: 	#Iterations: 3	71.598	75.951	38.645	7865	31	1
+crash_17:
+Stage 1: 	Heuristic	duration: 1.006	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 39	Global Reduced Lines: 7865	Local Red Duration: 24.181	Local Reduced Lines: 31
+Iteration 1: 	14.032	20.007	17.456	0	0	1
+Iteration 2: 	14.103	21.04	16.58	0	0	0
+Summary: 	#Iterations: 3	67.135	65.228	34.036	7865	31	1
+crash_18:
+Stage 1: 	Heuristic	duration: 0.841	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 40	Global Reduced Lines: 7865	Local Red Duration: 29.492	Local Reduced Lines: 31
+Iteration 1: 	15.719	23.051	19.772	0	0	1
+Iteration 2: 	15.634	24.01	18.786	0	0	0
+Summary: 	#Iterations: 3	71.353	76.553	38.558	7865	31	1
+crash_19:
+Stage 1: 	Heuristic	duration: 0.963	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 42	Global Reduced Lines: 7865	Local Red Duration: 29.482	Local Reduced Lines: 31
+Iteration 1: 	16.234	23.085	20.905	0	0	1
+Iteration 2: 	15.09	22.113	18.773	0	0	0
+Summary: 	#Iterations: 3	73.324	74.68	39.678	7865	31	1
+crash_20:
+Stage 1: 	Heuristic	duration: 0.969	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 41	Global Reduced Lines: 7865	Local Red Duration: 27.285	Local Reduced Lines: 31
+Iteration 1: 	15.013	22.925	20.523	0	0	1
+Iteration 2: 	15.631	22.325	17.969	0	0	0
+Summary: 	#Iterations: 3	71.644	72.535	38.492	7865	31	1
+crash_21:
+Stage 1: 	Heuristic	duration: 1.281	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 40	Global Reduced Lines: 7865	Local Red Duration: 28.147	Local Reduced Lines: 31
+Iteration 1: 	16.16	22.156	18.889	0	0	1
+Iteration 2: 	14.989	23.729	18.334	0	0	0
+Summary: 	#Iterations: 3	71.149	74.032	37.223	7865	31	1
+crash_22:
+Stage 1: 	Heuristic	duration: 0.896	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 38	Global Reduced Lines: 7865	Local Red Duration: 25.456	Local Reduced Lines: 31
+Iteration 1: 	13.585	20.205	17.636	0	0	1
+Iteration 2: 	14.348	20.369	16.628	0	0	0
+Summary: 	#Iterations: 3	65.933	66.03	34.264	7865	31	1
+crash_23:
+Stage 1: 	Heuristic	duration: 0.772	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 35	Global Reduced Lines: 7865	Local Red Duration: 29.521	Local Reduced Lines: 31
+Iteration 1: 	15.711	22.886	19.722	0	0	1
+Iteration 2: 	16.628	24.162	19.605	0	0	0
+Summary: 	#Iterations: 3	67.339	76.569	39.327	7865	31	1
+crash_24:
+Stage 1: 	Heuristic	duration: 1.118	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 42	Global Reduced Lines: 7865	Local Red Duration: 28.894	Local Reduced Lines: 31
+Iteration 1: 	15.718	23.031	19.944	0	0	1
+Iteration 2: 	16.264	23.142	17.897	0	0	0
+Summary: 	#Iterations: 3	73.982	75.067	37.841	7865	31	1
+crash_25:
+Stage 1: 	Heuristic	duration: 1.212	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 47	Global Reduced Lines: 7865	Local Red Duration: 30.909	Local Reduced Lines: 31
+Iteration 1: 	15.788	24.592	19.164	0	0	1
+Iteration 2: 	15.945	23.73	19.769	0	0	0
+Summary: 	#Iterations: 3	78.733	79.231	38.933	7865	31	1
+crash_26:
+Stage 1: 	Heuristic	duration: 1.038	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 8	Global Reduced Lines: 7892	Local Red Duration: 25.083	Local Reduced Lines: 10
+Iteration 1: 	15.9	21.278	25.004	0	0	4
+Iteration 2: 	13.359	13.98	19.122	0	0	0
+Summary: 	#Iterations: 3	37.259	60.341	44.126	7892	10	4
+crash_27:
+Stage 1: 	Heuristic	duration: 1.162	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 7	Global Reduced Lines: 7902	Local Red Duration: 19.394	Local Reduced Lines: 4
+Iteration 1: 	13.202	11.4	20.776	0	0	0
+Summary: 	#Iterations: 2	20.202	30.794	20.776	7902	4	0
+crash_28:
+Stage 1: 	Heuristic	duration: 1.136	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 8	Global Reduced Lines: 7892	Local Red Duration: 26.428	Local Reduced Lines: 10
+Iteration 1: 	13.974	21.544	21.952	0	0	4
+Iteration 2: 	13.733	12.117	19.561	0	0	0
+Summary: 	#Iterations: 3	35.707	60.089	41.513	7892	10	4
+crash_29:
+Stage 1: 	Heuristic	duration: 1.273	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 10	Global Reduced Lines: 7901	Local Red Duration: 23.833	Local Reduced Lines: 5
+Iteration 1: 	11.997	12.771	19.575	0	0	0
+Summary: 	#Iterations: 2	21.997	36.604	19.575	7901	5	0
+crash_30:
+Stage 1: 	Heuristic	duration: 1.068	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 48	Global Reduced Lines: 7865	Local Red Duration: 30.629	Local Reduced Lines: 31
+Iteration 1: 	17.509	24.631	19.484	0	0	1
+Iteration 2: 	15.896	23.894	17.931	0	0	0
+Summary: 	#Iterations: 3	81.405	79.154	37.415	7865	31	1
+crash_31:
+Stage 1: 	Heuristic	duration: 1.039	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 7	Global Reduced Lines: 7871	Local Red Duration: 12.93	Local Reduced Lines: 32
+Iteration 1: 	14.777	12.217	17.911	3	0	0
+Iteration 2: 	13.85	12.089	19.963	0	0	0
+Summary: 	#Iterations: 3	35.627	37.236	37.874	7874	32	0
+crash_32:
+Stage 1: 	Heuristic	duration: 1.047	addedBackLinesCount: 7906
+Iteration 0: 	Global Red Duration: 47	Global Reduced Lines: 7865	Local Red Duration: 32.014	Local Reduced Lines: 31
+Iteration 1: 	15.51	24.577	19.805	0	0	1
+Iteration 2: 	16.611	24.516	19.119	0	0	0
+Summary: 	#Iterations: 3	79.121	81.107	38.924	7865	31	1

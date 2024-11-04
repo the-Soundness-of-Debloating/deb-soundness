@@ -1,0 +1,22 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep-2.19.c.reduced.c:12569:57: runtime error: null pointer passed as argument 2, which is declared to never be null
+grep-2.19.c.reduced.c:4922:59: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:12569:57 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==24673==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7fa4c5661eab bp 0x7fff17063ab0 sp 0x7fff17063918 T24673)
+==24673==The signal is caused by a READ memory access.
+==24673==Hint: address points to the zero page.
+    #0 0x7fa4c5661eab  string/../sysdeps/x86_64/multiarch/strcpy-avx2.S:304
+    #1 0x562698ad8a08 in GEAcompile /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12569:11
+    #2 0x562698b07910 in Ecompile /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21892:7
+    #3 0x562698afaa78 in main /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #4 0x7fa4c54ecd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7fa4c54ece3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x562698a9a6b4 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x306b4) (BuildId: 42b14639941f0048a3b2ca3a22d85da505b35b61)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strcpy-avx2.S:304 
+==24673==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 24671 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

@@ -1,0 +1,32 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.ubsan.out
+bzip2-1.0.5.c.reduced.c:10761:55: runtime error: left shift of 1 by 31 places cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:10761:55 in 
+bzip2-1.0.5.c.reduced.c:10800:56: runtime error: left shift of 1 by 31 places cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:10800:56 in 
+bzip2-1.0.5.c.reduced.c:10887:44: runtime error: left shift of 1 by 31 places cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:10887:44 in 
+bzip2-1.0.5.c.reduced.c:10484:5: runtime error: index 22001 out of bounds for type 'Int32[100]' (aka 'int[100]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:10484:5 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==2669616==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x7ffecfcb48d4 (pc 0x55f11eb073c3 bp 0x7ffecfc9f2f0 sp 0x7ffecfc9eec0 T2669616)
+==2669616==The signal is caused by a WRITE memory access.
+    #0 0x55f11eb073c3 in fallbackQSort3 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:10484:17
+    #1 0x55f11eb02fc9 in fallbackSort /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:10902:17
+    #2 0x55f11eadf8b6 in BZ2_blockSort /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:12073:13
+    #3 0x55f11eadeeb2 in BZ2_compressBlock /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:4548:9
+    #4 0x55f11eafccdc in handle_compress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:5185:17
+    #5 0x55f11eafc998 in BZ2_bzCompress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:5308:18
+    #6 0x55f11eafec3a in BZ2_bzWriteClose64 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:6525:21
+    #7 0x55f11eb0710e in compressStream /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:7288:7
+    #8 0x55f11eb00ddc in compress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:8788:7
+    #9 0x55f11eb000ad in main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:10252:15
+    #10 0x7fe88ca0cd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #11 0x7fe88ca0ce3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #12 0x55f11eaa1434 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.ubsan.out+0x2b434) (BuildId: 560a640243895383a301a3094b37fd45772e8803)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:10484:17 in fallbackQSort3
+==2669616==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 173: 2669615 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_14 > sample1.rb2

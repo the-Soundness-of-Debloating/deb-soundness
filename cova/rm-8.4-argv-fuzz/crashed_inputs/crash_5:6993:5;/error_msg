@@ -1,0 +1,47 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/bins/reduced.msan.out
+rm: missing operand
+MemorySanitizer:DEADLYSIGNAL
+==2782463==ERROR: MemorySanitizer: SEGV on unknown address (pc 0x7f7495bf577f bp 0x7f7495ddaaa0 sp 0x7ffdb7f33b78 T2782463)
+==2782463==The signal is caused by a READ memory access.
+==2782463==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x7f7495bf577f in setlocale locale/setlocale.c:236:7
+    #1 0x55cbadcd5c61 in setlocale (/workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/bins/reduced.msan.out+0x66c61) (BuildId: 88e41496596c8f3fd828cadea058d777a6329aab)
+    #2 0x55cbadd324ab in main /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6993:5
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV locale/setlocale.c:236:7 in setlocale
+==2782463==ABORTING
+./verify.sh: line 189: 2782461 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_53
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/bins/reduced.tsan.out
+rm: missing operand
+ThreadSanitizer:DEADLYSIGNAL
+==3277680==ERROR: ThreadSanitizer: SEGV on unknown address (pc 0x7fb28af3b77f bp 0x7fb28b120aa0 sp 0x7ffc6b7b0908 T3277680)
+==3277680==The signal is caused by a READ memory access.
+==3277680==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 setlocale locale/setlocale.c:236:7 (libc.so.6+0x3677f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 setlocale <null> (reduced.tsan.out+0x686f8) (BuildId: c402b9ce6f5ba811fb844d1448cbf819f75de69c)
+    #2 main /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6993:5 (reduced.tsan.out+0xd5207) (BuildId: c402b9ce6f5ba811fb844d1448cbf819f75de69c)
+    #3 <null> <null> ([stack]+0x1fcff)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV locale/setlocale.c:236:7 in setlocale
+==3277680==ABORTING
+./verify.sh: line 189: 3277679 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_53
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/bins/reduced.lsan.out
+rm: missing operand
+LeakSanitizer:DEADLYSIGNAL
+==3700177==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x7f90c9faf77f bp 0x7f90ca194aa0 sp 0x7ffda97bbc98 T0)
+==3700177==The signal is caused by a READ memory access.
+==3700177==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x7f90c9faf77f in setlocale locale/setlocale.c:236:7
+    #1 0x5620ec81d1ca in main /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6993:5
+    #2 0x7ffda97bbf8f  ([stack]+0x1ff8f)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV locale/setlocale.c:236:7 in setlocale
+==3700177==ABORTING

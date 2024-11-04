@@ -1,0 +1,19 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.tsan.out -t /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_476
+ThreadSanitizer:DEADLYSIGNAL
+==1347834==ERROR: ThreadSanitizer: SEGV on unknown address 0x7bc000010000 (pc 0x5615a076ad2d bp 0x7fffe25551e0 sp 0x7fffe2554070 T1347834)
+==1347834==The signal is caused by a WRITE memory access.
+    #0 BZ2_decompress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:1968:28 (reduced.tsan.out+0xcfd2d) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #1 BZ2_bzDecompress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6161:19 (reduced.tsan.out+0xd937e) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #2 BZ2_bzRead /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6866:17 (reduced.tsan.out+0xd9f79) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #3 testStream /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7737:23 (reduced.tsan.out+0xdc8b2) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #4 testf /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9404:15 (reduced.tsan.out+0xda835) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10327:17 (reduced.tsan.out+0xda4a6) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+    #6 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 _start <null> (reduced.tsan.out+0x20344) (BuildId: d0c271ab5f45c81991bec6558cdfefafab2e2493)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:1968:28 in BZ2_decompress
+==1347834==ABORTING
+./verify.sh: line 173: 1347831 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/bins/reduced.tsan.out -t /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_476

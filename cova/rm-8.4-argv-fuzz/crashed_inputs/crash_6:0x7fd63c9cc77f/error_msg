@@ -1,0 +1,9 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/bins/reduced.msan.out
+rm: invalid option -- '2'
+MemorySanitizer:DEADLYSIGNAL
+==2798953==ERROR: MemorySanitizer: SEGV on unknown address (pc 0x7fd63c9cc77f bp 0x7fd63cbb1aa0 sp 0x7ffd20352978 T2798953)
+==2798953==The signal is caused by a READ memory access.
+==2798953==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+MemorySanitizer:DEADLYSIGNAL
+MemorySanitizer: nested bug in the same thread, aborting.

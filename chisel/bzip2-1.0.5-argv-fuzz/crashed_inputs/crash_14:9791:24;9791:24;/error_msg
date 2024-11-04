@@ -1,0 +1,16 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2404848==ERROR: AddressSanitizer: SEGV on unknown address (pc 0x5653fae632a7 bp 0x7ffcbd7d4b90 sp 0x7ffcbd7d4960 T0)
+==2404848==The signal is caused by a READ memory access.
+==2404848==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x5653fae632a7 in main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9791:24
+    #1 0x7f15738aad8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7f15738aae3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x5653fad8d324 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.asan.out+0x1e324) (BuildId: 5da38ee2c13d2c7a9147bf358d87d60f35d532ce)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9791:24 in main
+==2404848==ABORTING
+./verify.sh: line 173: 2404846 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_3 > sample1.rb2

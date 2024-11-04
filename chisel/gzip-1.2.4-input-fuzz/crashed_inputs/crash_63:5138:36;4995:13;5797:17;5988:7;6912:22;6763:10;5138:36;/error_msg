@@ -1,0 +1,51 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.asan.out -c
+=================================================================
+==1990045==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55587bb8d36d at pc 0x55587b1d797f bp 0x7ffe10ff5fa0 sp 0x7ffe10ff5f98
+READ of size 1 at 0x55587bb8d36d thread T0
+    #0 0x55587b1d797e in compress_block /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5138:36
+    #1 0x55587b1d6a10 in flush_block /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4995:13
+    #2 0x55587b1d8fa3 in deflate /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5797:17
+    #3 0x55587b1d984b in zip /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5988:7
+    #4 0x55587b1d9e16 in treat_stdin /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #5 0x55587b1d9cef in main /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:10
+    #6 0x7f739ad01d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f739ad01e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55587b113324 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.asan.out+0x20324) (BuildId: 6eabaf23792ed7e3e2fa7fefb1043c0b47887de4)
+
+0x55587bb8d36d is located 51 bytes to the left of global variable 'flags' defined in '/workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4095' (0x55587bb8d3a0) of size 1
+0x55587bb8d36d is located 77 bytes to the right of global variable 'dist_code' defined in '/workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4088' (0x55587bb8d120) of size 512
+SUMMARY: AddressSanitizer: global-buffer-overflow /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5138:36 in compress_block
+Shadow bytes around the buggy address:
+  0x0aab8f769a10: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 f9
+  0x0aab8f769a20: f9 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0aab8f769a30: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0aab8f769a40: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0aab8f769a50: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0aab8f769a60: 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 f9 f9[f9]f9 f9
+  0x0aab8f769a70: f9 f9 f9 f9 01 f9 f9 f9 00 00 00 00 00 00 00 00
+  0x0aab8f769a80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0aab8f769a90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0aab8f769aa0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0aab8f769ab0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==1990045==ABORTING
+./verify.sh: line 166: 1990044 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/bins/reduced.asan.out -c < /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_14 > sample1.gz

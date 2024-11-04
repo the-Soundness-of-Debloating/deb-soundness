@@ -1,0 +1,18 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/uniq-8.16-argv-fuzz/bins/reduced.ubsan.out
+uniq-8.16.c.reduced.c:7243:59: runtime error: index 140338706993888 out of bounds for type 'const enum delimit_method[3]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior uniq-8.16.c.reduced.c:7243:59 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3226490==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address (pc 0x5572d4c3c294 bp 0x7ffee9b62ec0 sp 0x7ffee9b62c70 T3226490)
+==3226490==The signal is caused by a READ memory access.
+==3226490==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x5572d4c3c294 in main /workspace/fuzzing-deb-with-sanitizers/cova/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7243:59
+    #1 0x7fa326913d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7fa326913e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x5572d4c11594 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/uniq-8.16-argv-fuzz/bins/reduced.ubsan.out+0x7594) (BuildId: 5c6704ae433e16bcff47c4ac634dbd3615d4b396)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7243:59 in main
+==3226490==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 3226488 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

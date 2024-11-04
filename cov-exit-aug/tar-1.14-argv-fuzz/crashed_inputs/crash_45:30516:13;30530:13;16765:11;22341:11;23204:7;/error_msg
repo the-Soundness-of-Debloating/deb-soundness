@@ -1,0 +1,16 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.lsan.out
+
+=================================================================
+==1739338==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 52 byte(s) in 1 object(s) allocated from:
+    #0 0x563d2bb969a2 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.lsan.out+0x369a2) (BuildId: 6b9c645010b13ca8f876c74673edd4ddf27e6a34)
+    #1 0x563d2bbab44f in xnmalloc_inline /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30516:13
+    #2 0x563d2bb9e249 in xmalloc /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30530:13
+    #3 0x563d2bba5908 in addname /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:16765:11
+    #4 0x563d2bba7854 in decode_options /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22341:11
+    #5 0x563d2bba6630 in main /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:23204:7
+    #6 0x7ff277a26d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+
+SUMMARY: LeakSanitizer: 52 byte(s) leaked in 1 allocation(s).

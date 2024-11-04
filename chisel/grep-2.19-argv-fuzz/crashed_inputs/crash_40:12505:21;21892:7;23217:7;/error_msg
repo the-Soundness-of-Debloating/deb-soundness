@@ -1,0 +1,21 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2820933==ERROR: AddressSanitizer: BUS on unknown address (pc 0x7f17e2dfb22a bp 0xbebebebebebebebe sp 0x7ffe87c69700 T0)
+==2820933==The signal is caused by a READ memory access.
+==2820933==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x7f17e2dfb22a in init_dfa posix/regcomp.c:845:3
+    #1 0x7f17e2dfb22a in re_compile_internal posix/regcomp.c:758:9
+    #2 0x7f17e2dfc82e in re_compile_pattern posix/regcomp.c:230:9
+    #3 0x55a270bc96ac in GEAcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12505:21
+    #4 0x55a270bd3101 in Ecompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21892:7
+    #5 0x55a270bcfc7b in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #6 0x7f17e2d20d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f17e2d20e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55a270b07404 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.asan.out+0x21404) (BuildId: 10224d5ec2cadb095b661fc40aefe10c74a166e5)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: BUS posix/regcomp.c:845:3 in init_dfa
+==2820933==ABORTING
+./verify.sh: line 108: 2820929 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

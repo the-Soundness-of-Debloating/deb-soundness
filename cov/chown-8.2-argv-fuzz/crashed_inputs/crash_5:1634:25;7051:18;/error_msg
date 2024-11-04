@@ -1,0 +1,92 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==15506==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x2aaafbd661a4 bp 0x7ffc759f6f30 sp 0x7ffc759f66e8 T0)
+==15506==The signal is caused by a READ memory access.
+==15506==Hint: address points to the zero page.
+    #0 0x2aaafbd661a4  string/../sysdeps/x86_64/multiarch/strchr-avx2.S:65
+    #1 0x56285bea8fb9 in strchr (/workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/bins/reduced.asan.out+0x38fb9) (BuildId: 5f7121e6d21b96bf7dbcafedbde26c0e84754164)
+    #2 0x56285bf4fe29 in parse_user_spec /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1634:25
+    #3 0x56285bf563ec in main /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7051:18
+    #4 0x2aaafbbf2d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x2aaafbbf2e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x56285be8f3d4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/bins/reduced.asan.out+0x1f3d4) (BuildId: 5f7121e6d21b96bf7dbcafedbde26c0e84754164)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strchr-avx2.S:65 
+==15506==ABORTING
+./verify.sh: line 110: 15504 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/bins/reduced.ubsan.out
+chown-8.2.c.reduced.c:1634:32: runtime error: null pointer passed as argument 1, which is declared to never be null
+chown-8.2.c.reduced.c:425:59: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior chown-8.2.c.reduced.c:1634:32 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==22256==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x2b614beaf1a4 bp 0x7ffd4a6de330 sp 0x7ffd4a6de2d8 T22256)
+==22256==The signal is caused by a READ memory access.
+==22256==Hint: address points to the zero page.
+    #0 0x2b614beaf1a4  string/../sysdeps/x86_64/multiarch/strchr-avx2.S:65
+    #1 0x55f20b5a6ad7 in parse_user_spec /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1634:25
+    #2 0x55f20b5b1d1e in main /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7051:18
+    #3 0x2b614bd3bd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x2b614bd3be3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55f20b57d574 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/bins/reduced.ubsan.out+0xd574) (BuildId: 0e7a38900ca4a12859e02083c9e955def6022f6a)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strchr-avx2.S:65 
+==22256==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 22252 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/bins/reduced.msan.out
+MemorySanitizer:DEADLYSIGNAL
+==26204==ERROR: MemorySanitizer: SEGV on unknown address 0x000000000000 (pc 0x7f442541f1a4 bp 0x7ffdb3486740 sp 0x7ffdb3486708 T26204)
+==26204==The signal is caused by a READ memory access.
+==26204==Hint: address points to the zero page.
+    #0 0x7f442541f1a4  string/../sysdeps/x86_64/multiarch/strchr-avx2.S:65
+    #1 0x55d65fcd555d in strchr (/workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/bins/reduced.msan.out+0x5655d) (BuildId: ca60784d343fbf43cacdf2a6b99947151c87d8f3)
+    #2 0x55d65fd2779a in parse_user_spec /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1634:25
+    #3 0x55d65fd37223 in main /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7051:18
+    #4 0x7f44252abd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f44252abe3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x55d65fc9e364 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/bins/reduced.msan.out+0x1f364) (BuildId: ca60784d343fbf43cacdf2a6b99947151c87d8f3)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV string/../sysdeps/x86_64/multiarch/strchr-avx2.S:65 
+==26204==ABORTING
+./verify.sh: line 110: 26203 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==16585==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7fd7340b21a4 bp 0x00000000003a sp 0x7ffd938d5da8 T16585)
+==16585==The signal is caused by a READ memory access.
+==16585==Hint: address points to the zero page.
+    #0 <null> string/../sysdeps/x86_64/multiarch/strchr-avx2.S:65 (libc.so.6+0x19d1a4) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 strchr <null> (reduced.tsan.out+0x58116) (BuildId: f90189b519f35ba2f40aa719bf6a5e609026eccb)
+    #2 parse_user_spec /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1634:25 (reduced.tsan.out+0xce53d) (BuildId: f90189b519f35ba2f40aa719bf6a5e609026eccb)
+    #3 main /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7051:18 (reduced.tsan.out+0xd23e2) (BuildId: f90189b519f35ba2f40aa719bf6a5e609026eccb)
+    #4 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #5 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #6 _start <null> (reduced.tsan.out+0x213c4) (BuildId: f90189b519f35ba2f40aa719bf6a5e609026eccb)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strchr-avx2.S:65 
+==16585==ABORTING
+./verify.sh: line 110: 16583 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==32072==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000000 (pc 0x2b1ebbba61a4 bp 0x7ffc90e8bde0 sp 0x7ffc90e8bd88 T0)
+==32072==The signal is caused by a READ memory access.
+==32072==Hint: address points to the zero page.
+    #0 0x2b1ebbba61a4  string/../sysdeps/x86_64/multiarch/strchr-avx2.S:65
+    #1 0x55eb2c639629 in parse_user_spec /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1634:25
+    #2 0x55eb2c63b940 in main /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7051:18
+    #3 0x2b1ebba32d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x2b1ebba32e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55eb2c60b554 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/bins/reduced.lsan.out+0x6554) (BuildId: 8a7482936a6ff8083358d8b988e3d4833e38eb41)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strchr-avx2.S:65 
+==32072==ABORTING

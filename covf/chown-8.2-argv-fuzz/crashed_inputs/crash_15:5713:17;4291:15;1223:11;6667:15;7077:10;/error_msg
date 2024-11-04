@@ -1,0 +1,43 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/bins/reduced.tsan.out
+==13290==ERROR: ThreadSanitizer: requested allocation size 0x7fff7a12f618 exceeds maximum supported size of 0x10000000000
+    #0 __interceptor_realloc <null> (reduced.tsan.out+0x4d7c3) (BuildId: fa58c10b1b8ddae83860d633d2add28a8a009946)
+    #1 fts_palloc /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:5713:17 (reduced.tsan.out+0xcfad3) (BuildId: fa58c10b1b8ddae83860d633d2add28a8a009946)
+    #2 fts_open /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4291:15 (reduced.tsan.out+0xce321) (BuildId: fa58c10b1b8ddae83860d633d2add28a8a009946)
+    #3 xfts_open /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1223:11 (reduced.tsan.out+0xce1c7) (BuildId: fa58c10b1b8ddae83860d633d2add28a8a009946)
+    #4 chown_files /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6667:15 (reduced.tsan.out+0xd21c1) (BuildId: fa58c10b1b8ddae83860d633d2add28a8a009946)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10 (reduced.tsan.out+0xd2c89) (BuildId: fa58c10b1b8ddae83860d633d2add28a8a009946)
+    #6 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+==13290==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: ThreadSanitizer: allocation-size-too-big (/workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/bins/reduced.tsan.out+0x4d7c3) (BuildId: fa58c10b1b8ddae83860d633d2add28a8a009946) in __interceptor_realloc
+./verify.sh: line 110: 13288 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/bins/reduced.lsan.out
+==19209==ERROR: LeakSanitizer: requested allocation size 0x55fac0ffbbc9 exceeds maximum supported size of 0x200000000
+    #0 0x55fac0ff8be4 in __interceptor_realloc (/workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/bins/reduced.lsan.out+0x31be4) (BuildId: f13e020042ec2681cdbf111dd4ff69c5f5066b99)
+    #1 0x55fac0ffc286 in fts_palloc /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:5713:17
+    #2 0x55fac0ffb4e1 in fts_open /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4291:15
+    #3 0x55fac0ffb428 in xfts_open /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1223:11
+    #4 0x55fac0ffd71d in chown_files /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6667:15
+    #5 0x55fac0ffddf2 in main /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10
+    #6 0x2b2140720d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+==19209==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: LeakSanitizer: allocation-size-too-big (/workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/bins/reduced.lsan.out+0x31be4) (BuildId: f13e020042ec2681cdbf111dd4ff69c5f5066b99) in __interceptor_realloc
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/bins/reduced.asan.out
+=================================================================
+==30421==ERROR: AddressSanitizer: requested allocation size 0x2ad561f09100 (0x2ad561f0a100 after adjustments for alignment, red zones etc.) exceeds maximum supported size of 0x10000000000 (thread T0)
+    #0 0x564128a23266 in __interceptor_realloc (/workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/bins/reduced.asan.out+0xa5266) (BuildId: 6e9b65d1748d1115aebf9e60491495cca9b2fbd4)
+    #1 0x564128a600ea in fts_palloc /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:5713:17
+    #2 0x564128a5dcfd in fts_open /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4291:15
+    #3 0x564128a5db58 in xfts_open /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1223:11
+    #4 0x564128a63dc9 in chown_files /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6667:15
+    #5 0x564128a65451 in main /workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10
+    #6 0x2ad560bbdd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+==30421==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: AddressSanitizer: allocation-size-too-big (/workspace/fuzzing-deb-with-sanitizers/covf/chown-8.2-argv-fuzz/bins/reduced.asan.out+0xa5266) (BuildId: 6e9b65d1748d1115aebf9e60491495cca9b2fbd4) in __interceptor_realloc
+==30421==ABORTING
+./verify.sh: line 110: 30420 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

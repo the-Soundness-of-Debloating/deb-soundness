@@ -1,0 +1,44 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2565253==ERROR: ThreadSanitizer: SEGV on unknown address 0x7b03ffffffff (pc 0x55df4c96d1d2 bp 0x7ffffaccd7a0 sp 0x7ffffaccd630 T2565253)
+==2565253==The signal is caused by a READ memory access.
+    #0 quotearg_buffer_restyled /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1983:19 (reduced.tsan.out+0xcf1d2) (BuildId: 78f30451f3eb08c9d19af39bc7b517519060eab5)
+    #1 quotearg_n_options /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2843:15 (reduced.tsan.out+0xce2dd) (BuildId: 78f30451f3eb08c9d19af39bc7b517519060eab5)
+    #2 quotearg_n_style /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2874:15 (reduced.tsan.out+0xce0ca) (BuildId: 78f30451f3eb08c9d19af39bc7b517519060eab5)
+    #3 quote_n /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2907:25 (reduced.tsan.out+0xce346) (BuildId: 78f30451f3eb08c9d19af39bc7b517519060eab5)
+    #4 quote /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2914:11 (reduced.tsan.out+0xce397) (BuildId: 78f30451f3eb08c9d19af39bc7b517519060eab5)
+    #5 excise /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6502:16 (reduced.tsan.out+0xcf4ab) (BuildId: 78f30451f3eb08c9d19af39bc7b517519060eab5)
+    #6 rm_fts /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6674:16 (reduced.tsan.out+0xcec3c) (BuildId: 78f30451f3eb08c9d19af39bc7b517519060eab5)
+    #7 rm /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6741:19 (reduced.tsan.out+0xce9ef) (BuildId: 78f30451f3eb08c9d19af39bc7b517519060eab5)
+    #8 main /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7177:15 (reduced.tsan.out+0xcedbb) (BuildId: 78f30451f3eb08c9d19af39bc7b517519060eab5)
+    #9 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #10 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #11 _start <null> (reduced.tsan.out+0x21394) (BuildId: 78f30451f3eb08c9d19af39bc7b517519060eab5)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1983:19 in quotearg_buffer_restyled
+==2565253==ABORTING
+./verify.sh: line 186: 2565252 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_1
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==3494894==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x56036d1abbae bp 0x7ffc8657aa50 sp 0x7ffc8657a980 T0)
+==3494894==The signal is caused by a READ memory access.
+==3494894==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x56036d1abbae in quotearg_buffer_restyled /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1983:19
+    #1 0x56036d1ab334 in quotearg_n_options /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2843:15
+    #2 0x56036d1ab26b in quotearg_n_style /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2874:15
+    #3 0x56036d1ab36f in quote_n /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2907:25
+    #4 0x56036d1ab396 in quote /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2914:11
+    #5 0x56036d1abd1b in excise /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6502:16
+    #6 0x56036d1ab886 in rm_fts /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6674:16
+    #7 0x56036d1ab6e3 in rm /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6741:19
+    #8 0x56036d1ab97e in main /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7177:15
+    #9 0x7f6bb2b09d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #10 0x7f6bb2b09e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #11 0x56036d17d444 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.lsan.out+0x5444) (BuildId: 92f93740e7f5efb6ba2f700f2a95feeb490ffe36)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1983:19 in quotearg_buffer_restyled
+==3494894==ABORTING

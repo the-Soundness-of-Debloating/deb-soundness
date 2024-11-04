@@ -1,0 +1,41 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out
+gzip: invalid option -- '-'
+gzip: invalid option -- '-'
+gzip: invalid option -- '-'
+gzip: invalid option -- '-'
+gzip: invalid option -- '-'
+gzip: invalid option -- 'i'
+gzip: invalid option -- '_'
+gzip: invalid option -- 'i'
+gzip: invalid option -- 'i'
+gzip: invalid option -- '_'
+gzip: invalid option -- 'i'
+gzip: invalid option -- 'i'
+gzip: invalid option -- '/'
+gzip: invalid option -- 's'
+gzip: invalid option -- 'p'
+gzip: invalid option -- 'e'
+gzip: invalid option -- '.'
+gzip: invalid option -- 'g'
+gzip: invalid option -- 'z'
+
+gzip: stdin: not in gzip format
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==1119815==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x55b34a037b70 (pc 0x55b347082165 bp 0x7ffc4684b560 sp 0x7ffc4684b220 T1119815)
+==1119815==The signal is caused by a WRITE memory access.
+    #0 0x55b347082165 in build_tree___0 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:4632:31
+    #1 0x55b347081467 in flush_block /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:4949:7
+    #2 0x55b347089e3c in deflate /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:5798:17
+    #3 0x55b34708ac6e in zip /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:5989:7
+    #4 0x55b34708cc9c in treat_stdin /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6914:22
+    #5 0x55b34708bf9a in main /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6765:9
+    #6 0x7f4907ca4d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f4907ca4e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55b34704d524 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out+0x17524) (BuildId: 4611bc955f7c177d70622a3b4fafed81f870d4ab)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:4632:31 in build_tree___0
+==1119815==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 171: 1119812 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_36

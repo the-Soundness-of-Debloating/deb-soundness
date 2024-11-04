@@ -1,0 +1,91 @@
+abort_gzip       function   8807 gzip-1.2.4.c.origin.c void abort_gzip(void) {
+add_envopt       function   1756 gzip-1.2.4.c.origin.c char *add_envopt(int *argcp, char ***argvp, char *env___0) {
+basename         function   1746 gzip-1.2.4.c.origin.c char *basename(char *fname) {
+bi_init          function   3843 gzip-1.2.4.c.origin.c void bi_init(file_t zipfile) {
+bi_reverse       function   3898 gzip-1.2.4.c.origin.c unsigned int bi_reverse(unsigned int code, int len) {
+bi_windup        function   3918 gzip-1.2.4.c.origin.c void bi_windup(void) {
+build_bl_tree    function   4881 gzip-1.2.4.c.origin.c static int build_bl_tree(void) {
+build_tree       function    981 gzip-1.2.4.c.origin.c static void build_tree(void) {
+build_tree___0   function   4575 gzip-1.2.4.c.origin.c static void build_tree___0(tree_desc *desc) {
+check_ofname     function   8472 gzip-1.2.4.c.origin.c static int check_ofname(void) {
+check_zipfile    function   3512 gzip-1.2.4.c.origin.c int check_zipfile(int in) {
+clear_bufs       function   1619 gzip-1.2.4.c.origin.c void clear_bufs(void) {
+compress_block   function   5086 gzip-1.2.4.c.origin.c static void compress_block(ct_data *ltree, ct_data *dtree) {
+copy             function   1549 gzip-1.2.4.c.origin.c int copy(int in, int out) {
+copy_block       function   3968 gzip-1.2.4.c.origin.c void copy_block(char *buf, unsigned int len, int header) {
+copy_stat        function   8647 gzip-1.2.4.c.origin.c static void copy_stat(struct stat *ifstat) {
+create_outfile   function   7255 gzip-1.2.4.c.origin.c static int create_outfile(void) {
+ct_init          function   4116 gzip-1.2.4.c.origin.c void ct_init(ush *attr, int *methodp) {
+ct_tally         function   5011 gzip-1.2.4.c.origin.c int ct_tally(int dist, int lc) {
+decode           function    744 gzip-1.2.4.c.origin.c static unsigned int decode(unsigned int count, uch *buffer) {
+decode_c         function    647 gzip-1.2.4.c.origin.c static unsigned int decode_c(void) {
+decode_p         function    688 gzip-1.2.4.c.origin.c static unsigned int decode_p(void) {
+decode_start     function    733 gzip-1.2.4.c.origin.c static void decode_start(void) {
+deflate          function   5651 gzip-1.2.4.c.origin.c ulg deflate(void) {
+deflate_fast     function   5543 gzip-1.2.4.c.origin.c static ulg deflate_fast(void) {
+display_ratio    function   1944 gzip-1.2.4.c.origin.c void display_ratio(long num, long den, FILE *file) {
+do_exit          function   8784 gzip-1.2.4.c.origin.c static void do_exit(int exitcode) {
+do_list          function   8168 gzip-1.2.4.c.origin.c static void do_list(int ifd___0, int method___0) {
+do_stat          function   7333 gzip-1.2.4.c.origin.c static int do_stat(char *name, struct stat *sbuf) {
+error            function   1899 gzip-1.2.4.c.origin.c void error(char *m) {
+file_read        function   6097 gzip-1.2.4.c.origin.c int file_read(char *buf, unsigned int size) {
+fill_inbuf       function   1629 gzip-1.2.4.c.origin.c int fill_inbuf(int eof_ok) {
+fill_window      function   5466 gzip-1.2.4.c.origin.c static void fill_window(void) {
+fillbuf          function    184 gzip-1.2.4.c.origin.c static void fillbuf(int n) {
+flush_block      function   4936 gzip-1.2.4.c.origin.c ulg flush_block(char *buf, ulg stored_len, int eof) {
+flush_outbuf     function   1670 gzip-1.2.4.c.origin.c void flush_outbuf(void) {
+flush_window     function   1683 gzip-1.2.4.c.origin.c void flush_window(void) {
+gen_bitlen       function   4399 gzip-1.2.4.c.origin.c static void gen_bitlen(tree_desc *desc) {
+gen_codes        function   4528 gzip-1.2.4.c.origin.c static void gen_codes(ct_data *tree, int max_code) {
+get_istat        function   7426 gzip-1.2.4.c.origin.c static int get_istat(char *iname, struct stat *sbuf) {
+get_method       function   7607 gzip-1.2.4.c.origin.c static int get_method(int in) {
+get_suffix       function   7362 gzip-1.2.4.c.origin.c static char *get_suffix(char *name) {
+getbits          function    221 gzip-1.2.4.c.origin.c static unsigned int getbits(int n) {
+help             function   6310 gzip-1.2.4.c.origin.c static void help(void) {
+huf_decode_start function    722 gzip-1.2.4.c.origin.c static void huf_decode_start(void) {
+huft_build       function   2096 gzip-1.2.4.c.origin.c int huft_build(unsigned int *b, unsigned int n, unsigned int s, ush *d, ush *e,
+huft_free        function   2418 gzip-1.2.4.c.origin.c int huft_free(struct huft *t) {
+inflate          function   3459 gzip-1.2.4.c.origin.c int inflate(void) {
+inflate_block    function   3372 gzip-1.2.4.c.origin.c int inflate_block(int *e) {
+inflate_codes    function   2442 gzip-1.2.4.c.origin.c int inflate_codes(struct huft *tl, struct huft *td, int bl, int bd) {
+inflate_dynamic  function   2960 gzip-1.2.4.c.origin.c int inflate_dynamic(void) {
+inflate_fixed    function   2865 gzip-1.2.4.c.origin.c int inflate_fixed(void) {
+inflate_stored   function   2742 gzip-1.2.4.c.origin.c int inflate_stored(void) {
+init_block       function   4305 gzip-1.2.4.c.origin.c static void init_block(void) {
+init_getbits     function    232 gzip-1.2.4.c.origin.c static void init_getbits(void) {
+license          function   6339 gzip-1.2.4.c.origin.c static void license(void) {
+lm_init          function   5246 gzip-1.2.4.c.origin.c void lm_init(int pack_level, ush *flags___0) {
+longest_match    function   5332 gzip-1.2.4.c.origin.c int longest_match(IPos cur_match) {
+lzw              function   1483 gzip-1.2.4.c.origin.c int lzw(int in, int out) {
+main             function   6386 gzip-1.2.4.c.origin.c int main(int argc, char **argv) {
+make_ofname      function   7504 gzip-1.2.4.c.origin.c static int make_ofname(void) {
+make_table       function    243 gzip-1.2.4.c.origin.c static void make_table(int nchar, uch *bitlen, int tablebits, ush *table) {
+name_too_long    function   8316 gzip-1.2.4.c.origin.c static int name_too_long(char *name, struct stat *statb) {
+pqdownheap       function   4355 gzip-1.2.4.c.origin.c static void pqdownheap(ct_data *tree, int k) {
+read_c_len       function    525 gzip-1.2.4.c.origin.c static void read_c_len(void) {
+read_error       function   1910 gzip-1.2.4.c.origin.c void read_error(void) {
+read_pt_len      function    414 gzip-1.2.4.c.origin.c static void read_pt_len(int nn, int nbit, int i_special) {
+read_tree        function    851 gzip-1.2.4.c.origin.c static void read_tree(void) {
+reset_times      function   8617 gzip-1.2.4.c.origin.c static void reset_times(char *name, struct stat *statb) {
+same_file        function   8301 gzip-1.2.4.c.origin.c static int same_file(struct stat *stat1, struct stat *stat2) {
+scan_tree        function   4702 gzip-1.2.4.c.origin.c static void scan_tree(ct_data *tree, int max_code) {
+send_all_trees   function   4907 gzip-1.2.4.c.origin.c static void send_all_trees(int lcodes, int dcodes, int blcodes) {
+send_bits        function   3854 gzip-1.2.4.c.origin.c void send_bits(int value, int length) {
+send_tree        function   4780 gzip-1.2.4.c.origin.c static void send_tree(ct_data *tree, int max_code) {
+set_file_type    function   5164 gzip-1.2.4.c.origin.c static void set_file_type(void) {
+shorten_name     function   8353 gzip-1.2.4.c.origin.c static void shorten_name(char *name) {
+strlwr           function   1722 gzip-1.2.4.c.origin.c char *strlwr(char *s) {
+treat_dir        function   8711 gzip-1.2.4.c.origin.c static void treat_dir(char *dir) {
+treat_file       function   6956 gzip-1.2.4.c.origin.c static void treat_file(char *iname) {
+treat_stdin      function   6778 gzip-1.2.4.c.origin.c static void treat_stdin(void) {
+unlzh            function    808 gzip-1.2.4.c.origin.c int unlzh(int in, int out) {
+unlzw            function   1188 gzip-1.2.4.c.origin.c int unlzw(int in, int out) {
+unpack           function   1049 gzip-1.2.4.c.origin.c int unpack(int in, int out) {
+unzip            function   3576 gzip-1.2.4.c.origin.c int unzip(int in, int out) {
+updcrc           function   1591 gzip-1.2.4.c.origin.c ulg updcrc(uch *s, unsigned int n) {
+usage            function   6275 gzip-1.2.4.c.origin.c static void usage(void) {
+version          function   6367 gzip-1.2.4.c.origin.c static void version(void) {
+write_buf        function   1699 gzip-1.2.4.c.origin.c void write_buf(int fd, voidp buf, unsigned int cnt) {
+write_error      function   1933 gzip-1.2.4.c.origin.c void write_error(void) {
+xmalloc          function   1972 gzip-1.2.4.c.origin.c voidp xmalloc(unsigned int size) {
+zip              function   5806 gzip-1.2.4.c.origin.c int zip(int in, int out) {

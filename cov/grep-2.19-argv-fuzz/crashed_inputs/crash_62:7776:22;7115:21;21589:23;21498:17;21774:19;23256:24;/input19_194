@@ -1,0 +1,1 @@
+1 -r train_input/input_dir -s1 -r train_input/inpain_input/input_dir -s18446744073709551615 -r train_input/input_dir -sut_dir -s

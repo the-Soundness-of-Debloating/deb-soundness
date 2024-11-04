@@ -1,0 +1,19 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==3485896==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000980 (pc 0x55e4edfc4464 bp 0x7ffc459ab910 sp 0x7ffc459aab90 T3485896)
+==3485896==The signal is caused by a READ memory access.
+==3485896==Hint: address points to the zero page.
+    #0 kwsprep /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11399:28 (reduced.tsan.out+0xe2464) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #1 kwsmusts /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12422:7 (reduced.tsan.out+0xe4fd1) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #2 GEAcompile /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12583:7 (reduced.tsan.out+0xe4dc7) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #3 Ecompile /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21892:7 (reduced.tsan.out+0xed51a) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #4 main /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7 (reduced.tsan.out+0xe7740) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #5 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #6 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 _start <null> (reduced.tsan.out+0x21544) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11399:28 in kwsprep
+==3485896==ABORTING
+./verify.sh: line 110: 3485893 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

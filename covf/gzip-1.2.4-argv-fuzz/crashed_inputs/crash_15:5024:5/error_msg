@@ -1,0 +1,22 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out
+gzip: invalid option -- 'u'
+gzip-1.2.4.c.reduced.c:5046:7: runtime error: index 4096 out of bounds for type 'uch[4096]' (aka 'unsigned char[4096]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5046:7 in 
+gzip-1.2.4.c.reduced.c:5024:5: runtime error: index 32832 out of bounds for type 'uch[32832]' (aka 'unsigned char[32832]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5024:5 in 
+gzip-1.2.4.c.reduced.c:4942:5: runtime error: index 4177 out of bounds for type 'uch[4096]' (aka 'unsigned char[4096]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4942:5 in 
+gzip-1.2.4.c.reduced.c:3881:9: runtime error: index 18432 out of bounds for type 'uch[18432]' (aka 'unsigned char[18432]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3881:9 in 
+gzip-1.2.4.c.reduced.c:3873:9: runtime error: index 18433 out of bounds for type 'uch[18432]' (aka 'unsigned char[18432]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3873:9 in 
+gzip-1.2.4.c.reduced.c:5111:20: runtime error: index 4096 out of bounds for type 'uch[4096]' (aka 'unsigned char[4096]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5111:20 in 
+gzip-1.2.4.c.reduced.c:5115:21: runtime error: index 32832 out of bounds for type 'uch[32832]' (aka 'unsigned char[32832]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5115:21 in 
+gzip-1.2.4.c.reduced.c:3862:54: runtime error: shift exponent 65529 is too large for 32-bit type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3862:54 in 
+gzip-1.2.4.c.reduced.c:3888:51: runtime error: shift exponent 18446744073709486103 is too large for 32-bit type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3888:51 in 
+./verify.sh: line 171: 1701370 Killed                  timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_489

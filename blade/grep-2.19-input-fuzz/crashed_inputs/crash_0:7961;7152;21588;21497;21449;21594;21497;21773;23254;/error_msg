@@ -1,0 +1,46 @@
+nosan:
+GNU gdb (Ubuntu 12.1-0ubuntu1~22.04) 12.1
+Copyright (C) 2022 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/bins/reduced.nosan.out...
+Starting program: /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/bins/reduced.nosan.out a -v -H -r /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_97
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGABRT, Aborted.
+__pthread_kill_implementation (no_tid=0, signo=6, threadid=140173930481472) at ./nptl/pthread_kill.c:44
+#0  __pthread_kill_implementation (no_tid=0, signo=6, threadid=140173930481472) at ./nptl/pthread_kill.c:44
+#1  __pthread_kill_internal (signo=6, threadid=140173930481472) at ./nptl/pthread_kill.c:78
+#2  __GI___pthread_kill (threadid=140173930481472, signo=signo@entry=6) at ./nptl/pthread_kill.c:89
+#3  0x00007f7cc9599476 in __GI_raise (sig=sig@entry=6) at ../sysdeps/posix/raise.c:26
+#4  0x00007f7cc957f7f3 in __GI_abort () at ./stdlib/abort.c:79
+#5  0x00007f7cc95e0676 in __libc_message (action=action@entry=do_abort, fmt=fmt@entry=0x7f7cc9732b77 "%s\n")
+    at ../sysdeps/posix/libc_fatal.c:155
+#6  0x00007f7cc95f7cfc in malloc_printerr (str=str@entry=0x7f7cc9730744 "free(): invalid pointer") at ./malloc/malloc.c:5664
+#7  0x00007f7cc95f9a44 in _int_free (av=<optimized out>, p=<optimized out>, have_lock=0) at ./malloc/malloc.c:4439
+#8  0x00007f7cc95fc453 in __GI___libc_free (mem=<optimized out>) at ./malloc/malloc.c:3391
+#9  0x00007f7cc963d4c1 in __closedir (dirp=<optimized out>) at ../sysdeps/unix/sysv/linux/closedir.c:50
+#10 0x000055a484e5022c in fts_build (sp=0x55a48551c5f0, type=3) at ./grep-2.19.c.reduced.c:7961
+#11 0x000055a484e4e954 in fts_read (sp=0x55a48551c5f0) at ./grep-2.19.c.reduced.c:7152
+#12 0x000055a484e589a3 in grepdesc (desc=-1, command_line=1) at ./grep-2.19.c.reduced.c:21588
+#13 0x000055a484e58aba in grepfile (dirdesc=21924, name=0x55a485524738 "input2_97", follow=-2058243763, command_line=1)
+    at ./grep-2.19.c.reduced.c:21497
+#14 0x000055a484e58bc4 in grepdirent (fts=0x55a48551b050, ent=0x55a485524630, command_line=1) at ./grep-2.19.c.reduced.c:21449
+#15 0x000055a484e589d3 in grepdesc (desc=3, command_line=1) at ./grep-2.19.c.reduced.c:21594
+#16 0x000055a484e58aba in grepfile (dirdesc=-100, 
+    name=0x7ffc7e0c4352 "/workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_97", follow=1, command_line=1) at ./grep-2.19.c.reduced.c:21497
+#17 0x000055a484e55260 in grep_command_line_arg (
+    arg=0x7ffc7e0c4352 "/workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_97") at ./grep-2.19.c.reduced.c:21773
+#18 0x000055a484e55145 in main (argc=6, argv=0x7ffc7e0c2d58) at ./grep-2.19.c.reduced.c:23254

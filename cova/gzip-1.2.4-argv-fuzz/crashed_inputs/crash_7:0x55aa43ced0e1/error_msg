@@ -1,0 +1,7 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==3961889==ERROR: ThreadSanitizer: SEGV on unknown address (pc 0x55aa43ced0e1 bp 0x000000000001 sp 0x7ffd81f1e770 T3961889)
+==3961889==The signal is caused by a READ memory access.
+==3961889==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+./verify.sh: line 171: 3961884 Killed                  timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_138

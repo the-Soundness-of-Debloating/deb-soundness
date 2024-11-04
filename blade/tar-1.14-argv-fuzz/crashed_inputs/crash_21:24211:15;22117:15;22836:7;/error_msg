@@ -1,0 +1,72 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1388198==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000008 (pc 0x7fd7380afff4 bp 0x7ffce9184010 sp 0x7ffce9183ed8 T0)
+==1388198==The signal is caused by a READ memory access.
+==1388198==Hint: address points to the zero page.
+    #0 0x7fd7380afff4 in getc_unlocked libio/getc_u.c:36:10
+    #1 0x5630445941f8 in add_exclude_file /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:24211:15
+    #2 0x563044593bdc in decode_options /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22117:15
+    #3 0x563044592d60 in main /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #4 0x7fd73804fd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7fd73804fe3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x5630444cb3e4 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out+0x233e4) (BuildId: dea9616fe4d35cf044eebf6ac56206498c214bc5)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV libio/getc_u.c:36:10 in getc_unlocked
+==1388198==ABORTING
+./verify.sh: line 305: 1388195 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input1_fuzzed/input1_492
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.msan.out
+MemorySanitizer:DEADLYSIGNAL
+==3258566==ERROR: MemorySanitizer: SEGV on unknown address 0x000000000008 (pc 0x7f419ca6fff4 bp 0x7ffda01051d0 sp 0x7ffda01050a8 T3258566)
+==3258566==The signal is caused by a READ memory access.
+==3258566==Hint: address points to the zero page.
+    #0 0x7f419ca6fff4 in getc_unlocked libio/getc_u.c:36:10
+    #1 0x561e6e664bae in add_exclude_file /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:24211:15
+    #2 0x561e6e66390d in decode_options /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22117:15
+    #3 0x561e6e6618f0 in main /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #4 0x7f419ca0fd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f419ca0fe3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x561e6e5c1384 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.msan.out+0x1f384) (BuildId: 9e8daeb98ac2ea40d33b08f0e050048e3061ad7b)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV libio/getc_u.c:36:10 in getc_unlocked
+==3258566==ABORTING
+./verify.sh: line 305: 3258565 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input18_fuzzed/input18_43
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==3364671==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000008 (pc 0x7f3807a10ff4 bp 0x7ffc61e19620 sp 0x7ffc61e19538 T3364671)
+==3364671==The signal is caused by a READ memory access.
+==3364671==Hint: address points to the zero page.
+    #0 getc_unlocked libio/getc_u.c:36:10 (libc.so.6+0x89ff4) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 add_exclude_file /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:24211:15 (reduced.tsan.out+0xd578d) (BuildId: a91c49f71ef66e92740147d508b3e7fd8d2b8f6a)
+    #2 decode_options /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22117:15 (reduced.tsan.out+0xd520e) (BuildId: a91c49f71ef66e92740147d508b3e7fd8d2b8f6a)
+    #3 main /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7 (reduced.tsan.out+0xd48ac) (BuildId: a91c49f71ef66e92740147d508b3e7fd8d2b8f6a)
+    #4 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #5 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #6 _start <null> (reduced.tsan.out+0x213c4) (BuildId: a91c49f71ef66e92740147d508b3e7fd8d2b8f6a)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV libio/getc_u.c:36:10 in getc_unlocked
+==3364671==ABORTING
+./verify.sh: line 305: 3364670 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input18_fuzzed/input18_43
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==3470858==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000008 (pc 0x7f947378aff4 bp 0x7ffcdfef8f50 sp 0x7ffcdfef8eb8 T0)
+==3470858==The signal is caused by a READ memory access.
+==3470858==Hint: address points to the zero page.
+    #0 0x7f947378aff4 in getc_unlocked libio/getc_u.c:36:10
+    #1 0x5616e3a7ad29 in add_exclude_file /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:24211:15
+    #2 0x5616e3a7a9ec in decode_options /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22117:15
+    #3 0x5616e3a7a434 in main /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #4 0x7f947372ad8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f947372ae3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x5616e3a485b4 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.lsan.out+0x95b4) (BuildId: 8a2240b5e19c3dd3975976a54b849f251cf235cd)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV libio/getc_u.c:36:10 in getc_unlocked
+==3470858==ABORTING

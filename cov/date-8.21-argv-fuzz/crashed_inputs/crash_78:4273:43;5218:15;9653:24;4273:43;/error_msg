@@ -1,0 +1,37 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.tsan.out
+date: invalid option -- 'Ô'
+date: invalid option -- '∑'
+date: invalid option -- 'ê'
+ThreadSanitizer:DEADLYSIGNAL
+==2396018==ERROR: ThreadSanitizer: SEGV on unknown address 0x7ffcc4d03ffe (pc 0x55cb2f2e21c0 bp 0x7ffcc5500fb0 sp 0x7ffcc5500320 T2396018)
+==2396018==The signal is caused by a READ memory access.
+    #0 yyparse /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4273:43 (reduced.tsan.out+0xd11c0) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #1 parse_datetime /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15 (reduced.tsan.out+0xd2ad8) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #2 main /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24 (reduced.tsan.out+0xd578c) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #3 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #4 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #5 _start <null> (reduced.tsan.out+0x22464) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4273:43 in yyparse
+==2396018==ABORTING
+./verify.sh: line 110: 2396017 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.lsan.out
+date: invalid option -- 'Ô'
+date: invalid option -- '∑'
+date: invalid option -- 'ê'
+LeakSanitizer:DEADLYSIGNAL
+==2871449==ERROR: LeakSanitizer: SEGV on unknown address 0x7ffd7bf96ffe (pc 0x558cc4692af0 bp 0x7ffd7c794670 sp 0x7ffd7c793d20 T0)
+==2871449==The signal is caused by a READ memory access.
+    #0 0x558cc4692af0 in yyparse /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4273:43
+    #1 0x558cc4693910 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15
+    #2 0x558cc4695c41 in main /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #3 0x7ff2e9076d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7ff2e9076e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x558cc46635e4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.lsan.out+0x65e4) (BuildId: 3f3ce206a851944f2a9bf35ed65b9c83b43c6ddf)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4273:43 in yyparse
+==2871449==ABORTING

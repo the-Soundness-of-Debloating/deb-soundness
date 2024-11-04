@@ -1,0 +1,9 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==4124745==ERROR: AddressSanitizer: SEGV on unknown address (pc 0x55d36f72807c bp 0x7fffdcd2a960 sp 0x7fffdcd2a8a0 T0)
+==4124745==The signal is caused by a READ memory access.
+==4124745==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+AddressSanitizer:DEADLYSIGNAL
+AddressSanitizer: nested bug in the same thread, aborting.

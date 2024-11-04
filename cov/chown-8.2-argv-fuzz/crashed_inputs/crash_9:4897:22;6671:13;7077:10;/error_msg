@@ -1,0 +1,20 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/bins/reduced.ubsan.out
+chown-8.2.c.reduced.c:4897:12: runtime error: member access within null pointer of type 'FTSENT' (aka 'struct _ftsent')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior chown-8.2.c.reduced.c:4897:12 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==20213==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000050 (pc 0x556d02a8ec76 bp 0x7ffe92c9bdd0 sp 0x7ffe92c9b870 T20213)
+==20213==The signal is caused by a READ memory access.
+==20213==Hint: address points to the zero page.
+    #0 0x556d02a8ec76 in fts_read /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4897:22
+    #1 0x556d02a935ea in chown_files /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6671:13
+    #2 0x556d02a94e20 in main /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10
+    #3 0x2adc034edd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x2adc034ede3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x556d02a60574 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/bins/reduced.ubsan.out+0xd574) (BuildId: 0e7a38900ca4a12859e02083c9e955def6022f6a)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4897:22 in fts_read
+==20213==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 20212 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

@@ -1,0 +1,15 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==2066849==ERROR: LeakSanitizer: SEGV on unknown address 0x626000010000 (pc 0x564e5d1760d2 bp 0x7ffc0985a060 sp 0x7ffc09859fb0 T0)
+==2066849==The signal is caused by a READ memory access.
+    #0 0x564e5d1760d2 in add_exclude_file /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:24268:13
+    #1 0x564e5d17480b in decode_options /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22117:15
+    #2 0x564e5d173200 in main /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #3 0x7f7abfa06d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f7abfa06e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x564e5d1387c4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.lsan.out+0xb7c4) (BuildId: e2c99b3a04678c7730a2d1f732d2d3a918280a86)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:24268:13 in add_exclude_file
+==2066849==ABORTING

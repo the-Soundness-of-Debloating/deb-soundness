@@ -1,0 +1,4 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out
+gzip-1.2.4.c.reduced.c:3956:9: runtime error: index 21879 out of bounds for type 'uch[18432]' (aka 'unsigned char[18432]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3956:9 in 

@@ -1,0 +1,18 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==11035==ERROR: AddressSanitizer: SEGV on unknown address (pc 0x55b3a2fb0701 bp 0x7fffab0ae050 sp 0x7fffab0add20 T0)
+==11035==The signal is caused by a READ memory access.
+==11035==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x55b3a2fb0701 in fts_read /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4836:17
+    #1 0x55b3a2fb199a in chown_files /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6671:13
+    #2 0x55b3a2fb21c7 in main /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10
+    #3 0x2ad7495d1d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x2ad7495d1e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55b3a2eee3a4 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.asan.out+0x1f3a4) (BuildId: 6ad2e6db368adb4da98c05f425810e11d7dd46e7)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4836:17 in fts_read
+==11035==ABORTING
+./verify.sh: line 110: 11033 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

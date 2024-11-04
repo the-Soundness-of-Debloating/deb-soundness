@@ -1,0 +1,42 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/bins/reduced.asan.out /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_0
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==490818==ERROR: AddressSanitizer: stack-overflow on address 0x7fffa4988dd0 (pc 0x7fffa4988dd0 bp 0x7fffa4988d80 sp 0x7fffa4988d88 T0)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x7fffa4988dd0  ([stack]+0x1ddd0)
+    #1 0x5570acecd895 in xfopen /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:9018:7
+    #2 0x5570acecc98e in sort /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:13109:13
+    #3 0x5570aceca5e7 in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:14275:7
+    #4 0x7f3a657add8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: stack-overflow ([stack]+0x1ddd0) 
+==490818==ABORTING
+./verify.sh: line 167: 490817 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/bins/reduced.asan.out /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_0
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/bins/reduced.tsan.out /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_0
+ThreadSanitizer:DEADLYSIGNAL
+==3368109==ERROR: ThreadSanitizer: stack-overflow on address 0x7ffe7642c120 (pc 0x7ffe7642c120 bp 0x7ffe7642c0d0 sp 0x7ffe7642c0d8 T3368109)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 <null> <null> ([stack]+0x1f120)
+    #1 xfopen /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:9018:7 (reduced.tsan.out+0xd45f9) (BuildId: 618fccfb6421486341b5c6e8f0c9661671acebc5)
+    #2 sort /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:13109:13 (reduced.tsan.out+0xd3e6d) (BuildId: 618fccfb6421486341b5c6e8f0c9661671acebc5)
+    #3 main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:14275:7 (reduced.tsan.out+0xd2b04) (BuildId: 618fccfb6421486341b5c6e8f0c9661671acebc5)
+    #4 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+SUMMARY: ThreadSanitizer: stack-overflow ([stack]+0x1f120) 
+==3368109==ABORTING
+./verify.sh: line 167: 3368106 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/bins/reduced.tsan.out /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_0
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/bins/reduced.lsan.out /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_0
+LeakSanitizer:DEADLYSIGNAL
+==404910==ERROR: LeakSanitizer: stack-overflow on address 0x7ffce9016040 (pc 0x7ffce9016040 bp 0x7ffce9016000 sp 0x7ffce9016008 T0)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x7ffce9016040  ([stack]+0x1f040)
+    #1 0x5560a84b19b0 in xfopen /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:9018:7
+    #2 0x5560a84b13a9 in sort /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:13109:13
+    #3 0x5560a84b08bd in main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:14275:7
+    #4 0x7fc6b30c7d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: LeakSanitizer: stack-overflow ([stack]+0x1f040) 
+==404910==ABORTING

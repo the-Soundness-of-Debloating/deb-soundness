@@ -1,0 +1,63 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/bins/reduced.asan.out -d
+=================================================================
+==3554811==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x612000000310 at pc 0x561d8854219a bp 0x7ffd42ba9230 sp 0x7ffd42ba8a00
+WRITE of size 16 at 0x612000000310 thread T0
+    #0 0x561d88542199 in __asan_memcpy (/workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/bins/reduced.asan.out+0xa7199) (BuildId: 31cdf9c8c17078d6666d86e4aca93822fd411c1a)
+    #1 0x561d8857f2f8 in huft_build /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2337:41
+    #2 0x561d88581c5b in inflate_dynamic /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3347:15
+    #3 0x561d88581ff7 in inflate_block /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3440:19
+    #4 0x561d8858211a in inflate /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3473:15
+    #5 0x561d88582356 in unzip /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3630:15
+    #6 0x561d8858ac7c in treat_stdin /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #7 0x561d88589a9a in main /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #8 0x7feaf08ebd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #9 0x7feaf08ebe3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #10 0x561d884bd3b4 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/bins/reduced.asan.out+0x223b4) (BuildId: 31cdf9c8c17078d6666d86e4aca93822fd411c1a)
+
+0x612000000310 is located 64 bytes to the right of 272-byte region [0x6120000001c0,0x6120000002d0)
+allocated by thread T0 here:
+    #0 0x561d88542dde in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/bins/reduced.asan.out+0xa7dde) (BuildId: 31cdf9c8c17078d6666d86e4aca93822fd411c1a)
+    #1 0x561d8857efbf in huft_build /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2313:38
+    #2 0x561d88581c5b in inflate_dynamic /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3347:15
+    #3 0x561d88581ff7 in inflate_block /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3440:19
+    #4 0x561d8858211a in inflate /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3473:15
+    #5 0x561d88582356 in unzip /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3630:15
+    #6 0x561d8858ac7c in treat_stdin /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #7 0x561d88589a9a in main /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #8 0x7feaf08ebd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow (/workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/bins/reduced.asan.out+0xa7199) (BuildId: 31cdf9c8c17078d6666d86e4aca93822fd411c1a) in __asan_memcpy
+Shadow bytes around the buggy address:
+  0x0c247fff8010: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c247fff8020: 00 00 00 00 00 00 00 00 00 00 fa fa fa fa fa fa
+  0x0c247fff8030: fa fa fa fa fa fa fa fa 00 00 00 00 00 00 00 00
+  0x0c247fff8040: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c247fff8050: 00 00 00 00 00 00 00 00 00 00 fa fa fa fa fa fa
+=>0x0c247fff8060: fa fa[fa]fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c247fff8070: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c247fff8080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c247fff8090: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c247fff80a0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c247fff80b0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==3554811==ABORTING
+./verify.sh: line 169: 3554808 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/bins/reduced.asan.out -d < /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_1/asan/crashes/id:000004* > sample1.tst

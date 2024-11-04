@@ -1,0 +1,21 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out
+gzip-1.2.4.c.reduced.c:1731:14: runtime error: load of null pointer of type 'char'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:1731:14 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==1377037==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x558ec7cebf4d bp 0x7ffc5e94ae70 sp 0x7ffc5e94adf0 T1377037)
+==1377037==The signal is caused by a READ memory access.
+==1377037==Hint: address points to the zero page.
+    #0 0x558ec7cebf4d in strlwr /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:1731:14
+    #1 0x558ec7d085a6 in make_ofname /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:7553:9
+    #2 0x558ec7d027ed in treat_file /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:7077:26
+    #3 0x558ec7d01f8b in main /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6759:13
+    #4 0x7fc9e8186d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7fc9e8186e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x558ec7cc3524 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out+0x17524) (BuildId: 4611bc955f7c177d70622a3b4fafed81f870d4ab)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:1731:14 in strlwr
+==1377037==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 171: 1377031 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-argv-fuzz/input/radamsa_fuzzed/input1_fuzzed/input1_163 > sample1.gz

@@ -1,0 +1,31 @@
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.lsan.out
+grep: invalid option -- '­'
+grep: invalid option -- '­'
+grep: invalid option -- '­'
+grep: invalid option -- '­'
+grep: invalid option -- '­'
+grep: invalid option -- '­'
+grep: invalid option -- '­'
+grep: invalid option -- '­'
+grep: invalid option -- '­'
+grep: invalid option -- '€'
+LeakSanitizer:DEADLYSIGNAL
+==4110450==ERROR: LeakSanitizer: SEGV on unknown address 0xfffffffffffffff8 (pc 0x559c8387ceef bp 0x7fff5e230030 sp 0x7fff5e230000 T0)
+==4110450==The signal is caused by a READ memory access.
+    #0 0x559c8387ceef in nsubtoks /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15723:45
+    #1 0x559c8387cbb9 in closure /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15819:33
+    #2 0x559c8387caa8 in branch /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15896:7
+    #3 0x559c83876b28 in regexp /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15926:7
+    #4 0x559c83876321 in dfaparse /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15973:7
+    #5 0x559c83875529 in dfacomp /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18346:7
+    #6 0x559c838753c6 in GEAcompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12582:7
+    #7 0x559c8387dbe1 in Ecompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21892:7
+    #8 0x559c8387aa50 in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #9 0x7fc8b0905d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #10 0x7fc8b0905e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #11 0x559c83843634 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.lsan.out+0x7634) (BuildId: 10460dee3b71486af1195aff24edc914ce768ab5)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15723:45 in nsubtoks
+==4110450==ABORTING

@@ -1,0 +1,5 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+date-8.21.c.reduced.c:5364:16: runtime error: signed integer overflow: 60 * -2264892234893527040 cannot be represented in type 'long'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:5364:16 in 
+date: time -6766323571504356892 is out of range

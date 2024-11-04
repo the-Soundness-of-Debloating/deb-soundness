@@ -1,0 +1,21 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.asan.out -d
+=================================================================
+==3127935==ERROR: AddressSanitizer: memcpy-param-overlap: memory ranges [0x559d50875801,0x559d5087581f) and [0x559d5087580c, 0x559d5087582a) overlap
+    #0 0x559d4fe86fd4 in __asan_memcpy (/workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.asan.out+0xa5fd4) (BuildId: 40bdfecdb6af30073c3b26aca5f703f7e2048a9b)
+    #1 0x559d4fec5448 in inflate_codes /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2696:19
+    #2 0x559d4fec66a2 in inflate_dynamic /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3361:18
+    #3 0x559d4fec6927 in inflate_block /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3440:19
+    #4 0x559d4fec6a4a in inflate /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3473:15
+    #5 0x559d4fec6c86 in unzip /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3630:15
+    #6 0x559d4fecde3b in treat_stdin /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #7 0x559d4fecd84b in main /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #8 0x7f3c380e8d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #9 0x7f3c380e8e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #10 0x559d4fe023a4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.asan.out+0x213a4) (BuildId: 40bdfecdb6af30073c3b26aca5f703f7e2048a9b)
+
+0x559d50875801 is located 17985 bytes inside of global variable 'window' defined in '/workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:156' (0x559d508711c0) of size 65536
+0x559d5087580c is located 17996 bytes inside of global variable 'window' defined in '/workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:156' (0x559d508711c0) of size 65536
+SUMMARY: AddressSanitizer: memcpy-param-overlap (/workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.asan.out+0xa5fd4) (BuildId: 40bdfecdb6af30073c3b26aca5f703f7e2048a9b) in __asan_memcpy
+==3127935==ABORTING
+./verify.sh: line 169: 3127931 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.asan.out -d < /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_1/asan/crashes/id:000025* > sample1.tst

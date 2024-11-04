@@ -1,0 +1,5 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/tar-1.14-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2934423==ERROR: AddressSanitizer: stack-overflow on address 0x7ffe0b4dea70 (pc 0x7ffe0b4dea70 bp 0x7ffe0b4de7a0 sp 0x7ffe0b4de7a8 T0)

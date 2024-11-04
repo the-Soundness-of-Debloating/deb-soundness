@@ -1,0 +1,14 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2394067==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000060 (pc 0x7fdb5f30e893 bp 0x7ffd07cb56e0 sp 0x7ffd07cb4a08 T2394067)
+==2394067==The signal is caused by a WRITE memory access.
+==2394067==Hint: address points to the zero page.
+    #0 memcpy string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:227 (libc.so.6+0xc4893) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 __interceptor_memcpy <null> (reduced.tsan.out+0x59dec) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #2 yyparse /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3695:32 (reduced.tsan.out+0xcfaa2) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:227 in memcpy
+==2394067==ABORTING
+./verify.sh: line 110: 2394066 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

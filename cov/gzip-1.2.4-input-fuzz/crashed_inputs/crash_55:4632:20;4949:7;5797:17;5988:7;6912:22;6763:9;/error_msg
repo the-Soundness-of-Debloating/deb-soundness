@@ -1,0 +1,24 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out -d
+
+reduced.ubsan.out: stdin: not in gzip format
+gzip-1.2.4.c.reduced.c:4632:9: runtime error: index 22020 out of bounds for type 'uch[573]' (aka 'unsigned char[573]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4632:9 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3266196==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x5604412ddca4 (pc 0x56044091122e bp 0x7ffc04eb8df0 sp 0x7ffc04eb8ab0 T3266196)
+==3266196==The signal is caused by a WRITE memory access.
+    #0 0x56044091122e in build_tree___0 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4632:20
+    #1 0x560440910473 in flush_block /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4949:7
+    #2 0x560440918e3c in deflate /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5797:17
+    #3 0x560440919c6e in zip /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5988:7
+    #4 0x56044091b56c in treat_stdin /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #5 0x56044091aee8 in main /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #6 0x7fabc209ed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7fabc209ee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x5604408dc524 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out+0x17524) (BuildId: 34b76cd7be567d8331ed0bfd80663d374dd178d2)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4632:20 in build_tree___0
+==3266196==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 169: 3266194 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out -d < /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_1/ubsan/crashes/id:000018* > sample1.tst

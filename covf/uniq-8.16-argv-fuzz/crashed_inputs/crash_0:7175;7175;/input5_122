@@ -1,0 +1,12 @@
+-f 0 train_input/file/data.txt
+-f 18446744073709551622 train_input/file/data.txt
+-f 5 train_input/file/data.txt
+-aÀ®txt
+-f 5 train_input/file/data.txt
+-f 1 train_input/file/ÃŸdata.txt
+-f 5 train_input/file/data.txt
+-f 274605 train_input/file/data.txt
+-f 5 train_input/file/data.txt
+-f 5 train_input/file/data.txt
+-f 5 train_input/file/data.txt
+-f 5 train_input/file/data.txt

@@ -1,0 +1,29 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+date: unrecognized option '--rfc.33󠁮+/v939 =ns'
+date-8.21.c.reduced.c:4191:24: runtime error: index -93 out of bounds for type 'const yytype_int8[113]' (aka 'const signed char[113]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4191:24 in 
+date-8.21.c.reduced.c:4825:24: runtime error: signed integer overflow: -1010000000 * 10 cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4825:24 in 
+date-8.21.c.reduced.c:4656:48: runtime error: null pointer passed as argument 2, which is declared to never be null
+date-8.21.c.reduced.c:787:20: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4656:48 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==1031708==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7fb3d6145962 bp 0x7fffef9f92b0 sp 0x7fffef9f90b8 T1031708)
+==1031708==The signal is caused by a READ memory access.
+==1031708==Hint: address points to the zero page.
+    #0 0x7fb3d6145962  string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:116
+    #1 0x55bb07ac302d in lookup_word /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4656:17
+    #2 0x55bb07abb864 in yylex /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4922:14
+    #3 0x55bb07ab3dc6 in yyparse /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3424:16
+    #4 0x55bb07abdb89 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15
+    #5 0x55bb07ac1d37 in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #6 0x7fb3d5fd6d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7fb3d5fd6e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55bb07a8b4d4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.ubsan.out+0xe4d4) (BuildId: a503b23e0911d3d9a3bc41498abe22d2bae3c8f6)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strcmp-avx2.S:116 
+==1031708==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 1031707 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

@@ -1,0 +1,3 @@
+-s -256 train_input/file/input
+-s -32769 train_input/file/input
+-s 1 train_input/file/input

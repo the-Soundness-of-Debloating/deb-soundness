@@ -1,0 +1,20 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/rm-8.4-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==1456737==ERROR: LeakSanitizer: SEGV on unknown address 0x6210ffffff9c (pc 0x7f2076eeb7fd bp 0x7ffc4b2c62d0 sp 0x7ffc4b2c5d38 T0)
+==1456737==The signal is caused by a READ memory access.
+    #0 0x7f2076eeb7fd  string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74
+    #1 0x7f2076dc4d30 in __vfprintf_internal stdio-common/vfprintf-internal.c:1517:4
+    #2 0x7f2076dc5664 in buffered_vfprintf stdio-common/vfprintf-internal.c:2261:12
+    #3 0x7f2076dae6c9 in fprintf stdio-common/fprintf.c:32:10
+    #4 0x555acdd2bef8 in prompt /workspace/fuzzing-deb-with-sanitizers/cov/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6366:11
+    #5 0x555acdd2b29a in rm_fts /workspace/fuzzing-deb-with-sanitizers/cov/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6668:16
+    #6 0x555acdd2b071 in rm /workspace/fuzzing-deb-with-sanitizers/cov/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6741:19
+    #7 0x555acdd2b4a5 in main /workspace/fuzzing-deb-with-sanitizers/cov/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7177:15
+    #8 0x7f2076d77d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #9 0x7f2076d77e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #10 0x555acdcfb584 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/rm-8.4-argv-fuzz/bins/reduced.lsan.out+0x6584) (BuildId: f634c5aae0a003b88afd05975173cb8f7d29e9fc)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 
+==1456737==ABORTING

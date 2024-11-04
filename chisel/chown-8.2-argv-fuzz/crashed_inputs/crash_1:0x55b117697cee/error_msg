@@ -1,0 +1,6 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2691==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000010 (pc 0x55b117697cee bp 0x7fff7121f2b0 sp 0x7fff7121f200 T2691)
+==2691==The signal is caused by a READ memory access.
+==2691==Hint: address points to the zero page.

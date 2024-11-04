@@ -1,0 +1,18 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.lsan.out
+(null): invalid option -- ''
+(null): invalid option -- 'û'
+LeakSanitizer:DEADLYSIGNAL
+==3723401==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x55ca50246387 bp 0x7ffd072e2af0 sp 0x7ffd072e2af0 T0)
+==3723401==The signal is caused by a READ memory access.
+==3723401==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x55ca50246387 in name_from_list /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:17164:16
+    #1 0x55ca502462eb in create_archive /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5867:17
+    #2 0x55ca50247358 in main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22893:7
+    #3 0x7fd521f32d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7fd521f32e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55ca502184d4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.lsan.out+0x74d4) (BuildId: ea5e47fabf85c69fd02c90c1c2c9d3c41a17d0cf)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:17164:16 in name_from_list
+==3723401==ABORTING

@@ -1,0 +1,14 @@
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.lsan.out
+==3551633==ERROR: LeakSanitizer: requested allocation size 0x55d4066a5dc9 exceeds maximum supported size of 0x200000000
+    #0 0x55d4066a2c64 in __interceptor_realloc (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.lsan.out+0x32c64) (BuildId: 10460dee3b71486af1195aff24edc914ce768ab5)
+    #1 0x55d4066a62b6 in fts_palloc /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:8317:19
+    #2 0x55d4066a5fd1 in fts_open /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:6536:17
+    #3 0x55d4066b1da3 in grepdesc /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21578:19
+    #4 0x55d4066b1c76 in grepfile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #5 0x55d4066aee1d in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19
+    #6 0x55d4066aeacc in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24
+    #7 0x7fa0ef391d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+==3551633==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: LeakSanitizer: allocation-size-too-big (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.lsan.out+0x32c64) (BuildId: 10460dee3b71486af1195aff24edc914ce768ab5) in __interceptor_realloc

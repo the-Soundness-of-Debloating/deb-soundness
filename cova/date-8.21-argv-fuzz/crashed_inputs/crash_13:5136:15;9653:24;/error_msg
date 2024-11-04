@@ -1,0 +1,44 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.asan.out
+date: unrecognized option '----------À­---dd--('
+=================================================================
+==323422==ERROR: AddressSanitizer: attempting free on address which was not malloc()-ed: 0x7f1ab5c00250 in thread T0
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x55722d92ec32 in free (/workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.asan.out+0xa9c32) (BuildId: 60f0d65aba6805b62eb63fd42d430e72bad92730)
+    #1 0x55722d975ba2 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5136:15
+    #2 0x55722d9811af in main /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #3 0x7ffdb8cac99f  ([stack]+0x1f99f)
+
+Address 0x7f1ab5c00250 is located in stack of thread T0 at offset 592 in frame
+    #0 0x55722d97516f in parse_datetime /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5005
+
+  This frame has 9 object(s):
+    [32, 88) 'tm' (line 5009)
+    [128, 184) 'tm0' (line 5010)
+    [224, 496) 'pc' (line 5011)
+    [560, 576) 'gettime_buffer' (line 5012)
+    [592, 692) 'tz0buf' (line 5016) <== Memory access at offset 592 is inside this variable
+    [736, 836) 'tz1buf' (line 5024)
+    [880, 936) '__constr_expr_40' (line 5031)
+    [976, 984) 'probe' (line 5033)
+    [1008, 1038) 'tz1buf___0' (line 5044)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: bad-free (/workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.asan.out+0xa9c32) (BuildId: 60f0d65aba6805b62eb63fd42d430e72bad92730) in free
+==323422==ABORTING
+./verify.sh: line 110: 323419 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer: CHECK failed: sanitizer_allocator_secondary.h:297 "((IsAligned(p, page_size_))) != (0)" (0x0, 0x0) (tid=3443434)
+    #0 __tsan::CheckUnwind() <null> (reduced.tsan.out+0xb45eb) (BuildId: 0565467d7526c791053cc00b66e49f782d5a793a)
+    #1 __sanitizer::CheckFailed(char const*, int, char const*, unsigned long long, unsigned long long) <null> (reduced.tsan.out+0x36224) (BuildId: 0565467d7526c791053cc00b66e49f782d5a793a)
+    #2 __sanitizer::LargeMmapAllocator<__tsan::MapUnmapCallback, __sanitizer::LargeMmapAllocatorPtrArrayDynamic, __sanitizer::LocalAddressSpaceView>::Deallocate(__sanitizer::AllocatorStats*, void*) <null> (reduced.tsan.out+0xafd66) (BuildId: 0565467d7526c791053cc00b66e49f782d5a793a)
+    #3 __tsan::user_free(__tsan::ThreadState*, unsigned long, void*, bool) <null> (reduced.tsan.out+0xaca9f) (BuildId: 0565467d7526c791053cc00b66e49f782d5a793a)
+    #4 free <null> (reduced.tsan.out+0x4eb34) (BuildId: 0565467d7526c791053cc00b66e49f782d5a793a)
+    #5 parse_datetime /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5136:15 (reduced.tsan.out+0xd551d) (BuildId: 0565467d7526c791053cc00b66e49f782d5a793a)
+    #6 main /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24 (reduced.tsan.out+0xdb682) (BuildId: 0565467d7526c791053cc00b66e49f782d5a793a)
+    #7 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #9 _start <null> (reduced.tsan.out+0x224c4) (BuildId: 0565467d7526c791053cc00b66e49f782d5a793a)
+
+./verify.sh: line 110: 3443433 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

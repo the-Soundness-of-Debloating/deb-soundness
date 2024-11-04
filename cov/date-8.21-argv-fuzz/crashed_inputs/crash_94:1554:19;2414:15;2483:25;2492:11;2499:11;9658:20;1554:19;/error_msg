@@ -1,0 +1,19 @@
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==3061843==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x55c3dc758161 bp 0x7ffcb5857b80 sp 0x7ffcb5857b10 T0)
+==3061843==The signal is caused by a READ memory access.
+==3061843==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x55c3dc758161 in quotearg_buffer_restyled /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:1554:19
+    #1 0x55c3dc75359c in quotearg_n_options /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:2414:15
+    #2 0x55c3dc7534c9 in quote_n_mem /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:2483:25
+    #3 0x55c3dc7535f1 in quote_n /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:2492:11
+    #4 0x55c3dc753616 in quote /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:2499:11
+    #5 0x55c3dc757c64 in main /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9658:20
+    #6 0x7ff36e268d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7ff36e268e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55c3dc7255e4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.lsan.out+0x65e4) (BuildId: 3f3ce206a851944f2a9bf35ed65b9c83b43c6ddf)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:1554:19 in quotearg_buffer_restyled
+==3061843==ABORTING

@@ -1,0 +1,14 @@
+7085	7085;	radamsa	NOSAN,			
+7209	7209:35;7209:35;	AFL++,radamsa	ASAN,MSAN,TSAN,	WRITE memory access,use-of-uninitialized-value,		
+2309	2309:11;2268:13;2325:13;5902:30;6838:27;7307:7;	AFL++,radamsa	ASAN,LSAN,	Direct leak,		
+2309	2309:11;2268:13;2325:13;5902:30;6885:17;7307:7;	AFL++,radamsa	ASAN,	Direct leak,		
+3	3;2325:13;5902:30;6904:24;7307:7;2309:11;2268:13;2325:13;5902:30;6885:17;7307:7;	radamsa	ASAN,	Direct leak,		
+2309	2309:11;2268:13;2325:13;5902:30;6904:24;7307:7;	radamsa	ASAN,	Direct leak,		
+3	3;2325:13;5902:30;6885:17;7307:7;2309:11;2268:13;2325:13;5902:30;6904:24;7307:7;	radamsa	ASAN,	Direct leak,		
+5910	5910:18;6838:27;7307:7;2309:11;2268:13;2325:13;5902:30;6838:27;7307:7;5910:18;	radamsa	ASAN,	heap-buffer-overflow,		
+7209	7209:21	AFL++,radamsa	UBSAN,	runtime error 	index .* out of bounds,	
+5871	5871:20	AFL++,radamsa	UBSAN,	runtime error 		
+6666	6666:67	AFL++,radamsa	UBSAN,	runtime error 		
+6187	6187:17;6795:19;7307:7;	AFL++,radamsa	MSAN,	READ memory access,		
+7085	7085:20;	AFL++,radamsa	MSAN,TSAN,LSAN,	READ memory access,	dereference of a high value address,	
+7011	7011:5;	AFL++	UBSAN,	WRITE memory access,		

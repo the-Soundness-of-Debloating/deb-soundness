@@ -1,0 +1,23 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep: invalid option -- 'â'
+grep: invalid option -- '€'
+grep: invalid option -- 'Ž'
+grep-2.19.c.reduced.c:10993:35: runtime error: member access within null pointer of type 'struct obstack'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:10993:35 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==229915==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000010 (pc 0x5561c17c0d77 bp 0x7fff532e3520 sp 0x7fff532e3200 T229915)
+==229915==The signal is caused by a READ memory access.
+==229915==Hint: address points to the zero page.
+    #0 0x5561c17c0d77 in kwsincr /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:10993:35
+    #1 0x5561c17c09a7 in Fcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:10578:11
+    #2 0x5561c17cf5f8 in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #3 0x7fa83c071d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7fa83c071e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x5561c1796574 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x15574) (BuildId: c2c2e5de5f7baf45d001715ccd865693e086d1fb)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:10993:35 in kwsincr
+==229915==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 229914 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

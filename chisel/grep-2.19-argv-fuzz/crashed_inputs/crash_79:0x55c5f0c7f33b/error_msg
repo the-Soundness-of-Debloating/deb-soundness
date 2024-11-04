@@ -1,0 +1,6 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==1283852==ERROR: ThreadSanitizer: SEGV on unknown address 0x00000000014e (pc 0x55c5f0c7f33b bp 0x7ffc865dd480 sp 0x7ffc865dd2e0 T1283852)
+==1283852==The signal is caused by a READ memory access.
+==1283852==Hint: address points to the zero page.

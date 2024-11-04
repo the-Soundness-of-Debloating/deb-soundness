@@ -1,0 +1,23 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep-2.19.c.reduced.c:13530:73: runtime error: index 21961 out of bounds for type 'const struct dfa_ctype[13]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:13530:73 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3953821==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x55c947ba5000 (pc 0x55c94545cfc0 bp 0x7ffca2c123b0 sp 0x7ffca2c11c70 T3953821)
+==3953821==The signal is caused by a READ memory access.
+    #0 0x55c94545cfc0 in parse_bracket_exp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:14143:32
+    #1 0x55c945450dfa in lex /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15227:21
+    #2 0x55c94544f3e9 in dfaparse /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15971:13
+    #3 0x55c94544de27 in dfacomp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18346:7
+    #4 0x55c94544dc7b in GEAcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12582:7
+    #5 0x55c94545f52b in Gcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21884:7
+    #6 0x55c94545a5f8 in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #7 0x7f513aaaad8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7f513aaaae3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x55c945421574 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x15574) (BuildId: c2c2e5de5f7baf45d001715ccd865693e086d1fb)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:14143:32 in parse_bracket_exp
+==3953821==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 3953820 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

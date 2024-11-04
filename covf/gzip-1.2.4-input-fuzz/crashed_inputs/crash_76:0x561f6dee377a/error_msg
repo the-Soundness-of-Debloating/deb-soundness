@@ -1,0 +1,8 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/gzip-1.2.4-input-fuzz/bins/reduced.lsan.out -c
+LeakSanitizer:DEADLYSIGNAL
+==3780975==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x561f6dee377a bp 0x7ffffd748030 sp 0x7ffffd747fe0 T0)
+==3780975==The signal is caused by a READ memory access.
+==3780975==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+LeakSanitizer:DEADLYSIGNAL
+LeakSanitizer: nested bug in the same thread, aborting.

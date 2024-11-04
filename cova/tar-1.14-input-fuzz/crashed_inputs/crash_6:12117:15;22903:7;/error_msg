@@ -1,0 +1,75 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.msan.out xf /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_12
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.msan.out: This does not look like a tar archive
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.msan.out: Skipping to next header
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.msan.out: MemorySanitizer:DEADLYSIGNAL
+==377570==ERROR: MemorySanitizer: SEGV on unknown address 0x000500000200 (pc 0x7fa7585357fd bp 0x7ffed214da60 sp 0x7ffed214d4c8 T377570)
+==377570==The signal is caused by a READ memory access.
+    #0 0x7fa7585357fd  string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74
+    #1 0x7fa75840ed30 in __vfprintf_internal stdio-common/vfprintf-internal.c:1517:4
+    #2 0x7fa75840f664 in buffered_vfprintf stdio-common/vfprintf-internal.c:2261:12
+    #3 0x7fa758416697 in locked_vfxprintf stdio-common/fxprintf.c:30:12
+    #4 0x7fa758416774 in __vfxprintf stdio-common/fxprintf.c:71:13
+    #5 0x7fa7584b91e0 in error_tail misc/error.c:207:13
+    #6 0x7fa7584b92d7 in __error_internal misc/error.c:261:3
+    #7 0x7fa7584b93c5 in error misc/error.c:274:3
+    #8 0x55fdd8a48e62 in read_and /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12117:15
+    #9 0x55fdd8a5eccc in main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7
+    #10 0x7fa7583c1d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #11 0x7fa7583c1e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #12 0x55fdd8978544 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.msan.out+0x20544) (BuildId: 7dd20a54459ea83b45ce3654eb159a31bca1a93b)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 
+==377570==ABORTING
+./verify.sh: line 360: 377569 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.msan.out xf /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_12
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.tsan.out xf /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_12
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.tsan.out: This does not look like a tar archive
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.tsan.out: Skipping to next header
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.tsan.out: ThreadSanitizer:DEADLYSIGNAL
+==2231792==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000002 (pc 0x7f34e8f707fd bp 0x7ffccd040b40 sp 0x7ffccd0405a8 T2231792)
+==2231792==The signal is caused by a READ memory access.
+==2231792==Hint: address points to the zero page.
+    #0 <null> string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 (libc.so.6+0x19d7fd) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 __vfprintf_internal stdio-common/vfprintf-internal.c:1517:4 (libc.so.6+0x76d30) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #2 buffered_vfprintf stdio-common/vfprintf-internal.c:2261:12 (libc.so.6+0x77664) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #3 locked_vfxprintf stdio-common/fxprintf.c:30:12 (libc.so.6+0x7e697) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #4 __vfxprintf stdio-common/fxprintf.c:71:13 (libc.so.6+0x7e774) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #5 error_tail misc/error.c:207:13 (libc.so.6+0x1211e0) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #6 __error_internal misc/error.c:261:3 (libc.so.6+0x1212d7) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 error misc/error.c:274:3 (libc.so.6+0x1213c5) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 read_and /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12117:15 (reduced.tsan.out+0xe392e) (BuildId: b9b2bf88b967942dbeca781e7840236ad45d6eee)
+    #9 main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7 (reduced.tsan.out+0xe9250) (BuildId: b9b2bf88b967942dbeca781e7840236ad45d6eee)
+    #10 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #11 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #12 _start <null> (reduced.tsan.out+0x22574) (BuildId: b9b2bf88b967942dbeca781e7840236ad45d6eee)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 
+==2231792==ABORTING
+./verify.sh: line 360: 2231789 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.tsan.out xf /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_12
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.lsan.out xf /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_12
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.lsan.out: This does not look like a tar archive
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.lsan.out: Skipping to next header
+/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.lsan.out: LeakSanitizer:DEADLYSIGNAL
+==4080330==ERROR: LeakSanitizer: SEGV on unknown address 0x000500000200 (pc 0x7f1a57fd47fd bp 0x7fff98f05400 sp 0x7fff98f04e68 T0)
+==4080330==The signal is caused by a READ memory access.
+    #0 0x7f1a57fd47fd  string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74
+    #1 0x7f1a57eadd30 in __vfprintf_internal stdio-common/vfprintf-internal.c:1517:4
+    #2 0x7f1a57eae664 in buffered_vfprintf stdio-common/vfprintf-internal.c:2261:12
+    #3 0x7f1a57eb5697 in locked_vfxprintf stdio-common/fxprintf.c:30:12
+    #4 0x7f1a57eb5774 in __vfxprintf stdio-common/fxprintf.c:71:13
+    #5 0x7f1a57f581e0 in error_tail misc/error.c:207:13
+    #6 0x7f1a57f582d7 in __error_internal misc/error.c:261:3
+    #7 0x7f1a57f583c5 in error misc/error.c:274:3
+    #8 0x562084b3dfa8 in read_and /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12117:15
+    #9 0x562084b4188d in main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7
+    #10 0x7f1a57e60d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #11 0x7f1a57e60e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #12 0x562084b03874 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-input-fuzz/bins/reduced.lsan.out+0xb874) (BuildId: b6005c6054fef54eb95034fc1ae7ecc431d9b774)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 
+==4080330==ABORTING

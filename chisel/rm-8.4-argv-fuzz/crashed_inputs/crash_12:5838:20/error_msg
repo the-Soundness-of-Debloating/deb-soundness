@@ -1,0 +1,24 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.ubsan.out
+rm-8.4.c.reduced.c:5838:20: runtime error: null pointer passed as argument 1, which is declared to never be null
+rm-8.4.c.reduced.c:333:23: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior rm-8.4.c.reduced.c:5838:20 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==695524==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7fbaa7f787fd bp 0x7ffc74cfded0 sp 0x7ffc74cfde98 T695524)
+==695524==The signal is caused by a READ memory access.
+==695524==Hint: address points to the zero page.
+    #0 0x7fbaa7f787fd  string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74
+    #1 0x55ada3c77729 in fts_maxarglen /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:5838:13
+    #2 0x55ada3c76bf4 in fts_open /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:4338:15
+    #3 0x55ada3c76b28 in xfts_open /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1488:11
+    #4 0x55ada3c78516 in rm /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6726:13
+    #5 0x55ada3c78c12 in main /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7177:15
+    #6 0x7fbaa7e04d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7fbaa7e04e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55ada3c4e444 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.ubsan.out+0x7444) (BuildId: d62a2af2b03bfec3ccc5a94dbcfef28a72896363)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 
+==695524==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 186: 695522 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_53

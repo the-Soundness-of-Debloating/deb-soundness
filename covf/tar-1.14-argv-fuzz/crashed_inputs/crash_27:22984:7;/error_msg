@@ -1,0 +1,19 @@
+asan:
+++ timeout -k 0.5 0.5 cat foo.tar
+++ /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.asan.out
+/workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.asan.out: Cannot verify stdin/stdout archive
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1470939==ERROR: AddressSanitizer: SEGV on unknown address 0xfffffffffffffff1 (pc 0x560279e20822 bp 0x560279f4af08 sp 0x7ffe6c719358 T0)
+==1470939==The signal is caused by a WRITE memory access.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x560279e20822 in __asan::Allocator::Deallocate(void*, unsigned long, unsigned long, __sanitizer::BufferedStackTrace*, __asan::AllocType) (/workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.asan.out+0x29822) (BuildId: 140003310470f32ec0bbfb565f7ae118c7cf05c8)
+    #1 0x560279ea3d26 in free (/workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.asan.out+0xacd26) (BuildId: 140003310470f32ec0bbfb565f7ae118c7cf05c8)
+    #2 0x560279edf999 in tar_stat_destroy /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22984:7
+    #3 0x7ffe6c719eef  ([stack]+0x1eeef)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.asan.out+0x29822) (BuildId: 140003310470f32ec0bbfb565f7ae118c7cf05c8) in __asan::Allocator::Deallocate(void*, unsigned long, unsigned long, __sanitizer::BufferedStackTrace*, __asan::AllocType)
+==1470939==ABORTING
+./verify.sh: line 305: 1470938 Broken pipe             timeout -k 0.5 0.5 cat foo.tar
+     1470939 Aborted                 | /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input12_fuzzed/input12_287

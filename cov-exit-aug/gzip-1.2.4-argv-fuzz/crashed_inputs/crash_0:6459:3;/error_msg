@@ -1,0 +1,34 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-exit-aug/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out
+argv-fuzz-inl.h:60:5: runtime error: index 1000 out of bounds for type 'char *[1000]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior argv-fuzz-inl.h:60:5 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==1673870==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x55f7e2ade000 (pc 0x55f7e2103830 bp 0x7ffe44480db0 sp 0x7ffe44480c80 T1673870)
+==1673870==The signal is caused by a WRITE memory access.
+    #0 0x55f7e2103830 in afl_init_argv /workspace/fuzzing-deb-with-sanitizers/cov-exit-aug/gzip-1.2.4-argv-fuzz/./argv-fuzz-inl.h:60:13
+    #1 0x55f7e2102841 in main /workspace/fuzzing-deb-with-sanitizers/cov-exit-aug/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6459:3
+    #2 0x7f1269570d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #3 0x7f1269570e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #4 0x55f7e20c3524 in _start (/workspace/fuzzing-deb-with-sanitizers/cov-exit-aug/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out+0x18524) (BuildId: 6ea6a6343af3658ca1d1974a49b2fb71acd7f2f1)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov-exit-aug/gzip-1.2.4-argv-fuzz/./argv-fuzz-inl.h:60:13 in afl_init_argv
+==1673870==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 164: 1673869 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-exit-aug/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/cov-exit-aug/gzip-1.2.4-argv-fuzz/input/radamsa_fuzzed/input1_fuzzed/input1_184 > sample1.gz
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-exit-aug/gzip-1.2.4-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==1879486==ERROR: ThreadSanitizer: SEGV on unknown address 0x55d281a06000 (pc 0x55d2805ef145 bp 0x7ffdbf4cfd40 sp 0x7ffdbf4cfc90 T1879486)
+==1879486==The signal is caused by a WRITE memory access.
+    #0 afl_init_argv /workspace/fuzzing-deb-with-sanitizers/cov-exit-aug/gzip-1.2.4-argv-fuzz/./argv-fuzz-inl.h:60:13 (reduced.tsan.out+0xd7145) (BuildId: 8baea8334e3e67467c306ddab2c74860db3b97bf)
+    #1 main /workspace/fuzzing-deb-with-sanitizers/cov-exit-aug/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6459:3 (reduced.tsan.out+0xd663a) (BuildId: 8baea8334e3e67467c306ddab2c74860db3b97bf)
+    #2 <null> <null> (libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #3 __libc_start_main <null> (libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #4 _start <null> (reduced.tsan.out+0x213a4) (BuildId: 8baea8334e3e67467c306ddab2c74860db3b97bf)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov-exit-aug/gzip-1.2.4-argv-fuzz/./argv-fuzz-inl.h:60:13 in afl_init_argv
+==1879486==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 164: 1879485 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-exit-aug/gzip-1.2.4-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/cov-exit-aug/gzip-1.2.4-argv-fuzz/input/radamsa_fuzzed/input1_fuzzed/input1_184 > sample1.gz

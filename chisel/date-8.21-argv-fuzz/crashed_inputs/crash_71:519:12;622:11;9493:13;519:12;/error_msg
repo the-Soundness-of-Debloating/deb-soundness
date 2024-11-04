@@ -1,0 +1,13 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.msan.out
+==2223566==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55a4572cb142 in argmatch /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:519:12
+    #1 0x55a4572cb59c in __xargmatch_internal /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:622:11
+    #2 0x55a4572dbc2a in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9493:13
+    #3 0x7f882c978d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f882c978e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55a457244314 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.msan.out+0x1f314) (BuildId: 22b6619e0d164948a147ca7a8d0f90c375ae1338)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:519:12 in argmatch
+Exiting
+./verify.sh: line 108: 2223565 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

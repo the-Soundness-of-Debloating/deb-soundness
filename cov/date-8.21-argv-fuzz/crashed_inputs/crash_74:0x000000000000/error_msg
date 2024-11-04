@@ -1,0 +1,33 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2313332==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x000000000000 bp 0x000000000000 sp 0x7ffd9db7d480 T2313332)
+==2313332==Hint: pc points to the zero page.
+==2313332==The signal is caused by a READ memory access.
+==2313332==Hint: address points to the zero page.
+    #0 <null> <null> (0x000000000000)
+    #1 __sanitizer::BufferedStackTrace::UnwindImpl(unsigned long, unsigned long, void*, bool, unsigned int) <null> (reduced.tsan.out+0xca501) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #2 __sanitizer::ReportDeadlySignal(__sanitizer::SignalContext const&, unsigned int, void (*)(__sanitizer::SignalContext const&, void const*, __sanitizer::BufferedStackTrace*), void const*) <null> (reduced.tsan.out+0x43e45) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #3 __sanitizer::HandleDeadlySignal(void*, void*, unsigned int, void (*)(__sanitizer::SignalContext const&, void const*, __sanitizer::BufferedStackTrace*), void const*) <null> (reduced.tsan.out+0x4416a) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #4 <null> <null> (libc.so.6+0x4251f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (<unknown module>) 
+==2313332==ABORTING
+./verify.sh: line 110: 2313331 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==2782097==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000000 (pc 0x000000000000 bp 0x7ffe60c75700 sp 0x7ffe60c752f0 T0)
+==2782097==Hint: pc points to the zero page.
+==2782097==The signal is caused by a READ memory access.
+==2782097==Hint: address points to the zero page.
+    #0 0x0  (<unknown module>)
+    #1 0x561a220a6467 in __sanitizer::BufferedStackTrace::UnwindImpl(unsigned long, unsigned long, void*, bool, unsigned int) (/workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.lsan.out+0x2d467) (BuildId: 3f3ce206a851944f2a9bf35ed65b9c83b43c6ddf)
+    #2 0x561a220a0fc5 in __sanitizer::ReportDeadlySignal(__sanitizer::SignalContext const&, unsigned int, void (*)(__sanitizer::SignalContext const&, void const*, __sanitizer::BufferedStackTrace*), void const*) (/workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.lsan.out+0x27fc5) (BuildId: 3f3ce206a851944f2a9bf35ed65b9c83b43c6ddf)
+    #3 0x561a220a12ea in __sanitizer::HandleDeadlySignal(void*, void*, unsigned int, void (*)(__sanitizer::SignalContext const&, void const*, __sanitizer::BufferedStackTrace*), void const*) (/workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.lsan.out+0x282ea) (BuildId: 3f3ce206a851944f2a9bf35ed65b9c83b43c6ddf)
+    #4 0x7f75d3d7251f  (/lib/x86_64-linux-gnu/libc.so.6+0x4251f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV (<unknown module>) 
+==2782097==ABORTING

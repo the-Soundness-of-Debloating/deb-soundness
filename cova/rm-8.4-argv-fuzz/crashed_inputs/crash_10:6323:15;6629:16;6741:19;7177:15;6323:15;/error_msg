@@ -1,0 +1,14 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/bins/reduced.msan.out
+==3090107==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x559680069779 in prompt /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6323:15
+    #1 0x55968005ab3b in rm_fts /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6629:16
+    #2 0x55968005874a in rm /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6741:19
+    #3 0x55968005dc92 in main /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7177:15
+    #4 0x7f4362beed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f4362beee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x55967ffb83f4 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/bins/reduced.msan.out+0x1f3f4) (BuildId: 88e41496596c8f3fd828cadea058d777a6329aab)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6323:15 in prompt
+Exiting
+./verify.sh: line 189: 3090106 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/cova/rm-8.4-argv-fuzz/input/radamsa_fuzzed/input6_fuzzed/input6_469

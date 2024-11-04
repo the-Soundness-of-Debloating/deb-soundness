@@ -1,0 +1,33 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.ubsan.out
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==1952843==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address (pc 0x7f19d0696102 bp 0x7ffd55724570 sp 0x7ffd55724438 T1952843)
+==1952843==The signal is caused by a READ memory access.
+==1952843==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+UndefinedBehaviorSanitizer: nested bug in the same thread, aborting.
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.msan.out
+MemorySanitizer:DEADLYSIGNAL
+==2060662==ERROR: MemorySanitizer: SEGV on unknown address (pc 0x7fb0c7cd5102 bp 0x7ffc07a45c70 sp 0x7ffc07a45c38 T2060662)
+==2060662==The signal is caused by a READ memory access.
+==2060662==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+MemorySanitizer:DEADLYSIGNAL
+MemorySanitizer: nested bug in the same thread, aborting.
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2126421==ERROR: ThreadSanitizer: SEGV on unknown address (pc 0x7fd61ecb3102 bp 0x00000000002f sp 0x7ffd2262d878 T2126421)
+==2126421==The signal is caused by a READ memory access.
+==2126421==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+ThreadSanitizer:DEADLYSIGNAL
+ThreadSanitizer: nested bug in the same thread, aborting.
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.lsan.out
+mkdir: unrecognized option '---------------------------------------------------'
+LeakSanitizer:DEADLYSIGNAL
+==2209146==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x7fcf72c75102 bp 0x7fffc01304c0 sp 0x7fffc01303b8 T0)
+==2209146==The signal is caused by a READ memory access.
+==2209146==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+LeakSanitizer:DEADLYSIGNAL
+LeakSanitizer: nested bug in the same thread, aborting.

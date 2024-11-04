@@ -1,0 +1,1 @@
+xf foo.tbr -X foo.exclude -X bar.excludexf foo.tbr -X Jfoo.exclude -X bar.exdlude

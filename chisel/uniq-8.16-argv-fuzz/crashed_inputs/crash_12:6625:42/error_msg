@@ -1,0 +1,24 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/bins/reduced.ubsan.out
+uniq-8.16.c.reduced.c:5870:20: runtime error: applying zero offset to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior uniq-8.16.c.reduced.c:5870:20 in 
+uniq-8.16.c.reduced.c:6625:47: runtime error: applying zero offset to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior uniq-8.16.c.reduced.c:6625:47 in 
+uniq-8.16.c.reduced.c:6625:42: runtime error: load of null pointer of type 'const char'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior uniq-8.16.c.reduced.c:6625:42 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3015309==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x562b102b5067 bp 0x7ffeed159880 sp 0x7ffeed159770 T3015309)
+==3015309==The signal is caused by a READ memory access.
+==3015309==Hint: address points to the zero page.
+    #0 0x562b102b5067 in find_field /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6625:27
+    #1 0x562b102b4996 in check_file /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6890:33
+    #2 0x562b102b443a in main /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7306:7
+    #3 0x7fd2ae64ed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7fd2ae64ee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x562b1028b414 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/bins/reduced.ubsan.out+0x6414) (BuildId: fe9c71df7ad041ae4350a3649e312d2bfd67153e)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:6625:27 in find_field
+==3015309==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 107: 3015308 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

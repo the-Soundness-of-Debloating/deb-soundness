@@ -1,0 +1,97 @@
+BZ2_blockSort    function   12010 bzip2-1.0.5.c.origin.c void BZ2_blockSort(EState *s) {
+BZ2_bsInitWrite  function   3157 bzip2-1.0.5.c.origin.c void BZ2_bsInitWrite(EState *s) {
+BZ2_bzCompress   function   5220 bzip2-1.0.5.c.origin.c int BZ2_bzCompress(bz_stream *strm, int action) {
+BZ2_bzCompressEnd function   5331 bzip2-1.0.5.c.origin.c int BZ2_bzCompressEnd(bz_stream *strm) {
+BZ2_bzCompressInit function   4789 bzip2-1.0.5.c.origin.c int BZ2_bzCompressInit(bz_stream *strm, int blockSize100k___0,
+BZ2_bzDecompress function   6097 bzip2-1.0.5.c.origin.c int BZ2_bzDecompress(bz_stream *strm) {
+BZ2_bzDecompressEnd function   6191 bzip2-1.0.5.c.origin.c int BZ2_bzDecompressEnd(bz_stream *strm) {
+BZ2_bzDecompressInit function   5366 bzip2-1.0.5.c.origin.c int BZ2_bzDecompressInit(bz_stream *strm, int verbosity___0, int small) {
+BZ2_bzRead       function   6775 bzip2-1.0.5.c.origin.c int BZ2_bzRead(int *bzerror, BZFILE *b, void *buf, int len) {
+BZ2_bzReadClose  function   6738 bzip2-1.0.5.c.origin.c void BZ2_bzReadClose(int *bzerror, BZFILE *b) {
+BZ2_bzReadGetUnused function   6921 bzip2-1.0.5.c.origin.c void BZ2_bzReadGetUnused(int *bzerror, BZFILE *b, void **unused, int *nUnused) {
+BZ2_bzReadOpen   function   6615 bzip2-1.0.5.c.origin.c BZFILE *BZ2_bzReadOpen(int *bzerror, FILE *f, int verbosity___0, int small,
+BZ2_bzWrite      function   6344 bzip2-1.0.5.c.origin.c void BZ2_bzWrite(int *bzerror, BZFILE *b, void *buf, int len) {
+BZ2_bzWriteClose64 function   6462 bzip2-1.0.5.c.origin.c void BZ2_bzWriteClose64(int *bzerror, BZFILE *b, int abandon,
+BZ2_bzWriteOpen  function   6241 bzip2-1.0.5.c.origin.c BZFILE *BZ2_bzWriteOpen(int *bzerror, FILE *f, int blockSize100k___0,
+BZ2_bz__AssertH__fail function   4649 bzip2-1.0.5.c.origin.c void BZ2_bz__AssertH__fail(int errcode) {
+BZ2_bzlibVersion function   6968 bzip2-1.0.5.c.origin.c char const *BZ2_bzlibVersion(void) {
+BZ2_compressBlock function   4529 bzip2-1.0.5.c.origin.c void BZ2_compressBlock(EState *s, Bool is_last_block) {
+BZ2_decompress   function    691 bzip2-1.0.5.c.origin.c Int32 BZ2_decompress(DState *s) {
+BZ2_hbAssignCodes function    514 bzip2-1.0.5.c.origin.c void BZ2_hbAssignCodes(Int32 *code, UChar *length, Int32 minLen, Int32 maxLen,
+BZ2_hbCreateDecodeTables function    551 bzip2-1.0.5.c.origin.c void BZ2_hbCreateDecodeTables(Int32 *limit, Int32 *base, Int32 *perm,
+BZ2_hbMakeCodeLengths function    278 bzip2-1.0.5.c.origin.c void BZ2_hbMakeCodeLengths(UChar *len, Int32 *freq, Int32 alphaSize,
+BZ2_indexIntoF   function   5745 bzip2-1.0.5.c.origin.c Int32 BZ2_indexIntoF(Int32 indx, Int32 *cftab) {
+addFlagsFromEnvVar function   9561 bzip2-1.0.5.c.origin.c static void addFlagsFromEnvVar(Cell **argList, Char *varName) {
+add_pair_to_block function   4900 bzip2-1.0.5.c.origin.c static void add_pair_to_block(EState *s) {
+applySavedFileAttrToOutputFile function   8363 bzip2-1.0.5.c.origin.c static void applySavedFileAttrToOutputFile(IntNative fd) {
+applySavedTimeInfoToOutputFile function   8346 bzip2-1.0.5.c.origin.c static void applySavedTimeInfoToOutputFile(Char *dstName) {
+bsFinishWrite    function   3164 bzip2-1.0.5.c.origin.c static void bsFinishWrite(EState *s) {
+bsPutUChar       function   3213 bzip2-1.0.5.c.origin.c static void bsPutUChar(EState *s, UChar c) {
+bsPutUInt32      function   3202 bzip2-1.0.5.c.origin.c static void bsPutUInt32(EState *s, UInt32 u) {
+bsW              function   3182 bzip2-1.0.5.c.origin.c __inline static void bsW(EState *s, Int32 n, UInt32 v) {
+bz_config_ok     function   4711 bzip2-1.0.5.c.origin.c static int bz_config_ok(void) {
+cadvise          function   7895 bzip2-1.0.5.c.origin.c static void cadvise(void) {
+cleanUpAndFail   function   7929 bzip2-1.0.5.c.origin.c static void cleanUpAndFail(Int32 ec) {
+compress         function   8424 bzip2-1.0.5.c.origin.c static void compress(Char *name) {
+compressStream   function   7204 bzip2-1.0.5.c.origin.c static void compressStream(FILE *stream, FILE *zStream) {
+compressedStreamEOF function   8048 bzip2-1.0.5.c.origin.c static void compressedStreamEOF(void) {
+configError      function   8189 bzip2-1.0.5.c.origin.c static void configError(void) {
+containsDubiousChars function   8376 bzip2-1.0.5.c.origin.c static Bool containsDubiousChars(Char *name) {
+copyFileName     function   8235 bzip2-1.0.5.c.origin.c static void copyFileName(Char *to, Char *from) {
+copy_input_until_stop function   4977 bzip2-1.0.5.c.origin.c static Bool copy_input_until_stop(EState *s) {
+copy_output_until_stop function   5099 bzip2-1.0.5.c.origin.c static Bool copy_output_until_stop(EState *s) {
+countHardLinks   function   8315 bzip2-1.0.5.c.origin.c static Int32 countHardLinks(Char *name) {
+crcError         function   8034 bzip2-1.0.5.c.origin.c static void crcError(void) {
+default_bzalloc  function   4725 bzip2-1.0.5.c.origin.c static void *default_bzalloc(void *opaque, Int32 items, Int32 size) {
+default_bzfree   function   4736 bzip2-1.0.5.c.origin.c static void default_bzfree(void *opaque, void *addr) {
+fallbackQSort3   function   10452 bzip2-1.0.5.c.origin.c static void fallbackQSort3(UInt32 *fmap, UInt32 *eclass, Int32 loSt,
+fallbackSimpleSort function   10377 bzip2-1.0.5.c.origin.c __inline static void fallbackSimpleSort(UInt32 *fmap, UInt32 *eclass, Int32 lo,
+fallbackSort     function   10652 bzip2-1.0.5.c.origin.c static void fallbackSort(UInt32 *fmap, UInt32 *eclass, UInt32 *bhtab,
+fileExists       function   8261 bzip2-1.0.5.c.origin.c static Bool fileExists(Char *name) {
+flush_RL         function   4966 bzip2-1.0.5.c.origin.c static void flush_RL(EState *s) {
+fopen_output_safely function   8280 bzip2-1.0.5.c.origin.c static FILE *fopen_output_safely(Char *name, char const *mode) {
+generateMTFValues function   3241 bzip2-1.0.5.c.origin.c static void generateMTFValues(EState *s) {
+handle_compress  function   5127 bzip2-1.0.5.c.origin.c static Bool handle_compress(bz_stream *strm) {
+hasSuffix        function   8381 bzip2-1.0.5.c.origin.c static Bool hasSuffix(Char *s, Char const *suffix) {
+init_RL          function   4769 bzip2-1.0.5.c.origin.c static void init_RL(EState *s) {
+ioError          function   8067 bzip2-1.0.5.c.origin.c static void ioError(void) {
+isempty_RL       function   4776 bzip2-1.0.5.c.origin.c static Bool isempty_RL(EState *s) {
+license          function   9421 bzip2-1.0.5.c.origin.c static void license(void) {
+main             function   9639 bzip2-1.0.5.c.origin.c IntNative main(IntNative argc, Char **argv) {
+mainGtU          function   10982 bzip2-1.0.5.c.origin.c __inline static Bool mainGtU(UInt32 i1, UInt32 i2, UChar *block,
+mainQSort3       function   11338 bzip2-1.0.5.c.origin.c static void mainQSort3(UInt32 *ptr, UChar *block, UInt16 *quadrant,
+mainSimpleSort   function   11193 bzip2-1.0.5.c.origin.c static void mainSimpleSort(UInt32 *ptr, UChar *block, UInt16 *quadrant,
+mainSort         function   11595 bzip2-1.0.5.c.origin.c static void mainSort(UInt32 *ptr, UChar *block, UInt16 *quadrant, UInt32 *ftab,
+makeMaps_d       function    669 bzip2-1.0.5.c.origin.c static void makeMaps_d(DState *s) {
+makeMaps_e       function   3219 bzip2-1.0.5.c.origin.c static void makeMaps_e(EState *s) {
+mapSuffix        function   8404 bzip2-1.0.5.c.origin.c static Bool mapSuffix(Char *name, Char const *oldSuffix,
+mkCell           function   9517 bzip2-1.0.5.c.origin.c static Cell *mkCell(void) {
+mmed3            function   11321 bzip2-1.0.5.c.origin.c __inline static UChar mmed3(UChar a, UChar b, UChar c) {
+myMalloc         function   9505 bzip2-1.0.5.c.origin.c static void *myMalloc(Int32 n) {
+mySIGSEGVorSIGBUScatcher function   8092 bzip2-1.0.5.c.origin.c static void mySIGSEGVorSIGBUScatcher(IntNative n) {
+mySignalCatcher  function   8081 bzip2-1.0.5.c.origin.c static void mySignalCatcher(IntNative n) {
+myfeof           function   6226 bzip2-1.0.5.c.origin.c static Bool myfeof(FILE *f) {
+myfeof___0       function   7189 bzip2-1.0.5.c.origin.c static Bool myfeof___0(FILE *f) {
+notAStandardFile function   8297 bzip2-1.0.5.c.origin.c static Bool notAStandardFile(Char *name) {
+outOfMemory      function   8175 bzip2-1.0.5.c.origin.c static void outOfMemory(void) {
+pad              function   8207 bzip2-1.0.5.c.origin.c static void pad(Char *s) {
+panic            function   8018 bzip2-1.0.5.c.origin.c static void panic(Char const *s) {
+prepare_new_block function   4746 bzip2-1.0.5.c.origin.c static void prepare_new_block(EState *s) {
+redundant        function   9494 bzip2-1.0.5.c.origin.c static void redundant(Char *flag) {
+saveInputFileMetaInfo function   8331 bzip2-1.0.5.c.origin.c static void saveInputFileMetaInfo(Char *srcName) {
+sendMTFValues    function   3386 bzip2-1.0.5.c.origin.c static void sendMTFValues(EState *s) {
+setExit          function   7887 bzip2-1.0.5.c.origin.c static void setExit(Int32 v) {
+showFileNames    function   7914 bzip2-1.0.5.c.origin.c static void showFileNames(void) {
+snocString       function   9528 bzip2-1.0.5.c.origin.c static Cell *snocString(Cell *root, Char *name) {
+testStream       function   7685 bzip2-1.0.5.c.origin.c static Bool testStream(FILE *zStream) {
+testf            function   9228 bzip2-1.0.5.c.origin.c static void testf(Char *name) {
+uInt64_from_UInt32s function   7067 bzip2-1.0.5.c.origin.c static void uInt64_from_UInt32s(UInt64 *n, UInt32 lo32, UInt32 hi32) {
+uInt64_isZero    function   7103 bzip2-1.0.5.c.origin.c static Bool uInt64_isZero(UInt64 *n) {
+uInt64_qrm10     function   7123 bzip2-1.0.5.c.origin.c static Int32 uInt64_qrm10(UInt64 *n) {
+uInt64_toAscii   function   7146 bzip2-1.0.5.c.origin.c static void uInt64_toAscii(char *outbuf, UInt64 *n) {
+uInt64_to_double function   7080 bzip2-1.0.5.c.origin.c static double uInt64_to_double(UInt64 *n) {
+unRLE_obuf_to_output_FAST function   5418 bzip2-1.0.5.c.origin.c static Bool unRLE_obuf_to_output_FAST(DState *s) {
+unRLE_obuf_to_output_SMALL function   5770 bzip2-1.0.5.c.origin.c static Bool unRLE_obuf_to_output_SMALL(DState *s) {
+uncompress       function   8812 bzip2-1.0.5.c.origin.c static void uncompress(Char *name) {
+uncompressStream function   7398 bzip2-1.0.5.c.origin.c static Bool uncompressStream(FILE *zStream, FILE *stream) {
+usage            function   9449 bzip2-1.0.5.c.origin.c static void usage(Char *fullProgName) {

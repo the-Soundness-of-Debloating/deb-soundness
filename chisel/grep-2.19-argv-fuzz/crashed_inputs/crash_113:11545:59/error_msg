@@ -1,0 +1,22 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep: invalid option -- '€'
+grep: invalid option -- ''
+grep-2.19.c.reduced.c:11545:59: runtime error: member access within null pointer of type 'struct tree'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:11545:59 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==4153240==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000018 (pc 0x561c0aed7a62 bp 0x7ffe44282730 sp 0x7ffe44281be0 T4153240)
+==4153240==The signal is caused by a READ memory access.
+==4153240==Hint: address points to the zero page.
+    #0 0x561c0aed7a62 in kwsprep /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11545:59
+    #1 0x561c0aed69b3 in Fcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:10589:5
+    #2 0x561c0aee55f8 in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #3 0x7f15c6a59d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f15c6a59e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x561c0aeac574 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x15574) (BuildId: c2c2e5de5f7baf45d001715ccd865693e086d1fb)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11545:59 in kwsprep
+==4153240==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 4153238 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

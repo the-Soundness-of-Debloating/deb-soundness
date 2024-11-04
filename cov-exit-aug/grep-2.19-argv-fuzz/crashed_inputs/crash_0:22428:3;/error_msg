@@ -1,0 +1,14 @@
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-exit-aug/grep-2.19-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==3331395==ERROR: LeakSanitizer: SEGV on unknown address 0x55aa210b4000 (pc 0x55aa20735381 bp 0x7ffc37d04b50 sp 0x7ffc37d04b30 T0)
+==3331395==The signal is caused by a WRITE memory access.
+    #0 0x55aa20735381 in afl_init_argv /workspace/fuzzing-deb-with-sanitizers/cov-exit-aug/grep-2.19-argv-fuzz/./argv-fuzz-inl.h:60:13
+    #1 0x55aa20734881 in main /workspace/fuzzing-deb-with-sanitizers/cov-exit-aug/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:22428:3
+    #2 0x7f13908c8d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #3 0x7f13908c8e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #4 0x55aa206fa634 in _start (/workspace/fuzzing-deb-with-sanitizers/cov-exit-aug/grep-2.19-argv-fuzz/bins/reduced.lsan.out+0x7634) (BuildId: 8b0a4ed6f228bcca6e2616f7ed32d1ade6017c30)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov-exit-aug/grep-2.19-argv-fuzz/./argv-fuzz-inl.h:60:13 in afl_init_argv
+==3331395==ABORTING

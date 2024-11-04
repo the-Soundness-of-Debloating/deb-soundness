@@ -1,0 +1,7 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2407582==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x562737f6529a bp 0x7ffcc64efd90 sp 0x7ffcc64efb30 T2407582)
+==2407582==The signal is caused by a READ memory access.
+==2407582==Hint: address points to the zero page.
+==2407582==WARNING: external symbolizer didn't start up correctly!

@@ -1,0 +1,27 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+date-8.21.c.reduced.c:2896:19: runtime error: signed integer overflow: -6104386597787475058 + -6104386597787475058 cannot be represented in type 'long'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:2896:19 in 
+date-8.21.c.reduced.c:5362:18: runtime error: signed integer overflow: 3600 * -6104386597787475058 cannot be represented in type 'long'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:5362:18 in 
+date-8.21.c.reduced.c:5364:16: runtime error: signed integer overflow: 60 * 1356154883179639808 cannot be represented in type 'long'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:5364:16 in 
+date-8.21.c.reduced.c:6151:23: runtime error: member access within null pointer of type 'const struct tm'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:6151:23 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3301803==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000008 (pc 0x5618c2b6bfc1 bp 0x7fff65a4b7f0 sp 0x7fff65a4ab30 T3301803)
+==3301803==The signal is caused by a READ memory access.
+==3301803==Hint: address points to the zero page.
+    #0 0x5618c2b6bfc1 in strftime_case____0 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:6151:23
+    #1 0x5618c2b6bef5 in fprintftime /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:7807:11
+    #2 0x5618c2b70b2a in show_date /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9700:5
+    #3 0x5618c2b702ae in main /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9671:18
+    #4 0x7f0557cedd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f0557cede3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x5618c2b325e4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.ubsan.out+0x145e4) (BuildId: b79d2b1295781bdc1a54b51e0f481a8d966b40ec)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:6151:23 in strftime_case____0
+==3301803==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 3301802 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

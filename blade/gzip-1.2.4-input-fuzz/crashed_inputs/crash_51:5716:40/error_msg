@@ -1,0 +1,24 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out -c
+gzip-1.2.4.c.reduced.c:5029:38: runtime error: index 437 out of bounds for type 'uch[256]' (aka 'unsigned char[256]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5029:38 in 
+gzip-1.2.4.c.reduced.c:5028:23: runtime error: index 437 out of bounds for type 'uch[256]' (aka 'unsigned char[256]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5028:23 in 
+gzip-1.2.4.c.reduced.c:5716:40: runtime error: index 65536 out of bounds for type 'uch[65536]' (aka 'unsigned char[65536]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5716:40 in 
+gzip-1.2.4.c.reduced.c:5031:24: runtime error: index -32201 out of bounds for type 'uch[512]' (aka 'unsigned char[512]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5031:24 in 
+gzip-1.2.4.c.reduced.c:5035:47: runtime error: index 116 out of bounds for type 'ct_data[61]' (aka 'struct ct_data[61]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5035:47 in 
+gzip-1.2.4.c.reduced.c:5035:7: runtime error: index 116 out of bounds for type 'ct_data[61]' (aka 'struct ct_data[61]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5035:7 in 
+gzip-1.2.4.c.reduced.c:5138:36: runtime error: index 516 out of bounds for type 'uch[512]' (aka 'unsigned char[512]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5138:36 in 
+gzip-1.2.4.c.reduced.c:5143:23: runtime error: index 135 out of bounds for type 'int[30]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5143:23 in 
+gzip-1.2.4.c.reduced.c:5147:39: runtime error: index 135 out of bounds for type 'int[30]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5147:39 in 
+gzip-1.2.4.c.reduced.c:3861:54: runtime error: shift exponent 6102 is too large for 32-bit type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3861:54 in 
+gzip-1.2.4.c.reduced.c:3887:51: runtime error: shift exponent 18446744073709545530 is too large for 32-bit type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:3887:51 in 

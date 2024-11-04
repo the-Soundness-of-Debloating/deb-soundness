@@ -1,0 +1,6 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out
+gzip-1.2.4.c.reduced.c:4742:28: runtime error: index 22037 out of bounds for type 'ct_data[39]' (aka 'struct ct_data[39]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4742:28 in 
+gzip-1.2.4.c.reduced.c:4741:13: runtime error: index 22037 out of bounds for type 'ct_data[39]' (aka 'struct ct_data[39]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4741:13 in 

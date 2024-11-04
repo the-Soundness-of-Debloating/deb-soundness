@@ -1,0 +1,42 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/bzip2-1.0.5-input-fuzz/bins/reduced.ubsan.out -d
+bzip2-1.0.5.c.reduced.c:1816:11: runtime error: index 6 out of bounds for type 'UChar[6]' (aka 'unsigned char[6]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1816:11 in 
+bzip2-1.0.5.c.reduced.c:1829:17: runtime error: index 7 out of bounds for type 'UChar[6]' (aka 'unsigned char[6]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1829:17 in 
+bzip2-1.0.5.c.reduced.c:1836:29: runtime error: index 6 out of bounds for type 'UChar[6]' (aka 'unsigned char[6]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1836:29 in 
+bzip2-1.0.5.c.reduced.c:1836:15: runtime error: index 7 out of bounds for type 'UChar[6]' (aka 'unsigned char[6]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1836:15 in 
+bzip2-1.0.5.c.reduced.c:1968:15: runtime error: index 6 out of bounds for type 'UChar[6][258]' (aka 'unsigned char[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1968:15 in 
+bzip2-1.0.5.c.reduced.c:643:13: runtime error: left shift of 1951922112 by 1 places cannot be represented in type 'Int32' (aka 'int')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:643:13 in 
+bzip2-1.0.5.c.reduced.c:642:28: runtime error: signed integer overflow: -2147483648 - 1 cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:642:28 in 
+bzip2-1.0.5.c.reduced.c:655:49: runtime error: left shift of 1951922112 by 1 places cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:655:49 in 
+bzip2-1.0.5.c.reduced.c:655:44: runtime error: signed integer overflow: 2147483647 + 1 cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:655:44 in 
+bzip2-1.0.5.c.reduced.c:1993:24: runtime error: index 6 out of bounds for type 'UChar[6][258]' (aka 'unsigned char[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1993:24 in 
+bzip2-1.0.5.c.reduced.c:1996:24: runtime error: index 6 out of bounds for type 'UChar[6][258]' (aka 'unsigned char[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1996:24 in 
+bzip2-1.0.5.c.reduced.c:1997:33: runtime error: index 6 out of bounds for type 'UChar[6][258]' (aka 'unsigned char[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1997:33 in 
+bzip2-1.0.5.c.reduced.c:1994:33: runtime error: index 6 out of bounds for type 'UChar[6][258]' (aka 'unsigned char[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:1994:33 in 
+bzip2-1.0.5.c.reduced.c:2004:39: runtime error: index 6 out of bounds for type 'Int32[6][258]' (aka 'int[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2004:39 in 
+bzip2-1.0.5.c.reduced.c:2004:56: runtime error: index 6 out of bounds for type 'Int32[6][258]' (aka 'int[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2004:56 in 
+bzip2-1.0.5.c.reduced.c:2005:39: runtime error: index 6 out of bounds for type 'Int32[6][258]' (aka 'int[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2005:39 in 
+bzip2-1.0.5.c.reduced.c:2005:55: runtime error: index 6 out of bounds for type 'UChar[6][258]' (aka 'unsigned char[6][258]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2005:55 in 
+bzip2-1.0.5.c.reduced.c:2007:13: runtime error: index 6 out of bounds for type 'Int32[6]' (aka 'int[6]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2007:13 in 
+bzip2-1.0.5.c.reduced.c:2175:21: runtime error: signed integer overflow: 1073741824 * 2 cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2175:21 in 
+bzip2-1.0.5.c.reduced.c:2258:36: runtime error: left shift of 1626916055 by 1 places cannot be represented in type 'Int32' (aka 'int')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:2258:36 in 

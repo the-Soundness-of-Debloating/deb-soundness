@@ -1,0 +1,6 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.ubsan.out
+sort-8.16.c.reduced.c:13273:1: runtime error: execution reached an unreachable program point
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior sort-8.16.c.reduced.c:13273:1 in 
+timeout: the monitored command dumped core
+./verify.sh: line 110: 850094 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

@@ -1,0 +1,20 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.asan.out
+grep: invalid option -- 'þ'
+grep: invalid option -- 't'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==4149149==ERROR: AddressSanitizer: SEGV on unknown address (pc 0x555b3cb47ef5 bp 0x7fff92e7e230 sp 0x7fff92e7d750 T0)
+==4149149==The signal is caused by a READ memory access.
+==4149149==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x555b3cb47ef5 in kwsprep /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11545:59
+    #1 0x555b3cb47583 in Fcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:10589:5
+    #2 0x555b3cb4ec7b in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #3 0x7efcf02d4d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7efcf02d4e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x555b3ca86404 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.asan.out+0x21404) (BuildId: 10224d5ec2cadb095b661fc40aefe10c74a166e5)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11545:59 in kwsprep
+==4149149==ABORTING
+./verify.sh: line 108: 4149148 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

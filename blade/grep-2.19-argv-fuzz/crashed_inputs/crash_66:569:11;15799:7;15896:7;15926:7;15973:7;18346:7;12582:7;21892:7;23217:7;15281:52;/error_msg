@@ -1,0 +1,24 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==3485990==ERROR: ThreadSanitizer: SEGV on unknown address 0x000d00000021 (pc 0x558c4b735189 bp 0x7ffc2fe4ce20 sp 0x7ffc2fe4cd40 T3485990)
+==3485990==The signal is caused by a WRITE memory access.
+    #0 addtok_mb /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15281:52 (reduced.tsan.out+0xed189) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #1 addtok_wc /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15440:7 (reduced.tsan.out+0xece61) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #2 atom /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15569:11 (reduced.tsan.out+0xec66f) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #3 closure /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15799:7 (reduced.tsan.out+0xec395) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #4 branch /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15896:7 (reduced.tsan.out+0xec2f1) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #5 regexp /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15926:7 (reduced.tsan.out+0xe6725) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #6 dfaparse /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15973:7 (reduced.tsan.out+0xe5d67) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #7 dfacomp /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18346:7 (reduced.tsan.out+0xe4f4e) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #8 GEAcompile /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12582:7 (reduced.tsan.out+0xe4dc2) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #9 Ecompile /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21892:7 (reduced.tsan.out+0xed51a) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #10 main /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7 (reduced.tsan.out+0xe7740) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #11 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #12 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #13 _start <null> (reduced.tsan.out+0x21544) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15281:52 in addtok_mb
+==3485990==ABORTING
+./verify.sh: line 110: 3485989 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

@@ -1,0 +1,21 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/bins/reduced.ubsan.out
+uniq: invalid option -- 'â'
+uniq-8.16.c.reduced.c:7175:35: runtime error: applying zero offset to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior uniq-8.16.c.reduced.c:7175:35 in 
+uniq-8.16.c.reduced.c:7175:26: runtime error: load of null pointer of type 'char'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior uniq-8.16.c.reduced.c:7175:26 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==4032950==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x55e75be0e17e bp 0x7fffc66fcd40 sp 0x7fffc66fcbd0 T4032950)
+==4032950==The signal is caused by a READ memory access.
+==4032950==Hint: address points to the zero page.
+    #0 0x55e75be0e17e in main /workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7175:21
+    #1 0x7f0105bd2d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7f0105bd2e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x55e75bde4534 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/bins/reduced.ubsan.out+0x7534) (BuildId: dcc96f3dbb2b9e1fe9ca372859d8589713fd3888)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7175:21 in main
+==4032950==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 4032948 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

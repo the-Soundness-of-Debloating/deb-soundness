@@ -1,0 +1,7 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==2247196==ERROR: LeakSanitizer: SEGV on unknown address 0x00005cc7c5c0 (pc 0x00005cc7c5c0 bp 0x7fff5cc7c590 sp 0x7fff5cc7c528 T0)
+==2247196==The signal is caused by a READ memory access.
+LeakSanitizer:DEADLYSIGNAL
+LeakSanitizer: nested bug in the same thread, aborting.

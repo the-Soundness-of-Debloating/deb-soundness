@@ -1,0 +1,25 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep: invalid option -- '‰'
+grep-2.19.c.reduced.c:7001:28: runtime error: member access within null pointer of type 'FTS' (aka 'struct __anonstruct_FTS_18')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:7001:28 in 
+grep-2.19.c.reduced.c:7001:28: runtime error: load of null pointer of type 'struct _ftsent *'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:7001:28 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==2434936==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x55cc82bccf16 bp 0x7fff915f44b0 sp 0x7fff915f3960 T2434936)
+==2434936==The signal is caused by a READ memory access.
+==2434936==Hint: address points to the zero page.
+    #0 0x55cc82bccf16 in fts_read /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:7001:28
+    #1 0x55cc82bfa564 in grepdesc /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21589:23
+    #2 0x55cc82bfa709 in grepfile /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #3 0x55cc82bee5ef in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19
+    #4 0x55cc82bede30 in main /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24
+    #5 0x7f3dc52c7d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7f3dc52c7e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x55cc82b7e814 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x3f814) (BuildId: 4bed7034f56727d9d48074d3a0714575dc9c5423)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:7001:28 in fts_read
+==2434936==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 2434934 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

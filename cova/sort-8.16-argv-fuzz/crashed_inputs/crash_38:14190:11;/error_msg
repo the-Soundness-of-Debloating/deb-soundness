@@ -1,0 +1,12 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==981425==ERROR: ThreadSanitizer: stack-overflow on address 0x7ffdb232d000 (pc 0x7ffdb232d000 bp 0x7ffdb232c690 sp 0x7ffdb232c698 T981425)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 <null> <null> ([stack]+0x20000)
+    #1 main /workspace/fuzzing-deb-with-sanitizers/cova/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14190:11 (reduced.tsan.out+0xd2678) (BuildId: 1f2b008a454c1a3d07abf2912e550aa8780b481c)
+    #2 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+SUMMARY: ThreadSanitizer: stack-overflow ([stack]+0x20000) 
+==981425==ABORTING
+./verify.sh: line 110: 981424 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

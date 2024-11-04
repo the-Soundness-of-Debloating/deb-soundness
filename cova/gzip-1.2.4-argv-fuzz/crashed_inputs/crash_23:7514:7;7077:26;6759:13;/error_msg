@@ -1,0 +1,19 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out
+
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==1598145==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x55f7c2a9e000 (pc 0x7f3a2307ce3a bp 0x7ffdc8e28330 sp 0x7ffdc8e282e8 T1598145)
+==1598145==The signal is caused by a WRITE memory access.
+    #0 0x7f3a2307ce3a  string/../sysdeps/x86_64/multiarch/strcpy-avx2.S:251
+    #1 0x55f7c20cb1bb in make_ofname /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:7514:7
+    #2 0x55f7c20c3669 in treat_file /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:7077:26
+    #3 0x55f7c20c28d1 in main /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6759:13
+    #4 0x7f3a22f07d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f3a22f07e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x55f7c2082584 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out+0x19584) (BuildId: d0e87649f46c7d0cdc23b8a85c3bc7cf9a80a582)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strcpy-avx2.S:251 
+==1598145==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 171: 1598137 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/result/afl_result/reduced/result_1/ubsan/crashes/id:000020* > sample1.gz

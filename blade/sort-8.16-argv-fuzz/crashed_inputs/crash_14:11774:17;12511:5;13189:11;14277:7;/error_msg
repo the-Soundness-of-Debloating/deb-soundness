@@ -1,0 +1,20 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/bins/reduced.ubsan.out
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==2658717==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x0000000000c0 (pc 0x7ff751e1d23c bp 0x7ffefb103030 sp 0x7ffefb102f60 T2658717)
+==2658717==The signal is caused by a READ memory access.
+==2658717==Hint: address points to the zero page.
+    #0 0x7ff751e1d23c in fwrite_unlocked libio/iofwrite_u.c:40:7
+    #1 0x556b509cab39 in write_line /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:11774:17
+    #2 0x556b509c77d5 in write_unique /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:12511:5
+    #3 0x556b509c5ff3 in sort /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13189:11
+    #4 0x556b509c53b0 in main /workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14277:7
+    #5 0x7ff751dbcd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7ff751dbce3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x556b5099c414 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/sort-8.16-argv-fuzz/bins/reduced.ubsan.out+0x8414) (BuildId: 7ecaf48436562807503f94fd2a6140190409f7ce)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV libio/iofwrite_u.c:40:7 in fwrite_unlocked
+==2658717==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 2658713 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

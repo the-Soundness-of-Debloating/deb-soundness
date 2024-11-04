@@ -1,0 +1,17 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/bins/reduced.asan.out
+=================================================================
+==8142==ERROR: AddressSanitizer: requested allocation size 0x7ffe996db920 (0x7ffe996dc920 after adjustments for alignment, red zones etc.) exceeds maximum supported size of 0x10000000000 (thread T0)
+    #0 0x562bbe0c7296 in __interceptor_realloc (/workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/bins/reduced.asan.out+0xa5296) (BuildId: ab296db126b4df64b7f0512761ae9c730ec73e7d)
+    #1 0x562bbe10468a in fts_palloc /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:5776:17
+    #2 0x562bbe1024ad in fts_open /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:4346:15
+    #3 0x562bbe102308 in xfts_open /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1489:11
+    #4 0x562bbe106b4d in rm /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6727:13
+    #5 0x562bbe1079b8 in main /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7178:15
+    #6 0x7f28357b2d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+
+==8142==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: AddressSanitizer: allocation-size-too-big (/workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/bins/reduced.asan.out+0xa5296) (BuildId: ab296db126b4df64b7f0512761ae9c730ec73e7d) in __interceptor_realloc
+==8142==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 189:  8141 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/covf/rm-8.4-argv-fuzz/input/radamsa_fuzzed/input6_fuzzed/input6_69

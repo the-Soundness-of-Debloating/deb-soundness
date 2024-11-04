@@ -1,0 +1,117 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep: invalid option -- '$'
+grep: invalid option -- '&'
+grep: invalid option -- '%'
+grep: invalid option -- '#'
+grep: invalid option -- '\'
+grep: invalid option -- '\'
+grep: invalid option -- '%'
+grep: invalid option -- 'p'
+grep: invalid option -- 'N'
+grep: invalid option -- 'N'
+grep: invalid option -- '$'
+grep: invalid option -- '('
+grep: invalid option -- ')'
+grep: invalid option -- '%'
+grep: invalid option -- '#'
+grep-2.19.c.reduced.c:3632:24: runtime error: null pointer passed as argument 2, which is declared to never be null
+grep-2.19.c.reduced.c:3615:27: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:3632:24 in 
+grep-2.19.c.reduced.c:20032:23: runtime error: pointer index expression with base 0x563a1a1cf000 overflowed to 0xffffd63d329ef1b0
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:20032:23 in 
+grep-2.19.c.reduced.c:21143:22: runtime error: pointer index expression with base 0xffffd63d329ef1b0 overflowed to 0x563a1a1cf000
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:21143:22 in 
+grep-2.19.c.reduced.c:21151:14: runtime error: applying non-zero offset 1 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:21151:14 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==2443478==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7fec36abb7fd bp 0x7fec36b39780 sp 0x7ffce77dfdf8 T2443478)
+==2443478==The signal is caused by a READ memory access.
+==2443478==Hint: address points to the zero page.
+    #0 0x7fec36abb7fd  string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74
+    #1 0x7fec369a83a8 in fputs_unlocked libio/iofputs_u.c:34:16
+    #2 0x563a18bebe49 in print_filename /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20365:7
+    #3 0x563a18beb5cf in grepdesc /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21688:13
+    #4 0x563a18beb709 in grepfile /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #5 0x563a18bdf5ef in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19
+    #6 0x563a18bdee30 in main /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24
+    #7 0x7fec36947d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7fec36947e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x563a18b6f814 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x3f814) (BuildId: 4bed7034f56727d9d48074d3a0714575dc9c5423)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 
+==2443478==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 2443474 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.tsan.out
+grep: invalid option -- '$'
+grep: invalid option -- '&'
+grep: invalid option -- '%'
+grep: invalid option -- '#'
+grep: invalid option -- '\'
+grep: invalid option -- '\'
+grep: invalid option -- '%'
+grep: invalid option -- 'p'
+grep: invalid option -- 'N'
+grep: invalid option -- 'N'
+grep: invalid option -- '$'
+grep: invalid option -- '('
+grep: invalid option -- ')'
+grep: invalid option -- '%'
+grep: invalid option -- '#'
+ThreadSanitizer:DEADLYSIGNAL
+==1738797==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7f7fe23d67fd bp 0x7f7fe2454780 sp 0x7ffd2ee7dfe8 T1738797)
+==1738797==The signal is caused by a READ memory access.
+==1738797==Hint: address points to the zero page.
+    #0 <null> string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 (libc.so.6+0x19d7fd) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 fputs_unlocked libio/iofputs_u.c:34:16 (libc.so.6+0x8a3a8) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #2 print_filename /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20365:7 (reduced.tsan.out+0xedbd6) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #3 grepdesc /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21688:13 (reduced.tsan.out+0xed6b2) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #4 grepfile /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17 (reduced.tsan.out+0xed7cc) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #5 grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19 (reduced.tsan.out+0xe7b54) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #6 main /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24 (reduced.tsan.out+0xe7792) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+    #7 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #9 _start <null> (reduced.tsan.out+0x21544) (BuildId: 28a8da5fa53a325e3b2426cfaa9331afd073d824)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 
+==1738797==ABORTING
+./verify.sh: line 110: 1738792 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.lsan.out
+grep: invalid option -- '$'
+grep: invalid option -- '&'
+grep: invalid option -- '%'
+grep: invalid option -- '#'
+grep: invalid option -- '\'
+grep: invalid option -- '\'
+grep: invalid option -- '%'
+grep: invalid option -- 'p'
+grep: invalid option -- 'N'
+grep: invalid option -- 'N'
+grep: invalid option -- '$'
+grep: invalid option -- '('
+grep: invalid option -- ')'
+grep: invalid option -- '%'
+grep: invalid option -- '#'
+LeakSanitizer:DEADLYSIGNAL
+==2836494==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7f3525ce77fd bp 0x7f3525d65780 sp 0x7ffd844cda88 T0)
+==2836494==The signal is caused by a READ memory access.
+==2836494==Hint: address points to the zero page.
+    #0 0x7f3525ce77fd  string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74
+    #1 0x7f3525bd43a8 in fputs_unlocked libio/iofputs_u.c:34:16
+    #2 0x55f6278b59b9 in print_filename /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20365:7
+    #3 0x55f6278b56ed in grepdesc /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21688:13
+    #4 0x55f6278b5799 in grepfile /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #5 0x55f6278b1f3f in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19
+    #6 0x55f6278b1cd5 in main /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24
+    #7 0x7f3525b73d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7f3525b73e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x55f6278757e4 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.lsan.out+0x77e4) (BuildId: dd9812b3761657568d154b8b15f2a986164efe56)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 
+==2836494==ABORTING

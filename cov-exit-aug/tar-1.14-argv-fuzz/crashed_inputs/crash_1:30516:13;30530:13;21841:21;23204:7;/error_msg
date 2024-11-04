@@ -1,0 +1,34 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.asan.out
+/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.asan.out: This does not look like a tar archive
+/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.asan.out: Skipping to next header
+
+=================================================================
+==203763==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 32 byte(s) in 1 object(s) allocated from:
+    #0 0x55c816eb3f6e in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.asan.out+0xacf6e) (BuildId: 760e125cfe7bdc9fd3ab356f44208d0f1c2e7bdd)
+    #1 0x55c816f112b4 in xnmalloc_inline /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30516:13
+    #2 0x55c816ef76a9 in xmalloc /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30530:13
+    #3 0x55c816f09fda in decode_options /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21841:21
+    #4 0x55c816f090dd in main /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:23204:7
+    #5 0x7ffb62abed8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+
+SUMMARY: AddressSanitizer: 32 byte(s) leaked in 1 allocation(s).
+timeout: the monitored command dumped core
+./verify.sh: line 304: 203762 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input1_fuzzed/input1_18
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.lsan.out
+
+=================================================================
+==1434350==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 32 byte(s) in 1 object(s) allocated from:
+    #0 0x55db0249f9a2 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.lsan.out+0x369a2) (BuildId: 6b9c645010b13ca8f876c74673edd4ddf27e6a34)
+    #1 0x55db024b444f in xnmalloc_inline /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30516:13
+    #2 0x55db024a7249 in xmalloc /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30530:13
+    #3 0x55db024afbb8 in decode_options /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:21841:21
+    #4 0x55db024af630 in main /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:23204:7
+    #5 0x7fe8a4140d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+
+SUMMARY: LeakSanitizer: 32 byte(s) leaked in 1 allocation(s).

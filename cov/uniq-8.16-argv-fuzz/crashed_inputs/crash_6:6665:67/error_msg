@@ -1,0 +1,6 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/uniq-8.16-argv-fuzz/bins/reduced.ubsan.out
+uniq-8.16.c.reduced.c:5870:20: runtime error: applying zero offset to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior uniq-8.16.c.reduced.c:5870:20 in 
+uniq-8.16.c.reduced.c:6665:67: runtime error: applying zero offset to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior uniq-8.16.c.reduced.c:6665:67 in 

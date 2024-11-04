@@ -1,0 +1,17 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out
+tar: invalid option -- '³'
+tar: invalid option -- '^'
+
+=================================================================
+==3566583==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 10240 byte(s) in 1 object(s) allocated from:
+    #0 0x5555a4d32a6d in valloc (/workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out+0xa9a6d) (BuildId: dea9616fe4d35cf044eebf6ac56206498c214bc5)
+    #1 0x5555a4d6c4f6 in open_archive /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:1138:19
+    #2 0x5555a4d6e121 in create_archive /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5854:7
+    #3 0x5555a4d73da2 in main /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22893:7
+    #4 0x7f7abc61bd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: 10240 byte(s) leaked in 1 allocation(s).
+./verify.sh: line 305: 3566582 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/result/afl_result/reduced/result_0/asan/crashes/id:000020*

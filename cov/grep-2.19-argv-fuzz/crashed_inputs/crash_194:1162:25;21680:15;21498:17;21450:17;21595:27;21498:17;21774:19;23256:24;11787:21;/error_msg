@@ -1,0 +1,64 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.tsan.out
+grep: invalid option -- '_'
+grep: invalid option -- '@'
+ThreadSanitizer:DEADLYSIGNAL
+==4105913==ERROR: ThreadSanitizer: SEGV on unknown address 0x7bb400010000 (pc 0x558ba3f66e99 bp 0x7ffe87a8a3f0 sp 0x7ffe87a8a300 T4105913)
+==4105913==The signal is caused by a READ memory access.
+    #0 memchr_kwset /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11787:21 (reduced.tsan.out+0xe1e99) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #1 bmexec_trans /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11850:14 (reduced.tsan.out+0xe12de) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #2 bmexec /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11982:15 (reduced.tsan.out+0xd555b) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #3 kwsexec /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12251:15 (reduced.tsan.out+0xd4734) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #4 EGexecute /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12655:25 (reduced.tsan.out+0xd636e) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #5 do_execute /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20933:17 (reduced.tsan.out+0xe7e19) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #6 grepbuf /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20997:17 (reduced.tsan.out+0xe791c) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #7 grep /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21162:25 (reduced.tsan.out+0xe6fd0) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #8 grepdesc /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21680:15 (reduced.tsan.out+0xe63d3) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #9 grepfile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17 (reduced.tsan.out+0xe60f9) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #10 grepdirent /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21450:17 (reduced.tsan.out+0xe6aa2) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #11 grepdesc /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21595:27 (reduced.tsan.out+0xe62c7) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #12 grepfile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17 (reduced.tsan.out+0xe60f9) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #13 grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19 (reduced.tsan.out+0xe0ba2) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #14 main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24 (reduced.tsan.out+0xe0683) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #15 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #16 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #17 _start <null> (reduced.tsan.out+0x21474) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11787:21 in memchr_kwset
+==4105913==ABORTING
+./verify.sh: line 110: 4105912 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.lsan.out
+grep: invalid option -- '+'
+grep: invalid option -- '§'
+grep: invalid option -- 'j'
+grep: invalid option -- '_'
+grep: invalid option -- '-'
+grep: invalid option -- '­'
+grep: invalid option -- '­'
+LeakSanitizer:DEADLYSIGNAL
+==4111407==ERROR: LeakSanitizer: SEGV on unknown address 0x62d000010000 (pc 0x56386cfe083c bp 0x7ffc7a272100 sp 0x7ffc7a2720a0 T0)
+==4111407==The signal is caused by a READ memory access.
+    #0 0x56386cfe083c in memchr_kwset /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11787:21
+    #1 0x56386cfe05a5 in bmexec_trans /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11920:24
+    #2 0x56386cfda036 in bmexec /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11982:15
+    #3 0x56386cfd99f7 in kwsexec /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12251:15
+    #4 0x56386cfda884 in EGexecute /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12655:25
+    #5 0x56386cfe3dc0 in do_execute /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20933:17
+    #6 0x56386cfe3a94 in grepbuf /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20997:17
+    #7 0x56386cfe35c8 in grep /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21162:25
+    #8 0x56386cfe2ece in grepdesc /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21680:15
+    #9 0x56386cfe2c76 in grepfile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #10 0x56386cfe32de in grepdirent /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21450:17
+    #11 0x56386cfe2de6 in grepdesc /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21595:27
+    #12 0x56386cfe2c76 in grepfile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #13 0x56386cfdfe1d in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19
+    #14 0x56386cfdfacc in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24
+    #15 0x7f4610a46d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #16 0x7f4610a46e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #17 0x56386cfa8634 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.lsan.out+0x7634) (BuildId: 10460dee3b71486af1195aff24edc914ce768ab5)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11787:21 in memchr_kwset
+==4111407==ABORTING

@@ -1,0 +1,3 @@
+-t train_input/traint/sample-18446744073709420544.bz256.ref
+-t train_input/traint/sample18446744073709486080.bz32769.ref
+-t train_input/traint/sample11867184970368468451.bz1.ref

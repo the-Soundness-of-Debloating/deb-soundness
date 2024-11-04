@@ -1,0 +1,17 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/bins/reduced.ubsan.out
+uniq-8.16.c.reduced.c:7208:21: runtime error: index 32765 out of bounds for type 'const char *[2]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior uniq-8.16.c.reduced.c:7208:21 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==2855517==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x7ffd97d3fb38 (pc 0x564e5e02d282 bp 0x7ffd97cffb90 sp 0x7ffd97cffa70 T2855517)
+==2855517==The signal is caused by a WRITE memory access.
+    #0 0x564e5e02d282 in main /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7208:35
+    #1 0x7f76e7858d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7f76e7858e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x564e5e004414 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/bins/reduced.ubsan.out+0x6414) (BuildId: fe9c71df7ad041ae4350a3649e312d2bfd67153e)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7208:35 in main
+==2855517==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 107: 2855516 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

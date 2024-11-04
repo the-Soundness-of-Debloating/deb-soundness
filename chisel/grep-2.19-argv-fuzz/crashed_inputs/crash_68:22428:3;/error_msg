@@ -1,0 +1,47 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+argv-fuzz-inl.h:60:5: runtime error: index 1000 out of bounds for type 'char *[1000]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior argv-fuzz-inl.h:60:5 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3990878==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x5632ac686000 (pc 0x5632abcfe810 bp 0x7ffeaae6b110 sp 0x7ffeaae6b030 T3990878)
+==3990878==The signal is caused by a WRITE memory access.
+    #0 0x5632abcfe810 in afl_init_argv /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./argv-fuzz-inl.h:60:13
+    #1 0x5632abcfe001 in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:22428:3
+    #2 0x7f9360371d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7f9360371e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x5632abcc5574 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x15574) (BuildId: c2c2e5de5f7baf45d001715ccd865693e086d1fb)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./argv-fuzz-inl.h:60:13 in afl_init_argv
+==3990878==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 3990877 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==1257270==ERROR: ThreadSanitizer: SEGV on unknown address 0x55e79e8ae000 (pc 0x55e79d4e6025 bp 0x7fff1bd8d950 sp 0x7fff1bd8d8d0 T1257270)
+==1257270==The signal is caused by a WRITE memory access.
+    #0 afl_init_argv /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./argv-fuzz-inl.h:60:13 (reduced.tsan.out+0xd4025) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #1 main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:22428:3 (reduced.tsan.out+0xd3a5d) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #2 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #3 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #4 _start <null> (reduced.tsan.out+0x21424) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./argv-fuzz-inl.h:60:13 in afl_init_argv
+==1257270==ABORTING
+./verify.sh: line 108: 1257269 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==2331269==ERROR: LeakSanitizer: SEGV on unknown address 0x55742247e000 (pc 0x557421b04391 bp 0x7ffd8546f9a0 sp 0x7ffd8546f980 T0)
+==2331269==The signal is caused by a WRITE memory access.
+    #0 0x557421b04391 in afl_init_argv /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./argv-fuzz-inl.h:60:13
+    #1 0x557421b04061 in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:22428:3
+    #2 0x7f0e7fb01d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7f0e7fb01e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x557421ad3554 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.lsan.out+0x6554) (BuildId: 0a255128d24039fae753673297dae843a7f4db37)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./argv-fuzz-inl.h:60:13 in afl_init_argv
+==2331269==ABORTING

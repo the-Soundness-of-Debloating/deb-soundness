@@ -1,0 +1,71 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==2805318==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000010 (pc 0x560435eaa4ee bp 0x7ffdfb737850 sp 0x7ffdfb737790 T0)
+==2805318==The signal is caused by a WRITE memory access.
+==2805318==Hint: address points to the zero page.
+    #0 0x560435eaa4ee in collect_and_sort_names /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:17104:27
+    #1 0x560435eaa456 in create_archive /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5862:9
+    #2 0x560435eabfe5 in main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22893:7
+    #3 0x7f643b959d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f643b959e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x560435dea374 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.asan.out+0x22374) (BuildId: da3403ca6ca0cc21a1df2d5332abdad16823d6bf)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:17104:27 in collect_and_sort_names
+==2805318==ABORTING
+./verify.sh: line 302: 2805316 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_52
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.msan.out
+(null): invalid option -- 'Š'
+MemorySanitizer:DEADLYSIGNAL
+==4003159==ERROR: MemorySanitizer: SEGV on unknown address 0x000000000010 (pc 0x55e83a4ab846 bp 0x7ffe5ad6ebe0 sp 0x7ffe5ad6eb20 T4003159)
+==4003159==The signal is caused by a WRITE memory access.
+==4003159==Hint: address points to the zero page.
+    #0 0x55e83a4ab846 in collect_and_sort_names /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:17104:27
+    #1 0x55e83a4ab5eb in create_archive /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5862:9
+    #2 0x55e83a4b2a94 in main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22893:7
+    #3 0x7fed99db3d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7fed99db3e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55e83a422304 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.msan.out+0x1f304) (BuildId: 3a6679aa2c3216cadcf63cc92542bfdae8bf0293)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:17104:27 in collect_and_sort_names
+==4003159==ABORTING
+./verify.sh: line 302: 4003158 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_31
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.tsan.out
+(null): invalid option -- 'Š'
+ThreadSanitizer:DEADLYSIGNAL
+==1257505==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000010 (pc 0x56161cb1125b bp 0x7ffdd9b84690 sp 0x7ffdd9b845d0 T1257505)
+==1257505==The signal is caused by a WRITE memory access.
+==1257505==Hint: address points to the zero page.
+    #0 collect_and_sort_names /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:17104:27 (reduced.tsan.out+0xce25b) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+    #1 create_archive /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5862:9 (reduced.tsan.out+0xce1bf) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+    #2 main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22893:7 (reduced.tsan.out+0xcfc34) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+    #3 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #4 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #5 _start <null> (reduced.tsan.out+0x21374) (BuildId: a80cf9c4047a08c2762e3bc9120139cbea6c258f)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:17104:27 in collect_and_sort_names
+==1257505==ABORTING
+./verify.sh: line 302: 1257504 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_31
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.lsan.out
+(null): invalid option -- 'Š'
+LeakSanitizer:DEADLYSIGNAL
+==3562065==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000010 (pc 0x557c5ff6e34f bp 0x7ffc50fd0f40 sp 0x7ffc50fd0e90 T0)
+==3562065==The signal is caused by a WRITE memory access.
+==3562065==Hint: address points to the zero page.
+    #0 0x557c5ff6e34f in collect_and_sort_names /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:17104:27
+    #1 0x557c5ff6e2e6 in create_archive /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5862:9
+    #2 0x557c5ff6f358 in main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22893:7
+    #3 0x7efe9c16bd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7efe9c16be3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x557c5ff404d4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/bins/reduced.lsan.out+0x74d4) (BuildId: ea5e47fabf85c69fd02c90c1c2c9d3c41a17d0cf)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:17104:27 in collect_and_sort_names
+==3562065==ABORTING

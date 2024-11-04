@@ -1,0 +1,60 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.asan.out
+=================================================================
+==1878619==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x6210000038e0 at pc 0x559d7f9bc843 bp 0x7ffc8d1cb750 sp 0x7ffc8d1cb748
+WRITE of size 8 at 0x6210000038e0 thread T0
+    #0 0x559d7f9bc842 in kwsincr /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11047:38
+    #1 0x559d7f9c321d in kwsmusts /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12392:13
+    #2 0x559d7f9c2ac0 in GEAcompile /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12583:7
+    #3 0x559d7f9db5a1 in Gcompile /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21884:7
+    #4 0x559d7f9da469 in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #5 0x7fc9401d5d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7fc9401d5e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x559d7f8f4504 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.asan.out+0x24504) (BuildId: a44fc56afaee2ca39022040a002b33e90c6848cc)
+
+0x6210000038e0 is located 0 bytes to the right of 4064-byte region [0x621000002900,0x6210000038e0)
+allocated by thread T0 here:
+    #0 0x559d7f979f2e in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.asan.out+0xa9f2e) (BuildId: a44fc56afaee2ca39022040a002b33e90c6848cc)
+    #1 0x559d7f9b4104 in xmalloc /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:1045:13
+    #2 0x7fc94025352a in _obstack_begin malloc/obstack.c:176:22
+    #3 0x559d7f9bbbe4 in kwsinit /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:19276:22
+    #4 0x559d7f9c2e19 in kwsmusts /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12363:9
+    #5 0x559d7f9c2ac0 in GEAcompile /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12583:7
+    #6 0x559d7f9db5a1 in Gcompile /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21884:7
+    #7 0x559d7f9da469 in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #8 0x7fc9401d5d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:11047:38 in kwsincr
+Shadow bytes around the buggy address:
+  0x0c427fff86c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c427fff86d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c427fff86e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c427fff86f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c427fff8700: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0c427fff8710: 00 00 00 00 00 00 00 00 00 00 00 00[fa]fa fa fa
+  0x0c427fff8720: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c427fff8730: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c427fff8740: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c427fff8750: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c427fff8760: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==1878619==ABORTING
+./verify.sh: line 110: 1878618 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

@@ -1,0 +1,22 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.tsan.out cf foo.tar /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0
+ThreadSanitizer:DEADLYSIGNAL
+==2486552==ERROR: ThreadSanitizer: SEGV on unknown address 0x5600040203cb (pc 0x560003fcfa19 bp 0x7ffff2fe2e90 sp 0x7ffff2fe2c30 T2486552)
+==2486552==The signal is caused by a WRITE memory access.
+    #0 to_chars /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:4142:35 (reduced.tsan.out+0xd4a19) (BuildId: b101f366f4f95ea2f07dc36e8fee740514c566ab)
+    #1 mode_to_chars /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:4477:7 (reduced.tsan.out+0xd5477) (BuildId: b101f366f4f95ea2f07dc36e8fee740514c566ab)
+    #2 start_header /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:5104:11 (reduced.tsan.out+0xd5a4b) (BuildId: b101f366f4f95ea2f07dc36e8fee740514c566ab)
+    #3 dump_regular_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:5462:13 (reduced.tsan.out+0xeb09d) (BuildId: b101f366f4f95ea2f07dc36e8fee740514c566ab)
+    #4 dump_file0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:6365:26 (reduced.tsan.out+0xd8090) (BuildId: b101f366f4f95ea2f07dc36e8fee740514c566ab)
+    #5 dump_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:6553:7 (reduced.tsan.out+0xd7339) (BuildId: b101f366f4f95ea2f07dc36e8fee740514c566ab)
+    #6 create_archive /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:5976:15 (reduced.tsan.out+0xd7080) (BuildId: b101f366f4f95ea2f07dc36e8fee740514c566ab)
+    #7 main /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22891:7 (reduced.tsan.out+0xe3fe3) (BuildId: b101f366f4f95ea2f07dc36e8fee740514c566ab)
+    #8 <null> <null> (libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #9 __libc_start_main <null> (libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #10 _start <null> (reduced.tsan.out+0x224e4) (BuildId: b101f366f4f95ea2f07dc36e8fee740514c566ab)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:4142:35 in to_chars
+==2486552==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 360: 2486551 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/bins/reduced.tsan.out cf foo.tar /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/input/radamsa_fuzzed/file0_fuzzed/file0_0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0

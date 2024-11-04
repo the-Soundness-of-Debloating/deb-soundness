@@ -1,0 +1,18 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.ubsan.out
+chown-8.2.c.reduced.c:4833:24: runtime error: addition of unsigned offset to 0x55bc0c009330 overflowed to 0x55bc0c00932f
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior chown-8.2.c.reduced.c:4833:24 in 
+chown-8.2.c.reduced.c:4829:37: runtime error: member access within misaligned address 0xffffffff0effffff for type 'struct _ftsent', which requires 8 byte alignment
+0xffffffff0effffff: note: pointer points here
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior chown-8.2.c.reduced.c:4829:37 in 
+chown-8.2.c.reduced.c:4829:37: runtime error: load of misaligned address 0xffffffff0f00003f for type 'size_t' (aka 'unsigned long'), which requires 8 byte alignment
+0xffffffff0f00003f: note: pointer points here
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior chown-8.2.c.reduced.c:4829:37 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==4959==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0xffffffff0f00003f (pc 0x55bc0990dcf9 bp 0x7ffcc7db3770 sp 0x7ffcc7db3350 T4959)
+==4959==The signal is caused by a READ memory access.
+corrupted size vs. prev_size
+timeout: the monitored command dumped core
+./verify.sh: line 110:  4958 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

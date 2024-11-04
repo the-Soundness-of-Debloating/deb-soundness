@@ -1,0 +1,20 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep: invalid option -- 'â'
+grep: invalid option -- '€'
+grep: invalid option -- 'Ž'
+grep-2.19.c.reduced.c:11007:37: runtime error: applying non-zero offset 94746008829200 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:11007:37 in 
+grep-2.19.c.reduced.c:11039:41: runtime error: applying non-zero offset 94746008829264 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:11039:41 in 
+grep-2.19.c.reduced.c:11531:33: runtime error: applying non-zero offset 94746008830432 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:11531:33 in 
+grep-2.19.c.reduced.c:3632:24: runtime error: null pointer passed as argument 2, which is declared to never be null
+grep-2.19.c.reduced.c:3615:27: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:3632:24 in 
+grep-2.19.c.reduced.c:20032:23: runtime error: pointer index expression with base 0x562bc6335000 overflowed to 0xffffd62eb3ee2140
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:20032:23 in 
+grep-2.19.c.reduced.c:21143:22: runtime error: pointer index expression with base 0xffffd62eb3ee2140 overflowed to 0x562bc6335000
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:21143:22 in 
+grep-2.19.c.reduced.c:21151:14: runtime error: applying non-zero offset 1 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:21151:14 in 

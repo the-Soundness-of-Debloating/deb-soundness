@@ -1,0 +1,24 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.ubsan.out
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==686900==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address (pc 0x563830daf4ec bp 0x7ffeaf8c3490 sp 0x7ffeaf8c3320 T686900)
+==686900==The signal is caused by a READ memory access.
+==686900==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x563830daf4ec in quotearg_buffer_restyled /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1983:19
+    #1 0x563830dad647 in quotearg_n_options /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2843:15
+    #2 0x563830dad12b in quotearg_n_style /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2874:15
+    #3 0x563830dad67f in quote_n /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2907:25
+    #4 0x563830dad6a6 in quote /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2914:11
+    #5 0x563830dafa44 in excise /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6502:16
+    #6 0x563830daea2f in rm_fts /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6674:16
+    #7 0x563830dae553 in rm /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6741:19
+    #8 0x563830daec12 in main /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7177:15
+    #9 0x7f2777962d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #10 0x7f2777962e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #11 0x563830d84444 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.ubsan.out+0x7444) (BuildId: d62a2af2b03bfec3ccc5a94dbcfef28a72896363)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1983:19 in quotearg_buffer_restyled
+==686900==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 186: 686897 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_1

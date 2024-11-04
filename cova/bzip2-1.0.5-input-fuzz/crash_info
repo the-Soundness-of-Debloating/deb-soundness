@@ -1,0 +1,11 @@
+[
+{ crash_loc: 7238, vul_type: "", deb_tool: "cova" }, 
+{ crash_loc: 7243, vul_type: "", deb_tool: "cova" }, 
+{ crash_loc: 4739, vul_type: "", deb_tool: "cova" }, 
+{ crash_loc: 7287, vul_type: "heap-buffer-overflow,", deb_tool: "cova" }, 
+{ crash_loc: 7287, vul_type: "heap-buffer-overflow,", deb_tool: "cova" }, 
+{ crash_loc: 10759, vul_type: "runtime error ", deb_tool: "cova" }, 
+{ crash_loc: 10774, vul_type: "runtime error ", deb_tool: "cova" }, 
+{ crash_loc: 10798, vul_type: "runtime error ", deb_tool: "cova" }, 
+{ crash_loc: 10772, vul_type: "runtime error ", deb_tool: "cova" }, 
+]

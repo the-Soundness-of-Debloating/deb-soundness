@@ -1,0 +1,15 @@
+[
+{ crash_loc: 21149, vul_type: "", deb_tool: "covf" }, 
+{ crash_loc: 21149, vul_type: "", deb_tool: "covf" }, 
+{ crash_loc: 21773, vul_type: "negative-size-param,", deb_tool: "covf" }, 
+{ crash_loc: 23254, vul_type: "heap-buffer-overflow,", deb_tool: "covf" }, 
+{ crash_loc: 20113, vul_type: "runtime error ", deb_tool: "covf" }, 
+{ crash_loc: 21149, vul_type: "READ memory access,", deb_tool: "covf" }, 
+{ crash_loc: 21143, vul_type: "use-of-uninitialized-value,", deb_tool: "covf" }, 
+{ crash_loc: 1143, vul_type: "use-of-uninitialized-value,", deb_tool: "covf" }, 
+{ crash_loc: 0667, vul_type: "use-of-uninitialized-value,", deb_tool: "covf" }, 
+{ crash_loc: 2654, vul_type: "use-of-uninitialized-value,", deb_tool: "covf" }, 
+{ crash_loc: 2654, vul_type: "use-of-uninitialized-value,", deb_tool: "covf" }, 
+{ crash_loc: 2654, vul_type: "READ memory access,", deb_tool: "covf" }, 
+{ crash_loc: 21149, vul_type: "READ memory access,", deb_tool: "covf" }, 
+]

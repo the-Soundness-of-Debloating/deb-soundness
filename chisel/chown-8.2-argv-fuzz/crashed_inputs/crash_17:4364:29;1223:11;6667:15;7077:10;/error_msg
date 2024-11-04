@@ -1,0 +1,45 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/bins/reduced.ubsan.out
+chown-8.2.c.reduced.c:4364:20: runtime error: member access within misaligned address 0x00056024e7e7 for type 'struct _ftsent', which requires 8 byte alignment
+0x00056024e7e7: note: pointer points here
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior chown-8.2.c.reduced.c:4364:20 in 
+chown-8.2.c.reduced.c:4364:20: runtime error: store to misaligned address 0x00056024e7f7 for type 'struct _ftsent *', which requires 8 byte alignment
+0x00056024e7f7: note: pointer points here
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior chown-8.2.c.reduced.c:4364:20 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==15781==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x00056024e7f7 (pc 0x56024cf2a8b5 bp 0x7ffc23a20780 sp 0x7ffc23a206b0 T15781)
+==15781==The signal is caused by a WRITE memory access.
+    #0 0x56024cf2a8b5 in fts_open /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4364:29
+    #1 0x56024cf2a4a8 in xfts_open /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1223:11
+    #2 0x56024cf2b614 in chown_files /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6667:15
+    #3 0x56024cf2bd8e in main /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10
+    #4 0x2b0486f3dd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x2b0486f3de3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x56024cf02424 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/bins/reduced.ubsan.out+0x6424) (BuildId: c7c418d98a22f824eda696b85ef1d300135453ea)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4364:29 in fts_open
+==15781==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 15774 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==7594==ERROR: ThreadSanitizer: SEGV on unknown address (pc 0x5627211bc4ba bp 0x7fff0e733120 sp 0x7fff0e733058 T7594)
+==7594==The signal is caused by a READ memory access.
+==7594==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 __tsan_write8 <null> (reduced.tsan.out+0xba4ba) (BuildId: 588167b1cf2791e8865b4e996ba43359c5d7202b)
+    #1 fts_open /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4364:29 (reduced.tsan.out+0xcdb54) (BuildId: 588167b1cf2791e8865b4e996ba43359c5d7202b)
+    #2 xfts_open /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1223:11 (reduced.tsan.out+0xcd9a7) (BuildId: 588167b1cf2791e8865b4e996ba43359c5d7202b)
+    #3 chown_files /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6667:15 (reduced.tsan.out+0xce28a) (BuildId: 588167b1cf2791e8865b4e996ba43359c5d7202b)
+    #4 main /workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10 (reduced.tsan.out+0xce685) (BuildId: 588167b1cf2791e8865b4e996ba43359c5d7202b)
+    #5 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #6 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 _start <null> (reduced.tsan.out+0x21364) (BuildId: 588167b1cf2791e8865b4e996ba43359c5d7202b)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/chisel/chown-8.2-argv-fuzz/bins/reduced.tsan.out+0xba4ba) (BuildId: 588167b1cf2791e8865b4e996ba43359c5d7202b) in __tsan_write8
+==7594==ABORTING
+./verify.sh: line 108:  7593 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

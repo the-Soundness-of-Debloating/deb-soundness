@@ -1,0 +1,63 @@
+__argmatch_die   function   1672 uniq-8.16.c.origin.c static void __argmatch_die(void) {
+__xargmatch_internal function   1831 uniq-8.16.c.origin.c ptrdiff_t __xargmatch_internal(char const *context, char const *arg, char const *const *arglist,
+argmatch         function   1683 uniq-8.16.c.origin.c ptrdiff_t argmatch(char const *arg, char const *const *arglist, char const *vallist,
+argmatch_invalid function   1743 uniq-8.16.c.origin.c void argmatch_invalid(char const *context, char const *value, ptrdiff_t problem) {
+argmatch_valid   function   1773 uniq-8.16.c.origin.c void argmatch_valid(char const *const *arglist, char const *vallist, size_t valsize) {
+bkm_scale___0    function   1893 uniq-8.16.c.origin.c static strtol_error bkm_scale___0(unsigned long *x, int scale_factor) {
+bkm_scale_by_power___0 function   1903 uniq-8.16.c.origin.c static strtol_error bkm_scale_by_power___0(unsigned long *x, int base, int power) {
+c_strcasecmp     function   1459 uniq-8.16.c.origin.c int c_strcasecmp(char const *s1, char const *s2) {
+c_tolower        function   1492 uniq-8.16.c.origin.c int c_tolower(int c) {
+check_file       function   6748 uniq-8.16.c.origin.c static void check_file(char const *infile, char const *outfile, char delimiter) {
+clear_ungetc_buffer_preserving_position function   6225 uniq-8.16.c.origin.c __inline static void clear_ungetc_buffer_preserving_position(FILE *fp) {
+close_stdout     function   1305 uniq-8.16.c.origin.c void close_stdout(void) {
+close_stream     function   1367 uniq-8.16.c.origin.c int close_stream(FILE *stream) {
+collate_error    function   2201 uniq-8.16.c.origin.c static void collate_error(int collation_errno, char const *s1, size_t s1len,
+different        function   6668 uniq-8.16.c.origin.c static _Bool different(char *old, char *new, size_t oldlen, size_t newlen) {
+emit_ancillary_info function   6416 uniq-8.16.c.origin.c __inline static void emit_ancillary_info(void) {
+emit_try_help    function   6465 uniq-8.16.c.origin.c __inline static void emit_try_help(void) {
+fadvise          function   6358 uniq-8.16.c.origin.c void fadvise(FILE *fp, fadvice_t advice) {
+fdadvise         function   6347 uniq-8.16.c.origin.c void fdadvise(int fd, off_t offset, off_t len, fadvice_t advice) {
+find_field       function   6594 uniq-8.16.c.origin.c static char *__attribute__((__pure__)) find_field(struct linebuffer const *line) {
+freopen_safer    function   6093 uniq-8.16.c.origin.c FILE *freopen_safer(char const *name, char const *mode, FILE *f) {
+get_charset_aliases function   5579 uniq-8.16.c.origin.c static char const *get_charset_aliases(void) {
+gettext_quote    function   3417 uniq-8.16.c.origin.c static char const *gettext_quote(char const *msgid, enum quoting_style s) {
+hard_locale      function   5940 uniq-8.16.c.origin.c _Bool hard_locale(int category) {
+initbuffer       function   5848 uniq-8.16.c.origin.c void initbuffer(struct linebuffer *linebuffer) {
+last_component   function   1508 uniq-8.16.c.origin.c char *last_component(char const *name) {
+locale_charset   function   5779 uniq-8.16.c.origin.c char const *locale_charset(void) {
+main             function   7009 uniq-8.16.c.origin.c int main(int argc, char **argv) {
+memcasecmp       function   5477 uniq-8.16.c.origin.c int memcasecmp(void const *vs1, void const *vs2, size_t n) {
+memcoll          function   5441 uniq-8.16.c.origin.c int memcoll(char *s1, size_t s1len, char *s2, size_t s2len) {
+posix2_version   function   4876 uniq-8.16.c.origin.c int posix2_version(void) {
+protect_fd       function   6071 uniq-8.16.c.origin.c static _Bool protect_fd(int fd) {
+quote            function   4805 uniq-8.16.c.origin.c char const *quote(char const *name) {
+quote_n          function   4795 uniq-8.16.c.origin.c char const *quote_n(int n,
+quotearg_buffer_restyled function   3473 uniq-8.16.c.origin.c static size_t quotearg_buffer_restyled(char *buffer, size_t buffersize, char const *arg,
+quotearg_char    function   4776 uniq-8.16.c.origin.c char *quotearg_char(char const *arg, char ch) {
+quotearg_char_mem function   4763 uniq-8.16.c.origin.c char *quotearg_char_mem(char const *arg, size_t argsize, char ch) {
+quotearg_colon   function   4785 uniq-8.16.c.origin.c char *quotearg_colon(char const *arg) {
+quotearg_n_options function   4644 uniq-8.16.c.origin.c static char *quotearg_n_options(int n, char const *arg, size_t argsize, struct quoting_options const *options) {
+quotearg_n_style function   4733 uniq-8.16.c.origin.c char *quotearg_n_style(int n, enum quoting_style s, char const *arg) {
+quotearg_n_style_mem function   4748 uniq-8.16.c.origin.c char *quotearg_n_style_mem(int n, enum quoting_style s, char const *arg, size_t argsize) {
+quoting_options_from_style function   3386 uniq-8.16.c.origin.c static struct quoting_options quoting_options_from_style(enum quoting_style style) {
+readlinebuffer_delim function   5856 uniq-8.16.c.origin.c struct linebuffer *readlinebuffer_delim(struct linebuffer *linebuffer, FILE *stream,
+rpl_fflush       function   6235 uniq-8.16.c.origin.c int rpl_fflush(FILE *stream) {
+set_char_quoting function   3366 uniq-8.16.c.origin.c int set_char_quoting(struct quoting_options *o, char c, int i) {
+set_program_name function   4824 uniq-8.16.c.origin.c void set_program_name(char const *argv0) {
+size_opt         function   6558 uniq-8.16.c.origin.c static size_t size_opt(char const *opt, char const *msgid) {
+strcoll_loop     function   5385 uniq-8.16.c.origin.c __inline static int strcoll_loop(char const *s1, size_t s1size, char const *s2,
+to_uchar         function   1547 uniq-8.16.c.origin.c __inline static unsigned char to_uchar(char ch) {
+usage            function   6502 uniq-8.16.c.origin.c void usage(int status) {
+version_etc      function   3060 uniq-8.16.c.origin.c void version_etc(FILE *stream, char const *command_name, char const *package,
+version_etc_arn  function   2864 uniq-8.16.c.origin.c void version_etc_arn(FILE *stream, char const *command_name, char const *package,
+version_etc_va   function   3025 uniq-8.16.c.origin.c void version_etc_va(FILE *stream, char const *command_name, char const *package,
+writeline        function   6719 uniq-8.16.c.origin.c static void writeline(struct linebuffer const *line, _Bool match, uintmax_t linecount) {
+x2nrealloc       function   2247 uniq-8.16.c.origin.c __inline static void *x2nrealloc(void *p, size_t *pn, size_t s) {
+x2realloc        function   2320 uniq-8.16.c.origin.c void *x2realloc(void *p, size_t *pn) {
+xalloc_die       function   2335 uniq-8.16.c.origin.c void xalloc_die(void) {
+xcharalloc       function   3338 uniq-8.16.c.origin.c __inline static char *xcharalloc(size_t n) {
+xmalloc          function   2278 uniq-8.16.c.origin.c void *xmalloc(size_t n) {
+xmemcoll         function   2225 uniq-8.16.c.origin.c int xmemcoll(char *s1, size_t s1len, char *s2, size_t s2len) {
+xnmalloc         function   1864 uniq-8.16.c.origin.c __inline static void *xnmalloc(size_t n, size_t s) {
+xrealloc         function   2297 uniq-8.16.c.origin.c void *xrealloc(void *p, size_t n) {
+xstrtoul         function   1927 uniq-8.16.c.origin.c strtol_error xstrtoul(char const *s, char **ptr, int strtol_base, unsigned long *val,

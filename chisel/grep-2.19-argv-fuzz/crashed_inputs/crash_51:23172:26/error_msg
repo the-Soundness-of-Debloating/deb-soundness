@@ -1,0 +1,20 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep-2.19.c.reduced.c:23172:26: runtime error: null pointer passed as argument 1, which is declared to never be null
+grep-2.19.c.reduced.c:1038:59: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:23172:26 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3856797==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7f30678b77fd bp 0x7ffdf4ca0460 sp 0x7ffdf4ca01c8 T3856797)
+==3856797==The signal is caused by a READ memory access.
+==3856797==Hint: address points to the zero page.
+    #0 0x7f30678b77fd  string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74
+    #1 0x55c4cea694be in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23172:19
+    #2 0x7f3067743d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #3 0x7f3067743e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #4 0x55c4cea30574 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x15574) (BuildId: c2c2e5de5f7baf45d001715ccd865693e086d1fb)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 
+==3856797==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 3856796 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

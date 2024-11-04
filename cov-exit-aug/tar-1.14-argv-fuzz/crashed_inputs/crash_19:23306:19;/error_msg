@@ -1,0 +1,67 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1707888==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7f12f6e93fa4 bp 0x7ffe340e5eb0 sp 0x7ffe340e5d78 T0)
+==1707888==The signal is caused by a READ memory access.
+==1707888==Hint: address points to the zero page.
+    #0 0x7f12f6e93fa4 in ferror_unlocked (/lib/x86_64-linux-gnu/libc.so.6+0x89fa4) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #1 0x55bcd337c2d4 in main /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:23306:19
+    #2 0x7f12f6e33d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #3 0x7f12f6e33e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #4 0x55bcd32a1544 in _start (/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.asan.out+0x27544) (BuildId: 760e125cfe7bdc9fd3ab356f44208d0f1c2e7bdd)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV (/lib/x86_64-linux-gnu/libc.so.6+0x89fa4) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0) in ferror_unlocked
+==1707888==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 304: 1707887 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.asan.out < /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/result/afl_result/reduced/result_0/asan/crashes/id:000001*
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.msan.out
+MemorySanitizer:DEADLYSIGNAL
+==1713655==ERROR: MemorySanitizer: SEGV on unknown address 0x000000000000 (pc 0x7fb5493d0fa4 bp 0x7ffe3409a6b0 sp 0x7ffe3409a518 T1713655)
+==1713655==The signal is caused by a READ memory access.
+==1713655==Hint: address points to the zero page.
+    #0 0x7fb5493d0fa4 in ferror_unlocked (/lib/x86_64-linux-gnu/libc.so.6+0x89fa4) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #1 0x5618f6cc5e89 in main /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:23306:19
+    #2 0x7fb549370d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #3 0x7fb549370e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #4 0x5618f6bee4c4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.msan.out+0x204c4) (BuildId: 406eb1ef5ec5ab245ba7b9351f73bc8e589acee7)
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV (/lib/x86_64-linux-gnu/libc.so.6+0x89fa4) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0) in ferror_unlocked
+==1713655==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 304: 1713654 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/result/afl_result/reduced/result_0/msan/crashes/id:000003*
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==1728540==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7ff347fb3fa4 bp 0x7ffefa04e5c0 sp 0x7ffefa04e508 T1728540)
+==1728540==The signal is caused by a READ memory access.
+==1728540==Hint: address points to the zero page.
+    #0 ferror_unlocked <null> (libc.so.6+0x89fa4) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #1 main /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:23306:19 (reduced.tsan.out+0xe4162) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #2 <null> <null> (libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #3 __libc_start_main <null> (libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #4 _start <null> (reduced.tsan.out+0x224e4) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (/lib/x86_64-linux-gnu/libc.so.6+0x89fa4) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0) in ferror_unlocked
+==1728540==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 304: 1728539 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/result/afl_result/reduced/result_0/tsan/crashes/id:000010*
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==1731935==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7f2fdaca3fa4 bp 0x7fff43079610 sp 0x7fff43079598 T0)
+==1731935==The signal is caused by a READ memory access.
+==1731935==Hint: address points to the zero page.
+    #0 0x7f2fdaca3fa4 in ferror_unlocked (/lib/x86_64-linux-gnu/libc.so.6+0x89fa4) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #1 0x562b304f87f0 in main /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:23306:19
+    #2 0x7f2fdac43d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #3 0x7f2fdac43e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #4 0x562b304bd7c4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.lsan.out+0xb7c4) (BuildId: 6b9c645010b13ca8f876c74673edd4ddf27e6a34)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV (/lib/x86_64-linux-gnu/libc.so.6+0x89fa4) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0) in ferror_unlocked
+==1731935==ABORTING

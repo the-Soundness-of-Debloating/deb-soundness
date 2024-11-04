@@ -1,0 +1,18 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+date-8.21.c.reduced.c:9505:33: runtime error: index 140198484751072 out of bounds for type 'const enum Time_spec[5]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:9505:33 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3276012==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address (pc 0x5620e68202f3 bp 0x7ffe249a4fd0 sp 0x7ffe249a4bb0 T3276012)
+==3276012==The signal is caused by a READ memory access.
+==3276012==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x5620e68202f3 in main /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9505:33
+    #1 0x7f8280ab9d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7f8280ab9e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x5620e67d56b4 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.ubsan.out+0x1c6b4) (BuildId: 13a0090eed4fa0e13247db350744757fbb99bf0c)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9505:33 in main
+==3276012==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 3276011 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

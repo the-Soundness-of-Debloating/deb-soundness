@@ -1,0 +1,47 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.asan.out
+date: invalid option -- 'ð'
+date: invalid option -- '’'
+date: invalid option -- '€'
+date: invalid option -- '€'
+=================================================================
+==276658==ERROR: AddressSanitizer: attempting free on address which was not malloc()-ed: 0x7f2d30f00250 in thread T0
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x55733cfc3c32 in free (/workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.asan.out+0xa9c32) (BuildId: 60f0d65aba6805b62eb63fd42d430e72bad92730)
+    #1 0x55733d00a8cd in parse_datetime /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5111:13
+    #2 0x55733d0161af in main /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #3 0x7ffd5e44d627  ([stack]+0x1e627)
+
+Address 0x7f2d30f00250 is located in stack of thread T0 at offset 592 in frame
+    #0 0x55733d00a16f in parse_datetime /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5005
+
+  This frame has 9 object(s):
+    [32, 88) 'tm' (line 5009)
+    [128, 184) 'tm0' (line 5010)
+    [224, 496) 'pc' (line 5011)
+    [560, 576) 'gettime_buffer' (line 5012)
+    [592, 692) 'tz0buf' (line 5016) <== Memory access at offset 592 is inside this variable
+    [736, 836) 'tz1buf' (line 5024)
+    [880, 936) '__constr_expr_40' (line 5031)
+    [976, 984) 'probe' (line 5033)
+    [1008, 1038) 'tz1buf___0' (line 5044)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: bad-free (/workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.asan.out+0xa9c32) (BuildId: 60f0d65aba6805b62eb63fd42d430e72bad92730) in free
+==276658==ABORTING
+./verify.sh: line 110: 276656 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==2747784==ERROR: LeakSanitizer: SEGV on unknown address 0x7f6ceb200000 (pc 0x55d374432119 bp 0x7fff5dd13240 sp 0x7fff5dd12db0 T0)
+==2747784==The signal is caused by a READ memory access.
+    #0 0x55d374432119 in __sanitizer::LargeMmapAllocator<__sanitizer::NoOpMapUnmapCallback, __sanitizer::LargeMmapAllocatorPtrArrayDynamic, __sanitizer::LocalAddressSpaceView>::Deallocate(__sanitizer::AllocatorStats*, void*) (/workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.lsan.out+0x32119) (BuildId: 4615fdf10abbab321b672d9f307704f7a32435a3)
+    #1 0x55d374438b76 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5111:13
+    #2 0x55d37443dea1 in main /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #3 0x7f6cec7cfd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f6cec7cfe3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55d374407694 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.lsan.out+0x7694) (BuildId: 4615fdf10abbab321b672d9f307704f7a32435a3)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.lsan.out+0x32119) (BuildId: 4615fdf10abbab321b672d9f307704f7a32435a3) in __sanitizer::LargeMmapAllocator<__sanitizer::NoOpMapUnmapCallback, __sanitizer::LargeMmapAllocatorPtrArrayDynamic, __sanitizer::LocalAddressSpaceView>::Deallocate(__sanitizer::AllocatorStats*, void*)
+==2747784==ABORTING

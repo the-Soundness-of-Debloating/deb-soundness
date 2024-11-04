@@ -1,0 +1,20 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==331497==ERROR: ThreadSanitizer: SEGV on unknown address 0x55f8e1ebf000 (pc 0x55f8e0aa6b75 bp 0x7ffdc6589940 sp 0x7ffdc6589790 T331497)
+==331497==The signal is caused by a READ memory access.
+    #0 inflate_codes /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:2711:40 (reduced.tsan.out+0xceb75) (BuildId: ec67654845dbcb2f31779cd0964eb1bdecd85593)
+    #1 inflate_dynamic /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:3362:18 (reduced.tsan.out+0xcf41a) (BuildId: ec67654845dbcb2f31779cd0964eb1bdecd85593)
+    #2 inflate_block /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:3441:19 (reduced.tsan.out+0xcf56b) (BuildId: ec67654845dbcb2f31779cd0964eb1bdecd85593)
+    #3 inflate /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:3474:15 (reduced.tsan.out+0xcf5a9) (BuildId: ec67654845dbcb2f31779cd0964eb1bdecd85593)
+    #4 unzip /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:3631:15 (reduced.tsan.out+0xcf637) (BuildId: ec67654845dbcb2f31779cd0964eb1bdecd85593)
+    #5 treat_stdin /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6914:22 (reduced.tsan.out+0xd3031) (BuildId: ec67654845dbcb2f31779cd0964eb1bdecd85593)
+    #6 main /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6765:10 (reduced.tsan.out+0xd2c4b) (BuildId: ec67654845dbcb2f31779cd0964eb1bdecd85593)
+    #7 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #9 _start <null> (reduced.tsan.out+0x21354) (BuildId: ec67654845dbcb2f31779cd0964eb1bdecd85593)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:2711:40 in inflate_codes
+==331497==ABORTING
+./verify.sh: line 168: 331496 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/gzip-1.2.4-argv-fuzz/input/radamsa_fuzzed/input3_fuzzed/input3_322 > sample1.tst

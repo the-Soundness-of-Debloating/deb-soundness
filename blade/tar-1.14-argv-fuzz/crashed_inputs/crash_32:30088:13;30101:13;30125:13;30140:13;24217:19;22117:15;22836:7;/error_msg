@@ -1,0 +1,24 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.lsan.out
+(null): invalid option -- 'ï'
+(null): invalid option -- '¬'
+(null): invalid option -- '¬'
+(null): invalid option -- '.'
+(null): invalid option -- 'e'
+(null): invalid option -- 'e'
+
+=================================================================
+==3498614==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 0 byte(s) in 1 object(s) allocated from:
+    #0 0x563f2ff14be4 in __interceptor_realloc (/workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/bins/reduced.lsan.out+0x34be4) (BuildId: 8a2240b5e19c3dd3975976a54b849f251cf235cd)
+    #1 0x563f2ff1c345 in xnrealloc_inline /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30088:13
+    #2 0x563f2ff1a721 in xrealloc /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30101:13
+    #3 0x563f2ff1c390 in x2nrealloc_inline /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30125:13
+    #4 0x563f2ff1be51 in x2realloc /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30140:13
+    #5 0x563f2ff1bd56 in add_exclude_file /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:24217:19
+    #6 0x563f2ff1b9ec in decode_options /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22117:15
+    #7 0x563f2ff1b434 in main /workspace/fuzzing-deb-with-sanitizers/blade/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #8 0x7f978ecefd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: LeakSanitizer: 0 byte(s) leaked in 1 allocation(s).

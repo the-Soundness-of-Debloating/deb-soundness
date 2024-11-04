@@ -1,0 +1,14 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/bins/reduced.msan.out -F 'randomtext*' /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0
+==2458929==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x561abcb4f0d0 in kwsalloc /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:10876:9
+    #1 0x561abcb44cbd in kwsinit /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:19275:22
+    #2 0x561abcb43b2d in Fcompile /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:10546:7
+    #3 0x561abcb5bf2f in main /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23215:7
+    #4 0x7f29c7b35d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f29c7b35e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x561abca714c4 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/bins/reduced.msan.out+0x1f4c4) (BuildId: 7d4a5cea88796b49e5b48481b9d05454741c806f)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:10876:9 in kwsalloc
+Exiting
+./verify.sh: line 233: 2458926 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/bins/reduced.msan.out -F randomtext* /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0

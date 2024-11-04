@@ -1,0 +1,11 @@
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==2869329==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000060 (pc 0x562a020c5bf3 bp 0x7ffde7cf0640 sp 0x7ffde7cefcf0 T0)
+==2869329==The signal is caused by a WRITE memory access.
+==2869329==Hint: address points to the zero page.
+    #0 0x562a020c5bf3 in yyparse /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3695:32
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3695:32 in yyparse
+==2869329==ABORTING

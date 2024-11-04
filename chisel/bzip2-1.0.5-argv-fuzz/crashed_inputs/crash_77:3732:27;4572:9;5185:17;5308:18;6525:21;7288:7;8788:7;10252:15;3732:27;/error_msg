@@ -1,0 +1,21 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==3439605==ERROR: ThreadSanitizer: SEGV on unknown address 0x7bbc0003f218 (pc 0x55fd250df21c bp 0x7ffe34c44120 sp 0x7ffe34c42f80 T3439605)
+==3439605==The signal is caused by a READ memory access.
+    #0 sendMTFValues /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:3732:27 (reduced.tsan.out+0xd521c) (BuildId: 56549a70d18ac40833e83b1f625cdc0f5ee62ef6)
+    #1 BZ2_compressBlock /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:4572:9 (reduced.tsan.out+0xd210e) (BuildId: 56549a70d18ac40833e83b1f625cdc0f5ee62ef6)
+    #2 handle_compress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:5185:17 (reduced.tsan.out+0xd9192) (BuildId: 56549a70d18ac40833e83b1f625cdc0f5ee62ef6)
+    #3 BZ2_bzCompress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:5308:18 (reduced.tsan.out+0xd904b) (BuildId: 56549a70d18ac40833e83b1f625cdc0f5ee62ef6)
+    #4 BZ2_bzWriteClose64 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:6525:21 (reduced.tsan.out+0xd9c3a) (BuildId: 56549a70d18ac40833e83b1f625cdc0f5ee62ef6)
+    #5 compressStream /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:7288:7 (reduced.tsan.out+0xdc92d) (BuildId: 56549a70d18ac40833e83b1f625cdc0f5ee62ef6)
+    #6 compress /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:8788:7 (reduced.tsan.out+0xdaa42) (BuildId: 56549a70d18ac40833e83b1f625cdc0f5ee62ef6)
+    #7 main /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:10252:15 (reduced.tsan.out+0xda45c) (BuildId: 56549a70d18ac40833e83b1f625cdc0f5ee62ef6)
+    #8 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #9 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #10 _start <null> (reduced.tsan.out+0x20354) (BuildId: 56549a70d18ac40833e83b1f625cdc0f5ee62ef6)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:3732:27 in sendMTFValues
+==3439605==ABORTING
+./verify.sh: line 173: 3439604 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/bzip2-1.0.5-argv-fuzz/input/radamsa_fuzzed/input3_fuzzed/input3_456

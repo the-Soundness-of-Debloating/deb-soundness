@@ -1,0 +1,21 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3724147==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x0000000001fd (pc 0x55e6d247100e bp 0x7fff57a8f570 sp 0x7fff57a8ed30 T3724147)
+==3724147==The signal is caused by a WRITE memory access.
+==3724147==Hint: address points to the zero page.
+    #0 0x55e6d247100e in quotearg_buffer_restyled /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:1514:29
+    #1 0x55e6d244ddf6 in quotearg_n_options /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:2427:7
+    #2 0x55e6d244d189 in quote_n_mem /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:2483:25
+    #3 0x55e6d244de91 in quote_n /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:2492:11
+    #4 0x55e6d244deb6 in quote /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:2499:11
+    #5 0x55e6d246fe20 in main /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9605:24
+    #6 0x7f04c133bd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f04c133be3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55e6d24246b4 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.ubsan.out+0x1c6b4) (BuildId: 13a0090eed4fa0e13247db350744757fbb99bf0c)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:1514:29 in quotearg_buffer_restyled
+==3724147==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 3724146 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

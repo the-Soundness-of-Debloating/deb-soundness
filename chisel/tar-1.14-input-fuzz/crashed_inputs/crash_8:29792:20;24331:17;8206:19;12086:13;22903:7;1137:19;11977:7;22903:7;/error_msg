@@ -1,0 +1,57 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/bins/reduced.asan.out xf /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_31
+=================================================================
+==1134863==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x629000003800 at pc 0x55b5d13e5518 bp 0x7ffc223ae5e0 sp 0x7ffc223addb8
+READ of size 57344 at 0x629000003800 thread T0
+    #0 0x55b5d13e5517 in __interceptor_write (/workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/bins/reduced.asan.out+0x3f517) (BuildId: 6260dc2adbacecfd9152eb129d8e2bf9d3fbaddf)
+    #1 0x55b5d148b167 in safe_write /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:29792:20
+    #2 0x55b5d1488b02 in full_write /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24331:17
+    #3 0x55b5d1488a7e in extract_archive /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:8206:19
+    #4 0x55b5d1488bd7 in read_and /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:12086:13
+    #5 0x55b5d1489dca in main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7
+    #6 0x7f74069aad8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f74069aae3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55b5d13c8364 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/bins/reduced.asan.out+0x22364) (BuildId: 6260dc2adbacecfd9152eb129d8e2bf9d3fbaddf)
+
+0x629000003800 is located 0 bytes to the right of 10240-byte region [0x629000001000,0x629000003800)
+allocated by thread T0 here:
+    #0 0x55b5d144e9ed in valloc (/workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/bins/reduced.asan.out+0xa89ed) (BuildId: 6260dc2adbacecfd9152eb129d8e2bf9d3fbaddf)
+    #1 0x55b5d1487fde in open_archive /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:1137:19
+    #2 0x55b5d1488b5a in read_and /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:11977:7
+    #3 0x55b5d1489dca in main /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22903:7
+    #4 0x7f74069aad8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow (/workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/bins/reduced.asan.out+0x3f517) (BuildId: 6260dc2adbacecfd9152eb129d8e2bf9d3fbaddf) in __interceptor_write
+Shadow bytes around the buggy address:
+  0x0c527fff86b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c527fff86c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c527fff86d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c527fff86e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c527fff86f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0c527fff8700:[fa]fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c527fff8710: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c527fff8720: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c527fff8730: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c527fff8740: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c527fff8750: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==1134863==ABORTING
+./verify.sh: line 357: 1134861 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/bins/reduced.asan.out xf /workspace/fuzzing-deb-with-sanitizers/chisel/tar-1.14-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_31

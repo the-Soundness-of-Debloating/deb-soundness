@@ -1,0 +1,14 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.msan.out
+==2900378==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x560ed97d30eb in yylex /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4762:23
+    #1 0x560ed97c7a62 in yyparse /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3424:16
+    #2 0x560ed97d9edb in parse_datetime /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15
+    #3 0x560ed97f4976 in main /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #4 0x7f616d5c3d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f616d5c3e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x560ed973c414 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/bins/reduced.msan.out+0x20414) (BuildId: cdbe6e30c8a07480a5150a068e3bf6b42481dfe8)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cova/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4762:23 in yylex
+Exiting
+./verify.sh: line 110: 2900375 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

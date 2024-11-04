@@ -1,0 +1,49 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/bins/reduced.asan.out -d
+=================================================================
+==2643029==ERROR: AddressSanitizer: requested allocation size 0xffffffffffedb080 (0xffffffffffedc080 after adjustments for alignment, red zones etc.) exceeds maximum supported size of 0x10000000000 (thread T0)
+    #0 0x55c7f35afdbe in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/bins/reduced.asan.out+0xa4dbe) (BuildId: 134c33a691770bd95e8c9f7adca656d27158b520)
+    #1 0x55c7f3614400 in default_bzalloc /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:4729:13
+    #2 0x55c7f35ef5af in BZ2_decompress /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:1114:29
+    #3 0x55c7f36161e1 in BZ2_bzDecompress /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6161:19
+    #4 0x55c7f3618f65 in BZ2_bzRead /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6866:17
+    #5 0x55c7f36236a7 in uncompressStream /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7462:23
+    #6 0x55c7f361ba4a in uncompress /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9164:23
+    #7 0x55c7f361ad96 in main /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10263:13
+    #8 0x7f46d7e21d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+==2643029==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: AddressSanitizer: allocation-size-too-big (/workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/bins/reduced.asan.out+0xa4dbe) (BuildId: 134c33a691770bd95e8c9f7adca656d27158b520) in __interceptor_malloc
+==2643029==ABORTING
+./verify.sh: line 170: 2643028 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/bins/reduced.asan.out -d < /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_31 > sample1.tst
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/bins/reduced.tsan.out -d
+==3564541==ERROR: ThreadSanitizer: requested allocation size 0xffffffffffedb080 exceeds maximum supported size of 0x10000000000
+    #0 __interceptor_malloc <null> (reduced.tsan.out+0x4d431) (BuildId: 53029d87f2206f702b5450403e8dbdcb02330a7b)
+    #1 default_bzalloc /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:4729:13 (reduced.tsan.out+0xe856d) (BuildId: 53029d87f2206f702b5450403e8dbdcb02330a7b)
+    #2 BZ2_decompress /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:1114:29 (reduced.tsan.out+0xcfebd) (BuildId: 53029d87f2206f702b5450403e8dbdcb02330a7b)
+    #3 BZ2_bzDecompress /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6161:19 (reduced.tsan.out+0xe95f5) (BuildId: 53029d87f2206f702b5450403e8dbdcb02330a7b)
+    #4 BZ2_bzRead /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6866:17 (reduced.tsan.out+0xeb0af) (BuildId: 53029d87f2206f702b5450403e8dbdcb02330a7b)
+    #5 uncompressStream /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7462:23 (reduced.tsan.out+0xf1058) (BuildId: 53029d87f2206f702b5450403e8dbdcb02330a7b)
+    #6 uncompress /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9164:23 (reduced.tsan.out+0xed11b) (BuildId: 53029d87f2206f702b5450403e8dbdcb02330a7b)
+    #7 main /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10263:13 (reduced.tsan.out+0xec60d) (BuildId: 53029d87f2206f702b5450403e8dbdcb02330a7b)
+    #8 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+==3564541==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: ThreadSanitizer: allocation-size-too-big (/workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/bins/reduced.tsan.out+0x4d431) (BuildId: 53029d87f2206f702b5450403e8dbdcb02330a7b) in __interceptor_malloc
+./verify.sh: line 170: 3564539 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/bins/reduced.tsan.out -d < /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_31 > sample1.tst
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out -d
+==3839437==ERROR: LeakSanitizer: requested allocation size 0xffffffffffedb080 exceeds maximum supported size of 0x200000000
+    #0 0x555c3a9d5702 in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out+0x30702) (BuildId: 743937fef488257ef17b53f272df41959aa973de)
+    #1 0x555c3a9e0b50 in default_bzalloc /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:4729:13
+    #2 0x555c3a9d8e38 in BZ2_decompress /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:1114:29
+    #3 0x555c3a9e12ba in BZ2_bzDecompress /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6161:19
+    #4 0x555c3a9e1ee0 in BZ2_bzRead /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6866:17
+    #5 0x555c3a9e5076 in uncompressStream /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7462:23
+    #6 0x555c3a9e31f2 in uncompress /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:9164:23
+    #7 0x555c3a9e2aef in main /workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10263:13
+    #8 0x7f8a40ac4d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+==3839437==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+SUMMARY: LeakSanitizer: allocation-size-too-big (/workspace/fuzzing-deb-with-sanitizers/covf/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out+0x30702) (BuildId: 743937fef488257ef17b53f272df41959aa973de) in __interceptor_malloc

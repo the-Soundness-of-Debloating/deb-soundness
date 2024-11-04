@@ -1,0 +1,18 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep: invalid option -- 'Ê'
+grep: invalid option -- '·'
+grep: invalid option -- '¥'
+grep-2.19.c.reduced.c:18228:68: runtime error: null pointer passed as argument 2, which is declared to never be null
+grep-2.19.c.reduced.c:1032:59: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:18228:68 in 
+grep-2.19.c.reduced.c:10876:31: runtime error: applying non-zero offset 94346364044192 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:10876:31 in 
+grep-2.19.c.reduced.c:11007:37: runtime error: applying non-zero offset 94346364044224 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:11007:37 in 
+grep-2.19.c.reduced.c:11039:41: runtime error: applying non-zero offset 94346364044288 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:11039:41 in 
+grep-2.19.c.reduced.c:11531:33: runtime error: applying non-zero offset 94346364044592 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:11531:33 in 
+grep-2.19.c.reduced.c:11577:39: runtime error: applying non-zero offset 94346364044608 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:11577:39 in 

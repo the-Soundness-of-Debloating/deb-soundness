@@ -1,0 +1,122 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/bzip2-1.0.5-input-fuzz/bins/reduced.ubsan.out -c
+bzip2-1.0.5.c.reduced.c:11650:9: runtime error: store to misaligned address 0x7f5106d60279 for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d60279: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11650:9 in 
+bzip2-1.0.5.c.reduced.c:11653:9: runtime error: store to misaligned address 0x7f5106d60277 for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d60277: note: pointer points here
+ 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11653:9 in 
+bzip2-1.0.5.c.reduced.c:11656:9: runtime error: store to misaligned address 0x7f5106d60275 for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d60275: note: pointer points here
+ 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11656:9 in 
+bzip2-1.0.5.c.reduced.c:11659:9: runtime error: store to misaligned address 0x7f5106d60273 for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d60273: note: pointer points here
+ 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11659:9 in 
+bzip2-1.0.5.c.reduced.c:11672:9: runtime error: store to misaligned address 0x7f5106d300f9 for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d300f9: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11672:9 in 
+bzip2-1.0.5.c.reduced.c:11687:9: runtime error: store to misaligned address 0x7f5106d6027b for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d6027b: note: pointer points here
+ 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11687:9 in 
+bzip2-1.0.5.c.reduced.c:11979:15: runtime error: store to misaligned address 0x7f5106d33641 for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d33641: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11979:15 in 
+bzip2-1.0.5.c.reduced.c:11081:14: runtime error: load of misaligned address 0x7f5106d39ac7 for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d39ac7: note: pointer points here
+ 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11081:14 in 
+bzip2-1.0.5.c.reduced.c:11082:14: runtime error: load of misaligned address 0x7f5106d39b11 for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d39b11: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11082:14 in 
+bzip2-1.0.5.c.reduced.c:11093:14: runtime error: load of misaligned address 0x7f5106d39ac9 for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d39ac9: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11093:14 in 
+bzip2-1.0.5.c.reduced.c:11094:14: runtime error: load of misaligned address 0x7f5106d39b13 for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d39b13: note: pointer points here
+ 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11094:14 in 
+bzip2-1.0.5.c.reduced.c:11105:14: runtime error: load of misaligned address 0x7f5106d39acb for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d39acb: note: pointer points here
+ 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11105:14 in 
+bzip2-1.0.5.c.reduced.c:11106:14: runtime error: load of misaligned address 0x7f5106d39b15 for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d39b15: note: pointer points here
+ 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11106:14 in 
+bzip2-1.0.5.c.reduced.c:11117:14: runtime error: load of misaligned address 0x7f5106d39acd for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d39acd: note: pointer points here
+ 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11117:14 in 
+bzip2-1.0.5.c.reduced.c:11118:14: runtime error: load of misaligned address 0x7f5106d39b17 for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d39b17: note: pointer points here
+ 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11118:14 in 
+bzip2-1.0.5.c.reduced.c:11129:14: runtime error: load of misaligned address 0x7f5106d39acf for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d39acf: note: pointer points here
+ 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11129:14 in 
+bzip2-1.0.5.c.reduced.c:11130:14: runtime error: load of misaligned address 0x7f5106d39b19 for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d39b19: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11130:14 in 
+bzip2-1.0.5.c.reduced.c:11141:14: runtime error: load of misaligned address 0x7f5106d39ad1 for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d39ad1: note: pointer points here
+ 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11141:14 in 
+bzip2-1.0.5.c.reduced.c:11142:14: runtime error: load of misaligned address 0x7f5106d39b1b for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d39b1b: note: pointer points here
+ 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11142:14 in 
+bzip2-1.0.5.c.reduced.c:11153:14: runtime error: load of misaligned address 0x7f5106d39ad3 for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d39ad3: note: pointer points here
+ 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00
+              ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11153:14 in 
+bzip2-1.0.5.c.reduced.c:11154:14: runtime error: load of misaligned address 0x7f5106d39b1d for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d39b1d: note: pointer points here
+ 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11154:14 in 
+bzip2-1.0.5.c.reduced.c:11165:14: runtime error: load of misaligned address 0x7f5106d4695f for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d4695f: note: pointer points here
+ 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11165:14 in 
+bzip2-1.0.5.c.reduced.c:11166:14: runtime error: load of misaligned address 0x7f5106d46ddf for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d46ddf: note: pointer points here
+ 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11166:14 in 
+bzip2-1.0.5.c.reduced.c:11981:17: runtime error: store to misaligned address 0x7f5106d60297 for type 'UInt16' (aka 'unsigned short'), which requires 2 byte alignment
+0x7f5106d60297: note: pointer points here
+ 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  00 00 00
+             ^ 
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bzip2-1.0.5.c.reduced.c:11981:17 in 

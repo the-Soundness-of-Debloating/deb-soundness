@@ -1,0 +1,2 @@
+5775	5775:17;4345:15;1488:11;6726:13;7177:15;	radamsa	LSAN,	allocation-size-too-big,requested allocation size .* exceeds maximum supported size,		
+6366	6366:11;6668:16;6741:19;7177:15;	AFL++,radamsa	LSAN,	READ memory access,		

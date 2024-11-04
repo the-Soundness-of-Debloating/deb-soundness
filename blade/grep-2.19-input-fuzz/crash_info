@@ -1,0 +1,9 @@
+[
+{ crash_loc: 7961, vul_type: "", deb_tool: "blade" }, 
+{ crash_loc: 10946, vul_type: "READ memory access,", deb_tool: "blade" }, 
+{ crash_loc: 13259, vul_type: "use-of-uninitialized-value,", deb_tool: "blade" }, 
+{ crash_loc: 10876, vul_type: "use-of-uninitialized-value,", deb_tool: "blade" }, 
+{ crash_loc: 13259, vul_type: "use-of-uninitialized-value,", deb_tool: "blade" }, 
+{ crash_loc: 11012, vul_type: "WRITE memory access,", deb_tool: "blade" }, 
+{ crash_loc: 7000, vul_type: "READ memory access,", deb_tool: "blade" }, 
+]

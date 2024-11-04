@@ -1,0 +1,97 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.asan.out
+grep: invalid option -- 'ó'
+grep: invalid option -- ' '
+grep: invalid option -- ''
+grep: invalid option -- '+'
+grep: invalid option -- '/'
+grep: invalid option -- '®'
+grep: invalid option -- 'â'
+grep: invalid option -- ''
+grep: invalid option -- 'Ÿ'
+=================================================================
+==4046747==ERROR: AddressSanitizer: stack-use-after-return on address 0x7f020d000680 at pc 0x564d04399e26 bp 0x7ffc64a4db90 sp 0x7ffc64a4d358
+READ of size 5 at 0x7f020d000680 thread T0
+    #0 0x564d04399e25 in strcpy (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.asan.out+0x91e25) (BuildId: 7e96b9d764c7cadd1bc4907e463f7ff1bd5e81dd)
+    #1 0x564d043f66d5 in GEAcompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12547:11
+    #2 0x564d0440e6f1 in Ecompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21892:7
+    #3 0x564d04407154 in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #4 0x7f020eebed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f020eebee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x564d0432a474 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.asan.out+0x22474) (BuildId: 7e96b9d764c7cadd1bc4907e463f7ff1bd5e81dd)
+
+Address 0x7f020d000680 is located in stack of thread T0 at offset 0 in frame
+    #0 0x564d0440782f in get_nondigit_option /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:22150
+
+  This frame has 1 object(s):
+    [32, 57) 'buf' (line 22153)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-return (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.asan.out+0x91e25) (BuildId: 7e96b9d764c7cadd1bc4907e463f7ff1bd5e81dd) in strcpy
+Shadow bytes around the buggy address:
+  0x0fe0c19f8080: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x0fe0c19f8090: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x0fe0c19f80a0: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x0fe0c19f80b0: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x0fe0c19f80c0: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+=>0x0fe0c19f80d0:[f5]f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x0fe0c19f80e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0fe0c19f80f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0fe0c19f8100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0fe0c19f8110: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0fe0c19f8120: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==4046747==ABORTING
+./verify.sh: line 110: 4046746 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.tsan.out
+grep: invalid option -- '$'
+grep: invalid option -- '&'
+grep: invalid option -- '%'
+grep: invalid option -- '#'
+grep: invalid option -- '\'
+grep: invalid option -- '\'
+grep: invalid option -- '%'
+grep: invalid option -- 'p'
+grep: invalid option -- 'N'
+grep: invalid option -- 'N'
+grep: invalid option -- '$'
+grep: invalid option -- '('
+grep: invalid option -- ')'
+grep: invalid option -- '%'
+grep: invalid option -- '#'
+ThreadSanitizer:DEADLYSIGNAL
+==2554605==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x556e70ce4e30 bp 0x7ffedf7188c0 sp 0x7ffedf718758 T2554605)
+==2554605==The signal is caused by a READ memory access.
+==2554605==Hint: address points to the zero page.
+    #0 __sanitizer::internal_strlen(char const*) <null> (reduced.tsan.out+0x29e30) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #1 strcpy <null> (reduced.tsan.out+0x4ddde) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #2 GEAcompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12547:11 (reduced.tsan.out+0xd5937) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #3 Ecompile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21892:7 (reduced.tsan.out+0xe603a) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #4 main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7 (reduced.tsan.out+0xe0575) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #5 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #6 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 _start <null> (reduced.tsan.out+0x21474) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.tsan.out+0x29e30) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919) in __sanitizer::internal_strlen(char const*)
+==2554605==ABORTING
+./verify.sh: line 110: 2554604 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

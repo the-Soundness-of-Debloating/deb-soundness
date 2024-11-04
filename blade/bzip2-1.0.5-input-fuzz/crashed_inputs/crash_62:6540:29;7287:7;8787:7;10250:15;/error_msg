@@ -1,0 +1,46 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.tsan.out -k /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_98
+ThreadSanitizer:DEADLYSIGNAL
+==2132624==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7f4111384f42 bp 0x564ddcd485a8 sp 0x7ffdc5493330 T2132624)
+==2132624==The signal is caused by a READ memory access.
+==2132624==Hint: address points to the zero page.
+    #0 fwrite libio/iofwrite.c:37:3 (libc.so.6+0x7ff42) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 __interceptor_fwrite <null> (reduced.tsan.out+0x59645) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #2 BZ2_bzWriteClose64 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6540:29 (reduced.tsan.out+0xd6073) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #3 compressStream /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7287:7 (reduced.tsan.out+0xd8c3e) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #4 compress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:8787:7 (reduced.tsan.out+0xd6c33) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10250:15 (reduced.tsan.out+0xd6922) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+    #6 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 _start <null> (reduced.tsan.out+0x20354) (BuildId: 765e7e12564841a6aa7ed916ccac4c2d6d4e58be)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV libio/iofwrite.c:37:3 in fwrite
+==2132624==ABORTING
+./verify.sh: line 170: 2132623 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.tsan.out -k /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_98
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out -k /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_49
+bzip2: file name
+`/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_49'
+is suspiciously (more than 1024 chars) long.
+Try using a reasonable file name instead.  Sorry! :-)
+bzip2: file name
+`/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_49'
+is suspiciously (more than 1024 chars) long.
+Try using a reasonable file name instead.  Sorry! :-)
+LeakSanitizer:DEADLYSIGNAL
+==2346106==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7ff52cff4f42 bp 0x7ffd2b50a890 sp 0x7ffd2b50a800 T0)
+==2346106==The signal is caused by a READ memory access.
+==2346106==Hint: address points to the zero page.
+    #0 0x7ff52cff4f42 in fwrite libio/iofwrite.c:37:3
+    #1 0x55ccdbcfccf2 in BZ2_bzWriteClose64 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:6540:29
+    #2 0x55ccdbcfe02f in compressStream /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:7287:7
+    #3 0x55ccdbcfd332 in compress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:8787:7
+    #4 0x55ccdbcfd12f in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/./bzip2-1.0.5.c.reduced.c:10250:15
+    #5 0x7ff52cf9ed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7ff52cf9ee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x55ccdbccb444 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out+0x5444) (BuildId: 4a7cad0a362352a0d26bd192dbf76ee9115ae86e)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV libio/iofwrite.c:37:3 in fwrite
+==2346106==ABORTING

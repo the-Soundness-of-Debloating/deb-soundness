@@ -1,0 +1,2 @@
+-w 65536 train_input
+-w 256 train_input

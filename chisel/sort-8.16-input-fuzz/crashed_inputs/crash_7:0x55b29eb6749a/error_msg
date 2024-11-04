@@ -1,0 +1,6 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/bins/reduced.tsan.out -u /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_446
+ThreadSanitizer:DEADLYSIGNAL
+==2525710==ERROR: ThreadSanitizer: SEGV on unknown address (pc 0x55b29eb6749a bp 0x7fff9ee7a450 sp 0x7fff9ee7a368 T2525710)
+==2525710==The signal is caused by a READ memory access.
+==2525710==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.

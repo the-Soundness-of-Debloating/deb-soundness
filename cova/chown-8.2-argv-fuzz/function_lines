@@ -1,0 +1,115 @@
+AD_compare       function   3967 chown-8.2.c.origin.c static _Bool AD_compare(void const *x, void const *y) {
+AD_hash          function   3986 chown-8.2.c.origin.c static size_t AD_hash(void const *x, size_t table_size) {
+LCO_compare      function   4550 chown-8.2.c.origin.c static _Bool LCO_compare(void const *x, void const *y) {
+LCO_hash         function   4543 chown-8.2.c.origin.c static size_t LCO_hash(void const *x, size_t table_size) {
+_Bool            function   3698 chown-8.2.c.origin.c _Bool(__attribute__((__warn_unused_result__))
+allocate_entry   function   3538 chown-8.2.c.origin.c static struct hash_entry *allocate_entry(Hash_table *table___0) {
+bad_cast         function   6747 chown-8.2.c.origin.c __inline static char *bad_cast(char const *s) {
+bkm_scale___0    function    915 chown-8.2.c.origin.c static strtol_error bkm_scale___0(unsigned long *x, int scale_factor) {
+bkm_scale_by_power___0 function    925 chown-8.2.c.origin.c static strtol_error bkm_scale_by_power___0(unsigned long *x, int base,
+change_file_owner function   6220 chown-8.2.c.origin.c static _Bool change_file_owner(FTS *fts, FTSENT *ent, uid_t uid, gid_t gid,
+check_tuning     function   3373 chown-8.2.c.origin.c static _Bool check_tuning(Hash_table *table___0) {
+chopt_free       function   5957 chown-8.2.c.origin.c extern void chopt_free(struct Chown_option *chopt __attribute__((__unused__))) {
+chopt_init       function   5945 chown-8.2.c.origin.c extern void chopt_init(struct Chown_option *chopt) {
+chown_files      function   6631 chown-8.2.c.origin.c extern _Bool chown_files(char **files, int bit_flags, uid_t uid, gid_t gid,
+chownat          function   5919 chown-8.2.c.origin.c __inline static int chownat(int fd, char const *file, uid_t owner,
+close_stdout     function    717 chown-8.2.c.origin.c void close_stdout(void) {
+close_stream     function    758 chown-8.2.c.origin.c int close_stream(FILE *stream) {
+compute_bucket_size function   3403 chown-8.2.c.origin.c static size_t compute_bucket_size(size_t candidate, Hash_tuning const *tuning) {
+cwd_advance_fd   function   4165 chown-8.2.c.origin.c static void cwd_advance_fd(FTS *sp, int fd, _Bool chdir_down_one) {
+cycle_check      function    679 chown-8.2.c.origin.c _Bool cycle_check(struct cycle_check_state *state, struct stat const *sb) {
+cycle_check_init function    672 chown-8.2.c.origin.c void cycle_check_init(struct cycle_check_state *state) {
+cycle_warning_required function   1238 chown-8.2.c.origin.c _Bool cycle_warning_required(FTS const *fts, FTSENT const *ent) {
+describe_change  function   6006 chown-8.2.c.origin.c static void describe_change(char const *file, enum Change_status changed,
+dirent_inode_sort_may_be_useful function   4502 chown-8.2.c.origin.c static _Bool dirent_inode_sort_may_be_useful(int dir_fd) {
+diropen          function   4197 chown-8.2.c.origin.c __inline static int diropen(FTS const *sp, char const *dir) {
+dup_safer        function    531 chown-8.2.c.origin.c int dup_safer(int fd) {
+emit_ancillary_info function   6708 chown-8.2.c.origin.c __inline static void emit_ancillary_info(void) {
+enter_dir        function   4013 chown-8.2.c.origin.c static _Bool enter_dir(FTS *fts, FTSENT *ent) {
+fd_ring_clear    function   4103 chown-8.2.c.origin.c static void fd_ring_clear(I_ring *fd_ring) {
+fd_safer         function    387 chown-8.2.c.origin.c int fd_safer(int fd) {
+free_dir         function   4091 chown-8.2.c.origin.c static void free_dir(FTS *sp) {
+free_entry       function   3550 chown-8.2.c.origin.c static void free_entry(Hash_table *table___0, struct hash_entry *entry) {
+fts_alloc        function   5662 chown-8.2.c.origin.c static FTSENT *fts_alloc(FTS *sp, char const *name, size_t namelen) {
+fts_build        function   5093 chown-8.2.c.origin.c static FTSENT *fts_build(FTS *sp, int type) {
+fts_compar       function   5585 chown-8.2.c.origin.c static int fts_compar(void const *a, void const *b) {
+fts_compare_ino  function   5023 chown-8.2.c.origin.c static int fts_compare_ino(struct _ftsent const **a, struct _ftsent const **b) {
+fts_lfree        function   5684 chown-8.2.c.origin.c static void fts_lfree(FTSENT *head) {
+fts_load         function   4391 chown-8.2.c.origin.c static void fts_load(FTS *sp, FTSENT *p) {
+fts_maxarglen    function   5767 chown-8.2.c.origin.c static size_t fts_maxarglen(char *const *argv) {
+fts_padjust      function   5723 chown-8.2.c.origin.c static void fts_padjust(FTS *sp, FTSENT *head) {
+fts_palloc       function   5699 chown-8.2.c.origin.c static _Bool fts_palloc(FTS *sp, size_t more) {
+fts_safe_changedir function   5786 chown-8.2.c.origin.c static int fts_safe_changedir(FTS *sp, FTSENT *p, int fd, char const *dir) {
+fts_set_stat_required function   4123 chown-8.2.c.origin.c static void fts_set_stat_required(FTSENT *p, _Bool required) {
+fts_sort         function   5596 chown-8.2.c.origin.c static FTSENT *fts_sort(FTS *sp, FTSENT *head, size_t nitems) {
+fts_stat         function   5498 chown-8.2.c.origin.c static unsigned short fts_stat(FTS *sp, FTSENT *p, _Bool follow) {
+get_root_dev_ino function   1693 chown-8.2.c.origin.c struct dev_ino *get_root_dev_ino(struct dev_ino *root_d_i) {
+gettext_quote    function   1770 chown-8.2.c.origin.c static char const *gettext_quote(char const *msgid, enum quoting_style s) {
+gid_to_name      function   5962 chown-8.2.c.origin.c extern char *gid_to_name(gid_t gid) {
+hash_delete      function   3823 chown-8.2.c.origin.c void *hash_delete(Hash_table *table___0, void const *entry) {
+hash_find_entry  function   3558 chown-8.2.c.origin.c static void *hash_find_entry(Hash_table *table___0, void const *entry,
+hash_free        function   3476 chown-8.2.c.origin.c void hash_free(Hash_table *table___0) {
+hash_lookup      function   3261 chown-8.2.c.origin.c void *hash_lookup(Hash_table const *table___0, void const *entry) {
+hash_pjw         function   3923 chown-8.2.c.origin.c size_t hash_pjw(void const *x, size_t tablesize) {
+hash_string      function   3294 chown-8.2.c.origin.c size_t hash_string(char const *string, size_t n_buckets) {
+i_ring_empty     function   3214 chown-8.2.c.origin.c _Bool i_ring_empty(I_ring const *ir) {
+i_ring_init      function   3195 chown-8.2.c.origin.c void i_ring_init(I_ring *ir, int default_val) {
+i_ring_pop       function   3232 chown-8.2.c.origin.c int i_ring_pop(I_ring *ir) {
+i_ring_push      function   3217 chown-8.2.c.origin.c int i_ring_push(I_ring *ir, int val) {
+ignore_ptr       function   5942 chown-8.2.c.origin.c __inline static void ignore_ptr(void *p) {
+is_basic         function    454 chown-8.2.c.origin.c __inline static _Bool is_basic(char c) {
+is_prime         function   3311 chown-8.2.c.origin.c static _Bool is_prime(size_t candidate) {
+is_zero_or_power_of_two function    669 chown-8.2.c.origin.c __inline static _Bool is_zero_or_power_of_two(uintmax_t i) {
+last_component   function    840 chown-8.2.c.origin.c char *last_component(char const *name) {
+lchownat         function   5927 chown-8.2.c.origin.c __inline static int lchownat(int fd, char const *file, uid_t owner,
+leaf_optimization_applies function   4524 chown-8.2.c.origin.c static _Bool leaf_optimization_applies(int dir_fd) {
+leave_dir        function   4051 chown-8.2.c.origin.c static void leave_dir(FTS *fts, FTSENT *ent) {
+link_count_optimize_ok function   4559 chown-8.2.c.origin.c static _Bool link_count_optimize_ok(FTSENT const *p) {
+main             function   6852 chown-8.2.c.origin.c int main(int argc, char **argv) {
+mbscasecmp       function   2978 chown-8.2.c.origin.c int mbscasecmp(char const *s1, char const *s2) {
+mbuiter_multi_next function    462 chown-8.2.c.origin.c __inline static void mbuiter_multi_next(struct mbuiter_multi *iter) {
+next_prime       function   3339 chown-8.2.c.origin.c static size_t next_prime(size_t candidate) {
+open_safer       function   2961 chown-8.2.c.origin.c int open_safer(char const *file, int flags, ...) {
+openat_safer     function   2944 chown-8.2.c.origin.c int openat_safer(int fd, char const *file, int flags, ...) {
+opendir_safer    function   2906 chown-8.2.c.origin.c DIR *opendir_safer(char const *name) {
+opendirat        function   4140 chown-8.2.c.origin.c __inline static DIR *opendirat(int fd, char const *dir) {
+parse_user_spec  function   1624 chown-8.2.c.origin.c char const *parse_user_spec(char const *spec, uid_t *uid, gid_t *gid,
+parse_with_separator function   1470 chown-8.2.c.origin.c static char const *parse_with_separator(char const *spec, char const *separator,
+quote            function   2854 chown-8.2.c.origin.c char const *quote(char const *name) {
+quote_n          function   2847 chown-8.2.c.origin.c char const *quote_n(int n, char const *name) {
+quotearg_buffer_restyled function   1785 chown-8.2.c.origin.c quotearg_buffer_restyled(char *buffer, size_t buffersize, char const *arg,
+quotearg_char    function   2833 chown-8.2.c.origin.c char *quotearg_char(char const *arg, char ch) {
+quotearg_char_mem function   2822 chown-8.2.c.origin.c char *quotearg_char_mem(char const *arg, size_t argsize, char ch) {
+quotearg_colon   function   2840 chown-8.2.c.origin.c char *quotearg_colon(char const *arg) {
+quotearg_n_options function   2735 chown-8.2.c.origin.c static char *quotearg_n_options(int n, char const *arg, size_t argsize,
+quotearg_n_style function   2810 chown-8.2.c.origin.c char *quotearg_n_style(int n, enum quoting_style s, char const *arg) {
+quoting_options_from_style function   1761 chown-8.2.c.origin.c quoting_options_from_style(enum quoting_style style) {
+raw_comparator   function   3370 chown-8.2.c.origin.c static _Bool raw_comparator(void const *a, void const *b) {
+raw_hasher       function   3361 chown-8.2.c.origin.c static size_t raw_hasher(void const *data, size_t n) {
+restricted_chown function   6118 chown-8.2.c.origin.c static enum RCH_status restricted_chown(int cwd_fd, char const *file,
+rotr_sz          function   3253 chown-8.2.c.origin.c __inline static size_t rotr_sz(size_t x, int n) {
+rpl_fdopendir    function    367 chown-8.2.c.origin.c DIR *rpl_fdopendir(int fd) {
+set_char_quoting function   1740 chown-8.2.c.origin.c int set_char_quoting(struct quoting_options *o, char c, int i) {
+set_cloexec_flag function    797 chown-8.2.c.origin.c int set_cloexec_flag(int desc, _Bool value) {
+set_program_name function   2867 chown-8.2.c.origin.c void set_program_name(char const *argv0) {
+set_stat_type    function   5040 chown-8.2.c.origin.c static void set_stat_type(struct stat *st, unsigned int dtype) {
+setup_dir        function   3993 chown-8.2.c.origin.c static _Bool setup_dir(FTS *fts) {
+strnlen1         function   1678 chown-8.2.c.origin.c size_t strnlen1(char const *string, size_t maxlen) {
+transfer_entries function   3625 chown-8.2.c.origin.c static _Bool transfer_entries(Hash_table *dst, Hash_table *src, _Bool safe) {
+triple_compare_ino_str function   3889 chown-8.2.c.origin.c _Bool triple_compare_ino_str(void const *x, void const *y) {
+triple_free      function   3914 chown-8.2.c.origin.c void triple_free(void *x) {
+triple_hash      function   3878 chown-8.2.c.origin.c size_t triple_hash(void const *x, size_t table_size) {
+uid_to_name      function   5984 chown-8.2.c.origin.c extern char *uid_to_name(uid_t uid) {
+usage            function   6767 chown-8.2.c.origin.c void usage(int status) {
+version_etc      function   1432 chown-8.2.c.origin.c void version_etc(FILE *stream, char const *command_name, char const *package,
+version_etc_arn  function   1286 chown-8.2.c.origin.c void version_etc_arn(FILE *stream, char const *command_name,
+version_etc_va   function   1405 chown-8.2.c.origin.c void version_etc_va(FILE *stream, char const *command_name, char const *package,
+xalloc_die       function   1267 chown-8.2.c.origin.c void xalloc_die(void) {
+xcharalloc       function   1714 chown-8.2.c.origin.c __inline static char *xcharalloc(size_t n) {
+xfts_open        function   1217 chown-8.2.c.origin.c FTS *xfts_open(char *const *argv, int options,
+xmalloc          function   1165 chown-8.2.c.origin.c void *xmalloc(size_t n) {
+xmemdup          function   1191 chown-8.2.c.origin.c void *xmemdup(void const *p, size_t s) {
+xnmalloc         function    894 chown-8.2.c.origin.c __inline static void *xnmalloc(size_t n, size_t s) {
+xrealloc         function   1179 chown-8.2.c.origin.c void *xrealloc(void *p, size_t n) {
+xstrdup          function   1201 chown-8.2.c.origin.c char *xstrdup(char const *string) {
+xstrtoul         function    945 chown-8.2.c.origin.c strtol_error xstrtoul(char const *s, char **ptr, int strtol_base,

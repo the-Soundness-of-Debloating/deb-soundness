@@ -1,0 +1,1 @@
+xf foo.tar -X fooa -X flo.exclude -X foo.exclude -X bar -X foo.exclude -X foo.exclude

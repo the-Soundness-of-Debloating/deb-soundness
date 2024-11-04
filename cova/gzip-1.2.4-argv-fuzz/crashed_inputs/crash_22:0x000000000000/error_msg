@@ -1,0 +1,52 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==1554534==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000000 (pc 0x000000000000 bp 0x7ffd49bf43d0 sp 0x7ffd49bf42e8 T1554534)
+==1554534==Hint: pc points to the zero page.
+==1554534==The signal is caused by a READ memory access.
+==1554534==Hint: address points to the zero page.
+    #0 0x0  (<unknown module>)
+    #1 0x55cc959cb8d0 in ubsan_GetStackTrace(__sanitizer::BufferedStackTrace*, unsigned long, unsigned long, unsigned long, void*, bool) (/workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out+0x3b8d0) (BuildId: d0e87649f46c7d0cdc23b8a85c3bc7cf9a80a582)
+    #2 0x55cc959caec5 in __sanitizer::ReportDeadlySignal(__sanitizer::SignalContext const&, unsigned int, void (*)(__sanitizer::SignalContext const&, void const*, __sanitizer::BufferedStackTrace*), void const*) (/workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out+0x3aec5) (BuildId: d0e87649f46c7d0cdc23b8a85c3bc7cf9a80a582)
+    #3 0x55cc959cb1ea in __sanitizer::HandleDeadlySignal(void*, void*, unsigned int, void (*)(__sanitizer::SignalContext const&, void const*, __sanitizer::BufferedStackTrace*), void const*) (/workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out+0x3b1ea) (BuildId: d0e87649f46c7d0cdc23b8a85c3bc7cf9a80a582)
+    #4 0x7fa1f8fb851f  (/lib/x86_64-linux-gnu/libc.so.6+0x4251f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV (<unknown module>) 
+==1554534==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 171: 1554530 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/result/afl_result/reduced/result_0/ubsan/crashes/id:000058*
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2127336==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000000 (pc 0x000000000000 bp 0x7fff41208440 sp 0x7fff41208388 T2127336)
+==2127336==Hint: pc points to the zero page.
+==2127336==The signal is caused by a READ memory access.
+==2127336==Hint: address points to the zero page.
+    #0 <null> <null> (0x000000000000)
+    #1 __sanitizer::BufferedStackTrace::UnwindImpl(unsigned long, unsigned long, void*, bool, unsigned int) <null> (reduced.tsan.out+0xc9461) (BuildId: 08403d19a5317aba830910c1f92576b01487c5de)
+    #2 __sanitizer::ReportDeadlySignal(__sanitizer::SignalContext const&, unsigned int, void (*)(__sanitizer::SignalContext const&, void const*, __sanitizer::BufferedStackTrace*), void const*) <null> (reduced.tsan.out+0x42da5) (BuildId: 08403d19a5317aba830910c1f92576b01487c5de)
+    #3 __sanitizer::HandleDeadlySignal(void*, void*, unsigned int, void (*)(__sanitizer::SignalContext const&, void const*, __sanitizer::BufferedStackTrace*), void const*) <null> (reduced.tsan.out+0x430ca) (BuildId: 08403d19a5317aba830910c1f92576b01487c5de)
+    #4 <null> <null> (libc.so.6+0x4251f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (<unknown module>) 
+==2127336==ABORTING
+./verify.sh: line 171: 2127330 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/result/afl_result/reduced/result_1/tsan/crashes/id:000054* > sample1.gz
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.lsan.out
+gzip: train_input/trainc/ is a directory -- ignored
+train_input/trainc/sample1.ref:	LeakSanitizer:DEADLYSIGNAL
+==2304758==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000000 (pc 0x000000000000 bp 0x7ffd0d518cf0 sp 0x7ffd0d518cc8 T0)
+==2304758==Hint: pc points to the zero page.
+==2304758==The signal is caused by a READ memory access.
+==2304758==Hint: address points to the zero page.
+    #0 0x0  (<unknown module>)
+    #1 0x5654f61fd3e7 in __sanitizer::BufferedStackTrace::UnwindImpl(unsigned long, unsigned long, void*, bool, unsigned int) (/workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.lsan.out+0x2d3e7) (BuildId: 9f4b2c223bd12d06d755b5161783f7ef6524ea03)
+    #2 0x5654f61f7f45 in __sanitizer::ReportDeadlySignal(__sanitizer::SignalContext const&, unsigned int, void (*)(__sanitizer::SignalContext const&, void const*, __sanitizer::BufferedStackTrace*), void const*) (/workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.lsan.out+0x27f45) (BuildId: 9f4b2c223bd12d06d755b5161783f7ef6524ea03)
+    #3 0x5654f61f826a in __sanitizer::HandleDeadlySignal(void*, void*, unsigned int, void (*)(__sanitizer::SignalContext const&, void const*, __sanitizer::BufferedStackTrace*), void const*) (/workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.lsan.out+0x2826a) (BuildId: 9f4b2c223bd12d06d755b5161783f7ef6524ea03)
+    #4 0x7f49fc83951f  (/lib/x86_64-linux-gnu/libc.so.6+0x4251f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV (<unknown module>) 
+==2304758==ABORTING

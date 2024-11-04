@@ -1,0 +1,18 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==2754329==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address (pc 0x7f23d7db43fe bp 0x7ffd004b4be0 sp 0x7ffd004b4ba0 T2754329)
+==2754329==The signal is caused by a READ memory access.
+==2754329==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x7f23d7db43fe in __libc_free malloc/malloc.c:3368:7
+    #1 0x55aea843f03c in do_exit /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:8796:9
+    #2 0x55aea843e925 in main /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/./gzip-1.2.4.c.reduced.c:6776:7
+    #3 0x7f23d7d38d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f23d7d38e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55aea83fe584 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out+0x19584) (BuildId: d0e87649f46c7d0cdc23b8a85c3bc7cf9a80a582)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV malloc/malloc.c:3368:7 in __libc_free
+==2754329==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 171: 2754328 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/cova/gzip-1.2.4-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_138

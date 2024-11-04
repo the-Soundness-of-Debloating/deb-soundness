@@ -1,0 +1,31 @@
+msan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.msan.out
+/workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.msan.out: Cannot dup: Bad file descriptor
+MemorySanitizer:DEADLYSIGNAL
+==136615==ERROR: MemorySanitizer: SEGV on unknown address 0x000000000000 (pc 0x55a3270855f4 bp 0x7ffed2e03a48 sp 0x7ffed2e039f8 T136615)
+==136615==The signal is caused by a READ memory access.
+==136615==Hint: address points to the zero page.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x55a3270855f4 in tar_stat_destroy /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22984:24
+    #1 0x7ffed2e03b5f  ([stack]+0x1eb5f)
+    #2 0x55a3270cd317 in xdup2 /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:20120:13
+    #3 0x55a327085f38 in sys_child_open_for_uncompress /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:20497:13
+    #4 0x55a327081660 in open_archive /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:1171:21
+    #5 0x55a3270b3d7a in read_and /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:11978:7
+    #6 0x55a3270ce477 in main /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22917:7
+    #7 0x7fd9b5745d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22984:24 in tar_stat_destroy
+==136615==ABORTING
+==136614==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55a3270b7710 in read_header /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:12385:13
+    #1 0x55a3270b3e05 in read_and /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:11987:20
+    #2 0x55a3270ce477 in main /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22917:7
+    #3 0x7fd9b5745d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7fd9b5745e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55a326ff94c4 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.msan.out+0x204c4) (BuildId: 9cdc55de1f29f940791a439a528b08a2f31d5a89)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:12385:13 in read_header
+Exiting
+./verify.sh: line 305: 136613 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.msan.out < /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/input/radamsa_fuzzed/input17_fuzzed/input17_24

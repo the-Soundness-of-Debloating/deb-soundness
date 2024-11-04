@@ -1,0 +1,17 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep-2.19.c.reduced.c:22777:46: runtime error: index 17333882408 out of bounds for type 'const enum directories_type[3]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:22777:46 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3264236==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x55c12de556f0 (pc 0x55b1092ad313 bp 0x7ffc85cf3a60 sp 0x7ffc85cf35e0 T3264236)
+==3264236==The signal is caused by a READ memory access.
+    #0 0x55b1092ad313 in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:22777:46
+    #1 0x7fdc07464d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7fdc07464e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x55b10923e744 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x42744) (BuildId: 134b3824983eb10c2b56ba12106407af5954fc5d)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:22777:46 in main
+==3264236==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 3264233 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

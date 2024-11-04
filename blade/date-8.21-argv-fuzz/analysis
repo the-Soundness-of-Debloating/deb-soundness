@@ -1,0 +1,3 @@
+5098	5098;5098;9652;	AFL++,radamsa	NOSAN,			
+5098	5098:14;9652:24;5098:14;	AFL++,radamsa	ASAN,TSAN,LSAN,	READ memory access,	address points to the zero page,	
+9626	9626:11;9626:11;	AFL++,radamsa	MSAN,	use-of-uninitialized-value,		

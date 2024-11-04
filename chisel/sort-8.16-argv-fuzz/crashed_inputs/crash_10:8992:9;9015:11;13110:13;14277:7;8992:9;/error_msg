@@ -1,0 +1,14 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/bins/reduced.msan.out
+==3634756==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x5555d835a6df in stream_open /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:8992:9
+    #1 0x5555d8357ea1 in xfopen /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:9015:11
+    #2 0x5555d8357887 in sort /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:13110:13
+    #3 0x5555d8356ac4 in main /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:14277:7
+    #4 0x7fe2226fcd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7fe2226fce3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x5555d82cf2c4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/bins/reduced.msan.out+0x1f2c4) (BuildId: fee86cfc60db6c4166546a90f7c847772a16fb81)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/chisel/sort-8.16-argv-fuzz/./sort-8.16.c.reduced.c:8992:9 in stream_open
+Exiting
+./verify.sh: line 107: 3634752 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

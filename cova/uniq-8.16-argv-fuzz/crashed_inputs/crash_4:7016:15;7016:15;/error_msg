@@ -1,0 +1,13 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/uniq-8.16-argv-fuzz/bins/reduced.msan.out
+uniq: invalid option -- 'â'
+MemorySanitizer:DEADLYSIGNAL
+==628938==ERROR: MemorySanitizer: SEGV on unknown address (pc 0x55feb32ecb29 bp 0x7fff347fb538 sp 0x7fff347fb2f8 T628938)
+==628938==The signal is caused by a READ memory access.
+==628938==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x55feb32ecb29 in main /workspace/fuzzing-deb-with-sanitizers/cova/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7016:15
+
+MemorySanitizer can not provide additional info.
+SUMMARY: MemorySanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/uniq-8.16-argv-fuzz/./uniq-8.16.c.reduced.c:7016:15 in main
+==628938==ABORTING
+./verify.sh: line 110: 628936 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

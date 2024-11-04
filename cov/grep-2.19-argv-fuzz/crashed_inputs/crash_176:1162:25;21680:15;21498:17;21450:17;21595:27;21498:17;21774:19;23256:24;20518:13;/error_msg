@@ -1,0 +1,70 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.msan.out
+grep: invalid option -- 'O'
+grep: invalid option -- '-'
+grep: invalid option -- '^'
+grep: invalid option -- 't'
+grep: invalid option -- '^'
+grep: invalid option -- '^'
+grep: invalid option -- '$'
+grep: invalid option -- '?'
+grep: invalid option -- '?'
+grep: invalid option -- '?'
+grep: invalid option -- '?'
+grep: invalid option -- 'à'
+grep: invalid option -- '?'
+grep: invalid option -- '?'
+grep: invalid option -- '?'
+grep: invalid option -- '?'
+grep: invalid option -- '^'
+grep: invalid option -- '^'
+grep: invalid option -- '^'
+grep: invalid option -- '^'
+grep: invalid option -- '^'
+grep: invalid option -- '$'
+grep: invalid option -- '"'
+grep: invalid option -- ''
+grep: invalid option -- '^'
+grep: invalid option -- '^'
+grep: invalid option -- '"'
+grep: invalid option -- ''
+grep: invalid option -- '-'
+grep: invalid option -- '^'
+grep: invalid option -- '^'
+grep: invalid option -- '^'
+grep: invalid option -- 'Ù'
+grep: invalid option -- 'Ù'
+grep: invalid option -- '$'
+grep: invalid option -- '$'
+grep: invalid option -- '$'
+grep: invalid option -- '$'
+grep: invalid option -- '$'
+grep: invalid option -- ''
+grep: invalid option -- '$'
+grep: invalid option -- '$'
+grep: invalid option -- '$'
+grep: invalid option -- '$'
+grep: invalid option -- '^'
+grep: invalid option -- '^'
+grep: invalid option -- '^'
+grep: invalid option -- '^'
+==4085625==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55dee0dffc53 in print_line_middle /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20518:13
+    #1 0x55dee0dff0cb in prline /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20668:25
+    #2 0x55dee0dfe7a4 in prtext /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20885:11
+    #3 0x55dee0dfd1f5 in grepbuf /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21032:15
+    #4 0x55dee0dfb2ca in grep /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21162:25
+    #5 0x55dee0df879f in grepdesc /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21680:15
+    #6 0x55dee0df79d9 in grepfile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #7 0x55dee0dfa2fb in grepdirent /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21450:17
+    #8 0x55dee0df8246 in grepdesc /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21595:27
+    #9 0x55dee0df79d9 in grepfile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #10 0x55dee0de49b1 in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19
+    #11 0x55dee0de3801 in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24
+    #12 0x7f97c7baed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #13 0x7f97c7baee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #14 0x55dee0d1c3f4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.msan.out+0x1f3f4) (BuildId: d6ec29f2e72ed2facac46b6962e8fbc3e4932da0)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:20518:13 in print_line_middle
+Exiting
+./verify.sh: line 110: 4085624 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

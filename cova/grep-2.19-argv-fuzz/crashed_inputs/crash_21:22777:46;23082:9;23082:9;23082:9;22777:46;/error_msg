@@ -1,0 +1,23 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/bins/reduced.asan.out
+grep: invalid option -- 'p'
+grep: invalid option -- 't'
+grep: invalid option -- '_'
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1911260==ERROR: AddressSanitizer: SEGV on unknown address 0x4ac83dfb3884 (pc 0x563e64d92bc8 bp 0x7fffe2c09d48 sp 0x7fffe2c099c0 T0)
+==1911260==The signal is caused by a READ memory access.
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x563e64d92bc8 in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:22777:46
+    #1 0x7fffe2c0a0e7  ([stack]+0x1f0e7)
+    #2 0x563e64d93cbe in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23082:9
+    #3 0x7fffe2c0a487  ([stack]+0x1f487)
+    #4 0x563e64d93cbe in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23082:9
+    #5 0x7fffe2c0a82f  ([stack]+0x1f82f)
+    #6 0x563e64d93cbe in main /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23082:9
+    #7 0x7f879353bd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cova/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:22777:46 in main
+==1911260==ABORTING
+./verify.sh: line 110: 1911257 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

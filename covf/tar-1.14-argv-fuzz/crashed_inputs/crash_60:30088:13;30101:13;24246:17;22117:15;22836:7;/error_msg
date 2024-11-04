@@ -1,0 +1,18 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.lsan.out
+/workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.lsan.out: You must specify one of the `-Acdtrux' options
+Try `tar --help' for more information.
+
+=================================================================
+==801128==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 10241 byte(s) in 1 object(s) allocated from:
+    #0 0x56314bf53df4 in __interceptor_realloc (/workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/bins/reduced.lsan.out+0x36df4) (BuildId: a28fd898f32aff23f5d0fc5d08651bf1a7b5f9a5)
+    #1 0x56314bf66db7 in xnrealloc_inline /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30088:13
+    #2 0x56314bf5b201 in xrealloc /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:30101:13
+    #3 0x56314bf66032 in add_exclude_file /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:24246:17
+    #4 0x56314bf6480b in decode_options /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22117:15
+    #5 0x56314bf63200 in main /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22836:7
+    #6 0x7f74d5d34d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: LeakSanitizer: 10241 byte(s) leaked in 1 allocation(s).

@@ -1,0 +1,11 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep: invalid option -- 'À'
+grep: invalid option -- ' '
+grep-2.19.c.reduced.c:15232:22: runtime error: load of value 156, which is not a valid value for type '_Bool'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:15232:22 in 
+grep-2.19.c.reduced.c:15333:18: runtime error: load of value 156, which is not a valid value for type '_Bool'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:15333:18 in 
+realloc(): invalid old size
+timeout: the monitored command dumped core
+./verify.sh: line 110: 2742326 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

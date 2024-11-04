@@ -1,0 +1,23 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.ubsan.out -c
+gzip-1.2.4.c.reduced.c:5045:7: runtime error: index 4096 out of bounds for type 'uch[4096]' (aka 'unsigned char[4096]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5045:7 in 
+gzip-1.2.4.c.reduced.c:5023:5: runtime error: index 32832 out of bounds for type 'uch[32832]' (aka 'unsigned char[32832]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:5023:5 in 
+gzip-1.2.4.c.reduced.c:4941:5: runtime error: index 4234 out of bounds for type 'uch[4096]' (aka 'unsigned char[4096]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4941:5 in 
+gzip-1.2.4.c.reduced.c:4451:37: runtime error: index 16 out of bounds for type 'ush[16]' (aka 'unsigned short[16]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4451:37 in 
+gzip-1.2.4.c.reduced.c:4451:9: runtime error: index 16 out of bounds for type 'ush[16]' (aka 'unsigned short[16]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4451:9 in 
+gzip-1.2.4.c.reduced.c:4563:17: runtime error: index 16 out of bounds for type 'ush[16]' (aka 'unsigned short[16]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4563:17 in 
+gzip-1.2.4.c.reduced.c:4564:39: runtime error: index 16 out of bounds for type 'ush[16]' (aka 'unsigned short[16]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4564:39 in 
+gzip-1.2.4.c.reduced.c:4564:11: runtime error: index 16 out of bounds for type 'ush[16]' (aka 'unsigned short[16]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior gzip-1.2.4.c.reduced.c:4564:11 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3217294==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x7ffd013ea052 (pc 0x56409207ba09 bp 0x7ffd013d9e20 sp 0x7ffd013d9cd0 T3217294)
+==3217294==The signal is caused by a READ memory access.
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+UndefinedBehaviorSanitizer: nested bug in the same thread, aborting.

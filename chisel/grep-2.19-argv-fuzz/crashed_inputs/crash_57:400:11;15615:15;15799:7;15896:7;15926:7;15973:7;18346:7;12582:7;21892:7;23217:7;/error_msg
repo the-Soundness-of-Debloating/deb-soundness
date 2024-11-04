@@ -1,0 +1,31 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep: unrecognized option '-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------E'
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3908068==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x56460c000000 (pc 0x7f15c573e7ea bp 0x56460d87db30 sp 0x7fff835b87c0 T3908068)
+==3908068==The signal is caused by a READ memory access.
+    #0 0x7f15c573e7ea in arena_for_chunk malloc/arena.c:162:47
+    #1 0x7f15c573e7ea in arena_for_chunk malloc/arena.c:160:1
+    #2 0x7f15c573e7ea in __libc_realloc malloc/malloc.c:3435:16
+    #3 0x56460b4b864c in xrealloc /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:1070:11
+    #4 0x56460b4b8746 in x2nrealloc /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:996:13
+    #5 0x56460b4cd238 in addtok_mb /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15270:36
+    #6 0x56460b4c0049 in addtok /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15400:11
+    #7 0x56460b4cd045 in atom /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15615:15
+    #8 0x56460b4ccf9c in closure /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15799:7
+    #9 0x56460b4ccf28 in branch /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15896:7
+    #10 0x56460b4c0008 in regexp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15926:7
+    #11 0x56460b4be3f5 in dfaparse /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15973:7
+    #12 0x56460b4bce27 in dfacomp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18346:7
+    #13 0x56460b4bcc7b in GEAcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12582:7
+    #14 0x56460b4cf5d0 in Ecompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21892:7
+    #15 0x56460b4c95f8 in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #16 0x7f15c56c2d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #17 0x7f15c56c2e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #18 0x56460b490574 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x15574) (BuildId: c2c2e5de5f7baf45d001715ccd865693e086d1fb)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV malloc/arena.c:162:47 in arena_for_chunk
+==3908068==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 3908067 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

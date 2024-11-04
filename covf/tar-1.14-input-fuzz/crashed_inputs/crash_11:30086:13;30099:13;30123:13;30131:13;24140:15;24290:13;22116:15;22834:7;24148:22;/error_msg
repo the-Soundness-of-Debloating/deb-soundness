@@ -1,0 +1,60 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/bins/reduced.asan.out xf /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file6_fuzzed/file6_72 -X /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file12_fuzzed/file12_72
+=================================================================
+==587306==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x6060000001e0 at pc 0x55e7f42052fc bp 0x7fff0bd96320 sp 0x7fff0bd96318
+WRITE of size 8 at 0x6060000001e0 thread T0
+    #0 0x55e7f42052fb in add_exclude /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24148:22
+    #1 0x55e7f42059e8 in add_exclude_file /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24290:13
+    #2 0x55e7f42030cb in decode_options /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22116:15
+    #3 0x55e7f4200931 in main /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22834:7
+    #4 0x7efcc762dd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7efcc762de3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x55e7f4126544 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/bins/reduced.asan.out+0x27544) (BuildId: a43020a7f30a49c00b9ce8b3a7d47434680a365e)
+
+0x6060000001e0 is located 0 bytes to the right of 64-byte region [0x6060000001a0,0x6060000001e0)
+allocated by thread T0 here:
+    #0 0x55e7f41ac396 in __interceptor_realloc (/workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/bins/reduced.asan.out+0xad396) (BuildId: a43020a7f30a49c00b9ce8b3a7d47434680a365e)
+    #1 0x55e7f420714c in xnrealloc_inline /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30086:13
+    #2 0x55e7f41ef7e1 in xrealloc /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30099:13
+    #3 0x55e7f4207251 in x2nrealloc_inline /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30123:13
+    #4 0x55e7f42053a4 in x2nrealloc /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:30131:13
+    #5 0x55e7f42051f8 in add_exclude /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24140:15
+    #6 0x55e7f42059e8 in add_exclude_file /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24290:13
+    #7 0x55e7f42030cb in decode_options /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22116:15
+    #8 0x55e7f4200931 in main /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:22834:7
+    #9 0x7efcc762dd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/./tar-1.14.c.reduced.c:24148:22 in add_exclude
+Shadow bytes around the buggy address:
+  0x0c0c7fff7fe0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c0c7fff7ff0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c0c7fff8000: fa fa fa fa 00 00 00 00 00 00 00 fa fa fa fa fa
+  0x0c0c7fff8010: fd fd fd fd fd fd fd fd fa fa fa fa 00 00 00 00
+  0x0c0c7fff8020: 00 00 05 fa fa fa fa fa fd fd fd fd fd fd fd fd
+=>0x0c0c7fff8030: fa fa fa fa 00 00 00 00 00 00 00 00[fa]fa fa fa
+  0x0c0c7fff8040: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0c7fff8050: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0c7fff8060: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0c7fff8070: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0c7fff8080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==587306==ABORTING
+./verify.sh: line 360: 587302 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/bins/reduced.asan.out xf /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file6_fuzzed/file6_72 -X /workspace/fuzzing-deb-with-sanitizers/covf/tar-1.14-input-fuzz/input/radamsa_fuzzed/file12_fuzzed/file12_72

@@ -1,0 +1,4 @@
+-f 0 train_input/file/data.tx-f -0 train_input/file/data.txt
+-f 7304947108395516006 train_input/file/data.txt
+t
+-data.txt

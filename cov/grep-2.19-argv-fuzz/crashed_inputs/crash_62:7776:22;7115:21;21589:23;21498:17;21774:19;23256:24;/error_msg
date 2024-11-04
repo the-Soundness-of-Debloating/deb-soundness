@@ -1,0 +1,62 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep: invalid option -- '_'
+grep: invalid option -- 'p'
+grep: invalid option -- 't'
+grep: invalid option -- '/'
+grep: invalid option -- 'p'
+grep-2.19.c.reduced.c:10876:31: runtime error: applying non-zero offset 94204088077808 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:10876:31 in 
+grep-2.19.c.reduced.c:11007:37: runtime error: applying non-zero offset 94204088077840 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:11007:37 in 
+grep-2.19.c.reduced.c:11039:41: runtime error: applying non-zero offset 94204088077904 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:11039:41 in 
+grep-2.19.c.reduced.c:11531:33: runtime error: applying non-zero offset 94204088078784 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:11531:33 in 
+grep-2.19.c.reduced.c:11577:39: runtime error: applying non-zero offset 94204088078832 to null pointer
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:11577:39 in 
+grep-2.19.c.reduced.c:7776:30: runtime error: null pointer passed as argument 1, which is declared to never be null
+grep-2.19.c.reduced.c:6044:39: note: nonnull attribute specified here
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:7776:30 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==936976==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x000000000004 (pc 0x7f334013b6aa bp 0x000000000004 sp 0x7ffca380f740 T936976)
+==936976==The signal is caused by a WRITE memory access.
+==936976==Hint: address points to the zero page.
+    #0 0x7f334013b6aa in readdir dirent/../sysdeps/unix/sysv/linux/readdir64.c:37:3
+    #1 0x55ad97045b8b in fts_build /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:7776:22
+    #2 0x55ad9704318d in fts_read /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:7115:21
+    #3 0x55ad9708151c in grepdesc /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21589:23
+    #4 0x55ad97081206 in grepfile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17
+    #5 0x55ad97074fc6 in grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19
+    #6 0x55ad970746e9 in main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24
+    #7 0x7f334007ed8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #8 0x7f334007ee3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #9 0x55ad97015664 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x2f664) (BuildId: 548678bb0b6577364ae598818988dcfaaab153e2)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV dirent/../sysdeps/unix/sysv/linux/readdir64.c:37:3 in readdir
+==936976==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 936975 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2712995==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000004 (pc 0x7f47d605e6aa bp 0x000000000004 sp 0x7ffd45c494a0 T2712995)
+==2712995==The signal is caused by a WRITE memory access.
+==2712995==Hint: address points to the zero page.
+    #0 readdir dirent/../sysdeps/unix/sysv/linux/readdir64.c:37:3 (libc.so.6+0xe66aa) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 readdir <null> (reduced.tsan.out+0x67ebd) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #2 fts_build /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:7776:22 (reduced.tsan.out+0xd0faf) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #3 fts_read /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:7115:21 (reduced.tsan.out+0xd01e5) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #4 grepdesc /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21589:23 (reduced.tsan.out+0xe6297) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #5 grepfile /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21498:17 (reduced.tsan.out+0xe60f9) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #6 grep_command_line_arg /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21774:19 (reduced.tsan.out+0xe0ba2) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #7 main /workspace/fuzzing-deb-with-sanitizers/cov/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23256:24 (reduced.tsan.out+0xe0683) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+    #8 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #9 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #10 _start <null> (reduced.tsan.out+0x21474) (BuildId: c6bba53488cf488ae9767e99e1532339acc8e919)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV dirent/../sysdeps/unix/sysv/linux/readdir64.c:37:3 in readdir
+==2712995==ABORTING
+./verify.sh: line 110: 2712993 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

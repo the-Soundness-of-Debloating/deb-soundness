@@ -1,0 +1,29 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==1358222==ERROR: AddressSanitizer: SEGV on unknown address 0x4a3aa04331dd (pc 0x556321c95628 bp 0x7fff90d36a60 sp 0x7fff90d36840 T0)
+==1358222==The signal is caused by a READ memory access.
+    #0 0x556321c95628 in main /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9497:28
+    #1 0x7f1b77de9d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7f1b77de9e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x556321bc5454 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/bins/reduced.asan.out+0x23454) (BuildId: 092c24cce9701a263f5f1ffa0defdab5db554857)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9497:28 in main
+==1358222==ABORTING
+./verify.sh: line 110: 1358220 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==1502144==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x55be4dda63b0 bp 0x7ffd44fb7cc0 sp 0x7ffd44fb7b50 T0)
+==1502144==The signal is caused by a READ memory access.
+==1502144==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x55be4dda63b0 in main /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9497:28
+    #1 0x7f9b410f4d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #2 0x7f9b410f4e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #3 0x55be4dd73614 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/bins/reduced.lsan.out+0x7614) (BuildId: 9589920b961f943ac80bcb98ee8c61f1a9ad39c4)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/covf/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9497:28 in main
+==1502144==ABORTING

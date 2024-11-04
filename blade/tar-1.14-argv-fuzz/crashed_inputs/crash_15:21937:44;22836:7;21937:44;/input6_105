@@ -1,0 +1,1 @@
+cf foo.t -C foo.tar -C foo.taWr -C foo .

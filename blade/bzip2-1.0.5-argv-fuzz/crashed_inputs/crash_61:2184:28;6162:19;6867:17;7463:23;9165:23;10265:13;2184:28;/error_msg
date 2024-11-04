@@ -1,0 +1,37 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==3731198==ERROR: ThreadSanitizer: SEGV on unknown address 0x7bc000010000 (pc 0x55b422decc02 bp 0x7ffca39dc930 sp 0x7ffca39db550 T3731198)
+==3731198==The signal is caused by a READ memory access.
+    #0 BZ2_decompress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:2184:28 (reduced.tsan.out+0xd0c02) (BuildId: 7e211887f1e8c1f754317b8585b8f569e3bd35a3)
+    #1 BZ2_bzDecompress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:6162:19 (reduced.tsan.out+0xd559d) (BuildId: 7e211887f1e8c1f754317b8585b8f569e3bd35a3)
+    #2 BZ2_bzRead /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:6867:17 (reduced.tsan.out+0xd6415) (BuildId: 7e211887f1e8c1f754317b8585b8f569e3bd35a3)
+    #3 uncompressStream /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:7463:23 (reduced.tsan.out+0xd90a0) (BuildId: 7e211887f1e8c1f754317b8585b8f569e3bd35a3)
+    #4 uncompress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9165:23 (reduced.tsan.out+0xd6fa2) (BuildId: 7e211887f1e8c1f754317b8585b8f569e3bd35a3)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:10265:13 (reduced.tsan.out+0xd69fa) (BuildId: 7e211887f1e8c1f754317b8585b8f569e3bd35a3)
+    #6 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 _start <null> (reduced.tsan.out+0x20364) (BuildId: 7e211887f1e8c1f754317b8585b8f569e3bd35a3)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:2184:28 in BZ2_decompress
+==3731198==ABORTING
+./verify.sh: line 174: 3731194 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/input/radamsa_fuzzed/input0_fuzzed/input0_489 > sample1.rb2
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==151972==ERROR: LeakSanitizer: SEGV on unknown address 0x630000010000 (pc 0x557af8c4d79c bp 0x7fff6ad2f230 sp 0x7fff6ad2f110 T0)
+==151972==The signal is caused by a READ memory access.
+    #0 0x557af8c4d79c in BZ2_decompress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:2184:28
+    #1 0x557af8c4f818 in BZ2_bzDecompress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:6162:19
+    #2 0x557af8c4fe9f in BZ2_bzRead /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:6867:17
+    #3 0x557af8c512c0 in uncompressStream /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:7463:23
+    #4 0x557af8c50529 in uncompress /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:9165:23
+    #5 0x557af8c501b1 in main /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:10265:13
+    #6 0x7ffa2b7d7d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7ffa2b7d7e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x557af8c1e464 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/bins/reduced.lsan.out+0x5464) (BuildId: ab7e1c261d5be1181158d7457493c00d27b1eac0)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-argv-fuzz/./bzip2-1.0.5.c.reduced.c:2184:28 in BZ2_decompress
+==151972==ABORTING

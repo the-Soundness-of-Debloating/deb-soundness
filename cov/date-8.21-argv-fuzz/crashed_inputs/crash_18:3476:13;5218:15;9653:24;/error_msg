@@ -1,0 +1,58 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.ubsan.out
+date-8.21.c.reduced.c:4188:32: runtime error: index -28 out of bounds for type 'const yytype_int8[26]' (aka 'const signed char[26]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4188:32 in 
+date-8.21.c.reduced.c:4194:26: runtime error: index -28 out of bounds for type 'const yytype_int8[26]' (aka 'const signed char[26]')
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior date-8.21.c.reduced.c:4194:26 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==1099880==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x7ffe2e8a5fe8 (pc 0x7f9de6d587cd bp 0x7ffe2f0a2c80 sp 0x7ffe2f0a13e8 T1099880)
+==1099880==The signal is caused by a READ memory access.
+    #0 0x7f9de6d587cd  string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:317
+    #1 0x55789170c05c in yyparse /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3476:13
+    #2 0x557891719035 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15
+    #3 0x557891720212 in main /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #4 0x7f9de6be1d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f9de6be1e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x5578916e25e4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.ubsan.out+0x145e4) (BuildId: b79d2b1295781bdc1a54b51e0f481a8d966b40ec)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:317 
+==1099880==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110: 1099879 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2439710==ERROR: ThreadSanitizer: SEGV on unknown address 0x000000000038 (pc 0x7f38f3539881 bp 0x7ffe19071580 sp 0x7ffe190708a8 T2439710)
+==2439710==The signal is caused by a READ memory access.
+==2439710==Hint: address points to the zero page.
+    #0 memcpy string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:222 (libc.so.6+0xc4881) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #1 __interceptor_memcpy <null> (reduced.tsan.out+0x59dec) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #2 yyparse /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3476:13 (reduced.tsan.out+0xcf7c6) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #3 parse_datetime /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15 (reduced.tsan.out+0xd2ad8) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #4 main /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24 (reduced.tsan.out+0xd578c) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #5 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #6 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 _start <null> (reduced.tsan.out+0x22464) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:222 in memcpy
+==2439710==ABORTING
+./verify.sh: line 110: 2439709 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==2878653==ERROR: LeakSanitizer: SEGV on unknown address 0x000000000038 (pc 0x7fd3d76067cd bp 0x7ffd98556dd0 sp 0x7ffd98556478 T0)
+==2878653==The signal is caused by a READ memory access.
+==2878653==Hint: address points to the zero page.
+    #0 0x7fd3d76067cd  string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:317
+    #1 0x5604f211f921 in yyparse /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3476:13
+    #2 0x5604f2121910 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15
+    #3 0x5604f2123c41 in main /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #4 0x7fd3d748fd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7fd3d748fe3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x5604f20f15e4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.lsan.out+0x65e4) (BuildId: 3f3ce206a851944f2a9bf35ed65b9c83b43c6ddf)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:317 
+==2878653==ABORTING

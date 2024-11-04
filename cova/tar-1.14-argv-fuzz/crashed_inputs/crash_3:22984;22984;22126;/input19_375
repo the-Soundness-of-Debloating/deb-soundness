@@ -1,0 +1,1 @@
+xf foo.tar -XÀ foo.excludexf foo.tar -XÀ foo.exclude

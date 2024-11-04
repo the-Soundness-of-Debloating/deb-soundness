@@ -1,0 +1,61 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.asan.out -d
+=================================================================
+==3100673==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x619000000cb1 at pc 0x55fa9da521c1 bp 0x7ffd348c37d0 sp 0x7ffd348c37c8
+READ of size 1 at 0x619000000cb1 thread T0
+    #0 0x55fa9da521c0 in inflate_dynamic /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3182:35
+    #1 0x55fa9da52927 in inflate_block /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3440:19
+    #2 0x55fa9da52a4a in inflate /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3473:15
+    #3 0x55fa9da52c86 in unzip /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3630:15
+    #4 0x55fa9da59e3b in treat_stdin /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #5 0x55fa9da5984b in main /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #6 0x7f70a5f47d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f70a5f47e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55fa9d98e3a4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.asan.out+0x213a4) (BuildId: 40bdfecdb6af30073c3b26aca5f703f7e2048a9b)
+
+0x619000000cb1 is located 801 bytes to the right of 1040-byte region [0x619000000580,0x619000000990)
+allocated by thread T0 here:
+    #0 0x55fa9da13dce in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.asan.out+0xa6dce) (BuildId: 40bdfecdb6af30073c3b26aca5f703f7e2048a9b)
+    #1 0x55fa9da4f8ef in huft_build /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:2313:38
+    #2 0x55fa9da51eb9 in inflate_dynamic /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3139:15
+    #3 0x55fa9da52927 in inflate_block /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3440:19
+    #4 0x55fa9da52a4a in inflate /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3473:15
+    #5 0x55fa9da52c86 in unzip /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3630:15
+    #6 0x55fa9da59e3b in treat_stdin /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #7 0x55fa9da5984b in main /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #8 0x7f70a5f47d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:3182:35 in inflate_dynamic
+Shadow bytes around the buggy address:
+  0x0c327fff8140: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c327fff8150: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c327fff8160: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c327fff8170: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c327fff8180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=>0x0c327fff8190: fa fa fa fa fa fa[fa]fa fa fa fa fa fa fa fa fa
+  0x0c327fff81a0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c327fff81b0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c327fff81c0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c327fff81d0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c327fff81e0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==3100673==ABORTING
+./verify.sh: line 169: 3100663 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.asan.out -d < /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/result/afl_result/reduced/result_1/asan/crashes/id:000007* > sample1.tst

@@ -1,0 +1,41 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.tsan.out -d
+
+reduced.tsan.out: stdin: not in gzip format
+ThreadSanitizer:DEADLYSIGNAL
+==2246101==ERROR: ThreadSanitizer: SEGV on unknown address 0x55683bece153 (pc 0x55683aac736e bp 0x7ffde833a550 sp 0x7ffde833a360 T2246101)
+==2246101==The signal is caused by a WRITE memory access.
+    #0 build_tree___0 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4632:20 (reduced.tsan.out+0xd236e) (BuildId: 76884f9d4fcf5009080309ae11a19d688998e888)
+    #1 flush_block /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4948:7 (reduced.tsan.out+0xd1deb) (BuildId: 76884f9d4fcf5009080309ae11a19d688998e888)
+    #2 deflate /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5797:17 (reduced.tsan.out+0xd4dc7) (BuildId: 76884f9d4fcf5009080309ae11a19d688998e888)
+    #3 zip /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5988:7 (reduced.tsan.out+0xd552e) (BuildId: 76884f9d4fcf5009080309ae11a19d688998e888)
+    #4 treat_stdin /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22 (reduced.tsan.out+0xd6895) (BuildId: 76884f9d4fcf5009080309ae11a19d688998e888)
+    #5 main /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9 (reduced.tsan.out+0xd6075) (BuildId: 76884f9d4fcf5009080309ae11a19d688998e888)
+    #6 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #7 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #8 _start <null> (reduced.tsan.out+0x213a4) (BuildId: 76884f9d4fcf5009080309ae11a19d688998e888)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4632:20 in build_tree___0
+==2246101==ABORTING
+./verify.sh: line 169: 2246098 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.tsan.out -d < /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/input/radamsa_fuzzed/file2_fuzzed/file2_344 > sample1.tst
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.lsan.out -d
+
+reduced.lsan.out: stdin: not in gzip format
+LeakSanitizer:DEADLYSIGNAL
+==2629410==ERROR: LeakSanitizer: SEGV on unknown address 0x55555f107ddd (pc 0x55555e74fbe1 bp 0x7ffda4e6ff80 sp 0x7ffda4e6ff30 T0)
+==2629410==The signal is caused by a WRITE memory access.
+    #0 0x55555e74fbe1 in build_tree___0 /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4632:20
+    #1 0x55555e74f8d6 in flush_block /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4948:7
+    #2 0x55555e7510a1 in deflate /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5797:17
+    #3 0x55555e7513fb in zip /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:5988:7
+    #4 0x55555e751ea2 in treat_stdin /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6912:22
+    #5 0x55555e751a00 in main /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:6763:9
+    #6 0x7f2b2af45d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x7f2b2af45e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55555e71f514 in _start (/workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/bins/reduced.lsan.out+0x6514) (BuildId: e469d9e7620087678df692e0069c61fcaac74449)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov/gzip-1.2.4-input-fuzz/./gzip-1.2.4.c.reduced.c:4632:20 in build_tree___0
+==2629410==ABORTING

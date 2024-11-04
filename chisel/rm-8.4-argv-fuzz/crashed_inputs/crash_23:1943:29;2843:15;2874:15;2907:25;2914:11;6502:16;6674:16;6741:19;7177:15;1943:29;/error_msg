@@ -1,0 +1,22 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==3495687==ERROR: LeakSanitizer: SEGV on unknown address (pc 0x559cba092b8b bp 0x7ffc6145fea0 sp 0x7ffc6145fdd0 T0)
+==3495687==The signal is caused by a READ memory access.
+==3495687==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x559cba092b8b in quotearg_buffer_restyled /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1943:29
+    #1 0x559cba092334 in quotearg_n_options /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2843:15
+    #2 0x559cba09226b in quotearg_n_style /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2874:15
+    #3 0x559cba09236f in quote_n /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2907:25
+    #4 0x559cba092396 in quote /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:2914:11
+    #5 0x559cba092d1b in excise /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6502:16
+    #6 0x559cba092886 in rm_fts /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6674:16
+    #7 0x559cba0926e3 in rm /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6741:19
+    #8 0x559cba09297e in main /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7177:15
+    #9 0x7f8909409d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #10 0x7f8909409e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #11 0x559cba064444 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.lsan.out+0x5444) (BuildId: 92f93740e7f5efb6ba2f700f2a95feeb490ffe36)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:1943:29 in quotearg_buffer_restyled
+==3495687==ABORTING

@@ -1,0 +1,5 @@
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/bins/reduced.lsan.out -k /workspace/fuzzing-deb-with-sanitizers/blade/bzip2-1.0.5-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_6
+LeakSanitizer:DEADLYSIGNAL
+==2222441==ERROR: LeakSanitizer: SEGV on unknown address 0x7f1ec1120000 (pc 0x55ad3f1e4421 bp 0x7ffcac745220 sp 0x7ffcac745220 T0)
+==2222441==The signal is caused by a READ memory access.

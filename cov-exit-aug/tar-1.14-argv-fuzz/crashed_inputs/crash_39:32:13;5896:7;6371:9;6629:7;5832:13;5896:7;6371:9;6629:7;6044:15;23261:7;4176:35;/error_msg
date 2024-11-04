@@ -1,0 +1,106 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==1728737==ERROR: ThreadSanitizer: SEGV on unknown address 0x563dd15863cb (pc 0x563dd1535a19 bp 0x7ffdc7a7a270 sp 0x7ffdc7a7a010 T1728737)
+==1728737==The signal is caused by a WRITE memory access.
+    #0 to_chars /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:4176:35 (reduced.tsan.out+0xd4a19) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #1 mode_to_chars /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:4516:7 (reduced.tsan.out+0xd5477) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #2 start_header /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5163:11 (reduced.tsan.out+0xd5a4b) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #3 dump_regular_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5525:13 (reduced.tsan.out+0xeb38d) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #4 dump_file0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6440:26 (reduced.tsan.out+0xd8090) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #5 dump_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6629:7 (reduced.tsan.out+0xd7339) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #6 dump_dir0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5832:13 (reduced.tsan.out+0xec3cf) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #7 dump_dir /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5896:7 (reduced.tsan.out+0xeb045) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #8 dump_file0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6371:9 (reduced.tsan.out+0xd7dfd) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #9 dump_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6629:7 (reduced.tsan.out+0xd7339) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #10 dump_dir0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5832:13 (reduced.tsan.out+0xec3cf) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #11 dump_dir /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5896:7 (reduced.tsan.out+0xeb045) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #12 dump_file0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6371:9 (reduced.tsan.out+0xd7dfd) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #13 dump_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6629:7 (reduced.tsan.out+0xd7339) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #14 dump_dir0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5832:13 (reduced.tsan.out+0xec3cf) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #15 dump_dir /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5896:7 (reduced.tsan.out+0xeb045) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #16 dump_file0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6371:9 (reduced.tsan.out+0xd7dfd) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #17 dump_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6629:7 (reduced.tsan.out+0xd7339) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #18 dump_dir0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5832:13 (reduced.tsan.out+0xec3cf) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #19 dump_dir /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5896:7 (reduced.tsan.out+0xeb045) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #20 dump_file0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6371:9 (reduced.tsan.out+0xd7dfd) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #21 dump_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6629:7 (reduced.tsan.out+0xd7339) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #22 dump_dir0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5832:13 (reduced.tsan.out+0xec3cf) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #23 dump_dir /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5896:7 (reduced.tsan.out+0xeb045) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #24 dump_file0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6371:9 (reduced.tsan.out+0xd7dfd) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #25 dump_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6629:7 (reduced.tsan.out+0xd7339) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #26 dump_dir0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5832:13 (reduced.tsan.out+0xec3cf) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #27 dump_dir /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5896:7 (reduced.tsan.out+0xeb045) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #28 dump_file0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6371:9 (reduced.tsan.out+0xd7dfd) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #29 dump_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6629:7 (reduced.tsan.out+0xd7339) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #30 dump_dir0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5832:13 (reduced.tsan.out+0xec3cf) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #31 dump_dir /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5896:7 (reduced.tsan.out+0xeb045) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #32 dump_file0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6371:9 (reduced.tsan.out+0xd7dfd) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #33 dump_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6629:7 (reduced.tsan.out+0xd7339) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #34 dump_dir0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5832:13 (reduced.tsan.out+0xec3cf) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #35 dump_dir /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5896:7 (reduced.tsan.out+0xeb045) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #36 dump_file0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6371:9 (reduced.tsan.out+0xd7dfd) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #37 dump_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6629:7 (reduced.tsan.out+0xd7339) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #38 create_archive /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6044:15 (reduced.tsan.out+0xd7080) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #39 main /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:23261:7 (reduced.tsan.out+0xe404b) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+    #40 <null> <null> (libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #41 __libc_start_main <null> (libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #42 _start <null> (reduced.tsan.out+0x224e4) (BuildId: daec4ac4a65ff8e3f3c2c04e428d115233c89661)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:4176:35 in to_chars
+==1728737==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 304: 1728736 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.tsan.out < /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/result/afl_result/reduced/result_0/tsan/crashes/id:000017*
+lsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==1735041==ERROR: LeakSanitizer: SEGV on unknown address 0x55bb33e82494 (pc 0x55bb33e72662 bp 0x7ffd1adca570 sp 0x7ffd1adca390 T0)
+==1735041==The signal is caused by a WRITE memory access.
+    #0 0x55bb33e72662 in to_chars /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:4176:35
+    #1 0x55bb33e72f51 in mode_to_chars /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:4516:7
+    #2 0x55bb33e7329d in start_header /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5163:11
+    #3 0x55bb33e819bf in dump_regular_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5525:13
+    #4 0x55bb33e74b13 in dump_file0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6440:26
+    #5 0x55bb33e742e8 in dump_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6629:7
+    #6 0x55bb33e82428 in dump_dir0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5832:13
+    #7 0x55bb33e817cc in dump_dir /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5896:7
+    #8 0x55bb33e74912 in dump_file0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6371:9
+    #9 0x55bb33e742e8 in dump_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6629:7
+    #10 0x55bb33e82428 in dump_dir0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5832:13
+    #11 0x55bb33e817cc in dump_dir /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5896:7
+    #12 0x55bb33e74912 in dump_file0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6371:9
+    #13 0x55bb33e742e8 in dump_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6629:7
+    #14 0x55bb33e82428 in dump_dir0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5832:13
+    #15 0x55bb33e817cc in dump_dir /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5896:7
+    #16 0x55bb33e74912 in dump_file0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6371:9
+    #17 0x55bb33e742e8 in dump_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6629:7
+    #18 0x55bb33e82428 in dump_dir0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5832:13
+    #19 0x55bb33e817cc in dump_dir /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5896:7
+    #20 0x55bb33e74912 in dump_file0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6371:9
+    #21 0x55bb33e742e8 in dump_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6629:7
+    #22 0x55bb33e82428 in dump_dir0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5832:13
+    #23 0x55bb33e817cc in dump_dir /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5896:7
+    #24 0x55bb33e74912 in dump_file0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6371:9
+    #25 0x55bb33e742e8 in dump_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6629:7
+    #26 0x55bb33e82428 in dump_dir0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5832:13
+    #27 0x55bb33e817cc in dump_dir /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5896:7
+    #28 0x55bb33e74912 in dump_file0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6371:9
+    #29 0x55bb33e742e8 in dump_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6629:7
+    #30 0x55bb33e82428 in dump_dir0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5832:13
+    #31 0x55bb33e817cc in dump_dir /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5896:7
+    #32 0x55bb33e74912 in dump_file0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6371:9
+    #33 0x55bb33e742e8 in dump_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6629:7
+    #34 0x55bb33e82428 in dump_dir0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5832:13
+    #35 0x55bb33e817cc in dump_dir /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:5896:7
+    #36 0x55bb33e74912 in dump_file0 /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6371:9
+    #37 0x55bb33e742e8 in dump_file /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6629:7
+    #38 0x55bb33e74133 in create_archive /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:6044:15
+    #39 0x55bb33e7c73b in main /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:23261:7
+    #40 0x7fdcad43ed8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #41 0x7fdcad43ee3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #42 0x55bb33e417c4 in _start (/workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/bins/reduced.lsan.out+0xb7c4) (BuildId: 6b9c645010b13ca8f876c74673edd4ddf27e6a34)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/cov-aug-0919/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:4176:35 in to_chars
+==1735041==ABORTING

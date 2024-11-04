@@ -1,0 +1,18 @@
+lsan:
+++ timeout -k 0.5 0.5 cat foo.tar
+++ /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==3652153==ERROR: LeakSanitizer: SEGV on unknown address 0x0003003b3180 (pc 0x7fdb5752b7fd bp 0x7fdb575a9780 sp 0x7ffed5fff3b8 T0)
+==3652153==The signal is caused by a READ memory access.
+    #0 0x7fdb5752b7fd  string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74
+    #1 0x7fdb57404d30 in __vfprintf_internal stdio-common/vfprintf-internal.c:1517:4
+    #2 0x7fdb573ee6c9 in fprintf stdio-common/fprintf.c:32:10
+    #3 0x5615dba43f2f in read_and /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:12098:15
+    #4 0x5615dba478be in main /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/./tar-1.14.c.reduced.c:22905:7
+    #5 0x7fdb573b7d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #6 0x7fdb573b7e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #7 0x5615dba09874 in _start (/workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.lsan.out+0xb874) (BuildId: 2b8bc9fe2f6d18fc4bbe9b0fbac7633e458b2cc6)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV string/../sysdeps/x86_64/multiarch/strlen-avx2.S:74 
+==3652153==ABORTING

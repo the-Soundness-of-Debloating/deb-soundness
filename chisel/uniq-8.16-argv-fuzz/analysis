@@ -1,0 +1,18 @@
+6625	6625;6625;6890;7306;	radamsa	NOSAN,			
+2308	2308:11;2267:13;2324:13;5901:30;6903:24;7306:7;	AFL++,radamsa	ASAN,	Direct leak,		
+2308	2308:11;2267:13;2324:13;5901:30;6884:17;7306:7;	AFL++,radamsa	ASAN,	Direct leak,		
+3	3;2324:13;5901:30;6884:17;7306:7;2308:11;2267:13;2324:13;5901:30;6903:24;7306:7;	radamsa	ASAN,	Direct leak,		
+3	3;2324:13;5901:30;6903:24;7306:7;2308:11;2267:13;2324:13;5901:30;6884:17;7306:7;	radamsa	ASAN,	Direct leak,		
+6625	6625:27;6890:33;7306:7;6625:27;	radamsa	ASAN,TSAN,LSAN,	READ memory access,	address points to the zero page,	
+6643	6643:42;6890:33;7306:7;2308:11;2267:13;2324:13;5901:30;6884:17;7306:7;6643:42;	radamsa	ASAN,	heap-buffer-overflow,		
+7208	7208:21	AFL++,radamsa	UBSAN,	runtime error 	index .* out of bounds,	
+7208	7208:35;	AFL++,radamsa	UBSAN,	WRITE memory access,		
+5870	5870:20	AFL++,radamsa	UBSAN,	runtime error 		
+6665	6665:67	AFL++,radamsa	UBSAN,	runtime error 	applying non-zero offset .* to null pointer,	
+6625	6625:47	radamsa	UBSAN,	runtime error 		
+6625	6625:42	radamsa	UBSAN,	runtime error 	load of null pointer,	
+6625	6625:27;6890:33;7306:7;	radamsa	UBSAN,	READ memory access,	address points to the zero page,	
+7208	7208:35;7208:35;	AFL++,radamsa	MSAN,TSAN,LSAN,	WRITE memory access,use-of-uninitialized-value,		
+6178	6178:19;6794:19;7306:7;	AFL++,radamsa	MSAN,	READ memory access,		
+0x55f38c256cb0	0x55f38c256cb0	radamsa	MSAN,	READ memory access,		
+0x55bd86e611bd	0x55bd86e611bd	radamsa	TSAN,	WRITE memory access,		

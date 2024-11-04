@@ -1,0 +1,4 @@
+-R+username:sudo+d1
+-R+username:sudo+d1
+-R+username:sudo+d32768
+-R+username:sudo+d65536

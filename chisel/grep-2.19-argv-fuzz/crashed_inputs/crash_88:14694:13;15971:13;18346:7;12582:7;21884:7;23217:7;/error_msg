@@ -1,0 +1,33 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==1852323==ERROR: ThreadSanitizer: stack-overflow on address 0x7ffe5b50f930 (pc 0x7ffe5b50f930 bp 0x7ffe5b50f790 sp 0x7ffe5b50f798 T1852323)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 <null> <null> ([stack]+0x1f930)
+    #1 lex /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:14694:13 (reduced.tsan.out+0xd084f) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #2 dfaparse /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15971:13 (reduced.tsan.out+0xd03f6) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #3 dfacomp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18346:7 (reduced.tsan.out+0xcfa3e) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #4 GEAcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12582:7 (reduced.tsan.out+0xcf89a) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #5 Gcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21884:7 (reduced.tsan.out+0xd6c3a) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #6 main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7 (reduced.tsan.out+0xd3f00) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #7 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+SUMMARY: ThreadSanitizer: stack-overflow ([stack]+0x1f930) 
+==1852323==ABORTING
+./verify.sh: line 108: 1852322 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==491160==ERROR: LeakSanitizer: stack-overflow on address 0x7ffcc9bdb3b0 (pc 0x7ffcc9bdb3b0 bp 0x7ffcc9bdb2a0 sp 0x7ffcc9bdb2a8 T0)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 0x7ffcc9bdb3b0  ([stack]+0x1e3b0)
+    #1 0x55c27590576a in lex /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:14694:13
+    #2 0x55c275905449 in dfaparse /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15971:13
+    #3 0x55c275904f77 in dfacomp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18346:7
+    #4 0x55c275904e95 in GEAcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12582:7
+    #5 0x55c275908a11 in Gcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21884:7
+    #6 0x55c2759072ff in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #7 0x7fd2e4789d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: LeakSanitizer: stack-overflow ([stack]+0x1e3b0) 
+==491160==ABORTING

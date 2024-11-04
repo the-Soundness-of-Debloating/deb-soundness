@@ -1,0 +1,28 @@
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out
+grep: invalid option -- 'p'
+grep-2.19.c.reduced.c:13530:73: runtime error: index 22047 out of bounds for type 'const struct dfa_ctype[13]'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior grep-2.19.c.reduced.c:13530:73 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==3948043==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x561f9aec9000 (pc 0x561f98759fc0 bp 0x7ffd710e5580 sp 0x7ffd710e4e40 T3948043)
+==3948043==The signal is caused by a READ memory access.
+    #0 0x561f98759fc0 in parse_bracket_exp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:14143:32
+    #1 0x561f9874ddfa in lex /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15227:21
+    #2 0x561f9875b087 in atom /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15626:21
+    #3 0x561f9875af9c in closure /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15799:7
+    #4 0x561f9875af76 in branch /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15913:11
+    #5 0x561f9874e008 in regexp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15926:7
+    #6 0x561f9874c3f5 in dfaparse /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15973:7
+    #7 0x561f9874ae27 in dfacomp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18346:7
+    #8 0x561f9874ac7b in GEAcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12582:7
+    #9 0x561f9875d5d0 in Ecompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21892:7
+    #10 0x561f987575f8 in main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #11 0x7fe1b3823d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #12 0x7fe1b3823e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #13 0x561f9871e574 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.ubsan.out+0x15574) (BuildId: c2c2e5de5f7baf45d001715ccd865693e086d1fb)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:14143:32 in parse_bracket_exp
+==3948043==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 108: 3948042 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

@@ -1,0 +1,16 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/bins/reduced.tsan.out -F 'randomtext*' /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0
+ThreadSanitizer:DEADLYSIGNAL
+==2008028==ERROR: ThreadSanitizer: SEGV on unknown address 0x25de3dd22abc (pc 0x55a1c2371a05 bp 0x7ffca85945e0 sp 0x7ffca8594090 T2008028)
+==2008028==The signal is caused by a WRITE memory access.
+    #0 kwsincr /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:11012:29 (reduced.tsan.out+0xe1a05) (BuildId: 8e10641cc6575046930d6b51e0472cfe183a4284)
+    #1 Fcompile /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:10577:11 (reduced.tsan.out+0xe0fbe) (BuildId: 8e10641cc6575046930d6b51e0472cfe183a4284)
+    #2 main /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:23215:7 (reduced.tsan.out+0xe76c8) (BuildId: 8e10641cc6575046930d6b51e0472cfe183a4284)
+    #3 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #4 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #5 _start <null> (reduced.tsan.out+0x21534) (BuildId: 8e10641cc6575046930d6b51e0472cfe183a4284)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/./grep-2.19.c.reduced.c:11012:29 in kwsincr
+==2008028==ABORTING
+./verify.sh: line 233: 2008027 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/bins/reduced.tsan.out -F randomtext* /workspace/fuzzing-deb-with-sanitizers/blade/grep-2.19-input-fuzz/input/radamsa_fuzzed/file1_fuzzed/file1_0

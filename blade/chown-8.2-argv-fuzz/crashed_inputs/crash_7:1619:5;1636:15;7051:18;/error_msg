@@ -1,0 +1,37 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.asan.out
+=================================================================
+==10836==ERROR: AddressSanitizer: attempting free on address which was not malloc()-ed: 0x7ffe8e088000 in thread T0
+    #0 0x55864ac4cb22 in free (/workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.asan.out+0xa4b22) (BuildId: 6ad2e6db368adb4da98c05f425810e11d7dd46e7)
+    #1 0x55864ac88263 in parse_with_separator /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1619:5
+    #2 0x55864ac87b62 in parse_user_spec /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1636:15
+    #3 0x55864ac8b098 in main /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7051:18
+    #4 0x2b9646266d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x2b9646266e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x55864abc73a4 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.asan.out+0x1f3a4) (BuildId: 6ad2e6db368adb4da98c05f425810e11d7dd46e7)
+
+Address 0x7ffe8e088000 is located in stack of thread T0
+SUMMARY: AddressSanitizer: bad-free (/workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.asan.out+0xa4b22) (BuildId: 6ad2e6db368adb4da98c05f425810e11d7dd46e7) in free
+==10836==ABORTING
+./verify.sh: line 110: 10834 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+ubsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.ubsan.out
+óú¸\: invalid option -- '1'
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==6660==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x2b7bf0000000 (pc 0x2b7bf11c8449 bp 0x000000000000 sp 0x7ffccc2ae750 T6660)
+==6660==The signal is caused by a READ memory access.
+    #0 0x2b7bf11c8449 in arena_for_chunk malloc/arena.c:162:47
+    #1 0x2b7bf11c8449 in arena_for_chunk malloc/arena.c:160:1
+    #2 0x2b7bf11c8449 in __libc_free malloc/malloc.c:3390:16
+    #3 0x55c77338ee4c in parse_with_separator /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1619:5
+    #4 0x55c77338e822 in parse_user_spec /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:1636:15
+    #5 0x55c77339342a in main /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7051:18
+    #6 0x2b7bf114cd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #7 0x2b7bf114ce3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #8 0x55c773365514 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.ubsan.out+0x9514) (BuildId: c9e7dbe9ebf3918647b71013d044b22e5f98ff70)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV malloc/arena.c:162:47 in arena_for_chunk
+==6660==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 110:  6658 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

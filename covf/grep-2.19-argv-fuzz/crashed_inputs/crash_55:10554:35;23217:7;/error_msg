@@ -1,0 +1,34 @@
+asan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/bins/reduced.asan.out
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==4181382==ERROR: AddressSanitizer: SEGV on unknown address 0x000d00000000 (pc 0x7f2c58c432e0 bp 0x7fffcaa66da0 sp 0x7fffcaa66568 T0)
+==4181382==The signal is caused by a READ memory access.
+    #0 0x7f2c58c432e0  string/../sysdeps/x86_64/multiarch/memchr-avx2.S:81
+    #1 0x56531781c00e in memchr (/workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/bins/reduced.asan.out+0x3e00e) (BuildId: e028c855c27ba69fef775ae6593bf2debe924f1e)
+    #2 0x5653178c6d0c in Fcompile /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:10554:35
+    #3 0x5653178dde0c in main /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #4 0x7f2c58ad3d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f2c58ad3e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x565317800494 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/bins/reduced.asan.out+0x22494) (BuildId: e028c855c27ba69fef775ae6593bf2debe924f1e)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memchr-avx2.S:81 
+==4181382==ABORTING
+./verify.sh: line 110: 4181380 Aborted                 timeout -k 0.5 0.5 ${bin} < $input
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==127260==ERROR: LeakSanitizer: SEGV on unknown address 0x00000000003e (pc 0x7f32c5ec22e0 bp 0x7fffef2a8550 sp 0x7fffef2a84e8 T0)
+==127260==The signal is caused by a READ memory access.
+==127260==Hint: address points to the zero page.
+    #0 0x7f32c5ec22e0  string/../sysdeps/x86_64/multiarch/memchr-avx2.S:81
+    #1 0x55e328463a17 in Fcompile /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:10554:35
+    #2 0x55e32846b03f in main /workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7
+    #3 0x7f32c5d52d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7f32c5d52e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55e328433684 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/grep-2.19-argv-fuzz/bins/reduced.lsan.out+0x7684) (BuildId: 0051ba6fcaebea6ea1e7fd574e8005cc0b14e5b8)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memchr-avx2.S:81 
+==127260==ABORTING

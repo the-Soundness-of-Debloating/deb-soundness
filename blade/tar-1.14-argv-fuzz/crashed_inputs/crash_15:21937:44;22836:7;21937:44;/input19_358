@@ -1,0 +1,1 @@
+xf foo.4ar -foo.4ar -X foo.exclude

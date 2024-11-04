@@ -1,0 +1,4122 @@
+#include "argv-fuzz-inl.h"
+enum strtol_error {
+  LONGINT_OK = 0,
+  LONGINT_OVERFLOW = 1,
+  LONGINT_INVALID_SUFFIX_CHAR = 2,
+  LONGINT_INVALID_SUFFIX_CHAR_WITH_OVERFLOW = 3,
+  LONGINT_INVALID = 4
+};
+typedef enum strtol_error strtol_error;
+struct option {
+  char const *name;
+  int has_arg;
+  int *flag;
+  int val;
+};
+typedef long intmax_t;
+typedef long ptrdiff_t;
+typedef unsigned long size_t;
+typedef __builtin_va_list __gnuc_va_list;
+typedef __gnuc_va_list va_list;
+typedef long __off_t;
+typedef long __off64_t;
+struct _IO_FILE;
+struct _IO_FILE;
+struct _IO_FILE;
+typedef struct _IO_FILE FILE;
+typedef void _IO_lock_t;
+struct _IO_marker {
+  struct _IO_marker *_next;
+  struct _IO_FILE *_sbuf;
+  int _pos;
+};
+struct _IO_FILE {
+  int _flags;
+  char *_IO_read_ptr;
+  char *_IO_read_end;
+  char *_IO_read_base;
+  char *_IO_write_base;
+  char *_IO_write_ptr;
+  char *_IO_write_end;
+  char *_IO_buf_base;
+  char *_IO_buf_end;
+  char *_IO_save_base;
+  char *_IO_backup_base;
+  char *_IO_save_end;
+  struct _IO_marker *_markers;
+  struct _IO_FILE *_chain;
+  int _fileno;
+  int _flags2;
+  __off_t _old_offset;
+  unsigned short _cur_column;
+  signed char _vtable_offset;
+  char _shortbuf[1];
+  _IO_lock_t *_lock;
+  __off64_t _offset;
+  void *__pad1;
+  void *__pad2;
+  void *__pad3;
+  void *__pad4;
+  size_t __pad5;
+  int _mode;
+  char _unused2[(15UL * sizeof(int) - 4UL * sizeof(void *)) - sizeof(size_t)];
+};
+typedef int wchar_t;
+union __anonunion___value_23 {
+  unsigned int __wch;
+  char __wchb[4];
+};
+struct __anonstruct___mbstate_t_22 {
+  int __count;
+  union __anonunion___value_23 __value;
+};
+typedef struct __anonstruct___mbstate_t_22 __mbstate_t;
+typedef unsigned int wint_t;
+typedef __mbstate_t mbstate_t;
+struct mbchar {
+  char const *ptr;
+  size_t bytes;
+  _Bool wc_valid;
+  wchar_t wc;
+  char buf[24];
+};
+typedef struct mbchar mbchar_t;
+struct mbiter_multi {
+  char const *limit;
+  _Bool in_shift;
+  mbstate_t state;
+  _Bool next_done;
+  struct mbchar cur;
+};
+typedef struct mbiter_multi mbi_iterator_t;
+typedef long __ssize_t;
+typedef __ssize_t ssize_t;
+enum quoting_style {
+  literal_quoting_style = 0,
+  shell_quoting_style = 1,
+  shell_always_quoting_style = 2,
+  c_quoting_style = 3,
+  c_maybe_quoting_style = 4,
+  escape_quoting_style = 5,
+  locale_quoting_style = 6,
+  clocale_quoting_style = 7,
+  custom_quoting_style = 8
+};
+struct quoting_options;
+struct quoting_options;
+struct quoting_options;
+struct quoting_options {
+  enum quoting_style style;
+  int flags;
+  unsigned int quote_these_too[255UL / (sizeof(int) * 8UL) + 1UL];
+  char const *left_quote;
+  char const *right_quote;
+};
+struct slotvec {
+  size_t size;
+  char *val;
+};
+struct mbuiter_multi {
+  _Bool in_shift;
+  mbstate_t state;
+  _Bool next_done;
+  struct mbchar cur;
+};
+typedef struct mbuiter_multi mbui_iterator_t;
+struct __dirstream;
+struct __dirstream;
+struct __dirstream;
+typedef struct __dirstream DIR;
+typedef unsigned int __mode_t;
+typedef __mode_t mode_t;
+typedef unsigned long uintptr_t;
+typedef unsigned long longword;
+struct preliminary_header {
+  void *next;
+  int magic;
+};
+struct __anonstruct_magic_22 {
+  char room[(((sizeof(struct preliminary_header) + 16UL) - 1UL) / 16UL) * 16UL - sizeof(int)];
+  int word;
+};
+union header {
+  void *next;
+  struct __anonstruct_magic_22 magic;
+};
+typedef int nl_item;
+struct I_ring {
+  int ir_data[4];
+  int ir_default_val;
+  unsigned int ir_front;
+  unsigned int ir_back;
+  _Bool ir_empty;
+};
+typedef struct I_ring I_ring;
+struct hash_tuning {
+  float shrink_threshold;
+  float shrink_factor;
+  float growth_threshold;
+  float growth_factor;
+  _Bool is_n_buckets;
+};
+typedef struct hash_tuning Hash_tuning;
+struct hash_table;
+struct hash_table;
+struct hash_table;
+typedef struct hash_table Hash_table;
+struct hash_entry {
+  void *data;
+  struct hash_entry *next;
+};
+struct hash_table {
+  struct hash_entry *bucket;
+  struct hash_entry const *bucket_limit;
+  size_t n_buckets;
+  size_t n_buckets_used;
+  size_t n_entries;
+  Hash_tuning const *tuning;
+  size_t (*hasher)(void const *, size_t);
+  _Bool (*comparator)(void const *, void const *);
+  void (*data_freer)(void *);
+  struct hash_entry *free_entry_list;
+};
+typedef unsigned long __dev_t;
+typedef unsigned int __uid_t;
+typedef unsigned int __gid_t;
+typedef unsigned long __ino_t;
+typedef unsigned long __nlink_t;
+struct __anonstruct___fsid_t_1 {
+  int __val[2];
+};
+typedef struct __anonstruct___fsid_t_1 __fsid_t;
+typedef long __time_t;
+typedef long __blksize_t;
+typedef long __blkcnt_t;
+typedef unsigned long __fsblkcnt_t;
+typedef unsigned long __fsfilcnt_t;
+typedef long __fsword_t;
+typedef long __syscall_slong_t;
+typedef __ino_t ino_t;
+typedef __dev_t dev_t;
+typedef __nlink_t nlink_t;
+struct timespec {
+  __time_t tv_sec;
+  __syscall_slong_t tv_nsec;
+};
+struct dirent {
+  __ino_t d_ino;
+  __off_t d_off;
+  unsigned short d_reclen;
+  unsigned char d_type;
+  char d_name[256];
+};
+struct stat {
+  __dev_t st_dev;
+  __ino_t st_ino;
+  __nlink_t st_nlink;
+  __mode_t st_mode;
+  __uid_t st_uid;
+  __gid_t st_gid;
+  int __pad0;
+  __dev_t st_rdev;
+  __off_t st_size;
+  __blksize_t st_blksize;
+  __blkcnt_t st_blocks;
+  struct timespec st_atim;
+  struct timespec st_mtim;
+  struct timespec st_ctim;
+  __syscall_slong_t __glibc_reserved[3];
+};
+struct _ftsent;
+struct _ftsent;
+struct _ftsent;
+struct cycle_check_state;
+struct cycle_check_state;
+struct cycle_check_state;
+union __anonunion_fts_cycle_19 {
+  struct hash_table *ht;
+  struct cycle_check_state *state;
+};
+struct __anonstruct_FTS_18 {
+  struct _ftsent *fts_cur;
+  struct _ftsent *fts_child;
+  struct _ftsent **fts_array;
+  dev_t fts_dev;
+  char *fts_path;
+  int fts_rfd;
+  int fts_cwd_fd;
+  size_t fts_pathlen;
+  size_t fts_nitems;
+  int (*fts_compar)(struct _ftsent const **, struct _ftsent const **);
+  int fts_options;
+  struct hash_table *fts_leaf_optimization_works_ht;
+  union __anonunion_fts_cycle_19 fts_cycle;
+  I_ring fts_fd_ring;
+};
+typedef struct __anonstruct_FTS_18 FTS;
+struct _ftsent {
+  struct _ftsent *fts_cycle;
+  struct _ftsent *fts_parent;
+  struct _ftsent *fts_link;
+  DIR *fts_dirp;
+  long fts_number;
+  void *fts_pointer;
+  char *fts_accpath;
+  char *fts_path;
+  int fts_errno;
+  int fts_symfd;
+  size_t fts_pathlen;
+  FTS *fts_fts;
+  ptrdiff_t fts_level;
+  size_t fts_namelen;
+  nlink_t fts_n_dirs_remaining;
+  unsigned short fts_info;
+  unsigned short fts_flags;
+  unsigned short fts_instr;
+  struct stat fts_statp[1];
+  char fts_name[1];
+};
+typedef struct _ftsent FTSENT;
+typedef unsigned long uintmax_t;
+struct dev_ino {
+  ino_t st_ino;
+  dev_t st_dev;
+};
+struct cycle_check_state {
+  struct dev_ino dev_ino;
+  uintmax_t chdir_counter;
+  int magic;
+};
+struct Active_dir {
+  dev_t dev;
+  ino_t ino;
+  FTSENT *fts_ent;
+};
+struct statfs {
+  __fsword_t f_type;
+  __fsword_t f_bsize;
+  __fsblkcnt_t f_blocks;
+  __fsblkcnt_t f_bfree;
+  __fsblkcnt_t f_bavail;
+  __fsfilcnt_t f_files;
+  __fsfilcnt_t f_ffree;
+  __fsid_t f_fsid;
+  __fsword_t f_namelen;
+  __fsword_t f_frsize;
+  __fsword_t f_flags;
+  __fsword_t f_spare[4];
+};
+struct LCO_ent {
+  dev_t st_dev;
+  _Bool opt_ok;
+};
+typedef unsigned long __re_long_size_t;
+typedef unsigned long reg_syntax_t;
+struct re_dfa_t;
+struct re_dfa_t;
+struct re_dfa_t;
+struct re_pattern_buffer {
+  struct re_dfa_t *buffer;
+  __re_long_size_t allocated;
+  __re_long_size_t used;
+  reg_syntax_t syntax;
+  char *fastmap;
+  unsigned char *translate;
+  size_t re_nsub;
+  unsigned int can_be_null : 1;
+  unsigned int regs_allocated : 2;
+  unsigned int fastmap_accurate : 1;
+  unsigned int no_sub : 1;
+  unsigned int not_bol : 1;
+  unsigned int not_eol : 1;
+  unsigned int newline_anchor : 1;
+};
+typedef struct re_pattern_buffer regex_t;
+typedef int regoff_t;
+struct __anonstruct_regmatch_t_29 {
+  regoff_t rm_so;
+  regoff_t rm_eo;
+};
+typedef struct __anonstruct_regmatch_t_29 regmatch_t;
+struct exclude;
+struct exclude;
+struct exclude;
+union __anonunion_v_33 {
+  char const *pattern;
+  regex_t re;
+};
+struct patopts {
+  int options;
+  union __anonunion_v_33 v;
+};
+struct exclude_pattern {
+  struct patopts *exclude;
+  size_t exclude_alloc;
+  size_t exclude_count;
+};
+enum exclude_type {
+  exclude_hash = 0,
+  exclude_pattern = 1
+};
+union __anonunion_v_34 {
+  Hash_table *table;
+  struct exclude_pattern pat;
+};
+struct exclude_segment {
+  struct exclude_segment *next;
+  enum exclude_type type;
+  int options;
+  union __anonunion_v_34 v;
+};
+struct pattern_buffer {
+  struct pattern_buffer *next;
+  char *base;
+};
+struct exclude {
+  struct exclude_segment *head;
+  struct pattern_buffer *patbuf;
+};
+struct real_pcre;
+struct real_pcre;
+struct real_pcre;
+typedef struct real_pcre pcre;
+struct real_pcre_jit_stack;
+struct real_pcre_jit_stack;
+struct real_pcre_jit_stack;
+typedef struct real_pcre_jit_stack pcre_jit_stack;
+struct pcre_extra {
+  unsigned long flags;
+  void *study_data;
+  unsigned long match_limit;
+  void *callout_data;
+  unsigned char const *tables;
+  unsigned long match_limit_recursion;
+  unsigned char **mark;
+  void *executable_jit;
+};
+typedef struct pcre_extra pcre_extra;
+struct kwsmatch {
+  size_t index;
+  size_t offset[1];
+  size_t size[1];
+};
+struct kwset;
+struct kwset;
+struct kwset;
+typedef struct kwset *kwset_t;
+typedef signed char mb_len_map_t;
+struct obstack;
+struct obstack;
+struct obstack;
+struct _obstack_chunk {
+  char *limit;
+  struct _obstack_chunk *prev;
+  char contents[4];
+};
+union __anonunion_temp_56 {
+  long tempint;
+  void *tempptr;
+};
+struct obstack {
+  long chunk_size;
+  struct _obstack_chunk *chunk;
+  char *object_base;
+  char *next_free;
+  char *chunk_limit;
+  union __anonunion_temp_56 temp;
+  int alignment_mask;
+  struct _obstack_chunk *(*chunkfun)(void *, long);
+  void (*freefun)(void *, struct _obstack_chunk *);
+  void *extra_arg;
+  unsigned int use_extra_arg : 1;
+  unsigned int maybe_empty_object : 1;
+  unsigned int alloc_failed : 1;
+};
+struct trie;
+struct trie;
+struct trie;
+struct tree {
+  struct tree *llink;
+  struct tree *rlink;
+  struct trie *trie;
+  unsigned char label;
+  char balance;
+};
+struct trie {
+  size_t accepting;
+  struct tree *links;
+  struct trie *parent;
+  struct trie *next;
+  struct trie *fail;
+  int depth;
+  int shift;
+  int maxshift;
+};
+struct kwset {
+  struct obstack obstack;
+  ptrdiff_t words;
+  struct trie *trie;
+  int mind;
+  int maxd;
+  unsigned char delta[256];
+  struct trie *next[256];
+  char *target;
+  int *shift;
+  char const *trans;
+  char gc1;
+  char gc2;
+  int gc1help;
+};
+enum __anonenum_dirs_58 {
+  L = 0,
+  R = 1
+};
+typedef int __re_idx_t;
+typedef unsigned int __re_size_t;
+struct re_registers {
+  __re_size_t num_regs;
+  regoff_t *start;
+  regoff_t *end;
+};
+struct dfamust {
+  _Bool exact;
+  _Bool begline;
+  _Bool endline;
+  char *must;
+  struct dfamust *next;
+};
+struct dfa;
+struct dfa;
+struct dfa;
+struct patterns {
+  struct re_pattern_buffer regexbuf;
+  struct re_registers regs;
+};
+enum __anonenum_mode_60 {
+  DW_NONE = 0,
+  DW_POSIX = 1,
+  DW_GNU = 2
+};
+typedef unsigned long wctype_t;
+typedef unsigned int charclass_word;
+typedef charclass_word charclass[8];
+typedef ptrdiff_t token;
+struct __anonstruct_position_35 {
+  size_t index;
+  unsigned int constraint;
+};
+typedef struct __anonstruct_position_35 position;
+struct __anonstruct_position_set_36 {
+  position *elems;
+  size_t nelem;
+  size_t alloc;
+};
+typedef struct __anonstruct_position_set_36 position_set;
+struct __anonstruct_leaf_set_37 {
+  size_t *elems;
+  size_t nelem;
+};
+typedef struct __anonstruct_leaf_set_37 leaf_set;
+struct __anonstruct_dfa_state_38 {
+  size_t hash;
+  position_set elems;
+  unsigned char context;
+  _Bool has_backref;
+  _Bool has_mbcset;
+  unsigned short constraint;
+  token first_end;
+  position_set mbps;
+};
+typedef struct __anonstruct_dfa_state_38 dfa_state;
+typedef ptrdiff_t state_num;
+struct __anonstruct_ranges_39 {
+  wchar_t beg;
+  wchar_t end;
+};
+struct mb_char_classes {
+  ptrdiff_t cset;
+  _Bool invert;
+  wchar_t *chars;
+  size_t nchars;
+  wctype_t *ch_classes;
+  size_t nch_classes;
+  struct __anonstruct_ranges_39 *ranges;
+  size_t nranges;
+  char **equivs;
+  size_t nequivs;
+  char **coll_elems;
+  size_t ncoll_elems;
+};
+struct dfa {
+  charclass *charclasses;
+  size_t cindex;
+  size_t calloc;
+  token *tokens;
+  size_t tindex;
+  size_t talloc;
+  size_t depth;
+  size_t nleaves;
+  size_t nregexps;
+  _Bool fast;
+  _Bool multibyte;
+  token utf8_anychar_classes[5];
+  mbstate_t mbs;
+  int *multibyte_prop;
+  wint_t mbrtowc_cache[256];
+  struct mb_char_classes *mbcsets;
+  size_t nmbcsets;
+  size_t mbcsets_alloc;
+  struct dfa *superset;
+  dfa_state *states;
+  state_num sindex;
+  size_t salloc;
+  position_set *follows;
+  _Bool searchflag;
+  state_num tralloc;
+  int trcount;
+  state_num **trans;
+  state_num **fails;
+  int *success;
+  state_num *newlines;
+  struct dfamust *musts;
+  position_set mb_follows;
+  int *mb_match_lens;
+};
+typedef int predicate(int);
+struct dfa_ctype {
+  char const *name;
+  predicate *func;
+  _Bool single_byte_only;
+};
+struct __anonstruct_stkalloc_43 {
+  _Bool nullable;
+  size_t nfirstpos;
+  size_t nlastpos;
+};
+enum __anonenum_status_transit_state_44 {
+  TRANSIT_STATE_IN_PROGRESS = 0,
+  TRANSIT_STATE_DONE = 1,
+  TRANSIT_STATE_END_BUFFER = 2
+};
+typedef enum __anonenum_status_transit_state_44 status_transit_state;
+struct must;
+struct must;
+struct must;
+typedef struct must must;
+struct must {
+  char **in;
+  char *left;
+  char *right;
+  char *is;
+  _Bool begline;
+  _Bool endline;
+  must *prev;
+};
+typedef __off_t off_t;
+struct color_cap {
+  char const *name;
+  char const **var;
+  void (*fct)(void);
+};
+enum directories_type {
+  READ_DIRECTORIES = 2,
+  RECURSE_DIRECTORIES = 3,
+  SKIP_DIRECTORIES = 4
+};
+enum __anonenum_devices_71 {
+  READ_COMMAND_LINE_DEVICES = 0,
+  READ_DEVICES = 1,
+  SKIP_DEVICES = 2
+};
+enum __anonenum_binary_files_72 {
+  BINARY_BINARY_FILES = 0,
+  TEXT_BINARY_FILES = 1,
+  WITHOUT_MATCH_BINARY_FILES = 2
+};
+enum __anonenum_File_type_73 {
+  UNKNOWN = 0,
+  DOS_BINARY = 1,
+  DOS_TEXT = 2,
+  UNIX_TEXT = 3
+};
+typedef enum __anonenum_File_type_73 File_type;
+struct dos_map {
+  off_t pos;
+  off_t add;
+};
+struct matcher {
+  char const name[16];
+  void (*compile)(char const *, size_t);
+  size_t (*execute)(char const *, size_t, size_t *, char const *);
+};
+extern __attribute__((__nothrow__)) unsigned short const **__ctype_b_loc(void) __attribute__((__const__));
+extern __attribute__((__nothrow__, __noreturn__)) void __assert_fail(char const *__assertion,
+                                                                     char const *__file,
+                                                                     unsigned int __line,
+                                                                     char const *__function);
+extern __attribute__((__nothrow__)) int *__errno_location(void) __attribute__((__const__));
+extern __attribute__((__nothrow__)) char *(__attribute__((__nonnull__(1))) strchr)(char const *__s,
+                                                                                   int __c) __attribute__((__pure__));
+extern __attribute__((__nothrow__, __noreturn__)) void abort(void);
+extern void error(int __status, int __errnum, char const *__format, ...);
+int volatile exit_failure;
+extern __attribute__((__nothrow__)) char *gettext(char const *__msgid) __attribute__((__format_arg__(1)));
+extern __attribute__((__nothrow__)) intmax_t strtoimax(char const *__restrict __nptr,
+                                                       char **__restrict __endptr,
+                                                       int __base);
+strtol_error xstrtoimax(char const *s, char **ptr, int strtol_base, intmax_t *val,
+                        char const *valid_suffixes);
+static strtol_error bkm_scale___1(intmax_t *x, int scale_factor) {
+  {
+    if (*x < (-0x7FFFFFFFFFFFFFFF - 1) / (long)scale_factor) {
+      *x = (-0x7FFFFFFFFFFFFFFF - 1);
+      return ((strtol_error)1);
+    }
+    if (9223372036854775807L / (long)scale_factor < *x) {
+      *x = 9223372036854775807L;
+      return ((strtol_error)1);
+    }
+    *x *= (intmax_t)scale_factor;
+    return ((strtol_error)0);
+  }
+}
+static strtol_error bkm_scale_by_power___1(intmax_t *x, int base, int power) {
+  strtol_error err;
+  strtol_error tmp;
+  int tmp___0;
+  {
+    err = (strtol_error)0;
+    {
+      while (1) {
+      while_continue: /* CIL Label */;
+        tmp___0 = power;
+        power--;
+        if (!tmp___0) {
+          goto while_break;
+        }
+        {
+          tmp = bkm_scale___1(x, base);
+          err = (strtol_error)((unsigned int)err | (unsigned int)tmp);
+        }
+      }
+    while_break___0: /* CIL Label */;
+    }
+  while_break:;
+    return (err);
+  }
+}
+strtol_error xstrtoimax(char const *s, char **ptr, int strtol_base, intmax_t *val,
+                        char const *valid_suffixes) {
+  char *t_ptr;
+  char **p;
+  intmax_t tmp;
+  strtol_error err;
+  int *tmp___1;
+  char *tmp___2;
+  int *tmp___3;
+  int *tmp___4;
+  int base;
+  int suffixes;
+  strtol_error overflow;
+  char *tmp___5;
+  char *tmp___6;
+  {
+    err = (strtol_error)0;
+    if (0 <= strtol_base) {
+      if (!(strtol_base <= 36)) {
+        {
+          __assert_fail("0 <= strtol_base && strtol_base <= 36", "/home/khheo/project/benchmark/grep-2.19/lib/xstrtol.c",
+                        96U, "xstrtoimax");
+        }
+      }
+    } else {
+      {
+        __assert_fail("0 <= strtol_base && strtol_base <= 36", "/home/khheo/project/benchmark/grep-2.19/lib/xstrtol.c",
+                      96U, "xstrtoimax");
+      }
+    }
+    if (ptr) {
+      p = ptr;
+    } else {
+      p = &t_ptr;
+    }
+    {
+      tmp___1 = __errno_location();
+      *tmp___1 = 0;
+      tmp = strtoimax((char const * /* __restrict  */)s, (char ** /* __restrict  */)p,
+                      strtol_base);
+    }
+    if ((unsigned long)*p == (unsigned long)s) {
+      if (valid_suffixes) {
+        if (*(*p)) {
+          {
+            tmp___2 = strchr(valid_suffixes, (int)*(*p));
+          }
+          if (tmp___2) {
+            tmp = (intmax_t)1;
+          } else {
+            return ((strtol_error)4);
+          }
+        } else {
+          return ((strtol_error)4);
+        }
+      } else {
+        return ((strtol_error)4);
+      }
+    } else {
+      {
+        tmp___4 = __errno_location();
+      }
+      if (*tmp___4 != 0) {
+        {
+          tmp___3 = __errno_location();
+        }
+        if (*tmp___3 != 34) {
+          return ((strtol_error)4);
+        }
+        err = (strtol_error)1;
+      }
+    }
+    if (!valid_suffixes) {
+      *val = tmp;
+      return (err);
+    }
+    if ((int)*(*p) != 0) {
+      {
+        base = 1024;
+        suffixes = 1;
+        tmp___5 = strchr(valid_suffixes, (int)*(*p));
+      }
+      if (!tmp___5) {
+        *val = tmp;
+        return ((strtol_error)((unsigned int)err | 2U));
+      }
+      {
+        tmp___6 = strchr(valid_suffixes, '0');
+      }
+      if (tmp___6) {
+        if ((int)*(*(p + 0) + 1) == 105) {
+          goto case_105;
+        }
+        if ((int)*(*(p + 0) + 1) == 66) {
+          goto case_66;
+        }
+        if ((int)*(*(p + 0) + 1) == 68) {
+          goto case_66;
+        }
+        goto switch_break;
+      case_105:
+        if ((int)*(*(p + 0) + 2) == 66) {
+          suffixes += 2;
+        }
+        goto switch_break;
+      case_66:
+        base = 1000;
+        suffixes++;
+        goto switch_break;
+      switch_break:;
+      }
+      if ((int)*(*p) == 98) {
+        goto case_98;
+      }
+      if ((int)*(*p) == 66) {
+        goto case_66___0;
+      }
+      if ((int)*(*p) == 99) {
+        goto case_99;
+      }
+      if ((int)*(*p) == 69) {
+        goto case_69;
+      }
+      if ((int)*(*p) == 71) {
+        goto case_71;
+      }
+      if ((int)*(*p) == 103) {
+        goto case_71;
+      }
+      if ((int)*(*p) == 107) {
+        goto case_107;
+      }
+      if ((int)*(*p) == 75) {
+        goto case_107;
+      }
+      if ((int)*(*p) == 77) {
+        goto case_77;
+      }
+      if ((int)*(*p) == 109) {
+        goto case_77;
+      }
+      if ((int)*(*p) == 80) {
+        goto case_80;
+      }
+      if ((int)*(*p) == 84) {
+        goto case_84;
+      }
+      if ((int)*(*p) == 116) {
+        goto case_84;
+      }
+      if ((int)*(*p) == 119) {
+        goto case_119;
+      }
+      if ((int)*(*p) == 89) {
+        goto case_89;
+      }
+      if ((int)*(*p) == 90) {
+        goto case_90;
+      }
+      goto switch_default;
+    case_98 : {
+      overflow = bkm_scale___1(&tmp, 512);
+    }
+      goto switch_break___0;
+    case_66___0 : {
+      overflow = bkm_scale___1(&tmp, 1024);
+    }
+      goto switch_break___0;
+    case_99:
+      overflow = (strtol_error)0;
+      goto switch_break___0;
+    case_69 : {
+      overflow = bkm_scale_by_power___1(&tmp, base, 6);
+    }
+      goto switch_break___0;
+    case_71 : {
+      overflow = bkm_scale_by_power___1(&tmp, base, 3);
+    }
+      goto switch_break___0;
+    case_107 : {
+      overflow = bkm_scale_by_power___1(&tmp, base, 1);
+    }
+      goto switch_break___0;
+    case_77 : {
+      overflow = bkm_scale_by_power___1(&tmp, base, 2);
+    }
+      goto switch_break___0;
+    case_80 : {
+      overflow = bkm_scale_by_power___1(&tmp, base, 5);
+    }
+      goto switch_break___0;
+    case_84 : {
+      overflow = bkm_scale_by_power___1(&tmp, base, 4);
+    }
+      goto switch_break___0;
+    case_119 : {
+      overflow = bkm_scale___1(&tmp, 2);
+    }
+      goto switch_break___0;
+    case_89 : {
+      overflow = bkm_scale_by_power___1(&tmp, base, 8);
+    }
+      goto switch_break___0;
+    case_90 : {
+      overflow = bkm_scale_by_power___1(&tmp, base, 7);
+    }
+      goto switch_break___0;
+    switch_default:
+      *val = tmp;
+      return ((strtol_error)((unsigned int)err | 2U));
+    switch_break___0:
+      err = (strtol_error)((unsigned int)err | (unsigned int)overflow);
+      *p += suffixes;
+      if (*(*p)) {
+        err = (strtol_error)((unsigned int)err | 2U);
+      }
+    }
+    *val = tmp;
+    return (err);
+  }
+}
+__attribute__((__noreturn__)) void xalloc_die(void);
+void *xmalloc(size_t n) __attribute__((__malloc__, __alloc_size__(1)));
+void *xrealloc(void *p, size_t n) __attribute__((__alloc_size__(2)));
+void *xnmalloc(size_t n, size_t s) __attribute__((__malloc__, __alloc_size__(1, 2)));
+void *xnmalloc(size_t n, size_t s) __attribute__((__malloc__, __alloc_size__(1, 2)));
+void *xnmalloc(size_t n, size_t s) {
+  int tmp;
+  void *tmp___0;
+  {
+    if (sizeof(ptrdiff_t) <= sizeof(size_t)) {
+      tmp = -1;
+    } else {
+      tmp = -2;
+    }
+    if ((size_t)tmp / s < n) {
+      {
+        xalloc_die();
+      }
+    }
+    {
+      tmp___0 = xmalloc(n * s);
+    }
+    return (tmp___0);
+  }
+}
+void *xnrealloc(void *p, size_t n, size_t s) __attribute__((__alloc_size__(2, 3)));
+void *xnrealloc(void *p, size_t n, size_t s) __attribute__((__alloc_size__(2, 3)));
+void *xnrealloc(void *p, size_t n, size_t s) {
+  int tmp;
+  void *tmp___0;
+  {
+    if (sizeof(ptrdiff_t) <= sizeof(size_t)) {
+      tmp = -1;
+    } else {
+      tmp = -2;
+    }
+    if ((size_t)tmp / s < n) {
+      {
+        xalloc_die();
+      }
+    }
+    {
+      tmp___0 = xrealloc(p, n * s);
+    }
+    return (tmp___0);
+  }
+}
+void *x2nrealloc(void *p, size_t *pn, size_t s) {
+  size_t n;
+  void *tmp;
+  {
+    n = *pn;
+    if (!p) {
+      if (!n) {
+        n = 128UL / s;
+        n += (size_t)(!n);
+      }
+    } else {
+      if (0xaaaaaaaaaaaaaaaaUL / s <= n) {
+        {
+          xalloc_die();
+        }
+      }
+      n += n / 2UL + 1UL;
+    }
+    {
+      *pn = n;
+      tmp = xrealloc(p, n * s);
+    }
+    return (tmp);
+  }
+}
+char *xcharalloc(size_t n) __attribute__((__malloc__, __alloc_size__(1)));
+char *xcharalloc(size_t n) __attribute__((__malloc__, __alloc_size__(1)));
+char *xcharalloc(size_t n) {
+  void *tmp;
+  void *tmp___0;
+  void *tmp___1;
+  {
+    if (sizeof(char) == 1UL) {
+      {
+        tmp = xmalloc(n);
+        tmp___1 = tmp;
+      }
+    } else {
+      {
+        tmp___0 = xnmalloc(n, sizeof(char));
+        tmp___1 = tmp___0;
+      }
+    }
+    return ((char *)tmp___1);
+  }
+}
+void *xzalloc(size_t s) __attribute__((__malloc__, __alloc_size__(1)));
+void *xcalloc(size_t n, size_t s) __attribute__((__malloc__, __alloc_size__(1, 2)));
+void *x2realloc(void *p, size_t *pn);
+void *xmemdup(void const *p, size_t s) __attribute__((__malloc__, __alloc_size__(2)));
+char *xstrdup(char const *string) __attribute__((__malloc__));
+extern __attribute__((__nothrow__)) void *malloc(size_t __size) __attribute__((__malloc__));
+extern __attribute__((__nothrow__)) void *calloc(size_t __nmemb, size_t __size) __attribute__((__malloc__));
+extern __attribute__((__nothrow__)) void *(__attribute__((__warn_unused_result__)) realloc)(void *__ptr,
+                                                                                            size_t __size);
+extern __attribute__((__nothrow__)) void free(void *__ptr);
+extern __attribute__((__nothrow__)) void *(__attribute__((__nonnull__(1, 2))) memcpy)(void *__restrict __dest,
+                                                                                      void const *__restrict __src,
+                                                                                      size_t __n);
+extern __attribute__((__nothrow__)) void *(__attribute__((__nonnull__(1))) memset)(void *__s,
+                                                                                   int __c,
+                                                                                   size_t __n);
+extern __attribute__((__nothrow__)) size_t(__attribute__((__nonnull__(1))) strlen)(char const *__s) __attribute__((__pure__));
+void *xmalloc(size_t n) __attribute__((__malloc__, __alloc_size__(1)));
+void *xmalloc(size_t n) {
+  void *p;
+  void *tmp;
+  {
+    {
+      tmp = malloc(n);
+      p = tmp;
+    }
+    if (!p) {
+      if (n != 0UL) {
+        {
+          xalloc_die();
+        }
+      }
+    }
+    return (p);
+  }
+}
+void *xrealloc(void *p, size_t n) __attribute__((__alloc_size__(2)));
+void *xrealloc(void *p, size_t n) {
+  {
+    if (!n) {
+      if (p) {
+        {
+          free(p);
+        }
+        return ((void *)0);
+      }
+    }
+    {
+      p = realloc(p, n);
+    }
+    if (!p) {
+      if (n) {
+        {
+          xalloc_die();
+        }
+      }
+    }
+    return (p);
+  }
+}
+void *x2realloc(void *p, size_t *pn) {
+  void *tmp;
+  {
+    {
+      tmp = x2nrealloc(p, pn, (size_t)1);
+    }
+    return (tmp);
+  }
+}
+void *xzalloc(size_t s) __attribute__((__malloc__, __alloc_size__(1)));
+void *xzalloc(size_t s) {
+  void *tmp;
+  void *tmp___0;
+  {
+    {
+      tmp = xmalloc(s);
+      tmp___0 = memset(tmp, 0, s);
+    }
+    return (tmp___0);
+  }
+}
+void *xcalloc(size_t n, size_t s) __attribute__((__malloc__, __alloc_size__(1, 2)));
+void *xcalloc(size_t n, size_t s) {
+  void *p;
+  {
+    {
+      p = calloc(n, s);
+    }
+    if (!p) {
+      {
+        xalloc_die();
+      }
+    }
+    return (p);
+  }
+}
+void *xmemdup(void const *p, size_t s) __attribute__((__malloc__, __alloc_size__(2)));
+void *xmemdup(void const *p, size_t s) {
+  void *tmp;
+  void *tmp___0;
+  {
+    {
+      tmp = xmalloc(s);
+      tmp___0 = memcpy((void * /* __restrict  */)tmp, (void const * /* __restrict  */)p,
+                       s);
+    }
+    return (tmp___0);
+  }
+}
+char *xstrdup(char const *string) __attribute__((__malloc__));
+char *xstrdup(char const *string) {
+  size_t tmp;
+  char *tmp___0;
+  {
+    {
+      tmp = strlen(string);
+      tmp___0 = (char *)xmemdup((void const *)string, tmp + 1UL);
+    }
+    return (tmp___0);
+  }
+}
+__attribute__((__noreturn__)) void xalloc_die(void);
+void xalloc_die(void) {
+  char *tmp;
+  char *__cil_tmp3;
+  {
+    {
+      tmp = gettext("memory exhausted");
+      error((int)exit_failure, 0, "%s", tmp);
+      abort();
+    }
+  }
+}
+extern __attribute__((__nothrow__)) int(__attribute__((__nonnull__(1, 2))) strcmp)(char const *__s1,
+                                                                                   char const *__s2) __attribute__((__pure__));
+extern struct _IO_FILE *stdout;
+extern int fprintf(FILE *__restrict __stream, char const *__restrict __format, ...);
+extern int printf(char const *__restrict __format, ...);
+extern int fputs_unlocked(char const *__restrict __s, FILE *__restrict __stream);
+char const version_etc_copyright[47];
+void version_etc_arn(FILE *stream, char const *command_name, char const *package,
+                     char const *version, char const *const *authors, size_t n_authors);
+void version_etc_va(FILE *stream, char const *command_name, char const *package,
+                    char const *version, va_list authors);
+void version_etc(FILE *stream, char const *command_name, char const *package,
+                 char const *version, ...) __attribute__((__sentinel__));
+void version_etc_arn(FILE *stream, char const *command_name, char const *package,
+                     char const *version, char const *const *authors, size_t n_authors) {
+  char *tmp;
+  char *tmp___0;
+  char *tmp___1;
+  char *tmp___2;
+  char *tmp___3;
+  char *tmp___4;
+  char *tmp___5;
+  char *tmp___6;
+  char *tmp___7;
+  char *tmp___8;
+  char *tmp___9;
+  char *tmp___10;
+  char *__cil_tmp31;
+  char *__cil_tmp32;
+  char *__cil_tmp33;
+  char *__cil_tmp34;
+  char *__cil_tmp35;
+  char *__cil_tmp36;
+  char *__cil_tmp37;
+  char *__cil_tmp38;
+  char *__cil_tmp39;
+  char *__cil_tmp40;
+  char *__cil_tmp41;
+  char *__cil_tmp42;
+  {
+    if (command_name) {
+      {
+        fprintf((FILE * /* __restrict  */) stream, (char const * /* __restrict  */) "%s (%s) %s\n",
+                command_name, package, version);
+      }
+    } else {
+      {
+        fprintf((FILE * /* __restrict  */) stream, (char const * /* __restrict  */) "%s %s\n",
+                package, version);
+      }
+    }
+    {
+      tmp = gettext("(C)");
+      fprintf((FILE * /* __restrict  */) stream, (char const * /* __restrict  */)(version_etc_copyright),
+              tmp, 2014);
+      tmp___0 = gettext("\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n\n");
+      fputs_unlocked((char const * /* __restrict  */)((char const *)tmp___0), (FILE * /* __restrict  */) stream);
+    }
+    if (n_authors == 0UL) {
+      goto case_0;
+    }
+    if (n_authors == 1UL) {
+      goto case_1;
+    }
+    if (n_authors == 2UL) {
+      goto case_2;
+    }
+    if (n_authors == 3UL) {
+      goto case_3;
+    }
+    if (n_authors == 4UL) {
+      goto case_4;
+    }
+    if (n_authors == 5UL) {
+      goto case_5;
+    }
+    if (n_authors == 6UL) {
+      goto case_6;
+    }
+    if (n_authors == 7UL) {
+      goto case_7;
+    }
+    if (n_authors == 8UL) {
+      goto case_8;
+    }
+    if (n_authors == 9UL) {
+      goto case_9;
+    }
+    goto switch_default;
+  case_0 : {
+    abort();
+  }
+  case_1 : {
+    tmp___1 = gettext("Written by %s.\n");
+    fprintf((FILE * /* __restrict  */) stream, (char const * /* __restrict  */)((char const *)tmp___1),
+            *(authors + 0));
+  }
+    goto switch_break;
+  case_2 : {
+    tmp___2 = gettext("Written by %s and %s.\n");
+    fprintf((FILE * /* __restrict  */) stream, (char const * /* __restrict  */)((char const *)tmp___2),
+            *(authors + 0), *(authors + 1));
+  }
+    goto switch_break;
+  case_3 : {
+    tmp___3 = gettext("Written by %s, %s, and %s.\n");
+    fprintf((FILE * /* __restrict  */) stream, (char const * /* __restrict  */)((char const *)tmp___3),
+            *(authors + 0), *(authors + 1), *(authors + 2));
+  }
+    goto switch_break;
+  case_4 : {
+    tmp___4 = gettext("Written by %s, %s, %s,\nand %s.\n");
+    fprintf((FILE * /* __restrict  */) stream, (char const * /* __restrict  */)((char const *)tmp___4),
+            *(authors + 0), *(authors + 1), *(authors + 2), *(authors + 3));
+  }
+    goto switch_break;
+  case_5 : {
+    tmp___5 = gettext("Written by %s, %s, %s,\n%s, and %s.\n");
+    fprintf((FILE * /* __restrict  */) stream, (char const * /* __restrict  */)((char const *)tmp___5),
+            *(authors + 0), *(authors + 1), *(authors + 2), *(authors + 3), *(authors + 4));
+  }
+    goto switch_break;
+  case_6 : {
+    tmp___6 = gettext("Written by %s, %s, %s,\n%s, %s, and %s.\n");
+    fprintf((FILE * /* __restrict  */) stream, (char const * /* __restrict  */)((char const *)tmp___6),
+            *(authors + 0), *(authors + 1), *(authors + 2), *(authors + 3), *(authors + 4),
+            *(authors + 5));
+  }
+    goto switch_break;
+  case_7 : {
+    tmp___7 = gettext("Written by %s, %s, %s,\n%s, %s, %s, and %s.\n");
+    fprintf((FILE * /* __restrict  */) stream, (char const * /* __restrict  */)((char const *)tmp___7),
+            *(authors + 0), *(authors + 1), *(authors + 2), *(authors + 3), *(authors + 4),
+            *(authors + 5), *(authors + 6));
+  }
+    goto switch_break;
+  case_8 : {
+    tmp___8 = gettext("Written by %s, %s, %s,\n%s, %s, %s, %s,\nand %s.\n");
+    fprintf((FILE * /* __restrict  */) stream, (char const * /* __restrict  */)((char const *)tmp___8),
+            *(authors + 0), *(authors + 1), *(authors + 2), *(authors + 3), *(authors + 4),
+            *(authors + 5), *(authors + 6), *(authors + 7));
+  }
+    goto switch_break;
+  case_9 : {
+    tmp___9 = gettext("Written by %s, %s, %s,\n%s, %s, %s, %s,\n%s, and %s.\n");
+    fprintf((FILE * /* __restrict  */) stream, (char const * /* __restrict  */)((char const *)tmp___9),
+            *(authors + 0), *(authors + 1), *(authors + 2), *(authors + 3), *(authors + 4),
+            *(authors + 5), *(authors + 6), *(authors + 7), *(authors + 8));
+  }
+    goto switch_break;
+  switch_default : {
+    tmp___10 = gettext("Written by %s, %s, %s,\n%s, %s, %s, %s,\n%s, %s, and others.\n");
+    fprintf((FILE * /* __restrict  */) stream, (char const * /* __restrict  */)((char const *)tmp___10),
+            *(authors + 0), *(authors + 1), *(authors + 2), *(authors + 3), *(authors + 4),
+            *(authors + 5), *(authors + 6), *(authors + 7), *(authors + 8));
+  }
+    goto switch_break;
+  switch_break:;
+    return;
+  }
+}
+void version_etc_va(FILE *stream, char const *command_name, char const *package,
+                    char const *version, va_list authors) {
+  size_t n_authors;
+  char const *authtab[10];
+  char const *tmp;
+  void *__cil_tmp10;
+  {
+    n_authors = (size_t)0;
+    {
+      while (1) {
+      while_continue: /* CIL Label */;
+        if (n_authors < 10UL) {
+          {
+            tmp = __builtin_va_arg(authors, char const *);
+            authtab[n_authors] = tmp;
+          }
+          if (!((unsigned long)tmp != (unsigned long)((void *)0))) {
+            goto while_break;
+          }
+        } else {
+          goto while_break;
+        }
+        n_authors++;
+      }
+    while_break___0: /* CIL Label */;
+    }
+  while_break : {
+    version_etc_arn(stream, command_name, package, version, (char const *const *)(authtab),
+                    n_authors);
+  }
+    return;
+  }
+}
+void version_etc(FILE *stream, char const *command_name, char const *package,
+                 char const *version, ...) __attribute__((__sentinel__));
+void version_etc(FILE *stream, char const *command_name, char const *package,
+                 char const *version, ...) {
+  va_list authors;
+  {
+    {
+      __builtin_va_start(authors, version);
+      version_etc_va(stream, command_name, package, version, authors);
+      __builtin_va_end(authors);
+    }
+    return;
+  }
+}
+char const version_etc_copyright[47] =
+    {(char const)'C', (char const)'o', (char const)'p', (char const)'y',
+     (char const)'r', (char const)'i', (char const)'g', (char const)'h',
+     (char const)'t', (char const)' ', (char const)'%', (char const)'s',
+     (char const)' ', (char const)'%', (char const)'d', (char const)' ',
+     (char const)'F', (char const)'r', (char const)'e', (char const)'e',
+     (char const)' ', (char const)'S', (char const)'o', (char const)'f',
+     (char const)'t', (char const)'w', (char const)'a', (char const)'r',
+     (char const)'e', (char const)' ', (char const)'F', (char const)'o',
+     (char const)'u', (char const)'n', (char const)'d', (char const)'a',
+     (char const)'t', (char const)'i', (char const)'o', (char const)'n',
+     (char const)',', (char const)' ', (char const)'I', (char const)'n',
+     (char const)'c', (char const)'.', (char const)'\000'};
+char *trim2(char const *s, int how);
+extern __attribute__((__nothrow__)) void *(__attribute__((__nonnull__(1, 2))) memmove)(void *__dest,
+                                                                                       void const *__src,
+                                                                                       size_t __n);
+extern __attribute__((__nothrow__)) char *(__attribute__((__nonnull__(1))) strdup)(char const *__s) __attribute__((__malloc__));
+extern __attribute__((__nothrow__)) size_t __ctype_get_mb_cur_max(void);
+extern __attribute__((__nothrow__)) int mbsinit(mbstate_t const *__ps) __attribute__((__pure__));
+extern __attribute__((__nothrow__)) size_t mbrtowc(wchar_t *__restrict __pwc,
+                                                   char const *__restrict __s,
+                                                   size_t __n, mbstate_t *__restrict __p);
+extern __attribute__((__nothrow__)) int iswspace(wint_t __wc);
+void mb_copy(mbchar_t *new_mbc, mbchar_t const *old_mbc) {
+  _Bool tmp;
+  {
+    if ((unsigned long)old_mbc->ptr == (unsigned long)(&old_mbc->buf[0])) {
+      {
+        memcpy((void * /* __restrict  */)((void *)(&new_mbc->buf[0])), (void const * /* __restrict  */)((void const *)(&old_mbc->buf[0])),
+               (size_t)old_mbc->bytes);
+        new_mbc->ptr = (char const *)(&new_mbc->buf[0]);
+      }
+    } else {
+      new_mbc->ptr = (char const *)old_mbc->ptr;
+    }
+    new_mbc->bytes = (size_t)old_mbc->bytes;
+    tmp = (_Bool)old_mbc->wc_valid;
+    new_mbc->wc_valid = tmp;
+    if (tmp) {
+      new_mbc->wc = (wchar_t)old_mbc->wc;
+    }
+    return;
+  }
+}
+unsigned int const is_basic_table[8];
+_Bool is_basic(char c) {
+  {
+    return ((_Bool)((is_basic_table[(int)((unsigned char)c) >> 5] >> ((int)((unsigned char)c) & 31)) & 1U));
+  }
+}
+void mbiter_multi_next(struct mbiter_multi *iter) {
+  int tmp;
+  int tmp___0;
+  _Bool tmp___1;
+  {
+    if (iter->next_done) {
+      return;
+    }
+    if (iter->in_shift) {
+      goto with_shift;
+    }
+    {
+      tmp___1 = is_basic((char)*(iter->cur.ptr));
+    }
+    if (tmp___1) {
+      iter->cur.bytes = (size_t)1;
+      iter->cur.wc = (wchar_t) * (iter->cur.ptr);
+      iter->cur.wc_valid = (_Bool)1;
+    } else {
+      {
+        tmp = mbsinit((mbstate_t const *)(&iter->state));
+      }
+      if (!tmp) {
+        {
+          __assert_fail("mbsinit (&iter->state)", "/home/khheo/project/benchmark/grep-2.19/lib/mbiter.h",
+                        142U, "mbiter_multi_next");
+        }
+      }
+      iter->in_shift = (_Bool)1;
+    with_shift : {
+      iter->cur.bytes = mbrtowc((wchar_t * /* __restrict  */)(&iter->cur.wc), (char const * /* __restrict  */)iter->cur.ptr,
+                                (size_t)(iter->limit - iter->cur.ptr), (mbstate_t * /* __restrict  */)(&iter->state));
+    }
+      if (iter->cur.bytes == 0xffffffffffffffffUL) {
+        iter->cur.bytes = (size_t)1;
+        iter->cur.wc_valid = (_Bool)0;
+      } else {
+        if (iter->cur.bytes == 0xfffffffffffffffeUL) {
+          iter->cur.bytes = (size_t)(iter->limit - iter->cur.ptr);
+          iter->cur.wc_valid = (_Bool)0;
+        } else {
+          if (iter->cur.bytes == 0UL) {
+            iter->cur.bytes = (size_t)1;
+            if (!((int const) * (iter->cur.ptr) == 0)) {
+              {
+                __assert_fail("*iter->cur.ptr == \'\\0\'", "/home/khheo/project/benchmark/grep-2.19/lib/mbiter.h",
+                              169U, "mbiter_multi_next");
+              }
+            }
+            if (!(iter->cur.wc == 0)) {
+              {
+                __assert_fail("iter->cur.wc == 0", "/home/khheo/project/benchmark/grep-2.19/lib/mbiter.h",
+                              170U, "mbiter_multi_next");
+              }
+            }
+          }
+          {
+            iter->cur.wc_valid = (_Bool)1;
+            tmp___0 = mbsinit((mbstate_t const *)(&iter->state));
+          }
+          if (tmp___0) {
+            iter->in_shift = (_Bool)0;
+          }
+        }
+      }
+    }
+    iter->next_done = (_Bool)1;
+    return;
+  }
+}
+char *trim2(char const *s, int how) {
+  char *d;
+  mbi_iterator_t i;
+  size_t tmp;
+  int tmp___0;
+  size_t tmp___1;
+  unsigned int state;
+  char *r;
+  size_t tmp___2;
+  int tmp___3;
+  int tmp___4;
+  int tmp___5;
+  int tmp___6;
+  int tmp___7;
+  char *p;
+  unsigned short const **tmp___8;
+  size_t tmp___9;
+  size_t tmp___10;
+  unsigned short const **tmp___11;
+  size_t tmp___12;
+  void *__cil_tmp24;
+  void *__cil_tmp25;
+  {
+    {
+      d = strdup(s);
+    }
+    if (!d) {
+      {
+        xalloc_die();
+      }
+    }
+    {
+      tmp___12 = __ctype_get_mb_cur_max();
+    }
+    if (tmp___12 > 1UL) {
+      if (how != 0) {
+        {
+          i.cur.ptr = (char const *)d;
+          tmp = strlen((char const *)d);
+          i.limit = i.cur.ptr + tmp;
+          i.in_shift = (_Bool)0;
+          memset((void *)(&i.state), '\000', sizeof(mbstate_t));
+          i.next_done = (_Bool)0;
+        }
+        {
+          while (1) {
+          while_continue: /* CIL Label */;
+            if ((unsigned long)i.cur.ptr < (unsigned long)i.limit) {
+              {
+                mbiter_multi_next(&i);
+              }
+              if (i.cur.wc_valid) {
+                {
+                  tmp___0 = iswspace((wint_t)i.cur.wc);
+                }
+                if (!tmp___0) {
+                  goto while_break;
+                }
+              } else {
+                goto while_break;
+              }
+            } else {
+              goto while_break;
+            }
+            i.cur.ptr += i.cur.bytes;
+            i.next_done = (_Bool)0;
+          }
+        while_break___3: /* CIL Label */;
+        }
+      while_break : {
+        tmp___1 = strlen(i.cur.ptr);
+        memmove((void *)d, (void const *)i.cur.ptr, tmp___1 + 1UL);
+      }
+      }
+      if (how != 1) {
+        {
+          state = 0U;
+          i.cur.ptr = (char const *)d;
+          tmp___2 = strlen((char const *)d);
+          i.limit = i.cur.ptr + tmp___2;
+          i.in_shift = (_Bool)0;
+          memset((void *)(&i.state), '\000', sizeof(mbstate_t));
+          i.next_done = (_Bool)0;
+        }
+        {
+          while (1) {
+          while_continue___0: /* CIL Label */;
+            if ((unsigned long)i.cur.ptr < (unsigned long)i.limit) {
+              {
+                mbiter_multi_next(&i);
+              }
+            } else {
+              goto while_break___0;
+            }
+            if (state == 0U) {
+              if (i.cur.wc_valid) {
+                {
+                  tmp___3 = iswspace((wint_t)i.cur.wc);
+                }
+                if (tmp___3) {
+                  goto __Cont;
+                }
+              }
+            }
+            if (state == 0U) {
+              if (i.cur.wc_valid) {
+                {
+                  tmp___4 = iswspace((wint_t)i.cur.wc);
+                }
+                if (!tmp___4) {
+                  state = 1U;
+                  goto __Cont;
+                }
+              } else {
+                state = 1U;
+                goto __Cont;
+              }
+            }
+            if (state == 1U) {
+              if (i.cur.wc_valid) {
+                {
+                  tmp___5 = iswspace((wint_t)i.cur.wc);
+                }
+                if (!tmp___5) {
+                  goto __Cont;
+                }
+              } else {
+                goto __Cont;
+              }
+            }
+            if (state == 1U) {
+              if (i.cur.wc_valid) {
+                {
+                  tmp___7 = iswspace((wint_t)i.cur.wc);
+                }
+                if (tmp___7) {
+                  state = 2U;
+                  r = (char *)i.cur.ptr;
+                } else {
+                  goto _L;
+                }
+              } else {
+                goto _L;
+              }
+            } else {
+            _L:
+              if (state == 2U) {
+                if (i.cur.wc_valid) {
+                  {
+                    tmp___6 = iswspace((wint_t)i.cur.wc);
+                  }
+                  if (!tmp___6) {
+                    state = 1U;
+                  }
+                } else {
+                  state = 1U;
+                }
+              } else {
+                state = 1U;
+              }
+            }
+          __Cont:
+            i.cur.ptr += i.cur.bytes;
+            i.next_done = (_Bool)0;
+          }
+        while_break___4: /* CIL Label */;
+        }
+      while_break___0:;
+        if (state == 2U) {
+          *r = (char)'\000';
+        }
+      }
+    } else {
+      if (how != 0) {
+        p = d;
+        {
+          while (1) {
+          while_continue___1: /* CIL Label */;
+            if (*p) {
+              {
+                tmp___8 = __ctype_b_loc();
+              }
+              if (!((int const) * (*tmp___8 + (int)((unsigned char)*p)) & 8192)) {
+                goto while_break___1;
+              }
+            } else {
+              goto while_break___1;
+            }
+            p++;
+          }
+        while_break___5: /* CIL Label */;
+        }
+      while_break___1 : {
+        tmp___9 = strlen((char const *)p);
+        memmove((void *)d, (void const *)p, tmp___9 + 1UL);
+      }
+      }
+      if (how != 1) {
+        {
+          tmp___10 = strlen((char const *)d);
+          p = (d + tmp___10) - 1;
+        }
+        {
+          while (1) {
+          while_continue___2: /* CIL Label */;
+            if ((unsigned long)p >= (unsigned long)d) {
+              {
+                tmp___11 = __ctype_b_loc();
+              }
+              if (!((int const) * (*tmp___11 + (int)((unsigned char)*p)) & 8192)) {
+                goto while_break___2;
+              }
+            } else {
+              goto while_break___2;
+            }
+            *p = (char)'\000';
+            p--;
+          }
+        while_break___6: /* CIL Label */;
+        }
+      while_break___2:;
+      }
+    }
+    return (d);
+  }
+}
+size_t strnlen1(char const *string, size_t maxlen) __attribute__((__pure__));
+extern __attribute__((__nothrow__)) void *(__attribute__((__nonnull__(1))) memchr)(void const *__s,
+                                                                                   int __c,
+                                                                                   size_t __n) __attribute__((__pure__));
+size_t strnlen1(char const *string, size_t maxlen) __attribute__((__pure__));
+size_t strnlen1(char const *string, size_t maxlen) {
+  char const *end;
+  char const *tmp;
+  {
+    {
+      tmp = (char const *)memchr((void const *)string, '\000', maxlen);
+      end = tmp;
+    }
+    if ((unsigned long)end != (unsigned long)((void *)0)) {
+      return ((size_t)((end - string) + 1L));
+    } else {
+      return (maxlen);
+    }
+  }
+}
+int c_strcasecmp(char const *s1, char const *s2) __attribute__((__pure__));
+extern int close(int __fd);
+extern __attribute__((__nothrow__)) int fchdir(int __fd);
+int set_cloexec_flag(int desc, _Bool value);
+int open_safer(char const *file, int flags, ...);
+size_t safe_read(int fd, void *buf, size_t count);
+extern ssize_t read(int __fd, void *__buf, size_t __nbytes);
+size_t safe_read(int fd, void *buf, size_t count) {
+  ssize_t result;
+  ssize_t tmp;
+  int *tmp___0;
+  int *tmp___1;
+  {
+    {
+      while (1) {
+      while_continue: /* CIL Label */;
+        {
+          tmp = read(fd, buf, count);
+          result = tmp;
+        }
+        if (0L <= result) {
+          return ((size_t)result);
+        } else {
+          {
+            tmp___1 = __errno_location();
+          }
+          if (*tmp___1 == 4) {
+            goto __Cont;
+          } else {
+            {
+              tmp___0 = __errno_location();
+            }
+            if (*tmp___0 == 22) {
+              if (2147475456UL < count) {
+                count = (size_t)2147475456;
+              } else {
+                return ((size_t)result);
+              }
+            } else {
+              return ((size_t)result);
+            }
+          }
+        }
+      __Cont:;
+      }
+    while_break: /* CIL Label */;
+    }
+    return (0UL);
+  }
+}
+char const *const quoting_style_args[9];
+enum quoting_style const quoting_style_vals[8];
+int set_char_quoting(struct quoting_options *o, char c, int i);
+char *quotearg_n_style(int n, enum quoting_style s, char const *arg);
+char *quotearg_char(char const *arg, char ch);
+char *quotearg_char_mem(char const *arg, size_t argsize, char ch);
+char *quotearg_colon(char const *arg);
+struct quoting_options quote_quoting_options;
+char const *quote_n_mem(int n, char const *arg, size_t argsize);
+char const *quote_n(int n, char const *arg);
+char const *quote(char const *arg);
+char const *locale_charset(void);
+extern __attribute__((__nothrow__)) int(__attribute__((__nonnull__(1, 2))) memcmp)(void const *__s1,
+                                                                                   void const *__s2,
+                                                                                   size_t __n) __attribute__((__pure__));
+extern __attribute__((__nothrow__)) int iswprint(wint_t __wc);
+char const *const quoting_style_args[9] =
+    {(char const * /* const  */) "literal", (char const * /* const  */) "shell", (char const * /* const  */) "shell-always", (char const * /* const  */) "c",
+     (char const * /* const  */) "c-maybe", (char const * /* const  */) "escape", (char const * /* const  */) "locale", (char const * /* const  */) "clocale",
+     (char const * /* const  */)((char const *)0)};
+enum quoting_style const quoting_style_vals[8] =
+    {(enum quoting_style const)0, (enum quoting_style const)1, (enum quoting_style const)2, (enum quoting_style const)3,
+     (enum quoting_style const)4, (enum quoting_style const)5, (enum quoting_style const)6, (enum quoting_style const)7};
+static struct quoting_options default_quoting_options;
+int set_char_quoting(struct quoting_options *o, char c, int i) {
+  unsigned char uc;
+  unsigned int *p;
+  struct quoting_options *tmp;
+  int shift;
+  int r;
+  {
+    uc = (unsigned char)c;
+    if (o) {
+      tmp = o;
+    } else {
+      tmp = &default_quoting_options;
+    }
+    p = tmp->quote_these_too + (unsigned long)uc / (sizeof(int) * 8UL);
+    shift = (int)((unsigned long)uc % (sizeof(int) * 8UL));
+    r = (int)((*p >> shift) & 1U);
+    *p ^= (unsigned int)(((i & 1) ^ r) << shift);
+    return (r);
+  }
+}
+static struct quoting_options quoting_options_from_style(enum quoting_style style) {
+  struct quoting_options o;
+  unsigned int tmp;
+  void *__cil_tmp5;
+  {
+    o.style = (enum quoting_style)0;
+    o.flags = 0;
+    o.quote_these_too[0] = 0U;
+    tmp = 1U;
+    {
+      while (1) {
+      while_continue: /* CIL Label */;
+        if (!(!(tmp >= 8U))) {
+          goto while_break;
+        }
+        o.quote_these_too[tmp] = 0U;
+        tmp++;
+      }
+    while_break___0: /* CIL Label */;
+    }
+  while_break:
+    o.left_quote = (char const *)((void *)0);
+    o.right_quote = (char const *)((void *)0);
+    if ((unsigned int)style == 8U) {
+      {
+        abort();
+      }
+    }
+    o.style = style;
+    return (o);
+  }
+}
+static char const *gettext_quote(char const *msgid, enum quoting_style s) {
+  char const *translation;
+  char const *tmp;
+  char const *locale_code;
+  char const *tmp___0;
+  int tmp___1;
+  char const *tmp___2;
+  int tmp___3;
+  char const *tmp___4;
+  char *__cil_tmp20;
+  char *__cil_tmp21;
+  char *__cil_tmp22;
+  char *__cil_tmp23;
+  char *__cil_tmp24;
+  char *__cil_tmp25;
+  char *__cil_tmp26;
+  char *__cil_tmp27;
+  {
+    {
+      tmp = (char const *)gettext(msgid);
+      translation = tmp;
+    }
+    if ((unsigned long)translation != (unsigned long)msgid) {
+      return (translation);
+    }
+    {
+      locale_code = locale_charset();
+      tmp___1 = c_strcasecmp(locale_code, "UTF-8");
+    }
+    if (tmp___1 == 0) {
+      if ((int const) * (msgid + 0) == 96) {
+        tmp___0 = "\342\200\230";
+      } else {
+        tmp___0 = "\342\200\231";
+      }
+      return (tmp___0);
+    }
+    {
+      tmp___3 = c_strcasecmp(locale_code, "GB18030");
+    }
+    if (tmp___3 == 0) {
+      if ((int const) * (msgid + 0) == 96) {
+        tmp___2 = "\241\ae";
+      } else {
+        tmp___2 = "\241\257";
+      }
+      return (tmp___2);
+    }
+    if ((unsigned int)s == 7U) {
+      tmp___4 = "\"";
+    } else {
+      tmp___4 = "\'";
+    }
+    return (tmp___4);
+  }
+}
+static size_t quotearg_buffer_restyled(char *buffer___0, size_t buffersize, char const *arg,
+                                       size_t argsize, enum quoting_style quoting_style,
+                                       int flags, unsigned int const *quote_these_too,
+                                       char const *left_quote, char const *right_quote) {
+  size_t i;
+  size_t len;
+  char const *quote_string;
+  size_t quote_string_len;
+  _Bool backslash_escapes;
+  _Bool unibyte_locale;
+  size_t tmp;
+  _Bool elide_outer_quotes;
+  unsigned char c;
+  unsigned char esc;
+  _Bool is_right_quote;
+  size_t tmp___0;
+  int tmp___1;
+  int tmp___2;
+  size_t m;
+  _Bool printable;
+  unsigned short const **tmp___3;
+  mbstate_t mbstate;
+  wchar_t w;
+  size_t bytes;
+  size_t tmp___4;
+  size_t j;
+  int tmp___5;
+  int tmp___6;
+  size_t ilim;
+  int tmp___7;
+  size_t tmp___8;
+  void *__cil_tmp42;
+  char *__cil_tmp43;
+  char *__cil_tmp44;
+  char *__cil_tmp45;
+  char *__cil_tmp46;
+  {
+    {
+      len = (size_t)0;
+      quote_string = (char const *)0;
+      quote_string_len = (size_t)0;
+      backslash_escapes = (_Bool)0;
+      tmp = __ctype_get_mb_cur_max();
+      unibyte_locale = (_Bool)(tmp == 1UL);
+      elide_outer_quotes = (_Bool)((flags & 2) != 0);
+    }
+    if ((unsigned int)quoting_style == 4U) {
+      goto case_4;
+    }
+    if ((unsigned int)quoting_style == 3U) {
+      goto case_3;
+    }
+    if ((unsigned int)quoting_style == 5U) {
+      goto case_5;
+    }
+    if ((unsigned int)quoting_style == 6U) {
+      goto case_6;
+    }
+    if ((unsigned int)quoting_style == 7U) {
+      goto case_6;
+    }
+    if ((unsigned int)quoting_style == 8U) {
+      goto case_6;
+    }
+    if ((unsigned int)quoting_style == 1U) {
+      goto case_1;
+    }
+    if ((unsigned int)quoting_style == 2U) {
+      goto case_2;
+    }
+    if ((unsigned int)quoting_style == 0U) {
+      goto case_0;
+    }
+    goto switch_default;
+  case_4:
+    quoting_style = (enum quoting_style)3;
+    elide_outer_quotes = (_Bool)1;
+  case_3:
+    if (!elide_outer_quotes) {
+      {
+        while (1) {
+        while_continue: /* CIL Label */;
+          if (len < buffersize) {
+            *(buffer___0 + len) = (char)'\"';
+          }
+          len++;
+          goto while_break;
+        }
+      while_break___27: /* CIL Label */;
+      }
+    while_break:;
+    }
+    backslash_escapes = (_Bool)1;
+    quote_string = "\"";
+    quote_string_len = (size_t)1;
+    goto switch_break;
+  case_5:
+    backslash_escapes = (_Bool)1;
+    elide_outer_quotes = (_Bool)0;
+    goto switch_break;
+  case_6:
+    if ((unsigned int)quoting_style != 8U) {
+      {
+        left_quote = gettext_quote("`", quoting_style);
+        right_quote = gettext_quote("\'", quoting_style);
+      }
+    }
+    if (!elide_outer_quotes) {
+      quote_string = left_quote;
+      {
+        while (1) {
+        while_continue___0: /* CIL Label */;
+          if (!*quote_string) {
+            goto while_break___0;
+          }
+          {
+            while (1) {
+            while_continue___1: /* CIL Label */;
+              if (len < buffersize) {
+                *(buffer___0 + len) = (char)*quote_string;
+              }
+              len++;
+              goto while_break___1;
+            }
+          while_break___29: /* CIL Label */;
+          }
+        while_break___1:
+          quote_string++;
+        }
+      while_break___28: /* CIL Label */;
+      }
+    while_break___0:;
+    }
+    {
+      backslash_escapes = (_Bool)1;
+      quote_string = right_quote;
+      quote_string_len = strlen(quote_string);
+    }
+    goto switch_break;
+  case_1:
+    quoting_style = (enum quoting_style)2;
+    elide_outer_quotes = (_Bool)1;
+  case_2:
+    if (!elide_outer_quotes) {
+      {
+        while (1) {
+        while_continue___2: /* CIL Label */;
+          if (len < buffersize) {
+            *(buffer___0 + len) = (char)'\'';
+          }
+          len++;
+          goto while_break___2;
+        }
+      while_break___30: /* CIL Label */;
+      }
+    while_break___2:;
+    }
+    quote_string = "\'";
+    quote_string_len = (size_t)1;
+    goto switch_break;
+  case_0:
+    elide_outer_quotes = (_Bool)0;
+    goto switch_break;
+  switch_default : {
+    abort();
+  }
+  switch_break:
+    i = (size_t)0;
+    {
+      while (1) {
+      while_continue___3: /* CIL Label */;
+        if (argsize == 0xffffffffffffffffUL) {
+          tmp___7 = (int const) * (arg + i) == 0;
+        } else {
+          tmp___7 = i == argsize;
+        }
+        if (tmp___7) {
+          goto while_break___3;
+        }
+        is_right_quote = (_Bool)0;
+        if (backslash_escapes) {
+          if (quote_string_len) {
+            if (argsize == 0xffffffffffffffffUL) {
+              if (1UL < quote_string_len) {
+                {
+                  argsize = strlen(arg);
+                  tmp___0 = argsize;
+                }
+              } else {
+                tmp___0 = argsize;
+              }
+            } else {
+              tmp___0 = argsize;
+            }
+            if (i + quote_string_len <= tmp___0) {
+              {
+                tmp___1 = memcmp((void const *)(arg + i), (void const *)quote_string,
+                                 quote_string_len);
+              }
+              if (tmp___1 == 0) {
+                if (elide_outer_quotes) {
+                  goto force_outer_quoting_style;
+                }
+                is_right_quote = (_Bool)1;
+              }
+            }
+          }
+        }
+        c = (unsigned char)*(arg + i);
+        if ((int)c == 0) {
+          goto case_0___0;
+        }
+        if ((int)c == 63) {
+          goto case_63;
+        }
+        if ((int)c == 7) {
+          goto case_7___0;
+        }
+        if ((int)c == 8) {
+          goto case_8___0;
+        }
+        if ((int)c == 12) {
+          goto case_12;
+        }
+        if ((int)c == 10) {
+          goto case_10;
+        }
+        if ((int)c == 13) {
+          goto case_13;
+        }
+        if ((int)c == 9) {
+          goto case_9;
+        }
+        if ((int)c == 11) {
+          goto case_11;
+        }
+        if ((int)c == 92) {
+          goto case_92;
+        }
+        if ((int)c == 123) {
+          goto case_123;
+        }
+        if ((int)c == 125) {
+          goto case_123;
+        }
+        if ((int)c == 35) {
+          goto case_35;
+        }
+        if ((int)c == 126) {
+          goto case_35;
+        }
+        if ((int)c == 32) {
+          goto case_32;
+        }
+        if ((int)c == 33) {
+          goto case_32;
+        }
+        if ((int)c == 34) {
+          goto case_32;
+        }
+        if ((int)c == 36) {
+          goto case_32;
+        }
+        if ((int)c == 38) {
+          goto case_32;
+        }
+        if ((int)c == 40) {
+          goto case_32;
+        }
+        if ((int)c == 41) {
+          goto case_32;
+        }
+        if ((int)c == 42) {
+          goto case_32;
+        }
+        if ((int)c == 59) {
+          goto case_32;
+        }
+        if ((int)c == 60) {
+          goto case_32;
+        }
+        if ((int)c == 61) {
+          goto case_32;
+        }
+        if ((int)c == 62) {
+          goto case_32;
+        }
+        if ((int)c == 91) {
+          goto case_32;
+        }
+        if ((int)c == 94) {
+          goto case_32;
+        }
+        if ((int)c == 96) {
+          goto case_32;
+        }
+        if ((int)c == 124) {
+          goto case_32;
+        }
+        if ((int)c == 39) {
+          goto case_39___0;
+        }
+        if ((int)c == 37) {
+          goto case_37;
+        }
+        if ((int)c == 43) {
+          goto case_37;
+        }
+        if ((int)c == 44) {
+          goto case_37;
+        }
+        if ((int)c == 45) {
+          goto case_37;
+        }
+        if ((int)c == 46) {
+          goto case_37;
+        }
+        if ((int)c == 47) {
+          goto case_37;
+        }
+        if ((int)c == 48) {
+          goto case_37;
+        }
+        if ((int)c == 49) {
+          goto case_37;
+        }
+        if ((int)c == 50) {
+          goto case_37;
+        }
+        if ((int)c == 51) {
+          goto case_37;
+        }
+        if ((int)c == 52) {
+          goto case_37;
+        }
+        if ((int)c == 53) {
+          goto case_37;
+        }
+        if ((int)c == 54) {
+          goto case_37;
+        }
+        if ((int)c == 55) {
+          goto case_37;
+        }
+        if ((int)c == 56) {
+          goto case_37;
+        }
+        if ((int)c == 57) {
+          goto case_37;
+        }
+        if ((int)c == 58) {
+          goto case_37;
+        }
+        if ((int)c == 65) {
+          goto case_37;
+        }
+        if ((int)c == 66) {
+          goto case_37;
+        }
+        if ((int)c == 67) {
+          goto case_37;
+        }
+        if ((int)c == 68) {
+          goto case_37;
+        }
+        if ((int)c == 69) {
+          goto case_37;
+        }
+        if ((int)c == 70) {
+          goto case_37;
+        }
+        if ((int)c == 71) {
+          goto case_37;
+        }
+        if ((int)c == 72) {
+          goto case_37;
+        }
+        if ((int)c == 73) {
+          goto case_37;
+        }
+        if ((int)c == 74) {
+          goto case_37;
+        }
+        if ((int)c == 75) {
+          goto case_37;
+        }
+        if ((int)c == 76) {
+          goto case_37;
+        }
+        if ((int)c == 77) {
+          goto case_37;
+        }
+        if ((int)c == 78) {
+          goto case_37;
+        }
+        if ((int)c == 79) {
+          goto case_37;
+        }
+        if ((int)c == 80) {
+          goto case_37;
+        }
+        if ((int)c == 81) {
+          goto case_37;
+        }
+        if ((int)c == 82) {
+          goto case_37;
+        }
+        if ((int)c == 83) {
+          goto case_37;
+        }
+        if ((int)c == 84) {
+          goto case_37;
+        }
+        if ((int)c == 85) {
+          goto case_37;
+        }
+        if ((int)c == 86) {
+          goto case_37;
+        }
+        if ((int)c == 87) {
+          goto case_37;
+        }
+        if ((int)c == 88) {
+          goto case_37;
+        }
+        if ((int)c == 89) {
+          goto case_37;
+        }
+        if ((int)c == 90) {
+          goto case_37;
+        }
+        if ((int)c == 93) {
+          goto case_37;
+        }
+        if ((int)c == 95) {
+          goto case_37;
+        }
+        if ((int)c == 97) {
+          goto case_37;
+        }
+        if ((int)c == 98) {
+          goto case_37;
+        }
+        if ((int)c == 99) {
+          goto case_37;
+        }
+        if ((int)c == 100) {
+          goto case_37;
+        }
+        if ((int)c == 101) {
+          goto case_37;
+        }
+        if ((int)c == 102) {
+          goto case_37;
+        }
+        if ((int)c == 103) {
+          goto case_37;
+        }
+        if ((int)c == 104) {
+          goto case_37;
+        }
+        if ((int)c == 105) {
+          goto case_37;
+        }
+        if ((int)c == 106) {
+          goto case_37;
+        }
+        if ((int)c == 107) {
+          goto case_37;
+        }
+        if ((int)c == 108) {
+          goto case_37;
+        }
+        if ((int)c == 109) {
+          goto case_37;
+        }
+        if ((int)c == 110) {
+          goto case_37;
+        }
+        if ((int)c == 111) {
+          goto case_37;
+        }
+        if ((int)c == 112) {
+          goto case_37;
+        }
+        if ((int)c == 113) {
+          goto case_37;
+        }
+        if ((int)c == 114) {
+          goto case_37;
+        }
+        if ((int)c == 115) {
+          goto case_37;
+        }
+        if ((int)c == 116) {
+          goto case_37;
+        }
+        if ((int)c == 117) {
+          goto case_37;
+        }
+        if ((int)c == 118) {
+          goto case_37;
+        }
+        if ((int)c == 119) {
+          goto case_37;
+        }
+        if ((int)c == 120) {
+          goto case_37;
+        }
+        if ((int)c == 121) {
+          goto case_37;
+        }
+        if ((int)c == 122) {
+          goto case_37;
+        }
+        goto switch_default___2;
+      case_0___0:
+        if (backslash_escapes) {
+          if (elide_outer_quotes) {
+            goto force_outer_quoting_style;
+          }
+          {
+            while (1) {
+            while_continue___4: /* CIL Label */;
+              if (len < buffersize) {
+                *(buffer___0 + len) = (char)'\\';
+              }
+              len++;
+              goto while_break___4;
+            }
+          while_break___32: /* CIL Label */;
+          }
+        while_break___4:;
+          if (i + 1UL < argsize) {
+            if (48 <= (int)*(arg + (i + 1UL))) {
+              if ((int const) * (arg + (i + 1UL)) <= 57) {
+                {
+                  while (1) {
+                  while_continue___5: /* CIL Label */;
+                    if (len < buffersize) {
+                      *(buffer___0 + len) = (char)'0';
+                    }
+                    len++;
+                    goto while_break___5;
+                  }
+                while_break___33: /* CIL Label */;
+                }
+              while_break___5:;
+                {
+                  while (1) {
+                  while_continue___6: /* CIL Label */;
+                    if (len < buffersize) {
+                      *(buffer___0 + len) = (char)'0';
+                    }
+                    len++;
+                    goto while_break___6;
+                  }
+                while_break___34: /* CIL Label */;
+                }
+              while_break___6:;
+              }
+            }
+          }
+          c = (unsigned char)'0';
+        } else {
+          if (flags & 1) {
+            goto __Cont;
+          }
+        }
+        goto switch_break___0;
+      case_63:
+        if ((unsigned int)quoting_style == 2U) {
+          goto case_2___0;
+        }
+        if ((unsigned int)quoting_style == 3U) {
+          goto case_3___0;
+        }
+        goto switch_default___1;
+      case_2___0:
+        if (elide_outer_quotes) {
+          goto force_outer_quoting_style;
+        }
+        goto switch_break___1;
+      case_3___0:
+        if (flags & 4) {
+          if (i + 2UL < argsize) {
+            if ((int const) * (arg + (i + 1UL)) == 63) {
+              if ((int const) * (arg + (i + 2UL)) == 33) {
+                goto case_33;
+              }
+              if ((int const) * (arg + (i + 2UL)) == 39) {
+                goto case_33;
+              }
+              if ((int const) * (arg + (i + 2UL)) == 40) {
+                goto case_33;
+              }
+              if ((int const) * (arg + (i + 2UL)) == 41) {
+                goto case_33;
+              }
+              if ((int const) * (arg + (i + 2UL)) == 45) {
+                goto case_33;
+              }
+              if ((int const) * (arg + (i + 2UL)) == 47) {
+                goto case_33;
+              }
+              if ((int const) * (arg + (i + 2UL)) == 60) {
+                goto case_33;
+              }
+              if ((int const) * (arg + (i + 2UL)) == 61) {
+                goto case_33;
+              }
+              if ((int const) * (arg + (i + 2UL)) == 62) {
+                goto case_33;
+              }
+              goto switch_default___0;
+            case_33:
+              if (elide_outer_quotes) {
+                goto force_outer_quoting_style;
+              }
+              c = (unsigned char)*(arg + (i + 2UL));
+              i += 2UL;
+              {
+                while (1) {
+                while_continue___7: /* CIL Label */;
+                  if (len < buffersize) {
+                    *(buffer___0 + len) = (char)'?';
+                  }
+                  len++;
+                  goto while_break___7;
+                }
+              while_break___35: /* CIL Label */;
+              }
+            while_break___7:;
+              {
+                while (1) {
+                while_continue___8: /* CIL Label */;
+                  if (len < buffersize) {
+                    *(buffer___0 + len) = (char)'\"';
+                  }
+                  len++;
+                  goto while_break___8;
+                }
+              while_break___36: /* CIL Label */;
+              }
+            while_break___8:;
+              {
+                while (1) {
+                while_continue___9: /* CIL Label */;
+                  if (len < buffersize) {
+                    *(buffer___0 + len) = (char)'\"';
+                  }
+                  len++;
+                  goto while_break___9;
+                }
+              while_break___37: /* CIL Label */;
+              }
+            while_break___9:;
+              {
+                while (1) {
+                while_continue___10: /* CIL Label */;
+                  if (len < buffersize) {
+                    *(buffer___0 + len) = (char)'?';
+                  }
+                  len++;
+                  goto while_break___10;
+                }
+              while_break___38: /* CIL Label */;
+              }
+            while_break___10:;
+              goto switch_break___2;
+            switch_default___0:
+              goto switch_break___2;
+            switch_break___2:;
+            }
+          }
+        }
+        goto switch_break___1;
+      switch_default___1:
+        goto switch_break___1;
+      switch_break___1:;
+        goto switch_break___0;
+      case_7___0:
+        esc = (unsigned char)'a';
+        goto c_escape;
+      case_8___0:
+        esc = (unsigned char)'b';
+        goto c_escape;
+      case_12:
+        esc = (unsigned char)'f';
+        goto c_escape;
+      case_10:
+        esc = (unsigned char)'n';
+        goto c_and_shell_escape;
+      case_13:
+        esc = (unsigned char)'r';
+        goto c_and_shell_escape;
+      case_9:
+        esc = (unsigned char)'t';
+        goto c_and_shell_escape;
+      case_11:
+        esc = (unsigned char)'v';
+        goto c_escape;
+      case_92:
+        esc = c;
+        if (backslash_escapes) {
+          if (elide_outer_quotes) {
+            if (quote_string_len) {
+              goto store_c;
+            }
+          }
+        }
+      c_and_shell_escape:
+        if ((unsigned int)quoting_style == 2U) {
+          if (elide_outer_quotes) {
+            goto force_outer_quoting_style;
+          }
+        }
+      c_escape:
+        if (backslash_escapes) {
+          c = esc;
+          goto store_escape;
+        }
+        goto switch_break___0;
+      case_123:
+        if (argsize == 0xffffffffffffffffUL) {
+          tmp___2 = (int const) * (arg + 1) == 0;
+        } else {
+          tmp___2 = argsize == 1UL;
+        }
+        if (!tmp___2) {
+          goto switch_break___0;
+        }
+      case_35:
+        if (i != 0UL) {
+          goto switch_break___0;
+        }
+      case_32:
+        if ((unsigned int)quoting_style == 2U) {
+          if (elide_outer_quotes) {
+            goto force_outer_quoting_style;
+          }
+        }
+        goto switch_break___0;
+      case_39___0:
+        if ((unsigned int)quoting_style == 2U) {
+          if (elide_outer_quotes) {
+            goto force_outer_quoting_style;
+          }
+          {
+            while (1) {
+            while_continue___11: /* CIL Label */;
+              if (len < buffersize) {
+                *(buffer___0 + len) = (char)'\'';
+              }
+              len++;
+              goto while_break___11;
+            }
+          while_break___39: /* CIL Label */;
+          }
+        while_break___11:;
+          {
+            while (1) {
+            while_continue___12: /* CIL Label */;
+              if (len < buffersize) {
+                *(buffer___0 + len) = (char)'\\';
+              }
+              len++;
+              goto while_break___12;
+            }
+          while_break___40: /* CIL Label */;
+          }
+        while_break___12:;
+          {
+            while (1) {
+            while_continue___13: /* CIL Label */;
+              if (len < buffersize) {
+                *(buffer___0 + len) = (char)'\'';
+              }
+              len++;
+              goto while_break___13;
+            }
+          while_break___41: /* CIL Label */;
+          }
+        while_break___13:;
+        }
+        goto switch_break___0;
+      case_37:
+        goto switch_break___0;
+      switch_default___2:
+        if (unibyte_locale) {
+          {
+            m = (size_t)1;
+            tmp___3 = __ctype_b_loc();
+            printable = (_Bool)(((int const) * (*tmp___3 + (int)c) & 16384) != 0);
+          }
+        } else {
+          {
+            memset((void *)(&mbstate), 0, sizeof(mbstate));
+            m = (size_t)0;
+            printable = (_Bool)1;
+          }
+          if (argsize == 0xffffffffffffffffUL) {
+            {
+              argsize = strlen(arg);
+            }
+          }
+          {
+            while (1) {
+            while_continue___14: /* CIL Label */;
+              {
+                tmp___4 = mbrtowc((wchar_t * /* __restrict  */)(&w), (char const * /* __restrict  */)(arg + (i + m)),
+                                  argsize - (i + m), (mbstate_t * /* __restrict  */)(&mbstate));
+                bytes = tmp___4;
+              }
+              if (bytes == 0UL) {
+                goto while_break___14;
+              } else {
+                if (bytes == 0xffffffffffffffffUL) {
+                  printable = (_Bool)0;
+                  goto while_break___14;
+                } else {
+                  if (bytes == 0xfffffffffffffffeUL) {
+                    printable = (_Bool)0;
+                    {
+                      while (1) {
+                      while_continue___15: /* CIL Label */;
+                        if (i + m < argsize) {
+                          if (!*(arg + (i + m))) {
+                            goto while_break___15;
+                          }
+                        } else {
+                          goto while_break___15;
+                        }
+                        m++;
+                      }
+                    while_break___43: /* CIL Label */;
+                    }
+                  while_break___15:;
+                    goto while_break___14;
+                  } else {
+                    if (elide_outer_quotes) {
+                      if ((unsigned int)quoting_style == 2U) {
+                        j = (size_t)1;
+                        {
+                          while (1) {
+                          while_continue___16: /* CIL Label */;
+                            if (!(j < bytes)) {
+                              goto while_break___16;
+                            }
+                            if ((int const) * (arg + ((i + m) + j)) == 91) {
+                              goto case_91___0;
+                            }
+                            if ((int const) * (arg + ((i + m) + j)) == 92) {
+                              goto case_91___0;
+                            }
+                            if ((int const) * (arg + ((i + m) + j)) == 94) {
+                              goto case_91___0;
+                            }
+                            if ((int const) * (arg + ((i + m) + j)) == 96) {
+                              goto case_91___0;
+                            }
+                            if ((int const) * (arg + ((i + m) + j)) == 124) {
+                              goto case_91___0;
+                            }
+                            goto switch_default___3;
+                          case_91___0:
+                            goto force_outer_quoting_style;
+                          switch_default___3:
+                            goto switch_break___3;
+                          switch_break___3:
+                            j++;
+                          }
+                        while_break___44: /* CIL Label */;
+                        }
+                      while_break___16:;
+                      }
+                    }
+                    {
+                      tmp___5 = iswprint((wint_t)w);
+                    }
+                    if (!tmp___5) {
+                      printable = (_Bool)0;
+                    }
+                    m += bytes;
+                  }
+                }
+              }
+              {
+                tmp___6 = mbsinit((mbstate_t const *)(&mbstate));
+              }
+              if (tmp___6) {
+                goto while_break___14;
+              }
+            }
+          while_break___42: /* CIL Label */;
+          }
+        while_break___14:;
+        }
+        if (1UL < m) {
+          goto _L___0;
+        } else {
+          if (backslash_escapes) {
+            if (!printable) {
+            _L___0:
+              ilim = i + m;
+              {
+                while (1) {
+                while_continue___17: /* CIL Label */;
+                  if (backslash_escapes) {
+                    if (!printable) {
+                      if (elide_outer_quotes) {
+                        goto force_outer_quoting_style;
+                      }
+                      {
+                        while (1) {
+                        while_continue___18: /* CIL Label */;
+                          if (len < buffersize) {
+                            *(buffer___0 + len) = (char)'\\';
+                          }
+                          len++;
+                          goto while_break___18;
+                        }
+                      while_break___46: /* CIL Label */;
+                      }
+                    while_break___18:;
+                      {
+                        while (1) {
+                        while_continue___19: /* CIL Label */;
+                          if (len < buffersize) {
+                            *(buffer___0 + len) = (char)(48 + ((int)c >> 6));
+                          }
+                          len++;
+                          goto while_break___19;
+                        }
+                      while_break___47: /* CIL Label */;
+                      }
+                    while_break___19:;
+                      {
+                        while (1) {
+                        while_continue___20: /* CIL Label */;
+                          if (len < buffersize) {
+                            *(buffer___0 + len) = (char)(48 + (((int)c >> 3) & 7));
+                          }
+                          len++;
+                          goto while_break___20;
+                        }
+                      while_break___48: /* CIL Label */;
+                      }
+                    while_break___20:
+                      c = (unsigned char)(48 + ((int)c & 7));
+                    } else {
+                      goto _L;
+                    }
+                  } else {
+                  _L:
+                    if (is_right_quote) {
+                      {
+                        while (1) {
+                        while_continue___21: /* CIL Label */;
+                          if (len < buffersize) {
+                            *(buffer___0 + len) = (char)'\\';
+                          }
+                          len++;
+                          goto while_break___21;
+                        }
+                      while_break___49: /* CIL Label */;
+                      }
+                    while_break___21:
+                      is_right_quote = (_Bool)0;
+                    }
+                  }
+                  if (ilim <= i + 1UL) {
+                    goto while_break___17;
+                  }
+                  {
+                    while (1) {
+                    while_continue___22: /* CIL Label */;
+                      if (len < buffersize) {
+                        *(buffer___0 + len) = (char)c;
+                      }
+                      len++;
+                      goto while_break___22;
+                    }
+                  while_break___50: /* CIL Label */;
+                  }
+                while_break___22:
+                  i++;
+                  c = (unsigned char)*(arg + i);
+                }
+              while_break___45: /* CIL Label */;
+              }
+            while_break___17:;
+              goto store_c;
+            }
+          }
+        }
+      switch_break___0:;
+        if (backslash_escapes) {
+          goto _L___3;
+        } else {
+          if (elide_outer_quotes) {
+          _L___3:
+            if (quote_these_too) {
+              if (!((*(quote_these_too + (unsigned long)c / (sizeof(int) * 8UL)) >> (unsigned long)c % (sizeof(int) * 8UL)) & 1U)) {
+                goto _L___2;
+              }
+            } else {
+              goto _L___2;
+            }
+          } else {
+          _L___2:
+            if (!is_right_quote) {
+              goto store_c;
+            }
+          }
+        }
+      store_escape:
+        if (elide_outer_quotes) {
+          goto force_outer_quoting_style;
+        }
+        {
+          while (1) {
+          while_continue___23: /* CIL Label */;
+            if (len < buffersize) {
+              *(buffer___0 + len) = (char)'\\';
+            }
+            len++;
+            goto while_break___23;
+          }
+        while_break___51: /* CIL Label */;
+        }
+      while_break___23:;
+      store_c : {
+        while (1) {
+        while_continue___24: /* CIL Label */;
+          if (len < buffersize) {
+            *(buffer___0 + len) = (char)c;
+          }
+          len++;
+          goto while_break___24;
+        }
+      while_break___52: /* CIL Label */;
+      }
+      while_break___24:;
+      __Cont:
+        i++;
+      }
+    while_break___31: /* CIL Label */;
+    }
+  while_break___3:;
+    if (len == 0UL) {
+      if ((unsigned int)quoting_style == 2U) {
+        if (elide_outer_quotes) {
+          goto force_outer_quoting_style;
+        }
+      }
+    }
+    if (quote_string) {
+      if (!elide_outer_quotes) {
+        {
+          while (1) {
+          while_continue___25: /* CIL Label */;
+            if (!*quote_string) {
+              goto while_break___25;
+            }
+            {
+              while (1) {
+              while_continue___26: /* CIL Label */;
+                if (len < buffersize) {
+                  *(buffer___0 + len) = (char)*quote_string;
+                }
+                len++;
+                goto while_break___26;
+              }
+            while_break___54: /* CIL Label */;
+            }
+          while_break___26:
+            quote_string++;
+          }
+        while_break___53: /* CIL Label */;
+        }
+      while_break___25:;
+      }
+    }
+    if (len < buffersize) {
+      *(buffer___0 + len) = (char)'\000';
+    }
+    return (len);
+  force_outer_quoting_style : {
+    tmp___8 = quotearg_buffer_restyled(buffer___0, buffersize, arg, argsize, quoting_style,
+                                       flags & -3, (unsigned int const *)((void *)0),
+                                       left_quote, right_quote);
+  }
+    return (tmp___8);
+  }
+}
+static char slot0[256];
+static unsigned int nslots = 1U;
+static struct slotvec slotvec0 = {sizeof(slot0), slot0};
+static struct slotvec *slotvec = &slotvec0;
+static char *quotearg_n_options(int n, char const *arg, size_t argsize, struct quoting_options const *options) {
+  int e;
+  int *tmp;
+  unsigned int n0;
+  struct slotvec *sv;
+  size_t n1;
+  _Bool preallocated;
+  int tmp___0;
+  struct slotvec *tmp___1;
+  size_t size;
+  char *val;
+  int flags;
+  size_t qsize;
+  size_t tmp___2;
+  int *tmp___3;
+  {
+    {
+      tmp = __errno_location();
+      e = *tmp;
+      n0 = (unsigned int)n;
+      sv = slotvec;
+    }
+    if (n < 0) {
+      {
+        abort();
+      }
+    }
+    if (nslots <= n0) {
+      n1 = (size_t)(n0 + 1U);
+      preallocated = (_Bool)((unsigned long)sv == (unsigned long)(&slotvec0));
+      if (sizeof(ptrdiff_t) <= sizeof(size_t)) {
+        tmp___0 = -1;
+      } else {
+        tmp___0 = -2;
+      }
+      if ((size_t)tmp___0 / sizeof(*sv) < n1) {
+        {
+          xalloc_die();
+        }
+      }
+      if (preallocated) {
+        tmp___1 = (struct slotvec *)((void *)0);
+      } else {
+        tmp___1 = sv;
+      }
+      {
+        sv = (struct slotvec *)xrealloc((void *)tmp___1, n1 * sizeof(*sv));
+        slotvec = sv;
+      }
+      if (preallocated) {
+        *sv = slotvec0;
+      }
+      {
+        memset((void *)(sv + nslots), 0, (n1 - (size_t)nslots) * sizeof(*sv));
+        nslots = (unsigned int)n1;
+      }
+    }
+    {
+      size = (sv + n)->size;
+      val = (sv + n)->val;
+      flags = (int)(options->flags | 1);
+      tmp___2 = quotearg_buffer_restyled(val, size, arg, argsize, (enum quoting_style)options->style,
+                                         flags, (unsigned int const *)(options->quote_these_too),
+                                         (char const *)options->left_quote, (char const *)options->right_quote);
+      qsize = tmp___2;
+    }
+    if (size <= qsize) {
+      size = qsize + 1UL;
+      (sv + n)->size = size;
+      if ((unsigned long)val != (unsigned long)(slot0)) {
+        {
+          free((void *)val);
+        }
+      }
+      {
+        val = xcharalloc(size);
+        (sv + n)->val = val;
+        quotearg_buffer_restyled(val, size, arg, argsize, (enum quoting_style)options->style,
+                                 flags, (unsigned int const *)(options->quote_these_too),
+                                 (char const *)options->left_quote, (char const *)options->right_quote);
+      }
+    }
+    {
+      tmp___3 = __errno_location();
+      *tmp___3 = e;
+    }
+    return (val);
+  }
+}
+char *quotearg_n_style(int n, enum quoting_style s, char const *arg) {
+  struct quoting_options o;
+  struct quoting_options tmp;
+  char *tmp___0;
+  void *__cil_tmp9;
+  void *__cil_tmp10;
+  {
+    {
+      tmp = quoting_options_from_style(s);
+      o = tmp;
+      tmp___0 = quotearg_n_options(n, arg, (size_t)-1, (struct quoting_options const *)(&o));
+    }
+    return (tmp___0);
+  }
+}
+char *quotearg_char_mem(char const *arg, size_t argsize, char ch) {
+  struct quoting_options options;
+  char *tmp;
+  void *__cil_tmp7;
+  {
+    {
+      options = default_quoting_options;
+      set_char_quoting(&options, ch, 1);
+      tmp = quotearg_n_options(0, arg, argsize, (struct quoting_options const *)(&options));
+    }
+    return (tmp);
+  }
+}
+char *quotearg_char(char const *arg, char ch) {
+  char *tmp;
+  {
+    {
+      tmp = quotearg_char_mem(arg, (size_t)-1, ch);
+    }
+    return (tmp);
+  }
+}
+char *quotearg_colon(char const *arg) {
+  char *tmp;
+  {
+    {
+      tmp = quotearg_char(arg, (char)':');
+    }
+    return (tmp);
+  }
+}
+struct quoting_options quote_quoting_options = {(enum quoting_style)6, 0, {0U}, (char const *)((void *)0), (char const *)((void *)0)};
+char const *quote_n_mem(int n,
+                        char const *arg, size_t argsize) {
+  char const *tmp;
+  {
+    {
+      tmp = (char const *)quotearg_n_options(n, arg, argsize, (struct quoting_options const *)(&quote_quoting_options));
+    }
+    return (tmp);
+  }
+}
+char const *quote_n(int n, char const *arg) {
+  char const *tmp;
+  {
+    {
+      tmp = quote_n_mem(n, arg, (size_t)-1);
+    }
+    return (tmp);
+  }
+}
+char const *quote(char const *arg) {
+  char const *tmp;
+  {
+    {
+      tmp = quote_n(0, arg);
+    }
+    return (tmp);
+  }
+}
+char const *proper_name(char const *name);
+extern __attribute__((__nothrow__)) int sprintf(char *__restrict __s, char const *__restrict __format, ...);
+char *(__attribute__((__nonnull__(1, 2))) mbsstr)(char const *haystack, char const *needle) __attribute__((__pure__));
+extern __attribute__((__nothrow__)) int iswalnum(wint_t __wc);
+void mbuiter_multi_next(struct mbuiter_multi *iter) {
+  int tmp;
+  size_t tmp___0;
+  size_t tmp___1;
+  int tmp___2;
+  _Bool tmp___3;
+  {
+    if (iter->next_done) {
+      return;
+    }
+    if (iter->in_shift) {
+      goto with_shift;
+    }
+    {
+      tmp___3 = is_basic((char)*(iter->cur.ptr));
+    }
+    if (tmp___3) {
+      iter->cur.bytes = (size_t)1;
+      iter->cur.wc = (wchar_t) * (iter->cur.ptr);
+      iter->cur.wc_valid = (_Bool)1;
+    } else {
+      {
+        tmp = mbsinit((mbstate_t const *)(&iter->state));
+      }
+      if (!tmp) {
+        {
+          __assert_fail("mbsinit (&iter->state)", "/home/khheo/project/benchmark/grep-2.19/lib/mbuiter.h",
+                        150U, "mbuiter_multi_next");
+        }
+      }
+      iter->in_shift = (_Bool)1;
+    with_shift : {
+      tmp___0 = __ctype_get_mb_cur_max();
+      tmp___1 = strnlen1(iter->cur.ptr, tmp___0);
+      iter->cur.bytes = mbrtowc((wchar_t * /* __restrict  */)(&iter->cur.wc), (char const * /* __restrict  */)iter->cur.ptr,
+                                tmp___1, (mbstate_t * /* __restrict  */)(&iter->state));
+    }
+      if (iter->cur.bytes == 0xffffffffffffffffUL) {
+        iter->cur.bytes = (size_t)1;
+        iter->cur.wc_valid = (_Bool)0;
+      } else {
+        if (iter->cur.bytes == 0xfffffffffffffffeUL) {
+          {
+            iter->cur.bytes = strlen(iter->cur.ptr);
+            iter->cur.wc_valid = (_Bool)0;
+          }
+        } else {
+          if (iter->cur.bytes == 0UL) {
+            iter->cur.bytes = (size_t)1;
+            if (!((int const) * (iter->cur.ptr) == 0)) {
+              {
+                __assert_fail("*iter->cur.ptr == \'\\0\'", "/home/khheo/project/benchmark/grep-2.19/lib/mbuiter.h",
+                              178U, "mbuiter_multi_next");
+              }
+            }
+            if (!(iter->cur.wc == 0)) {
+              {
+                __assert_fail("iter->cur.wc == 0", "/home/khheo/project/benchmark/grep-2.19/lib/mbuiter.h",
+                              179U, "mbuiter_multi_next");
+              }
+            }
+          }
+          {
+            iter->cur.wc_valid = (_Bool)1;
+            tmp___2 = mbsinit((mbstate_t const *)(&iter->state));
+          }
+          if (tmp___2) {
+            iter->in_shift = (_Bool)0;
+          }
+        }
+      }
+    }
+    iter->next_done = (_Bool)1;
+    return;
+  }
+}
+static _Bool mbsstr_trimmed_wordbounded(char const *string, char const *sub) {
+  char *tsub;
+  char *tmp;
+  _Bool found;
+  char const *tsub_in_string;
+  char const *tmp___0;
+  mbui_iterator_t string_iter;
+  _Bool word_boundary_before;
+  _Bool word_boundary_after;
+  mbchar_t last_char_before_tsub;
+  int tmp___1;
+  int tmp___2;
+  mbui_iterator_t tsub_iter;
+  int tmp___3;
+  int tmp___4;
+  mbchar_t first_char_after_tsub;
+  int tmp___5;
+  int tmp___6;
+  int tmp___7;
+  _Bool word_boundary_before___0;
+  char const *p;
+  _Bool word_boundary_after___0;
+  unsigned short const **tmp___8;
+  size_t tmp___9;
+  unsigned short const **tmp___10;
+  size_t tmp___11;
+  void *__cil_tmp35;
+  void *__cil_tmp36;
+  void *__cil_tmp37;
+  void *__cil_tmp38;
+  void *__cil_tmp39;
+  void *__cil_tmp40;
+  {
+    {
+      tmp = trim2(sub, 2);
+      tsub = tmp;
+      found = (_Bool)0;
+    }
+    {
+      while (1) {
+      while_continue: /* CIL Label */;
+        if (!((int const) * string != 0)) {
+          goto while_break;
+        }
+        {
+          tmp___0 = (char const *)mbsstr(string, (char const *)tsub);
+          tsub_in_string = tmp___0;
+        }
+        if ((unsigned long)tsub_in_string == (unsigned long)((void *)0)) {
+          goto while_break;
+        } else {
+          {
+            tmp___11 = __ctype_get_mb_cur_max();
+          }
+          if (tmp___11 > 1UL) {
+            {
+              string_iter.cur.ptr = string;
+              string_iter.in_shift = (_Bool)0;
+              memset((void *)(&string_iter.state), '\000', sizeof(mbstate_t));
+              string_iter.next_done = (_Bool)0;
+              word_boundary_before = (_Bool)1;
+            }
+            if ((unsigned long)string_iter.cur.ptr < (unsigned long)tsub_in_string) {
+              {
+                while (1) {
+                while_continue___0: /* CIL Label */;
+                  {
+                    mbuiter_multi_next(&string_iter);
+                  }
+                  if (string_iter.cur.wc_valid) {
+                    if (string_iter.cur.wc == 0) {
+                      tmp___1 = 0;
+                    } else {
+                      tmp___1 = 1;
+                    }
+                  } else {
+                    tmp___1 = 1;
+                  }
+                  if (!tmp___1) {
+                    {
+                      abort();
+                    }
+                  }
+                  last_char_before_tsub = string_iter.cur;
+                  string_iter.cur.ptr += string_iter.cur.bytes;
+                  string_iter.next_done = (_Bool)0;
+                  if (!((unsigned long)string_iter.cur.ptr < (unsigned long)tsub_in_string)) {
+                    goto while_break___0;
+                  }
+                }
+              while_break___3: /* CIL Label */;
+              }
+            while_break___0:;
+              if (last_char_before_tsub.wc_valid) {
+                {
+                  tmp___2 = iswalnum((wint_t)last_char_before_tsub.wc);
+                }
+                if (tmp___2) {
+                  word_boundary_before = (_Bool)0;
+                }
+              }
+            }
+            {
+              string_iter.cur.ptr = tsub_in_string;
+              string_iter.in_shift = (_Bool)0;
+              memset((void *)(&string_iter.state), '\000', sizeof(mbstate_t));
+              string_iter.next_done = (_Bool)0;
+              tsub_iter.cur.ptr = (char const *)tsub;
+              tsub_iter.in_shift = (_Bool)0;
+              memset((void *)(&tsub_iter.state), '\000', sizeof(mbstate_t));
+              tsub_iter.next_done = (_Bool)0;
+            }
+            {
+              while (1) {
+              while_continue___1: /* CIL Label */;
+                {
+                  mbuiter_multi_next(&tsub_iter);
+                }
+                if (tsub_iter.cur.wc_valid) {
+                  if (tsub_iter.cur.wc == 0) {
+                    tmp___4 = 0;
+                  } else {
+                    tmp___4 = 1;
+                  }
+                } else {
+                  tmp___4 = 1;
+                }
+                if (!tmp___4) {
+                  goto while_break___1;
+                }
+                {
+                  mbuiter_multi_next(&string_iter);
+                }
+                if (string_iter.cur.wc_valid) {
+                  if (string_iter.cur.wc == 0) {
+                    tmp___3 = 0;
+                  } else {
+                    tmp___3 = 1;
+                  }
+                } else {
+                  tmp___3 = 1;
+                }
+                if (!tmp___3) {
+                  {
+                    abort();
+                  }
+                }
+                string_iter.cur.ptr += string_iter.cur.bytes;
+                string_iter.next_done = (_Bool)0;
+                tsub_iter.cur.ptr += tsub_iter.cur.bytes;
+                tsub_iter.next_done = (_Bool)0;
+              }
+            while_break___4: /* CIL Label */;
+            }
+          while_break___1 : {
+            word_boundary_after = (_Bool)1;
+            mbuiter_multi_next(&string_iter);
+          }
+            if (string_iter.cur.wc_valid) {
+              if (string_iter.cur.wc == 0) {
+                tmp___6 = 0;
+              } else {
+                tmp___6 = 1;
+              }
+            } else {
+              tmp___6 = 1;
+            }
+            if (tmp___6) {
+              first_char_after_tsub = string_iter.cur;
+              if (first_char_after_tsub.wc_valid) {
+                {
+                  tmp___5 = iswalnum((wint_t)first_char_after_tsub.wc);
+                }
+                if (tmp___5) {
+                  word_boundary_after = (_Bool)0;
+                }
+              }
+            }
+            if (word_boundary_before) {
+              if (word_boundary_after) {
+                found = (_Bool)1;
+                goto while_break;
+              }
+            }
+            {
+              string_iter.cur.ptr = tsub_in_string;
+              string_iter.in_shift = (_Bool)0;
+              memset((void *)(&string_iter.state), '\000', sizeof(mbstate_t));
+              string_iter.next_done = (_Bool)0;
+              mbuiter_multi_next(&string_iter);
+            }
+            if (string_iter.cur.wc_valid) {
+              if (string_iter.cur.wc == 0) {
+                tmp___7 = 0;
+              } else {
+                tmp___7 = 1;
+              }
+            } else {
+              tmp___7 = 1;
+            }
+            if (!tmp___7) {
+              goto while_break;
+            }
+            string = tsub_in_string + string_iter.cur.bytes;
+          } else {
+            word_boundary_before___0 = (_Bool)1;
+            if ((unsigned long)string < (unsigned long)tsub_in_string) {
+              {
+                tmp___8 = __ctype_b_loc();
+              }
+              if ((int const) * (*tmp___8 + (int)((unsigned char)*(tsub_in_string + -1))) & 8) {
+                word_boundary_before___0 = (_Bool)0;
+              }
+            }
+            {
+              tmp___9 = strlen((char const *)tsub);
+              p = tsub_in_string + tmp___9;
+              word_boundary_after___0 = (_Bool)1;
+            }
+            if ((int const) * p != 0) {
+              {
+                tmp___10 = __ctype_b_loc();
+              }
+              if ((int const) * (*tmp___10 + (int)((unsigned char)*p)) & 8) {
+                word_boundary_after___0 = (_Bool)0;
+              }
+            }
+            if (word_boundary_before___0) {
+              if (word_boundary_after___0) {
+                found = (_Bool)1;
+                goto while_break;
+              }
+            }
+            if ((int const) * tsub_in_string == 0) {
+              goto while_break;
+            }
+            string = tsub_in_string + 1;
+          }
+        }
+      }
+    while_break___2: /* CIL Label */;
+    }
+  while_break : {
+    free((void *)tsub);
+  }
+    return (found);
+  }
+}
+char const *proper_name(char const *name) {
+  char const *translation;
+  char const *tmp;
+  char *result;
+  size_t tmp___0;
+  size_t tmp___1;
+  void *tmp___2;
+  size_t tmp___3;
+  size_t tmp___4;
+  void *tmp___5;
+  void *tmp___6;
+  _Bool tmp___7;
+  char *__cil_tmp15;
+  {
+    {
+      tmp = (char const *)gettext(name);
+      translation = tmp;
+    }
+    if ((unsigned long)translation != (unsigned long)name) {
+      {
+        tmp___7 = mbsstr_trimmed_wordbounded(translation, name);
+      }
+      if (tmp___7) {
+        return (translation);
+      } else {
+        if (sizeof(char) == 1UL) {
+          {
+            tmp___0 = strlen(translation);
+            tmp___1 = strlen(name);
+            tmp___2 = xmalloc((((tmp___0 + 2UL) + tmp___1) + 1UL) + 1UL);
+            tmp___6 = tmp___2;
+          }
+        } else {
+          {
+            tmp___3 = strlen(translation);
+            tmp___4 = strlen(name);
+            tmp___5 = xnmalloc((((tmp___3 + 2UL) + tmp___4) + 1UL) + 1UL, sizeof(char));
+            tmp___6 = tmp___5;
+          }
+        }
+        {
+          result = (char *)tmp___6;
+          sprintf((char * /* __restrict  */)result, (char const * /* __restrict  */) "%s (%s)",
+                  translation, name);
+        }
+        return ((char const *)result);
+      }
+    } else {
+      return (name);
+    }
+  }
+}
+char const *program_name;
+void set_program_name(char const *argv0);
+extern char *program_invocation_name;
+extern char *program_invocation_short_name;
+extern struct _IO_FILE *stderr;
+extern int fputs(char const *__restrict __s, FILE *__restrict __stream);
+extern __attribute__((__nothrow__)) int(__attribute__((__nonnull__(1, 2))) strncmp)(char const *__s1,
+                                                                                    char const *__s2,
+                                                                                    size_t __n) __attribute__((__pure__));
+extern __attribute__((__nothrow__)) char *(__attribute__((__nonnull__(1))) strrchr)(char const *__s,
+                                                                                    int __c) __attribute__((__pure__));
+char const *program_name = (char const *)((void *)0);
+void set_program_name(char const *argv0) {
+  char const *slash;
+  char const *base;
+  int tmp;
+  int tmp___0;
+  {
+    if ((unsigned long)argv0 == (unsigned long)((void *)0)) {
+      {
+        fputs((char const * /* __restrict  */) "A NULL argv[0] was passed through an exec system call.\n",
+              (FILE * /* __restrict  */) stderr);
+        abort();
+      }
+    }
+    {
+      slash = (char const *)strrchr(argv0, '/');
+    }
+    if ((unsigned long)slash != (unsigned long)((void *)0)) {
+      base = slash + 1;
+    } else {
+      base = argv0;
+    }
+    if (base - argv0 >= 7L) {
+      {
+        tmp___0 = strncmp(base - 7, "/.libs/", (size_t)7);
+      }
+      if (tmp___0 == 0) {
+        {
+          argv0 = base;
+          tmp = strncmp(base, "lt-", (size_t)3);
+        }
+        if (tmp == 0) {
+          argv0 = base + 3;
+          program_invocation_short_name = (char *)argv0;
+        }
+      }
+    }
+    program_name = argv0;
+    program_invocation_name = (char *)argv0;
+    return;
+  }
+}
+int fd_safer(int fd);
+extern DIR *fdopendir(int __fd);
+extern int(__attribute__((__nonnull__(1))) closedir)(DIR *__dirp);
+extern __attribute__((__nothrow__)) int(__attribute__((__nonnull__(1))) dirfd)(DIR *__dirp);
+int dup_safer(int fd);
+int openat_safer(int fd, char const *file, int flags, ...);
+extern int(__attribute__((__nonnull__(2))) openat)(int __fd, char const *__file,
+                                                   int __oflag, ...);
+int openat_safer(int fd, char const *file, int flags, ...) {
+  mode_t mode___0;
+  va_list ap;
+  int tmp;
+  int tmp___0;
+  {
+    mode___0 = (mode_t)0;
+    if (flags & 64) {
+      {
+        __builtin_va_start(ap, flags);
+        mode___0 = __builtin_va_arg(ap, mode_t);
+        __builtin_va_end(ap);
+      }
+    }
+    {
+      tmp = openat(fd, file, flags, mode___0);
+      tmp___0 = fd_safer(tmp);
+    }
+    return (tmp___0);
+  }
+}
+extern int(__attribute__((__nonnull__(1))) open)(char const *__file, int __oflag, ...);
+int open_safer(char const *file, int flags, ...) {
+  mode_t mode___0;
+  va_list ap;
+  int tmp;
+  int tmp___0;
+  {
+    mode___0 = (mode_t)0;
+    if (flags & 64) {
+      {
+        __builtin_va_start(ap, flags);
+        mode___0 = __builtin_va_arg(ap, mode_t);
+        __builtin_va_end(ap);
+      }
+    }
+    {
+      tmp = open(file, flags, mode___0);
+      tmp___0 = fd_safer(tmp);
+    }
+    return (tmp___0);
+  }
+}
+void *memchr2(void const *s, int c1_in, int c2_in, size_t n) __attribute__((__pure__));
+void *memchr2(void const *s, int c1_in, int c2_in, size_t n) __attribute__((__pure__));
+void *memchr2(void const *s, int c1_in, int c2_in, size_t n) {
+  unsigned char const *char_ptr;
+  void const *void_ptr;
+  longword const *longword_ptr;
+  longword repeated_one;
+  longword repeated_c1;
+  longword repeated_c2;
+  unsigned char c1;
+  unsigned char c2;
+  void *tmp;
+  size_t i;
+  longword longword1;
+  longword longword2;
+  {
+    c1 = (unsigned char)c1_in;
+    c2 = (unsigned char)c2_in;
+    if ((int)c1 == (int)c2) {
+      {
+        tmp = memchr(s, (int)c1, n);
+      }
+      return (tmp);
+    }
+    void_ptr = s;
+    {
+      while (1) {
+      while_continue: /* CIL Label */;
+        if (n > 0UL) {
+          if (!((uintptr_t)void_ptr % sizeof(longword) != 0UL)) {
+            goto while_break;
+          }
+        } else {
+          goto while_break;
+        }
+        char_ptr = (unsigned char const *)void_ptr;
+        if ((int const) * char_ptr == (int const)c1) {
+          return ((void *)void_ptr);
+        } else {
+          if ((int const) * char_ptr == (int const)c2) {
+            return ((void *)void_ptr);
+          }
+        }
+        void_ptr = (void const *)(char_ptr + 1);
+        n--;
+      }
+    while_break___3: /* CIL Label */;
+    }
+  while_break:;
+    longword_ptr = (longword const *)void_ptr;
+    repeated_one = (longword)16843009;
+    repeated_c1 = (longword)((int)c1 | ((int)c1 << 8));
+    repeated_c2 = (longword)((int)c2 | ((int)c2 << 8));
+    repeated_c1 |= repeated_c1 << 16;
+    repeated_c2 |= repeated_c2 << 16;
+    repeated_one |= (repeated_one << 31) << 1;
+    repeated_c1 |= (repeated_c1 << 31) << 1;
+    repeated_c2 |= (repeated_c2 << 31) << 1;
+    if (8UL < sizeof(longword)) {
+      i = (size_t)64;
+      {
+        while (1) {
+        while_continue___0: /* CIL Label */;
+          if (!(i < sizeof(longword) * 8UL)) {
+            goto while_break___0;
+          }
+          repeated_one |= repeated_one << i;
+          repeated_c1 |= repeated_c1 << i;
+          repeated_c2 |= repeated_c2 << i;
+          i *= 2UL;
+        }
+      while_break___4: /* CIL Label */;
+      }
+    while_break___0:;
+    }
+    {
+      while (1) {
+      while_continue___1: /* CIL Label */;
+        if (!(n >= sizeof(longword))) {
+          goto while_break___1;
+        }
+        longword1 = (longword)(*longword_ptr ^ (unsigned long const)repeated_c1);
+        longword2 = (longword)(*longword_ptr ^ (unsigned long const)repeated_c2);
+        if (((((longword1 - repeated_one) & ~longword1) | ((longword2 - repeated_one) & ~longword2)) & (repeated_one << 7)) != 0UL) {
+          goto while_break___1;
+        }
+        longword_ptr++;
+        n -= sizeof(longword);
+      }
+    while_break___5: /* CIL Label */;
+    }
+  while_break___1:;
+    char_ptr = (unsigned char const *)longword_ptr;
+    {
+      while (1) {
+      while_continue___2: /* CIL Label */;
+        if (!(n > 0UL)) {
+          goto while_break___2;
+        }
+        if ((int const) * char_ptr == (int const)c1) {
+          return ((void *)char_ptr);
+        } else {
+          if ((int const) * char_ptr == (int const)c2) {
+            return ((void *)char_ptr);
+          }
+        }
+        n--;
+        char_ptr++;
+      }
+    while_break___6: /* CIL Label */;
+    }
+  while_break___2:;
+    return ((void *)0);
+  }
+}
+extern __attribute__((__nothrow__)) size_t(__attribute__((__nonnull__(1))) strnlen)(char const *__string,
+                                                                                    size_t __maxlen) __attribute__((__pure__));
+size_t(__attribute__((__nonnull__(1))) mbslen)(char const *string) __attribute__((__pure__));
+void *mmalloca(size_t n);
+void freea(void *p);
+static _Bool knuth_morris_pratt(unsigned char const *haystack, unsigned char const *needle,
+                                size_t needle_len, unsigned char const **resultp) {
+  size_t m;
+  size_t *table;
+  void *tmp___0;
+  void *tmp___1;
+  void *tmp___2;
+  void *tmp___3;
+  int tmp___4;
+  size_t i;
+  size_t j;
+  unsigned char b;
+  size_t j___0;
+  unsigned char const *rhaystack;
+  unsigned char const *phaystack;
+  {
+    m = needle_len;
+    if (sizeof(ptrdiff_t) <= sizeof(size_t)) {
+      tmp___4 = -1;
+    } else {
+      tmp___4 = -2;
+    }
+    if (m > (size_t)tmp___4 / sizeof(size_t)) {
+      tmp___3 = (void *)0;
+    } else {
+      if (m * sizeof(size_t) < 4016UL) {
+        {
+          tmp___0 = __builtin_alloca(m * sizeof(size_t) + 16UL);
+          tmp___2 = (void *)((char *)tmp___0 + 16);
+        }
+      } else {
+        {
+          tmp___1 = mmalloca(m * sizeof(size_t));
+          tmp___2 = tmp___1;
+        }
+      }
+      tmp___3 = tmp___2;
+    }
+    table = (size_t *)tmp___3;
+    if ((unsigned long)table == (unsigned long)((void *)0)) {
+      return ((_Bool)0);
+    }
+    *(table + 1) = (size_t)1;
+    j = (size_t)0;
+    i = (size_t)2;
+    {
+      while (1) {
+      while_continue: /* CIL Label */;
+        if (!(i < m)) {
+          goto while_break;
+        }
+        b = (unsigned char)*(needle + (i - 1UL));
+        {
+          while (1) {
+          while_continue___0: /* CIL Label */;
+            if ((int)b == (int)*(needle + j)) {
+              j++;
+              *(table + i) = i - j;
+              goto while_break___0;
+            }
+            if (j == 0UL) {
+              *(table + i) = i;
+              goto while_break___0;
+            }
+            j -= *(table + j);
+          }
+        while_break___3: /* CIL Label */;
+        }
+      while_break___0:
+        i++;
+      }
+    while_break___2: /* CIL Label */;
+    }
+  while_break:
+    *resultp = (unsigned char const *)((void *)0);
+    j___0 = (size_t)0;
+    rhaystack = haystack;
+    phaystack = haystack;
+    {
+      while (1) {
+      while_continue___1: /* CIL Label */;
+        if (!((int const) * phaystack != 0)) {
+          goto while_break___1;
+        }
+        if ((int const) * (needle + j___0) == (int const) * phaystack) {
+          j___0++;
+          phaystack++;
+          if (j___0 == m) {
+            *resultp = rhaystack;
+            goto while_break___1;
+          }
+        } else {
+          if (j___0 > 0UL) {
+            rhaystack += *(table + j___0);
+            j___0 -= *(table + j___0);
+          } else {
+            rhaystack++;
+            phaystack++;
+          }
+        }
+      }
+    while_break___4: /* CIL Label */;
+    }
+  while_break___1 : {
+    freea((void *)table);
+  }
+    return ((_Bool)1);
+  }
+}
+static _Bool knuth_morris_pratt_multibyte(char const *haystack, char const *needle,
+                                          char const **resultp) {
+  size_t m;
+  size_t tmp;
+  mbchar_t *needle_mbchars;
+  size_t *table;
+  void *memory;
+  void *tmp___1;
+  void *tmp___2;
+  void *tmp___3;
+  void *tmp___4;
+  int tmp___5;
+  void *table_memory;
+  mbui_iterator_t iter;
+  size_t j;
+  int tmp___6;
+  size_t i;
+  size_t j___0;
+  mbchar_t *b;
+  int tmp___7;
+  int tmp___8;
+  int tmp___9;
+  size_t j___1;
+  mbui_iterator_t rhaystack;
+  mbui_iterator_t phaystack;
+  size_t count;
+  int tmp___10;
+  int tmp___11;
+  int tmp___12;
+  int tmp___13;
+  int tmp___14;
+  int tmp___15;
+  void *__cil_tmp40;
+  void *__cil_tmp41;
+  void *__cil_tmp42;
+  void *__cil_tmp43;
+  void *__cil_tmp44;
+  void *__cil_tmp45;
+  {
+    {
+      tmp = mbslen(needle);
+      m = tmp;
+    }
+    if (sizeof(ptrdiff_t) <= sizeof(size_t)) {
+      tmp___5 = -1;
+    } else {
+      tmp___5 = -2;
+    }
+    if (m > (size_t)tmp___5 / (sizeof(mbchar_t) + sizeof(size_t))) {
+      tmp___4 = (void *)0;
+    } else {
+      if (m * (sizeof(mbchar_t) + sizeof(size_t)) < 4016UL) {
+        {
+          tmp___1 = __builtin_alloca(m * (sizeof(mbchar_t) + sizeof(size_t)) + 16UL);
+          tmp___3 = (void *)((char *)tmp___1 + 16);
+        }
+      } else {
+        {
+          tmp___2 = mmalloca(m * (sizeof(mbchar_t) + sizeof(size_t)));
+          tmp___3 = tmp___2;
+        }
+      }
+      tmp___4 = tmp___3;
+    }
+    memory = tmp___4;
+    if ((unsigned long)memory == (unsigned long)((void *)0)) {
+      return ((_Bool)0);
+    }
+    {
+      needle_mbchars = (mbchar_t *)memory;
+      table_memory = (void *)(needle_mbchars + m);
+      table = (size_t *)table_memory;
+      j = (size_t)0;
+      iter.cur.ptr = needle;
+      iter.in_shift = (_Bool)0;
+      memset((void *)(&iter.state), '\000', sizeof(mbstate_t));
+      iter.next_done = (_Bool)0;
+    }
+    {
+      while (1) {
+      while_continue: /* CIL Label */;
+        {
+          mbuiter_multi_next(&iter);
+        }
+        if (iter.cur.wc_valid) {
+          if (iter.cur.wc == 0) {
+            tmp___6 = 0;
+          } else {
+            tmp___6 = 1;
+          }
+        } else {
+          tmp___6 = 1;
+        }
+        if (!tmp___6) {
+          goto while_break;
+        }
+        {
+          mb_copy(needle_mbchars + j, (mbchar_t const *)(&iter.cur));
+          iter.cur.ptr += iter.cur.bytes;
+          iter.next_done = (_Bool)0;
+          j++;
+        }
+      }
+    while_break___4: /* CIL Label */;
+    }
+  while_break:
+    *(table + 1) = (size_t)1;
+    j___0 = (size_t)0;
+    i = (size_t)2;
+    {
+      while (1) {
+      while_continue___0: /* CIL Label */;
+        if (!(i < m)) {
+          goto while_break___0;
+        }
+        b = needle_mbchars + (i - 1UL);
+        {
+          while (1) {
+          while_continue___1: /* CIL Label */;
+            if (b->wc_valid) {
+              if ((needle_mbchars + j___0)->wc_valid) {
+                tmp___9 = b->wc == (needle_mbchars + j___0)->wc;
+              } else {
+                goto _L;
+              }
+            } else {
+            _L:
+              if (b->bytes == (needle_mbchars + j___0)->bytes) {
+                {
+                  tmp___7 = memcmp((void const *)b->ptr, (void const *)(needle_mbchars + j___0)->ptr,
+                                   b->bytes);
+                }
+                if (tmp___7 == 0) {
+                  tmp___8 = 1;
+                } else {
+                  tmp___8 = 0;
+                }
+              } else {
+                tmp___8 = 0;
+              }
+              tmp___9 = tmp___8;
+            }
+            if (tmp___9) {
+              j___0++;
+              *(table + i) = i - j___0;
+              goto while_break___1;
+            }
+            if (j___0 == 0UL) {
+              *(table + i) = i;
+              goto while_break___1;
+            }
+            j___0 -= *(table + j___0);
+          }
+        while_break___6: /* CIL Label */;
+        }
+      while_break___1:
+        i++;
+      }
+    while_break___5: /* CIL Label */;
+    }
+  while_break___0 : {
+    *resultp = (char const *)((void *)0);
+    j___1 = (size_t)0;
+    rhaystack.cur.ptr = haystack;
+    rhaystack.in_shift = (_Bool)0;
+    memset((void *)(&rhaystack.state), '\000', sizeof(mbstate_t));
+    rhaystack.next_done = (_Bool)0;
+    phaystack.cur.ptr = haystack;
+    phaystack.in_shift = (_Bool)0;
+    memset((void *)(&phaystack.state), '\000', sizeof(mbstate_t));
+    phaystack.next_done = (_Bool)0;
+  }
+    {
+      while (1) {
+      while_continue___2: /* CIL Label */;
+        {
+          mbuiter_multi_next(&phaystack);
+        }
+        if (phaystack.cur.wc_valid) {
+          if (phaystack.cur.wc == 0) {
+            tmp___15 = 0;
+          } else {
+            tmp___15 = 1;
+          }
+        } else {
+          tmp___15 = 1;
+        }
+        if (!tmp___15) {
+          goto while_break___2;
+        }
+        if ((needle_mbchars + j___1)->wc_valid) {
+          if (phaystack.cur.wc_valid) {
+            tmp___14 = (needle_mbchars + j___1)->wc == phaystack.cur.wc;
+          } else {
+            goto _L___0;
+          }
+        } else {
+        _L___0:
+          if ((needle_mbchars + j___1)->bytes == phaystack.cur.bytes) {
+            {
+              tmp___12 = memcmp((void const *)(needle_mbchars + j___1)->ptr, (void const *)phaystack.cur.ptr,
+                                (needle_mbchars + j___1)->bytes);
+            }
+            if (tmp___12 == 0) {
+              tmp___13 = 1;
+            } else {
+              tmp___13 = 0;
+            }
+          } else {
+            tmp___13 = 0;
+          }
+          tmp___14 = tmp___13;
+        }
+        if (tmp___14) {
+          j___1++;
+          phaystack.cur.ptr += phaystack.cur.bytes;
+          phaystack.next_done = (_Bool)0;
+          if (j___1 == m) {
+            *resultp = rhaystack.cur.ptr;
+            goto while_break___2;
+          }
+        } else {
+          if (j___1 > 0UL) {
+            count = *(table + j___1);
+            j___1 -= count;
+            {
+              while (1) {
+              while_continue___3: /* CIL Label */;
+                if (!(count > 0UL)) {
+                  goto while_break___3;
+                }
+                {
+                  mbuiter_multi_next(&rhaystack);
+              

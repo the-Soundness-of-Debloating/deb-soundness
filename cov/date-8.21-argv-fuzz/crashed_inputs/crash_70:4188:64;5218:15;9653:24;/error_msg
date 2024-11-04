@@ -1,0 +1,18 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2306000==ERROR: ThreadSanitizer: SEGV on unknown address (pc 0x564d66ae1360 bp 0x7fff66764780 sp 0x7fff66763ae8 T2306000)
+==2306000==The signal is caused by a READ memory access.
+==2306000==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 __tsan_read2 <null> (reduced.tsan.out+0xba360) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #1 yyparse /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:4188:64 (reduced.tsan.out+0xd105b) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #2 parse_datetime /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15 (reduced.tsan.out+0xd2ad8) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #3 main /workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24 (reduced.tsan.out+0xd578c) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+    #4 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #5 __libc_start_main csu/../csu/libc-start.c:392:3 (libc.so.6+0x29e3f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+    #6 _start <null> (reduced.tsan.out+0x22464) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656)
+
+ThreadSanitizer can not provide additional info.
+SUMMARY: ThreadSanitizer: SEGV (/workspace/fuzzing-deb-with-sanitizers/cov/date-8.21-argv-fuzz/bins/reduced.tsan.out+0xba360) (BuildId: 5ad6288f3d707cbcdb316c2b6b517b1b36a2c656) in __tsan_read2
+==2306000==ABORTING
+./verify.sh: line 110: 2305999 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

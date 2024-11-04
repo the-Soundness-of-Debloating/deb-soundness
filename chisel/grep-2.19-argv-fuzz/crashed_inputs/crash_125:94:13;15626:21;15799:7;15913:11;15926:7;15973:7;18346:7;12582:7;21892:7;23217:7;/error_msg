@@ -1,0 +1,25 @@
+tsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/bins/reduced.tsan.out
+grep: invalid option -- '^'
+grep: invalid option -- ''
+grep: invalid option -- '/'
+grep: invalid option -- 'ÿ'
+ThreadSanitizer:DEADLYSIGNAL
+==4179177==ERROR: ThreadSanitizer: stack-overflow on address 0x7fffe1c30b90 (pc 0x7fffe1c30b90 bp 0x7fffe1c309f0 sp 0x7fffe1c309f8 T4179177)
+LLVMSymbolizer: error reading file: No such file or directory
+    #0 <null> <null> ([stack]+0x1eb90)
+    #1 lex /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:14694:13 (reduced.tsan.out+0xd084f) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #2 atom /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15626:21 (reduced.tsan.out+0xd6526) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #3 closure /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15799:7 (reduced.tsan.out+0xd6395) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #4 branch /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15913:11 (reduced.tsan.out+0xd6363) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #5 regexp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15926:7 (reduced.tsan.out+0xd11e1) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #6 dfaparse /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:15973:7 (reduced.tsan.out+0xd0416) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #7 dfacomp /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:18346:7 (reduced.tsan.out+0xcfa3e) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #8 GEAcompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:12582:7 (reduced.tsan.out+0xcf89a) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #9 Ecompile /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:21892:7 (reduced.tsan.out+0xd6c8a) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #10 main /workspace/fuzzing-deb-with-sanitizers/chisel/grep-2.19-argv-fuzz/./grep-2.19.c.reduced.c:23217:7 (reduced.tsan.out+0xd3f00) (BuildId: 52b3e04c3a2b42dd260d2115cfba621627714e4c)
+    #11 __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16 (libc.so.6+0x29d8f) (BuildId: c289da5071a3399de893d2af81d6a30c62646e1e)
+
+SUMMARY: ThreadSanitizer: stack-overflow ([stack]+0x1eb90) 
+==4179177==ABORTING
+./verify.sh: line 108: 4179176 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

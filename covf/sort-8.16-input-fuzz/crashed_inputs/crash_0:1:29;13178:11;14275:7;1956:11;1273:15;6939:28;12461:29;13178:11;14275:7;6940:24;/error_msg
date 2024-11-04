@@ -1,0 +1,58 @@
+asan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/bins/reduced.asan.out /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/result/afl_result/reduced/result_0/asan/crashes/id:000000,sig:11,src:000012+000022,time:129488,execs:27709,op:splice,rep:6
+=================================================================
+==745810==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000050 at pc 0x558d60051ebc bp 0x7ffd98302de0 sp 0x7ffd98302dd8
+WRITE of size 8 at 0x602000000050 thread T0
+    #0 0x558d60051ebb in heap_alloc /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:6940:24
+    #1 0x558d600558b3 in queue_init /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:12461:29
+    #2 0x558d600544d5 in sort /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:13178:11
+    #3 0x558d6005356d in main /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:14275:7
+    #4 0x7f4d7906cd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x7f4d7906ce3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x558d5ff91494 in _start (/workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/bins/reduced.asan.out+0x20494) (BuildId: d8e8f668a7023b88d6a0ccf0a9b37b44f8d57e4a)
+
+0x602000000051 is located 0 bytes to the right of 1-byte region [0x602000000050,0x602000000051)
+allocated by thread T0 here:
+    #0 0x558d60016ebe in __interceptor_malloc (/workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/bins/reduced.asan.out+0xa5ebe) (BuildId: d8e8f668a7023b88d6a0ccf0a9b37b44f8d57e4a)
+    #1 0x558d600514e4 in xmalloc /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:1956:11
+    #2 0x558d60051fb4 in xnmalloc /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:1273:15
+    #3 0x558d60051e43 in heap_alloc /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:6939:28
+    #4 0x558d600558b3 in queue_init /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:12461:29
+    #5 0x558d600544d5 in sort /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:13178:11
+    #6 0x558d6005356d in main /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:14275:7
+    #7 0x7f4d7906cd8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/./sort-8.16.c.reduced.c:6940:24 in heap_alloc
+Shadow bytes around the buggy address:
+  0x0c047fff7fb0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c047fff7fc0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c047fff7fd0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c047fff7fe0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c047fff7ff0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0c047fff8000: fa fa 00 02 fa fa 00 00 fa fa[01]fa fa fa fa fa
+  0x0c047fff8010: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff8020: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff8030: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff8040: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff8050: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==745810==ABORTING
+./verify.sh: line 167: 745809 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/bins/reduced.asan.out /workspace/fuzzing-deb-with-sanitizers/covf/sort-8.16-input-fuzz/result/afl_result/reduced/result_0/asan/crashes/id:000000*

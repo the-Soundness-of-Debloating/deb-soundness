@@ -1,0 +1,6 @@
+[
+{ crash_loc: 9018, vul_type: "", deb_tool: "cova" }, 
+{ crash_loc: 9018, vul_type: "stack-overflow,", deb_tool: "cova" }, 
+{ crash_loc: 8517, vul_type: "runtime error ", deb_tool: "cova" }, 
+{ crash_loc: 0x000000000000, vul_type: "READ memory access,", deb_tool: "cova" }, 
+]

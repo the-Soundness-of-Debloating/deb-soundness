@@ -1,0 +1,26 @@
+ubsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.ubsan.out
+rm-8.4.c.reduced.c:4885:24: runtime error: member access within misaligned address 0x6161616161616161 for type 'FTSENT' (aka 'struct _ftsent'), which requires 8 byte alignment
+0x6161616161616161: note: pointer points here
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior rm-8.4.c.reduced.c:4885:24 in 
+rm-8.4.c.reduced.c:4885:24: runtime error: load of misaligned address 0x6161616161616169 for type 'struct _ftsent *', which requires 8 byte alignment
+0x6161616161616169: note: pointer points here
+<memory cannot be printed>
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior rm-8.4.c.reduced.c:4885:24 in 
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==1174494==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address (pc 0x564f549fe028 bp 0x7ffdf20d1250 sp 0x7ffdf20d1080 T1174494)
+==1174494==The signal is caused by a READ memory access.
+==1174494==Hint: this fault was caused by a dereference of a high value address (see register values below).  Disassemble the provided pc to learn which register was used.
+    #0 0x564f549fe028 in fts_read /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:4885:24
+    #1 0x564f549fe52b in rm /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:6730:15
+    #2 0x564f549fec12 in main /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:7177:15
+    #3 0x7ff5ffd98d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7ff5ffd98e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x564f549d4444 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.ubsan.out+0x7444) (BuildId: d62a2af2b03bfec3ccc5a94dbcfef28a72896363)
+
+UndefinedBehaviorSanitizer can not provide additional info.
+SUMMARY: UndefinedBehaviorSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/./rm-8.4.c.reduced.c:4885:24 in fts_read
+==1174494==ABORTING
+timeout: the monitored command dumped core
+./verify.sh: line 186: 1174492 Aborted                 timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/bins/reduced.ubsan.out < /workspace/fuzzing-deb-with-sanitizers/chisel/rm-8.4-argv-fuzz/input/radamsa_fuzzed/input6_fuzzed/input6_69

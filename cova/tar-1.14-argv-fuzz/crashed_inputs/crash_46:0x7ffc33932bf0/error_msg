@@ -1,0 +1,5 @@
+tsan:
+++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/cova/tar-1.14-argv-fuzz/bins/reduced.tsan.out
+ThreadSanitizer:DEADLYSIGNAL
+==2053973==ERROR: ThreadSanitizer: stack-overflow on address 0x7ffc33932bf0 (pc 0x7ffc33932bf0 bp 0x7ffc339327b0 sp 0x7ffc339327b8 T2053973)
+LLVMSymbolizer: error reading file: No such file or directory

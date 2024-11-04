@@ -1,0 +1,16 @@
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.lsan.out
+date: unrecognized option '--rʴfc--263327=sec'
+LeakSanitizer:DEADLYSIGNAL
+==134352==ERROR: LeakSanitizer: SEGV on unknown address 0x7fb85c282604 (pc 0x55e7466481d1 bp 0x7fffb9b63fb0 sp 0x7fffb9b63400 T0)
+==134352==The signal is caused by a WRITE memory access.
+    #0 0x55e7466481d1 in yyparse /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3367:32
+    #1 0x55e746649ab8 in parse_datetime /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:5218:15
+    #2 0x55e74664ab9c in main /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:9653:24
+    #3 0x7fb85c1d0d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #4 0x7fb85c1d0e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #5 0x55e74661a4e4 in _start (/workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/bins/reduced.lsan.out+0x54e4) (BuildId: 5060c0af9d8553ad9e19245aea506efae9476d31)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV /workspace/fuzzing-deb-with-sanitizers/chisel/date-8.21-argv-fuzz/./date-8.21.c.reduced.c:3367:32 in yyparse
+==134352==ABORTING

@@ -1,0 +1,473 @@
+__argmatch_die   function   23443 tar-1.14.c.origin.c static void __argmatch_die(void) {
+__xargmatch_internal function   23595 tar-1.14.c.origin.c int __xargmatch_internal(char const *context, char const *arg,
+_rmt_shutdown    function   17554 tar-1.14.c.origin.c static void _rmt_shutdown(int handle, int errno_value) {
+add_avoided_name function   17331 tar-1.14.c.origin.c void add_avoided_name(char const *name) {
+add_exclude      function   24133 tar-1.14.c.origin.c void add_exclude(struct exclude *ex, char const *pattern, int options) {
+add_exclude_file function   24153 tar-1.14.c.origin.c int add_exclude_file(void (*add_func)(struct exclude *, char const *, int),
+add_hierarchy_to_namelist function   16927 tar-1.14.c.origin.c static void add_hierarchy_to_namelist(struct name *name, dev_t device) {
+addext           function   23356 tar-1.14.c.origin.c void addext(char *filename, char const *ext, int e) {
+addname          function   16475 tar-1.14.c.origin.c struct name *addname(char const *string, int change_dir___0) {
+adjust_value     function   26835 tar-1.14.c.origin.c static long double adjust_value(int inexact_style, long double value) {
+all_names_found  function   16674 tar-1.14.c.origin.c _Bool all_names_found(struct tar_stat_info *p) {
+allocate_entry   function   26571 tar-1.14.c.origin.c static struct hash_entry *allocate_entry(Hash_table *table___0) {
+append_file      function   22994 tar-1.14.c.origin.c static void append_file(char *path) {
+apply_delayed_symlinks function   8770 tar-1.14.c.origin.c static void apply_delayed_symlinks(void) {
+apply_nonancestor_delayed_set_stat function   7786 tar-1.14.c.origin.c static void apply_nonancestor_delayed_set_stat(char const *file_name,
+archive_format_string function   20840 tar-1.14.c.origin.c static char const *archive_format_string(enum archive_format fmt) {
+archive_read_error function   1800 tar-1.14.c.origin.c void archive_read_error(void) {
+archive_write_error function   1783 tar-1.14.c.origin.c void archive_write_error(ssize_t status) {
+argmatch         function   23449 tar-1.14.c.origin.c int argmatch(char const *arg, char const *const *arglist, char const *vallist,
+argmatch_invalid function   23508 tar-1.14.c.origin.c void argmatch_invalid(char const *context, char const *value, int problem) {
+argmatch_valid   function   23538 tar-1.14.c.origin.c void argmatch_valid(char const *const *arglist, char const *vallist,
+assert_format    function   20861 tar-1.14.c.origin.c static void assert_format(unsigned int fmt_mask) {
+assign_string    function   14264 tar-1.14.c.origin.c void assign_string(char **string, char const *value) {
+atime_coder      function   10331 tar-1.14.c.origin.c static void atime_coder(struct tar_stat_info const *st, char const *keyword,
+atime_decoder    function   10342 tar-1.14.c.origin.c static void atime_decoder(struct tar_stat_info *st, char const *arg) {
+available_space_after function    985 tar-1.14.c.origin.c size_t available_space_after(union block *pointer) {
+backspace_output function   2275 tar-1.14.c.origin.c static void backspace_output(void) {
+base64_init      function   11913 tar-1.14.c.origin.c static void base64_init(void) {
+base_len         function   23904 tar-1.14.c.origin.c size_t base_len(char const *name) {
+base_name        function   23866 tar-1.14.c.origin.c char *base_name(char const *name) {
+bkm_scale___0    function   30187 tar-1.14.c.origin.c static strtol_error bkm_scale___0(unsigned long *x, int scale_factor) {
+bkm_scale___1    function   30484 tar-1.14.c.origin.c static strtol_error bkm_scale___1(uintmax_t *x, int scale_factor) {
+bkm_scale_by_power___0 function   30197 tar-1.14.c.origin.c static strtol_error bkm_scale_by_power___0(unsigned long *x, int base,
+bkm_scale_by_power___1 function   30494 tar-1.14.c.origin.c static strtol_error bkm_scale_by_power___1(uintmax_t *x, int base, int power) {
+blank_name_list  function   17185 tar-1.14.c.origin.c void blank_name_list(void) {
+call_arg_error   function   15213 tar-1.14.c.origin.c static void call_arg_error(char const *call, char const *name) {
+call_arg_fatal   function   15233 tar-1.14.c.origin.c static void call_arg_fatal(char const *call, char const *name) {
+call_arg_warn    function   15250 tar-1.14.c.origin.c static void call_arg_warn(char const *call, char const *name) {
+chdir_arg        function   14967 tar-1.14.c.origin.c int chdir_arg(char const *dir) {
+chdir_do         function   15023 tar-1.14.c.origin.c void chdir_do(int i) {
+chdir_fatal      function   15268 tar-1.14.c.origin.c void chdir_fatal(char const *name) {
+check_data_region function   19179 tar-1.14.c.origin.c static _Bool check_data_region(struct tar_sparse_file *file, size_t i) {
+check_label_pattern function   1003 tar-1.14.c.origin.c static _Bool check_label_pattern(union block *label) {
+check_links      function   6147 tar-1.14.c.origin.c void check_links(void) {
+check_sparse_region function   19130 tar-1.14.c.origin.c static _Bool check_sparse_region(struct tar_sparse_file *file, off_t beg,
+check_time       function   7314 tar-1.14.c.origin.c static void check_time(char const *file_name, time_t t) {
+check_tuning     function   26466 tar-1.14.c.origin.c static _Bool check_tuning(Hash_table *table___0) {
+chmod_error_details function   15274 tar-1.14.c.origin.c void chmod_error_details(char const *name, mode_t mode) {
+chown_error_details function   15295 tar-1.14.c.origin.c void chown_error_details(char const *name, uid_t uid, gid_t gid) {
+clear_read_error_count function    859 tar-1.14.c.origin.c void clear_read_error_count(void) {
+clone_quoting_options function   28429 tar-1.14.c.origin.c struct quoting_options *clone_quoting_options(struct quoting_options *o___0) {
+close_archive    function   2389 tar-1.14.c.origin.c void close_archive(void) {
+close_diag       function   15328 tar-1.14.c.origin.c void close_diag(char const *name) {
+close_error      function   15314 tar-1.14.c.origin.c void close_error(char const *name) {
+close_warn       function   15321 tar-1.14.c.origin.c void close_warn(char const *name) {
+closeout_volume_number function   2513 tar-1.14.c.origin.c void closeout_volume_number(void) {
+code_num         function   10303 tar-1.14.c.origin.c static void code_num(uintmax_t value, char const *keyword,
+code_string      function   10214 tar-1.14.c.origin.c static void code_string(char const *string, char const *keyword,
+code_time        function   10250 tar-1.14.c.origin.c static void code_time(time_t t, unsigned long nano, char const *keyword,
+collect_and_sort_names function   17017 tar-1.14.c.origin.c void collect_and_sort_names(void) {
+compare_directories function   10671 tar-1.14.c.origin.c static _Bool compare_directories(void const *entry1, void const *entry2) {
+compare_dirents  function   10753 tar-1.14.c.origin.c static int compare_dirents(void const *first, void const *second) {
+compare_links    function   6004 tar-1.14.c.origin.c static _Bool compare_links(void const *entry1, void const *entry2) {
+compare_names    function   16896 tar-1.14.c.origin.c static int compare_names(struct name const *n1, struct name const *n2) {
+confirm          function   20723 tar-1.14.c.origin.c int confirm(char const *message_action, char const *message_name) {
+contains_dot_dot function   17493 tar-1.14.c.origin.c _Bool contains_dot_dot(char const *name) {
+create_archive   function   5835 tar-1.14.c.origin.c void create_archive(void) {
+ctime_coder      function   10396 tar-1.14.c.origin.c static void ctime_coder(struct tar_stat_info const *st, char const *keyword,
+ctime_decoder    function   10407 tar-1.14.c.origin.c static void ctime_decoder(struct tar_stat_info *st, char const *arg) {
+current_block_ordinal function    936 tar-1.14.c.origin.c off_t current_block_ordinal(void) {
+decg             function   9836 tar-1.14.c.origin.c static void decg(void *data, char const *keyword, char const *value) {
+decode_header    function   12623 tar-1.14.c.origin.c void decode_header(union block *header, struct tar_stat_info *stat_info,
+decode_mode      function   15081 tar-1.14.c.origin.c void decode_mode(mode_t mode, char *string) {
+decode_options   function   21275 tar-1.14.c.origin.c static void decode_options(int argc, char **argv) {
+decode_record    function   9688 tar-1.14.c.origin.c static _Bool decode_record(char **p,
+decode_string    function   10232 tar-1.14.c.origin.c static void decode_string(char **string, char const *arg) {
+decode_time      function   10279 tar-1.14.c.origin.c static void decode_time(char const *arg, time_t *secs, unsigned long *nsecs) {
+decx             function   9779 tar-1.14.c.origin.c static void decx(void *data, char const *keyword, char const *value) {
+delay_set_stat   function   7420 tar-1.14.c.origin.c static void delay_set_stat(char const *file_name, struct stat const *stat_info,
+delete_archive_members function   6791 tar-1.14.c.origin.c void delete_archive_members(void) {
+deref_stat       function   14943 tar-1.14.c.origin.c int deref_stat(_Bool deref, char const *name, struct stat *buf) {
+diff_archive     function   3278 tar-1.14.c.origin.c void diff_archive(void) {
+diff_init        function   3099 tar-1.14.c.origin.c void diff_init(void) {
+dir_len          function   23928 tar-1.14.c.origin.c size_t dir_len(char const *path) {
+dir_name         function   23955 tar-1.14.c.origin.c char *dir_name(char const *path) {
+do_command       function   17568 tar-1.14.c.origin.c static int do_command(int handle, char const *buffer___2) {
+dummy_coder      function   10320 tar-1.14.c.origin.c static void dummy_coder(struct tar_stat_info const *st
+dummy_decoder    function   10327 tar-1.14.c.origin.c static void dummy_decoder(struct tar_stat_info *st __attribute__((__unused__)),
+dump_dir         function   5815 tar-1.14.c.origin.c static _Bool dump_dir(struct tar_stat_info *st, int top_level,
+dump_dir0        function   5590 tar-1.14.c.origin.c static void dump_dir0(char *directory, struct tar_stat_info *st, int top_level,
+dump_file        function   6547 tar-1.14.c.origin.c void dump_file(char *p, int top_level, dev_t parent_device) {
+dump_file0       function   6184 tar-1.14.c.origin.c static void dump_file0(struct tar_stat_info *st, char *p, int top_level,
+dump_hard_link   function   6031 tar-1.14.c.origin.c static _Bool dump_hard_link(struct tar_stat_info *st) {
+dump_regular_file function   5446 tar-1.14.c.origin.c static enum dump_status dump_regular_file(int fd, struct tar_stat_info *st) {
+dump_regular_finish function   5542 tar-1.14.c.origin.c static void dump_regular_finish(int fd, struct tar_stat_info *st,
+encode_oflag     function   17801 tar-1.14.c.origin.c static void encode_oflag(char *buf, int oflag) {
+ensure_slash     function   5778 tar-1.14.c.origin.c static void ensure_slash(char **pstr) {
+excluded_filename function   24059 tar-1.14.c.origin.c _Bool excluded_filename(struct exclude const *ex, char const *f) {
+excluded_name    function   17242 tar-1.14.c.origin.c _Bool excluded_name(char const *name) {
+exec_fatal       function   15341 tar-1.14.c.origin.c void exec_fatal(char const *name) {
+extended_header_init function   9877 tar-1.14.c.origin.c static void extended_header_init(void) {
+extr_init        function   7234 tar-1.14.c.origin.c void extr_init(void) {
+extract_archive  function   7896 tar-1.14.c.origin.c void extract_archive(void) {
+extract_finish   function   8879 tar-1.14.c.origin.c void extract_finish(void) {
+extract_mangle   function   14002 tar-1.14.c.origin.c void extract_mangle(void) {
+fatal_exit       function   8892 tar-1.14.c.origin.c void fatal_exit(void) {
+file_count_links function   6095 tar-1.14.c.origin.c static void file_count_links(struct tar_stat_info *st) {
+file_dumpable_p  function   4554 tar-1.14.c.origin.c _Bool file_dumpable_p(struct tar_stat_info *st) {
+file_newer_p     function   7607 tar-1.14.c.origin.c static _Bool file_newer_p(char const *file_name,
+find_backup_file_name function   23629 tar-1.14.c.origin.c char *find_backup_file_name(char const *file,
+find_directory   function   10729 tar-1.14.c.origin.c static struct directory *find_directory(char *name) {
+find_next_block  function    950 tar-1.14.c.origin.c union block *find_next_block(void) {
+finish_header    function   5399 tar-1.14.c.origin.c void finish_header(struct tar_stat_info *st, union block *header,
+flush_archive    function   2231 tar-1.14.c.origin.c void flush_archive(void) {
+flush_read       function   1927 tar-1.14.c.origin.c void flush_read(void) {
+flush_write      function   1581 tar-1.14.c.origin.c void flush_write(void) {
+fnmatch_no_wildcards function   24007 tar-1.14.c.origin.c static int fnmatch_no_wildcards(char const *pattern, char const *f,
+format_uintmax   function   9959 tar-1.14.c.origin.c static size_t format_uintmax(uintmax_t val, char *buf, size_t s) {
+free_entry       function   26587 tar-1.14.c.origin.c static void free_entry(Hash_table *table___0, struct hash_entry *entry) {
+from_header      function   12817 tar-1.14.c.origin.c static uintmax_t from_header(char const *where0, size_t digs, char const *type,
+full_write       function   24315 tar-1.14.c.origin.c size_t full_write(int fd, void const *buf, size_t count) {
+get_date         function   25943 tar-1.14.c.origin.c _Bool get_date(struct timespec *result, char const *p,
+get_directory_contents function   11268 tar-1.14.c.origin.c char *get_directory_contents(char *path, dev_t device) {
+get_stat_data    function   3252 tar-1.14.c.origin.c static int get_stat_data(char const *file_name, struct stat *stat_data) {
+get_status       function   17689 tar-1.14.c.origin.c static long get_status(int handle) {
+get_status_off   function   17718 tar-1.14.c.origin.c static off_t get_status_off(int handle) {
+get_status_string function   17593 tar-1.14.c.origin.c static char *get_status_string(int handle, char *command_buffer) {
+get_version      function   23815 tar-1.14.c.origin.c enum backup_type get_version(char const *context, char const *version) {
+gettext_quote    function   28488 tar-1.14.c.origin.c static char const *gettext_quote(char const *msgid, enum quoting_style s) {
+gettime          function   26217 tar-1.14.c.origin.c int gettime(struct timespec *ts) {
+gid_coder        function   10348 tar-1.14.c.origin.c static void gid_coder(struct tar_stat_info const *st, char const *keyword,
+gid_decoder      function   10356 tar-1.14.c.origin.c static void gid_decoder(struct tar_stat_info *st, char const *arg) {
+gid_from_header  function   13162 tar-1.14.c.origin.c gid_t gid_from_header(char const *p, size_t s) {
+gid_substitute   function   4305 tar-1.14.c.origin.c static uintmax_t gid_substitute(int *negative) {
+gid_to_chars     function   4323 tar-1.14.c.origin.c void gid_to_chars(gid_t v, char *p, size_t s) {
+gid_to_gname     function   15878 tar-1.14.c.origin.c void gid_to_gname(gid_t gid, char **gname) {
+gname_coder      function   10368 tar-1.14.c.origin.c static void gname_coder(struct tar_stat_info const *st, char const *keyword,
+gname_decoder    function   10376 tar-1.14.c.origin.c static void gname_decoder(struct tar_stat_info *st, char const *arg) {
+gname_to_gid     function   15955 tar-1.14.c.origin.c int gname_to_gid(char const *gname, gid_t *gidp) {
+gnu_restore      function   11702 tar-1.14.c.origin.c void gnu_restore(char const *directory_name) {
+group_number     function   26857 tar-1.14.c.origin.c static char *group_number(char *number, size_t numberlen, char const *grouping,
+guess_time_tm    function   27353 tar-1.14.c.origin.c static time_t guess_time_tm(long year, long yday, int hour, int min, int sec,
+hash_directory   function   10660 tar-1.14.c.origin.c static unsigned int hash_directory(void const *entry, unsigned int n_buckets) {
+hash_do_for_each function   26353 tar-1.14.c.origin.c size_t hash_do_for_each(Hash_table const *table___0,
+hash_find_entry  function   26595 tar-1.14.c.origin.c static void *hash_find_entry(Hash_table *table___0, void const *entry,
+hash_get_first   function   26282 tar-1.14.c.origin.c void *hash_get_first(Hash_table const *table___0) {
+hash_get_next    function   26307 tar-1.14.c.origin.c void *hash_get_next(Hash_table const *table___0, void const *entry) {
+hash_initialize  function   26493 tar-1.14.c.origin.c Hash_table *hash_initialize(size_t candidate, Hash_tuning const *tuning,
+hash_insert      function   26759 tar-1.14.c.origin.c void *hash_insert(Hash_table *table___0, void const *entry) {
+hash_link        function   5995 tar-1.14.c.origin.c static unsigned int hash_link(void const *entry, unsigned int n_buckets) {
+hash_lookup      function   26243 tar-1.14.c.origin.c void *hash_lookup(Hash_table const *table___0, void const *entry) {
+hash_rehash      function   26665 tar-1.14.c.origin.c _Bool hash_rehash(Hash_table *table___0, size_t candidate) {
+hash_string      function   26394 tar-1.14.c.origin.c size_t hash_string(char const *string, size_t n_buckets) {
+hash_string_compare function   17257 tar-1.14.c.origin.c static _Bool hash_string_compare(void const *name1, void const *name2) {
+hash_string_hasher function   17249 tar-1.14.c.origin.c static unsigned int hash_string_hasher(void const *name,
+hash_string_insert function   17264 tar-1.14.c.origin.c static _Bool hash_string_insert(Hash_table **table___0, char const *string) {
+hash_string_lookup function   17310 tar-1.14.c.origin.c static _Bool hash_string_lookup(Hash_table const *table___0,
+human_readable   function   26912 tar-1.14.c.origin.c char *human_readable(uintmax_t n, char *buf, int opts,
+init_names       function   15999 tar-1.14.c.origin.c void init_names(void) {
+init_volume_number function   2451 tar-1.14.c.origin.c void init_volume_number(void) {
+is_avoided_name  function   17337 tar-1.14.c.origin.c _Bool is_avoided_name(char const *name) {
+is_pattern       function   16032 tar-1.14.c.origin.c __inline static int is_pattern(char const *string) {
+is_prime         function   26414 tar-1.14.c.origin.c static _Bool is_prime(size_t candidate) {
+is_regular_file  function   20040 tar-1.14.c.origin.c static int is_regular_file(char const *name) {
+is_space         function   23992 tar-1.14.c.origin.c __inline static _Bool is_space(unsigned char c) {
+leapyear         function   27285 tar-1.14.c.origin.c __inline static int leapyear(int year) {
+link_error       function   15347 tar-1.14.c.origin.c void link_error(char const *target, char const *source) {
+linkpath_coder   function   10382 tar-1.14.c.origin.c static void linkpath_coder(struct tar_stat_info const *st, char const *keyword,
+linkpath_decoder function   10390 tar-1.14.c.origin.c static void linkpath_decoder(struct tar_stat_info *st, char const *arg) {
+list_archive     function   12221 tar-1.14.c.origin.c void list_archive(void) {
+locate_handler   function   9614 tar-1.14.c.origin.c static struct xhdr_tab const *locate_handler(char const *keyword) {
+lookup_word      function   25465 tar-1.14.c.origin.c static table const *lookup_word(parser_control const *pc, char *word) {
+lookup_zone      function   25427 tar-1.14.c.origin.c static table const *lookup_zone(parser_control const *pc, char const *name) {
+lseek_or_error   function   18579 tar-1.14.c.origin.c static _Bool lseek_or_error(struct tar_sparse_file *file, off_t offset,
+main             function   22798 tar-1.14.c.origin.c int main(int argc, char **argv) {
+major_from_header function   13173 tar-1.14.c.origin.c int major_from_header(char const *p, size_t s) {
+major_to_chars   function   4332 tar-1.14.c.origin.c void major_to_chars(int v, char *p, size_t s) {
+make_directories function   7501 tar-1.14.c.origin.c static int make_directories(char *file_name) {
+make_node_op_equals function   27724 tar-1.14.c.origin.c static struct mode_change *make_node_op_equals(mode_t new_mode) {
+max_backup_version function   23713 tar-1.14.c.origin.c static int max_backup_version(char const *file, char const *dir) {
+maybe_backup_file function   14798 tar-1.14.c.origin.c _Bool maybe_backup_file(char const *path, int this_is_the_archive) {
+maybe_recoverable function   7691 tar-1.14.c.origin.c static int maybe_recoverable(char *file_name, int *interdir_made) {
+merge_sort       function   16805 tar-1.14.c.origin.c static struct name *merge_sort(struct name *list, int length,
+minor_from_header function   13185 tar-1.14.c.origin.c int minor_from_header(char const *p, size_t s) {
+minor_to_chars   function   4342 tar-1.14.c.origin.c void minor_to_chars(int v, char *p, size_t s) {
+mkdir_error      function   15367 tar-1.14.c.origin.c void mkdir_error(char const *name) {
+mkfifo_error     function   15374 tar-1.14.c.origin.c void mkfifo_error(char const *name) {
+mknod_error      function   15381 tar-1.14.c.origin.c void mknod_error(char const *name) {
+mktime_internal  function   27446 tar-1.14.c.origin.c time_t mktime_internal(struct tm *tp,
+mode_adjust      function   28126 tar-1.14.c.origin.c mode_t mode_adjust(mode_t oldmode, struct mode_change const *changes) {
+mode_append_entry function   27743 tar-1.14.c.origin.c static void mode_append_entry(struct mode_change **head,
+mode_compile     function   27759 tar-1.14.c.origin.c struct mode_change *mode_compile(char const *mode_string,
+mode_free        function   28243 tar-1.14.c.origin.c void mode_free(struct mode_change *changes) {
+mode_from_header function   13197 tar-1.14.c.origin.c mode_t mode_from_header(char const *p, size_t s) {
+mode_to_chars    function   4352 tar-1.14.c.origin.c void mode_to_chars(mode_t v, char *p, size_t s) {
+move_archive     function   6577 tar-1.14.c.origin.c static void move_archive(off_t count) {
+mtime_coder      function   10413 tar-1.14.c.origin.c static void mtime_coder(struct tar_stat_info const *st, char const *keyword,
+mtime_decoder    function   10424 tar-1.14.c.origin.c static void mtime_decoder(struct tar_stat_info *st, char const *arg) {
+must_be_dot_or_slash function   14573 tar-1.14.c.origin.c static _Bool must_be_dot_or_slash(char const *path) {
+name_add         function   16011 tar-1.14.c.origin.c void name_add(char const *name) {
+name_close       function   16283 tar-1.14.c.origin.c void name_close(void) {
+name_from_list   function   17154 tar-1.14.c.origin.c char *name_from_list(void) {
+name_gather      function   16304 tar-1.14.c.origin.c void name_gather(void) {
+name_init        function   16057 tar-1.14.c.origin.c void name_init(void) {
+name_match       function   16602 tar-1.14.c.origin.c int name_match(char const *path) {
+name_next        function   16158 tar-1.14.c.origin.c char *name_next(int change_dirs) {
+name_scan        function   17111 tar-1.14.c.origin.c struct name *name_scan(char const *path) {
+name_term        function   16091 tar-1.14.c.origin.c void name_term(void) {
+namelist_match   function   16538 tar-1.14.c.origin.c static struct name *namelist_match(char const *path, size_t length) {
+names_notfound   function   16731 tar-1.14.c.origin.c void names_notfound(void) {
+new_exclude      function   23999 tar-1.14.c.origin.c struct exclude *new_exclude(void) {
+new_name         function   17204 tar-1.14.c.origin.c char *new_name(char const *path, char const *name) {
+new_volume       function   2549 tar-1.14.c.origin.c static _Bool new_volume(enum access_mode mode) {
+next_prime       function   26445 tar-1.14.c.origin.c static size_t next_prime(size_t candidate) {
+note_directory   function   10685 tar-1.14.c.origin.c static struct directory *note_directory(char const *name, dev_t dev, ino_t ino,
+off_from_header  function   13290 tar-1.14.c.origin.c off_t off_from_header(char const *p, size_t s) {
+off_to_chars     function   4482 tar-1.14.c.origin.c void off_to_chars(off_t v, char *p, size_t s) {
+oldgnu_add_sparse function   19336 tar-1.14.c.origin.c static enum oldgnu_add_status oldgnu_add_sparse(struct tar_sparse_file *file,
+oldgnu_dump_header function   19487 tar-1.14.c.origin.c static _Bool oldgnu_dump_header(struct tar_sparse_file *file) {
+oldgnu_fixup_header function   19364 tar-1.14.c.origin.c static _Bool oldgnu_fixup_header(struct tar_sparse_file *file) {
+oldgnu_get_sparse_info function   19376 tar-1.14.c.origin.c static _Bool oldgnu_get_sparse_info(struct tar_sparse_file *file) {
+oldgnu_sparse_member_p function   19332 tar-1.14.c.origin.c static _Bool oldgnu_sparse_member_p(struct tar_sparse_file *file
+oldgnu_store_sparse_info function   19458 tar-1.14.c.origin.c static void oldgnu_store_sparse_info(struct tar_sparse_file *file,
+open_archive     function   1047 tar-1.14.c.origin.c void open_archive(enum access_mode wanted_access) {
+open_diag        function   15409 tar-1.14.c.origin.c void open_diag(char const *name) {
+open_error       function   15388 tar-1.14.c.origin.c void open_error(char const *name) {
+open_fatal       function   15396 tar-1.14.c.origin.c void open_fatal(char const *name) {
+open_warn        function   15402 tar-1.14.c.origin.c void open_warn(char const *name) {
+pad_archive      function   5424 tar-1.14.c.origin.c void pad_archive(off_t size_left) {
+path_coder       function   10430 tar-1.14.c.origin.c static void path_coder(struct tar_stat_info const *st, char const *keyword,
+path_decoder     function   10438 tar-1.14.c.origin.c static void path_decoder(struct tar_stat_info *st, char const *arg) {
+pax_dump_header  function   19670 tar-1.14.c.origin.c static _Bool pax_dump_header(struct tar_sparse_file *file) {
+pax_sparse_member_p function   19664 tar-1.14.c.origin.c static _Bool pax_sparse_member_p(struct tar_sparse_file *file) {
+prepare_to_extract function   7631 tar-1.14.c.origin.c static int prepare_to_extract(char const *file_name) {
+prepend_args     function   28264 tar-1.14.c.origin.c static int prepend_args(char const *options, char *buf, char **argv) {
+prepend_default_options function   28338 tar-1.14.c.origin.c void prepend_default_options(char const *options, int *pargc, char ***pargv) {
+print_for_mkdir  function   13897 tar-1.14.c.origin.c void print_for_mkdir(char *pathname, int length, mode_t mode) {
+print_header     function   13420 tar-1.14.c.origin.c void print_header(struct tar_stat_info *st, off_t block_ordinal) {
+print_total_written function    865 tar-1.14.c.origin.c void print_total_written(void) {
+process_dumpdir  function   3185 tar-1.14.c.origin.c static int process_dumpdir(size_t bytes, char *buffer___2) {
+process_noop     function   3138 tar-1.14.c.origin.c static int process_noop(size_t size __attribute__((__unused__)),
+process_rawdata  function   3142 tar-1.14.c.origin.c static int process_rawdata(size_t bytes, char *buffer___2) {
+quote            function   15804 tar-1.14.c.origin.c char const *quote(char const *name) {
+quote_copy_string function   14283 tar-1.14.c.origin.c char *quote_copy_string(char const *string) {
+quote_n          function   15797 tar-1.14.c.origin.c char const *quote_n(int n, char const *name) {
+quotearg         function   29694 tar-1.14.c.origin.c char *quotearg(char const *arg) {
+quotearg_buffer  function   29569 tar-1.14.c.origin.c size_t quotearg_buffer(char *buffer___2, size_t buffersize, char const *arg,
+quotearg_buffer_restyled function   28505 tar-1.14.c.origin.c static size_t quotearg_buffer_restyled(char *buffer___2, size_t buffersize,
+quotearg_char    function   29729 tar-1.14.c.origin.c char *quotearg_char(char const *arg, char ch) {
+quotearg_colon   function   29743 tar-1.14.c.origin.c char *quotearg_colon(char const *arg) {
+quotearg_n       function   29683 tar-1.14.c.origin.c char *quotearg_n(int n, char const *arg) {
+quotearg_n_options function   29601 tar-1.14.c.origin.c static char *quotearg_n_options(int n, char const *arg, size_t argsize,
+quotearg_n_style function   29713 tar-1.14.c.origin.c char *quotearg_n_style(int n, enum quoting_style s, char const *arg) {
+quoting_options_from_style function   29702 tar-1.14.c.origin.c quoting_options_from_style(enum quoting_style style) {
+ranged_convert   function   27388 tar-1.14.c.origin.c static struct tm *ranged_convert(struct tm *(*convert)(time_t const *,
+read_and         function   11934 tar-1.14.c.origin.c void read_and(void (*do_something)(void)) {
+read_and_process function   3205 tar-1.14.c.origin.c static void read_and_process(off_t size, int (*processor)(size_t, char *)) {
+read_diag_details function   15476 tar-1.14.c.origin.c void read_diag_details(char const *name, off_t offset, size_t size) {
+read_directory_file function   11298 tar-1.14.c.origin.c void read_directory_file(void) {
+read_error       function   15421 tar-1.14.c.origin.c void read_error(char const *name) {
+read_error_details function   15428 tar-1.14.c.origin.c void read_error_details(char const *name, off_t offset, size_t size) {
+read_fatal       function   15489 tar-1.14.c.origin.c void read_fatal(char const *name) {
+read_fatal_details function   15497 tar-1.14.c.origin.c void read_fatal_details(char const *name, off_t offset, size_t size) {
+read_header      function   12318 tar-1.14.c.origin.c enum read_header read_header(_Bool raw_extended_headers) {
+read_name_from_file function   16100 tar-1.14.c.origin.c static int read_name_from_file(void) {
+read_warn_details function   15452 tar-1.14.c.origin.c void read_warn_details(char const *name, off_t offset, size_t size) {
+readlink_diag    function   15534 tar-1.14.c.origin.c void readlink_diag(char const *name) {
+readlink_error   function   15520 tar-1.14.c.origin.c void readlink_error(char const *name) {
+readlink_warn    function   15527 tar-1.14.c.origin.c void readlink_warn(char const *name) {
+remove_any_file  function   14658 tar-1.14.c.origin.c int remove_any_file(char const *path, enum remove_option option) {
+repair_delayed_set_stat function   7449 tar-1.14.c.origin.c static void repair_delayed_set_stat(char const *dir,
+report_difference function   3114 tar-1.14.c.origin.c void report_difference(struct tar_stat_info *st __attribute__((__unused__)),
+request_stdin    function   20706 tar-1.14.c.origin.c void request_stdin(char const *option) {
+reset_eof        function    939 tar-1.14.c.origin.c void reset_eof(void) {
+restore_cwd      function   29837 tar-1.14.c.origin.c int restore_cwd(struct saved_cwd const *cwd) {
+rmt_close__      function   18141 tar-1.14.c.origin.c int rmt_close__(int handle) {
+rmt_ioctl__      function   18334 tar-1.14.c.origin.c int rmt_ioctl__(int handle, int operation, char *argument) {
+rmt_lseek__      function   18260 tar-1.14.c.origin.c off_t rmt_lseek__(int handle, off_t offset, int whence) {
+rmt_open__       function   17912 tar-1.14.c.origin.c int rmt_open__(char const *path, int open_mode, int bias,
+rmt_read__       function   18159 tar-1.14.c.origin.c size_t rmt_read__(int handle, char *buffer___2, size_t length) {
+rmt_write__      function   18217 tar-1.14.c.origin.c size_t rmt_write__(int handle, char *buffer___2, size_t length) {
+run_override_list function   9752 tar-1.14.c.origin.c static void run_override_list(struct keyword_list *kp,
+safe_read        function   29753 tar-1.14.c.origin.c size_t safe_read(int fd, void *buf, size_t count) {
+safe_write       function   29782 tar-1.14.c.origin.c size_t safe_write(int fd, void const *buf, size_t count) {
+safer_name_suffix function   17352 tar-1.14.c.origin.c char *safer_name_suffix(char const *file_name, _Bool link_target) {
+safer_rmdir      function   14641 tar-1.14.c.origin.c static int safer_rmdir(char const *path) {
+save_cwd         function   29814 tar-1.14.c.origin.c int save_cwd(struct saved_cwd *cwd) {
+savedir          function   29853 tar-1.14.c.origin.c char *savedir(char const *dir) {
+savedir_diag     function   15560 tar-1.14.c.origin.c void savedir_diag(char const *name) {
+savedir_error    function   15546 tar-1.14.c.origin.c void savedir_error(char const *name) {
+savedir_warn     function   15553 tar-1.14.c.origin.c void savedir_warn(char const *name) {
+scan_path        function   10763 tar-1.14.c.origin.c static void scan_path(struct obstack *stk, char *path, dev_t device) {
+seek_diag_details function   15633 tar-1.14.c.origin.c void seek_diag_details(char const *name, off_t offset) {
+seek_error       function   15572 tar-1.14.c.origin.c void seek_error(char const *name) {
+seek_error_details function   15579 tar-1.14.c.origin.c void seek_error_details(char const *name, off_t offset) {
+seek_warn        function   15603 tar-1.14.c.origin.c void seek_warn(char const *name) {
+seek_warn_details function   15610 tar-1.14.c.origin.c void seek_warn_details(char const *name, off_t offset) {
+set_archive_format function   20809 tar-1.14.c.origin.c static void set_archive_format(char const *name) {
+set_char_quoting function   28468 tar-1.14.c.origin.c int set_char_quoting(struct quoting_options *o___0, char c, int i) {
+set_mode         function   7256 tar-1.14.c.origin.c static void set_mode(char const *file_name, struct stat const *stat_info,
+set_next_block_after function    965 tar-1.14.c.origin.c void set_next_block_after(union block *block) {
+set_quoting_style function   28456 tar-1.14.c.origin.c void set_quoting_style(struct quoting_options *o___0, enum quoting_style s) {
+set_stat         function   7347 tar-1.14.c.origin.c static void set_stat(char const *file_name, struct stat const *stat_info,
+set_subcommand_option function   21237 tar-1.14.c.origin.c static void set_subcommand_option(enum subcommand subcommand) {
+set_use_compress_program_option function   21254 tar-1.14.c.origin.c static void set_use_compress_program_option(char const *string) {
+short_read       function   1827 tar-1.14.c.origin.c static void short_read(size_t status) {
+simple_finish_header function   5362 tar-1.14.c.origin.c void simple_finish_header(union block *header) {
+size_coder       function   10448 tar-1.14.c.origin.c static void size_coder(struct tar_stat_info const *st, char const *keyword,
+size_decoder     function   10456 tar-1.14.c.origin.c static void size_decoder(struct tar_stat_info *st, char const *arg) {
+size_from_header function   13302 tar-1.14.c.origin.c size_t size_from_header(char const *p, size_t s) {
+size_to_chars    function   4492 tar-1.14.c.origin.c void size_to_chars(size_t v, char *p, size_t s) {
+skip_file        function   13938 tar-1.14.c.origin.c void skip_file(off_t size) {
+skip_member      function   13974 tar-1.14.c.origin.c void skip_member(void) {
+sort_obstack     function   11130 tar-1.14.c.origin.c static char *sort_obstack(struct obstack *stk) {
+sparse_add_map   function   18617 tar-1.14.c.origin.c static void sparse_add_map(struct tar_sparse_file *file, struct sp_array *sp) {
+sparse_diff_file function   19257 tar-1.14.c.origin.c _Bool sparse_diff_file(int fd, struct tar_stat_info *st) {
+sparse_dump_file function   18916 tar-1.14.c.origin.c enum dump_status sparse_dump_file(int fd, struct tar_stat_info *st) {
+sparse_dump_region function   18788 tar-1.14.c.origin.c static _Bool sparse_dump_region(struct tar_sparse_file *file, size_t i) {
+sparse_extract_file function   19024 tar-1.14.c.origin.c enum dump_status sparse_extract_file(int fd, struct tar_stat_info *st,
+sparse_extract_region function   18843 tar-1.14.c.origin.c static _Bool sparse_extract_region(struct tar_sparse_file *file, size_t i) {
+sparse_file_p    function   18985 tar-1.14.c.origin.c _Bool sparse_file_p(struct tar_stat_info *st) {
+sparse_fixup_header function   19008 tar-1.14.c.origin.c _Bool sparse_fixup_header(struct tar_stat_info *st) {
+sparse_member_p  function   18992 tar-1.14.c.origin.c _Bool sparse_member_p(struct tar_stat_info *st) {
+sparse_numblocks_coder function   10525 tar-1.14.c.origin.c static void sparse_numblocks_coder(struct tar_stat_info const *st,
+sparse_numblocks_decoder function   10533 tar-1.14.c.origin.c static void sparse_numblocks_decoder(struct tar_stat_info *st,
+sparse_numbytes_coder function   10576 tar-1.14.c.origin.c static void sparse_numbytes_coder(struct tar_stat_info const *st,
+sparse_numbytes_decoder function   10588 tar-1.14.c.origin.c static void sparse_numbytes_decoder(struct tar_stat_info *st, char const *arg) {
+sparse_offset_coder function   10552 tar-1.14.c.origin.c static void sparse_offset_coder(struct tar_stat_info const *st,
+sparse_offset_decoder function   10564 tar-1.14.c.origin.c static void sparse_offset_decoder(struct tar_stat_info *st, char const *arg) {
+sparse_scan_file function   18648 tar-1.14.c.origin.c static _Bool sparse_scan_file(struct tar_sparse_file *file) {
+sparse_select_optab function   18740 tar-1.14.c.origin.c static _Bool sparse_select_optab(struct tar_sparse_file *file) {
+sparse_size_coder function   10505 tar-1.14.c.origin.c static void sparse_size_coder(struct tar_stat_info const *st,
+sparse_size_decoder function   10513 tar-1.14.c.origin.c static void sparse_size_decoder(struct tar_stat_info *st, char const *arg) {
+sparse_skip_file function   19088 tar-1.14.c.origin.c enum dump_status sparse_skip_file(struct tar_stat_info *st) {
+split_long_name  function   4700 tar-1.14.c.origin.c static size_t split_long_name(char const *name, size_t length) {
+star_fixup_header function   19551 tar-1.14.c.origin.c static _Bool star_fixup_header(struct tar_sparse_file *file) {
+star_get_sparse_info function   19563 tar-1.14.c.origin.c static _Bool star_get_sparse_info(struct tar_sparse_file *file) {
+star_sparse_member_p function   19547 tar-1.14.c.origin.c static _Bool star_sparse_member_p(struct tar_sparse_file *file
+start_header     function   5035 tar-1.14.c.origin.c union block *start_header(struct tar_stat_info *st) {
+start_private_header function   4603 tar-1.14.c.origin.c union block *start_private_header(char const *name, size_t size) {
+stat_diag        function   15679 tar-1.14.c.origin.c void stat_diag(char const *name) {
+stat_error       function   15665 tar-1.14.c.origin.c void stat_error(char const *name) {
+stat_warn        function   15672 tar-1.14.c.origin.c void stat_warn(char const *name) {
+string_ascii_p   function   23330 tar-1.14.c.origin.c _Bool string_ascii_p(char const *str) {
+string_to_chars  function   4544 tar-1.14.c.origin.c void string_to_chars(char *str, char *p, size_t s) {
+stringify_uintmax_t_backwards function   13343 tar-1.14.c.origin.c char *stringify_uintmax_t_backwards(uintmax_t o___0, char *buf) {
+strip_trailing_slashes function   29969 tar-1.14.c.origin.c int strip_trailing_slashes(char *path) {
+stripped_prefix_len function   17448 tar-1.14.c.origin.c size_t stripped_prefix_len(char const *file_name, size_t num) {
+symlink_error    function   15645 tar-1.14.c.origin.c void symlink_error(char const *contents, char const *name) {
+sys_child_open_for_compress function   20129 tar-1.14.c.origin.c pid_t sys_child_open_for_compress(void) {
+sys_child_open_for_uncompress function   20408 tar-1.14.c.origin.c pid_t sys_child_open_for_uncompress(void) {
+sys_compare_gid  function   19988 tar-1.14.c.origin.c _Bool sys_compare_gid(struct stat *a, struct stat *b) {
+sys_compare_links function   19991 tar-1.14.c.origin.c _Bool sys_compare_links(struct stat *link_data, struct stat *stat_data) {
+sys_compare_uid  function   19985 tar-1.14.c.origin.c _Bool sys_compare_uid(struct stat *a, struct stat *b) {
+sys_detect_dev_null_output function   19798 tar-1.14.c.origin.c void sys_detect_dev_null_output(void) {
+sys_drain_input_pipe function   19839 tar-1.14.c.origin.c void sys_drain_input_pipe(void) {
+sys_file_is_archive function   19760 tar-1.14.c.origin.c _Bool sys_file_is_archive(struct tar_stat_info *p) {
+sys_get_archive_stat function   19753 tar-1.14.c.origin.c _Bool sys_get_archive_stat(void) {
+sys_reset_uid_gid function   20027 tar-1.14.c.origin.c void sys_reset_uid_gid(void) {
+sys_save_archive_dev_ino function   19779 tar-1.14.c.origin.c void sys_save_archive_dev_ino(void) {
+sys_spawn_shell  function   19940 tar-1.14.c.origin.c void sys_spawn_shell(void) {
+sys_stat_nanoseconds function   19744 tar-1.14.c.origin.c void sys_stat_nanoseconds(struct tar_stat_info *st) {
+sys_truncate     function   20006 tar-1.14.c.origin.c int sys_truncate(int fd) {
+sys_wait_for_child function   19885 tar-1.14.c.origin.c void sys_wait_for_child(pid_t child_pid___0) {
+sys_write_archive_buffer function   20058 tar-1.14.c.origin.c size_t sys_write_archive_buffer(void) {
+tar_copy_str     function   4593 tar-1.14.c.origin.c static void tar_copy_str(char *dst, char const *src, size_t len) {
+tar_sparse_decode_header function   18555 tar-1.14.c.origin.c static _Bool tar_sparse_decode_header(struct tar_sparse_file *file) {
+tar_sparse_done  function   18494 tar-1.14.c.origin.c static _Bool tar_sparse_done(struct tar_sparse_file *file) {
+tar_sparse_dump_header function   18543 tar-1.14.c.origin.c static _Bool tar_sparse_dump_header(struct tar_sparse_file *file) {
+tar_sparse_dump_region function   18519 tar-1.14.c.origin.c static _Bool tar_sparse_dump_region(struct tar_sparse_file *file, size_t i) {
+tar_sparse_extract_region function   18531 tar-1.14.c.origin.c static _Bool tar_sparse_extract_region(struct tar_sparse_file *file, size_t i) {
+tar_sparse_fixup_header function   18567 tar-1.14.c.origin.c static _Bool tar_sparse_fixup_header(struct tar_sparse_file *file) {
+tar_sparse_init  function   18481 tar-1.14.c.origin.c static _Bool tar_sparse_init(struct tar_sparse_file *file) {
+tar_sparse_member_p function   18469 tar-1.14.c.origin.c static _Bool tar_sparse_member_p(struct tar_sparse_file *file) {
+tar_sparse_scan  function   18506 tar-1.14.c.origin.c static _Bool tar_sparse_scan(struct tar_sparse_file *file,
+tar_stat_destroy function   22979 tar-1.14.c.origin.c void tar_stat_destroy(struct tar_stat_info *st) {
+tar_stat_init    function   22973 tar-1.14.c.origin.c void tar_stat_init(struct tar_stat_info *st) {
+tartime          function   13363 tar-1.14.c.origin.c char const *tartime(time_t t) {
+time_from_header function   13310 tar-1.14.c.origin.c time_t time_from_header(char const *p, size_t s) {
+time_t           function   27709 tar-1.14.c.origin.c time_t(__attribute__((__leaf__)) rpl_mktime)(struct tm *tp) {
+time_to_chars    function   4499 tar-1.14.c.origin.c void time_to_chars(time_t v, char *p, size_t s) {
+to_base256       function   4051 tar-1.14.c.origin.c static void to_base256(int negative, uintmax_t value, char *where,
+to_chars         function   4076 tar-1.14.c.origin.c static void to_chars(int negative, uintmax_t value, size_t valsize,
+to_decimal       function   9206 tar-1.14.c.origin.c static void to_decimal(uintmax_t value, char *where, size_t size) {
+to_hour          function   25336 tar-1.14.c.origin.c static int to_hour(long hours, int meridian) {
+to_octal         function   4030 tar-1.14.c.origin.c static void to_octal(uintmax_t value, char *where, size_t size) {
+to_year          function   25407 tar-1.14.c.origin.c static long to_year(textint textyear) {
+truncate_error   function   15691 tar-1.14.c.origin.c void truncate_error(char const *name) {
+truncate_warn    function   15698 tar-1.14.c.origin.c void truncate_warn(char const *name) {
+uid_coder        function   10471 tar-1.14.c.origin.c static void uid_coder(struct tar_stat_info const *st, char const *keyword,
+uid_decoder      function   10479 tar-1.14.c.origin.c static void uid_decoder(struct tar_stat_info *st, char const *arg) {
+uid_from_header  function   13322 tar-1.14.c.origin.c uid_t uid_from_header(char const *p, size_t s) {
+uid_substitute   function   4510 tar-1.14.c.origin.c static uintmax_t uid_substitute(int *negative) {
+uid_to_chars     function   4528 tar-1.14.c.origin.c void uid_to_chars(uid_t v, char *p, size_t s) {
+uid_to_uname     function   15839 tar-1.14.c.origin.c void uid_to_uname(uid_t uid, char **uname) {
+uintmax_from_header function   13333 tar-1.14.c.origin.c uintmax_t uintmax_from_header(char const *p, size_t s) {
+uintmax_to_chars function   4537 tar-1.14.c.origin.c void uintmax_to_chars(uintmax_t v, char *p, size_t s) {
+uname_coder      function   10491 tar-1.14.c.origin.c static void uname_coder(struct tar_stat_info const *st, char const *keyword,
+uname_decoder    function   10499 tar-1.14.c.origin.c static void uname_decoder(struct tar_stat_info *st, char const *arg) {
+uname_to_uid     function   15917 tar-1.14.c.origin.c int uname_to_uid(char const *uname, uid_t *uidp) {
+undo_last_backup function   14900 tar-1.14.c.origin.c void undo_last_backup(void) {
+unknown_file_error function   6014 tar-1.14.c.origin.c static void unknown_file_error(char *p) {
+unlink_error     function   15705 tar-1.14.c.origin.c void unlink_error(char const *name) {
+unquote_string   function   14364 tar-1.14.c.origin.c int unquote_string(char *string) {
+update_archive   function   23089 tar-1.14.c.origin.c void update_archive(void) {
+usage            function   20983 tar-1.14.c.origin.c void usage(int status) {
+utf8_convert     function   23289 tar-1.14.c.origin.c _Bool utf8_convert(_Bool to_utf, char const *input, char **output) {
+utf8_init        function   23277 tar-1.14.c.origin.c static iconv_t utf8_init(_Bool to_utf) {
+utime_error      function   15712 tar-1.14.c.origin.c void utime_error(char const *name) {
+verify_volume    function   3783 tar-1.14.c.origin.c void verify_volume(void) {
+version_number   function   23762 tar-1.14.c.origin.c static int version_number(char const *base, char const *backup,
+waitpid_error    function   15719 tar-1.14.c.origin.c void waitpid_error(char const *name) {
+write_directory_file function   11645 tar-1.14.c.origin.c void write_directory_file(void) {
+write_directory_file_entry function   11593 tar-1.14.c.origin.c static _Bool write_directory_file_entry(void *entry, void *data) {
+write_eot        function   4575 tar-1.14.c.origin.c void write_eot(void) {
+write_error      function   15726 tar-1.14.c.origin.c void write_error(char const *name) {
+write_error_details function   15733 tar-1.14.c.origin.c void write_error_details(char const *name, size_t status, size_t size) {
+write_extended   function   4909 tar-1.14.c.origin.c static union block *write_extended(struct tar_stat_info *st,
+write_fatal_details function   15753 tar-1.14.c.origin.c void write_fatal_details(char const *name, ssize_t status, size_t size) {
+write_gnu_long_link function   4653 tar-1.14.c.origin.c static void write_gnu_long_link(struct tar_stat_info *st, char const *p,
+write_header_name function   5000 tar-1.14.c.origin.c static union block *write_header_name(struct tar_stat_info *st) {
+write_long_link  function   4783 tar-1.14.c.origin.c static void write_long_link(struct tar_stat_info *st) {
+write_long_name  function   4839 tar-1.14.c.origin.c static union block *write_long_name(struct tar_stat_info *st) {
+write_recent_blocks function   6739 tar-1.14.c.origin.c static void write_recent_blocks(union block *h, size_t blocks) {
+write_recent_bytes function   6765 tar-1.14.c.origin.c static void write_recent_bytes(char *data, size_t bytes) {
+write_record     function   6710 tar-1.14.c.origin.c static void write_record(int move_back_flag) {
+write_short_name function   4639 tar-1.14.c.origin.c static union block *write_short_name(struct tar_stat_info *st) {
+write_ustar_long_name function   4723 tar-1.14.c.origin.c static union block *write_ustar_long_name(char const *name) {
+x2nrealloc       function   30128 tar-1.14.c.origin.c void *x2nrealloc(void *p, size_t *pn, size_t s) {
+x2nrealloc_inline function   30103 tar-1.14.c.origin.c __inline static void *x2nrealloc_inline(void *p, size_t *pn, size_t s) {
+x2realloc        function   30135 tar-1.14.c.origin.c void *x2realloc(void *p, size_t *pn) {
+xalloc_die       function   30027 tar-1.14.c.origin.c void xalloc_die(void) {
+xclone           function   30153 tar-1.14.c.origin.c void *xclone(void const *p, size_t s) {
+xclose           function    988 tar-1.14.c.origin.c void xclose(int fd) {
+xdup2            function   20079 tar-1.14.c.origin.c static void xdup2(int from, int into) {
+xfork            function   15761 tar-1.14.c.origin.c pid_t xfork(void) {
+xget_version     function   23834 tar-1.14.c.origin.c enum backup_type xget_version(char const *context, char const *version) {
+xgetcwd          function   29990 tar-1.14.c.origin.c char *xgetcwd(void) {
+xheader_decode   function   9806 tar-1.14.c.origin.c void xheader_decode(struct tar_stat_info *st) {
+xheader_decode_global function   9846 tar-1.14.c.origin.c void xheader_decode_global(void) {
+xheader_destroy  function   10183 tar-1.14.c.origin.c void xheader_destroy(struct xheader *xhdr) {
+xheader_finish   function   10132 tar-1.14.c.origin.c void xheader_finish(struct xheader *xhdr) {
+xheader_format_name function   9253 tar-1.14.c.origin.c static char *xheader_format_name(struct tar_stat_info *st, char const *fmt,
+xheader_ghdr_name function   9493 tar-1.14.c.origin.c char *xheader_ghdr_name(void) {
+xheader_keyword_deleted_p function   8952 tar-1.14.c.origin.c static _Bool xheader_keyword_deleted_p(char const *kw) {
+xheader_keyword_override_p function   8974 tar-1.14.c.origin.c static _Bool xheader_keyword_override_p(char const *keyword) {
+xheader_list_append function   8996 tar-1.14.c.origin.c static void xheader_list_append(struct keyword_list **root, char const *kw,
+xheader_list_destroy function   9020 tar-1.14.c.origin.c static void xheader_list_destroy(struct keyword_list **root) {
+xheader_print    function   10008 tar-1.14.c.origin.c static void xheader_print(struct xheader *xhdr, char const *keyword,
+xheader_protected_keyword_p function   9662 tar-1.14.c.origin.c static _Bool xheader_protected_keyword_p(char const *keyword) {
+xheader_protected_pattern_p function   9636 tar-1.14.c.origin.c static _Bool xheader_protected_pattern_p(char const *pattern) {
+xheader_read     function   9920 tar-1.14.c.origin.c void xheader_read(union block *p, size_t size) {
+xheader_set_keyword_equal function   9059 tar-1.14.c.origin.c static void xheader_set_keyword_equal(char *kw, char *eq) {
+xheader_set_option function   9170 tar-1.14.c.origin.c void xheader_set_option(char *string) {
+xheader_set_single_keyword function   9048 tar-1.14.c.origin.c static void xheader_set_single_keyword(char *kw) {
+xheader_store    function   9891 tar-1.14.c.origin.c void xheader_store(char const *keyword, struct tar_stat_info const *st,
+xheader_write    function   9531 tar-1.14.c.origin.c void xheader_write(char type, char *name, struct xheader *xhdr) {
+xheader_write_global function   9578 tar-1.14.c.origin.c void xheader_write_global(void) {
+xheader_xhdr_name function   9480 tar-1.14.c.origin.c char *xheader_xhdr_name(struct tar_stat_info *st) {
+xmalloc          function   30066 tar-1.14.c.origin.c void *xmalloc(size_t n) {
+xnmalloc_inline  function   30042 tar-1.14.c.origin.c __inline static void *xnmalloc_inline(size_t n, size_t s) {
+xnrealloc_inline function   30073 tar-1.14.c.origin.c __inline static void *xnrealloc_inline(void *p, size_t n, size_t s) {
+xpipe            function   15781 tar-1.14.c.origin.c void xpipe(int *fd) {
+xrealloc         function   30096 tar-1.14.c.origin.c void *xrealloc(void *p, size_t n) {
+xstrdup          function   30166 tar-1.14.c.origin.c char *xstrdup(char const *string) {
+xstrtoul         function   30222 tar-1.14.c.origin.c strtol_error xstrtoul(char const *s, char **ptr, int strtol_base,
+xstrtoumax       function   30518 tar-1.14.c.origin.c strtol_error xstrtoumax(char const *s, char **ptr, int strtol_base,
+xzalloc          function   30142 tar-1.14.c.origin.c void *xzalloc(size_t s) {
+ydhms_diff       function   27319 tar-1.14.c.origin.c __inline static time_t ydhms_diff(long year1, long yday1, int hour1, int min1,
+yyerror          function   25940 tar-1.14.c.origin.c static int yyerror(char *s __attribute__((__unused__))) {
+yylex            function   25663 tar-1.14.c.origin.c static int yylex(YYSTYPE *lvalp, parser_control *pc) {
+yyparse          function   24568 tar-1.14.c.origin.c int yyparse(void *parm) {
+zero_block_p     function   18594 tar-1.14.c.origin.c static _Bool zero_block_p(char *buffer___2, size_t size) {

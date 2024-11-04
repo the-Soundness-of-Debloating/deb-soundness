@@ -1,0 +1,12 @@
+msan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.msan.out
+==2030248==WARNING: MemorySanitizer: use-of-uninitialized-value
+    #0 0x55a8f2bec9df in main /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:5042:13
+    #1 0x7fcd37770d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #2 0x7fcd37770e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 203de0ae33b53fee1578b117cb4123e85d0534f0)
+    #3 0x55a8f2b63304 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/bins/reduced.msan.out+0x1e304) (BuildId: 9c252f056b0498ab0d6d85166216039a8f7a36d8)
+
+SUMMARY: MemorySanitizer: use-of-uninitialized-value /workspace/fuzzing-deb-with-sanitizers/blade/mkdir-5.2.1-argv-fuzz/./mkdir-5.2.1.c.reduced.c:5042:13 in main
+Exiting
+timeout: the monitored command dumped core
+./verify.sh: line 110: 2030247 Aborted                 timeout -k 0.5 0.5 ${bin} < $input

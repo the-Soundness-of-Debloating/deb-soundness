@@ -1,0 +1,16 @@
+lsan:
++ timeout -k 0.5 0.5 /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.lsan.out
+LeakSanitizer:DEADLYSIGNAL
+==30633==ERROR: LeakSanitizer: SEGV on unknown address 0x601000010000 (pc 0x2abf89d27aca bp 0x7ffebf14c270 sp 0x7ffebf14c168 T0)
+==30633==The signal is caused by a WRITE memory access.
+    #0 0x2abf89d27aca  string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:708
+    #1 0x562d66f3ce9a in fts_read /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:4837:7
+    #2 0x562d66f3d4a5 in chown_files /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:6671:13
+    #3 0x562d66f3d6db in main /workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/./chown-8.2.c.reduced.c:7077:10
+    #4 0x2abf89bb0d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+    #5 0x2abf89bb0e3f in __libc_start_main csu/../csu/libc-start.c:392:3
+    #6 0x562d66f0e4f4 in _start (/workspace/fuzzing-deb-with-sanitizers/blade/chown-8.2-argv-fuzz/bins/reduced.lsan.out+0x54f4) (BuildId: da6c7d28ee9f0b35bba49ed24339532edcff7f7e)
+
+LeakSanitizer can not provide additional info.
+SUMMARY: LeakSanitizer: SEGV string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:708 
+==30633==ABORTING
